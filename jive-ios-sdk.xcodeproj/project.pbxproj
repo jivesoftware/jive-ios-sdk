@@ -16,6 +16,15 @@
 		2192BC121614F33300082926 /* libjive-ios-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBF91614F33300082926 /* libjive-ios-sdk.a */; };
 		2192BC181614F33300082926 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2192BC161614F33300082926 /* InfoPlist.strings */; };
 		2192BC1B1614F33300082926 /* jive_ios_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */; };
+		2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7D1614FF8200082926 /* AFHTTPClient.m */; };
+		2192BC901614FF8200082926 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7F1614FF8200082926 /* AFHTTPRequestOperation.m */; };
+		2192BC911614FF8200082926 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC811614FF8200082926 /* AFImageRequestOperation.m */; };
+		2192BC921614FF8200082926 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC831614FF8200082926 /* AFJSONRequestOperation.m */; };
+		2192BC931614FF8200082926 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC851614FF8200082926 /* AFNetworkActivityIndicatorManager.m */; };
+		2192BC941614FF8200082926 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC881614FF8200082926 /* AFPropertyListRequestOperation.m */; };
+		2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */; };
+		2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */; };
+		2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +34,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2192BBF81614F33300082926;
 			remoteInfo = "jive-ios-sdk";
+		};
+		2192BC3F1614FD2300082926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88037F8315056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		2192BC411614FD2300082926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F440AB153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		2192BC431614FD2300082926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
+			remoteInfo = ReactiveCocoaTests;
+		};
+		2192BC451614FD4700082926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -54,6 +91,26 @@
 		2192BC171614F33300082926 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2192BC191614F33300082926 /* jive_ios_sdkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jive_ios_sdkTests.h; sourceTree = "<group>"; };
 		2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jive_ios_sdkTests.m; sourceTree = "<group>"; };
+		2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = lib/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		2192BC7C1614FF8200082926 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		2192BC7D1614FF8200082926 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		2192BC7E1614FF8200082926 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		2192BC7F1614FF8200082926 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		2192BC801614FF8200082926 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		2192BC811614FF8200082926 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		2192BC821614FF8200082926 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		2192BC831614FF8200082926 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		2192BC841614FF8200082926 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		2192BC851614FF8200082926 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		2192BC861614FF8200082926 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		2192BC871614FF8200082926 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		2192BC881614FF8200082926 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		2192BC891614FF8200082926 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		2192BC8B1614FF8200082926 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +139,7 @@
 		2192BBEE1614F33300082926 = {
 			isa = PBXGroup;
 			children = (
+				2192BC681614FF4E00082926 /* lib */,
 				2192BBFE1614F33300082926 /* jive-ios-sdk */,
 				2192BC131614F33300082926 /* jive-ios-sdkTests */,
 				2192BBFB1614F33300082926 /* Frameworks */,
@@ -145,6 +203,52 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2192BC351614FD2200082926 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2192BC401614FD2300082926 /* ReactiveCocoa.framework */,
+				2192BC421614FD2300082926 /* libReactiveCocoa-iOS.a */,
+				2192BC441614FD2300082926 /* ReactiveCocoaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2192BC681614FF4E00082926 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2192BC7B1614FF8200082926 /* AFNetworking */,
+				2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		2192BC7B1614FF8200082926 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				2192BC7C1614FF8200082926 /* AFHTTPClient.h */,
+				2192BC7D1614FF8200082926 /* AFHTTPClient.m */,
+				2192BC7E1614FF8200082926 /* AFHTTPRequestOperation.h */,
+				2192BC7F1614FF8200082926 /* AFHTTPRequestOperation.m */,
+				2192BC801614FF8200082926 /* AFImageRequestOperation.h */,
+				2192BC811614FF8200082926 /* AFImageRequestOperation.m */,
+				2192BC821614FF8200082926 /* AFJSONRequestOperation.h */,
+				2192BC831614FF8200082926 /* AFJSONRequestOperation.m */,
+				2192BC841614FF8200082926 /* AFNetworkActivityIndicatorManager.h */,
+				2192BC851614FF8200082926 /* AFNetworkActivityIndicatorManager.m */,
+				2192BC861614FF8200082926 /* AFNetworking.h */,
+				2192BC871614FF8200082926 /* AFPropertyListRequestOperation.h */,
+				2192BC881614FF8200082926 /* AFPropertyListRequestOperation.m */,
+				2192BC891614FF8200082926 /* AFURLConnectionOperation.h */,
+				2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */,
+				2192BC8B1614FF8200082926 /* AFXMLRequestOperation.h */,
+				2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */,
+				2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */,
+				2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */,
+			);
+			name = AFNetworking;
+			path = lib/AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +263,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2192BC461614FD4700082926 /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdk";
 			productName = "jive-ios-sdk";
@@ -203,6 +308,12 @@
 			mainGroup = 2192BBEE1614F33300082926;
 			productRefGroup = 2192BBFA1614F33300082926 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2192BC351614FD2200082926 /* Products */;
+					ProjectRef = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2192BBF81614F33300082926 /* jive-ios-sdk */,
@@ -210,6 +321,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2192BC401614FD2300082926 /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = 2192BC3F1614FD2300082926 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2192BC421614FD2300082926 /* libReactiveCocoa-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-iOS.a";
+			remoteRef = 2192BC411614FD2300082926 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2192BC441614FD2300082926 /* ReactiveCocoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.octest;
+			remoteRef = 2192BC431614FD2300082926 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2192BC071614F33300082926 /* Resources */ = {
@@ -244,6 +379,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2192BC041614F33300082926 /* jive_ios_sdk.m in Sources */,
+				2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */,
+				2192BC901614FF8200082926 /* AFHTTPRequestOperation.m in Sources */,
+				2192BC911614FF8200082926 /* AFImageRequestOperation.m in Sources */,
+				2192BC921614FF8200082926 /* AFJSONRequestOperation.m in Sources */,
+				2192BC931614FF8200082926 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				2192BC941614FF8200082926 /* AFPropertyListRequestOperation.m in Sources */,
+				2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */,
+				2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */,
+				2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +406,11 @@
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
 			targetProxy = 2192BC101614F33300082926 /* PBXContainerItemProxy */;
+		};
+		2192BC461614FD4700082926 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = 2192BC451614FD4700082926 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -396,6 +545,7 @@
 				2192BC201614F33300082926 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2192BC211614F33300082926 /* Build configuration list for PBXNativeTarget "jive-ios-sdkTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +554,7 @@
 				2192BC231614F33300082926 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

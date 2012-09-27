@@ -1,0 +1,6 @@
+[submodule "lib/AFNetworking"]
+	path = lib/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "lib/ReactiveCocoa"]
+	path = lib/ReactiveCocoa
+	url = git://github.com/github/ReactiveCocoa.git
