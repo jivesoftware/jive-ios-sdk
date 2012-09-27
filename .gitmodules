@@ -4,3 +4,6 @@
 [submodule "lib/ReactiveCocoa"]
 	path = lib/ReactiveCocoa
 	url = git://github.com/github/ReactiveCocoa.git
+[submodule "lib/OCMock"]
+	path = lib/OCMock
+	url = git://github.com/erikdoe/ocmock.git

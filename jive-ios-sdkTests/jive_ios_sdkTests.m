@@ -8,6 +8,11 @@
 
 #import "jive_ios_sdkTests.h"
 
+#import <OCMock/OCMock.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import <UIKit/UIKit.h>
+
 @implementation jive_ios_sdkTests
 
 - (void)setUp
@@ -26,7 +31,22 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in jive-ios-sdkTests");
+    STAssertFalse(1 == 0, @"One should not equal 0.");
+   
+}
+
+// See http://ocmock.org/#tutorials for examples on how to use OCMock
+- (void) testOCMockExample {
+  
+    id mockString = [OCMockObject mockForClass:[NSMutableString class]];
+    
+    NSUInteger expectedValue = 10;
+    
+    [[[mockString stub] andReturnValue:OCMOCK_VALUE(expectedValue)] length];
+    
+    STAssertEquals(expectedValue, [mockString length], @"Mock string length incorrect.");
+    
+    
 }
 
 @end

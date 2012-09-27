@@ -7,7 +7,8 @@
 //
 
 #import "jive_ios_sdk.h"
-
+#import "AFHTTPClient.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 @implementation jive_ios_sdk
 
 @end
