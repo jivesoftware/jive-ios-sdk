@@ -36,6 +36,8 @@
 }
 
 // See http://ocmock.org/#tutorials for examples on how to use OCMock
+// More examples here: http://svn.mulle-kybernetik.com/OCMock/trunk/Source/OCMockObjectTests.m
+
 - (void) testOCMockExample {
   
     id mockString = [OCMockObject mockForClass:[NSMutableString class]];
