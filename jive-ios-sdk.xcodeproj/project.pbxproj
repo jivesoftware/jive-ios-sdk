@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2192BBFD1614F33300082926 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBFC1614F33300082926 /* Foundation.framework */; };
-		2192BC021614F33300082926 /* jive_ios_sdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2192BC011614F33300082926 /* jive_ios_sdk.h */; };
-		2192BC041614F33300082926 /* jive_ios_sdk.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC031614F33300082926 /* jive_ios_sdk.m */; };
 		2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BC0B1614F33300082926 /* SenTestingKit.framework */; };
 		2192BC0E1614F33300082926 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BC0D1614F33300082926 /* UIKit.framework */; };
 		2192BC0F1614F33300082926 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBFC1614F33300082926 /* Foundation.framework */; };
@@ -26,6 +24,9 @@
 		2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */; };
 		2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */; };
 		2192BCAA16150E1E00082926 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BCA6161502D400082926 /* libOCMock.a */; };
+		2192BCFC16161DE900082926 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFB16161DE900082926 /* Jive.m */; };
+		2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFE16161F0700082926 /* JAPIRequestOperation.m */; };
+		21AD975316163A98009A977D /* my_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AD975216163A98009A977D /* my_response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +102,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				2192BC021614F33300082926 /* jive_ios_sdk.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +111,6 @@
 		2192BBF91614F33300082926 /* libjive-ios-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjive-ios-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BBFC1614F33300082926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2192BC001614F33300082926 /* jive-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jive-ios-sdk-Prefix.pch"; sourceTree = "<group>"; };
-		2192BC011614F33300082926 /* jive_ios_sdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jive_ios_sdk.h; sourceTree = "<group>"; };
-		2192BC031614F33300082926 /* jive_ios_sdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jive_ios_sdk.m; sourceTree = "<group>"; };
 		2192BC0A1614F33300082926 /* jive-ios-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "jive-ios-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BC0B1614F33300082926 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2192BC0D1614F33300082926 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -141,6 +139,11 @@
 		2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		2192BC98161502D300082926 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		2192BCFA16161DE900082926 /* Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jive.h; sourceTree = "<group>"; };
+		2192BCFB16161DE900082926 /* Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jive.m; sourceTree = "<group>"; };
+		2192BCFD16161F0700082926 /* JAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAPIRequestOperation.h; sourceTree = "<group>"; };
+		2192BCFE16161F0700082926 /* JAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAPIRequestOperation.m; sourceTree = "<group>"; };
+		21AD975216163A98009A977D /* my_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,9 +203,11 @@
 		2192BBFE1614F33300082926 /* jive-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				2192BC011614F33300082926 /* jive_ios_sdk.h */,
-				2192BC031614F33300082926 /* jive_ios_sdk.m */,
 				2192BBFF1614F33300082926 /* Supporting Files */,
+				2192BCFA16161DE900082926 /* Jive.h */,
+				2192BCFB16161DE900082926 /* Jive.m */,
+				2192BCFD16161F0700082926 /* JAPIRequestOperation.h */,
+				2192BCFE16161F0700082926 /* JAPIRequestOperation.m */,
 			);
 			path = "jive-ios-sdk";
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			children = (
 				2192BC191614F33300082926 /* jive_ios_sdkTests.h */,
 				2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */,
+				21AD975116163A98009A977D /* data */,
 				2192BC141614F33300082926 /* Supporting Files */,
 			);
 			path = "jive-ios-sdkTests";
@@ -289,6 +295,14 @@
 				2192BCA6161502D400082926 /* libOCMock.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		21AD975116163A98009A977D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				21AD975216163A98009A977D /* my_response.json */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2192BC181614F33300082926 /* InfoPlist.strings in Resources */,
+				21AD975316163A98009A977D /* my_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2192BC041614F33300082926 /* jive_ios_sdk.m in Sources */,
 				2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */,
 				2192BC901614FF8200082926 /* AFHTTPRequestOperation.m in Sources */,
 				2192BC911614FF8200082926 /* AFImageRequestOperation.m in Sources */,
@@ -456,6 +470,8 @@
 				2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */,
 				2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */,
 				2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */,
+				2192BCFC16161DE900082926 /* Jive.m in Sources */,
+				2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

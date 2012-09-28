@@ -1,0 +1,105 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "unread" : {
+        "communications" : 0
+    },
+    "profile" : {
+        "location" : "Portland",
+        "title" : "Sr. Software Engineer",
+        "phone" : "503.548.6008"
+    },
+    "name" : "Rob Derstadt",
+    "enabled" : true,
+    "level" : {
+        "name" : "Scandium",
+        "points" : 901,
+        "resources" : {
+            "image" : {
+                "ref" : "https://brewspace.jiveland.com/api/core/v2/images/status/statusicon-73.gif",
+                "allowed" : [ "GET" ]
+            }
+        },
+        "creationTime" : 0,
+        "modificationTime" : 0
+    },
+    "username" : "rob.derstadt",
+    "firstName" : "Rob",
+    "lastName" : "Derstadt",
+    "email" : "rob.derstadt@jivesoftware.com",
+    "externalContributor" : false,
+    "resources" : {
+        "reports" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/reports",
+            "allowed" : [ "GET" ]
+        },
+        "invites" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/invites",
+            "allowed" : [ "GET" ]
+        },
+        "manager" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/manager",
+            "allowed" : [ "GET" ]
+        },
+        "privateDocuments" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/private/documents",
+            "allowed" : [ "GET", "POST" ]
+        },
+        "self" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550",
+            "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/avatar",
+            "allowed" : [ "GET" ]
+        },
+        "blog" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/blogs/21286",
+            "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/colleagues",
+            "allowed" : [ "GET" ]
+        },
+        "privateDiscussions" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/private/discussions",
+            "allowed" : [ "GET", "POST" ]
+        },
+        "followers" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/followers",
+            "allowed" : [ "GET" ]
+        },
+        "images" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/images",
+            "allowed" : [ "GET" ]
+        },
+        "activities" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/activity",
+            "allowed" : [ "GET" ]
+        },
+        "connections" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/connections",
+            "allowed" : [ "GET" ]
+        },
+        "followedActivity" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/followed/activity",
+            "allowed" : [ "GET" ]
+        },
+        "invited" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/invited",
+            "allowed" : [ "GET" ]
+        },
+        "mentions" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/mentions",
+            "allowed" : [ "GET" ]
+        },
+        "members" : {
+            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/members",
+            "allowed" : [ "GET" ]
+        }
+    },
+    "id" : 3550,
+    "creationTime" : 1292946610556,
+    "creationDate" : "2010-12-21T15:50:10.556+0000",
+    "modificationDate" : "2012-09-28T19:28:52.774+0000",
+    "modificationTime" : 1348860532774
+}
