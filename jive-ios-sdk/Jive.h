@@ -22,7 +22,6 @@
 
 // API
 
-
 - (RACAsyncSubject*) me:(void(^)(id JSON)) complete onError:(void(^)(NSError* error)) error;
 
 @end
