@@ -27,6 +27,12 @@
 		2192BCFC16161DE900082926 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFB16161DE900082926 /* Jive.m */; };
 		2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFE16161F0700082926 /* JAPIRequestOperation.m */; };
 		21AD975316163A98009A977D /* my_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AD975216163A98009A977D /* my_response.json */; };
+		21AD9756161BAB4F009A977D /* JiveCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9755161BAB4F009A977D /* JiveCredentials.m */; };
+		21AD975A161BB4B2009A977D /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9759161BB4B2009A977D /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		21AD9764161BBF5C009A977D /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BC421614FD2300082926 /* libReactiveCocoa-iOS.a */; };
+		21AD9767161CAD32009A977D /* MockJiveURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */; };
+		21AD976A161CB284009A977D /* jive_api_tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9769161CB284009A977D /* jive_api_tests.m */; };
+		21AD976D161CBA90009A977D /* JiveAPITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD976C161CBA90009A977D /* JiveAPITestCase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +64,6 @@
 			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
 			remoteInfo = ReactiveCocoaTests;
 		};
-		2192BC451614FD4700082926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
-			remoteInfo = "ReactiveCocoa-iOS";
-		};
 		2192BCA1161502D400082926 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
@@ -92,6 +91,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 030EF0DB14632FF700B04273;
 			remoteInfo = OCMockLib;
+		};
+		21AD9760161BBEE4009A977D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -144,6 +150,17 @@
 		2192BCFD16161F0700082926 /* JAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAPIRequestOperation.h; sourceTree = "<group>"; };
 		2192BCFE16161F0700082926 /* JAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAPIRequestOperation.m; sourceTree = "<group>"; };
 		21AD975216163A98009A977D /* my_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_response.json; sourceTree = "<group>"; };
+		21AD9754161BAB4F009A977D /* JiveCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCredentials.h; sourceTree = "<group>"; };
+		21AD9755161BAB4F009A977D /* JiveCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveCredentials.m; sourceTree = "<group>"; };
+		21AD9757161BACD2009A977D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		21AD9758161BB4B2009A977D /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		21AD9759161BB4B2009A977D /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		21AD9765161CAD32009A977D /* MockJiveURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockJiveURLProtocol.h; sourceTree = "<group>"; };
+		21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockJiveURLProtocol.m; sourceTree = "<group>"; };
+		21AD9768161CB284009A977D /* jive_api_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jive_api_tests.h; sourceTree = "<group>"; };
+		21AD9769161CB284009A977D /* jive_api_tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jive_api_tests.m; sourceTree = "<group>"; };
+		21AD976B161CBA90009A977D /* JiveAPITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAPITestCase.h; sourceTree = "<group>"; };
+		21AD976C161CBA90009A977D /* JiveAPITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAPITestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21AD9764161BBF5C009A977D /* libReactiveCocoa-iOS.a in Frameworks */,
 				2192BCAA16150E1E00082926 /* libOCMock.a in Frameworks */,
 				2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */,
 				2192BC0E1614F33300082926 /* UIKit.framework in Frameworks */,
@@ -173,6 +191,7 @@
 		2192BBEE1614F33300082926 = {
 			isa = PBXGroup;
 			children = (
+				21AD9757161BACD2009A977D /* README */,
 				2192BC681614FF4E00082926 /* lib */,
 				2192BBFE1614F33300082926 /* jive-ios-sdk */,
 				2192BC131614F33300082926 /* jive-ios-sdkTests */,
@@ -206,6 +225,8 @@
 				2192BBFF1614F33300082926 /* Supporting Files */,
 				2192BCFA16161DE900082926 /* Jive.h */,
 				2192BCFB16161DE900082926 /* Jive.m */,
+				21AD9754161BAB4F009A977D /* JiveCredentials.h */,
+				21AD9755161BAB4F009A977D /* JiveCredentials.m */,
 				2192BCFD16161F0700082926 /* JAPIRequestOperation.h */,
 				2192BCFE16161F0700082926 /* JAPIRequestOperation.m */,
 			);
@@ -223,8 +244,8 @@
 		2192BC131614F33300082926 /* jive-ios-sdkTests */ = {
 			isa = PBXGroup;
 			children = (
-				2192BC191614F33300082926 /* jive_ios_sdkTests.h */,
-				2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */,
+				21AD976F161CBC96009A977D /* classes */,
+				21AD976E161CBC84009A977D /* tests */,
 				21AD975116163A98009A977D /* data */,
 				2192BC141614F33300082926 /* Supporting Files */,
 			);
@@ -253,6 +274,8 @@
 		2192BC681614FF4E00082926 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				21AD9758161BB4B2009A977D /* NSData+Base64.h */,
+				21AD9759161BB4B2009A977D /* NSData+Base64.m */,
 				2192BC7B1614FF8200082926 /* AFNetworking */,
 				2192BC98161502D300082926 /* OCMock.xcodeproj */,
 				2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */,
@@ -305,6 +328,28 @@
 			path = data;
 			sourceTree = "<group>";
 		};
+		21AD976E161CBC84009A977D /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				21AD9768161CB284009A977D /* jive_api_tests.h */,
+				21AD9769161CB284009A977D /* jive_api_tests.m */,
+				2192BC191614F33300082926 /* jive_ios_sdkTests.h */,
+				2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
+		21AD976F161CBC96009A977D /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				21AD9765161CAD32009A977D /* MockJiveURLProtocol.h */,
+				21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */,
+				21AD976B161CBA90009A977D /* JiveAPITestCase.h */,
+				21AD976C161CBA90009A977D /* JiveAPITestCase.m */,
+			);
+			name = classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,7 +364,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2192BC461614FD4700082926 /* PBXTargetDependency */,
+				21AD9761161BBEE4009A977D /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdk";
 			productName = "jive-ios-sdk";
@@ -472,6 +517,8 @@
 				2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */,
 				2192BCFC16161DE900082926 /* Jive.m in Sources */,
 				2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */,
+				21AD9756161BAB4F009A977D /* JiveCredentials.m in Sources */,
+				21AD975A161BB4B2009A977D /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +527,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2192BC1B1614F33300082926 /* jive_ios_sdkTests.m in Sources */,
+				21AD9767161CAD32009A977D /* MockJiveURLProtocol.m in Sources */,
+				21AD976A161CB284009A977D /* jive_api_tests.m in Sources */,
+				21AD976D161CBA90009A977D /* JiveAPITestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,15 +541,15 @@
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
 			targetProxy = 2192BC101614F33300082926 /* PBXContainerItemProxy */;
 		};
-		2192BC461614FD4700082926 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ReactiveCocoa-iOS";
-			targetProxy = 2192BC451614FD4700082926 /* PBXContainerItemProxy */;
-		};
 		2192BCA8161502EE00082926 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OCMockLib;
 			targetProxy = 2192BCA7161502EE00082926 /* PBXContainerItemProxy */;
+		};
+		21AD9761161BBEE4009A977D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = 21AD9760161BBEE4009A977D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

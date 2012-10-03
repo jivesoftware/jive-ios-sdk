@@ -13,7 +13,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Jive.h"
+#import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
+
+#undef RUN_LIVE 
+
+#ifndef RUN_LIVE
+#define LIVE( x ) _ ## x
+#else
+#define LIVE( x ) x
+#endif
 
 @implementation jive_ios_sdkTests
 
@@ -29,12 +39,6 @@
     // Tear-down code here.
     
     [super tearDown];
-}
-
-- (void)testExample
-{
-    STAssertFalse(1 == 0, @"One should not equal zero on this computer.");
-   
 }
 
 // From https://github.com/akisute/SenAsyncTestCase/blob/master/SenAsyncTestCase.m
@@ -73,7 +77,7 @@
 - (void) testJAPIRequestOperation {
     
     NSURLRequest* request = [NSURLRequest requestWithURL:
-                             [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"response" ofType:@"json"]]];
+                             [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"my_response" ofType:@"json"]]];
     
     JAPIRequestOperation *operation = [[JAPIRequestOperation alloc] initWithRequest:request];
     
@@ -91,7 +95,64 @@
     [(JAPIRequestOperation *)mock start];
     
     [self waitForTimeout:5.0];
+
+}
+
+- (void) testJiveCredentialsBasicAuth {
+    
+    JiveCredentials *credentials = [[JiveCredentials alloc]
+                                    initWithUserName:@"rob" password:@"blahblah987654"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.jivesoftware.com"]];
+    
+    STAssertTrue([[request allHTTPHeaderFields] count] == 0, @"NSMutableURLRequest should have 0 header count");
+    
+    [credentials applyToRequest:request];
+    
+    
+    STAssertTrue([[request allHTTPHeaderFields] count] == 1, @"NSMutableURLRequest should have at least 1 header");
+    
+    NSString *header = [[request allHTTPHeaderFields] objectForKey:@"Authorization"];
+    
+    STAssertNotNil(header, @"Authorization should not be nil");
+    
+    STAssertTrue([header isEqualToString:@"Basic cm9iOmJsYWhibGFoOTg3NjU0"],
+                  @"JiveCredentials failed to properly generate Basic Auth header");
     
 }
+
+- (void) LIVE(testMeService) {
+    
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    
+    id mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+   
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"rob.derstadt" password:@""]] credentialsForJiveInstance:[OCMArg any]];
+    
+//     __block JiveCredentials* credentials = [[JiveCredentials alloc] initWithUserName:@"rob.derstadt" password:@""];
+//    
+//    [[[mockAuthDelegate expect] andDo:^(NSInvocation *invocation) {
+//        [invocation setReturnValue:&credentials];
+//    }] credentialsForJiveInstance: [OCMArg any]];
+    
+    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    
+    [[jive me:^(id JSON) {
+        STAssertNotNil(JSON, @"Response was nil");
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }] subscribeNext:^(id x) {
+        STAssertNotNil(x, @"Response was nil");
+    } error:^(NSError *error) {
+        STFail([error localizedDescription]);
+    } completed:^{
+        [mockAuthDelegate verify]; // Check that delegate was actually called
+    }];
+
+    [self waitForTimeout:5.0];
+    
+}
+
+
 
 @end

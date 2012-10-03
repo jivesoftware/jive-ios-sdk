@@ -10,6 +10,24 @@
 
 @implementation JAPIRequestOperation
 
++ (JAPIRequestOperation *)JSONRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
+                                                    failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure
+{
+    JAPIRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(operation.request, operation.response, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(operation.request, operation.response, error, [(AFJSONRequestOperation *)operation responseJSON]);
+        }
+    }];
+    
+    return requestOperation;
+}
+
 - (id)responseJSON {
     
     // Handle cases where API call is to Jive, by removing "throw 'allowIllegalResourceCall is false.';"
