@@ -68,6 +68,63 @@
     
 }
 
+- (RACAsyncSubject*) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+    
+    RACAsyncSubject *subject = [RACAsyncSubject subject];
+    
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" andArgs:personId,nil];
+    
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        [subject sendNext:JSON];
+        [subject sendCompleted];
+        complete(JSON);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        [subject sendError:err];
+        error(err);
+    }];
+    
+    [operation start];
+    
+    return subject;    
+}
+
+- (RACAsyncSubject*) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+    
+    RACAsyncSubject *subject = [RACAsyncSubject subject];
+    NSString *fields;
+    NSString *startIndex = @"0";
+    
+    if (type == @"contents") {
+        fields = @"&fields=rootType,type,subject,author,question,answer,parentPlace,parentContent,highlightSubject,highlightBody,highlightTags,published,updated,replyCount,likeCount,viewCount,visibleToExternalContributors,binaryURL";
+    } else if (type == @"people") {
+        fields = @"";
+    } else if (type == @"places") {
+        fields = @"";
+    } else {
+//        throw new error
+    }
+    
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?q=%@&sort=relevanceDesc&count=20&startIndex=%@%@" andArgs:type,query,startIndex,fields,nil];
+    
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        [subject sendNext:JSON];
+        [subject sendCompleted];
+        complete(JSON);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        [subject sendError:err];
+        error(err);
+    }];
+    
+    [operation start];
+    
+    return subject;
+}
+
+
 #pragma mark -
 #pragma mark Utility Methods
 - (NSURLRequest*) requestWithTemplate:(NSString*) template andArgs:(NSString*) args,...{
