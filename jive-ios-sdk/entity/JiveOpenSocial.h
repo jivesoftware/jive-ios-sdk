@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JiveObject.h"
 
-@interface JiveOpenSocial : NSObject
+@class JiveEmbedded;
+
+@interface JiveOpenSocial : JiveObject
+
+// List of ActionLinks representing actions that a person might take against an actionable resource.
+@property(nonatomic, readonly, strong) NSArray* actionLinks;
+
+// List of URIs of Persons to which this activity should be explicitly delivered.
+@property(nonatomic, readonly, strong) NSArray* deliverTo;
+
+// Metadata about an OpenSocial Embedded Experience associated with this activity.
+@property(nonatomic, readonly, strong) JiveEmbedded* embed;
 
 @end

@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "JiveCredentials.h"
+@class JiveCredentials;
+@class JiveRequestOptions;
 
 @protocol JiveAuthorizationDelegate <NSObject>
 @required
@@ -28,4 +29,7 @@
 
 - (RACAsyncSubject*) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
+// Inbox
+- (RACAsyncSubject*) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (RACAsyncSubject*) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 @end

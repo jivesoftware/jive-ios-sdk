@@ -8,7 +8,9 @@
 
 #import "Jive.h"
 #import "JAPIRequestOperation.h"
-
+#import "JiveCredentials.h"
+#import "JiveRequestOptions.h"
+#import "JiveInboxEntry.h"
 
 @interface Jive() {
     
@@ -45,22 +47,37 @@
 #pragma mark -
 #pragma Core API Methods
 
+// Inbox
+- (RACAsyncSubject*) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+    return [self inbox:nil onComplete:complete onError:error];
+}
+
+- (RACAsyncSubject*) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+    
+    RACAsyncSubject *subject = [RACAsyncSubject subject];
+    
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
+    
+     JAPIRequestOperation *operation = [self operationWithRequest:request subject:subject onComplete:complete onError:error responseHandler:^id(id JSON) {
+         return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+     }];
+    
+    [operation start];
+    
+    return subject;
+}
+
+
+
 - (RACAsyncSubject*) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
     RACAsyncSubject *subject = [RACAsyncSubject subject];
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/@me" andArgs:nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/@me" options:nil andArgs:nil];
     
-     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        
-        [subject sendNext:JSON];
-        [subject sendCompleted];
-        complete(JSON);
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        [subject sendError:err];
-        error(err);
-    }];
+     JAPIRequestOperation *operation = [self operationWithRequest:request subject:subject onComplete:complete onError:error responseHandler:^id(id JSON) {
+         return JSON;
+     }];
     
     [operation start];
     
@@ -72,7 +89,7 @@
     
     RACAsyncSubject *subject = [RACAsyncSubject subject];
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" andArgs:personId,nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" options:nil andArgs:personId,nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
@@ -106,7 +123,7 @@
 //        throw new error
     }
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?q=%@&sort=relevanceDesc&count=20&startIndex=%@%@" andArgs:type,query,startIndex,fields,nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?q=%@&sort=relevanceDesc&count=20&startIndex=%@%@" options:nil andArgs:type,query,startIndex,fields,nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
@@ -127,9 +144,30 @@
 
 #pragma mark -
 #pragma mark Utility Methods
-- (NSURLRequest*) requestWithTemplate:(NSString*) template andArgs:(NSString*) args,...{
+- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(JiveRequestOptions*) options andArgs:(NSString*) args,...{
     
-    NSString* requestString = [NSString stringWithFormat:template, args];
+    NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
+    
+    if([options isValid]) {
+        
+        [requestString appendString:@"?"];
+        
+        if(options.beforeDate) {
+            [requestString appendFormat:@"before=%@&", options.beforeDate];
+        }
+        
+        if(options.afterDate) {
+             [requestString appendFormat:@"after=%@&", options.beforeDate];
+        }
+        
+        // Limit how many can be used?
+        if(options.count > 0) {
+            [requestString appendFormat:@"count=%d&", options.count];
+        }
+        
+        // Get rid of trailing ampersand
+        [requestString deleteCharactersInRange:NSMakeRange([requestString length]-1, 1)];
+    }
     
     NSURL* requestURL = [_jiveInstance URLByAppendingPathComponent:requestString];
     
@@ -141,6 +179,23 @@
     } 
     
     return request;
+}
+
+
+- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request subject:(RACAsyncSubject*) subject onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
+    
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        id entity = handler(JSON);
+        [subject sendNext:entity];
+        [subject sendCompleted];
+        complete(entity);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        [subject sendError:err];
+        error(err);
+    }];
+    
+    return operation;
 }
 
 @end

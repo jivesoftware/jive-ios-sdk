@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface JiveObject : NSObject
++ (id) instanceFromJSON:(NSDictionary*) JSON;
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON;
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveAPITestCase.h"
 
-@interface jive_entity_tests : SenTestCase
+@interface jive_entity_tests : JiveAPITestCase
 
 @end

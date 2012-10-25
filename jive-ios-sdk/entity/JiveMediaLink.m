@@ -9,5 +9,5 @@
 #import "JiveMediaLink.h"
 
 @implementation JiveMediaLink
-
+@synthesize duration, height, width, url;
 @end

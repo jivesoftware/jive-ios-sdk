@@ -9,5 +9,5 @@
 #import "JiveActionLink.h"
 
 @implementation JiveActionLink
-
+@synthesize caption, httpVerb, target;
 @end

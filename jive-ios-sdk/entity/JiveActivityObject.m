@@ -7,7 +7,8 @@
 //
 
 #import "JiveActivityObject.h"
+#import "JiveMediaLink.h"
 
 @implementation JiveActivityObject
-
+@synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url;
 @end

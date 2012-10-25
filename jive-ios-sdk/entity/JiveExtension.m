@@ -7,7 +7,8 @@
 //
 
 #import "JiveExtension.h"
+#import "JiveActivityObject.h"
 
 @implementation JiveExtension
-
+@synthesize collection, collectionUpdated, display, parent, read, state, update;
 @end

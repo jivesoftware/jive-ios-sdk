@@ -7,7 +7,8 @@
 //
 
 #import "JiveOpenSocial.h"
+#import "JiveEmbedded.h"
 
 @implementation JiveOpenSocial
-
+@synthesize actionLinks, deliverTo, embed;
 @end

@@ -29,6 +29,42 @@
     [super tearDown];
 }
 
+- (void) testInboxServiceCall {
+    
+    // This can be anything. The mock objects will return local data
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    
+    // Reponse file containing data from JIVE My request
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"inbox_response" ofType:@"json"];
+    
+    // Mock response delegate
+    id mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    
+    // Mock auth delegate
+    id mockAuthDelegate = [self mockJiveAuthenticationDelegate];
+    
+    // Set the response mock delegate for this request
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    
+    // Create the Jive API object, using mock auth delegate
+    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    
+    [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
+        
+        STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
+        STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        //
+    }];
+    
+    [self waitForTimeout:5.0];
+}
+
 - (void) testMyServiceCall {
     
     // This can be anything. The mock objects will return local data
@@ -70,6 +106,7 @@
     [self waitForTimeout:5.0];
     
 }
+
 
 
 

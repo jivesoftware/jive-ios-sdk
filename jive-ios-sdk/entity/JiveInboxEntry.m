@@ -9,5 +9,5 @@
 #import "JiveInboxEntry.h"
 
 @implementation JiveInboxEntry
-
+@synthesize actor, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
 @end

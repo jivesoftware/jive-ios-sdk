@@ -9,5 +9,5 @@
 #import "JiveEmbedded.h"
 
 @implementation JiveEmbedded
-
+@synthesize context, gadget, preferredExperience, previewImage, url;
 @end
