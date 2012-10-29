@@ -9,12 +9,13 @@
 #import "jive_entity_tests.h"
 #import "JiveObject.h"
 #import "JiveInboxEntry.h"
+#import "JiveActivityObject.h"
+
 
 
 @implementation jive_entity_tests
 
 - (id) JSONFromTestFile:(NSString*) filename {
-    // Read test data
     NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:[filename stringByDeletingPathExtension] ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:path];
     NSError* error;
@@ -24,12 +25,11 @@
 }
 
 - (void) testJiveInboxEntryDeserialize {
-  
     id json = [self JSONFromTestFile:@"inbox_response.json"];
     NSDictionary* inboxEntryData = [[json objectForKey:@"list"] objectAtIndex:0];
     JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:inboxEntryData];
     STAssertNotNil(inboxEntry, @"JiveInboxEntry was nil!");
-    
+    STAssertNotNil(inboxEntry.object.jiveId, @"JiveId was nil!");
 }
 
 - (void) testJiveInboxEntryDeserializeList {
@@ -45,6 +45,9 @@
     STAssertTrue([instances count] == [[json objectForKey:@"list"] count], @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.", [[json objectForKey:@"list"] count], [instances count]);
     
     // More checks needed for data correctness
+    for(JiveInboxEntry* entry in instances) {
+        NSLog(@"%@", entry);
+    }
 }
 
 @end
