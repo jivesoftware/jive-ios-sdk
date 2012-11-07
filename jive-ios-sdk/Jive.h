@@ -15,6 +15,8 @@
 @protocol JiveAuthorizationDelegate <NSObject>
 @required
 - (JiveCredentials*) credentialsForJiveInstance:(NSURL*) url;
+@optional
+//- (void) didReveiveOAuthActivitionResponse:(
 @end
 
 @interface Jive : NSObject

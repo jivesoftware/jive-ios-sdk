@@ -40,13 +40,20 @@
 }
 
 
-- (id) initWithOAuthToken:(NSString*) token {
-    [NSException raise:@"initWithOAuthToken is not yet supported" format:nil];
+- (id) initWithActivationCode:(NSString*) code {
+   
+    
+    
     return nil;
 }
 
 - (void) applyToRequest:(NSMutableURLRequest*) request {
-    [request setValue:_header forHTTPHeaderField:@"Authorization"];
+    
+    if(_authType == JiveAuthenticationBasic) {
+        [request setValue:_header forHTTPHeaderField:@"Authorization"];
+    } else {
+        
+    }
 }
 
 @end

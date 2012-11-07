@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2186057D164AEB0E004AF2E2 /* Jive */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2186057E164AEB0E004AF2E2 /* Build configuration list for PBXAggregateTarget "Jive" */;
+			buildPhases = (
+				21860583164AEB33004AF2E2 /* ShellScript */,
+			);
+			dependencies = (
+				21860582164AEB18004AF2E2 /* PBXTargetDependency */,
+			);
+			name = Jive;
+			productName = Jive;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D31638524E00182AB5 /* JiveInboxEntry.m */; };
 		217FE0D71638528F00182AB5 /* JiveActivityObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D61638528F00182AB5 /* JiveActivityObject.m */; };
@@ -18,11 +33,13 @@
 		217FE0F11638646000182AB5 /* JiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0F01638646000182AB5 /* JiveObject.m */; };
 		217FE0F6163864D000182AB5 /* jive_entity_tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0F5163864D000182AB5 /* jive_entity_tests.m */; };
 		217FE0FC1638798900182AB5 /* inbox_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 217FE0FB1638798900182AB5 /* inbox_response.json */; };
+		21860579164AE045004AF2E2 /* JiveProfileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 78185D7D163EE79D0081DF7A /* JiveProfileEntry.m */; };
+		2186057C164AE1CC004AF2E2 /* Jive.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2192BCFA16161DE900082926 /* Jive.h */; };
 		2192BBFD1614F33300082926 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBFC1614F33300082926 /* Foundation.framework */; };
 		2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BC0B1614F33300082926 /* SenTestingKit.framework */; };
 		2192BC0E1614F33300082926 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BC0D1614F33300082926 /* UIKit.framework */; };
 		2192BC0F1614F33300082926 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBFC1614F33300082926 /* Foundation.framework */; };
-		2192BC121614F33300082926 /* libjive-ios-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBF91614F33300082926 /* libjive-ios-sdk.a */; };
+		2192BC121614F33300082926 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBF91614F33300082926 /* libJive.a */; };
 		2192BC181614F33300082926 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2192BC161614F33300082926 /* InfoPlist.strings */; };
 		2192BC1B1614F33300082926 /* jive_ios_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */; };
 		2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7D1614FF8200082926 /* AFHTTPClient.m */; };
@@ -54,10 +71,16 @@
 		78185D75163EDEAC0081DF7A /* JiveName.m in Sources */ = {isa = PBXBuildFile; fileRef = 78185D74163EDEAC0081DF7A /* JiveName.m */; };
 		78185D78163EE5800081DF7A /* JivePhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 78185D77163EE57F0081DF7A /* JivePhoneNumber.m */; };
 		78185D7B163EE65C0081DF7A /* JivePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 78185D7A163EE65B0081DF7A /* JivePhoto.m */; };
-		78185D7E163EE79E0081DF7A /* JiveProfileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 78185D7D163EE79D0081DF7A /* JiveProfileEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		21860581164AEB18004AF2E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BBF01614F33300082926 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2192BBF81614F33300082926;
+			remoteInfo = "jive-ios-sdk";
+		};
 		2192BC101614F33300082926 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2192BBF01614F33300082926 /* Project object */;
@@ -127,9 +150,10 @@
 		2192BBF71614F33300082926 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
+			dstPath = JiveHeaders;
 			dstSubfolderSpec = 16;
 			files = (
+				2186057C164AE1CC004AF2E2 /* Jive.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +180,7 @@
 		217FE0F4163864D000182AB5 /* jive_entity_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jive_entity_tests.h; sourceTree = "<group>"; };
 		217FE0F5163864D000182AB5 /* jive_entity_tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jive_entity_tests.m; sourceTree = "<group>"; };
 		217FE0FB1638798900182AB5 /* inbox_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inbox_response.json; sourceTree = "<group>"; };
-		2192BBF91614F33300082926 /* libjive-ios-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjive-ios-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2192BBF91614F33300082926 /* libJive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJive.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BBFC1614F33300082926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2192BC001614F33300082926 /* jive-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jive-ios-sdk-Prefix.pch"; sourceTree = "<group>"; };
 		2192BC0A1614F33300082926 /* jive-ios-sdkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "jive-ios-sdkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,7 +268,7 @@
 				2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */,
 				2192BC0E1614F33300082926 /* UIKit.framework in Frameworks */,
 				2192BC0F1614F33300082926 /* Foundation.framework in Frameworks */,
-				2192BC121614F33300082926 /* libjive-ios-sdk.a in Frameworks */,
+				2192BC121614F33300082926 /* libJive.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +332,7 @@
 		2192BBFA1614F33300082926 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2192BBF91614F33300082926 /* libjive-ios-sdk.a */,
+				2192BBF91614F33300082926 /* libJive.a */,
 				2192BC0A1614F33300082926 /* jive-ios-sdkTests.octest */,
 			);
 			name = Products;
@@ -472,6 +496,7 @@
 				2192BBF51614F33300082926 /* Sources */,
 				2192BBF61614F33300082926 /* Frameworks */,
 				2192BBF71614F33300082926 /* CopyFiles */,
+				2186057B164AE16B004AF2E2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -480,7 +505,7 @@
 			);
 			name = "jive-ios-sdk";
 			productName = "jive-ios-sdk";
-			productReference = 2192BBF91614F33300082926 /* libjive-ios-sdk.a */;
+			productReference = 2192BBF91614F33300082926 /* libJive.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		2192BC091614F33300082926 /* jive-ios-sdkTests */ = {
@@ -536,6 +561,7 @@
 			targets = (
 				2192BBF81614F33300082926 /* jive-ios-sdk */,
 				2192BC091614F33300082926 /* jive-ios-sdkTests */,
+				2186057D164AEB0E004AF2E2 /* Jive */,
 			);
 		};
 /* End PBXProject section */
@@ -601,6 +627,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2186057B164AE16B004AF2E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		21860583164AEB33004AF2E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\n#SF_TARGET_NAME=${PROJECT_NAME}\nSF_TARGET_NAME=Jive\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
 		2192BC081614F33300082926 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -651,7 +703,7 @@
 				78185D75163EDEAC0081DF7A /* JiveName.m in Sources */,
 				78185D78163EE5800081DF7A /* JivePhoneNumber.m in Sources */,
 				78185D7B163EE65C0081DF7A /* JivePhoto.m in Sources */,
-				78185D7E163EE79E0081DF7A /* JiveProfileEntry.m in Sources */,
+				21860579164AE045004AF2E2 /* JiveProfileEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +722,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		21860582164AEB18004AF2E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
+			targetProxy = 21860581164AEB18004AF2E2 /* PBXContainerItemProxy */;
+		};
 		2192BC111614F33300082926 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
@@ -699,6 +756,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2186057F164AEB0E004AF2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		21860580164AEB0E004AF2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		2192BC1C1614F33300082926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -750,6 +821,7 @@
 		2192BC1F1614F33300082926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/jive_ios_sdk.dst;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -759,14 +831,18 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jive;
+				PUBLIC_HEADERS_FOLDER_PATH = JiveHeaders;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
 		2192BC201614F33300082926 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/jive_ios_sdk.dst;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -776,8 +852,10 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jive;
+				PUBLIC_HEADERS_FOLDER_PATH = JiveHeaders;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Release;
 		};
@@ -830,6 +908,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2186057E164AEB0E004AF2E2 /* Build configuration list for PBXAggregateTarget "Jive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2186057F164AEB0E004AF2E2 /* Debug */,
+				21860580164AEB0E004AF2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2192BBF31614F33300082926 /* Build configuration list for PBXProject "jive-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

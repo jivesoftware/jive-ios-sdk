@@ -11,8 +11,6 @@
 #import "JiveInboxEntry.h"
 #import "JiveActivityObject.h"
 
-
-
 @implementation jive_entity_tests
 
 - (id) JSONFromTestFile:(NSString*) filename {
@@ -35,6 +33,7 @@
 - (void) testJiveInboxEntryDeserializeList {
     
     id json = [self JSONFromTestFile:@"inbox_response.json"];
+    
     JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:[json objectForKey:@"list"]];
     
     STAssertNil(inboxEntry, @"JiveInboxEntry should have failed initialization when passed incorrect JSON.");
