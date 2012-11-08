@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2192BBF81614F33300082926"
-               BuildableName = "libjive-ios-sdk.a"
+               BuildableName = "libJive.a"
                BlueprintName = "jive-ios-sdk"
                ReferencedContainer = "container:jive-ios-sdk.xcodeproj">
             </BuildableReference>

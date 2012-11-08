@@ -6,21 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		2186057D164AEB0E004AF2E2 /* Jive */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2186057E164AEB0E004AF2E2 /* Build configuration list for PBXAggregateTarget "Jive" */;
-			buildPhases = (
-				21860583164AEB33004AF2E2 /* ShellScript */,
-			);
-			dependencies = (
-				21860582164AEB18004AF2E2 /* PBXTargetDependency */,
-			);
-			name = Jive;
-			productName = Jive;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D31638524E00182AB5 /* JiveInboxEntry.m */; };
 		217FE0D71638528F00182AB5 /* JiveActivityObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D61638528F00182AB5 /* JiveActivityObject.m */; };
@@ -74,13 +59,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		21860581164AEB18004AF2E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BBF01614F33300082926 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2192BBF81614F33300082926;
-			remoteInfo = "jive-ios-sdk";
-		};
 		2192BC101614F33300082926 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2192BBF01614F33300082926 /* Project object */;
@@ -560,7 +538,6 @@
 			targets = (
 				2192BBF81614F33300082926 /* jive-ios-sdk */,
 				2192BC091614F33300082926 /* jive-ios-sdkTests */,
-				2186057D164AEB0E004AF2E2 /* Jive */,
 			);
 		};
 /* End PBXProject section */
@@ -626,19 +603,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21860583164AEB33004AF2E2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Creating Jive.framework...\"\nset -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\n##SF_TARGET_NAME=${PROJECT_NAME}\nSF_TARGET_NAME=Jive\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\n##SF_EXECUTABLE_PATH=\"libJive.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n##SF_WRAPPER_NAME=\"Jive.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\necho \"cp ${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME} ${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
-		};
 		2192BC081614F33300082926 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,11 +672,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21860582164AEB18004AF2E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
-			targetProxy = 21860581164AEB18004AF2E2 /* PBXContainerItemProxy */;
-		};
 		2192BC111614F33300082926 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
@@ -742,20 +701,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2186057F164AEB0E004AF2E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		21860580164AEB0E004AF2E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		2192BC1C1614F33300082926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -821,6 +766,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = JiveHeaders;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -842,6 +788,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = JiveHeaders;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -894,14 +841,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2186057E164AEB0E004AF2E2 /* Build configuration list for PBXAggregateTarget "Jive" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2186057F164AEB0E004AF2E2 /* Debug */,
-				21860580164AEB0E004AF2E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		2192BBF31614F33300082926 /* Build configuration list for PBXProject "jive-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
