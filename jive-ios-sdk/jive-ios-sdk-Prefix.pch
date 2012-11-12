@@ -2,6 +2,25 @@
 // Prefix header for all source files of the 'jive-ios-sdk' target in the 'jive-ios-sdk' project
 //
 
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFImageRequestOperation.h"
+#import "AFJSONRequestOperation.h"
+#import "AFNetworkActivityIndicatorManager.h"
+#import "AFPropertyListRequestOperation.h"
+#import "AFURLConnectionOperation.h"
+#import "AFXMLRequestOperation.h"
+
+@compatibility_alias JAliasClass_1 AFHTTPClient;
+@compatibility_alias JAliasClass_2 AFHTTPRequestOperation;
+@compatibility_alias JAliasClass_3 AFImageRequestOperation;
+@compatibility_alias JAliasClass_4 AFJSONRequestOperation;
+@compatibility_alias JAliasClass_5 AFNetworkActivityIndicatorManager;
+@compatibility_alias JAliasClass_6 AFPropertyListRequestOperation;
+@compatibility_alias JAliasClass_7 AFURLConnectionOperation;
+@compatibility_alias JAliasClass_8 AFXMLRequestOperation;
+
+
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 #endif
