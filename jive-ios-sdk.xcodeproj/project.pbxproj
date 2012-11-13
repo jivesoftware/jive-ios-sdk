@@ -137,13 +137,6 @@
 			remoteGlobalIDString = 030EF0DB14632FF700B04273;
 			remoteInfo = OCMockLib;
 		};
-		21AD9760161BBEE4009A977D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC341614FD2200082926 /* ReactiveCocoa.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
-			remoteInfo = "ReactiveCocoa-iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -501,7 +494,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				21AD9761161BBEE4009A977D /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdk";
 			productName = "jive-ios-sdk";
@@ -736,11 +728,6 @@
 			isa = PBXTargetDependency;
 			name = OCMockLib;
 			targetProxy = 2192BCA7161502EE00082926 /* PBXContainerItemProxy */;
-		};
-		21AD9761161BBEE4009A977D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ReactiveCocoa-iOS";
-			targetProxy = 21AD9760161BBEE4009A977D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

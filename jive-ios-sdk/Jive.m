@@ -48,68 +48,56 @@
 #pragma Core API Methods
 
 // Inbox
-- (RACAsyncSubject*) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
-    return [self inbox:nil onComplete:complete onError:error];
+- (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+    [self inbox:nil onComplete:complete onError:error];
 }
 
-- (RACAsyncSubject*) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+- (void) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
     
-    RACAsyncSubject *subject = [RACAsyncSubject subject];
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
     
-     JAPIRequestOperation *operation = [self operationWithRequest:request subject:subject onComplete:complete onError:error responseHandler:^id(id JSON) {
+     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
          return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
      }];
     
     [operation start];
-    
-    return subject;
+   
 }
 
 
 
-- (RACAsyncSubject*) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+- (void) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
-    RACAsyncSubject *subject = [RACAsyncSubject subject];
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/@me" options:nil andArgs:nil];
     
-     JAPIRequestOperation *operation = [self operationWithRequest:request subject:subject onComplete:complete onError:error responseHandler:^id(id JSON) {
+     JAPIRequestOperation *operation = [self operationWithRequest:request  onComplete:complete onError:error responseHandler:^id(id JSON) {
          return JSON;
      }];
     
     [operation start];
-    
-    return subject;
+  
     
 }
 
-- (RACAsyncSubject*) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
-    
-    RACAsyncSubject *subject = [RACAsyncSubject subject];
+- (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" options:nil andArgs:personId,nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        
-        [subject sendNext:JSON];
-        [subject sendCompleted];
         complete(JSON);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        [subject sendError:err];
         error(err);
     }];
     
     [operation start];
-    
-    return subject;    
+     
 }
 
-- (RACAsyncSubject*) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+- (void) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
-    RACAsyncSubject *subject = [RACAsyncSubject subject];
     NSString *fields;
     NSString *startIndex = @"0";
     
@@ -127,18 +115,13 @@
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        [subject sendNext:JSON];
-        [subject sendCompleted];
         complete(JSON);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        [subject sendError:err];
         error(err);
     }];
     
     [operation start];
-    
-    return subject;
 }
 
 
@@ -182,16 +165,13 @@
 }
 
 
-- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request subject:(RACAsyncSubject*) subject onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
+- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         id entity = handler(JSON);
-        [subject sendNext:entity];
-        [subject sendCompleted];
         complete(entity);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        [subject sendError:err];
         error(err);
     }];
     

@@ -137,17 +137,14 @@
     
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     
-    [[jive me:^(id JSON) {
+    [jive me:^(id JSON) {
         STAssertNotNil(JSON, @"Response was nil");
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
-    }] subscribeNext:^(id x) {
-        STAssertNotNil(x, @"Response was nil");
-    } error:^(NSError *error) {
-        STFail([error localizedDescription]);
-    } completed:^{
-        [mockAuthDelegate verify]; // Check that delegate was actually called
     }];
+    
+    //[mockAuthDelegate verify]; // Check that delegate was actually called
+
 
     [self waitForTimeout:5.0];
     

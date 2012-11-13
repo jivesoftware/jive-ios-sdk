@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @class JiveCredentials;
 @class JiveRequestOptions;
@@ -25,13 +24,13 @@
 
 // API
 
-- (RACAsyncSubject*) me:(void(^)(id JSON)) complete onError:(void(^)(NSError* error)) error;
+- (void) me:(void(^)(id JSON)) complete onError:(void(^)(NSError* error)) error;
 
-- (RACAsyncSubject*) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
-- (RACAsyncSubject*) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
 // Inbox
-- (RACAsyncSubject*) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (RACAsyncSubject*) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 @end

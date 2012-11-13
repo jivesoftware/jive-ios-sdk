@@ -9,7 +9,6 @@
 #import "jive_api_tests.h"
 
 #import <OCMock/OCMock.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <UIKit/UIKit.h>
 
 #import "Jive.h"
@@ -85,24 +84,20 @@
     // Create the Jive API object, using mock auth delegate
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     
-    [[jive me:^(id JSON) {
+    [jive me:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
-    }] subscribeNext:^(id x) {
-        // Called 2nd
-        STAssertNotNil(x, @"Response was nil");
-    } error:^(NSError *error) {
-        STFail([error localizedDescription]);
-    } completed:^{
-        // Called 1st
         
         // Check that delegates where actually called
-        [mockAuthDelegate verify]; 
+        [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
     }];
-    
+        
+      
+      
     [self waitForTimeout:5.0];
     
 }
@@ -127,23 +122,19 @@
     // Create the Jive API object, using mock auth delegate
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     
-    [[jive collegues:@"2918" onComplete:^(id JSON) {
+    [jive collegues:@"2918" onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
-    }] subscribeNext:^(id x) {
-        // Called 2nd
-        STAssertNotNil(x, @"Response was nil");
-    } error:^(NSError *error) {
-        STFail([error localizedDescription]);
-    } completed:^{
-        // Called 1st
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
     }];
+     
+      
     
     [self waitForTimeout:5.0];
     
