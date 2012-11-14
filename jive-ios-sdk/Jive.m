@@ -11,6 +11,8 @@
 #import "JiveCredentials.h"
 #import "JiveRequestOptions.h"
 #import "JiveInboxEntry.h"
+#import "JiveSearchParams.h"
+#import "JiveSearchContentParams.h"
 
 @interface Jive() {
     
@@ -57,9 +59,9 @@
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
     
-     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
-         return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
-     }];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
+        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
     
     [operation start];
    
@@ -96,29 +98,13 @@
      
 }
 
-- (void) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+- (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
-    NSString *fields;
-    NSString *startIndex = @"0";
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?%@" options:nil andArgs:[params facet],[params toQueryString],nil];
     
-    if (type == @"contents") {
-        fields = @"&fields=rootType,type,subject,author,question,answer,parentPlace,parentContent,highlightSubject,highlightBody,highlightTags,published,updated,replyCount,likeCount,viewCount,visibleToExternalContributors,binaryURL";
-    } else if (type == @"people") {
-        fields = @"";
-    } else if (type == @"places") {
-        fields = @"";
-    } else {
-//        throw new error
-    }
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?q=%@&sort=relevanceDesc&count=20&startIndex=%@%@" options:nil andArgs:type,query,startIndex,fields,nil];
-    
-    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        
-        complete(JSON);
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        error(err);
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
+        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];

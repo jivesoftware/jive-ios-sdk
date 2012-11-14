@@ -13,14 +13,14 @@
 @implementation JiveObject
 
 + (id) instanceFromJSON:(NSDictionary*) JSON {
-    id entity = [[[self class] alloc] init];
+    id entity = [[[self entityClass:JSON] alloc] init];
     return [entity deserialize:JSON] ? entity : nil;
 }
 
-+ (NSArray*) instancesFromJSONList:(NSArray*) JSON; {
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON {
     NSMutableArray *instances = [[NSMutableArray alloc] init];
     for(id obj in JSON) {
-        id inst = [[self class] instanceFromJSON:obj];
+        id inst = [[self entityClass:obj] instanceFromJSON:obj];
         if(inst) {
             [instances addObject:inst];
         } else {
@@ -28,6 +28,10 @@
         }
     }
     return [NSArray arrayWithArray:instances];
+}
+
++ (Class) entityClass:(NSDictionary*) obj {
+    return [self class];
 }
 
 - (NSDateFormatter*) dateFormatter {

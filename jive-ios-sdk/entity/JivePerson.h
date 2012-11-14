@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
-// these are not referenced but need to be created
-@class JivePhoneNumber;
-@class JivePhotos;
-
 
 @class JivePersonJive;
 @class Name;
@@ -21,13 +17,13 @@
 @interface JivePerson : JiveObject
 
 
-// List of postal JiveAddresses belonging to this person, with standard types home,other,pobox,work and value type of address.
+// List of postal JiveAddresses belonging to this person, with standard types home,other,pobox,work and value type of address. JiveAddress[]
 @property(nonatomic, readonly, strong) NSArray* addresses;
 
 // Formatted full name of this person, suitable for use in UI presentation. If the person has privacy settings that do not allow you to see his or her name, this will be the Jive username instead.
 @property(nonatomic, copy) NSString* displayName;
 
-// List of JiveEmail addresses belonging to this person, with standard types home, other, work and value type of string.
+// List of JiveEmail addresses belonging to this person, with standard types home, other, work and value type of string. JiveEmail[]
 @property(nonatomic, readonly, strong) NSArray* emails;
 
 // Number of people following this object.
@@ -48,7 +44,7 @@
 // Name components for this person.
 @property(nonatomic, readonly, strong) Name* name;
 
-// JivePhone numbers belonging to this person, with standard types: fax, home, mobile, other, pager, work.
+// JivePhone numbers belonging to this person, with standard types: fax, home, mobile, other, pager, work. JivePhoneNumber[]
 @property(nonatomic, readonly, strong) NSArray* phoneNumbers;
 
 // URI(s) of profile images for this person. To manage profile images in REST, use the images resource.
@@ -63,7 +59,7 @@
 // Most recent status update for this person.
 @property(nonatomic, copy) NSString* status;
 
-// Defined tags for this person.
+// Defined tags for this person. NSString[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 // URL of the thumbnail (avatar) image for this person.

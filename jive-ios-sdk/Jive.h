@@ -10,6 +10,7 @@
 
 @class JiveCredentials;
 @class JiveRequestOptions;
+@class JiveSearchParams;
 
 @protocol JiveAuthorizationDelegate <NSObject>
 @required
@@ -28,7 +29,7 @@
 
 - (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
-- (void) search:(NSString*) type queryStr:(NSString*) query onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) search:(JiveSearchParams *)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
