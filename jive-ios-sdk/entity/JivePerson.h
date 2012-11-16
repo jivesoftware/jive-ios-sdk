@@ -11,7 +11,7 @@
 
 
 @class JivePersonJive;
-@class Name;
+@class JiveName;
 
 
 @interface JivePerson : JiveObject
@@ -42,7 +42,7 @@
 @property(nonatomic, copy) NSString* location;
 
 // Name components for this person.
-@property(nonatomic, readonly, strong) Name* name;
+@property(nonatomic, readonly, strong) JiveName* name;
 
 // JivePhone numbers belonging to this person, with standard types: fax, home, mobile, other, pager, work. JivePhoneNumber[]
 @property(nonatomic, readonly, strong) NSArray* phoneNumbers;

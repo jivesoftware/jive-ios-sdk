@@ -34,6 +34,11 @@
     return [self class];
 }
 
+// TODO check with Rob about whether this can be overridden if it isn't in the header
+- (Class) arrayMappingFor:(NSString*) propertyName {
+    return nil;
+}
+
 - (NSDateFormatter*) dateFormatter {
     static NSDateFormatter *dateFormatter;
     if(!dateFormatter) {
@@ -47,7 +52,7 @@
     for(NSString* key in JSON) {
         Class cls = [self lookupPropertyClass:key];
         if(cls) {
-            id property = [self getObjectOfType:cls FromJSON:[JSON objectForKey:key]];
+            id property = [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]];
             [self setValue:property forKey:key];
         } else {
             return NO;
@@ -64,7 +69,7 @@
     }
 }
 
-- (id) getObjectOfType:(Class) cls FromJSON:(id) JSON {
+- (id) getObjectOfType:(Class) cls forProperty:(NSString*) property FromJSON:(id) JSON {
     
     if(cls == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
         return [[NSString alloc] initWithString:JSON];
@@ -78,6 +83,21 @@
         return [[NSURL alloc] initWithString:JSON];
     }
     
+    if(cls == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {
+        // lookup the class this array is populated with, the default is NSString
+        // TODO check if this is valid, using subcls to send a static message
+        Class subcls = [self arrayMappingFor:property];
+        if (subcls) {
+            return [subcls instancesFromJSONList:JSON];
+        } else {
+            // should be an array of strings if not mapped to an entity
+            if ([JSON count] > 0 && ![[JSON objectAtIndex:0] isKindOfClass:[NSString class]]) {
+                NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.", property);
+            }
+            return JSON;
+        }
+    }
+    
     id obj = [[cls alloc] init];
 
     if([JSON isKindOfClass:[NSDictionary class]]) {
@@ -89,7 +109,7 @@
                 Class cls = [obj lookupPropertyClass:key];
                 
                 // Set property to new instance of cls or a primitive
-                id property = (cls) ? [self getObjectOfType:cls FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
+                id property = (cls) ? [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
                 
                 [obj setValue:property forKey:key];
              
