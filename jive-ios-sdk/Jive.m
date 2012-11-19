@@ -13,6 +13,9 @@
 #import "JiveInboxEntry.h"
 #import "JiveSearchParams.h"
 #import "JiveSearchContentParams.h"
+#import "JiveContent.h"
+#import "JivePerson.h"
+#import "JivePlace.h"
 
 @interface Jive() {
     
@@ -104,7 +107,15 @@
     
     
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
-        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+        if (params.facet == @"contents") {
+            return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
+        } else if (params.facet == @"people") {
+            return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
+        } else if (params.facet == @"places") {
+            return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
+        } else {
+            return nil;
+        }
     }];
     
     [operation start];

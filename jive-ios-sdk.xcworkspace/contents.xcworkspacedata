@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:jive-rte/jive-rte.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:jive-ios-sdk.xcodeproj">
    </FileRef>
 </Workspace>
