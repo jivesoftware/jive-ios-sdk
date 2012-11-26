@@ -12,9 +12,9 @@
 #import "JiveGroup.h"
 #import "JiveProject.h"
 #import "JiveSpace.h"
+#import "JiveSummary.h"
 
 @implementation JivePlace
-//@synthesize ;
 
 + (Class) entityClass:(NSDictionary*) obj {
     NSString* type = [obj objectForKey:@"type"];
