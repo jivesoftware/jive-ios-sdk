@@ -101,6 +101,20 @@
      
 }
 
+- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+{
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:nil andArgs:personId,nil];
+    
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        complete(JSON);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        error(err);
+    }];
+    
+    [operation start];
+}
+
 - (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?%@" options:nil andArgs:[params facet],[params toQueryString],nil];

@@ -28,6 +28,7 @@
 - (void) me:(void(^)(id JSON)) complete onError:(void(^)(NSError* error)) error;
 
 - (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
 - (void) search:(JiveSearchParams *)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
