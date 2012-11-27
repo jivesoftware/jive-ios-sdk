@@ -26,8 +26,7 @@
 {
     NSString *asString = [options toQueryString];
 
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"", asString, @"String not empty");
+    STAssertNil(asString, @"Valid string returned");
 }
 
 - (void)testSingleField

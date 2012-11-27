@@ -15,7 +15,7 @@
 - (NSString *)toQueryString
 {
     if (!fields)
-        return @"";
+        return nil;
 
     return [NSString stringWithFormat:@"fields=%@", [fields componentsJoinedByString:@","]];
 }

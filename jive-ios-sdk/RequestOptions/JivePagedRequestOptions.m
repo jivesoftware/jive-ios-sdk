@@ -19,7 +19,7 @@
     if (startIndex == 0)
         return queryString;
     
-    if (queryString.length > 0)
+    if (queryString)
         return [NSString stringWithFormat:@"%@&startIndex=%d", queryString, startIndex];
     
     return [NSString stringWithFormat:@"startIndex=%d", startIndex];
