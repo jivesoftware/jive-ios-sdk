@@ -39,7 +39,23 @@
     NSString *asString = [options optionsInURLFormat];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name", asString, @"String not empty");
+    STAssertEqualObjects(@"fields=name", asString, @"Wrong string contents");
+}
+
+- (void)testMultipleFields
+{
+    NSString *testField1 = @"familyName";
+    NSString *testField2 = @"givenName";
+    NSString *testField3 = @"emails";
+    
+    [options addField:testField1];
+    [options addField:testField2];
+    [options addField:testField3];
+    
+    NSString *asString = [options optionsInURLFormat];
+    
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"fields=familyName,givenName,emails", asString, @"Wrong string contents");
 }
 
 @end

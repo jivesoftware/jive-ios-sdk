@@ -14,12 +14,15 @@
 
 - (NSString *)optionsInURLFormat
 {
-    return field ? [NSString stringWithFormat:@"fields=%@", field] : @"";
+    return field ? [NSString stringWithFormat:@"fields=%@", [field componentsJoinedByString:@","]] : @"";
 }
 
 - (void)addField:(NSString *)newField
 {
-    field = newField;
+    if (!field)
+        field = [NSArray arrayWithObject:newField];
+    else
+        field = [field arrayByAddingObject:newField];
 }
 
 @end
