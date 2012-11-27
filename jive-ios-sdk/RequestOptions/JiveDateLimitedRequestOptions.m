@@ -10,6 +10,27 @@
 
 @implementation JiveDateLimitedRequestOptions
 
-@synthesize after;
+@synthesize after, before;
+
+- (NSString *)toQueryString {
+    
+    NSString *queryString = [super toQueryString];
+    
+    if (!after)
+    {
+        if (!before)
+            return queryString;
+        
+        if (queryString)
+            return [NSString stringWithFormat:@"%@&before=%@", queryString, before];
+        
+        return [NSString stringWithFormat:@"before=%@", before];
+    }
+    
+    if (queryString)
+        return [NSString stringWithFormat:@"%@&after=%@", queryString, after];
+    
+    return [NSString stringWithFormat:@"after=%@", after];
+}
 
 @end
