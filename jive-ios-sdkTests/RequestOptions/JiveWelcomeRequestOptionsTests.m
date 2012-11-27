@@ -20,7 +20,7 @@
     self.options = [[JiveWelcomeRequestOptions alloc] init];
 }
 
-- (void)testCount {
+- (void)testWelcome {
     
     self.welcomeOptions.welcome = TRUE;
     
@@ -30,7 +30,7 @@
     STAssertEqualObjects(@"welcome=true", asString, @"Wrong string contents");
 }
 
-- (void)testCountWithField {
+- (void)testWelcomeWithField {
     
     NSString *testField = @"name";
     

@@ -20,7 +20,7 @@
     self.options = [[JiveSortedRequestOptions alloc] init];
 }
 
-- (void)testCount {
+- (void)testSort {
     
     enum JiveSortOrder sortOrder = dateCreatedDesc;
     
@@ -55,7 +55,7 @@
     STAssertEqualObjects(@"sort=titleAsc", asString, @"Wrong string contents");
 }
 
-- (void)testCountWithField {
+- (void)testSortWithField {
     
     int sortOrder = dateCreatedAsc;
     NSString *testField = @"name";

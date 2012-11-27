@@ -20,7 +20,7 @@
     self.options = [[JivePagedRequestOptions alloc] init];
 }
 
-- (void)testCount {
+- (void)testStartIndex {
     
     int value = 5;
     
@@ -38,7 +38,7 @@
     STAssertEqualObjects(@"startIndex=7", asString, @"Wrong string contents");
 }
 
-- (void)testCountWithField {
+- (void)testStartIndexWithField {
     
     int value = 5;
     NSString *testField = @"name";
