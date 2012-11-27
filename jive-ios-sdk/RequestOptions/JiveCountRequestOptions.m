@@ -12,16 +12,16 @@
 
 @synthesize count;
 
-- (NSString *)toQueryString
-{
+- (NSString *)toQueryString {
+    
     NSString *queryString = [super toQueryString];
-
+    
     if (count == 0)
         return queryString;
-
+    
     if (queryString)
         return [NSString stringWithFormat:@"%@&count=%d", queryString, count];
-
+    
     return [NSString stringWithFormat:@"count=%d", count];
 }
 

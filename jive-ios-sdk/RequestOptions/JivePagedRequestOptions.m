@@ -12,8 +12,8 @@
 
 @synthesize startIndex;
 
-- (NSString *)toQueryString
-{
+- (NSString *)toQueryString {
+    
     NSString *queryString = [super toQueryString];
     
     if (startIndex == 0)

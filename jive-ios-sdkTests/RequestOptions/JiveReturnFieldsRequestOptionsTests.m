@@ -12,37 +12,37 @@
 
 @synthesize options;
 
-- (void)setUp
-{
+- (void)setUp {
+    
     options = [[JiveReturnFieldsRequestOptions alloc] init];
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
+    
     options = nil;
 }
 
-- (void)testNoFields
-{
+- (void)testNoFields {
+    
     NSString *asString = [options toQueryString];
-
+    
     STAssertNil(asString, @"Valid string returned");
 }
 
-- (void)testSingleField
-{
+- (void)testSingleField {
+    
     NSString *testField = @"name";
-
+    
     [options addField:testField];
-
+    
     NSString *asString = [options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name", asString, @"Wrong string contents");
 }
 
-- (void)testMultipleFields
-{
+- (void)testMultipleFields {
+    
     NSString *testField1 = @"familyName";
     NSString *testField2 = @"givenName";
     NSString *testField3 = @"emails";

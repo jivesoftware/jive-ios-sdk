@@ -10,32 +10,32 @@
 
 @implementation JiveCountRequestOptionsTests
 
-- (JiveCountRequestOptions *)pageOptions
-{
+- (JiveCountRequestOptions *)pageOptions {
+    
     return (JiveCountRequestOptions *)self.options;
 }
 
-- (void)setUp
-{
+- (void)setUp {
+    
     self.options = [[JiveCountRequestOptions alloc] init];
 }
 
-//- (void)tearDown
-//{
+//- (void)tearDown {
+//
 //    [super tearDown];
 //}
 
-- (void)testCount
-{
+- (void)testCount {
+    
     int value = 5;
-
+    
     self.pageOptions.count = value;
-
+    
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"count=5", asString, @"Wrong string contents");
-
+    
     value = 7;
     self.pageOptions.count = value;
     asString = [self.options toQueryString];
@@ -43,8 +43,8 @@
     STAssertEqualObjects(@"count=7", asString, @"Wrong string contents");
 }
 
-- (void)testCountWithField
-{
+- (void)testCountWithField {
+    
     int value = 5;
     NSString *testField = @"name";
     

@@ -12,16 +12,16 @@
 
 @synthesize fields;
 
-- (NSString *)toQueryString
-{
+- (NSString *)toQueryString {
+    
     if (!fields)
         return nil;
-
+    
     return [NSString stringWithFormat:@"fields=%@", [fields componentsJoinedByString:@","]];
 }
 
-- (void)addField:(NSString *)newField
-{
+- (void)addField:(NSString *)newField {
+    
     if (!fields)
         fields = [NSArray arrayWithObject:newField];
     else
