@@ -7,7 +7,8 @@
 //
 
 #import "JiveObject.h"
-#import "JiveSummary.h"
+
+@class JiveSummary;
 
 @interface JivePlace : JiveObject
 
