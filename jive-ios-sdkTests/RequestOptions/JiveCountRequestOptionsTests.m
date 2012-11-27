@@ -1,23 +1,23 @@
 //
-//  JivePageCountRequestOptionsTests.m
+//  JiveCountRequestOptionsTests.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 11/27/12.
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JivePageCountRequestOptionsTests.h"
+#import "JiveCountRequestOptionsTests.h"
 
-@implementation JivePageCountRequestOptionsTests
+@implementation JiveCountRequestOptionsTests
 
-- (JivePageCountRequestOptions *)pageOptions
+- (JiveCountRequestOptions *)pageOptions
 {
-    return (JivePageCountRequestOptions *)self.options;
+    return (JiveCountRequestOptions *)self.options;
 }
 
 - (void)setUp
 {
-    self.options = [[JivePageCountRequestOptions alloc] init];
+    self.options = [[JiveCountRequestOptions alloc] init];
 }
 
 //- (void)tearDown

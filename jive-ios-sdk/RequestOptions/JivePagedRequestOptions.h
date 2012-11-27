@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JivePageCountRequestOptions.h"
+#import "JiveCountRequestOptions.h"
 
-@interface JivePagedRequestOptions : JivePageCountRequestOptions
+@interface JivePagedRequestOptions : JiveCountRequestOptions
 
 @property (nonatomic) int startIndex; // Zero-relative index of the first instance to be returned
 

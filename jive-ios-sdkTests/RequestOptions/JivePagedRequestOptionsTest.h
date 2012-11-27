@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JivePageCountRequestOptionsTests.h"
+#import "JiveCountRequestOptionsTests.h"
 #import "JivePagedRequestOptions.h"
 
-@interface JivePagedRequestOptionsTest : JivePageCountRequestOptionsTests
+@interface JivePagedRequestOptionsTest : JiveCountRequestOptionsTests
 
 @property (readonly) JivePagedRequestOptions *pagedOptions;
 
