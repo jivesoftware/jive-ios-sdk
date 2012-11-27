@@ -1,5 +1,5 @@
 //
-//  JivePagedRequestOptionsTest.h
+//  JivePagedRequestOptionsTests.h
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 11/27/12.
@@ -9,7 +9,7 @@
 #import "JiveCountRequestOptionsTests.h"
 #import "JivePagedRequestOptions.h"
 
-@interface JivePagedRequestOptionsTest : JiveCountRequestOptionsTests
+@interface JivePagedRequestOptionsTests : JiveCountRequestOptionsTests
 
 @property (readonly) JivePagedRequestOptions *pagedOptions;
 
