@@ -11,6 +11,7 @@
 @class JiveCredentials;
 @class JiveInboxOptions;
 @class JiveSearchParams;
+@class JivePagedRequestOptions;
 
 @protocol JiveAuthorizationDelegate <NSObject>
 @required
@@ -29,7 +30,7 @@
 
 - (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
-- (void) followers:(NSString *)personId withOptions:(JiveInboxOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
+- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
 
 - (void) search:(JiveSearchParams *)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 

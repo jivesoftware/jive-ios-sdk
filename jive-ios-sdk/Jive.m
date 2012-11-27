@@ -16,6 +16,7 @@
 #import "JiveContent.h"
 #import "JivePerson.h"
 #import "JivePlace.h"
+#import "JivePagedRequestOptions.h"
 
 @interface Jive() {
     
@@ -101,7 +102,7 @@
      
 }
 
-- (void) followers:(NSString *)personId withOptions:(JiveInboxOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
 {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:options andArgs:personId,nil];
     
@@ -143,45 +144,14 @@
 
 #pragma mark -
 #pragma mark Utility Methods
-- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(JiveInboxOptions*) options andArgs:(NSString*) args,...{
+- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
     
     NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
-    
-    if([options isValid]) {
-        
-        [requestString appendString:@"?"];
-        
-        if(options.beforeDate) {
-            [requestString appendFormat:@"before=%@&", options.beforeDate];
-        }
-        
-        if(options.afterDate) {
-             [requestString appendFormat:@"after=%@&", options.beforeDate];
-        }
-        
-        if(options.startIndex) {
-            [requestString appendFormat:@"startIndex=%d&", options.startIndex];
-        }
-        
-        // Limit how many can be used?
-        if(options.count > 0) {
-            [requestString appendFormat:@"count=%d&", options.count];
-        }
-        
-        if(options.fields) {
-            [requestString appendFormat:@"fields="];
-            for (id item in options.fields) {
-                [requestString appendFormat:@"%@,", item];
-            }
-            // Get rid of trailing comma
-            [requestString deleteCharactersInRange:NSMakeRange([requestString length]-1, 1)];
-            [requestString appendFormat:@"&"];
-        }
-        
-        // Get rid of trailing ampersand
-        [requestString deleteCharactersInRange:NSMakeRange([requestString length]-1, 1)];
-    }
-    
+    NSString *queryString = [options toQueryString];
+
+    if (queryString)
+        [requestString appendFormat:@"?%@", queryString];
+
     NSURL* requestURL = [_jiveInstance URLByAppendingPathComponent:requestString];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
