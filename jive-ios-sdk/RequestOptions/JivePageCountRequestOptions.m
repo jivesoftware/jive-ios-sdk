@@ -20,7 +20,7 @@
         return queryString;
 
     if (queryString.length > 0)
-        return [queryString stringByAppendingString:[NSString stringWithFormat:@"&count=%d", count]];
+        return [NSString stringWithFormat:@"%@&count=%d", queryString, count];
 
     return [NSString stringWithFormat:@"count=%d", count];
 }
