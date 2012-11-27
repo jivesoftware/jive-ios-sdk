@@ -9,15 +9,5 @@
 #import "JiveInboxOptions.h"
 
 @implementation JiveInboxOptions
-@synthesize beforeDate, afterDate, count, startIndex, fields;
-
-- (BOOL) isValid {
-    
-    // Only one of beforeDate OR afterDate can be set
-    // At least one option must be set
-    return (!(self.beforeDate && self.afterDate)) &&
-        (self.beforeDate != nil || self.afterDate != nil || count > 0);
-    
-}
 
 @end

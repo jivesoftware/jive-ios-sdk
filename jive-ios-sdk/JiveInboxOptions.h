@@ -6,19 +6,10 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "JiveRequestOptions.h"
+#import "JiveDateLimitedRequestOptions.h"
 
-@interface JiveInboxOptions : NSObject<JiveRequestOptions>
-@property(nonatomic, strong) NSDate* beforeDate;
-@property(nonatomic, strong) NSDate* afterDate;
-@property(nonatomic) NSInteger count;
-@property(nonatomic) NSInteger startIndex;
-@property(nonatomic, strong) NSArray *fields;
+@interface JiveInboxOptions : JiveDateLimitedRequestOptions
 
-// Evaluates option parameters to make sure
-// they can be used in whatever permutation is
-// presented
-- (BOOL) isValid;
+// Filter property goes here
 
 @end
