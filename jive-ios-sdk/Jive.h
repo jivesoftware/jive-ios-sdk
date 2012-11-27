@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class JiveCredentials;
-@class JiveRequestOptions;
+@class JiveInboxOptions;
 @class JiveSearchParams;
 
 @protocol JiveAuthorizationDelegate <NSObject>
@@ -29,10 +29,11 @@
 
 - (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) followers:(NSString *)personId withOptions:(JiveInboxOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
 
 - (void) search:(JiveSearchParams *)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (void) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 @end

@@ -1,15 +1,15 @@
 //
-//  JiveRequestOptions.m
+//  JiveInboxOptions.m
 //  jive-ios-sdk
 //
 //  Created by Rob Derstadt on 10/25/12.
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveRequestOptions.h"
+#import "JiveInboxOptions.h"
 
-@implementation JiveRequestOptions
-@synthesize beforeDate, afterDate, count;
+@implementation JiveInboxOptions
+@synthesize beforeDate, afterDate, count, startIndex, fields;
 
 - (BOOL) isValid {
     

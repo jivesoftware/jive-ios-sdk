@@ -9,7 +9,7 @@
 #import "Jive.h"
 #import "JAPIRequestOperation.h"
 #import "JiveCredentials.h"
-#import "JiveRequestOptions.h"
+#import "JiveInboxOptions.h"
 #import "JiveInboxEntry.h"
 #import "JiveSearchParams.h"
 #import "JiveSearchContentParams.h"
@@ -57,7 +57,7 @@
     [self inbox:nil onComplete:complete onError:error];
 }
 
-- (void) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
     
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
@@ -101,9 +101,9 @@
      
 }
 
-- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+- (void) followers:(NSString *)personId withOptions:(JiveInboxOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
 {
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:nil andArgs:personId,nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:options andArgs:personId,nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         complete(JSON);
@@ -113,6 +113,11 @@
     }];
     
     [operation start];
+}
+
+- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+{
+    [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 
 - (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
@@ -138,7 +143,7 @@
 
 #pragma mark -
 #pragma mark Utility Methods
-- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(JiveRequestOptions*) options andArgs:(NSString*) args,...{
+- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(JiveInboxOptions*) options andArgs:(NSString*) args,...{
     
     NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
     
@@ -154,9 +159,23 @@
              [requestString appendFormat:@"after=%@&", options.beforeDate];
         }
         
+        if(options.startIndex) {
+            [requestString appendFormat:@"startIndex=%d&", options.startIndex];
+        }
+        
         // Limit how many can be used?
         if(options.count > 0) {
             [requestString appendFormat:@"count=%d&", options.count];
+        }
+        
+        if(options.fields) {
+            [requestString appendFormat:@"fields="];
+            for (id item in options.fields) {
+                [requestString appendFormat:@"%@,", item];
+            }
+            // Get rid of trailing comma
+            [requestString deleteCharactersInRange:NSMakeRange([requestString length]-1, 1)];
+            [requestString appendFormat:@"&"];
         }
         
         // Get rid of trailing ampersand

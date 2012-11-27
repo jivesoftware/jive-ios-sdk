@@ -14,6 +14,7 @@
 #import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
+#import "JiveInboxOptions.h"
 
 @implementation jive_api_tests
 
@@ -165,6 +166,80 @@
     
     // Make the call
     [jive followers:@"8192" onComplete:^(id JSON) {
+        // Called 3rd
+        STAssertNotNil(JSON, @"Response was nil");
+        completeBlockCalled = true;
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
+}
+
+- (void) testFollowersServiceCallWithOptions {
+
+    JiveInboxOptions *options = [[JiveInboxOptions alloc] init];
+    __block BOOL completeBlockCalled = false;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3Fcount=5&fields=dummy" relativeToURL:url] absoluteString];
+    
+    options.startIndex = 0;
+    options.count = 5;
+    options.fields = [NSArray arrayWithObject:@"dummy"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
+        // Called 3rd
+        STAssertNotNil(JSON, @"Response was nil");
+        completeBlockCalled = true;
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
+}
+
+- (void) testFollowersServiceCallWithDifferentOptions {
+    
+    JiveInboxOptions *options = [[JiveInboxOptions alloc] init];
+    __block BOOL completeBlockCalled = false;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3FstartIndex=6&count=3&fields=dummy,second,third" relativeToURL:url] absoluteString];
+    
+    options.startIndex = 6;
+    options.count = 3;
+    options.fields = [NSArray arrayWithObjects:@"dummy", @"second", @"third", nil];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
         completeBlockCalled = true;
