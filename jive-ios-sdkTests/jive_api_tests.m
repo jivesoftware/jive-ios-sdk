@@ -11,7 +11,6 @@
 #import <OCMock/OCMock.h>
 #import <UIKit/UIKit.h>
 
-#import "Jive.h"
 #import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
@@ -25,28 +24,41 @@
 
 - (void)tearDown
 {
+    jive = nil;
+    mockAuthDelegate = nil;
+    mockJiveURLResponseDelegate = nil;
     [super tearDown];
 }
 
-- (void) testInboxServiceCall {
+// Create the Jive API object, using mock auth delegate
+- (void)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
     
     // This can be anything. The mock objects will return local data
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     
     // Reponse file containing data from JIVE My request
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"inbox_response" ofType:@"json"];
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:resourceName ofType:@"json"];
     
     // Mock response delegate
-    id mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    
-    // Mock auth delegate
-    id mockAuthDelegate = [self mockJiveAuthenticationDelegate];
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
     
     // Set the response mock delegate for this request
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     
     // Create the Jive API object, using mock auth delegate
-    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:authDelegate];
+}
+
+// Create the Jive API object with a generic mock auth delegate
+- (void)createJiveAPIObjectWithResponse:(NSString *)resourceName {
+
+    mockAuthDelegate = [self mockJiveAuthenticationDelegate];
+    [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
+}
+
+- (void) testInboxServiceCall {
+    
+    [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
     [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
         
@@ -66,23 +78,7 @@
 
 - (void) testMyServiceCall {
     
-    // This can be anything. The mock objects will return local data
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    
-    // Reponse file containing data from JIVE My request
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"my_response" ofType:@"json"];
-    
-    // Mock response delegate
-    id mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-      
-    // Mock auth delegate
-    id mockAuthDelegate = [self mockJiveAuthenticationDelegate];
-    
-    // Set the response mock delegate for this request
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
-    
-    // Create the Jive API object, using mock auth delegate
-    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"my_response"];
     
     [jive me:^(id JSON) {
         // Called 3rd
@@ -95,32 +91,14 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-        
-      
-      
+
     [self waitForTimeout:5.0];
     
 }
 
 - (void) testColleguesServiceCall {
     
-    // This can be anything. The mock objects will return local data
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    
-    // Reponse file containing data from JIVE My request
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"collegues_response" ofType:@"json"];
-    
-    // Mock response delegate
-    id mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    
-    // Mock auth delegate
-    id mockAuthDelegate = [self mockJiveAuthenticationDelegate];
-    
-    // Set the response mock delegate for this request
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
-    
-    // Create the Jive API object, using mock auth delegate
-    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"collegues_response"];
     
     [jive collegues:@"2918" onComplete:^(id JSON) {
         // Called 3rd
@@ -133,14 +111,75 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-     
-      
-    
+
     [self waitForTimeout:5.0];
-    
 }
 
+- (void) testFollowersServiceCall {
 
+    __block BOOL completeBlockCalled = false;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@followers" relativeToURL:url] absoluteString];
+
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+
+    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+
+    // Make the call
+    [jive followers:@"2918" onComplete:^(id JSON) {
+        // Called 3rd
+        STAssertNotNil(JSON, @"Response was nil");
+        completeBlockCalled = true;
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
+}
+
+- (void) testFollowersServiceCallUsesPersonID {
+    
+    __block BOOL completeBlockCalled = false;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers" relativeToURL:url] absoluteString];
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [jive followers:@"8192" onComplete:^(id JSON) {
+        // Called 3rd
+        STAssertNotNil(JSON, @"Response was nil");
+        completeBlockCalled = true;
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
+}
 
 
 

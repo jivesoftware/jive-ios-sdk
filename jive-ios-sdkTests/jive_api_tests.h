@@ -7,8 +7,15 @@
 //
 
 #import "JiveAPITestCase.h"
+#import "Jive.h"
 
 @interface jive_api_tests : JiveAPITestCase
+{
+    id mockJiveURLResponseDelegate;
+    id mockAuthDelegate;
+    Jive *jive;
+}
+
 
 - (void) testMyServiceCall;
 
