@@ -9,13 +9,14 @@
 #import "Jive.h"
 #import "JAPIRequestOperation.h"
 #import "JiveCredentials.h"
-#import "JiveRequestOptions.h"
+#import "JiveInboxOptions.h"
 #import "JiveInboxEntry.h"
 #import "JiveSearchParams.h"
 #import "JiveSearchContentParams.h"
 #import "JiveContent.h"
 #import "JivePerson.h"
 #import "JivePlace.h"
+#import "JivePagedRequestOptions.h"
 
 @interface Jive() {
     
@@ -57,7 +58,7 @@
     [self inbox:nil onComplete:complete onError:error];
 }
 
-- (void) inbox: (JiveRequestOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
     
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
@@ -101,9 +102,9 @@
      
 }
 
-- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
 {
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:nil andArgs:personId,nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:options andArgs:personId,nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         complete(JSON);
@@ -113,6 +114,11 @@
     }];
     
     [operation start];
+}
+
+- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+{
+    [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 
 - (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
@@ -138,31 +144,14 @@
 
 #pragma mark -
 #pragma mark Utility Methods
-- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(JiveRequestOptions*) options andArgs:(NSString*) args,...{
+- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
     
     NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
-    
-    if([options isValid]) {
-        
-        [requestString appendString:@"?"];
-        
-        if(options.beforeDate) {
-            [requestString appendFormat:@"before=%@&", options.beforeDate];
-        }
-        
-        if(options.afterDate) {
-             [requestString appendFormat:@"after=%@&", options.beforeDate];
-        }
-        
-        // Limit how many can be used?
-        if(options.count > 0) {
-            [requestString appendFormat:@"count=%d&", options.count];
-        }
-        
-        // Get rid of trailing ampersand
-        [requestString deleteCharactersInRange:NSMakeRange([requestString length]-1, 1)];
-    }
-    
+    NSString *queryString = [options toQueryString];
+
+    if (queryString)
+        [requestString appendFormat:@"?%@", queryString];
+
     NSURL* requestURL = [_jiveInstance URLByAppendingPathComponent:requestString];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];

@@ -9,7 +9,7 @@
 #import "jive_ios_sdkTests.h"
 
 #import <OCMock/OCMock.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+//#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import <UIKit/UIKit.h>
 
