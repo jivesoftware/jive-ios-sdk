@@ -10,4 +10,6 @@
 
 @interface JivePageCountRequestOptions : JiveReturnFieldsRequestOptions
 
+@property (nonatomic) int count; // Maximum number of results to be returned
+
 @end

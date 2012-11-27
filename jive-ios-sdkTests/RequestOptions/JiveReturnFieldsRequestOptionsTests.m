@@ -24,7 +24,7 @@
 
 - (void)testNoFields
 {
-    NSString *asString = [options optionsInURLFormat];
+    NSString *asString = [options toQueryString];
 
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"", asString, @"String not empty");
@@ -36,7 +36,7 @@
 
     [options addField:testField];
 
-    NSString *asString = [options optionsInURLFormat];
+    NSString *asString = [options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name", asString, @"Wrong string contents");
@@ -52,7 +52,7 @@
     [options addField:testField2];
     [options addField:testField3];
     
-    NSString *asString = [options optionsInURLFormat];
+    NSString *asString = [options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=familyName,givenName,emails", asString, @"Wrong string contents");

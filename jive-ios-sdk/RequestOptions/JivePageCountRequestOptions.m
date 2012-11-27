@@ -10,4 +10,19 @@
 
 @implementation JivePageCountRequestOptions
 
+@synthesize count;
+
+- (NSString *)toQueryString
+{
+    NSString *queryString = [super toQueryString];
+
+    if (count == 0)
+        return queryString;
+
+    if (queryString.length > 0)
+        return [queryString stringByAppendingString:[NSString stringWithFormat:@"&count=%d", count]];
+
+    return [NSString stringWithFormat:@"count=%d", count];
+}
+
 @end

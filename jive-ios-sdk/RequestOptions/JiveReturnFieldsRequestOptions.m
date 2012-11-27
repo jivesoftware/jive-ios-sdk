@@ -10,19 +10,22 @@
 
 @implementation JiveReturnFieldsRequestOptions
 
-@synthesize field;
+@synthesize fields;
 
-- (NSString *)optionsInURLFormat
+- (NSString *)toQueryString
 {
-    return field ? [NSString stringWithFormat:@"fields=%@", [field componentsJoinedByString:@","]] : @"";
+    if (!fields)
+        return @"";
+
+    return [NSString stringWithFormat:@"fields=%@", [fields componentsJoinedByString:@","]];
 }
 
 - (void)addField:(NSString *)newField
 {
-    if (!field)
-        field = [NSArray arrayWithObject:newField];
+    if (!fields)
+        fields = [NSArray arrayWithObject:newField];
     else
-        field = [field arrayByAddingObject:newField];
+        fields = [fields arrayByAddingObject:newField];
 }
 
 @end

@@ -11,9 +11,9 @@
 
 @interface JiveReturnFieldsRequestOptions : NSObject<JiveRequestOptions>
 
-@property (nonatomic, strong) NSArray *field;
+@property (nonatomic, strong) NSArray *fields; // Fields to be returned
 
-- (NSString *)optionsInURLFormat;
+- (NSString *)toQueryString;
 
 - (void)addField:(NSString *)newField;
 

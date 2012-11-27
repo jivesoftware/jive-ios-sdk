@@ -10,6 +10,6 @@
 
 @protocol JiveRequestOptions <NSObject>
 
-- (NSString *)optionsInURLFormat;
+- (NSString *)toQueryString;
 
 @end
