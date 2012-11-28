@@ -10,8 +10,6 @@
 
 @implementation JiveSortedRequestOptions
 
-@synthesize sort;
-
 - (NSString *)toQueryString {
     
     static const NSString *sortStrings[] = {
@@ -21,9 +19,10 @@
         @"latestActivityAsc",
         @"titleAsc",
     };
+    int sort = self.sort;
     NSString *queryString = [super toQueryString];
     
-    if (!sort)
+    if (sort <= dateCreatedDesc || sort > titleAsc)
         return queryString;
     
     if (queryString)

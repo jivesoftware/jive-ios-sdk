@@ -69,4 +69,17 @@
     STAssertEqualObjects(@"fields=name&sort=dateCreatedAsc", asString, @"Wrong string contents");
 }
 
+- (void)testInvalidSort {
+    
+    self.sortedOptions.sort = (enum JiveSortOrder)-1;
+    
+    NSString *asString = [self.options toQueryString];
+    
+    STAssertNil(asString, @"Invalid string returned");
+    
+    self.sortedOptions.sort = (enum JiveSortOrder)5000;
+    asString = [self.options toQueryString];
+    STAssertNil(asString, @"Invalid string returned");
+}
+
 @end
