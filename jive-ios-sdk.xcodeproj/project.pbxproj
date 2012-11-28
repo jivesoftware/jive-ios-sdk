@@ -113,6 +113,7 @@
 		78CCC63416517854006F7E72 /* JiveSearchContentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CCC63316517854006F7E72 /* JiveSearchContentParams.m */; };
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
+		B8DC02DF1666A64B00BCC61D /* Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BCFA16161DE900082926 /* Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,7 +165,7 @@
 		2192BBF71614F33300082926 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = JiveHeaders;
+			dstPath = Jive;
 			dstSubfolderSpec = 16;
 			files = (
 				2186057C164AE1CC004AF2E2 /* Jive.h in CopyFiles */,
@@ -678,6 +679,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		B8DC02DE1666A63800BCC61D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8DC02DF1666A64B00BCC61D /* Jive.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		2192BBF81614F33300082926 /* jive-ios-sdk */ = {
 			isa = PBXNativeTarget;
@@ -685,8 +697,10 @@
 			buildPhases = (
 				2192BBF51614F33300082926 /* Sources */,
 				2192BBF61614F33300082926 /* Frameworks */,
-				2192BBF71614F33300082926 /* CopyFiles */,
+				B8DC02DE1666A63800BCC61D /* Headers */,
 				2186061D164C434B004AF2E2 /* ShellScript */,
+				B8DC02E01666A70800BCC61D /* ShellScript */,
+				2192BBF71614F33300082926 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -831,6 +845,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B8DC02E01666A70800BCC61D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"$BUILT_PRODUCTS_DIR\"/Jive";
 		};
 /* End PBXShellScriptBuildPhase section */
 
