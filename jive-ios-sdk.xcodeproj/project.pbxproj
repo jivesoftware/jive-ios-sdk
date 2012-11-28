@@ -199,7 +199,6 @@
 		2192BBFC1614F33300082926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2192BC001614F33300082926 /* jive-ios-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jive-ios-sdk-Prefix.pch"; sourceTree = "<group>"; };
 		2192BC0B1614F33300082926 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2192BC0D1614F33300082926 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2192BC7C1614FF8200082926 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		2192BC7D1614FF8200082926 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		2192BC7E1614FF8200082926 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -475,8 +474,6 @@
 		2192BBEE1614F33300082926 = {
 			isa = PBXGroup;
 			children = (
-				B8DC02381665D35400BCC61D /* QuartzCore.framework */,
-				B8DC02361665D32E00BCC61D /* UIKit.framework */,
 				21AD9757161BACD2009A977D /* README */,
 				2192BC681614FF4E00082926 /* lib */,
 				2192BBFE1614F33300082926 /* jive-ios-sdk */,
@@ -498,10 +495,11 @@
 		2192BBFB1614F33300082926 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2192BBFC1614F33300082926 /* Foundation.framework */,
-				2192BC0B1614F33300082926 /* SenTestingKit.framework */,
-				2192BC0D1614F33300082926 /* UIKit.framework */,
 				B8DC01EE1665C9A600BCC61D /* CoreGraphics.framework */,
+				2192BBFC1614F33300082926 /* Foundation.framework */,
+				B8DC02381665D35400BCC61D /* QuartzCore.framework */,
+				2192BC0B1614F33300082926 /* SenTestingKit.framework */,
+				B8DC02361665D32E00BCC61D /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
