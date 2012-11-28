@@ -1,14 +1,14 @@
 //
-//  JiveSizeRequestOptions.m
+//  JivePixelSizeRequestOptions.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 11/27/12.
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSizeRequestOptions.h"
+#import "JivePixelSizeRequestOptions.h"
 
-@implementation JiveSizeRequestOptions
+@implementation JivePixelSizeRequestOptions
 
 @synthesize size;
 

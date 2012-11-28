@@ -1,5 +1,5 @@
 //
-//  JiveSizeRequestOptions.h
+//  JivePixelSizeRequestOptions.h
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 11/27/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JiveRequestOptions.h"
 
-@interface JiveSizeRequestOptions : NSObject<JiveRequestOptions>
+@interface JivePixelSizeRequestOptions : NSObject<JiveRequestOptions>
 
 - (NSString *)toQueryString;
 
