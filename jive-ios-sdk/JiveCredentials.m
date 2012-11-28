@@ -7,7 +7,7 @@
 //
 
 #import "JiveCredentials.h"
-#import "NSData+Base64.h"
+#import "NSData+JiveBase64.h"
 
 @interface JiveCredentials() {
 @private
@@ -33,7 +33,7 @@
     if(self = [super init]) {
         NSData* data = [[NSString stringWithFormat:@"%@:%@", username, password]
                         dataUsingEncoding:NSUTF8StringEncoding];
-        _header = [NSString stringWithFormat:@"Basic %@", [data base64EncodedString]];
+        _header = [NSString stringWithFormat:@"Basic %@", [data jive_base64EncodedString]];
     }
     
     return self;
