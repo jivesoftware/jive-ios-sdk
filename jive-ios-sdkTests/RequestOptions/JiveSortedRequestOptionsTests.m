@@ -22,37 +22,61 @@
 
 - (void)testSort {
     
-    enum JiveSortOrder sortOrder = dateCreatedDesc;
-    
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = jiveDefaultSortOrder;
     
     NSString *asString = [self.options toQueryString];
     
     STAssertNil(asString, @"Invalid string returned");
     
-    sortOrder = dateCreatedAsc;
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = dateCreatedDesc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=dateCreatedDesc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = dateCreatedAsc;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"sort=dateCreatedAsc", asString, @"Wrong string contents");
     
-    sortOrder = latestActivityDesc;
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = latestActivityDesc;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"sort=latestActivityDesc", asString, @"Wrong string contents");
     
-    sortOrder = latestActivityAsc;
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = latestActivityAsc;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"sort=latestActivityAsc", asString, @"Wrong string contents");
     
-    sortOrder = titleAsc;
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = titleAsc;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"sort=titleAsc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = firstNameAsc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=firstNameAsc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = lastNameAsc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=lastNameAsc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = dateJoinedDesc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=dateJoinedDesc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = dateJoinedAsc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=dateJoinedAsc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = statusLevelDesc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=statusLevelDesc", asString, @"Wrong string contents");
 }
 
 - (void)testSortWithField {

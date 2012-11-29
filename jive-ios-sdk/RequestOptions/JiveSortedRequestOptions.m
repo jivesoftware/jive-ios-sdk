@@ -12,17 +12,22 @@
 
 - (NSString *)toQueryString {
     
-    static const NSString *sortStrings[] = {
+    static const NSString *sortStrings[] = { nil,
         @"dateCreatedDesc",
         @"dateCreatedAsc",
         @"latestActivityDesc",
         @"latestActivityAsc",
         @"titleAsc",
-    };
+        @"firstNameAsc",
+        @"lastNameAsc",
+        @"dateJoinedDesc",
+        @"dateJoinedAsc",
+        @"statusLevelDesc",
+   };
     int sort = self.sort;
     NSString *queryString = [super toQueryString];
     
-    if (sort <= dateCreatedDesc || sort > titleAsc)
+    if (sort < dateCreatedDesc || sort > statusLevelDesc)
         return queryString;
     
     if (queryString)
