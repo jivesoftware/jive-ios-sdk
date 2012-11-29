@@ -11,5 +11,15 @@
 @interface JivePeopleRequestOptions : JiveFilterTagsRequestOptions
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *department;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *company;
+@property (nonatomic, strong) NSString *office;
+@property (nonatomic, strong) NSDate *hiredAfter;
+@property (nonatomic, strong) NSDate *hiredBefore;
+@property (nonatomic, strong) NSArray *ids;
+@property (nonatomic, strong) NSString *query;
+
+- (void)addID:(NSString *)personID;
 
 @end
