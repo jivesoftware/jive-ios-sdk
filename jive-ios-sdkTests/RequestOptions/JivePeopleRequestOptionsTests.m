@@ -20,37 +20,6 @@
     self.options = [[JivePeopleRequestOptions alloc] init];
 }
 
-- (void)testTags {
-    
-    [self.peopleOptions addTag:@"dm"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm)", asString, @"Wrong string contents");
-    
-    [self.peopleOptions addTag:@"mention"];
-    asString = [self.options toQueryString];
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm,mention)", asString, @"Wrong string contents");
-    
-    [self.peopleOptions addTag:@"share"];
-    asString = [self.options toQueryString];
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm,mention,share)", asString, @"Wrong string contents");
-}
-
-- (void)testTagWithFields {
-    
-    [self.peopleOptions addTag:@"dm"];
-    [self.peopleOptions addField:@"name"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm)", asString, @"Wrong string contents");
-}
-
 - (void)testTitle {
     
     self.peopleOptions.title = @"Head Honcho";

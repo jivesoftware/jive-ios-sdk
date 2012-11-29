@@ -49,42 +49,11 @@
     
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=type(dm)", asString, @"Wrong string contents");
-}
 
-- (void)testTags {
-    
-    [self.placePlacesOptions addTag:@"dm"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm)", asString, @"Wrong string contents");
-    
-    [self.placePlacesOptions addTag:@"mention"];
-    asString = [self.options toQueryString];
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm,mention)", asString, @"Wrong string contents");
-    
     [self.placePlacesOptions addTag:@"share"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=tag(dm,mention,share)", asString, @"Wrong string contents");
-}
-
-- (void)testTagWithFields {
-    
-    [self.placePlacesOptions addTag:@"dm"];
-    [self.placePlacesOptions addField:@"name"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm)", asString, @"Wrong string contents");
-    
-    [self.placePlacesOptions addType:@"share"];
-    asString = [self.options toQueryString];
-    STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=type(share),tag(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(share),type(dm)", asString, @"Wrong string contents");
 }
 
 - (void)testSearch {
@@ -130,7 +99,7 @@
     [self.placePlacesOptions addType:@"share"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=type(share),tag(share),search(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(share),type(share),search(dm)", asString, @"Wrong string contents");
 }
 
 @end

@@ -10,39 +10,21 @@
 
 @implementation JivePlacePlacesRequestOptions
 
-- (NSString *)toQueryString {
+- (NSString *)buildFilter {
     
-    NSString *query = [super toQueryString];
+    NSString *filter = [super buildFilter];
     
-    if (!self.types && !self.tags && !self.search)
-        return query;
-    
-    NSString *filterValues;
-    NSString *filter = nil;
-
     if (self.types)
-        filter = [NSString stringWithFormat:@"type(%@)", [self.types componentsJoinedByString:@","]];
-
-    if (self.tags) {
-        filterValues = [self.tags componentsJoinedByString:@","];
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",tag(%@)", filterValues];
-        else
-            filter = [NSString stringWithFormat:@"tag(%@)", filterValues];
-    }
+        filter = [self addFilterGroup:@"type"
+                            withValue:[self.types componentsJoinedByString:@","]
+                             toFilter:filter];
     
-    if (self.search) {
-        filterValues = [self.search componentsJoinedByString:@","];
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",search(%@)", filterValues];
-        else
-            filter = [NSString stringWithFormat:@"search(%@)", filterValues];
-    }
+    if (self.search)
+        filter = [self addFilterGroup:@"search"
+                            withValue:[self.search componentsJoinedByString:@","]
+                             toFilter:filter];
     
-    if (!query)
-        return [NSString stringWithFormat:@"filter=%@", filter];
-    
-    return [query stringByAppendingFormat:@"&filter=%@", filter];
+    return filter;
 }
 
 - (void)addType:(NSString *)type {
@@ -51,14 +33,6 @@
         self.types = [NSArray arrayWithObject:type];
     else
         self.types = [self.types arrayByAddingObject:type];
-}
-
-- (void)addTag:(NSString *)tag {
-    
-    if (!self.tags)
-        self.tags = [NSArray arrayWithObject:tag];
-    else
-        self.tags = [self.tags arrayByAddingObject:tag];
 }
 
 - (void)addSearchTerm:(NSString *)term {

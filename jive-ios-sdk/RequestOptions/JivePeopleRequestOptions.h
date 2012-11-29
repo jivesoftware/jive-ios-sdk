@@ -6,13 +6,10 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSortedRequestOptions.h"
+#import "JiveFilterTagsRequestOptions.h"
 
-@interface JivePeopleRequestOptions : JiveSortedRequestOptions
+@interface JivePeopleRequestOptions : JiveFilterTagsRequestOptions
 
-@property (nonatomic, strong) NSArray *tags; // one or more tags, matching any tag will select a place.
 @property (nonatomic, strong) NSString *title;
-
-- (void)addTag:(NSString *)tag;
 
 @end

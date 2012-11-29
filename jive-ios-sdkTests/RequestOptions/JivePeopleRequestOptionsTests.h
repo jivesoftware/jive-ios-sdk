@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSortedRequestOptionsTests.h"
+#import "JiveFilterTagsRequestOptionsTests.h"
 #import "JivePeopleRequestOptions.h"
 
-@interface JivePeopleRequestOptionsTests : JiveSortedRequestOptionsTests
+@interface JivePeopleRequestOptionsTests : JiveFilterTagsRequestOptionsTests
 
 @property (readonly) JivePeopleRequestOptions *peopleOptions;
 
