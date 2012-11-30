@@ -15,7 +15,7 @@
     int size = self.size;
     static NSString *queryStrings[] = { nil, @"size=medium", @"size=small" };
 
-    if (size < 0 || size > smallImage)
+    if (size < 0 || size > JiveImageSizeOptionSmallImage)
         size = 0;
 
     return queryStrings[size];

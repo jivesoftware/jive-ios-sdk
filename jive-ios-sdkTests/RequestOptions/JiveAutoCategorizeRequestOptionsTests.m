@@ -22,7 +22,7 @@
 
 - (void)testAutoCategorized {
     
-    self.categorizedOptions.autoCategorize = TRUE;
+    self.categorizedOptions.autoCategorize = YES;
     
     NSString *asString = [self.options toQueryString];
     
@@ -35,7 +35,7 @@
     NSString *testField = @"name";
     
     [self.categorizedOptions addField:testField];
-    self.categorizedOptions.autoCategorize = TRUE;
+    self.categorizedOptions.autoCategorize = YES;
     
     NSString *asString = [self.options toQueryString];
     

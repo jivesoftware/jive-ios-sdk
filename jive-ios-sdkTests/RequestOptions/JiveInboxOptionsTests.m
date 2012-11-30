@@ -27,14 +27,14 @@
 
 - (void)testUnread {
     
-    self.inboxOptions.unread = false;
+    self.inboxOptions.unread = NO;
     STAssertFalse(self.inboxOptions.unread, @"Wrong default value");
     
     NSString *asString = [self.options toQueryString];
     
     STAssertNil(asString, @"Invalid string returned");
     
-    self.inboxOptions.unread = true;
+    self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"filter=unread", asString, @"Wrong string contents");
@@ -42,7 +42,7 @@
 
 - (void)testUnreadWithField {
     
-    self.inboxOptions.unread = true;
+    self.inboxOptions.unread = YES;
     [self.inboxOptions addField:@"name"];
     
     NSString *asString = [self.options toQueryString];
@@ -76,7 +76,7 @@
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=author(/people/1005)", asString, @"Wrong string contents");
 
-    self.inboxOptions.unread = true;
+    self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=unread,author(/people/1005)", asString, @"Wrong string contents");
@@ -117,7 +117,7 @@
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=author(/people/1005),type(dm)", asString, @"Wrong string contents");
     
-    self.inboxOptions.unread = true;
+    self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=unread,author(/people/1005),type(dm)", asString, @"Wrong string contents");
@@ -158,7 +158,7 @@
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=author(http://dummy.com/people/54321),type(dm)", asString, @"Wrong string contents");
     
-    self.inboxOptions.unread = true;
+    self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=unread,author(http://dummy.com/people/54321),type(dm)", asString, @"Wrong string contents");

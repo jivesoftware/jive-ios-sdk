@@ -10,14 +10,14 @@
 #import "JiveRequestOptions.h"
 
 enum JiveImageSizeOption {
-    largeImage,
-    mediumImage,
-    smallImage
+    JiveImageSizeOptionLargeImage,
+    JiveImageSizeOptionMediumImage,
+    JiveImageSizeOptionSmallImage
     };
 
 @interface JiveDefinedSizeRequestOptions : NSObject<JiveRequestOptions>
 
-@property (nonatomic) enum JiveImageSizeOption size; // Requested size, default is largeImage
+@property (nonatomic) enum JiveImageSizeOption size; // Requested size, default is JiveImageSizeOptionLargeImage
 
 - (NSString *)toQueryString;
 

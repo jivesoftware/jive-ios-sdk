@@ -22,18 +22,18 @@
 
 - (void)testSize {
     
-    self.options.size = largeImage;
+    self.options.size = JiveImageSizeOptionLargeImage;
     
     NSString *asString = [self.options toQueryString];
     
     STAssertNil(asString, @"Invalid string returned");
     
-    self.options.size = mediumImage;
+    self.options.size = JiveImageSizeOptionMediumImage;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"size=medium", asString, @"Wrong string contents");
     
-    self.options.size = smallImage;
+    self.options.size = JiveImageSizeOptionSmallImage;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"size=small", asString, @"Wrong string contents");

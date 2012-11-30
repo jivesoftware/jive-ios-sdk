@@ -27,7 +27,7 @@
     int sort = self.sort;
     NSString *queryString = [super toQueryString];
     
-    if (sort < dateCreatedDesc || sort > statusLevelDesc)
+    if (sort < JiveSortOrderDateCreatedDesc || sort > JiveSortOrderStatusLevelDesc)
         return queryString;
     
     if (queryString)
