@@ -774,7 +774,6 @@
 				2192BBF61614F33300082926 /* Frameworks */,
 				B8DC02DE1666A63800BCC61D /* Headers */,
 				2186061D164C434B004AF2E2 /* ShellScript */,
-				B8C4950D1669296900D19240 /* ShellScript */,
 				B8C4950C166928A400D19240 /* ShellScript */,
 				2192BBF71614F33300082926 /* CopyFiles */,
 			);
@@ -794,6 +793,7 @@
 				2192BC051614F33300082926 /* Sources */,
 				2192BC061614F33300082926 /* Frameworks */,
 				2192BC071614F33300082926 /* Resources */,
+				B8C4952216692BE700D19240 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -921,7 +921,7 @@
 			shellScript = "mkdir -p \"$BUILT_PRODUCTS_DIR\"/Jive";
 			showEnvVarsInLog = 0;
 		};
-		B8C4950D1669296900D19240 /* ShellScript */ = {
+		B8C4952216692BE700D19240 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -933,6 +933,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
