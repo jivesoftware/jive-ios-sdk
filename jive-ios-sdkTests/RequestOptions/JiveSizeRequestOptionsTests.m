@@ -1,20 +1,20 @@
 //
-//  JivePixelSizeRequestOptionsTests.m
+//  JiveSizeRequestOptionsTests.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 11/27/12.
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JivePixelSizeRequestOptionsTests.h"
+#import "JiveSizeRequestOptionsTests.h"
 
-@implementation JivePixelSizeRequestOptionsTests
+@implementation JiveSizeRequestOptionsTests
 
 @synthesize options;
 
 - (void)setUp {
     
-    options = [[JivePixelSizeRequestOptions alloc] init];
+    options = [[JiveSizeRequestOptions alloc] init];
 }
 
 - (void)tearDown {

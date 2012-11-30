@@ -22,7 +22,7 @@
 
 - (void)testWelcome {
     
-    self.welcomeOptions.welcome = YES;
+    self.welcomeOptions.welcome = TRUE;
     
     NSString *asString = [self.options toQueryString];
     
@@ -35,7 +35,7 @@
     NSString *testField = @"name";
     
     [self.welcomeOptions addField:testField];
-    self.welcomeOptions.welcome = YES;
+    self.welcomeOptions.welcome = TRUE;
     
     NSString *asString = [self.options toQueryString];
     
