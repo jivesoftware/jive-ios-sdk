@@ -10,6 +10,6 @@
 
 @interface JiveTrendingPeopleRequestOptions : JiveCountRequestOptions
 
-@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSURL *url; // users that are trending in this place URI
 
 @end
