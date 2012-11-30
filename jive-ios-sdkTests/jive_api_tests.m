@@ -119,7 +119,7 @@
 
 - (void) testFollowersServiceCall {
 
-    __block BOOL completeBlockCalled = false;
+    __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@followers" relativeToURL:url] absoluteString];
@@ -136,7 +136,7 @@
     [jive followers:@"2918" onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = true;
+        completeBlockCalled = YES;
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -152,7 +152,7 @@
 
 - (void) testFollowersServiceCallUsesPersonID {
     
-    __block BOOL completeBlockCalled = false;
+    __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers" relativeToURL:url] absoluteString];
@@ -169,7 +169,7 @@
     [jive followers:@"8192" onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = true;
+        completeBlockCalled = YES;
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -186,7 +186,7 @@
 - (void) testFollowersServiceCallWithOptions {
 
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
-    __block BOOL completeBlockCalled = false;
+    __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3Ffields=dummy&count=5" relativeToURL:url] absoluteString];
@@ -206,7 +206,7 @@
     [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = true;
+        completeBlockCalled = YES;
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -223,7 +223,7 @@
 - (void) testFollowersServiceCallWithDifferentOptions {
     
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
-    __block BOOL completeBlockCalled = false;
+    __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3Ffields=dummy,second,third&count=3&startIndex=6" relativeToURL:url] absoluteString];
@@ -245,7 +245,7 @@
     [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
         // Called 3rd
         STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = true;
+        completeBlockCalled = YES;
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
