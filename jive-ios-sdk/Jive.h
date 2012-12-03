@@ -8,17 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class JiveCredentials;
-@class JiveInboxOptions;
-@class JiveSearchParams;
-@class JivePagedRequestOptions;
+// no forward declarations here since this is the framework header.
+#import "JiveCredentials.h"
+#import "JiveInboxOptions.h"
+#import "JiveSearchParams.h"
+#import "JivePagedRequestOptions.h"
 
-@protocol JiveAuthorizationDelegate <NSObject>
-@required
-- (JiveCredentials*) credentialsForJiveInstance:(NSURL*) url;
-@optional
-//- (void) didReveiveOAuthActivitionResponse:(
-@end
+@protocol JiveAuthorizationDelegate;
 
 @interface Jive : NSObject
 
@@ -37,4 +33,11 @@
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 - (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+@end
+
+@protocol JiveAuthorizationDelegate <NSObject>
+@required
+- (JiveCredentials*) credentialsForJiveInstance:(NSURL*) url;
+@optional
+//- (void) didReveiveOAuthActivitionResponse:(
 @end
