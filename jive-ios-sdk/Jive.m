@@ -64,7 +64,7 @@
 - (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
     
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/inbox" options:options andArgs:nil];
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/inbox" options:options andArgs:nil];
     
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
         return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
