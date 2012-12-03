@@ -11,5 +11,7 @@
 @interface JiveCommentsRequestOptions : JivePagedRequestOptions
 
 @property (nonatomic, strong) NSURL *anchor;
+@property (nonatomic) BOOL excludeReplies;
+@property (nonatomic) BOOL hierarchical;
 
 @end

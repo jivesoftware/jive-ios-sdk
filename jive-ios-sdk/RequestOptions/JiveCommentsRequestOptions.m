@@ -14,13 +14,31 @@
     
     NSString *query = [super toQueryString];
     
-    if (!self.anchor)
+    if (!self.anchor && !self.excludeReplies && !self.hierarchical)
         return query;
     
-    if (!query)
-        return [NSString stringWithFormat:@"anchor=%@", self.anchor];
+    if (self.anchor) {
+        if (!query)
+            query = [NSString stringWithFormat:@"anchor=%@", self.anchor];
+        else
+            query = [query stringByAppendingFormat:@"&anchor=%@", self.anchor];
+    }
     
-    return [query stringByAppendingFormat:@"&anchor=%@", self.anchor];
+    if (self.excludeReplies) {
+        if (!query)
+            query = [NSString stringWithFormat:@"excludeReplies=true"];
+        else
+            query = [query stringByAppendingFormat:@"&excludeReplies=true"];
+    }
+    
+    if (self.hierarchical) {
+        if (!query)
+            query = [NSString stringWithFormat:@"hierarchical=true"];
+        else
+            query = [query stringByAppendingFormat:@"&hierarchical=true"];
+    }
+    
+    return query;
 }
 
 @end
