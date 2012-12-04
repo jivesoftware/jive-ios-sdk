@@ -67,7 +67,6 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"fields=name&filter=type(dm)", asString, @"Wrong string contents");
     
     [self.placeOptions addSearchTerm:@"mention"];
