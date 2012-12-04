@@ -192,6 +192,16 @@
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
 		B8DC02DF1666A64B00BCC61D /* Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BCFA16161DE900082926 /* Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7C1614FF8200082926 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E23166DB00300568E12 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7E1614FF8200082926 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E24166DB00300568E12 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC801614FF8200082926 /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E25166DB00300568E12 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC821614FF8200082926 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E26166DB00300568E12 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC841614FF8200082926 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E27166DB00300568E12 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC861614FF8200082926 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E28166DB00300568E12 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC871614FF8200082926 /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E29166DB00300568E12 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC891614FF8200082926 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E2A166DB00300568E12 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC8B1614FF8200082926 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EA3E2B166DB00300568E12 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -883,6 +893,16 @@
 				0F09158916692EF40036C4E8 /* JiveFilterTagsRequestOptions.h in Headers */,
 				0F09158B16692EF40036C4E8 /* JiveImageURIRequestOptions.h in Headers */,
 				0F187E7416692F2B001FCB51 /* JivePeopleRequestOptions.h in Headers */,
+				B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */,
+				B8EA3E23166DB00300568E12 /* AFHTTPRequestOperation.h in Headers */,
+				B8EA3E24166DB00300568E12 /* AFImageRequestOperation.h in Headers */,
+				B8EA3E25166DB00300568E12 /* AFJSONRequestOperation.h in Headers */,
+				B8EA3E26166DB00300568E12 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				B8EA3E27166DB00300568E12 /* AFNetworking.h in Headers */,
+				B8EA3E28166DB00300568E12 /* AFPropertyListRequestOperation.h in Headers */,
+				B8EA3E29166DB00300568E12 /* AFURLConnectionOperation.h in Headers */,
+				B8EA3E2A166DB00300568E12 /* AFXMLRequestOperation.h in Headers */,
+				B8EA3E2B166DB00300568E12 /* UIImageView+AFNetworking.h in Headers */,
 				0F187E7616692F2B001FCB51 /* JivePixelSizeRequestOptions.h in Headers */,
 				0F187E7816692F2B001FCB51 /* JivePlacePlacesRequestOptions.h in Headers */,
 				0F187E7A16692F2B001FCB51 /* JiveTrendingPeopleRequestOptions.h in Headers */,
