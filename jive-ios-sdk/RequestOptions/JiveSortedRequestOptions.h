@@ -12,16 +12,19 @@
 enum JiveSortOrder {
 
     JiveSortOrderDefault,   // Use the default sort order.
-    JiveSortOrderDateCreatedDesc,        // Sort by the date this content object was created, in descending order.
-    JiveSortOrderDateCreatedAsc,         // Sort by the date this content object was created, in ascending order
-    JiveSortOrderLatestActivityDesc,     // Sort by the date this content object had the most recent activity, in descending order
-    JiveSortOrderLatestActivityAsc,      // Sort by the date this content object had the most recent activity, in ascending order
-    JiveSortOrderTitleAsc,               // Sort by content object subject, in ascending order
-    JiveSortOrderFirstNameAsc,           // Sort by first name in ascending order
-    JiveSortOrderLastNameAsc,            // Sort by last name in ascending order
-    JiveSortOrderDateJoinedDesc,         // Sort by joined date in ascending order
-    JiveSortOrderDateJoinedAsc,          // Sort by joined date in descending order
-    JiveSortOrderStatusLevelDesc,        // Sort by status level in descending order
+    JiveSortOrderDateCreatedDesc,       // Sort by the date this content object was created, in descending order.
+    JiveSortOrderDateCreatedAsc,        // Sort by the date this content object was created, in ascending order
+    JiveSortOrderLatestActivityDesc,    // Sort by the date this content object had the most recent activity, in descending order
+    JiveSortOrderLatestActivityAsc,     // Sort by the date this content object had the most recent activity, in ascending order
+    JiveSortOrderTitleAsc,              // Sort by content object subject, in ascending order
+    JiveSortOrderFirstNameAsc,          // Sort by first name in ascending order
+    JiveSortOrderLastNameAsc,           // Sort by last name in ascending order
+    JiveSortOrderDateJoinedDesc,        // Sort by joined date in ascending order
+    JiveSortOrderDateJoinedAsc,         // Sort by joined date in descending order
+    JiveSortOrderStatusLevelDesc,       // Sort by status level in descending order
+    JiveSortOrderRelevanceDesc,         // Sort by relevance, in descending order.
+    JiveSortOrderUpdatedAsc,            // Sort by the date this content object was most recently updated, in ascending order.
+    JiveSortOrderUpdatedDesc,           // Sort by the date this content object was most recently updated, in descending order.
 };
 
 @interface JiveSortedRequestOptions : JivePagedRequestOptions

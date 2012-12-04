@@ -77,6 +77,21 @@
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
     STAssertEqualObjects(@"sort=statusLevelDesc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = JiveSortOrderRelevanceDesc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=relevanceDesc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = JiveSortOrderUpdatedAsc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=updatedAsc", asString, @"Wrong string contents");
+    
+    self.sortedOptions.sort = JiveSortOrderUpdatedDesc;
+    asString = [self.options toQueryString];
+    STAssertNotNil(asString, @"Invalid string returned");
+    STAssertEqualObjects(@"sort=updatedDesc", asString, @"Wrong string contents");
 }
 
 - (void)testSortWithField {

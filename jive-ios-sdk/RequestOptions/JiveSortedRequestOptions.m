@@ -23,11 +23,14 @@
         @"dateJoinedDesc",
         @"dateJoinedAsc",
         @"statusLevelDesc",
+        @"relevanceDesc",
+        @"updatedAsc",
+        @"updatedDesc"
    };
     int sort = self.sort;
     NSString *queryString = [super toQueryString];
     
-    if (sort < JiveSortOrderDateCreatedDesc || sort > JiveSortOrderStatusLevelDesc)
+    if (sort < JiveSortOrderDateCreatedDesc || sort > JiveSortOrderUpdatedDesc)
         return queryString;
     
     if (queryString)
