@@ -189,7 +189,7 @@
     __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3Ffields=dummy&count=5" relativeToURL:url] absoluteString];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy&count=5" relativeToURL:url] absoluteString];
     
     options.startIndex = 0;
     options.count = 5;
@@ -226,7 +226,7 @@
     __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers%3Ffields=dummy,second,third&count=3&startIndex=6" relativeToURL:url] absoluteString];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy,second,third&count=3&startIndex=6" relativeToURL:url] absoluteString];
     
     options.startIndex = 6;
     options.count = 3;
