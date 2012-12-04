@@ -6,13 +6,11 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSearchRequestOptions.h"
+#import "JiveSearchTypesRequestOptions.h"
 
-@interface JiveSearchContentsRequestOptions : JiveSearchRequestOptions
+@interface JiveSearchContentsRequestOptions : JiveSearchTypesRequestOptions
 
-@property (nonatomic, strong) NSArray *types; // Select entries of the specified type. One or more types can be specified.
 @property (nonatomic) BOOL subjectOnly;
 
-- (void)addType:(NSString *)type;
 
 @end

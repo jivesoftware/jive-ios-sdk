@@ -14,15 +14,6 @@
     
     NSString *filter = [super buildFilter];
     
-    if (self.types) {
-        NSString *typeFilters = [self.types componentsJoinedByString:@","];
-        
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",type(%@)", typeFilters];
-        else
-            filter = [NSString stringWithFormat:@"type(%@)", typeFilters];
-    }
-    
     if (self.subjectOnly) {
         if (filter)
             filter = [filter stringByAppendingString:@",subjectonly"];
@@ -31,14 +22,6 @@
     }
 
     return filter;
-}
-
-- (void)addType:(NSString *)type {
-    
-    if (!self.types)
-        self.types = [NSArray arrayWithObject:type];
-    else
-        self.types = [self.types arrayByAddingObject:type];
 }
 
 @end

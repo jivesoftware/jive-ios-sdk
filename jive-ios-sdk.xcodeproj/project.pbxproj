@@ -87,6 +87,9 @@
 		0FCB663C166E997100617CE4 /* JiveSearchContentsRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCB663A166E997100617CE4 /* JiveSearchContentsRequestOptions.h */; };
 		0FCB663D166E997100617CE4 /* JiveSearchContentsRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB663B166E997100617CE4 /* JiveSearchContentsRequestOptions.m */; };
 		0FCB6640166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB663F166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m */; };
+		0FCB6643166EAA0700617CE4 /* JiveSearchTypesRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCB6641166EAA0600617CE4 /* JiveSearchTypesRequestOptions.h */; };
+		0FCB6644166EAA0700617CE4 /* JiveSearchTypesRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB6642166EAA0600617CE4 /* JiveSearchTypesRequestOptions.m */; };
+		0FCB6647166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB6646166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m */; };
 		217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D31638524E00182AB5 /* JiveInboxEntry.m */; };
 		217FE0D71638528F00182AB5 /* JiveActivityObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D61638528F00182AB5 /* JiveActivityObject.m */; };
 		217FE0DA163852C500182AB5 /* readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 217FE0D9163852C500182AB5 /* readme.rtf */; };
@@ -392,6 +395,10 @@
 		0FCB663B166E997100617CE4 /* JiveSearchContentsRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentsRequestOptions.m; sourceTree = "<group>"; };
 		0FCB663E166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchContentsRequestOptionsTests.h; sourceTree = "<group>"; };
 		0FCB663F166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentsRequestOptionsTests.m; sourceTree = "<group>"; };
+		0FCB6641166EAA0600617CE4 /* JiveSearchTypesRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchTypesRequestOptions.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
+		0FCB6642166EAA0600617CE4 /* JiveSearchTypesRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchTypesRequestOptions.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
+		0FCB6645166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchTypesRequestOptionsTests.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
+		0FCB6646166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchTypesRequestOptionsTests.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
 		217FE0D21638524E00182AB5 /* JiveInboxEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInboxEntry.h; sourceTree = "<group>"; };
 		217FE0D31638524E00182AB5 /* JiveInboxEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveInboxEntry.m; sourceTree = "<group>"; };
 		217FE0D51638528F00182AB5 /* JiveActivityObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveActivityObject.h; sourceTree = "<group>"; };
@@ -617,6 +624,8 @@
 				0FCB6634166E91DE00617CE4 /* JiveSearchRequestOptions.m */,
 				0FCB663A166E997100617CE4 /* JiveSearchContentsRequestOptions.h */,
 				0FCB663B166E997100617CE4 /* JiveSearchContentsRequestOptions.m */,
+				0FCB6641166EAA0600617CE4 /* JiveSearchTypesRequestOptions.h */,
+				0FCB6642166EAA0600617CE4 /* JiveSearchTypesRequestOptions.m */,
 			);
 			path = RequestOptions;
 			sourceTree = "<group>";
@@ -674,6 +683,8 @@
 				0FCB6638166E944500617CE4 /* JiveSearchRequestOptionsTests.m */,
 				0FCB663E166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.h */,
 				0FCB663F166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m */,
+				0FCB6645166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.h */,
+				0FCB6646166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m */,
 			);
 			path = RequestOptions;
 			sourceTree = "<group>";
@@ -1026,6 +1037,7 @@
 				0FCB662E166E8AE800617CE4 /* JiveSearchPlacesRequestOptions.h in Headers */,
 				0FCB6635166E91DE00617CE4 /* JiveSearchRequestOptions.h in Headers */,
 				0FCB663C166E997100617CE4 /* JiveSearchContentsRequestOptions.h in Headers */,
+				0FCB6643166EAA0700617CE4 /* JiveSearchTypesRequestOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1303,7 @@
 				0FCB662F166E8AE800617CE4 /* JiveSearchPlacesRequestOptions.m in Sources */,
 				0FCB6636166E91DE00617CE4 /* JiveSearchRequestOptions.m in Sources */,
 				0FCB663D166E997100617CE4 /* JiveSearchContentsRequestOptions.m in Sources */,
+				0FCB6644166EAA0700617CE4 /* JiveSearchTypesRequestOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,6 +1341,7 @@
 				0FCB6632166E8AF700617CE4 /* JiveSearchPlacesRequestOptionsTests.m in Sources */,
 				0FCB6639166E944600617CE4 /* JiveSearchRequestOptionsTests.m in Sources */,
 				0FCB6640166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m in Sources */,
+				0FCB6647166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
