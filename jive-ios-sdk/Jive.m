@@ -155,7 +155,8 @@
     if (queryString)
         [requestString appendFormat:@"?%@", queryString];
 
-    NSURL* requestURL = [_jiveInstance URLByAppendingPathComponent:requestString];
+    NSURL* requestURL = [NSURL URLWithString:requestString
+                               relativeToURL:_jiveInstance];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
     
