@@ -10,17 +10,26 @@
 
 @implementation JiveTrendingPeopleRequestOptions
 
+- (NSString *)buildFilter {
+    
+    if (!self.url)
+        return nil;
+    
+    return [NSString stringWithFormat:@"place(%@)", self.url];
+}
+
 - (NSString *)toQueryString {
     
     NSString *query = [super toQueryString];
-
-    if (!self.url)
+    NSString *filter = [self buildFilter];
+    
+    if (!filter)
         return query;
-
-    if (query)
-        return [query stringByAppendingFormat:@"&filter=place(%@)", self.url];
-
-    return [NSString stringWithFormat:@"filter=place(%@)", self.url];
+    
+    if (!query)
+        return [NSString stringWithFormat:@"filter=%@", filter];
+    
+    return [query stringByAppendingFormat:@"&filter=%@", filter];
 }
 
 @end

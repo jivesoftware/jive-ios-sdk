@@ -25,7 +25,7 @@
 //    [super tearDown];
 //}
 
-- (void)testCount {
+- (void)testPlaceURL {
     
     self.trendingOptions.url = [NSURL URLWithString:@"http://dummy"];
     
@@ -40,7 +40,7 @@
     STAssertEqualObjects(@"filter=place(http://alternate/url)", asString, @"Wrong string contents");
 }
 
-- (void)testCountWithField {
+- (void)testPlaceURLWithField {
     
     NSString *testField = @"name";
     
