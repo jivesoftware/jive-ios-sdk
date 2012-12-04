@@ -20,37 +20,6 @@
     self.options = [[JiveSearchPlacesRequestOptions alloc] init];
 }
 
-- (void)testSearch {
-    
-    [self.placeOptions addSearchTerm:@"dm"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertEqualObjects(@"filter=search(dm)", asString, @"Wrong string contents");
-    
-    [self.placeOptions addSearchTerm:@"mention"];
-    asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=search(dm,mention)", asString, @"Wrong string contents");
-    
-    [self.placeOptions addSearchTerm:@"(sh,a\\re)"];
-    asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=search(dm,mention,\\(sh\\,a\\\\re\\))", asString, @"Wrong string contents");
-    
-    [self.placeOptions addSearchTerm:@"h)e(j,m"];
-    asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=search(dm,mention,\\(sh\\,a\\\\re\\),h\\)e\\(j\\,m)", asString, @"Wrong string contents");
-}
-
-- (void)testSearchWithFields {
-    
-    [self.placeOptions addSearchTerm:@"dm"];
-    [self.placeOptions addField:@"name"];
-    
-    NSString *asString = [self.options toQueryString];
-    
-    STAssertEqualObjects(@"fields=name&filter=search(dm)", asString, @"Wrong string contents");
-}
-
 - (void)testNameOnly {
     
     self.placeOptions.nameonly = YES;

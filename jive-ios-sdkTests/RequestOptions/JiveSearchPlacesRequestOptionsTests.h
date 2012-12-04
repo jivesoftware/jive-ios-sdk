@@ -9,7 +9,9 @@
 #import "JiveSortedRequestOptionsTests.h"
 #import "JiveSearchPlacesRequestOptions.h"
 
-@interface JiveSearchPlacesRequestOptionsTests : JiveSortedRequestOptionsTests
+#import "JiveSearchRequestOptionsTests.h"
+
+@interface JiveSearchPlacesRequestOptionsTests : JiveSearchRequestOptionsTests
 
 @property (readonly) JiveSearchPlacesRequestOptions *placeOptions;
 

@@ -6,15 +6,13 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSortedRequestOptions.h"
+#import "JiveSearchRequestOptions.h"
 
-@interface JiveSearchPlacesRequestOptions : JiveSortedRequestOptions
+@interface JiveSearchPlacesRequestOptions : JiveSearchRequestOptions
 
-@property (nonatomic, strong) NSArray *search; // One or more search terms, separated by commas. You must escape any of the following special characters embedded in the search terms: comma (","), backslash ("\"), left parenthesis ("("), and right parenthesis (")") by preceding them with a backslash. Wildcards can be used, e.g. to search by substring use "*someSubstring*".
 @property (nonatomic) BOOL nameonly; // Optional boolean value indicating whether or not to limit search results to only people that match by name.
 @property (nonatomic, strong) NSArray *types; // Select entries of the specified type. One or more types can be specified.
 
-- (void)addSearchTerm:(NSString *)term; // Will escape ,\() for you.
 - (void)addType:(NSString *)type;
 
 @end
