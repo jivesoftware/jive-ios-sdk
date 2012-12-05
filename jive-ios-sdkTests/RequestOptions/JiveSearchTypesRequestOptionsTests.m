@@ -20,6 +20,29 @@
     self.options = [[JiveSearchTypesRequestOptions alloc] init];
 }
 
+- (void)testCollapse {
+    
+    self.typesOptions.collapse = YES;
+    
+    NSString *asString = [self.options toQueryString];
+    
+    STAssertEqualObjects(@"collapse", asString, @"Wrong string contents");
+}
+
+- (void)testCollapseWithOtherFields {
+    
+    [self.typesOptions addField:@"name"];
+    self.typesOptions.collapse = YES;
+    
+    NSString *asString = [self.options toQueryString];
+    
+    STAssertEqualObjects(@"fields=name&collapse", asString, @"Wrong string contents");
+    
+    [self.typesOptions addSearchTerm:@"mention"];
+    asString = [self.options toQueryString];
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&collapse", asString, @"Wrong string contents");
+}
+
 - (void)testTypes {
     
     [self.typesOptions addType:@"dm"];
@@ -49,6 +72,10 @@
     [self.typesOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
     STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm)", asString, @"Wrong string contents");
+    
+    self.typesOptions.collapse = YES;
+    asString = [self.options toQueryString];
+    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm)&collapse", asString, @"Wrong string contents");
 }
 
 @end

@@ -26,6 +26,19 @@
     return filter;
 }
 
+- (NSString *)toQueryString {
+    
+    NSString *query = [super toQueryString];
+    
+    if (!self.collapse)
+        return query;
+    
+    if (!query)
+        return @"collapse";
+    
+    return [query stringByAppendingString:@"&collapse"];
+}
+
 - (void)addType:(NSString *)type {
     
     if (!self.types)
