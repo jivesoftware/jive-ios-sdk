@@ -71,24 +71,70 @@
     }];
     
     [operation start];
-   
+    
 }
 
 
-- (void) markAsRead:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error {
-    [self markInboxEntries:inboxEntries
-          withExpendedRead:NO
-           usingHTTPMethod:@"DELETE"
-           onCompleteBlock:complete
-              onErrorBlock:error];
-}
-
-- (void) markAsUnread:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error {
-    [self markInboxEntries:inboxEntries
-          withExpendedRead:YES
-           usingHTTPMethod:@"POST"
-           onCompleteBlock:complete
-              onErrorBlock:error];
+- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock {
+    NSMutableSet *incompleteOperationUpdateURLs = [NSMutableSet new];
+    NSMutableArray *errors = [NSMutableArray new];
+    
+    void (^heapCompleteBlock)(void) = [completeBlock copy];
+    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
+    void (^markOperationCompleteBlock)(NSURLRequest *, NSError *) = [^(NSURLRequest *request, NSError *error) {
+        [incompleteOperationUpdateURLs removeObject:[request URL]];
+        if (error) {
+            [errors addObject:error];
+        }
+        if ([incompleteOperationUpdateURLs count] == 0) {
+            if ([errors count] == 0) {
+                if (heapCompleteBlock) {
+                    heapCompleteBlock();
+                }
+            } else {
+                if (heapErrorBlock) {
+                    heapErrorBlock([NSError jive_errorWithMultipleErrors:errors]);
+                }
+            }
+        }
+    } copy];
+    
+    NSString *HTTPMethod = read ? @"POST" : @"DELETE";
+    NSMutableArray *operations = [NSMutableArray new];
+    for (JiveInboxEntry *inboxEntry in inboxEntries) {
+        if (inboxEntry.jive.update &&
+            (inboxEntry.jive.read != read) &&
+            // many Inbox Entries may have the same update URL.
+            ![incompleteOperationUpdateURLs containsObject:inboxEntry.jive.update]) {
+            NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:inboxEntry.jive.update];
+            [markRequest setHTTPMethod:HTTPMethod];
+            [self maybeApplyCredentialsToMutableURLRequest:markRequest
+                                                    forURL:inboxEntry.jive.update];
+            [incompleteOperationUpdateURLs addObject:inboxEntry.jive.update];
+            NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
+                                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                       markOperationCompleteBlock(request, nil);
+                                                                                   }
+                                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                       markOperationCompleteBlock(request, error);
+                                                                                   }];
+            [operations addObject:operation];
+        }
+    }
+    
+    if ([operations count] == 0) {
+        if (heapCompleteBlock) {
+            // guarantee that all callbacks happen on the next spin of the run loop.
+            dispatch_async(dispatch_get_main_queue(), heapCompleteBlock);
+        }
+    } else {
+        /*
+         * It is extremely unlikely, but starting the operations after setting them all up guarantees that
+         * One won't finish in the middle of setup and trigger a premature
+         * [incompleteOperationUpdateURLs count] == 0 state.
+         */
+        [operations makeObjectsPerformSelector:@selector(start)];
+    }
 }
 
 - (void) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
@@ -96,12 +142,12 @@
     
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/@me" options:nil andArgs:nil];
     
-     JAPIRequestOperation *operation = [self operationWithRequest:request  onComplete:complete onError:error responseHandler:^id(id JSON) {
-         return JSON;
-     }];
+    JAPIRequestOperation *operation = [self operationWithRequest:request  onComplete:complete onError:error responseHandler:^id(id JSON) {
+        return JSON;
+    }];
     
     [operation start];
-  
+    
     
 }
 
@@ -117,7 +163,7 @@
     }];
     
     [operation start];
-     
+    
 }
 
 - (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
@@ -164,10 +210,10 @@
     
     NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
     NSString *queryString = [options toQueryString];
-
+    
     if (queryString)
         [requestString appendFormat:@"?%@", queryString];
-
+    
     NSURL* requestURL = [NSURL URLWithString:requestString
                                relativeToURL:_jiveInstance];
     
@@ -184,60 +230,6 @@
         JiveCredentials *credentials = [_delegate credentialsForJiveInstance:URL];
         [credentials applyToRequest:mutableURLRequest];
     }
-}
-
-- (void) markInboxEntries:(NSArray *)inboxEntries
-         withExpendedRead:(BOOL)expectedRead
-          usingHTTPMethod:(NSString *)HTTPMethod
-          onCompleteBlock:(void(^)(void))completeBlock
-             onErrorBlock:(void(^)(NSError *))errorBlock {
-    NSMutableArray *incompleteOperationUpdateURLs = [NSMutableArray new];
-    NSMutableArray *errors = [NSMutableArray new];
-    
-    void (^markOperationCompleteBlock)(NSURLRequest *, NSError *) = ^(NSURLRequest *request, NSError *error) {
-        [incompleteOperationUpdateURLs removeObject:[request URL]];
-        if (error) {
-            [errors addObject:error];
-        }
-        if ([incompleteOperationUpdateURLs count] == 0) {
-            if ([errors count] == 0) {
-                if (completeBlock) {
-                    completeBlock();
-                }
-            } else {
-                if (errorBlock) {
-                    errorBlock([NSError jive_errorWithMultipleErrors:errors]);
-                }
-            }
-        }
-    };
-    
-    NSMutableArray *operations = [NSMutableArray new];
-    for (JiveInboxEntry *inboxEntry in inboxEntries) {
-        if ((inboxEntry.jive.read == expectedRead) &&
-            inboxEntry.jive.update) {
-            NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:inboxEntry.jive.update];
-            [markRequest setHTTPMethod:HTTPMethod];
-            [self maybeApplyCredentialsToMutableURLRequest:markRequest
-                                                    forURL:inboxEntry.jive.update];
-            [incompleteOperationUpdateURLs addObject:inboxEntry.jive.update];
-            NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
-                                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                              markOperationCompleteBlock(request, nil);
-                                                          }
-                                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                              markOperationCompleteBlock(request, error);
-                                                          }];
-            [operations addObject:operation];
-        }
-    }
-    
-    /*
-     * It is extremely unlikely, but starting the operations after setting them all up guarantees that
-     * One won't finish in the middle of setup and trigger a premature 
-     * [incompleteOperationUpdateURLs count] == 0 state.
-     */
-    [operations makeObjectsPerformSelector:@selector(start)];
 }
 
 - (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {

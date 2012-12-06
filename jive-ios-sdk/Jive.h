@@ -34,8 +34,7 @@
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 - (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (void) markAsRead:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error;
-- (void) markAsUnread:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error;
+- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
 
 @end
 
