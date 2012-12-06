@@ -12,6 +12,7 @@
 @interface jive_api_tests : JiveAPITestCase
 {
     id mockJiveURLResponseDelegate;
+    id mockJiveURLResponseDelegate2;
     id mockAuthDelegate;
     Jive *jive;
 }

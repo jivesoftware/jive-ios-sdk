@@ -7,7 +7,8 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JiveAsyncTestCase.h"
 
-@interface jive_ios_sdkTests : SenTestCase
+@interface jive_ios_sdkTests : JiveAsyncTestCase
 
 @end

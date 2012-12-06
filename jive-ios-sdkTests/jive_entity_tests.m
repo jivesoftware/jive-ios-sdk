@@ -42,11 +42,6 @@
     
     STAssertNotNil(instances, @"JiveInboxEntry list should not be nil!");
     STAssertTrue([instances count] == [[json objectForKey:@"list"] count], @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.", [[json objectForKey:@"list"] count], [instances count]);
-    
-    // More checks needed for data correctness
-    for(JiveInboxEntry* entry in instances) {
-        NSLog(@"%@", entry);
-    }
 }
 
 @end
