@@ -78,11 +78,24 @@
 
 - (void) testMyServiceCall {
     
-    [self createJiveAPIObjectWithResponse:@"my_response"];
+    __block BOOL completeBlockCalled = NO;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@me" relativeToURL:url] absoluteString];
     
-    [jive me:^(id JSON) {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"my_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [jive me:^(JivePerson *person) {
         // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
+        STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+        completeBlockCalled = YES;
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -91,9 +104,9 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-
-    [self waitForTimeout:5.0];
     
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
 
 - (void) testColleguesServiceCall {
@@ -387,6 +400,42 @@
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+        completeBlockCalled = YES;
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self waitForTimeout:0.5];
+    STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
+}
+
+- (void) testPersonServiceCall {
+    
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    __block BOOL completeBlockCalled = NO;
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/3220?fields=name,id" relativeToURL:url] absoluteString];
+    
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [jive person:@"3220" withOptions:options onComplete:^(JivePerson *person) {
+        // Called 3rd
+        STAssertEquals([person class], [JivePerson class], @"Wrong item class");
         completeBlockCalled = YES;
         
         // Check that delegates where actually called

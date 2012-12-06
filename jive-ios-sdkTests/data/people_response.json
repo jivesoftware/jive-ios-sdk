@@ -1,0 +1,1408 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "regularUser-yTVao3hN3ird",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-yTVao3hN3ird TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-yTVao3hN3ird TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-ytvao3hn3ird"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-ytvao3hn3ird",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3220",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3220"
+  }, {
+    "name" : {
+      "givenName" : "regularUser-Wo1CRvMeF34b",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-Wo1CRvMeF34b TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-Wo1CRvMeF34b TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-wo1crvmef34b"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-wo1crvmef34b",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3215/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3215",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3215"
+  }, {
+    "name" : {
+      "givenName" : "regularUser-oh40FaW7ajuJ",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-oh40FaW7ajuJ TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-oh40FaW7ajuJ TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-oh40faw7ajuj"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-oh40faw7ajuj",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3213/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3213",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3213"
+  }, {
+    "name" : {
+      "givenName" : "regularUser-CWHpcgJSEmvm",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-CWHpcgJSEmvm TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-CWHpcgJSEmvm TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-cwhpcgjsemvm"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-cwhpcgjsemvm",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3211/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3211",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3211"
+  }, {
+    "name" : {
+      "givenName" : "regularUser-OLHQdZGSmxTU",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-OLHQdZGSmxTU TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-OLHQdZGSmxTU TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-olhqdzgsmxtu"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-olhqdzgsmxtu",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3208/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3208",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3208"
+  }, {
+    "name" : {
+      "givenName" : "regularUser-30frcvKjeOlQ",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-30frcvKjeOlQ TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-30frcvKjeOlQ TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-30frcvkjeolq"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-30frcvkjeolq",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3202/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3202",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3202"
+  }, {
+    "name" : {
+      "givenName" : "admin_robot22",
+      "familyName" : "TestUser",
+      "formatted" : "admin_robot22 TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_robot22 TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Wayfarer",
+        "points" : 0
+      },
+      "username" : "admin_robot22"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_robot22",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2934/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2934",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2934"
+  }, {
+    "name" : {
+      "givenName" : "admin_robot19",
+      "familyName" : "TestUser",
+      "formatted" : "admin_robot19 TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_robot19 TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "admin_robot19"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_robot19",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2850/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2850",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2850"
+  }, {
+    "name" : {
+      "givenName" : "admin_robot17",
+      "familyName" : "TestUser",
+      "formatted" : "admin_robot17 TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_robot17 TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Wayfarer",
+        "points" : 0
+      },
+      "username" : "admin_robot17"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_robot17",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2822/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2822",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2822"
+  }, {
+    "name" : {
+      "givenName" : "admin_robot15",
+      "familyName" : "TestUser",
+      "formatted" : "admin_robot15 TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_robot15 TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "admin_robot15"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_robot15",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2784/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2784",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2784"
+  }, {
+    "name" : {
+      "givenName" : "admin_robot21",
+      "familyName" : "TestUser",
+      "formatted" : "admin_robot21 TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_robot21 TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "admin_robot21"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_robot21",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2682/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2682",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2682"
+  }, {
+    "name" : {
+      "givenName" : "admin_WolffBook",
+      "familyName" : "TestUser",
+      "formatted" : "admin_WolffBook TestUser"
+    },
+    "type" : "person",
+    "displayName" : "admin_WolffBook TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Adventurer",
+        "points" : 140
+      },
+      "username" : "admin_wolffbook"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin_wolffbook",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2193/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2193",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2193"
+  }, {
+    "name" : {
+      "givenName" : "Mr",
+      "familyName" : "CSExternalUser",
+      "formatted" : "Mr CSExternalUser"
+    },
+    "type" : "person",
+    "displayName" : "Mr CSExternalUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 5
+      },
+      "username" : "csexternaluser"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/csexternaluser",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2008/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2008",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2008"
+  }, {
+    "name" : {
+      "givenName" : "Mr",
+      "familyName" : "CSNumberUser25",
+      "formatted" : "Mr CSNumberUser25"
+    },
+    "type" : "person",
+    "displayName" : "Mr CSNumberUser25",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "csnumberuser25"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/csnumberuser25",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2007/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2007",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2007"
+  }, {
+    "name" : {
+      "givenName" : "Mr",
+      "familyName" : "CS-Hyphen-User",
+      "formatted" : "Mr CS-Hyphen-User"
+    },
+    "type" : "person",
+    "displayName" : "Mr CS-Hyphen-User",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "cs-hyphen-user"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/cs-hyphen-user",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2006/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2006",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2006"
+  }, {
+    "name" : {
+      "givenName" : "Mr",
+      "familyName" : "CSTestUser",
+      "formatted" : "Mr CSTestUser"
+    },
+    "type" : "person",
+    "displayName" : "Mr CSTestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Wayfarer",
+        "points" : 50
+      },
+      "username" : "cstestuser"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2005"
+  }, {
+    "name" : {
+      "givenName" : "com",
+      "familyName" : "munity",
+      "formatted" : "com munity"
+    },
+    "type" : "person",
+    "displayName" : "com munity",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "community"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/community",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2004/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2004",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2004"
+  }, {
+    "name" : {
+      "givenName" : "u",
+      "familyName" : "ser",
+      "formatted" : "u ser"
+    },
+    "type" : "person",
+    "displayName" : "u ser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "user"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/user",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2003/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2003",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2003"
+  }, {
+    "name" : {
+      "givenName" : "test",
+      "familyName" : "test",
+      "formatted" : "test test"
+    },
+    "type" : "person",
+    "displayName" : "test test",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "test"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/test",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2001/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2001",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2001"
+  }, {
+    "name" : {
+      "formatted" : "Administrator"
+    },
+    "type" : "person",
+    "displayName" : "Administrator",
+    "jive" : {
+      "level" : {
+        "name" : "Wayfarer",
+        "points" : 15
+      },
+      "username" : "admin"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "tasks" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/admin",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/1/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/1",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}
