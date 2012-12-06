@@ -10,4 +10,6 @@
 
 @implementation JiveComment
 
+@synthesize rootType, rootURI;
+
 @end

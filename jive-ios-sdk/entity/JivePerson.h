@@ -27,10 +27,10 @@
 @property(nonatomic, readonly, strong) NSArray* emails;
 
 // Number of people following this object.
-@property(nonatomic, readonly) NSInteger followerCount;
+@property(nonatomic, readonly) NSNumber *followerCount;
 
 // Number of people this person is following.
-@property(nonatomic, readonly) NSInteger followingCount;
+@property(nonatomic, readonly) NSNumber *followingCount;
 
 // Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
 @property(nonatomic, copy) NSString* jiveId;

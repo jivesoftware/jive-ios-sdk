@@ -22,7 +22,7 @@
 @property(nonatomic, copy) NSString* displayName;
 
 // Number of people following this object.
-@property(nonatomic, readonly) NSInteger* followerCount;
+@property(nonatomic, readonly) NSNumber* followerCount;
 
 // Highlight snippet of a search match in the body or description.
 @property(nonatomic, readonly, copy) NSString* highlightBody;
@@ -37,7 +37,7 @@
 @property(nonatomic, readonly, copy) NSString* jiveId;
 
 // Number of people who have liked this object.
-@property(nonatomic, readonly) NSInteger* likeCount;
+@property(nonatomic, readonly) NSNumber* likeCount;
 
 // Formal name of this place. It must be unique among places of the same type in this Jive instance.
 @property(nonatomic, readonly, copy) NSString* name;
@@ -71,7 +71,7 @@
 @property(nonatomic, readonly, strong) NSDate* updated;
 
 // Number of times this content object has been viewed.
-@property(nonatomic, readonly) NSInteger* viewCount;
+@property(nonatomic, readonly) NSNumber* viewCount;
 
 // Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic) bool visibleToExternalContributors;

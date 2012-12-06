@@ -10,4 +10,7 @@
 
 @implementation JivePost
 
+@synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
+@synthesize visibleToExternalContributors;
+
 @end

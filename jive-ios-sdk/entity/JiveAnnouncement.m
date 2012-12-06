@@ -10,4 +10,7 @@
 
 @implementation JiveAnnouncement
 
+@synthesize endDate, image, publishDate, sortKey, subjectURI, subjectURITargetType;
+@synthesize visibleToExternalContributors;
+
 @end

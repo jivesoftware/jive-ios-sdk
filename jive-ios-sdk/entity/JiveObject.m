@@ -12,6 +12,8 @@
 
 @implementation JiveObject
 
+// Do not synthesize extraFieldsDetected so it will not be auto populated.
+
 + (id) instanceFromJSON:(NSDictionary*) JSON {
     id entity = [[[self entityClass:JSON] alloc] init];
     return [entity deserialize:JSON] ? entity : nil;
@@ -34,9 +36,16 @@
     return [self class];
 }
 
-// TODO check with Rob about whether this can be overridden if it isn't in the header
 - (Class) arrayMappingFor:(NSString*) propertyName {
     return nil;
+}
+
+- (Ivar) lookupPropertyIvar:(NSString*) propertyName {
+    
+    if(![propertyName isKindOfClass:[NSString class]])
+        return nil;
+    
+    return class_getInstanceVariable([self class], [propertyName cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 - (NSDateFormatter*) dateFormatter {
@@ -48,17 +57,32 @@
     return dateFormatter;
 }
 
+- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value {
+    
+}
+
 - (BOOL) deserialize:(id) JSON {
+    BOOL validResponse = NO;
+    
     for(NSString* key in JSON) {
         Class cls = [self lookupPropertyClass:key];
         if(cls) {
             id property = [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]];
             [self setValue:property forKey:key];
+            validResponse = YES;
         } else {
-            return NO;
+            Ivar ivar = [self lookupPropertyIvar:key];
+            
+            if (ivar) {
+                [self handlePrimitiveProperty:key fromJSON:[JSON objectForKey:key]];
+            } else {
+                NSLog(@"Extra field - %@", key);
+               _extraFieldsDetected = YES;
+            }
         }
     }
-    return YES;
+    
+    return validResponse;
 }
 
 - (void) setValue:(id)value forUndefinedKey:(NSString *)key {
@@ -70,6 +94,10 @@
 }
 
 - (id) getObjectOfType:(Class) cls forProperty:(NSString*) property FromJSON:(id) JSON {
+    
+    if(cls == [NSNumber class] && [JSON isKindOfClass:[NSNumber class]]) {
+        return [JSON copy];
+    }
     
     if(cls == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
         return [[NSString alloc] initWithString:JSON];
@@ -131,7 +159,10 @@
     if(![propertyName isKindOfClass:[NSString class]])
         return nil;
     
-    Ivar ivar = class_getInstanceVariable([self class], [propertyName cStringUsingEncoding:NSUTF8StringEncoding]);
+    Ivar ivar = [self lookupPropertyIvar:propertyName];
+    if (!ivar && [propertyName isEqual:@"id"])
+        ivar = class_getInstanceVariable([self class], "jiveId");
+
     return [self lookupClassTypeFromIvar:ivar];
 }
 

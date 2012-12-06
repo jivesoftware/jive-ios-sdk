@@ -13,6 +13,9 @@
 #import "JiveInboxOptions.h"
 #import "JiveSearchParams.h"
 #import "JivePagedRequestOptions.h"
+#import "JiveSearchPeopleRequestOptions.h"
+#import "JiveSearchPlacesRequestOptions.h"
+#import "JiveSearchContentsRequestOptions.h"
 
 @protocol JiveAuthorizationDelegate;
 
@@ -28,7 +31,9 @@
 - (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
 
-- (void) search:(JiveSearchParams *)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) searchPeople:(JiveSearchPeopleRequestOptions *)params onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)params onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) searchContents:(JiveSearchContentsRequestOptions *)params onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;

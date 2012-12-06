@@ -10,4 +10,6 @@
 
 @implementation JivePoll
 
+@synthesize categories, options, tags, visibility, visibleToExternalContributors, voteCount, votes;
+
 @end

@@ -12,4 +12,6 @@
 + (id) instanceFromJSON:(NSDictionary*) JSON;
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON;
 
+@property (readonly) BOOL extraFieldsDetected;
+
 @end

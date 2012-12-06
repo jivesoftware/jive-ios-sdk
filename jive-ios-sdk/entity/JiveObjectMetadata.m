@@ -10,4 +10,7 @@
 
 @implementation JiveObjectMetadata
 
+@synthesize associatable, availability, commentable, content, description, example, fields, name;
+@synthesize place, plural, resourceLinks, since;
+
 @end

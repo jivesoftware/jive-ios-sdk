@@ -10,4 +10,6 @@
 
 @implementation JiveProject
 
+@synthesize creator, dueDate, projectStatus, startDate, tags;
+
 @end

@@ -10,4 +10,6 @@
 
 @implementation JiveTask
 
+@synthesize completed, dueDate, parentTask, subTasks, tags, visibleToExternalContributors;
+
 @end

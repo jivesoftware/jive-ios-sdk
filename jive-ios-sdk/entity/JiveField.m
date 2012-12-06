@@ -10,4 +10,7 @@
 
 @implementation JiveField
 
+@synthesize array, availability, description, displayName, editable, name, required, since, type;
+@synthesize unpublished;
+
 @end

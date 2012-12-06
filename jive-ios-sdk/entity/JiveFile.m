@@ -10,4 +10,7 @@
 
 @implementation JiveFile
 
+@synthesize authors, authorship, binaryURL, categories, tags, users, visibility;
+@synthesize visibleToExternalContributors;
+
 @end

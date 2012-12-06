@@ -10,4 +10,6 @@
 
 @implementation JiveDiscusson
 
+@synthesize categories, question, tags, users, visibility, visibleToExternalContributors;
+
 @end
