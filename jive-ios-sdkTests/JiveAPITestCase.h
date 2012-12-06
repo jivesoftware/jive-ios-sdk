@@ -8,17 +8,16 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
-//#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <UIKit/UIKit.h>
 
+#import "JiveAsyncTestCase.h"
 #import "Jive.h"
 #import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
+#import "OCMockObject+JiveAuthorizationDelegate.h"
 
-@interface JiveAPITestCase : SenTestCase
-
-- (void)waitForTimeout:(NSTimeInterval)timeout;
+@interface JiveAPITestCase : JiveAsyncTestCase
 
 - (id) mockJiveURLDelegate:(NSURL*) url returningContentsOfFile:(NSString*) path;
 - (id) mockJiveAuthenticationDelegate:(NSString*) username password:(NSString*) password;

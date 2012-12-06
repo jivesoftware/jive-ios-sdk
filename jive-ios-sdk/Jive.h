@@ -17,6 +17,7 @@
 #import "JiveSearchPlacesRequestOptions.h"
 #import "JiveSearchContentsRequestOptions.h"
 
+
 @protocol JiveAuthorizationDelegate;
 
 @interface Jive : NSObject
@@ -37,7 +38,9 @@
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
+
 @end
 
 @protocol JiveAuthorizationDelegate <NSObject>

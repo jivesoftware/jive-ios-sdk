@@ -53,20 +53,6 @@
     [[[mockJiveURLResponseDelegate expect] andReturn:mockResponseData] responseBodyForRequest];
     
     return mockJiveURLResponseDelegate;
-    
-}
-
-// From https://github.com/akisute/SenAsyncTestCase/blob/master/SenAsyncTestCase.m
-- (void)waitForTimeout:(NSTimeInterval)timeout
-{
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
-    NSDate *dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
-    
-    while ([loopUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:dt];
-        dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
-    }
 }
 
 @end
