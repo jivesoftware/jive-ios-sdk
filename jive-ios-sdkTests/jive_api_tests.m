@@ -17,6 +17,8 @@
 #import "JiveInboxOptions.h"
 #import "JivePagedRequestOptions.h"
 
+#import "OCMockObject+MockJiveURLResponseDelegate.h"
+
 @implementation jive_api_tests
 
 - (void)setUp
@@ -59,7 +61,6 @@
 }
 
 - (void) testInboxServiceCall {
-    
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
     [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
@@ -77,6 +78,23 @@
     
     [self waitForTimeout:5.0];
 }
+
+//- (void) testMarkAsReadWithTwoUnread {
+//    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+//    id mockJiveURLResponseDeelgate = [OCMockObject mockJiveURLResponseDelegate];
+//    [mockJiveURLResponseDelegate expectResponseWithContentsOfFileAtPath:<#(NSString *)#> forRequestWithHTTPMethod:<#(NSString *)#> forURL:<#(NSURL *)#>]
+//    
+//    __block NSArray *inboxEntries = nil;
+//    [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
+//        inboxEntries = returnedInboxEntries;
+//    } onError:^(NSError *error) {
+//        STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+//    }];
+//    
+//    [self waitForTimeout:5.0];
+//    
+//    
+//}
 
 - (void) testMyServiceCall {
     

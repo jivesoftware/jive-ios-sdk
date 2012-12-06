@@ -30,20 +30,41 @@ static id<MockJiveURLResponseDelegate> _delegate;
 }
 
 - (void) startLoading {
-    
 	id<NSURLProtocolClient> client = [self client];
     
     NSAssert(_delegate, @"MockJiveURLResponseDelegate cannot be nil!");
-    NSAssert([_delegate respondsToSelector:@selector(responseForRequest)],
-             @"MockJiveURLResponseDelegate does not repsond to responseForRequest");
-    NSAssert([_delegate respondsToSelector:@selector(responseBodyForRequest)],
-             @"MockJiveURLResponseDelegate does not repsond to responseBodyForRequest");
-    NSAssert([_delegate respondsToSelector:@selector(errorForRequest)],
-             @"MockJiveURLResponseDelegate does not repsond to errorForRequest");
     
-    NSHTTPURLResponse *response = [_delegate responseForRequest];
-    NSData* data = [_delegate responseBodyForRequest];
-    NSError* error = [_delegate errorForRequest];
+    
+    NSHTTPURLResponse *response;
+    NSData* data;
+    NSError* error;
+    if ([_delegate respondsToSelector:@selector(responseForRequestWithHTTPMethod:forURL:)]) {
+        NSAssert([_delegate respondsToSelector:@selector(responseBodyForRequestWithHTTPMethod:forURL:)],
+                 @"MockJiveURLResponseDelegate does not repsond to responseBodyForRequest");
+        NSAssert([_delegate respondsToSelector:@selector(errorForRequestWithHTTPMethod:forURL:)],
+                 @"MockJiveURLResponseDelegate does not repsond to errorForRequest");
+        
+        NSURLRequest *request = [self request];
+        NSString *HTTPMethod = [request HTTPMethod];
+        NSURL *URL = [request URL];
+        response = [_delegate responseForRequestWithHTTPMethod:HTTPMethod
+                                                        forURL:URL];
+        data = [_delegate responseBodyForRequestWithHTTPMethod:HTTPMethod
+                                                        forURL:URL];
+        error = [_delegate errorForRequestWithHTTPMethod:HTTPMethod
+                                                  forURL:URL];
+    } else {
+        NSAssert([_delegate respondsToSelector:@selector(responseForRequest)],
+                 @"MockJiveURLResponseDelegate does not repsond to responseForRequest");
+        NSAssert([_delegate respondsToSelector:@selector(responseBodyForRequest)],
+                 @"MockJiveURLResponseDelegate does not repsond to responseBodyForRequest");
+        NSAssert([_delegate respondsToSelector:@selector(errorForRequest)],
+                 @"MockJiveURLResponseDelegate does not repsond to errorForRequest");
+        
+        response = [_delegate responseForRequest];
+        data = [_delegate responseBodyForRequest];
+        error = [_delegate errorForRequest];
+    }
     
     NSAssert(nil != response || nil != error, @"responseForRequest and errorForRequest cannot both return nil! Be sure to mock MockJiveURLResponseDelegate in your unit tests appropriately");
     
@@ -55,7 +76,6 @@ static id<MockJiveURLResponseDelegate> _delegate;
     [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
     [client URLProtocol:self didLoadData:data];
     [client URLProtocolDidFinishLoading:self];
-        
 }
 
 - (void) stopLoading {

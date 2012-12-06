@@ -15,6 +15,7 @@
 #import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
+#import "OCMockObject+JiveAuthorizationDelegate.h"
 
 @interface JiveAPITestCase : SenTestCase
 

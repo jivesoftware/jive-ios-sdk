@@ -1,0 +1,1464 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "list" : [ {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/dms/153160",
+              "displayName" : "Will you please start the sprint in JIRA? It requires administrator privileges, and we can't move...",
+              "objectType" : "jive:dm",
+              "summary" : "Will you please start the sprint in JIRA? It requires administrator privileges, and we can't move stories on the board until the sprint is started.  Thanks!",
+              "url" : "https://brewspace.jiveland.com/inbox/dm/153160",
+              "published" : "2012-12-06T15:30:54.271+0000",
+              "updated" : "2012-12-06T15:30:54.271+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> created <a href=\"https://brewspace.jiveland.com/inbox/dm/153160\">Direct Message</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Will you please start the sprint in JIRA? It requires administrator privileges, and we can't move...",
+              "url" : "https://brewspace.jiveland.com/inbox/dm/153160",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T15:30:54.323+0000",
+              "verb" : "jive:created",
+              "jive" : {
+              "collection" : "109016030-153160",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/dms/153160/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:30:54.323+0000"
+              },
+              "updated" : "2012-12-06T15:30:54.271+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494446",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "I didn't change any of Rob's estimates, but I added some questions. I've highlighted them in red. Please put your answers below them in red and feel free to unhighlight my questions. Answers to these questions may result in changes to estimates.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494446",
+              "published" : "2012-12-06T15:09:52.917+0000",
+              "updated" : "2012-12-06T15:09:52.917+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494446\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494446",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T15:09:53.126+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> modified <a href=\"https://brewspace.jiveland.com/docs/DOC-105140\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T15:09:02.711+0000",
+              "verb" : "jive:modified",
+              "jive" : {
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> modified <a href=\"https://brewspace.jiveland.com/docs/DOC-105140\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T15:07:06.480+0000",
+              "verb" : "jive:modified",
+              "jive" : {
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494161",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "I've added my feedback.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494161",
+              "published" : "2012-12-05T23:53:59.083+0000",
+              "updated" : "2012-12-05T23:53:59.083+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494161\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494161",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+              "displayName" : "Rob Derstadt",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+              "published" : "2010-12-21T15:50:10.556+0000",
+              "updated" : "2012-12-06T07:09:31.311+0000"
+              },
+              "published" : "2012-12-05T23:53:59.194+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> modified <a href=\"https://brewspace.jiveland.com/docs/DOC-105140\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+              "displayName" : "Rob Derstadt",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+              "published" : "2010-12-21T15:50:10.556+0000",
+              "updated" : "2012-12-06T07:09:31.311+0000"
+              },
+              "published" : "2012-12-05T23:53:31.265+0000",
+              "verb" : "jive:modified",
+              "jive" : {
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494108",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "they are person sprint, or 80h, someone working 1 full sprint on it.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494108",
+              "published" : "2012-12-05T23:07:23.534+0000",
+              "updated" : "2012-12-05T23:07:23.534+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494108\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494108",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+              "displayName" : "Philippe Van Nuijs",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+              "published" : "2010-12-29T20:03:39.237+0000",
+              "updated" : "2012-12-06T14:32:31.341+0000"
+              },
+              "published" : "2012-12-05T23:07:23.692+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494114",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "Per Philippe Van Nuijs these are \"person sprints\", i.e. one unit represents one person working solely on this task for one sprint. So 2 would either be two developers working on a task for one sprint or one person working on the same task for 2 sprints.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494114",
+              "published" : "2012-12-05T23:06:57.306+0000",
+              "updated" : "2012-12-05T23:06:57.306+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494114\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494114",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+              "displayName" : "Rob Derstadt",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+              "published" : "2010-12-21T15:50:10.556+0000",
+              "updated" : "2012-12-06T07:09:31.311+0000"
+              },
+              "published" : "2012-12-05T23:06:58.149+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494083",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "I'm locked out of LDAP now, so I can only get on with my phone. What do are the units for these estimates? Are these story points? Is 1 point roughly equal to 1 day?",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494083",
+              "published" : "2012-12-05T22:28:03.982+0000",
+              "updated" : "2012-12-05T22:28:03.982+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494083\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494083",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T22:28:04.124+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494019",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "Also take into account that this is the estimation for Q1 2013, so some of the items ( like inbox ) are already half completed. So estimate the leftover time in Q1 to complete.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494019",
+              "published" : "2012-12-05T21:58:42.801+0000",
+              "updated" : "2012-12-05T21:58:42.801+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-105140#comment-494019\">Estimates</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "Estimates",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494019",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+              "displayName" : "Philippe Van Nuijs",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+              "published" : "2010-12-29T20:03:39.237+0000",
+              "updated" : "2012-12-06T14:32:31.341+0000"
+              },
+              "published" : "2012-12-05T21:58:42.889+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370230/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494017",
+              "displayName" : "Estimates",
+              "objectType" : "jive:comment",
+              "summary" : "Heath Borders and Rob Derstadt can you look at the estimates in the IPad section and let me know if they are ballpark OK. Please update in RED if not.",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140#comment-494017",
+              "published" : "2012-12-05T21:54:09.356+0000",
+              "updated" : "2012-12-05T21:56:27.891+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> mentioned ",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+              "displayName" : "Philippe Van Nuijs",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+              "published" : "2010-12-29T20:03:39.237+0000",
+              "updated" : "2012-12-06T14:32:31.341+0000"
+              },
+              "published" : "2012-12-05T21:56:27.995+0000",
+              "verb" : "jive:mentioned",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370230",
+              "displayName" : "Estimates",
+              "objectType" : "jive:document",
+              "summary" : "Work Item\"done done\" effort ( Developer - sprint)ConfidenceNotesMOBILEBoulder: Citi &amp; FinServTotal: 7 Good integration for Citi280Oversight and management of Virtusa.6.0.1 on-prem plugin as today480on-prem push notification code in",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-105140",
+              "published" : "2012-12-05T21:53:32.304+0000",
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              },
+              "collection" : "102-105140",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/mentions/3949139/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:09:53.126+0000"
+              },
+              "updated" : "2012-12-06T15:09:02.234+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494444",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:comment",
+              "summary" : "I'm remote. I've never had my iOS devices on the Jive wireless network, and I removed my Jive exchange accounts from my Android and iOS devices in the hope of stopping this problem. Everything seems to be working now. At some point, I'd like to get",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494444",
+              "published" : "2012-12-06T15:01:35.655+0000",
+              "updated" : "2012-12-06T15:01:35.655+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> commented on <a href=\"https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494444\">wallentry</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494444",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T15:01:35.716+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370293",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:update",
+              "summary" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours. #frustrated &nbsp; &nbsp;",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "published" : "2012-12-05T23:18:49.504+0000",
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              },
+              "collection" : "1464927464-153059",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370293/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:01:35.716+0000"
+              },
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494431",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:comment",
+              "summary" : "James Cook - have you checked the logs for iPhone/iPad devices slamming AD with auth requests over Jive wireless network?&nbsp; Greg can show you this.",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494431",
+              "published" : "2012-12-06T14:50:33.444+0000",
+              "updated" : "2012-12-06T14:50:33.444+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/mike.westlund\">Mike Westlund</a> commented on <a href=\"https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494431\">wallentry</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494431",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3345",
+              "displayName" : "Mike Westlund",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3345/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/mike.westlund",
+              "published" : "2010-08-04T20:47:33.376+0000",
+              "updated" : "2012-12-06T15:16:10.015+0000"
+              },
+              "published" : "2012-12-06T14:50:34.334+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370293",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:update",
+              "summary" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours. #frustrated &nbsp; &nbsp;",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "published" : "2012-12-05T23:18:49.504+0000",
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              },
+              "collection" : "1464927464-153059",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370293/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-06T15:01:35.716+0000"
+              },
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494403",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:comment",
+              "summary" : "He did. We were working on it for a while yesterday, I was just hoping someone knew of a misbehaving application that I should kill. We don't know the cause.",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494403",
+              "published" : "2012-12-06T13:16:26.160+0000",
+              "updated" : "2012-12-06T13:16:26.160+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> commented on <a href=\"https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494403\">wallentry</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494403",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T13:16:26.290+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370293",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:update",
+              "summary" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours. #frustrated &nbsp; &nbsp;",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "published" : "2012-12-05T23:18:49.504+0000",
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              },
+              "collection" : "1464927464-153059",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370293/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:01:35.716+0000"
+              },
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494252",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:comment",
+              "summary" : "James Cook - reach out to Heath.",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494252",
+              "published" : "2012-12-06T02:15:02.043+0000",
+              "updated" : "2012-12-06T02:15:02.043+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/mike.westlund\">Mike Westlund</a> commented on <a href=\"https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494252\">wallentry</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059#comment-494252",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3345",
+              "displayName" : "Mike Westlund",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3345/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/mike.westlund",
+              "published" : "2010-08-04T20:47:33.376+0000",
+              "updated" : "2012-12-06T15:16:10.015+0000"
+              },
+              "published" : "2012-12-06T02:15:03.653+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370293",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:update",
+              "summary" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours. #frustrated &nbsp; &nbsp;",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "published" : "2012-12-05T23:18:49.504+0000",
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              },
+              "collection" : "1464927464-153059",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370293/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:01:35.716+0000"
+              },
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/370293",
+              "displayName" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "objectType" : "jive:update",
+              "summary" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours. #frustrated &nbsp; &nbsp;",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "published" : "2012-12-05T23:18:49.504+0000",
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> created <a href=\"https://brewspace.jiveland.com/people/heath.borders/status/153059\">wallentry</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "title" : "My LDAP keeps locking because of a misbehaving app, and I've been locked out for 3 hours....",
+              "url" : "https://brewspace.jiveland.com/people/heath.borders/status/153059",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T23:18:49.592+0000",
+              "verb" : "jive:created",
+              "jive" : {
+              "collection" : "1464927464-153059",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/370293/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T15:01:35.716+0000"
+              },
+              "updated" : "2012-12-05T23:18:49.504+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/comments/494443",
+              "displayName" : "Find view - Full Filter UI",
+              "objectType" : "jive:comment",
+              "summary" : "Are we planning to show a separate pink filter button for every filter type? Won't that obscure all the area of the search bar fairly quickly? Have we considered moving the filters beneath the search bar so they could wrap?",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-100293#comment-494443",
+              "published" : "2012-12-06T14:44:56.150+0000",
+              "updated" : "2012-12-06T14:44:56.150+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-100293#comment-494443\">Find view - Full Filter UI</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Find view - Full Filter UI",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-100293#comment-494443",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-06T14:44:56.382+0000",
+              "verb" : "jive:commented",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351717",
+              "displayName" : "Find view - Full Filter UI",
+              "objectType" : "jive:document",
+              "summary" : "Browse and Search finally hook up and make an amazing baby&nbsp;  For as long as there has been Jive, there has been Browse and there has been Search. While separate in intent (supposedly), the technical aspects of each have made these pages a little too",
+              "url" : "https://brewspace.jiveland.com/docs/DOC-100293",
+              "published" : "2012-10-18T18:31:43.869+0000",
+              "updated" : "2012-10-18T18:39:09.690+0000"
+              },
+              "collection" : "102-100293",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/351717/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T14:44:56.382+0000"
+              },
+              "updated" : "2012-10-18T18:39:09.690+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/announcements/2776",
+              "displayName" : "Brewspace Upgrade is Complete.",
+              "objectType" : "jive:announcement",
+              "summary" : "Brewspace Upgrade is Complete.  Brewspace has been upgraded to 7.0 Yeti RC1.  If you find issues please open a bug in General Issue Tracking.  Thank you for your time,  The EngServ Team",
+              "url" : "https://brewspace.jiveland.com/",
+              "published" : "2012-12-06T05:43:36.143+0000",
+              "updated" : "2012-12-06T05:43:36.151+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/chris.sauer\">Chris Sauer</a> created <a href=\"https://brewspace.jiveland.com/\">Brewspace Upgrade is Complete.</a> in <a href=\"https://brewspace.jiveland.com/\">Brewspace</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/58738",
+              "displayName" : "Brewspace",
+              "objectType" : "jive:space",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/58738/avatar"
+              },
+              "summary" : "Rockin' it on 6.0",
+              "url" : "https://brewspace.jiveland.com/",
+              "published" : "1970-01-01T00:00:00.000+0000",
+              "updated" : "2012-12-06T08:10:00.167+0000"
+              },
+              "title" : "Brewspace Upgrade is Complete.",
+              "url" : "https://brewspace.jiveland.com/",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/4591",
+              "displayName" : "Chris Sauer",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/4591/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/chris.sauer",
+              "published" : "2012-02-01T08:00:04.655+0000",
+              "updated" : "2012-12-06T05:43:36.766+0000"
+              },
+              "published" : "2012-12-06T05:43:36.187+0000",
+              "verb" : "jive:created",
+              "jive" : {
+              "collection" : "22-2776",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/announcements/2776/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T05:43:36.187+0000"
+              },
+              "updated" : "2012-12-06T05:43:36.151+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/announcements/2775",
+              "displayName" : "Brewspace Downtime for Upgrade Tonight 12-5-12 @ 9PM PT",
+              "objectType" : "jive:announcement",
+              "summary" : "Brewspace Downtime for Upgrade Tonight 12-5-12 @ 9PM PT  This upgrade should take ~45 Min.  Please save your data.  Thank you for your time,  The EngServ Team",
+              "url" : "https://brewspace.jiveland.com/",
+              "published" : "2012-12-06T00:18:00.920+0000",
+              "updated" : "2012-12-06T08:10:00.114+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/chris.sauer\">Chris Sauer</a> created <a href=\"https://brewspace.jiveland.com/\">Brewspace Downtime for Upgrade Tonight 12-5-12 @ 9PM PT</a> in <a href=\"https://brewspace.jiveland.com/\">Brewspace</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/58738",
+              "displayName" : "Brewspace",
+              "objectType" : "jive:space",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/58738/avatar"
+              },
+              "summary" : "Rockin' it on 6.0",
+              "url" : "https://brewspace.jiveland.com/",
+              "published" : "1970-01-01T00:00:00.000+0000",
+              "updated" : "2012-12-06T08:10:00.167+0000"
+              },
+              "title" : "Brewspace Downtime for Upgrade Tonight 12-5-12 @ 9PM PT",
+              "url" : "https://brewspace.jiveland.com/",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/4591",
+              "displayName" : "Chris Sauer",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/4591/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/chris.sauer",
+              "published" : "2012-02-01T08:00:04.655+0000",
+              "updated" : "2012-12-06T05:43:36.766+0000"
+              },
+              "published" : "2012-12-06T00:18:01.038+0000",
+              "verb" : "jive:created",
+              "jive" : {
+              "collection" : "22-2775",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/announcements/2775/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-06T00:18:01.038+0000"
+              },
+              "updated" : "2012-12-06T08:10:00.114+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578962",
+              "displayName" : "Re: Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "In the case of likes, the parent is \"latest likes\" or \"latest acclaim\" (the digest itself), which is still the top-level roll-up. Within that \"parent,\" we roll up likes per content object at the UI layer, so that's something which needs to be done",
+              "url" : "https://brewspace.jiveland.com/message/578962#578962",
+              "published" : "2012-12-05T21:02:00.916+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/kevin.karpenske\">Kevin Karpenske</a> replied to <a href=\"https://brewspace.jiveland.com/message/578962#578962\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578962#578962",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3765",
+              "displayName" : "Kevin Karpenske",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3765/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/kevin.karpenske",
+              "published" : "2011-03-16T18:52:28.776+0000",
+              "updated" : "2012-12-06T15:33:06.594+0000"
+              },
+              "published" : "2012-12-05T21:02:01.265+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : false,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578933",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "But for replies and comments, the common object is usually the PARENT, so should I use the PARENT as long as it is non-null, and then the object otherwise?",
+              "url" : "https://brewspace.jiveland.com/message/578933#578933",
+              "published" : "2012-12-05T20:47:50.013+0000",
+              "updated" : "2012-12-05T20:47:50.013+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> replied to <a href=\"https://brewspace.jiveland.com/message/578933#578933\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578933#578933",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T20:47:50.244+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578955",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "Correct, the InboxEntryEntity's (or ActivityEntity's) \"object\" field will be the liked object in the v3 API, so you can roll up common users around that.",
+              "url" : "https://brewspace.jiveland.com/message/578955#578955",
+              "published" : "2012-12-05T20:41:09.550+0000",
+              "updated" : "2012-12-05T20:41:34.314+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/kevin.karpenske\">Kevin Karpenske</a> replied to <a href=\"https://brewspace.jiveland.com/message/578955#578955\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578955#578955",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3765",
+              "displayName" : "Kevin Karpenske",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3765/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/kevin.karpenske",
+              "published" : "2011-03-16T18:52:28.776+0000",
+              "updated" : "2012-12-06T15:33:06.594+0000"
+              },
+              "published" : "2012-12-05T20:41:09.821+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578891",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "My question is about what data fields in the InboxEntry REST response I can use to determine this. For example, LIKEs of status updates (CONTENTs?) don't have a PARENT set, but do share a common OBJECT.",
+              "url" : "https://brewspace.jiveland.com/message/578891#578891",
+              "published" : "2012-12-05T20:09:27.322+0000",
+              "updated" : "2012-12-05T20:09:27.322+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> replied to <a href=\"https://brewspace.jiveland.com/message/578891#578891\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578891#578891",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T20:09:27.677+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578889",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "The parent object that LATEST LIKES uses is the object that was LIKED- comment, reply or top-level content type. Then wraps up the actors. Something similar is done in LATEST ACCLAIM and SOCIAL NEWS. All of which is coded right into the webApp.  &nbsp;",
+              "url" : "https://brewspace.jiveland.com/message/578889#578889",
+              "published" : "2012-12-05T20:01:08.643+0000",
+              "updated" : "2012-12-05T20:01:08.643+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/mike.camacho\">Mike Camacho</a> replied to <a href=\"https://brewspace.jiveland.com/message/578889#578889\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578889#578889",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/2837",
+              "displayName" : "Mike Camacho",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/2837/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/mike.camacho",
+              "published" : "2009-09-17T17:20:26.934+0000",
+              "updated" : "2012-12-06T15:15:58.154+0000"
+              },
+              "published" : "2012-12-05T20:01:10.742+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578861",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "I would recommend Mike Camacho",
+              "url" : "https://brewspace.jiveland.com/message/578861#578861",
+              "published" : "2012-12-05T19:45:46.344+0000",
+              "updated" : "2012-12-05T19:45:46.344+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/brian.gil\">Brian Gil</a> replied to <a href=\"https://brewspace.jiveland.com/message/578861#578861\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578861#578861",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3219",
+              "displayName" : "Brian Gil",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3219/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/brian.gil",
+              "published" : "2010-06-04T23:33:10.065+0000",
+              "updated" : "2012-12-06T14:36:42.684+0000"
+              },
+              "published" : "2012-12-05T19:45:46.819+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578753",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "We can buuld something like that. Do you or Philippe Van Nuijs know who I can talk to about the webapp's inbox business logic? There are multiple different objects we can use as a message's \"parent.\"",
+              "url" : "https://brewspace.jiveland.com/message/578753#578753",
+              "published" : "2012-12-05T18:58:33.931+0000",
+              "updated" : "2012-12-05T18:58:33.931+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> replied to <a href=\"https://brewspace.jiveland.com/message/578753#578753\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578753#578753",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T18:58:34.308+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578770",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "Oh, interesting.&nbsp; I thought there was a way to roll up the Acclaim on my activity which is more than just likes on my content as it includes bookmarks and perhaps other stuff.&nbsp; I think we should roll up the likes that are all for the same",
+              "url" : "https://brewspace.jiveland.com/message/578770#578770",
+              "published" : "2012-12-05T18:53:09.688+0000",
+              "updated" : "2012-12-05T18:53:09.688+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/brian.gil\">Brian Gil</a> replied to <a href=\"https://brewspace.jiveland.com/message/578770#578770\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578770#578770",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/3219",
+              "displayName" : "Brian Gil",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/3219/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/brian.gil",
+              "published" : "2010-06-04T23:33:10.065+0000",
+              "updated" : "2012-12-06T14:36:42.684+0000"
+              },
+              "published" : "2012-12-05T18:53:10.257+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578457",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "There is no actual inbox entry for \"Positive Feedback on Your Contributions\". That is simply a different presentation for like's. Do you want to separate likes into their own entry like the web does, or roll them into any common parent?",
+              "url" : "https://brewspace.jiveland.com/message/578457#578457",
+              "published" : "2012-12-05T14:42:13.893+0000",
+              "updated" : "2012-12-05T14:42:13.893+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> replied to <a href=\"https://brewspace.jiveland.com/message/578457#578457\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578457#578457",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+              "displayName" : "Heath Borders",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/heath.borders",
+              "published" : "2012-11-16T23:25:33.658+0000",
+              "updated" : "2012-12-06T15:33:49.763+0000"
+              },
+              "published" : "2012-12-05T14:42:14.292+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              }, {
+              "object" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578011",
+              "displayName" : "Re: Inbox behavior",
+              "objectType" : "jive:message",
+              "summary" : "I like the swipe because tapping on a row should always open the document detail modal rather than navigate to another table view, w/ a swipe we can retain the standard tap behavior and allow power users more direct control to specifically where they're",
+              "url" : "https://brewspace.jiveland.com/message/578011#578011",
+              "published" : "2012-12-04T23:24:54.741+0000",
+              "updated" : "2012-12-04T23:24:54.741+0000"
+              },
+              "content" : "<a href=\"https://brewspace.jiveland.com/people/john.ellenich\">John Ellenich</a> replied to <a href=\"https://brewspace.jiveland.com/message/578011#578011\">Inbox behavior</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-for-ipad-working\">Jive for iPad (working)</a>",
+              "provider" : {
+              "displayName" : "Jive",
+              "objectType" : "jive:instance",
+              "url" : "https://brewspace.jiveland.com"
+              },
+              "target" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/places/340206",
+              "displayName" : "Jive for iPad (working)",
+              "objectType" : "jive:group",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/places/340206/avatar"
+              },
+              "summary" : "Sorry to bury everyone in tablet-related places. I need one I can own and Sonya's out now so I had to make a new one. \r\n\r\nThis group is for John and Buck to present designs & documents related to the new native iPad app, and that alone. ",
+              "url" : "https://brewspace.jiveland.com/groups/jive-for-ipad-working",
+              "published" : "2012-09-17T16:33:26.053+0000",
+              "updated" : "2012-12-06T14:44:56.189+0000"
+              },
+              "title" : "Re: Inbox behavior",
+              "url" : "https://brewspace.jiveland.com/message/578011#578011",
+              "actor" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+              "displayName" : "John Ellenich",
+              "objectType" : "jive:person",
+              "image" : {
+              "url" : "https://brewspace.jiveland.com/api/core/v3/people/5151/avatar"
+              },
+              "url" : "https://brewspace.jiveland.com/people/john.ellenich",
+              "published" : "2012-09-01T02:57:18.008+0000",
+              "updated" : "2012-12-06T00:59:21.890+0000"
+              },
+              "published" : "2012-12-04T23:24:54.925+0000",
+              "verb" : "jive:replied",
+              "jive" : {
+              "parent" : {
+              "id" : "https://brewspace.jiveland.com/api/core/v3/contents/369630",
+              "displayName" : "Inbox behavior",
+              "objectType" : "jive:discussion",
+              "summary" : "Heath Borders I noticed a couple things in the Inbox view which may not be indicative of the final behavior but thought it would be best to call them out anyway. &nbsp;  I noticed that we aren't currently rolling up the items.&nbsp; For instance, I have",
+              "url" : "https://brewspace.jiveland.com/thread/112384",
+              "published" : "2012-12-04T22:06:39.899+0000",
+              "updated" : "2012-12-05T21:02:00.916+0000"
+              },
+              "collection" : "2-577856",
+              "update" : "https://brewspace.jiveland.com/api/core/v3/contents/369630/read",
+              "read" : true,
+              "collectionUpdated" : "2012-12-05T21:02:01.265+0000"
+              },
+              "updated" : "2012-12-04T22:06:39.899+0000"
+              } ],
+    "itemsPerPage" : 25,
+    "links" : {
+        "next" : "https://brewspace.jiveland.com/api/core/v3/inbox?fields=%40all&count=25&before=2012-12-05T21%3A02%3A01.265%2B0000",
+        "previous" : "https://brewspace.jiveland.com/api/core/v3/inbox?fields=%40all&count=25&after=2012-12-06T15%3A30%3A54.323%2B0000"
+    },
+    "unread" : 4
+}

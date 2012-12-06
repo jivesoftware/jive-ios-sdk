@@ -53,7 +53,6 @@
     [[[mockJiveURLResponseDelegate expect] andReturn:mockResponseData] responseBodyForRequest];
     
     return mockJiveURLResponseDelegate;
-    
 }
 
 // From https://github.com/akisute/SenAsyncTestCase/blob/master/SenAsyncTestCase.m

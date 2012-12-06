@@ -14,6 +14,7 @@
 #import "JiveSearchParams.h"
 #import "JivePagedRequestOptions.h"
 
+
 @protocol JiveAuthorizationDelegate;
 
 @interface Jive : NSObject
@@ -32,7 +33,10 @@
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) markAsRead:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error;
+- (void) markAsUnread:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error;
+
 @end
 
 @protocol JiveAuthorizationDelegate <NSObject>

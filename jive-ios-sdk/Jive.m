@@ -14,6 +14,8 @@
 #import "JivePerson.h"
 #import "JivePlace.h"
 #import "NSData+JiveBase64.h"
+#import "JiveExtension.h"
+#import "NSError+Jive.h"
 
 @interface Jive() {
     
@@ -30,8 +32,7 @@
 
 @synthesize jiveInstance = _jiveInstance;
 
-+ (void)initialize
-{
++ (void)initialize {
 	if([[NSData class] instanceMethodSignatureForSelector:@selector(jive_base64EncodedString)] == NULL)
 		[NSException raise:NSInternalInconsistencyException format:@"** Expected method not present; the method jive_base64EncodedString: is not implemented by NSData. If you see this exception it is likely that you are using the static library version of Jive and your project is not configured correctly to load categories from static libraries. Did you forget to add the -ObjC and -all_load linker flags?"];
 }
@@ -53,8 +54,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma Core API Methods
+#pragma mark - public API
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
@@ -75,6 +75,21 @@
 }
 
 
+- (void) markAsRead:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error {
+    [self markInboxEntries:inboxEntries
+          withExpendedRead:NO
+           usingHTTPMethod:@"DELETE"
+           onCompleteBlock:complete
+              onErrorBlock:error];
+}
+
+- (void) markAsUnread:(NSArray *)inboxEntries onComplete:(void(^)(void))complete onError:(void(^)(NSError *))error {
+    [self markInboxEntries:inboxEntries
+          withExpendedRead:YES
+           usingHTTPMethod:@"POST"
+           onCompleteBlock:complete
+              onErrorBlock:error];
+}
 
 - (void) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     
@@ -119,13 +134,11 @@
     [operation start];
 }
 
-- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
-{
+- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error {
     [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 
 - (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
-    
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?%@" options:nil andArgs:[params facet],[params toQueryString],nil];
     
     
@@ -145,8 +158,8 @@
 }
 
 
-#pragma mark -
-#pragma mark Utility Methods
+#pragma mark - private API
+
 - (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
     
     NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
@@ -159,15 +172,73 @@
                                relativeToURL:_jiveInstance];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
-    
-    if(_delegate && [_delegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
-        JiveCredentials *credentials = [_delegate credentialsForJiveInstance:requestURL];
-        [credentials applyToRequest:request];
-    } 
+    [self maybeApplyCredentialsToMutableURLRequest:request
+                                            forURL:requestURL];
     
     return request;
 }
 
+- (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
+                                           forURL:(NSURL *)URL {
+    if(_delegate && [_delegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
+        JiveCredentials *credentials = [_delegate credentialsForJiveInstance:URL];
+        [credentials applyToRequest:mutableURLRequest];
+    }
+}
+
+- (void) markInboxEntries:(NSArray *)inboxEntries
+         withExpendedRead:(BOOL)expectedRead
+          usingHTTPMethod:(NSString *)HTTPMethod
+          onCompleteBlock:(void(^)(void))completeBlock
+             onErrorBlock:(void(^)(NSError *))errorBlock {
+    NSMutableArray *incompleteOperationUpdateURLs = [NSMutableArray new];
+    NSMutableArray *errors = [NSMutableArray new];
+    
+    void (^markOperationCompleteBlock)(NSURLRequest *, NSError *) = ^(NSURLRequest *request, NSError *error) {
+        [incompleteOperationUpdateURLs removeObject:[request URL]];
+        if (error) {
+            [errors addObject:error];
+        }
+        if ([incompleteOperationUpdateURLs count] == 0) {
+            if ([errors count] == 0) {
+                if (completeBlock) {
+                    completeBlock();
+                }
+            } else {
+                if (errorBlock) {
+                    errorBlock([NSError jive_errorWithMultipleErrors:errors]);
+                }
+            }
+        }
+    };
+    
+    NSMutableArray *operations = [NSMutableArray new];
+    for (JiveInboxEntry *inboxEntry in inboxEntries) {
+        if ((inboxEntry.jive.read == expectedRead) &&
+            inboxEntry.jive.update) {
+            NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:inboxEntry.jive.update];
+            [markRequest setHTTPMethod:HTTPMethod];
+            [self maybeApplyCredentialsToMutableURLRequest:markRequest
+                                                    forURL:inboxEntry.jive.update];
+            [incompleteOperationUpdateURLs addObject:inboxEntry.jive.update];
+            NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
+                                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                              markOperationCompleteBlock(request, nil);
+                                                          }
+                                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                              markOperationCompleteBlock(request, error);
+                                                          }];
+            [operations addObject:operation];
+        }
+    }
+    
+    /*
+     * It is extremely unlikely, but starting the operations after setting them all up guarantees that
+     * One won't finish in the middle of setup and trigger a premature 
+     * [incompleteOperationUpdateURLs count] == 0 state.
+     */
+    [operations makeObjectsPerformSelector:@selector(start)];
+}
 
 - (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
     

@@ -10,9 +10,14 @@
 
 @protocol MockJiveURLResponseDelegate <NSObject>
 
+@optional
 - (NSHTTPURLResponse*) responseForRequest;
 - (NSData*) responseBodyForRequest;
 - (NSError*) errorForRequest;
+
+- (NSHTTPURLResponse*) responseForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
+- (NSData*) responseBodyForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
+- (NSError*) errorForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
 
 @end
 
