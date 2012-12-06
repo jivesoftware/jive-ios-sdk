@@ -10,4 +10,6 @@
 
 @implementation JiveGroup
 
+@synthesize creator, groupType, memberCount, tags;
+
 @end

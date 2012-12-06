@@ -10,4 +10,7 @@
 
 @implementation JiveDocument
 
+@synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
+@synthesize tags, users, visibility, visibleToExternalContributors;
+
 @end

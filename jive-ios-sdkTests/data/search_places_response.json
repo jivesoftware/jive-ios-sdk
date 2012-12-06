@@ -1,0 +1,1101 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+    "type" : "space",
+    "locale" : "en_US",
+    "childCount" : 0,
+    "name" : "Search-1205",
+    "displayName" : "search-1205",
+    "description" : "secret space search test",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 3,
+    "published" : "2012-11-28T19:37:58.796+0000",
+    "updated" : "2012-11-28T19:37:59.350+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "secret space search <em class=\"jive-hilite\">test</em>",
+    "highlightSubject" : "Search-1205",
+    "parentPlace" : {
+      "name" : "Jive",
+      "id" : "1",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+      "html" : "http://gigi-eae03.eng.jiveland.com/"
+    },
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1008)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/search-1205",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1009",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1008/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2004"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030",
+    "type" : "space",
+    "locale" : "en",
+    "childCount" : 0,
+    "name" : "CSSubSpace",
+    "displayName" : "cssubspace",
+    "description" : "sub space for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:13:52.381+0000",
+    "updated" : "2012-11-30T19:13:52.449+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "sub space for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSSubSpace",
+    "parentPlace" : {
+      "name" : "CSTestSpace",
+      "id" : "2006",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030",
+      "html" : "http://gigi-eae03.eng.jiveland.com/community/cstestspace"
+    },
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1032)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/cstestspace/cssubspace",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1033",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1032/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2007"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+    "type" : "space",
+    "locale" : "en",
+    "childCount" : 1,
+    "name" : "CSTestSpace",
+    "displayName" : "cstestspace",
+    "description" : "space for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 2,
+    "published" : "2012-11-30T19:13:50.518+0000",
+    "updated" : "2012-11-30T19:13:57.923+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "space for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSTestSpace",
+    "parentPlace" : {
+      "name" : "Jive",
+      "id" : "1",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+      "html" : "http://gigi-eae03.eng.jiveland.com/"
+    },
+    "tags" : [ "csspacetag1", "csspacetag2" ],
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1030)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/cstestspace",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1031",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2006"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+    "type" : "space",
+    "locale" : "en",
+    "childCount" : 0,
+    "name" : "CS-Hyphen-Space",
+    "displayName" : "cs-hyphen-space",
+    "description" : "hyphen space for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:13:59.780+0000",
+    "updated" : "2012-11-30T19:13:59.842+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "hyphen space for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CS-Hyphen-Space",
+    "parentPlace" : {
+      "name" : "Jive",
+      "id" : "1",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+      "html" : "http://gigi-eae03.eng.jiveland.com/"
+    },
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1044)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/cs-hyphen-space",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1045",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1044/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2008"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+    "type" : "space",
+    "locale" : "en",
+    "childCount" : 0,
+    "name" : "CSNumber1Space",
+    "displayName" : "csnumber1space",
+    "description" : "number space for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:14:00.739+0000",
+    "updated" : "2012-11-30T19:14:01.200+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "number space for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSNumber1Space",
+    "parentPlace" : {
+      "name" : "Jive",
+      "id" : "1",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1000",
+      "html" : "http://gigi-eae03.eng.jiveland.com/"
+    },
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1046)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/csnumber1space",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1047",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2009"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030",
+    "type" : "project",
+    "locale" : "en",
+    "startDate" : "2012-11-30T19:13:53.165+0000",
+    "dueDate" : "2012-12-17T19:54:22.095+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Mr",
+        "familyName" : "CSTestUser",
+        "formatted" : "Mr CSTestUser"
+      },
+      "type" : "person",
+      "displayName" : "Mr CSTestUser",
+      "jive" : {
+        "level" : {
+          "name" : "Wayfarer",
+          "points" : 50
+        },
+        "username" : "cstestuser"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+          "allowed" : [ "GET", "DELETE", "PUT" ]
+        },
+        "avatar" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+          "allowed" : [ "GET" ]
+        },
+        "streams" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "followingIn" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2005"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "CSTestProject",
+    "displayName" : "cstestproject",
+    "description" : "project for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "projects", "polls", "discussions", "documents", "files", "tasks" ],
+    "viewCount" : 2,
+    "published" : "2012-11-30T19:13:53.213+0000",
+    "updated" : "2012-11-30T19:13:54.470+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "cstestproject project for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSTestProject",
+    "parentPlace" : {
+      "name" : "CSTestSpace",
+      "id" : "2006",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1030",
+      "html" : "http://gigi-eae03.eng.jiveland.com/community/cstestspace"
+    },
+    "tags" : [ "csprojtag1", "csprojtag2" ],
+    "followerCount" : 1,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/checkpoints/1034",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1034)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/places",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1035",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/cstestspace/projects/cstestproject",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/activities",
+        "allowed" : [ "GET" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1034/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1001"
+  }, {
+    "type" : "group",
+    "memberCount" : 1,
+    "creator" : {
+      "name" : {
+        "givenName" : "Mr",
+        "familyName" : "CSTestUser",
+        "formatted" : "Mr CSTestUser"
+      },
+      "type" : "person",
+      "displayName" : "Mr CSTestUser",
+      "jive" : {
+        "level" : {
+          "name" : "Wayfarer",
+          "points" : 50
+        },
+        "username" : "cstestuser"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+          "allowed" : [ "GET", "DELETE", "PUT" ]
+        },
+        "avatar" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+          "allowed" : [ "GET" ]
+        },
+        "streams" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "followingIn" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2005"
+    },
+    "groupType" : "OPEN",
+    "name" : "CSTestGroup1",
+    "displayName" : "cstestgroup1",
+    "description" : "group for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:13:48.060+0000",
+    "updated" : "2012-11-30T19:13:48.060+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : " group for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSTestGroup1",
+    "tags" : [ "csgrouptag1", "csgrouptag2" ],
+    "followerCount" : 1,
+    "resources" : {
+      "invites" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/invites/places/1024",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1024)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/places",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1025",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/groups/cstestgroup1",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/places/1024",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1024/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1004"
+  }, {
+    "type" : "group",
+    "memberCount" : 1,
+    "creator" : {
+      "name" : {
+        "givenName" : "Mr",
+        "familyName" : "CSTestUser",
+        "formatted" : "Mr CSTestUser"
+      },
+      "type" : "person",
+      "displayName" : "Mr CSTestUser",
+      "jive" : {
+        "level" : {
+          "name" : "Wayfarer",
+          "points" : 50
+        },
+        "username" : "cstestuser"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+          "allowed" : [ "GET", "DELETE", "PUT" ]
+        },
+        "avatar" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+          "allowed" : [ "GET" ]
+        },
+        "streams" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "followingIn" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2005"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "CSPrivateGroup1",
+    "displayName" : "csprivategroup1",
+    "description" : "private group for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:13:49.003+0000",
+    "updated" : "2012-11-30T19:13:49.003+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : " private group for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSPrivateGroup1",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "invites" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/invites/places/1026",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1026)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/places",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1027",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/groups/csprivategroup1",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/places/1026",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1026/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1005"
+  }, {
+    "type" : "group",
+    "memberCount" : 1,
+    "creator" : {
+      "name" : {
+        "givenName" : "Mr",
+        "familyName" : "CSTestUser",
+        "formatted" : "Mr CSTestUser"
+      },
+      "type" : "person",
+      "displayName" : "Mr CSTestUser",
+      "jive" : {
+        "level" : {
+          "name" : "Wayfarer",
+          "points" : 50
+        },
+        "username" : "cstestuser"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+          "allowed" : [ "GET", "DELETE", "PUT" ]
+        },
+        "avatar" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+          "allowed" : [ "GET" ]
+        },
+        "streams" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "followingIn" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2005"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "CSSecretGroup1",
+    "displayName" : "cssecretgroup1",
+    "description" : "secret group for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:13:49.577+0000",
+    "updated" : "2012-11-30T19:13:49.577+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : " secret group for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSSecretGroup1",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "invites" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/invites/places/1028",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1028)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/places",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1029",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/groups/cssecretgroup1",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/places/1028",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1028/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1006"
+  }, {
+    "parent" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046",
+    "type" : "project",
+    "locale" : "en",
+    "startDate" : "2012-11-30T19:14:01.918+0000",
+    "dueDate" : "2012-12-17T19:54:30.846+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Mr",
+        "familyName" : "CSTestUser",
+        "formatted" : "Mr CSTestUser"
+      },
+      "type" : "person",
+      "displayName" : "Mr CSTestUser",
+      "jive" : {
+        "level" : {
+          "name" : "Wayfarer",
+          "points" : 50
+        },
+        "username" : "cstestuser"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005",
+          "allowed" : [ "GET", "DELETE", "PUT" ]
+        },
+        "avatar" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/people/cstestuser",
+          "allowed" : [ "GET" ]
+        },
+        "streams" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "followingIn" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/2005/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/2005",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2005"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "CSTestProject2",
+    "displayName" : "cstestproject2",
+    "description" : "number project for testing search",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "projects", "polls", "discussions", "documents", "files", "tasks" ],
+    "viewCount" : 0,
+    "published" : "2012-11-30T19:14:01.945+0000",
+    "updated" : "2012-11-30T19:14:01.945+0000",
+    "visibleToExternalContributors" : false,
+    "highlightBody" : "cstestproject2 number project for <em class=\"jive-hilite\">testing</em> search",
+    "highlightSubject" : "CSTestProject2",
+    "parentPlace" : {
+      "name" : "CSNumber1Space",
+      "id" : "2009",
+      "type" : "space",
+      "uri" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1046",
+      "html" : "http://gigi-eae03.eng.jiveland.com/community/csnumber1space"
+    },
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/checkpoints/1048",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Fgigi-eae03.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F1048)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/places",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/avatar",
+        "allowed" : [ "GET", "DELETE", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1049",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/community/csnumber1space/projects/cstestproject2",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/activities",
+        "allowed" : [ "GET" ]
+      },
+      "statics" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/places/1048/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1002"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

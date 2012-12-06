@@ -10,4 +10,5 @@
 
 @implementation JiveFavorite
 
+@synthesize favoriteObject, private, tags, visibleToExternalContributors;
 @end

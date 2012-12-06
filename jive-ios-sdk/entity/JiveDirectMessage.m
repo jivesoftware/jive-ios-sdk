@@ -10,4 +10,6 @@
 
 @implementation JiveDirectMessage
 
+@synthesize visibleToExternalContributors;
+
 @end

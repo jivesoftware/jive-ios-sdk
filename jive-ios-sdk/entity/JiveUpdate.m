@@ -10,4 +10,6 @@
 
 @implementation JiveUpdate
 
+@synthesize latitude, longitude, tags, visibleToExternalContributors;
+
 @end

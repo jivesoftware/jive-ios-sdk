@@ -10,4 +10,7 @@
 
 @implementation JiveResource
 
+@synthesize availability, description, example, hasBody, jsMethod, name, path, since, unpublished;
+@synthesize verb;
+
 @end

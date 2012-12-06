@@ -124,21 +124,31 @@
     [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 
-- (void) search:(JiveSearchParams*)params onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+- (void) searchPeople:(JiveSearchPeopleRequestOptions *)params onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/search/%@?%@" options:nil andArgs:[params facet],[params toQueryString],nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/people" options:params andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
     
+    [operation start];
+}
+
+- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)params onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
     
-    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^id(id JSON) {
-        if (params.facet == @"contents") {
-            return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
-        } else if (params.facet == @"people") {
-            return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
-        } else if (params.facet == @"places") {
-            return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
-        } else {
-            return nil;
-        }
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:params andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
+
+- (void) searchContents:(JiveSearchContentsRequestOptions *)params onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
+    
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:params andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];

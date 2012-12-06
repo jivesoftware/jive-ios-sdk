@@ -10,4 +10,6 @@
 
 @implementation JiveSpace
 
+@synthesize childCount, tags;
+
 @end
