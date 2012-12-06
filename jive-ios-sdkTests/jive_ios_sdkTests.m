@@ -9,7 +9,6 @@
 #import "jive_ios_sdkTests.h"
 
 #import <OCMock/OCMock.h>
-//#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import <UIKit/UIKit.h>
 
@@ -26,33 +25,6 @@
 #endif
 
 @implementation jive_ios_sdkTests
-
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-// From https://github.com/akisute/SenAsyncTestCase/blob/master/SenAsyncTestCase.m
-- (void)waitForTimeout:(NSTimeInterval)timeout
-{
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
-    NSDate *dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
-    
-    while ([loopUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:dt];
-        dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
-    }
-}
 
 // See http://ocmock.org/#tutorials for examples on how to use OCMock
 // More examples here: http://svn.mulle-kybernetik.com/OCMock/trunk/Source/OCMockObjectTests.m
@@ -85,16 +57,17 @@
    
     [[[mock stub] andCall:@selector(hasAcceptableContentType) onObject:self] hasAcceptableContentType];
  
-    [mock setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // Test succeeds if we get here
-        STAssertNotNil(responseObject, @"JAPIRequestOperation returned nil response.");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        STFail(@"Unable to load test data. %@", [error localizedDescription]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [mock setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // Test succeeds if we get here
+            STAssertNotNil(responseObject, @"JAPIRequestOperation returned nil response.");
+            finishedBlock();
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            STFail(@"Unable to load test data. %@", [error localizedDescription]);
+        }];
+        
+        [(JAPIRequestOperation *)mock start];
     }];
-    
-    [(JAPIRequestOperation *)mock start];
-    
-    [self waitForTimeout:5.0];
 
 }
 
@@ -137,16 +110,17 @@
     
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     
-    [jive me:^(id JSON) {
-        STAssertNotNil(JSON, @"Response was nil");
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive me:^(id JSON) {
+            STAssertNotNil(JSON, @"Response was nil");
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
     
     //[mockAuthDelegate verify]; // Check that delegate was actually called
 
-
-    [self waitForTimeout:5.0];
     
 }
 

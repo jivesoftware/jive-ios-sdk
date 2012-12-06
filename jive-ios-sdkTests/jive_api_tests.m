@@ -63,20 +63,20 @@
 - (void) testInboxServiceCall {
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
-    [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
-        
-        STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
-        STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        //
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
+            STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
+            STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            
+            finishedBlock();
+        } onError:^(NSError *error) {
+            finishedBlock();
+        }];
     }];
-    
-    [self waitForTimeout:5.0];
 }
 
 - (void) testMarkAsReadWithTwoUnread {
@@ -85,18 +85,19 @@
                         authorizationDelegate:mockAuthDelegate];
     mockJiveURLResponseDelegate2 = [OCMockObject mockJiveURLResponseDelegate2];
     [mockJiveURLResponseDelegate2 expectResponseWithContentsOfJSONFileNamed:@"inbox_mark_response"
-                                                      bundledWithTestClass:[self class]
-                                                         forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
+                                                       bundledWithTestClass:[self class]
+                                                          forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
     __block NSArray *inboxEntries = nil;
-    [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-        inboxEntries = returnedInboxEntries;
-    } onError:^(NSError *error) {
-        STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
+            inboxEntries = returnedInboxEntries;
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+        }];
     }];
-    
-    [self waitForTimeout:5.0];
     
     
     NSArray *markingInboxEntries = @[
@@ -110,16 +111,18 @@
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370293/read"]];
     
     __block BOOL completeBlockCalled = NO;
-    [jive markInboxEntries:markingInboxEntries
-                    asRead:YES
-                onComplete:^{
-                    completeBlockCalled = YES;
-                }
-                   onError:^(NSError *error) {
-                       STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-                   }];
     
-    [self waitForTimeout:5.0];
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive markInboxEntries:markingInboxEntries
+                        asRead:YES
+                    onComplete:^{
+                        completeBlockCalled = YES;
+                        finishedBlock();
+                    }
+                       onError:^(NSError *error) {
+                           STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                       }];
+    }];
     
     STAssertTrue(completeBlockCalled, nil);
     
@@ -130,39 +133,38 @@
     
     [self createJiveAPIObjectWithResponse:@"my_response"];
     
-    [jive me:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive me:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
-    
-    [self waitForTimeout:5.0];
     
 }
 
 - (void) testColleguesServiceCall {
-    
     [self createJiveAPIObjectWithResponse:@"collegues_response"];
     
-    [jive collegues:@"2918" onComplete:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive collegues:@"2918" onComplete:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
-    
-    [self waitForTimeout:5.0];
 }
 
 - (void) testFollowersServiceCall {
@@ -181,20 +183,22 @@
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
-    [jive followers:@"2918" onComplete:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = YES;
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive followers:@"2918" onComplete:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            completeBlockCalled = YES;
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
     
-    [self waitForTimeout:0.5];
     STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
 
@@ -214,20 +218,22 @@
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
-    [jive followers:@"8192" onComplete:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = YES;
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive followers:@"8192" onComplete:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            completeBlockCalled = YES;
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
     
-    [self waitForTimeout:0.5];
     STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
 
@@ -251,20 +257,22 @@
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
-    [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = YES;
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            completeBlockCalled = YES;
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
     
-    [self waitForTimeout:0.5];
     STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
 
@@ -290,23 +298,22 @@
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
-    [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
-        // Called 3rd
-        STAssertNotNil(JSON, @"Response was nil");
-        completeBlockCalled = YES;
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-        
-    } onError:^(NSError *error) {
-        STFail([error localizedDescription]);
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
+            // Called 3rd
+            STAssertNotNil(JSON, @"Response was nil");
+            completeBlockCalled = YES;
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
     }];
     
-    [self waitForTimeout:0.5];
     STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
-
-
 
 @end

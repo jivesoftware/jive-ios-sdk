@@ -150,6 +150,7 @@
 		788C5C76164B117B003D7B94 /* JiveSearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C75164B117B003D7B94 /* JiveSearchFilter.m */; };
 		788C5C7D164B12B4003D7B94 /* JiveSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C7C164B12B4003D7B94 /* JiveSearch.m */; };
 		78CCC63416517854006F7E72 /* JiveSearchContentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CCC63316517854006F7E72 /* JiveSearchContentParams.m */; };
+		B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */; };
 		B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8657AED166FEDE900F946B5 /* NSError+Jive.h */; };
 		B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657AEE166FEDE900F946B5 /* NSError+Jive.m */; };
 		B86B0B06166D00D8008E525E /* JiveInboxEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 217FE0D21638524E00182AB5 /* JiveInboxEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -511,6 +512,8 @@
 		788C5C7C164B12B4003D7B94 /* JiveSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearch.m; sourceTree = "<group>"; };
 		78CCC63216517854006F7E72 /* JiveSearchContentParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchContentParams.h; sourceTree = "<group>"; };
 		78CCC63316517854006F7E72 /* JiveSearchContentParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentParams.m; sourceTree = "<group>"; };
+		B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAsyncTestCase.h; sourceTree = "<group>"; };
+		B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAsyncTestCase.m; sourceTree = "<group>"; };
 		B8657AED166FEDE900F946B5 /* NSError+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Jive.h"; sourceTree = "<group>"; };
 		B8657AEE166FEDE900F946B5 /* NSError+Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Jive.m"; sourceTree = "<group>"; };
 		B8DC02971666840C00BCC61D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -898,14 +901,16 @@
 		21AD976F161CBC96009A977D /* classes */ = {
 			isa = PBXGroup;
 			children = (
-				21AD9765161CAD32009A977D /* MockJiveURLProtocol.h */,
-				21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */,
 				21AD976B161CBA90009A977D /* JiveAPITestCase.h */,
 				21AD976C161CBA90009A977D /* JiveAPITestCase.m */,
-				B8F4EA2D1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.h */,
-				B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */,
+				B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */,
+				B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */,
+				21AD9765161CAD32009A977D /* MockJiveURLProtocol.h */,
+				21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */,
 				B8F4EA301670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.h */,
 				B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */,
+				B8F4EA2D1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.h */,
+				B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */,
 			);
 			name = classes;
 			sourceTree = "<group>";
@@ -1296,6 +1301,7 @@
 				0FCB65F2166D683500617CE4 /* JiveStateRequestOptionsTests.m in Sources */,
 				B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */,
 				B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */,
+				B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
