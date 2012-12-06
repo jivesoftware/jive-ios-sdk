@@ -75,6 +75,15 @@
 }
 
 
+- (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people" options:params andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
 
 - (void) me:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
     

@@ -16,6 +16,29 @@
 #import "JiveSearchPeopleRequestOptions.h"
 #import "JiveSearchPlacesRequestOptions.h"
 #import "JiveSearchContentsRequestOptions.h"
+#import "JivePeopleRequestOptions.h"
+#import "JivePerson.h"
+#import "JiveBlog.h"
+#import "JiveGroup.h"
+#import "JiveProject.h"
+#import "JiveSpace.h"
+#import "JiveSummary.h"
+#import "JiveAnnouncement.h"
+#import "JiveMessage.h"
+#import "JiveDocument.h"
+#import "JiveFile.h"
+#import "JivePoll.h"
+#import "JivePost.h"
+#import "JiveComment.h"
+#import "JiveDirectMessage.h"
+#import "JiveFavorite.h"
+#import "JiveTask.h"
+#import "JiveUpdate.h"
+#import "JivePersonJive.h"
+#import "JiveName.h"
+#import "JiveAddress.h"
+#import "JiveEmail.h"
+#import "JivePhoneNumber.h"
 
 @protocol JiveAuthorizationDelegate;
 
@@ -25,6 +48,7 @@
 
 // API
 
+- (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 - (void) me:(void(^)(id JSON)) complete onError:(void(^)(NSError* error)) error;
 
 - (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
