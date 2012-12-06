@@ -52,7 +52,7 @@
 - (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
 - (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError* error)) error;
 
-- (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
+- (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
 

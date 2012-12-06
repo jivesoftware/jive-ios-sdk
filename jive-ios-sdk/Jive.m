@@ -86,6 +86,7 @@
 }
 
 - (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:params andArgs:personID,nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePerson *(id JSON) {
         return [JivePerson instanceFromJSON:JSON];
@@ -99,19 +100,14 @@
     [self person:@"@me" withOptions:nil onComplete:complete onError:error];
 }
 
-- (void) collegues:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error {
+- (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
     
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" options:nil andArgs:personId,nil];
-    
-    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        complete(JSON);
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        error(err);
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@colleagues" options:options andArgs:personId,nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];
-     
 }
 
 - (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
