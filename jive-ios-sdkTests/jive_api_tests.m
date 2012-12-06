@@ -21,16 +21,16 @@
 
 @implementation jive_api_tests
 
-- (void)setUp
-{
-    [super setUp];
-}
-
 - (void)tearDown
 {
     jive = nil;
     mockAuthDelegate = nil;
     mockJiveURLResponseDelegate = nil;
+    mockJiveURLResponseDelegate2 = nil;
+    
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:nil];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate2:nil];
+    
     [super tearDown];
 }
 
@@ -55,7 +55,7 @@
 
 // Create the Jive API object with a generic mock auth delegate
 - (void)createJiveAPIObjectWithResponse:(NSString *)resourceName {
-
+    
     mockAuthDelegate = [self mockJiveAuthenticationDelegate];
     [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
 }
@@ -79,22 +79,52 @@
     [self waitForTimeout:5.0];
 }
 
-//- (void) testMarkAsReadWithTwoUnread {
-//    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
-//    id mockJiveURLResponseDeelgate = [OCMockObject mockJiveURLResponseDelegate];
-//    [mockJiveURLResponseDelegate expectResponseWithContentsOfFileAtPath:<#(NSString *)#> forRequestWithHTTPMethod:<#(NSString *)#> forURL:<#(NSURL *)#>]
-//    
-//    __block NSArray *inboxEntries = nil;
-//    [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-//        inboxEntries = returnedInboxEntries;
-//    } onError:^(NSError *error) {
-//        STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-//    }];
-//    
-//    [self waitForTimeout:5.0];
-//    
-//    
-//}
+- (void) testMarkAsReadWithTwoUnread {
+    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                        authorizationDelegate:mockAuthDelegate];
+    mockJiveURLResponseDelegate2 = [OCMockObject mockJiveURLResponseDelegate2];
+    [mockJiveURLResponseDelegate2 expectResponseWithContentsOfJSONFileNamed:@"inbox_mark_response"
+                                                      bundledWithTestClass:[self class]
+                                                         forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
+    
+    __block NSArray *inboxEntries = nil;
+    [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
+        inboxEntries = returnedInboxEntries;
+    } onError:^(NSError *error) {
+        STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+    }];
+    
+    [self waitForTimeout:5.0];
+    
+    
+    NSArray *markingInboxEntries = @[
+    [inboxEntries objectAtIndex:1],
+    [inboxEntries objectAtIndex:11],
+    ];
+    
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370293/read"]];
+    
+    __block BOOL completeBlockCalled = NO;
+    [jive markInboxEntries:markingInboxEntries
+                    asRead:YES
+                onComplete:^{
+                    completeBlockCalled = YES;
+                }
+                   onError:^(NSError *error) {
+                       STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                   }];
+    
+    [self waitForTimeout:5.0];
+    
+    STAssertTrue(completeBlockCalled, nil);
+    
+    [mockJiveURLResponseDelegate2 verify];
+}
 
 - (void) testMyServiceCall {
     
@@ -111,7 +141,7 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-
+    
     [self waitForTimeout:5.0];
     
 }
@@ -131,25 +161,25 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-
+    
     [self waitForTimeout:5.0];
 }
 
 - (void) testFollowersServiceCall {
-
+    
     __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@followers" relativeToURL:url] absoluteString];
-
+    
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
         BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
         return same;
     }]];
-
+    
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
-
+    
     // Make the call
     [jive followers:@"2918" onComplete:^(id JSON) {
         // Called 3rd
@@ -163,7 +193,7 @@
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
-
+    
     [self waitForTimeout:0.5];
     STAssertTrue(completeBlockCalled, @"onComplete handler not called.");
 }
@@ -202,7 +232,7 @@
 }
 
 - (void) testFollowersServiceCallWithOptions {
-
+    
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     __block BOOL completeBlockCalled = NO;
     // Create a mock auth delegate to verify the request url

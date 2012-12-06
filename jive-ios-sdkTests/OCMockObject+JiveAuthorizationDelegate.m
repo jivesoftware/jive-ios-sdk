@@ -19,7 +19,7 @@
                                                                 andPassword:(NSString *)password {
     id mockAuthorizationDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     
-    [[[mockAuthorizationDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:username
+    [[[mockAuthorizationDelegate stub] andReturn:[[JiveCredentials alloc] initWithUserName:username
                                                                                     password:password]] credentialsForJiveInstance:[OCMArg any]];
     
     return mockAuthorizationDelegate;

@@ -10,10 +10,14 @@
 
 @protocol MockJiveURLResponseDelegate <NSObject>
 
-@optional
 - (NSHTTPURLResponse*) responseForRequest;
 - (NSData*) responseBodyForRequest;
 - (NSError*) errorForRequest;
+
+@end
+
+@protocol MockJiveURLResponseDelegate2 <NSObject>
+
 
 - (NSHTTPURLResponse*) responseForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
 - (NSData*) responseBodyForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
@@ -21,6 +25,7 @@
 
 @end
 
-@interface MockJiveURLProtocol : NSURLProtocol 
+@interface MockJiveURLProtocol : NSURLProtocol
 + (void) setMockJiveURLResponseDelegate:(id<MockJiveURLResponseDelegate>) delegate;
++ (void) setMockJiveURLResponseDelegate2:(id<MockJiveURLResponseDelegate2>) delegate2;
 @end

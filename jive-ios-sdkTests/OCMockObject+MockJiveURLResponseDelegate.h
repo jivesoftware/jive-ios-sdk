@@ -9,13 +9,14 @@
 #import <OCMock/OCMock.h>
 #import "MockJiveURLProtocol.h"
 
-@interface OCMockObject (MockJiveURLResponseDelegate)
+@interface OCMockObject (MockJiveURLResponseDelegate2)
 
-+ (id<MockJiveURLResponseDelegate>) mockJiveURLResponseDelegate;
++ (id<MockJiveURLResponseDelegate2>)mockJiveURLResponseDelegate2;
 
-- (void) expectResponseWithContentsOfFileAtPath:(NSString *)filePath
-                       forRequestWithHTTPMethod:(NSString *)HTTPMethod
-                                         forURL:(NSURL *)URL;
-- (void) expectError:(NSError *)error forRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
+- (void)expectResponseWithContentsOfJSONFileNamed:(NSString *)JSONFileName
+                             bundledWithTestClass:(Class)testClass
+                                forRequestWithURL:(NSURL *)URL;
+- (void)expectNoResponseForRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
+- (void)expectError:(NSError *)error forRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL;
 
 @end

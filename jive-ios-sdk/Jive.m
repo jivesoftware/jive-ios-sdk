@@ -75,7 +75,7 @@
 }
 
 
-- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock {
+- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *error))errorBlock {
     NSMutableSet *incompleteOperationUpdateURLs = [NSMutableSet new];
     NSMutableArray *errors = [NSMutableArray new];
     
