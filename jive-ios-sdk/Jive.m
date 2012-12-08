@@ -171,21 +171,17 @@
     [operation start];
 }
 
-- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error
+- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error
 {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:options andArgs:personId,nil];
-    
-    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        complete(JSON);
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        error(err);
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];
 }
 
-- (void) followers:(NSString *)personId onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error {
+- (void) followers:(NSString *)personId onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 

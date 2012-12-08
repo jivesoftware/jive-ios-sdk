@@ -193,14 +193,15 @@
         return same;
     }]];
     
-    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"2918" onComplete:^(id JSON) {
+        [jive followers:@"2918" onComplete:^(NSArray *people) {
             // Called 3rd
-            STAssertNotNil(JSON, @"Response was nil");
+            STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -224,14 +225,15 @@
         return same;
     }]];
     
-    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" onComplete:^(id JSON) {
+        [jive followers:@"8192" onComplete:^(NSArray *people) {
             // Called 3rd
-            STAssertNotNil(JSON, @"Response was nil");
+            STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -259,14 +261,15 @@
         return same;
     }]];
     
-    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
+        [jive followers:@"8192" withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
-            STAssertNotNil(JSON, @"Response was nil");
+            STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -296,13 +299,14 @@
         return same;
     }]];
     
-    [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
+    [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" withOptions:options onComplete:^(id JSON) {
+        [jive followers:@"8192" withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
-            STAssertNotNil(JSON, @"Response was nil");
+            STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

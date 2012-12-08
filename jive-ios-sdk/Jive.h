@@ -54,8 +54,8 @@
 - (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError* error)) error;
 
 - (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error;
-- (void) followers:(NSString*) personId onComplete:(void(^)(id)) complete onError:(void(^)(NSError*)) error;
-- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(id))complete onError:(void (^)(NSError *))error;
+- (void) followers:(NSString*) personId onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error;
+- (void) followers:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 
 - (void) searchPeople:(JiveSearchPeopleRequestOptions *)params onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
 - (void) searchPlaces:(JiveSearchPlacesRequestOptions *)params onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
