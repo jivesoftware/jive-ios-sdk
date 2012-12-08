@@ -66,6 +66,10 @@
 - (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
 
+// Environment
+- (void) filterableFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+
 @end
 
 @protocol JiveAuthorizationDelegate <NSObject>
