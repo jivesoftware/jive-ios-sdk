@@ -136,14 +136,22 @@
     }
 }
 
-- (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (void) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people" options:params andArgs:nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:params andArgs:callName, nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];
+}
+
+- (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self getPeopleArray:@"people" withOptions:params onComplete:complete onError:error];
+}
+
+- (void) recommendedPeople:(JiveCountRequestOptions *)params onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
+    [self getPeopleArray:@"people/recommended" withOptions:params onComplete:complete onError:error];
 }
 
 - (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
@@ -159,6 +167,14 @@
 - (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError*)) error {
     
     [self person:@"@me" withOptions:nil onComplete:complete onError:error];
+}
+
+- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"email/%@", email] withOptions:params onComplete:complete onError:error];
+}
+
+- (void) personByUserName:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"username/%@", email] withOptions:params onComplete:complete onError:error];
 }
 
 - (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {

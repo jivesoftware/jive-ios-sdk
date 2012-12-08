@@ -44,6 +44,7 @@
 		0F13CEBA167292DC00525E4E /* followers_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEB9167292DC00525E4E /* followers_response.json */; };
 		0F13CEBE1672C6C200525E4E /* filterable_fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEBD1672C6C200525E4E /* filterable_fields.json */; };
 		0F13CEC01672D09000525E4E /* supported_fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEBF1672D09000525E4E /* supported_fields.json */; };
+		0F13CEC21672D92D00525E4E /* recommended_people.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEC11672D92D00525E4E /* recommended_people.json */; };
 		0F187E7416692F2B001FCB51 /* JivePeopleRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187E6C16692F2B001FCB51 /* JivePeopleRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F187E7516692F2B001FCB51 /* JivePeopleRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187E6D16692F2B001FCB51 /* JivePeopleRequestOptions.m */; };
 		0F187E7616692F2B001FCB51 /* JivePixelSizeRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187E6E16692F2B001FCB51 /* JivePixelSizeRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -348,6 +349,7 @@
 		0F13CEB9167292DC00525E4E /* followers_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = followers_response.json; sourceTree = "<group>"; };
 		0F13CEBD1672C6C200525E4E /* filterable_fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filterable_fields.json; sourceTree = "<group>"; };
 		0F13CEBF1672D09000525E4E /* supported_fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = supported_fields.json; sourceTree = "<group>"; };
+		0F13CEC11672D92D00525E4E /* recommended_people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recommended_people.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.php; };
 		0F187E6C16692F2B001FCB51 /* JivePeopleRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePeopleRequestOptions.h; sourceTree = "<group>"; };
 		0F187E6D16692F2B001FCB51 /* JivePeopleRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePeopleRequestOptions.m; sourceTree = "<group>"; };
 		0F187E6E16692F2B001FCB51 /* JivePixelSizeRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePixelSizeRequestOptions.h; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 				0F13CEB9167292DC00525E4E /* followers_response.json */,
 				0F13CEBD1672C6C200525E4E /* filterable_fields.json */,
 				0F13CEBF1672D09000525E4E /* supported_fields.json */,
+				0F13CEC11672D92D00525E4E /* recommended_people.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1238,6 +1241,7 @@
 				0F13CEBA167292DC00525E4E /* followers_response.json in Resources */,
 				0F13CEBE1672C6C200525E4E /* filterable_fields.json in Resources */,
 				0F13CEC01672D09000525E4E /* supported_fields.json in Resources */,
+				0F13CEC21672D92D00525E4E /* recommended_people.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

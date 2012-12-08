@@ -50,8 +50,12 @@
 // API
 
 - (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) recommendedPeople:(JiveCountRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+
 - (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
 - (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError* error)) error;
+- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) personByUserName:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
 
 - (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error;
 - (void) followers:(NSString*) personId onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error;
