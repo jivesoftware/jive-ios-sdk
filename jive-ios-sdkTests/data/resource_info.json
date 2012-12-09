@@ -1,0 +1,161 @@
+throw 'allowIllegalResourceCall is false.';
+[ {
+  "name" : "avatar",
+  "description" : "<p>Return the bytes of the avatar image.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "hasBody" : false
+}, {
+  "name" : "streams",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/streams",
+  "description" : "<p>Create a new custom stream for the specified user.  The minimum information required is:</p>\n <pre class=\"entity-example\">\n     {\n         \"name\" : \"{name}\"\n     }\n </pre>\n\n <p>Custom stream names must be unique per person, and there is a configurable limit on the number of\n custom streams that a particular person can create (default limit is 10).</p>",
+  "unpublished" : false,
+  "verb" : "POST",
+  "jsMethod" : "createStream",
+  "hasBody" : true,
+  "availability" : "Available only when the specified person is also the requesting person."
+}, {
+  "name" : "tasks",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/tasks",
+  "description" : "<p>Create a new personal task for the specified user.  The minimum information required is:</p>\n <pre class=\"entity-example\">\n {\n  \"subject\": \"Clean the carpet\",\n  \"dueDate\" : \"2013-07-12T06:59:59.999+0000\",\n  \"type\": \"task\"\n }\n </pre>",
+  "unpublished" : false,
+  "verb" : "POST",
+  "jsMethod" : "createTask",
+  "hasBody" : true,
+  "availability" : "Available only when the specified person is also the requesting person.",
+  "since" : "3.1"
+}, {
+  "name" : "self",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234",
+  "description" : "<p>Delete this person and all content this person has created.</p>",
+  "unpublished" : false,
+  "verb" : "DELETE",
+  "jsMethod" : "destroy",
+  "hasBody" : true
+}, {
+  "name" : "self",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234",
+  "description" : "<p>Return an updated version of this person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "get",
+  "hasBody" : false
+}, {
+  "name" : "activity",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/activities",
+  "description" : "<p>Return a paginated list of activity stream entries for the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getActivity",
+  "hasBody" : false
+}, {
+  "name" : "blog",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/blog",
+  "description" : "<p>Return the blog for this person, if it exists.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getBlog",
+  "hasBody" : false
+}, {
+  "name" : "colleagues",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/@colleagues",
+  "description" : "<p>Return a paginated list of colleagues of this person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getColleagues",
+  "hasBody" : false,
+  "availability" : "Jive instance must be configured to support Organization Chart relationships."
+}, {
+  "name" : "followers",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/@followers",
+  "description" : "<p>Return a paginated list of the people following the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getFollowers",
+  "hasBody" : false,
+  "availability" : "Jive instance must be configured to support Organization Chart relationships."
+}, {
+  "name" : "following",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/@following",
+  "description" : "<p>Return a paginated list of the people that the specified person is following.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getFollowing",
+  "hasBody" : false
+}, {
+  "name" : "followingIn",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/followingIn",
+  "description" : "<p>Return a list of Streams in which the requesting user is\n following the specified person (if any).</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getFollowingIn",
+  "hasBody" : false
+}, {
+  "name" : "images",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/images",
+  "description" : "<p>Return a list of profile images for the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getImages",
+  "hasBody" : false
+}, {
+  "name" : "manager",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/@manager",
+  "description" : "<p>Return the person that is the manager of the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getManager",
+  "hasBody" : false,
+  "availability" : "Jive instance must be configured to support Organization Chart relationships."
+}, {
+  "name" : "members",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/members/people/1234",
+  "description" : "<p>Return a list of place memberships for this person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getMembers",
+  "hasBody" : false,
+  "since" : "3.1"
+}, {
+  "name" : "reports",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/@reports",
+  "description" : "<p>Return a paginated list of the people that are direct reports of the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getReports",
+  "hasBody" : false,
+  "availability" : "Jive instance must be configured to support Organization Chart relationships."
+}, {
+  "name" : "streams",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/streams",
+  "description" : "<p>Return a list of the custom (and standard) activity streams for the specified person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getStreams",
+  "hasBody" : false,
+  "availability" : "Available only when the specified person is also the requesting person."
+}, {
+  "name" : "tasks",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234/tasks",
+  "description" : "<p>Return the first page of a paginated list of tasks for this person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "jsMethod" : "getTasks",
+  "hasBody" : false,
+  "availability" : "Available only when the specified person is also the requesting person.",
+  "since" : "3.1"
+}, {
+  "name" : "html",
+  "description" : "<p>URI of the HTML user profile of this person.</p>",
+  "unpublished" : false,
+  "verb" : "GET",
+  "hasBody" : false
+}, {
+  "name" : "self",
+  "path" : "https://brewspace.jiveland.com/api/core/v3/people/1234",
+  "description" : "<p>Update the specified person, and return an updated  describing him or her\n after the update has been completed.</p>",
+  "unpublished" : false,
+  "verb" : "PUT",
+  "jsMethod" : "update",
+  "hasBody" : true
+} ]

@@ -39,6 +39,8 @@
 #import "JiveAddress.h"
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
+#import "JiveResource.h"
+#import "JiveTrendingPeopleRequestOptions.h"
 
 
 @protocol JiveAuthorizationDelegate;
@@ -51,6 +53,7 @@
 
 - (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 - (void) recommendedPeople:(JiveCountRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) trending:(JiveTrendingPeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 
 - (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
 - (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError* error)) error;
@@ -73,6 +76,7 @@
 // Environment
 - (void) filterableFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 
 @end
 
