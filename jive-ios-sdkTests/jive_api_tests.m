@@ -888,14 +888,10 @@
 - (void) testGetFollowing {
     
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
-    // Create a mock auth delegate to verify the request url
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@following?count=3" relativeToURL:url] absoluteString];
-    
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@following?count=3" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -921,15 +917,11 @@
 - (void) testGetReportsFrom {
     
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
-    // Create a mock auth delegate to verify the request url
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@reports/5630?fields=name,id" relativeToURL:url] absoluteString];
-    
     [options addField:@"name"];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@reports/5630?fields=name,id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
