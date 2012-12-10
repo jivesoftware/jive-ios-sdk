@@ -124,7 +124,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@me" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@me" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -153,7 +153,7 @@
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@colleagues?startIndex=10" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@colleagues?startIndex=10" relativeToURL:url] absoluteString];
     
     options.startIndex = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -185,7 +185,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@followers" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@followers" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -217,7 +217,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -250,7 +250,7 @@
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy&count=5" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy&count=5" relativeToURL:url] absoluteString];
     
     options.startIndex = 0;
     options.count = 5;
@@ -286,7 +286,7 @@
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy,second,third&count=3&startIndex=6" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/8192/@followers?fields=dummy,second,third&count=3&startIndex=6" relativeToURL:url] absoluteString];
     
     options.startIndex = 6;
     options.count = 3;
@@ -322,7 +322,7 @@
     JiveSearchPeopleRequestOptions *options = [[JiveSearchPeopleRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/people?sort=updatedAsc" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/people?sort=updatedAsc" relativeToURL:url] absoluteString];
     
     options.sort = JiveSortOrderUpdatedAsc;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -354,7 +354,7 @@
     JiveSearchPlacesRequestOptions *options = [[JiveSearchPlacesRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/places?sort=updatedAsc" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/places?sort=updatedAsc" relativeToURL:url] absoluteString];
     
     options.sort = JiveSortOrderUpdatedAsc;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -386,7 +386,7 @@
     JiveSearchContentsRequestOptions *options = [[JiveSearchContentsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/contents?sort=updatedAsc" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/search/contents?sort=updatedAsc" relativeToURL:url] absoluteString];
     
     options.sort = JiveSortOrderUpdatedAsc;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -419,7 +419,7 @@
     JivePeopleRequestOptions *options = [[JivePeopleRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people?sort=dateJoinedDesc" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people?sort=dateJoinedDesc" relativeToURL:url] absoluteString];
     
     options.sort = JiveSortOrderDateJoinedDesc;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -452,7 +452,7 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/3220?fields=name,id" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/3220?fields=name,id" relativeToURL:url] absoluteString];
     
     [options addField:@"name"];
     [options addField:@"id"];
@@ -484,7 +484,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@filterableFields" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@filterableFields" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -516,7 +516,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@supportedFields" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@supportedFields" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -549,7 +549,7 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/email/test_email?fields=name,id" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/email/test_email?fields=name,id" relativeToURL:url] absoluteString];
     
     [options addField:@"name"];
     [options addField:@"id"];
@@ -582,7 +582,7 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/username/UserName?fields=name,id" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/username/UserName?fields=name,id" relativeToURL:url] absoluteString];
     
     [options addField:@"name"];
     [options addField:@"id"];
@@ -615,7 +615,7 @@
     JiveCountRequestOptions *options = [[JiveCountRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/recommended?count=3" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/recommended?count=3" relativeToURL:url] absoluteString];
     
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -647,7 +647,7 @@
     
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@resources" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/@resources" relativeToURL:url] absoluteString];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -678,7 +678,7 @@
     JiveTrendingPeopleRequestOptions *options = [[JiveTrendingPeopleRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/trending?count=3" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/trending?count=3" relativeToURL:url] absoluteString];
     
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -710,7 +710,7 @@
 //    JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
 //    // Create a mock auth delegate to verify the request url
 //    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-//    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/activities?after=1970-01-01T00:00:00.000+0000" relativeToURL:url] absoluteString];
+//    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/activities?after=1970-01-01T00:00:00.000+0000" relativeToURL:url] absoluteString];
 //    
 //    options.after = [NSDate dateWithTimeIntervalSince1970:0];
 //    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -743,7 +743,7 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/blog?fields=name,id" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/blog?fields=name,id" relativeToURL:url] absoluteString];
     
     [options addField:@"name"];
     [options addField:@"id"];
@@ -776,7 +776,7 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@manager?fields=name,id" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@manager?fields=name,id" relativeToURL:url] absoluteString];
     
     [options addField:@"name"];
     [options addField:@"id"];
@@ -809,7 +809,7 @@
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     // Create a mock auth delegate to verify the request url
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@reports?count=3" relativeToURL:url] absoluteString];
+    NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@reports?count=3" relativeToURL:url] absoluteString];
     
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
