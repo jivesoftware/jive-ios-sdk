@@ -14,4 +14,6 @@
 
 @property (readonly) BOOL extraFieldsDetected;
 
++ (NSDateFormatter*) dateFormatter;
+
 @end

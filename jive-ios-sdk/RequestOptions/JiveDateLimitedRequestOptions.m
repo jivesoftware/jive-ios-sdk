@@ -7,6 +7,7 @@
 //
 
 #import "JiveDateLimitedRequestOptions.h"
+#import "JiveObject.h"
 
 @implementation JiveDateLimitedRequestOptions
 
@@ -15,22 +16,27 @@
 - (NSString *)toQueryString {
     
     NSString *queryString = [super toQueryString];
+    NSDateFormatter *dateFormatter = [JiveObject dateFormatter];
     
     if (!after)
     {
         if (!before)
             return queryString;
         
-        if (queryString)
-            return [NSString stringWithFormat:@"%@&before=%@", queryString, before];
+        NSString *beforeString = [NSString stringWithFormat:@"before=%@", [dateFormatter stringFromDate:before]];
         
-        return [NSString stringWithFormat:@"before=%@", before];
+        if (!queryString)
+            return beforeString;
+        
+        return [queryString stringByAppendingFormat:@"&%@", beforeString];
     }
     
-    if (queryString)
-        return [NSString stringWithFormat:@"%@&after=%@", queryString, after];
+    NSString *afterString = [NSString stringWithFormat:@"after=%@", [dateFormatter stringFromDate:after]];
     
-    return [NSString stringWithFormat:@"after=%@", after];
+    if (!queryString)
+        return afterString;
+    
+    return [queryString stringByAppendingFormat:@"&%@", afterString];
 }
 
 @end

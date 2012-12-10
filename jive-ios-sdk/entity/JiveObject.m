@@ -48,7 +48,7 @@
     return class_getInstanceVariable([self class], [propertyName cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (NSDateFormatter*) dateFormatter {
++ (NSDateFormatter*) dateFormatter {
     static NSDateFormatter *dateFormatter;
     if(!dateFormatter) {
         dateFormatter   = [[NSDateFormatter alloc] init];
@@ -104,7 +104,7 @@
     }
     
     if(cls == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[self dateFormatter] dateFromString:JSON];
+        return [[JiveObject dateFormatter] dateFromString:JSON];
     }
     
     if(cls == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
