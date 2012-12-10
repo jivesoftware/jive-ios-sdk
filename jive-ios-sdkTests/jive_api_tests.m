@@ -837,4 +837,37 @@
     }];
 }
 
+- (void) testGetFollowing {
+    
+    JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
+    // Create a mock auth delegate to verify the request url
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    __block NSString* expectedUrl = [[NSURL URLWithString:@"/api/core/v3/people/2918/@following?count=3" relativeToURL:url] absoluteString];
+    
+    options.count = 3;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedUrl isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive following:@"2918" withOptions:options onComplete:^(NSArray *people) {
+            // Called 3rd
+            STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
+            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
