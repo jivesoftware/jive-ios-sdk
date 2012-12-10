@@ -54,6 +54,18 @@
 }
 
 - (void) expectError:(NSError *)error forRequestWithHTTPMethod:(NSString *)HTTPMethod forURL:(NSURL *)URL {
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:URL
+                                                              statusCode:204
+                                                             HTTPVersion:@"HTTP/1.1"
+                                                            headerFields:(@{
+                                                                          @"Content-Type" : @"text/plain; charset=UTF=8",
+                                                                          })];
+    
+    [[[self expect] andReturn:response] responseForRequestWithHTTPMethod:HTTPMethod
+                                                                  forURL:URL];
+    
+    [[[self expect] andReturn:[NSData data]] responseBodyForRequestWithHTTPMethod:HTTPMethod
+                                                                           forURL:URL];
     [[[self expect] andReturn:error] errorForRequestWithHTTPMethod:HTTPMethod
                                                             forURL:URL];
 }
