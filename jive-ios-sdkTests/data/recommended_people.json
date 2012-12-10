@@ -1,0 +1,74 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "regularUser-yTVao3hN3ird",
+      "familyName" : "TestUser",
+      "formatted" : "regularUser-yTVao3hN3ird TestUser"
+    },
+    "type" : "person",
+    "displayName" : "regularUser-yTVao3hN3ird TestUser",
+    "jive" : {
+      "level" : {
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "regularuser-ytvao3hn3ird"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "avatar" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/people/regularuser-ytvao3hn3ird",
+        "allowed" : [ "GET" ]
+      },
+      "streams" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3220/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://gigi-eae03.eng.jiveland.com/api/core/v3/members/people/3220",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3220"
+  } ]
+}

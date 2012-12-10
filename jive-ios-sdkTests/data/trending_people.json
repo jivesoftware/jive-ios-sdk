@@ -1,0 +1,1743 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "Katie",
+      "familyName" : "Rhodes",
+      "formatted" : "Katie Rhodes"
+    },
+    "type" : "person",
+    "displayName" : "Katie Rhodes",
+    "jive" : {
+      "level" : {
+        "name" : "Oxygen",
+        "points" : 179
+      },
+      "username" : "katie.rhodes"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/katie.rhodes",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5307/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5307",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5307"
+  }, {
+    "name" : {
+      "givenName" : "Tom",
+      "familyName" : "Gwynn",
+      "formatted" : "Tom Gwynn"
+    },
+    "type" : "person",
+    "displayName" : "Tom Gwynn",
+    "jive" : {
+      "level" : {
+        "name" : "Chromium",
+        "points" : 1131
+      },
+      "username" : "tom.gwynn"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/tom.gwynn",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3195/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3195",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3195"
+  }, {
+    "name" : {
+      "givenName" : "Suzame",
+      "familyName" : "Tong",
+      "formatted" : "Suzame Tong"
+    },
+    "type" : "person",
+    "displayName" : "Suzame Tong",
+    "jive" : {
+      "level" : {
+        "name" : "Terbium",
+        "points" : 7491
+      },
+      "username" : "suzame.tong"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/suzame.tong",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2738",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2738"
+  }, {
+    "name" : {
+      "givenName" : "Patrick",
+      "familyName" : "Cameron",
+      "formatted" : "Patrick Cameron"
+    },
+    "type" : "person",
+    "displayName" : "Patrick Cameron",
+    "jive" : {
+      "level" : {
+        "name" : "Palladium",
+        "points" : 4066
+      },
+      "username" : "patrick.cameron"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/patrick.cameron",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2911/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2911",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2911"
+  }, {
+    "name" : {
+      "givenName" : "Chris",
+      "familyName" : "Bowling",
+      "formatted" : "Chris Bowling"
+    },
+    "type" : "person",
+    "displayName" : "Chris Bowling",
+    "jive" : {
+      "level" : {
+        "name" : "Selenium",
+        "points" : 2066
+      },
+      "username" : "chris.bowling"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/chris.bowling",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3145/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3145",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3145"
+  }, {
+    "name" : {
+      "givenName" : "Jennifer",
+      "familyName" : "Kelley",
+      "formatted" : "Jennifer Kelley"
+    },
+    "type" : "person",
+    "displayName" : "Jennifer Kelley",
+    "jive" : {
+      "level" : {
+        "name" : "Technetium",
+        "points" : 3566
+      },
+      "username" : "jennifer.kelley"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/jennifer.kelley",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3183/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3183",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3183"
+  }, {
+    "name" : {
+      "givenName" : "Tony",
+      "familyName" : "Zingale",
+      "formatted" : "Tony Zingale"
+    },
+    "type" : "person",
+    "displayName" : "Tony Zingale",
+    "jive" : {
+      "level" : {
+        "name" : "Gallium",
+        "description" : "",
+        "points" : 1677
+      },
+      "username" : "tony.zingale"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/tony.zingale",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2941/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2941",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2941"
+  }, {
+    "name" : {
+      "givenName" : "Ryan",
+      "familyName" : "Ruark",
+      "formatted" : "Ryan Ruark"
+    },
+    "type" : "person",
+    "displayName" : "Ryan Ruark",
+    "jive" : {
+      "level" : {
+        "name" : "Chromium",
+        "points" : 1118
+      },
+      "username" : "ryan.ruark"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/ryan.ruark",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5114",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5114"
+  }, {
+    "name" : {
+      "givenName" : "Christelle",
+      "familyName" : "Flahaux",
+      "formatted" : "Christelle Flahaux"
+    },
+    "type" : "person",
+    "displayName" : "Christelle Flahaux",
+    "jive" : {
+      "level" : {
+        "name" : "Magnesium",
+        "points" : 326
+      },
+      "username" : "christelle.flahaux"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/christelle.flahaux",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5227/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5227",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5227"
+  }, {
+    "name" : {
+      "givenName" : "Frank",
+      "familyName" : "Pathyil",
+      "formatted" : "Frank Pathyil"
+    },
+    "type" : "person",
+    "displayName" : "Frank Pathyil",
+    "jive" : {
+      "level" : {
+        "name" : "Bromine",
+        "points" : 2296
+      },
+      "username" : "frank.pathyil"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/frank.pathyil",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3311/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3311",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3311"
+  }, {
+    "name" : {
+      "givenName" : "Frank",
+      "familyName" : "Davalos",
+      "formatted" : "Frank Davalos"
+    },
+    "type" : "person",
+    "displayName" : "Frank Davalos",
+    "jive" : {
+      "level" : {
+        "name" : "Aluminium",
+        "points" : 366
+      },
+      "username" : "frank.davalos"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/frank.davalos",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4615/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4615",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4615"
+  }, {
+    "name" : {
+      "givenName" : "Devan",
+      "familyName" : "Batavia",
+      "formatted" : "Devan Batavia"
+    },
+    "type" : "person",
+    "displayName" : "Devan Batavia",
+    "jive" : {
+      "level" : {
+        "name" : "Germanium",
+        "points" : 1861
+      },
+      "username" : "devan.batavia"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/devan.batavia",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2172/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2172",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2172"
+  }, {
+    "name" : {
+      "givenName" : "Kristen",
+      "familyName" : "Jetter",
+      "formatted" : "Kristen Jetter"
+    },
+    "type" : "person",
+    "displayName" : "Kristen Jetter",
+    "jive" : {
+      "level" : {
+        "name" : "Lithium",
+        "points" : 50
+      },
+      "username" : "kristen.jetter"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/kristen.jetter",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5308/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5308",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5308"
+  }, {
+    "name" : {
+      "givenName" : "Volkan",
+      "familyName" : "Ozcelik",
+      "formatted" : "Volkan Ozcelik"
+    },
+    "type" : "person",
+    "displayName" : "Volkan Ozcelik",
+    "jive" : {
+      "level" : {
+        "name" : "Chlorine",
+        "points" : 615
+      },
+      "username" : "volkan.ozcelik"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/volkan.ozcelik",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5189",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5189"
+  }, {
+    "name" : {
+      "givenName" : "Heidi",
+      "familyName" : "Staats",
+      "formatted" : "Heidi Staats"
+    },
+    "type" : "person",
+    "displayName" : "Heidi Staats",
+    "jive" : {
+      "level" : {
+        "name" : "Ruthenium",
+        "points" : 3758
+      },
+      "username" : "heidi.staats"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/heidi.staats",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2900/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2900",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2900"
+  }, {
+    "name" : {
+      "givenName" : "William",
+      "familyName" : "Davison",
+      "formatted" : "William Davison"
+    },
+    "type" : "person",
+    "displayName" : "William Davison",
+    "jive" : {
+      "level" : {
+        "name" : "Titanium",
+        "points" : 999
+      },
+      "username" : "william.davison"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/william.davison",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4650/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4650",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4650"
+  }, {
+    "name" : {
+      "givenName" : "Lauren",
+      "familyName" : "Kiedrowski",
+      "formatted" : "Lauren Kiedrowski"
+    },
+    "type" : "person",
+    "displayName" : "Lauren Kiedrowski",
+    "jive" : {
+      "level" : {
+        "name" : "Cobalt",
+        "points" : 1351
+      },
+      "username" : "lauren.kiedrowski"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/@following",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/lauren.kiedrowski",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4568",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4568/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4568"
+  }, {
+    "name" : {
+      "givenName" : "Douglas",
+      "familyName" : "Markowitz",
+      "formatted" : "Douglas Markowitz"
+    },
+    "type" : "person",
+    "displayName" : "Douglas Markowitz",
+    "jive" : {
+      "level" : {
+        "name" : "Potassium",
+        "points" : 777
+      },
+      "username" : "douglas.markowitz"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/@following",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/douglas.markowitz",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4571",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4571/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4571"
+  }, {
+    "name" : {
+      "givenName" : "Kyle",
+      "familyName" : "Murphy",
+      "formatted" : "Kyle Murphy"
+    },
+    "type" : "person",
+    "displayName" : "Kyle Murphy",
+    "jive" : {
+      "level" : {
+        "name" : "Nickel",
+        "points" : 1491
+      },
+      "username" : "kyle.murphy"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/kyle.murphy",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4651/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4651",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4651"
+  }, {
+    "name" : {
+      "givenName" : "Jeremy",
+      "familyName" : "Towsey-French",
+      "formatted" : "Jeremy Towsey-French"
+    },
+    "type" : "person",
+    "displayName" : "Jeremy Towsey-French",
+    "jive" : {
+      "level" : {
+        "name" : "Zirconium",
+        "points" : 3052
+      },
+      "username" : "jeremy.towsey-french"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/jeremy.towsey-french",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4588/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4588",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4588"
+  }, {
+    "name" : {
+      "givenName" : "Brian",
+      "familyName" : "Lee",
+      "formatted" : "Brian Lee"
+    },
+    "type" : "person",
+    "displayName" : "Brian Lee",
+    "jive" : {
+      "level" : {
+        "name" : "Chromium",
+        "points" : 1160
+      },
+      "username" : "brian.lee"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/brian.lee",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3118/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3118",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3118"
+  }, {
+    "name" : {
+      "givenName" : "Charles",
+      "familyName" : "Dunn",
+      "formatted" : "Charles Dunn"
+    },
+    "type" : "person",
+    "displayName" : "Charles Dunn",
+    "jive" : {
+      "level" : {
+        "name" : "Titanium",
+        "points" : 996
+      },
+      "username" : "charles.dunn"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/@following",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/charles.dunn",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4719",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4719/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4719"
+  }, {
+    "name" : {
+      "givenName" : "Matt",
+      "familyName" : "Spera",
+      "formatted" : "Matt Spera"
+    },
+    "type" : "person",
+    "displayName" : "Matt Spera",
+    "jive" : {
+      "level" : {
+        "name" : "Chlorine",
+        "points" : 597
+      },
+      "username" : "matthew.spera"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/matthew.spera",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4702/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4702",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4702"
+  }, {
+    "name" : {
+      "givenName" : "Greg",
+      "familyName" : "Laderman",
+      "formatted" : "Greg Laderman"
+    },
+    "type" : "person",
+    "displayName" : "Greg Laderman",
+    "jive" : {
+      "level" : {
+        "name" : "Strontium",
+        "points" : 2802
+      },
+      "username" : "greg.laderman"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/greg.laderman",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2943/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2943",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2943"
+  }, {
+    "name" : {
+      "givenName" : "Darren",
+      "familyName" : "Gilroy",
+      "formatted" : "Darren Gilroy"
+    },
+    "type" : "person",
+    "displayName" : "Darren Gilroy",
+    "jive" : {
+      "level" : {
+        "name" : "Zirconium",
+        "points" : 3025
+      },
+      "username" : "darren.gilroy"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/darren.gilroy",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4344/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4344",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4344"
+  } ]
+}

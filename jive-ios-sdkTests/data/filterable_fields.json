@@ -1,0 +1,2 @@
+throw 'allowIllegalResourceCall is false.';
+[ "office", "hire-date", "title", "location", "department", "company" ]
