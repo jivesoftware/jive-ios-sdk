@@ -8,7 +8,6 @@
 
 #import "Jive.h"
 #import "JAPIRequestOperation.h"
-#import "JiveInboxEntry.h"
 #import "JiveSearchContentParams.h"
 #import "JiveContent.h"
 #import "JivePerson.h"
@@ -158,9 +157,9 @@
     [self getPeopleArray:@"people/trending" withOptions:params onComplete:complete onError:error];
 }
 
-- (void) person:(NSString *)personID withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+- (void) person:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:params andArgs:personID,nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:params andArgs:personId,nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePerson *(id JSON) {
         return [JivePerson instanceFromJSON:JSON];
     }];
@@ -179,6 +178,19 @@
 
 - (void) personByUserName:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     [self person:[NSString stringWithFormat:@"username/%@", email] withOptions:params onComplete:complete onError:error];
+}
+
+- (void) manager:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"%@/@manager", personId] withOptions:params onComplete:complete onError:error];
+}
+
+- (void) activities:(NSString*) personId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
+//    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/activities" options:options andArgs:personId,nil];
+//    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+//        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+//    }];
+//    
+//    [operation start];
 }
 
 - (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
@@ -203,6 +215,15 @@
 
 - (void) followers:(NSString *)personId onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     [self followers:personId withOptions:nil onComplete:complete onError:error];
+}
+
+- (void) reports:(NSString *)personId withOptions:(JivePagedRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@reports" options:params andArgs:personId,nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
 }
 
 - (void) searchPeople:(JiveSearchPeopleRequestOptions *)params onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
@@ -230,6 +251,15 @@
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:params andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
+
+- (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/blog" options:params andArgs:personId,nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JiveBlog instanceFromJSON:JSON];
     }];
     
     [operation start];
