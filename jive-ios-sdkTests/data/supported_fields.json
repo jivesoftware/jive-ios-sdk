@@ -1,0 +1,2 @@
+throw 'allowIllegalResourceCall is false.';
+[ "tags", "followingCount", "resources", "status", "location", "emails", "phoneNumbers", "type", "id", "photos", "jive", "updated", "thumbnailUrl", "name", "addresses", "displayName", "followerCount", "published" ]
