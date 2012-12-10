@@ -135,9 +135,9 @@
     }
 }
 
-- (void) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (void) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:params andArgs:callName, nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
@@ -145,21 +145,21 @@
     [operation start];
 }
 
-- (void) people:(JivePeopleRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [self getPeopleArray:@"people" withOptions:params onComplete:complete onError:error];
+- (void) people:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self getPeopleArray:@"people" withOptions:options onComplete:complete onError:error];
 }
 
-- (void) recommendedPeople:(JiveCountRequestOptions *)params onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
-    [self getPeopleArray:@"people/recommended" withOptions:params onComplete:complete onError:error];
+- (void) recommendedPeople:(JiveCountRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
+    [self getPeopleArray:@"people/recommended" withOptions:options onComplete:complete onError:error];
 }
 
-- (void) trending:(JiveTrendingPeopleRequestOptions *)params onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
-    [self getPeopleArray:@"people/trending" withOptions:params onComplete:complete onError:error];
+- (void) trending:(JiveTrendingPeopleRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
+    [self getPeopleArray:@"people/trending" withOptions:options onComplete:complete onError:error];
 }
 
-- (void) person:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+- (void) person:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:params andArgs:personId,nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePerson *(id JSON) {
         return [JivePerson instanceFromJSON:JSON];
     }];
@@ -172,16 +172,20 @@
     [self person:@"@me" withOptions:nil onComplete:complete onError:error];
 }
 
-- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    [self person:[NSString stringWithFormat:@"email/%@", email] withOptions:params onComplete:complete onError:error];
+- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"email/%@", email] withOptions:options onComplete:complete onError:error];
 }
 
-- (void) personByUserName:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    [self person:[NSString stringWithFormat:@"username/%@", userName] withOptions:params onComplete:complete onError:error];
+- (void) personByUserName:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"username/%@", userName] withOptions:options onComplete:complete onError:error];
 }
 
-- (void) manager:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    [self person:[NSString stringWithFormat:@"%@/@manager", personId] withOptions:params onComplete:complete onError:error];
+- (void) manager:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"%@/@manager", personId] withOptions:options onComplete:complete onError:error];
+}
+
+- (void) person:(NSString *)personId reports:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [self person:[NSString stringWithFormat:@"%@/@reports/%@", personId, reportsPersonId] withOptions:options onComplete:complete onError:error];
 }
 
 - (void) activities:(NSString*) personId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
@@ -216,8 +220,8 @@
     [self followers:personId withOptions:nil onComplete:complete onError:error];
 }
 
-- (void) reports:(NSString *)personId withOptions:(JivePagedRequestOptions *)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@reports" options:params andArgs:personId,nil];
+- (void) reports:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@reports" options:options andArgs:personId,nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
@@ -234,9 +238,9 @@
     [operation start];
 }
 
-- (void) searchPeople:(JiveSearchPeopleRequestOptions *)params onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
+- (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/people" options:params andArgs:nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/people" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
@@ -244,9 +248,9 @@
     [operation start];
 }
 
-- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)params onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
+- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:params andArgs:nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
@@ -254,9 +258,9 @@
     [operation start];
 }
 
-- (void) searchContents:(JiveSearchContentsRequestOptions *)params onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
+- (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
     
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:params andArgs:nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
@@ -264,8 +268,8 @@
     [operation start];
 }
 
-- (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)params onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/blog" options:params andArgs:personId,nil];
+- (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/blog" options:options andArgs:personId,nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveBlog instanceFromJSON:JSON];
     }];
