@@ -1,0 +1,365 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "type" : "group",
+    "name" : "Honda",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/301838",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F301838)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/honda",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301839",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/301838",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4005"
+  }, {
+    "type" : "space",
+    "name" : "Data Center Information",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F154715)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/community/hosting/data-center-information",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2413"
+  }, {
+    "type" : "project",
+    "name" : "Volcano Corp",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/320458",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F320458)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/josh-raditch-west-coast-sales-territory-southern-ca-nv-id-mt-wy/projects/volcano-corp",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/categories",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320459",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3414"
+  }, {
+    "type" : "project",
+    "name" : "Xchanging - Social Intranet",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/172163",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F172163)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/rosemary-smart-opportunities/projects/xchanging--social-intranet",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/categories",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172164",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2622"
+  }, {
+    "type" : "project",
+    "name" : "MaRS DD Healthcare Innovation Network RFP",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/349099",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F349099)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/territory-sales-planning-csd-canada/projects/mars-dd-healthcare-innovation-network-rfp",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/categories",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3783"
+  }, {
+    "type" : "project",
+    "name" : "Cerner Account",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/152149",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F152149)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/central-mountain-mania-lks-csd-group/projects/cerner-account",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/categories",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152150",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2043"
+  }, {
+    "type" : "space",
+    "name" : "CSC",
+    "visibleToExternalContributors" : false,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F93553)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/community/sales/topcustomers/csc",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92505",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2225"
+  } ]
+}

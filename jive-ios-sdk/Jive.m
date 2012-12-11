@@ -351,6 +351,15 @@
     [self getPeopleArray:[NSString stringWithFormat:@"contents/%@/likes", contentId] withOptions:options onComplete:complete onError:error];
 }
 
+- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/recommended" options:options andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - private API
 
 - (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{

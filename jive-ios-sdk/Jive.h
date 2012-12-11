@@ -93,6 +93,7 @@
 - (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 
 // Places
+- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 
 // Contents
 - (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
