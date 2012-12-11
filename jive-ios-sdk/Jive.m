@@ -347,6 +347,10 @@
     [operation start];
 }
 
+- (void) contentLikedBy:(NSString *)contentId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self getPeopleArray:[NSString stringWithFormat:@"contents/%@/likes", contentId] withOptions:options onComplete:complete onError:error];
+}
+
 #pragma mark - private API
 
 - (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
