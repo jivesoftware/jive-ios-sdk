@@ -44,6 +44,8 @@
 #import "JiveDateLimitedRequestOptions.h"
 #import "JiveActivityObject.h"
 #import "JiveInboxEntry.h"
+#import "JiveContentRequestOptions.h"
+#import "JiveContent.h"
 
 
 @protocol JiveAuthorizationDelegate;
@@ -54,6 +56,7 @@
 
 // API
 
+// People
 - (void) people:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 - (void) recommendedPeople:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 - (void) trending:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
@@ -87,6 +90,11 @@
 - (void) filterableFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+
+// Places
+
+// Contents
+- (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
 
 @end
 

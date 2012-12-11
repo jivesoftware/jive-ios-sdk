@@ -304,6 +304,15 @@
     [operation start];
 }
 
+- (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/contents" options:options andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
+
 
 #pragma mark - private API
 
