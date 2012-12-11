@@ -325,6 +325,9 @@
     [self contentsList:@"contents/recommended" withOptions:options onComplete:complete onError:error];
 }
 
+- (void) trendingContents:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self contentsList:@"contents/trending" withOptions:options onComplete:complete onError:error];
+}
 
 #pragma mark - private API
 
