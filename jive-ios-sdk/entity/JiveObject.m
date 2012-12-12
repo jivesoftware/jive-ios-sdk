@@ -9,6 +9,7 @@
 #import "JiveObject.h"
 
 #import <objc/runtime.h>
+#import "NSThread+JiveISO8601DateFormatter.h"
 
 @implementation JiveObject
 
@@ -46,15 +47,6 @@
         return nil;
     
     return class_getInstanceVariable([self class], [propertyName cStringUsingEncoding:NSUTF8StringEncoding]);
-}
-
-- (NSDateFormatter*) dateFormatter {
-    static NSDateFormatter *dateFormatter;
-    if(!dateFormatter) {
-        dateFormatter   = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"]; 
-    }
-    return dateFormatter;
 }
 
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value {
@@ -104,7 +96,7 @@
     }
     
     if(cls == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[self dateFormatter] dateFromString:JSON];
+        return [[NSThread currentThread].jive_ISO8601DateFormatter dateFromString:JSON];
     }
     
     if(cls == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
