@@ -39,7 +39,7 @@
 }
 
 // Create the Jive API object, using mock auth delegate
-- (void)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
+- (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
     
     // This can be anything. The mock objects will return local data
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
@@ -55,13 +55,14 @@
     
     // Create the Jive API object, using mock auth delegate
     jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:authDelegate];
+    return jive;
 }
 
 // Create the Jive API object with a generic mock auth delegate
-- (void)createJiveAPIObjectWithResponse:(NSString *)resourceName {
+- (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName {
     
     mockAuthDelegate = [self mockJiveAuthenticationDelegate];
-    [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
+    return [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
 }
 
 - (void) testInboxServiceCall {

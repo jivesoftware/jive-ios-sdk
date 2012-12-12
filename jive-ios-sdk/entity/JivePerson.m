@@ -33,4 +33,8 @@
     return nil;
 }
 
+- (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property FromJSON:(id)JSON {
+    
+}
+
 @end

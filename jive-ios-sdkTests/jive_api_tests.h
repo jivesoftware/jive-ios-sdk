@@ -17,7 +17,7 @@
     Jive *jive;
 }
 
-
-- (void) testMyServiceCall;
+- (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate;
+- (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName;
 
 @end
