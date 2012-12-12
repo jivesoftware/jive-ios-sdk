@@ -184,6 +184,8 @@
 		78CCC63416517854006F7E72 /* JiveSearchContentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CCC63316517854006F7E72 /* JiveSearchContentParams.m */; };
 		B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */; };
 		B85807B51678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */; };
+		B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */ = {isa = PBXBuildFile; fileRef = B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */; };
+		B85807BC167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m in Sources */ = {isa = PBXBuildFile; fileRef = B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */; };
 		B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */; };
 		B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8657AED166FEDE900F946B5 /* NSError+Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657AEE166FEDE900F946B5 /* NSError+Jive.m */; };
@@ -589,6 +591,8 @@
 		78CCC63316517854006F7E72 /* JiveSearchContentParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentParams.m; sourceTree = "<group>"; };
 		B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+JiveISO8601DateFormatter.h"; sourceTree = "<group>"; };
 		B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+JiveISO8601DateFormatter.m"; sourceTree = "<group>"; };
+		B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JiveUTF8PercentEscape.h"; sourceTree = "<group>"; };
+		B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JiveUTF8PercentEscape.m"; sourceTree = "<group>"; };
 		B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAsyncTestCase.h; sourceTree = "<group>"; };
 		B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAsyncTestCase.m; sourceTree = "<group>"; };
 		B8657AED166FEDE900F946B5 /* NSError+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Jive.h"; sourceTree = "<group>"; };
@@ -907,6 +911,8 @@
 				B8657AEE166FEDE900F946B5 /* NSError+Jive.m */,
 				B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */,
 				B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */,
+				B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */,
+				B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */,
 			);
 			path = "jive-ios-sdk";
 			sourceTree = "<group>";
@@ -1137,6 +1143,7 @@
 				0FCB662E166E8AE800617CE4 /* JiveSearchPlacesRequestOptions.h in Headers */,
 				0F187E7A16692F2B001FCB51 /* JiveTrendingPeopleRequestOptions.h in Headers */,
 				B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */,
+				B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1419,6 +1426,7 @@
 				0FCB6644166EAA0700617CE4 /* JiveSearchTypesRequestOptions.m in Sources */,
 				B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */,
 				B85807B51678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m in Sources */,
+				B85807BC167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
