@@ -8,6 +8,7 @@
 
 #import "JiveDateLimitedRequestOptions.h"
 #import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveDateLimitedRequestOptions
 
@@ -23,24 +24,26 @@
             return queryString;
         }
         
+        NSString *escapedFormattedBefore = [[dateFormatter stringFromDate:before] jive_encodeWithUTF8PercentEscaping];
         if (queryString) {
             return [NSString stringWithFormat:@"%@&before=%@",
                     queryString,
-                    [dateFormatter stringFromDate:before]];
+                    escapedFormattedBefore];
         }
         
         return [NSString stringWithFormat:@"before=%@",
-                [dateFormatter stringFromDate:before]];
+                escapedFormattedBefore];
     }
     
+    NSString *escapedFormattedAfter =  [[dateFormatter stringFromDate:after] jive_encodeWithUTF8PercentEscaping];
     if (queryString) {
         return [NSString stringWithFormat:@"%@&after=%@",
                 queryString,
-                [dateFormatter stringFromDate:after]];
+                escapedFormattedAfter];
     }
     
     return [NSString stringWithFormat:@"after=%@",
-            [dateFormatter stringFromDate:after]];
+            escapedFormattedAfter];
 }
 
 @end
