@@ -7,7 +7,8 @@
 //
 
 #import "JiveDateLimitedRequestOptions.h"
-#import "JiveObject.h"
+#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveDateLimitedRequestOptions
 
@@ -16,27 +17,33 @@
 - (NSString *)toQueryString {
     
     NSString *queryString = [super toQueryString];
-    NSDateFormatter *dateFormatter = [JiveObject dateFormatter];
     
-    if (!after)
-    {
-        if (!before)
+    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    if (!after) {
+        if (!before) {
             return queryString;
+        }
         
-        NSString *beforeString = [NSString stringWithFormat:@"before=%@", [dateFormatter stringFromDate:before]];
+        NSString *escapedFormattedBefore = [[dateFormatter stringFromDate:before] jive_encodeWithUTF8PercentEscaping];
+        if (queryString) {
+            return [NSString stringWithFormat:@"%@&before=%@",
+                    queryString,
+                    escapedFormattedBefore];
+        }
         
-        if (!queryString)
-            return beforeString;
-        
-        return [queryString stringByAppendingFormat:@"&%@", beforeString];
+        return [NSString stringWithFormat:@"before=%@",
+                escapedFormattedBefore];
     }
     
-    NSString *afterString = [NSString stringWithFormat:@"after=%@", [dateFormatter stringFromDate:after]];
+    NSString *escapedFormattedAfter =  [[dateFormatter stringFromDate:after] jive_encodeWithUTF8PercentEscaping];
+    if (queryString) {
+        return [NSString stringWithFormat:@"%@&after=%@",
+                queryString,
+                escapedFormattedAfter];
+    }
     
-    if (!queryString)
-        return afterString;
-    
-    return [queryString stringByAppendingFormat:@"&%@", afterString];
+    return [NSString stringWithFormat:@"after=%@",
+            escapedFormattedAfter];
 }
 
 @end

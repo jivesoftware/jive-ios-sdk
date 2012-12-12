@@ -20,13 +20,7 @@
 
 @implementation jive_api_tests
 
-- (void)setUp {
-    [super setUp];
-    [[JiveObject dateFormatter] setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]]; // Make sure there is no time zone confusion.
-}
-
-- (void)tearDown
-{
+- (void)tearDown {
     jive = nil;
     mockAuthDelegate = nil;
     mockJiveURLResponseDelegate = nil;
@@ -118,6 +112,92 @@
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [jive markInboxEntries:markingInboxEntries
                         asRead:YES
+                    onComplete:finishedBlock
+                       onError:^(NSError *error) {
+                           STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                       }];
+    }];
+    
+    [mockJiveURLResponseDelegate2 verify];
+}
+
+- (void) testMarkAsReadWithOneReadOneUnread {
+    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                        authorizationDelegate:mockAuthDelegate];
+    mockJiveURLResponseDelegate2 = [OCMockObject mockJiveURLResponseDelegate2];
+    [mockJiveURLResponseDelegate2 expectResponseWithContentsOfJSONFileNamed:@"inbox_mark_response"
+                                                       bundledWithTestClass:[self class]
+                                                          forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
+    
+    __block NSArray *inboxEntries = nil;
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
+            inboxEntries = returnedInboxEntries;
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+        }];
+    }];
+    
+    
+    NSArray *markingInboxEntries = @[
+    [inboxEntries objectAtIndex:0],
+    [inboxEntries objectAtIndex:1],
+    ];
+    
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive markInboxEntries:markingInboxEntries
+                        asRead:YES
+                    onComplete:finishedBlock
+                       onError:^(NSError *error) {
+                           STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                       }];
+    }];
+    
+    [mockJiveURLResponseDelegate2 verify];
+}
+
+- (void) testMarkAsUnreadWithOneReadOneUnread {
+    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                        authorizationDelegate:mockAuthDelegate];
+    mockJiveURLResponseDelegate2 = [OCMockObject mockJiveURLResponseDelegate2];
+    [mockJiveURLResponseDelegate2 expectResponseWithContentsOfJSONFileNamed:@"inbox_mark_response"
+                                                       bundledWithTestClass:[self class]
+                                                          forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
+    
+    __block NSArray *inboxEntries = nil;
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
+            inboxEntries = returnedInboxEntries;
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+        }];
+    }];
+    
+    
+    NSArray *markingInboxEntries = @[
+    [inboxEntries objectAtIndex:0],
+    [inboxEntries objectAtIndex:1],
+    ];
+    
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+                                                                    forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive markInboxEntries:markingInboxEntries
+                        asRead:NO
                     onComplete:finishedBlock
                        onError:^(NSError *error) {
                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -784,7 +864,7 @@
     options.after = [NSDate dateWithTimeIntervalSince1970:0];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/activities?after=1970-01-01T00:00:00.000+0000" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/activities?after=1970-01-01T00%3A00%3A00.000%2B0000" isEqualToString:[value absoluteString]];
         return same;
     }]];
     

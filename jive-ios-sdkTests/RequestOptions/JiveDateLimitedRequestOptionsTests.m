@@ -17,15 +17,10 @@
 }
 
 - (void)setUp {
+    [super setUp];
     
     self.options = [[JiveDateLimitedRequestOptions alloc] init];
-    [[JiveObject dateFormatter] setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]]; // Make sure there is no time zone confusion.
 }
-
-//- (void)tearDown {
-//
-//    [super tearDown];
-//}
 
 - (void)testAfter {
     
@@ -36,13 +31,13 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"after=1970-01-01T00%3A00%3A00.000%2B0000", asString, @"Wrong string contents");
     
-    testDate = [NSDate dateWithTimeIntervalSince1970:1000];
+    testDate = [NSDate dateWithTimeIntervalSince1970:1000.123];
     self.dateOptions.after = testDate;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"after=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"after=1970-01-01T00%3A16%3A40.123%2B0000", asString, @"Wrong string contents");
 }
 
 - (void)testAfterWithField {
@@ -56,7 +51,7 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&after=1970-01-01T00%3A00%3A00.000%2B0000", asString, @"Wrong string contents");
 }
 
 - (void)testBefore {
@@ -68,13 +63,13 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"before=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"before=1970-01-01T00%3A00%3A00.000%2B0000", asString, @"Wrong string contents");
     
-    testDate = [NSDate dateWithTimeIntervalSince1970:1000];
+    testDate = [NSDate dateWithTimeIntervalSince1970:1000.123];
     self.dateOptions.before = testDate;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"before=1970-01-01T00%3A16%3A40.123%2B0000", asString, @"Wrong string contents");
 }
 
 - (void)testBeforeWithField {
@@ -88,7 +83,7 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&before=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&before=1970-01-01T00%3A00%3A00.000%2B0000", asString, @"Wrong string contents");
 }
 
 - (void)testBeforeAndAfter {
@@ -104,7 +99,7 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&after=1970-01-01T00%3A00%3A00.000%2B0000", asString, @"Wrong string contents");
 }
 
 @end

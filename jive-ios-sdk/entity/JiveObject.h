@@ -14,8 +14,6 @@
 
 @property (readonly) BOOL extraFieldsDetected;
 
-+ (NSDateFormatter*) dateFormatter;
-
 - (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property fromJSON:(id)JSON;
 
 @end

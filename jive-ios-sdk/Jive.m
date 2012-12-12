@@ -101,7 +101,6 @@
     NSMutableArray *operations = [NSMutableArray new];
     for (JiveInboxEntry *inboxEntry in inboxEntries) {
         if (inboxEntry.jive.update &&
-            (inboxEntry.jive.read != read) &&
             // many Inbox Entries may have the same update URL.
             ![incompleteOperationUpdateURLs containsObject:inboxEntry.jive.update]) {
             NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:inboxEntry.jive.update];
