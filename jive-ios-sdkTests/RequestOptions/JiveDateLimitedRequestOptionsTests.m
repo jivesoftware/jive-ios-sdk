@@ -16,14 +16,10 @@
 }
 
 - (void)setUp {
+    [super setUp];
     
     self.options = [[JiveDateLimitedRequestOptions alloc] init];
 }
-
-//- (void)tearDown {
-//
-//    [super tearDown];
-//}
 
 - (void)testAfter {
     
