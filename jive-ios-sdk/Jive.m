@@ -74,7 +74,22 @@
 }
 
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *error))errorBlock {
-    NSMutableSet *incompleteOperationUpdateURLs = [NSMutableSet new];
+    NSMutableSet *inboxEntryUpdates = [NSMutableSet new];
+    
+    for (JiveInboxEntry *inboxEntry in inboxEntries) {
+        if (inboxEntry.jive.update) {
+            [inboxEntryUpdates addObject:inboxEntry.jive.update];
+        }
+    }
+    
+    [self markInboxEntryUpdates:[inboxEntryUpdates allObjects]
+                         asRead:read
+                     onComplete:completeBlock
+                        onError:errorBlock];
+}
+
+- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock {
+    NSMutableSet *incompleteOperationUpdateURLs = [NSMutableSet setWithArray:inboxEntryUpdates];
     NSMutableArray *errors = [NSMutableArray new];
     
     void (^heapCompleteBlock)(void) = [completeBlock copy];
@@ -99,24 +114,19 @@
     
     NSString *HTTPMethod = read ? @"POST" : @"DELETE";
     NSMutableArray *operations = [NSMutableArray new];
-    for (JiveInboxEntry *inboxEntry in inboxEntries) {
-        if (inboxEntry.jive.update &&
-            // many Inbox Entries may have the same update URL.
-            ![incompleteOperationUpdateURLs containsObject:inboxEntry.jive.update]) {
-            NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:inboxEntry.jive.update];
-            [markRequest setHTTPMethod:HTTPMethod];
-            [self maybeApplyCredentialsToMutableURLRequest:markRequest
-                                                    forURL:inboxEntry.jive.update];
-            [incompleteOperationUpdateURLs addObject:inboxEntry.jive.update];
-            NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
-                                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                       markOperationCompleteBlock(request, nil);
-                                                                                   }
-                                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                       markOperationCompleteBlock(request, error);
-                                                                                   }];
-            [operations addObject:operation];
-        }
+    for (NSURL *updateURL in incompleteOperationUpdateURLs) {
+        NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:updateURL];
+        [markRequest setHTTPMethod:HTTPMethod];
+        [self maybeApplyCredentialsToMutableURLRequest:markRequest
+                                                forURL:updateURL];
+        NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
+                                                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                   markOperationCompleteBlock(request, nil);
+                                                                               }
+                                                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                   markOperationCompleteBlock(request, error);
+                                                                               }];
+        [operations addObject:operation];
     }
     
     if ([operations count] == 0) {
@@ -132,6 +142,10 @@
          */
         [operations makeObjectsPerformSelector:@selector(start)];
     }
+}
+
+- (void) markInboxEntryUniqueUpdates:(NSSet *)inboxEntryUniqueUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock {
+    
 }
 
 - (void) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
