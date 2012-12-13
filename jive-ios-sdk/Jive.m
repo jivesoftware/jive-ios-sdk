@@ -301,6 +301,33 @@
     [operation start];
 }
 
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(id content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    NSURL *contentURL = [NSURL URLWithString:activityObject.jiveId];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:contentURL];
+    
+    NSDictionary *entityClassesByObjectType = (@{
+                                          @"jive:document" : [JiveDocument class],
+                                          @"jive:comment" : [JiveComment class],
+                                          });
+    
+    Class entityClass = [entityClassesByObjectType objectForKey:activityObject.objectType];
+    if (entityClass) {
+        JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
+                                                          onComplete:completeBlock
+                                                             onError:errorBlock
+                                                     responseHandler:^id(id JSON) {
+                                                         return [entityClass instanceFromJSON:JSON];
+                                                     }];
+        [operation start];
+    } else {
+        if (errorBlock) {
+            errorBlock([NSError jive_errorWithUnsupportedActivityObjectObjectType:activityObject.objectType]);
+        }
+    }
+}
+
 
 #pragma mark - private API
 

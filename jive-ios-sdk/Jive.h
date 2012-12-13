@@ -87,6 +87,8 @@
 - (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(id content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+
 @end
 
 @protocol JiveAuthorizationDelegate <NSObject>

@@ -9,11 +9,16 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const JiveErrorDomain;
+
 extern NSInteger const JiveErrorCodeMultipleErrors;
+extern NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType;
+
 extern NSString * const JiveErrorKeyMultipleErrors;
+extern NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType;
 
 @interface NSError (Jive)
 
 + (instancetype) jive_errorWithMultipleErrors:(NSArray *)errors;
++ (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType;
 
 @end
