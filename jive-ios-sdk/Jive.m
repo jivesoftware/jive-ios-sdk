@@ -144,10 +144,6 @@
     }
 }
 
-- (void) markInboxEntryUniqueUpdates:(NSSet *)inboxEntryUniqueUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock {
-    
-}
-
 - (void) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)params onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:params andArgs:callName, nil];
