@@ -194,12 +194,12 @@
 }
 
 - (void) activities:(NSString*) personId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
-//    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/activities" options:options andArgs:personId,nil];
-//    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-//        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
-//    }];
-//    
-//    [operation start];
+    //    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/activities" options:options andArgs:personId,nil];
+    //    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    //        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+    //    }];
+    //
+    //    [operation start];
 }
 
 - (void) collegues:(NSString*) personId withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(void(^)(NSError*)) error {
@@ -307,25 +307,13 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    NSDictionary *entityClassesByObjectType = (@{
-                                          @"jive:document" : [JiveDocument class],
-                                          @"jive:comment" : [JiveComment class],
-                                          });
-    
-    Class entityClass = [entityClassesByObjectType objectForKey:activityObject.objectType];
-    if (entityClass) {
-        JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                          onComplete:completeBlock
-                                                             onError:errorBlock
-                                                     responseHandler:^id(id JSON) {
-                                                         return [entityClass instanceFromJSON:JSON];
-                                                     }];
-        [operation start];
-    } else {
-        if (errorBlock) {
-            errorBlock([NSError jive_errorWithUnsupportedActivityObjectObjectType:activityObject.objectType]);
-        }
-    }
+    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:^id(id JSON) {
+                                                     return [JiveContent instanceFromJSON:JSON];
+                                                 }];
+    [operation start];
 }
 
 
