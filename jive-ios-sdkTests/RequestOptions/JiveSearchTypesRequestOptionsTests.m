@@ -71,11 +71,11 @@
     
     [self.typesOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)", asString, @"Wrong string contents");
     
     self.typesOptions.collapse = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm)&collapse", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&collapse", asString, @"Wrong string contents");
 }
 
 @end

@@ -10,44 +10,25 @@
 
 @implementation JiveSearchContentsRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
     
-    if (self.subjectOnly) {
-        if (filter)
-            filter = [filter stringByAppendingString:@",subjectonly"];
-        else
-            filter = @"subjectonly";
-    }
+    if (self.subjectOnly)
+        [filter addObject:@"subjectonly"];
     
-    if (self.authorID) {
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",author(/people/%@)", self.authorID];
-        else
-            filter = [NSString stringWithFormat:@"author(/people/%@)", self.authorID];
-    }
-    else if (self.authorURL) {
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",author(%@)", self.authorURL];
-        else
-            filter = [NSString stringWithFormat:@"author(%@)", self.authorURL];
-    }
+    if (self.authorID)
+        [filter addObject:[NSString stringWithFormat:@"author(/people/%@)", self.authorID]];
+    else if (self.authorURL)
+        [filter addObject:[NSString stringWithFormat:@"author(%@)", self.authorURL]];
     
-    if (self.moreLikeContentID) {
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",morelike(/content/%@)", self.moreLikeContentID];
-        else
-            filter = [NSString stringWithFormat:@"morelike(/content/%@)", self.moreLikeContentID];
-    }
+    if (self.moreLikeContentID)
+        [filter addObject:[NSString stringWithFormat:@"morelike(/content/%@)", self.moreLikeContentID]];
     
     if (self.places) {
         NSString *placesFilter = [self.places componentsJoinedByString:@","];
 
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",place(%@)", placesFilter];
-        else
-            filter = [NSString stringWithFormat:@"place(%@)", placesFilter];
+        [filter addObject:[NSString stringWithFormat:@"place(%@)", placesFilter]];
     }
     
     return filter;

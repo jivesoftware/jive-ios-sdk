@@ -40,7 +40,7 @@
     
     [self.peopleOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),nameonly", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=nameonly", asString, @"Wrong string contents");
 }
 
 @end

@@ -10,22 +10,29 @@
 
 @implementation JiveSearchRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    if (!self.search)
-        return nil;
+    NSMutableArray *filter = [NSMutableArray array];
     
-    return [NSString stringWithFormat:@"search(%@)", [self.search componentsJoinedByString:@","]];
+    if (self.search) {
+        NSString *searchTerms = [self.search componentsJoinedByString:@","];
+        
+        [filter addObject:[NSString stringWithFormat:@"search(%@)", searchTerms]];
+    }
+    
+    return filter;
 }
 
 - (NSString *)toQueryString {
     
     NSString *query = [super toQueryString];
-    NSString *filter = [self buildFilter];
+    NSMutableArray *filterArray = [self buildFilter];
     
-    if (!filter)
+    if ([filterArray count] == 0)
         return query;
     
+    NSString *filter = [filterArray componentsJoinedByString:@"&filter="];
+
     if (!query)
         return [NSString stringWithFormat:@"filter=%@", filter];
     

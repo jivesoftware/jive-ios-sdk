@@ -40,11 +40,11 @@
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),subjectonly", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly", asString, @"Wrong string contents");
     
     [self.contentsOptions addType:@"share"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(share),subjectonly", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(share)&filter=subjectonly", asString, @"Wrong string contents");
 }
 
 - (void)testAfter {
@@ -75,7 +75,7 @@
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),subjectonly&after=1970-01-01 00:00:00 +0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&after=1970-01-01 00:00:00 +0000", asString, @"Wrong string contents");
 }
 
 - (void)testBefore {
@@ -106,11 +106,11 @@
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),subjectonly&before=1970-01-01 00:16:40 +0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&before=1970-01-01 00:16:40 +0000", asString, @"Wrong string contents");
     
     self.contentsOptions.after = [NSDate dateWithTimeIntervalSince1970:0];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),subjectonly&after=1970-01-01 00:00:00 +0000&before=1970-01-01 00:16:40 +0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&after=1970-01-01 00:00:00 +0000&before=1970-01-01 00:16:40 +0000", asString, @"Wrong string contents");
 }
 
 - (void)testAuthorURL {
@@ -137,15 +137,15 @@
     
     [self.contentsOptions addType:@"dm"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=type(dm),author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=type(dm)&filter=author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=author(http://dummy.com/people/54321)", asString, @"Wrong string contents");
 }
 
 - (void)testAuthorURLIgnoredWithAuthorID {
@@ -172,15 +172,15 @@
     
     [self.contentsOptions addType:@"dm"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=type(dm),author(/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=type(dm)&filter=author(/people/54321)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),author(/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=author(/people/54321)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,author(/people/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=author(/people/54321)", asString, @"Wrong string contents");
 }
 
 - (void)testMoreLikeContentID {
@@ -207,19 +207,19 @@
     
     [self.contentsOptions addType:@"dm"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=type(dm),morelike(/content/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=type(dm)&filter=morelike(/content/54321)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),morelike(/content/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=morelike(/content/54321)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,morelike(/content/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=morelike(/content/54321)", asString, @"Wrong string contents");
     
     self.contentsOptions.authorID = @"54321";
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,author(/people/54321),morelike(/content/54321)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=author(/people/54321)&filter=morelike(/content/54321)", asString, @"Wrong string contents");
 }
 
 - (void)testPlaceID {
@@ -263,23 +263,23 @@
     
     [self.contentsOptions addType:@"dm"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=type(dm),place(/places/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=type(dm)&filter=place(/places/1005)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),place(/places/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=place(/places/1005)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,place(/places/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=place(/places/1005)", asString, @"Wrong string contents");
     
     self.contentsOptions.authorID = @"54321";
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,author(/people/54321),place(/places/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=author(/people/54321)&filter=place(/places/1005)", asString, @"Wrong string contents");
     
     self.contentsOptions.moreLikeContentID = @"12345";
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention),type(dm),subjectonly,author(/people/54321),morelike(/content/12345),place(/places/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&filter=subjectonly&filter=author(/people/54321)&filter=morelike(/content/12345)&filter=place(/places/1005)", asString, @"Wrong string contents");
 }
 
 @end

@@ -10,17 +10,14 @@
 
 @implementation JiveSearchTypesRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
     
     if (self.types) {
         NSString *typeFilters = [self.types componentsJoinedByString:@","];
         
-        if (filter)
-            filter = [filter stringByAppendingFormat:@",type(%@)", typeFilters];
-        else
-            filter = [NSString stringWithFormat:@"type(%@)", typeFilters];
+        [filter addObject:[NSString stringWithFormat:@"type(%@)", typeFilters]];
     }
     
     return filter;

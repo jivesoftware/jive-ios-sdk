@@ -10,6 +10,13 @@
 
 @implementation JiveInboxOptions
 
+- (NSString *)createOrAppend:(NSString *)nextFilter toFilter:(NSString *)filter {
+    if (!filter)
+        return nextFilter;
+    
+    return [filter stringByAppendingString:nextFilter];
+}
+
 - (NSString *)toQueryString {
     
     NSString *query = [super toQueryString];
@@ -17,23 +24,17 @@
     if (!self.unread && !self.authorID && !self.authorURL && !self.types)
         return query;
     
-    NSMutableString *filter = [NSMutableString stringWithFormat:@"filter=%@", self.unread ? @"unread" : @""];
-    BOOL insertComma = self.unread;
+    NSString *filter = self.unread ? [NSMutableString stringWithFormat:@"filter=unread&"] : @"";
     
     if (self.authorID)
-    {
-        [filter appendFormat:(insertComma ? @",author(/people/%@)" : @"author(/people/%@)"), self.authorID];
-        insertComma = YES;
-    }
+        filter = [filter stringByAppendingFormat:@"filter=author(/people/%@)&", self.authorID];
     else if (self.authorURL)
-    {
-        [filter appendFormat:(insertComma ? @",author(%@)" : @"author(%@)"), self.authorURL];
-        insertComma = YES;
-    }
-
-    if (self.types)
-        [filter appendFormat:(insertComma ? @",type(%@)" : @"type(%@)"), [self.types componentsJoinedByString:@","]];
+        filter = [filter stringByAppendingFormat:@"filter=author(%@)&", self.authorURL];
     
+    if (self.types)
+        filter = [filter stringByAppendingFormat:@"filter=type(%@)&", [self.types componentsJoinedByString:@","]];
+    
+    filter = [filter substringToIndex:[filter length] - 1];
     return query ? [query stringByAppendingFormat:@"&%@", filter] : filter;
 }
 

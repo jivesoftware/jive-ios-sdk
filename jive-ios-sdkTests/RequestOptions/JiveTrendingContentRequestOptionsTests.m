@@ -55,7 +55,7 @@
     self.contentOptions.url = [NSURL URLWithString:@"http://dummy"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=place(http://dummy),type(document)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=place(http://dummy)&filter=type(document)", asString, @"Wrong string contents");
 }
 
 @end

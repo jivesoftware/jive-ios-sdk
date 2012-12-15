@@ -40,7 +40,7 @@
     
     [self.placeOptions addType:@"dm"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=type(dm),nameonly", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=type(dm)&filter=nameonly", asString, @"Wrong string contents");
 }
 
 @end
