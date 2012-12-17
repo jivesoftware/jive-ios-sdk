@@ -72,6 +72,7 @@
 @property(nonatomic, readonly, strong) NSDate* updated;
 
 
+- (id)toJSONDictionary;
 
 
 @end

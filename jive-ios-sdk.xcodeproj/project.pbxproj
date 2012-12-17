@@ -49,6 +49,10 @@
 		0F13CEC616740DF400525E4E /* trending_people.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEC516740DF400525E4E /* trending_people.json */; };
 		0F13CEC81674103B00525E4E /* person_activities.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEC71674103B00525E4E /* person_activities.json */; };
 		0F13CECA167645EE00525E4E /* blog.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEC9167645EE00525E4E /* blog.json */; };
+		0F13CEF11676ACCF00525E4E /* contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEF01676ACCF00525E4E /* contents.json */; };
+		0F13CEF31677ADC500525E4E /* content_by_id.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEF21677ADC500525E4E /* content_by_id.json */; };
+		0F13CEF51677B7BB00525E4E /* content_comments.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEF41677B7BB00525E4E /* content_comments.json */; };
+		0F13CEF91677DA1B00525E4E /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F13CEF81677DA1B00525E4E /* places.json */; };
 		0F187E7416692F2B001FCB51 /* JivePeopleRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187E6C16692F2B001FCB51 /* JivePeopleRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F187E7516692F2B001FCB51 /* JivePeopleRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187E6D16692F2B001FCB51 /* JivePeopleRequestOptions.m */; };
 		0F187E7616692F2B001FCB51 /* JivePixelSizeRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187E6E16692F2B001FCB51 /* JivePixelSizeRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,6 +74,7 @@
 		0F187EAF16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */; };
 		0FA17D19166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */; };
 		0FA17D1D16651C540008F833 /* JiveReturnFieldsRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */; };
+		0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5C478167B985A00419683 /* JivePersonTests.m */; };
 		0FCB65B41669702200617CE4 /* JiveTrendingContentRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCB65B21669702200617CE4 /* JiveTrendingContentRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCB65B51669702200617CE4 /* JiveTrendingContentRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB65B31669702200617CE4 /* JiveTrendingContentRequestOptions.m */; };
 		0FCB65B81669703E00617CE4 /* JiveTrendingContentRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB65B71669703E00617CE4 /* JiveTrendingContentRequestOptionsTests.m */; };
@@ -104,7 +109,6 @@
 		0FCB6664166FDAF200617CE4 /* search_places_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCB6663166FDAF200617CE4 /* search_places_response.json */; };
 		0FCB66661670FA4800617CE4 /* search_contents_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCB66651670FA4800617CE4 /* search_contents_response.json */; };
 		0FCB666A1670FCDB00617CE4 /* JiveInboxEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */; };
-		0FCB666D167105DB00617CE4 /* JivePersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB666C167105DB00617CE4 /* JivePersonTests.m */; };
 		0FCB66701671061A00617CE4 /* JiveContentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB666F1671061A00617CE4 /* JiveContentTests.m */; };
 		0FCB66731671065D00617CE4 /* JivePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66721671065C00617CE4 /* JivePlaceTests.m */; };
 		217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D31638524E00182AB5 /* JiveInboxEntry.m */; };
@@ -362,6 +366,10 @@
 		0F13CEC516740DF400525E4E /* trending_people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trending_people.json; sourceTree = "<group>"; };
 		0F13CEC71674103B00525E4E /* person_activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person_activities.json; sourceTree = "<group>"; };
 		0F13CEC9167645EE00525E4E /* blog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blog.json; sourceTree = "<group>"; };
+		0F13CEF01676ACCF00525E4E /* contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contents.json; sourceTree = "<group>"; };
+		0F13CEF21677ADC500525E4E /* content_by_id.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content_by_id.json; sourceTree = "<group>"; };
+		0F13CEF41677B7BB00525E4E /* content_comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content_comments.json; sourceTree = "<group>"; };
+		0F13CEF81677DA1B00525E4E /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = places.json; sourceTree = "<group>"; };
 		0F187E6C16692F2B001FCB51 /* JivePeopleRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePeopleRequestOptions.h; sourceTree = "<group>"; };
 		0F187E6D16692F2B001FCB51 /* JivePeopleRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePeopleRequestOptions.m; sourceTree = "<group>"; };
 		0F187E6E16692F2B001FCB51 /* JivePixelSizeRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePixelSizeRequestOptions.h; sourceTree = "<group>"; };
@@ -396,6 +404,8 @@
 		0FA17D1A166515710008F833 /* JiveRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveRequestOptions.h; sourceTree = "<group>"; };
 		0FA17D1B16651C540008F833 /* JiveReturnFieldsRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveReturnFieldsRequestOptions.h; sourceTree = "<group>"; };
 		0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveReturnFieldsRequestOptions.m; sourceTree = "<group>"; };
+		0FB5C477167B985A00419683 /* JivePersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePersonTests.h; sourceTree = "<group>"; };
+		0FB5C478167B985A00419683 /* JivePersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePersonTests.m; sourceTree = "<group>"; };
 		0FCB65B21669702200617CE4 /* JiveTrendingContentRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveTrendingContentRequestOptions.h; sourceTree = "<group>"; };
 		0FCB65B31669702200617CE4 /* JiveTrendingContentRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveTrendingContentRequestOptions.m; sourceTree = "<group>"; };
 		0FCB65B61669703E00617CE4 /* JiveTrendingContentRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveTrendingContentRequestOptionsTests.h; sourceTree = "<group>"; };
@@ -441,8 +451,6 @@
 		0FCB66651670FA4800617CE4 /* search_contents_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_contents_response.json; sourceTree = "<group>"; };
 		0FCB66681670FCDB00617CE4 /* JiveInboxEntryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInboxEntryTests.h; sourceTree = "<group>"; };
 		0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveInboxEntryTests.m; sourceTree = "<group>"; };
-		0FCB666B167105DB00617CE4 /* JivePersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePersonTests.h; sourceTree = "<group>"; };
-		0FCB666C167105DB00617CE4 /* JivePersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePersonTests.m; sourceTree = "<group>"; };
 		0FCB666E1671061A00617CE4 /* JiveContentTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveContentTests.h; sourceTree = "<group>"; };
 		0FCB666F1671061A00617CE4 /* JiveContentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveContentTests.m; sourceTree = "<group>"; };
 		0FCB66711671065C00617CE4 /* JivePlaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePlaceTests.h; sourceTree = "<group>"; };
@@ -755,8 +763,8 @@
 			children = (
 				0FCB66681670FCDB00617CE4 /* JiveInboxEntryTests.h */,
 				0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */,
-				0FCB666B167105DB00617CE4 /* JivePersonTests.h */,
-				0FCB666C167105DB00617CE4 /* JivePersonTests.m */,
+				0FB5C477167B985A00419683 /* JivePersonTests.h */,
+				0FB5C478167B985A00419683 /* JivePersonTests.m */,
 				0FCB666E1671061A00617CE4 /* JiveContentTests.h */,
 				0FCB666F1671061A00617CE4 /* JiveContentTests.m */,
 				0FCB66711671065C00617CE4 /* JivePlaceTests.h */,
@@ -1014,6 +1022,10 @@
 				0F13CEC516740DF400525E4E /* trending_people.json */,
 				0F13CEC71674103B00525E4E /* person_activities.json */,
 				0F13CEC9167645EE00525E4E /* blog.json */,
+				0F13CEF01676ACCF00525E4E /* contents.json */,
+				0F13CEF21677ADC500525E4E /* content_by_id.json */,
+				0F13CEF41677B7BB00525E4E /* content_comments.json */,
+				0F13CEF81677DA1B00525E4E /* places.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1272,6 +1284,10 @@
 				0F13CEC616740DF400525E4E /* trending_people.json in Resources */,
 				0F13CEC81674103B00525E4E /* person_activities.json in Resources */,
 				0F13CECA167645EE00525E4E /* blog.json in Resources */,
+				0F13CEF11676ACCF00525E4E /* contents.json in Resources */,
+				0F13CEF31677ADC500525E4E /* content_by_id.json in Resources */,
+				0F13CEF51677B7BB00525E4E /* content_comments.json in Resources */,
+				0F13CEF91677DA1B00525E4E /* places.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,12 +1482,12 @@
 				0FCB6640166E997E00617CE4 /* JiveSearchContentsRequestOptionsTests.m in Sources */,
 				0FCB6647166EB21A00617CE4 /* JiveSearchTypesRequestOptionsTests.m in Sources */,
 				0FCB666A1670FCDB00617CE4 /* JiveInboxEntryTests.m in Sources */,
-				0FCB666D167105DB00617CE4 /* JivePersonTests.m in Sources */,
 				0FCB66701671061A00617CE4 /* JiveContentTests.m in Sources */,
 				0FCB66731671065D00617CE4 /* JivePlaceTests.m in Sources */,
 				B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */,
 				B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */,
 				B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */,
+				0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

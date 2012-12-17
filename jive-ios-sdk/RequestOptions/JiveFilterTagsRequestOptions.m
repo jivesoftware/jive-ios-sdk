@@ -10,34 +10,33 @@
 
 @implementation JiveFilterTagsRequestOptions
 
-- (NSString *)addFilterGroup:(NSString *)tag withValue:(NSString *)value toFilter:(NSString *)filter {
+- (NSMutableArray *)buildFilter {
     
-    if (filter)
-        return [filter stringByAppendingFormat:@",%@(%@)", tag, value];
-
-    return [NSString stringWithFormat:@"%@(%@)", tag, value];
-}
-
-- (NSString *)buildFilter {
+    NSMutableArray *filterArray = [NSMutableArray array];
     
-    if (!self.tags)
-        return nil;
+    if (self.tags) {
+        NSString *tagString = [self.tags componentsJoinedByString:@","];
+        
+        [filterArray addObject:[NSString stringWithFormat:@"tag(%@)", tagString]];
+    }
 
-    return [NSString stringWithFormat:@"tag(%@)", [self.tags componentsJoinedByString:@","]];
+    return filterArray;
 }
 
 - (NSString *)toQueryString {
     
     NSString *query = [super toQueryString];
-    NSString *filter = [self buildFilter];
+    NSMutableArray *filter = [self buildFilter];
     
-    if (!filter)
+    if ([filter count] == 0)
         return query;
     
-    if (!query)
-        return [NSString stringWithFormat:@"filter=%@", filter];
+    NSString *filterString = [filter componentsJoinedByString:@"&filter="];
     
-    return [query stringByAppendingFormat:@"&filter=%@", filter];
+    if (!query)
+        return [NSString stringWithFormat:@"filter=%@", filterString];
+    
+    return [query stringByAppendingFormat:@"&filter=%@", filterString];
 }
 
 - (void)addTag:(NSString *)tag {

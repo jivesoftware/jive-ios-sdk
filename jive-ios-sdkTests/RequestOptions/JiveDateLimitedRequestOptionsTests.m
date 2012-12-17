@@ -7,6 +7,7 @@
 //
 
 #import "JiveDateLimitedRequestOptionsTests.h"
+#import "JiveObject.h"
 
 @implementation JiveDateLimitedRequestOptionsTests
 

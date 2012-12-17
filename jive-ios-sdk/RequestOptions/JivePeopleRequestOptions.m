@@ -10,29 +10,27 @@
 
 @implementation JivePeopleRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
 
     if (self.title)
-        filter = [self addFilterGroup:@"title" withValue:self.title toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"title(%@)", self.title]];
     
     if (self.department)
-        filter = [self addFilterGroup:@"department" withValue:self.department toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"department(%@)", self.department]];
     
     if (self.location)
-        filter = [self addFilterGroup:@"location" withValue:self.location toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"location(%@)", self.location]];
     
     if (self.company)
-        filter = [self addFilterGroup:@"company" withValue:self.company toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"company(%@)", self.company]];
     
     if (self.office)
-        filter = [self addFilterGroup:@"office" withValue:self.office toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"office(%@)", self.office]];
     
     if (self.hiredAfter && self.hiredBefore && [self.hiredAfter compare:self.hiredBefore] == NSOrderedAscending)
-        filter = [self addFilterGroup:@"hire-date"
-                            withValue:[NSString stringWithFormat:@"%@,%@", self.hiredAfter, self.hiredBefore]
-                             toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"hire-date(%@,%@)", self.hiredAfter, self.hiredBefore]];
     
     return filter;
 }

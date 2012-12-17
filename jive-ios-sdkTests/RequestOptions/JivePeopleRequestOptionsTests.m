@@ -48,7 +48,7 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),title(Head Honcho)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=title(Head Honcho)", asString, @"Wrong string contents");
 }
 
 - (void)testDepartment {
@@ -79,12 +79,12 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),department(Engineering)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=department(Engineering)", asString, @"Wrong string contents");
     
     self.peopleOptions.title = @"Head Honcho";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),title(Head Honcho),department(Engineering)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=title(Head Honcho)&filter=department(Engineering)", asString, @"Wrong string contents");
 }
 
 - (void)testLocation {
@@ -115,12 +115,12 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),location(Portland)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=location(Portland)", asString, @"Wrong string contents");
     
     self.peopleOptions.department = @"Engineering";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),department(Engineering),location(Portland)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=department(Engineering)&filter=location(Portland)", asString, @"Wrong string contents");
 }
 
 - (void)testCompany {
@@ -151,12 +151,12 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),company(Jive)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=company(Jive)", asString, @"Wrong string contents");
     
     self.peopleOptions.location = @"Portland";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),location(Portland),company(Jive)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=location(Portland)&filter=company(Jive)", asString, @"Wrong string contents");
 }
 
 - (void)testOffice {
@@ -187,12 +187,12 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),office(PDX)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=office(PDX)", asString, @"Wrong string contents");
     
     self.peopleOptions.company = @"Jive";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),company(Jive),office(PDX)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=company(Jive)&filter=office(PDX)", asString, @"Wrong string contents");
 }
 
 - (void)testDateRange {
@@ -231,12 +231,12 @@
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),hire-date(1970-01-01 00:00:00 +0000,1970-01-01 00:16:40 +0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=hire-date(1970-01-01 00:00:00 +0000,1970-01-01 00:16:40 +0000)", asString, @"Wrong string contents");
     
     self.peopleOptions.office = @"PDX";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm),office(PDX),hire-date(1970-01-01 00:00:00 +0000,1970-01-01 00:16:40 +0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=office(PDX)&filter=hire-date(1970-01-01 00:00:00 +0000,1970-01-01 00:16:40 +0000)", asString, @"Wrong string contents");
 }
 
 - (void)testIDs {

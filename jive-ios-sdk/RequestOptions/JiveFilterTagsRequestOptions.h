@@ -14,7 +14,6 @@
 
 - (void)addTag:(NSString *)tag;
 
-- (NSString *)buildFilter;
-- (NSString *)addFilterGroup:(NSString *)tag withValue:(NSString *)value toFilter:(NSString *)filter;
+- (NSMutableArray *)buildFilter;
 
 @end

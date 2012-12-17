@@ -2,11 +2,12 @@
 //  JivePersonTests.h
 //  jive-ios-sdk
 //
-//  Created by Orson Bushnell on 12/6/12.
+//  Created by Orson Bushnell on 12/14/12.
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JivePerson.h"
 
 @interface JivePersonTests : SenTestCase
 

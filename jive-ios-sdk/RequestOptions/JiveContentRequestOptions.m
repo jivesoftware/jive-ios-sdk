@@ -10,24 +10,23 @@
 
 @implementation JiveContentRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
+    NSString *components;
     
-    if (self.authors)
-        filter = [self addFilterGroup:@"author"
-                            withValue:[self.authors componentsJoinedByString:@","]
-                             toFilter:filter];
+    if (self.authors) {
+        components = [self.authors componentsJoinedByString:@","];
+        [filter addObject:[NSString stringWithFormat:@"author(%@)", components]];
+    }
     
     if (self.place)
-        filter = [self addFilterGroup:@"place"
-                            withValue:[self.place absoluteString]
-                             toFilter:filter];
+        [filter addObject:[NSString stringWithFormat:@"place(%@)", [self.place absoluteString]]];
     
-    if (self.entityDescriptor)
-        filter = [self addFilterGroup:@"entityDescriptor"
-                            withValue:[self.entityDescriptor componentsJoinedByString:@","]
-                             toFilter:filter];
+    if (self.entityDescriptor) {
+        components = [self.entityDescriptor componentsJoinedByString:@","];
+        [filter addObject:[NSString stringWithFormat:@"entityDescriptor(%@)", components]];
+    }
     
     return filter;
 }

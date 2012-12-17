@@ -53,7 +53,7 @@
     [self.placePlacesOptions addTag:@"share"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(share),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(share)&filter=type(dm)", asString, @"Wrong string contents");
 }
 
 - (void)testSearch {
@@ -94,12 +94,12 @@
     [self.placePlacesOptions addTag:@"share"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(share),search(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(share)&filter=search(dm)", asString, @"Wrong string contents");
     
     [self.placePlacesOptions addType:@"share"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(share),type(share),search(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(share)&filter=type(share)&filter=search(dm)", asString, @"Wrong string contents");
 }
 
 @end

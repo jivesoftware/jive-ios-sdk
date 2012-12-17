@@ -14,6 +14,6 @@
 
 - (void)addSearchTerm:(NSString *)term; // Will escape ,\() for you.
 
-- (NSString *)buildFilter;
+- (NSMutableArray *)buildFilter;
 
 @end

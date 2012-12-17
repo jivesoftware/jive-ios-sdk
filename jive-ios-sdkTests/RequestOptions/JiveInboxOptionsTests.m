@@ -79,7 +79,7 @@
     self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=unread,author(/people/1005)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=unread&filter=author(/people/1005)", asString, @"Wrong string contents");
 }
 
 - (void)testType {
@@ -115,17 +115,17 @@
     self.inboxOptions.authorID = @"1005";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=author(/people/1005),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=author(/people/1005)&filter=type(dm)", asString, @"Wrong string contents");
     
     self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=unread,author(/people/1005),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=unread&filter=author(/people/1005)&filter=type(dm)", asString, @"Wrong string contents");
     
     self.inboxOptions.authorID = nil;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=unread,type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=unread&filter=type(dm)", asString, @"Wrong string contents");
 }
 
 - (void)testAuthorURL {
@@ -156,12 +156,12 @@
     [self.inboxOptions addType:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=author(http://dummy.com/people/54321),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=author(http://dummy.com/people/54321)&filter=type(dm)", asString, @"Wrong string contents");
     
     self.inboxOptions.unread = YES;
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=unread,author(http://dummy.com/people/54321),type(dm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=unread&filter=author(http://dummy.com/people/54321)&filter=type(dm)", asString, @"Wrong string contents");
 }
 
 - (void)testAuthorURLIgnoredWithAuthorID {

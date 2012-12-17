@@ -10,19 +10,17 @@
 
 @implementation JiveTrendingContentRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
     
-    if (!self.types)
-        return filter;
+    if (self.types) {
+        NSString *typeString = [self.types componentsJoinedByString:@","];
+        
+        [filter addObject:[NSString stringWithFormat:@"type(%@)", typeString]];
+    }
     
-    NSString *typeString = [self.types componentsJoinedByString:@","];
-    
-    if (filter)
-        return [filter stringByAppendingFormat:@",type(%@)", typeString];
-    
-    return [NSString stringWithFormat:@"type(%@)", typeString];
+    return filter;
 }
 
 - (void)addType:(NSString *)newType {

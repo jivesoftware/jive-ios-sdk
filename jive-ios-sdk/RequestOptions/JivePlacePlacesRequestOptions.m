@@ -10,19 +10,20 @@
 
 @implementation JivePlacePlacesRequestOptions
 
-- (NSString *)buildFilter {
+- (NSMutableArray *)buildFilter {
     
-    NSString *filter = [super buildFilter];
+    NSMutableArray *filter = [super buildFilter];
+    NSString *components;
     
-    if (self.types)
-        filter = [self addFilterGroup:@"type"
-                            withValue:[self.types componentsJoinedByString:@","]
-                             toFilter:filter];
+    if (self.types) {
+        components = [self.types componentsJoinedByString:@","];
+        [filter addObject:[NSString stringWithFormat:@"type(%@)", components]];
+    }
     
-    if (self.search)
-        filter = [self addFilterGroup:@"search"
-                            withValue:[self.search componentsJoinedByString:@","]
-                             toFilter:filter];
+    if (self.search) {
+        components = [self.search componentsJoinedByString:@","];
+        [filter addObject:[NSString stringWithFormat:@"search(%@)", components]];
+    }
     
     return filter;
 }

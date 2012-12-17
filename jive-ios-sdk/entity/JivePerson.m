@@ -33,4 +33,17 @@
     return nil;
 }
 
+- (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property FromJSON:(id)JSON {
+    
+}
+
+- (id)toJSONDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:self.displayName forKey:@"displayName"];
+    [dictionary setValue:self.jiveId forKey:@"id"];
+    
+    return dictionary;
+}
+
 @end
