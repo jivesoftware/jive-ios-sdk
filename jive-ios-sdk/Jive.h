@@ -93,7 +93,7 @@
 - (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 
-- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(id content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
 
 // Places
 - (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;

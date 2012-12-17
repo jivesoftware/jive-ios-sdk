@@ -313,7 +313,7 @@
     [operation start];
 }
 
-- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(id content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
     NSURL *contentURL = [NSURL URLWithString:activityObject.jiveId];
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
