@@ -46,4 +46,6 @@
 // Flag indicating that this person is a regular user, visible to the rest of the system, as opposed to an internal system account.
 @property(nonatomic, readonly) bool visible;
 
+- (id)toJSONDictionary;
+
 @end

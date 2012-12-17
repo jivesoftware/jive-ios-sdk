@@ -23,4 +23,6 @@
 // True if this is the primary email address.
 @property(nonatomic, readonly) bool primary;
 
+- (id)toJSONDictionary;
+
 @end

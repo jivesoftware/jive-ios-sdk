@@ -20,4 +20,6 @@
 // First name of this person.
 @property(nonatomic, copy) NSString* givenName;
 
+- (id)toJSONDictionary;
+
 @end
