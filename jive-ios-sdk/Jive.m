@@ -328,6 +328,21 @@
     [operation start];
 }
 
+- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    NSURL *rootContentURL = [NSURL URLWithString:comment.rootURI];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:rootContentURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:rootContentURL];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:^id(id JSON) {
+                                                     return [JiveContent instanceFromJSON:JSON];
+                                                 }];
+    [operation start];
+}
+
 - (void) contentsList:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
