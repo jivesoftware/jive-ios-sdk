@@ -16,6 +16,6 @@
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
 
-- (id)toJSONDictionary;
+- (NSDictionary *)toJSONDictionary;
 
 @end

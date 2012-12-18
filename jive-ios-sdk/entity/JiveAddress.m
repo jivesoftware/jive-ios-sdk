@@ -12,7 +12,7 @@
 
 @synthesize jive_label, value, type, primary;
 
-- (id)toJSONDictionary {
+- (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:self.jive_label forKey:@"jive_label"];

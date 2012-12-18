@@ -12,7 +12,7 @@
 
 @synthesize familyName, formatted, givenName;
 
-- (id)toJSONDictionary {
+- (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:self.familyName forKey:@"familyName"];

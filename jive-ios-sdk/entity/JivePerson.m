@@ -58,7 +58,7 @@
     }
 }
 
-- (id)toJSONDictionary {
+- (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
     

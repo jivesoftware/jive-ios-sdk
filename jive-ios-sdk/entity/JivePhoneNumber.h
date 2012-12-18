@@ -23,6 +23,4 @@
 // True if this is the primary phone number.
 @property(nonatomic, readonly) bool primary;
 
-- (id)toJSONDictionary;
-
 @end

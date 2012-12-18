@@ -189,7 +189,7 @@
     
 }
 
-- (id)toJSONDictionary {
+- (NSDictionary *)toJSONDictionary {
     return nil;
 }
 

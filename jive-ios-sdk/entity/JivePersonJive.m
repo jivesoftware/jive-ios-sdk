@@ -12,7 +12,7 @@
 
 @synthesize enabled, external, externalContributor, federated, level, locale, password, profile, timeZone, username, visible;
 
-- (id)toJSONDictionary {
+- (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:self.password forKey:@"password"];
