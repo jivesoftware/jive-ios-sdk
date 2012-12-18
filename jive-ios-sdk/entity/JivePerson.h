@@ -53,7 +53,7 @@
 // Date and time when this person was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-// Resource links (and related permissions for the requesting person) relevant to this object.
+// Resource links (and related permissions for the requesting person) relevant to this object. JiveResourceEntry[]
 @property(nonatomic, readonly, strong) NSDictionary* resources;
 
 // Most recent status update for this person.

@@ -47,6 +47,7 @@
 #import "JiveContentRequestOptions.h"
 #import "JiveContent.h"
 #import "JiveCommentsRequestOptions.h"
+#import "JiveResourceEntry.h"
 
 
 @protocol JiveAuthorizationDelegate;

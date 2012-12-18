@@ -12,6 +12,7 @@
 #import "JiveName.h"
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
+#import "JiveResourceEntry.h"
 
 @implementation JivePersonTests
 
@@ -370,12 +371,17 @@
     JiveEmail *email = [[JiveEmail alloc] init];
     JivePhoneNumber *phoneNumber = [[JivePhoneNumber alloc] init];
     NSString *photoURI = @"http://dummy.com/photo.png";
+    JiveResourceEntry *resource = [[JiveResourceEntry alloc] init];
+    NSString *resourceKey = @"manager";
+    NSDictionary *resourceJSON = [NSDictionary dictionaryWithObject:photoURI forKey:@"ref"];
+    NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     address.value = @"Address";
     personJive.username = @"Address 1";
     name.familyName = @"family name";
     phoneNumber.value = @"555-5555";
     email.value = @"email";
+    [resource setValue:[NSURL URLWithString:photoURI] forKey:@"ref"];
     basePerson.displayName = @"testName";
     basePerson.jiveId = @"1234";
     basePerson.location = @"USA";
@@ -393,9 +399,11 @@
     [basePerson setValue:[NSArray arrayWithObject:email] forKey:@"emails"];
     [basePerson setValue:[NSArray arrayWithObject:phoneNumber] forKey:@"phoneNumbers"];
     [basePerson setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
+    [basePerson setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
     id JSON = [basePerson toJSONDictionary];
     
+    [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     NSLog(@"%@", JSON);
     
     JivePerson *person = [JivePerson instanceFromJSON:JSON];
@@ -430,9 +438,7 @@
     STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
     STAssertEqualObjects([person.tags objectAtIndex:0], [basePerson.tags objectAtIndex:0], @"Wrong tag object class");
     STAssertEquals([person.resources count], [basePerson.resources count], @"Wrong number of resource objects");
-//    for (id object in person.resources) {
-//        STAssertEquals([object class], [JiveResource class], @"Wrong resource object class");
-//    }
+    STAssertEqualObjects([(JiveResourceEntry *)[person.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 - (void)testPersonParsingAlternate {
@@ -444,12 +450,17 @@
     JiveEmail *email = [[JiveEmail alloc] init];
     JivePhoneNumber *phoneNumber = [[JivePhoneNumber alloc] init];
     NSString *photoURI = @"http://com.dummy/png.photo";
+    JiveResourceEntry *resource = [[JiveResourceEntry alloc] init];
+    NSString *resourceKey = @"followers";
+    NSDictionary *resourceJSON = [NSDictionary dictionaryWithObject:photoURI forKey:@"ref"];
+    NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     address.value = @"house";
     personJive.username = @"name";
     name.familyName = @"Bushnell";
     phoneNumber.value = @"777-7777";
     email.value = @"something.com";
+    [resource setValue:[NSURL URLWithString:photoURI] forKey:@"ref"];
     basePerson.displayName = @"display name";
     basePerson.jiveId = @"87654";
     basePerson.location = @"New Mexico";
@@ -467,9 +478,11 @@
     [basePerson setValue:[NSArray arrayWithObject:email] forKey:@"emails"];
     [basePerson setValue:[NSArray arrayWithObject:phoneNumber] forKey:@"phoneNumbers"];
     [basePerson setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
+    [basePerson setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
     id JSON = [basePerson toJSONDictionary];
     
+    [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     NSLog(@"%@", JSON);
     
     JivePerson *person = [JivePerson instanceFromJSON:JSON];
@@ -504,9 +517,7 @@
     STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
     STAssertEqualObjects([person.tags objectAtIndex:0], [basePerson.tags objectAtIndex:0], @"Wrong tag object class");
     STAssertEquals([person.resources count], [basePerson.resources count], @"Wrong number of resource objects");
-//    for (id object in person.resources) {
-//        STAssertEquals([object class], [JiveResource class], @"Wrong resource object class");
-//    }
+    STAssertEqualObjects([(JiveResourceEntry *)[person.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 @end

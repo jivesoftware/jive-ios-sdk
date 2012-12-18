@@ -13,6 +13,7 @@
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
 #import "NSThread+JiveISO8601DateFormatter.h"
+#import "JiveResourceEntry.h"
 
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, type, updated;
@@ -34,8 +35,16 @@
     return nil;
 }
 
-- (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property FromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
     
+    for (NSString *key in JSON) {
+        JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
+        
+        [dictionary setValue:entry forKey:key];
+    }
+    
+    return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
 }
 
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag {
