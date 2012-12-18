@@ -14,6 +14,8 @@
 
 @property (readonly) BOOL extraFieldsDetected;
 
-- (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property fromJSON:(id)JSON;
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
+
+- (NSDictionary *)toJSONDictionary;
 
 @end

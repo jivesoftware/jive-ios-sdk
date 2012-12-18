@@ -85,10 +85,11 @@
     }
 }
 
-- (void) parseDictionary:(NSDictionary *)dictionary forProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
     NSLog(@"Warning: NSDictionary not parsed.");
     NSLog(@"%@", JSON);
     NSLog(@"Figure it out.");
+    return nil;
 }
 
 - (id) getObjectOfType:(Class) cls forProperty:(NSString*) property FromJSON:(id) JSON {
@@ -139,8 +140,8 @@
                 
                 [obj setValue:property forKey:key];
              
-//             } else if ([cls isSubclassOfClass:[NSDictionary class]]) {
-//                 [self parseDictionary:obj forProperty:property fromJSON:JSON];
+             } else if ([cls isSubclassOfClass:[NSDictionary class]]) {
+                 obj = [self parseDictionaryForProperty:property fromJSON:JSON];
              } else {
                  NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", cls);
              }
@@ -188,7 +189,8 @@
     
 }
 
-
-
+- (NSDictionary *)toJSONDictionary {
+    return nil;
+}
 
 @end
