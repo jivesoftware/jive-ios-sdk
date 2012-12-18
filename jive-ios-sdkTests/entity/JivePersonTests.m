@@ -72,7 +72,7 @@
     STAssertEquals([(NSDictionary *)nameJSON count], (NSUInteger)1, @"Name dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)nameJSON objectForKey:@"familyName"], name.familyName, @"Wrong family name");
     
-    NSArray *addressJSON = [(NSDictionary *)JSON objectForKey:@"address"];
+    NSArray *addressJSON = [(NSDictionary *)JSON objectForKey:@"addresses"];
     
     STAssertTrue([[addressJSON class] isSubclassOfClass:[NSArray class]], @"Address array not converted");
     STAssertEquals([addressJSON count], (NSUInteger)1, @"Wrong number of elements in the address array");
@@ -161,7 +161,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     
-    NSArray *addressJSON = [(NSDictionary *)JSON objectForKey:@"address"];
+    NSArray *addressJSON = [(NSDictionary *)JSON objectForKey:@"addresses"];
     id object1 = [addressJSON objectAtIndex:0];
     
     STAssertTrue([[addressJSON class] isSubclassOfClass:[NSArray class]], @"Address array not converted");
@@ -176,7 +176,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     
-    addressJSON = [(NSDictionary *)JSON objectForKey:@"address"];
+    addressJSON = [(NSDictionary *)JSON objectForKey:@"addresses"];
     object1 = [addressJSON objectAtIndex:0];
     
     id object2 = [addressJSON objectAtIndex:1];
@@ -361,50 +361,152 @@
     STAssertEqualObjects([addressJSON objectAtIndex:1], photo2, @"Wrong photo 2 url");
 }
 
-//- (void)testPersonParsing {
-//    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
-//    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar"
-//                                                                           password:@"foo"]] credentialsForJiveInstance:[OCMArg any]];
-//    [self createJiveAPIObjectWithResponse:@"person_response"
-//                          andAuthDelegate:mockAuthDelegate];
-//    
-//    // Make the call
-//    [self waitForTimeout:^(void (^finishedBlock)(void)) {
-//        [jive me:^(JivePerson *person) {
-//            // Called 3rd
-//            STAssertEquals([person class], [JivePerson class], @"Wrong item class");
-//            STAssertEqualObjects(person.displayName, @"", @"Wrong display name");
-//            STAssertEqualObjects(person.followerCount, @"", @"Wrong follower count");
-//            STAssertEqualObjects(person.followingCount, @"", @"Wrong following count");
-//            STAssertEqualObjects(person.jiveId, @"", @"Wrong id");
-//            STAssertEqualObjects(person.jive, [[JivePersonJive alloc] init], @"Wrong Jive Person");
-//            STAssertEqualObjects(person.location, @"", @"Wrong location");
-//            STAssertEqualObjects(person.name, [[JiveName alloc] init], @"Wrong name");
-//            STAssertEqualObjects(person.published, [NSDate date], @"Wrong published date");
-//            STAssertEqualObjects(person.status, @"", @"Wrong status");
-//            STAssertEqualObjects(person.thumbnailUrl, @"", @"Wrong thumbnailUrl");
-//            STAssertEqualObjects(person.type, @"", @"Wrong type");
-//            STAssertEqualObjects(person.updated, [NSDate date], @"Wrong updated date");
-//            STAssertEquals([person.addresses count], 1000, @"Wrong number of address objects");
-//            STAssertEquals([person.addresses objectAtIndex:0], [JiveAddress class], @"Wrong Address object class");
-//            STAssertEquals([person.emails count], 1000, @"Wrong number of email objects");
-//            STAssertEquals([person.emails objectAtIndex:0], [JivePhoneNumber class], @"Wrong email object class");
-//            STAssertEquals([person.phoneNumbers count], 1000, @"Wrong number of phone number objects");
-//            STAssertEquals([person.phoneNumbers objectAtIndex:0], [JiveAddress class], @"Wrong phone number object class");
-//            STAssertEquals([person.photos count], 1000, @"Wrong number of photo objects");
-//            STAssertEquals([person.photos objectAtIndex:0], [JiveAddress class], @"Wrong photo object class");
-//            STAssertEquals([person.tags count], 1000, @"Wrong number of tag objects");
-//            STAssertEquals([person.tags objectAtIndex:0], [NSString class], @"Wrong tag object class");
-//            STAssertEquals([person.resources count], 1000, @"Wrong number of resource objects");
-//            for (id object in person.resources) {
-//                STAssertEquals([object class], [JiveResource class], @"Wrong resource object class");
-//            }
-//            
-//            finishedBlock();
-//        } onError:^(NSError *error) {
-//            STFail([error localizedDescription]);
-//        }];
-//    }];
-//}
+- (void)testPersonParsing {
+    JivePerson *basePerson = [[JivePerson alloc] init];
+    JiveAddress *address = [[JiveAddress alloc] init];
+    JivePersonJive *personJive = [[JivePersonJive alloc] init];
+    JiveName *name = [[JiveName alloc] init];
+    NSString *tag = @"First";
+    JiveEmail *email = [[JiveEmail alloc] init];
+    JivePhoneNumber *phoneNumber = [[JivePhoneNumber alloc] init];
+    NSString *photoURI = @"http://dummy.com/photo.png";
+    
+    address.value = @"Address";
+    personJive.username = @"Address 1";
+    name.familyName = @"family name";
+    phoneNumber.value = @"555-5555";
+    email.value = @"email";
+    basePerson.displayName = @"testName";
+    basePerson.jiveId = @"1234";
+    basePerson.location = @"USA";
+    basePerson.status = @"Status update";
+    basePerson.thumbnailUrl = @"http://dummy.com/thumbnail.png";
+    basePerson.type = @"person";
+    [basePerson setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
+    [basePerson setValue:[NSNumber numberWithInt:6] forKey:@"followingCount"];
+    [basePerson setValue:name forKey:@"name"];
+    [basePerson setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
+    [basePerson setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
+    [basePerson setValue:[NSArray arrayWithObject:address] forKey:@"addresses"];
+    [basePerson setValue:personJive forKey:@"jive"];
+    [basePerson setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    [basePerson setValue:[NSArray arrayWithObject:email] forKey:@"emails"];
+    [basePerson setValue:[NSArray arrayWithObject:phoneNumber] forKey:@"phoneNumbers"];
+    [basePerson setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
+    
+    id JSON = [basePerson toJSONDictionary];
+    
+    NSLog(@"%@", JSON);
+    
+    JivePerson *person = [JivePerson instanceFromJSON:JSON];
+    
+    STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+    STAssertEqualObjects(person.displayName, basePerson.displayName, @"Wrong display name");
+    STAssertEqualObjects(person.followerCount, basePerson.followerCount, @"Wrong follower count");
+    STAssertEqualObjects(person.followingCount, basePerson.followingCount, @"Wrong following count");
+    STAssertEqualObjects(person.jiveId, basePerson.jiveId, @"Wrong id");
+    STAssertEqualObjects(person.jive.username, basePerson.jive.username, @"Wrong Jive Person");
+    STAssertEqualObjects(person.location, basePerson.location, @"Wrong location");
+    STAssertEqualObjects(person.name.familyName, basePerson.name.familyName, @"Wrong name");
+    STAssertEqualObjects(person.published, basePerson.published, @"Wrong published date");
+    STAssertEqualObjects(person.status, basePerson.status, @"Wrong status");
+    STAssertEqualObjects(person.thumbnailUrl, basePerson.thumbnailUrl, @"Wrong thumbnailUrl");
+    STAssertEqualObjects(person.type, basePerson.type, @"Wrong type");
+    STAssertEqualObjects(person.updated, basePerson.updated, @"Wrong updated date");
+    STAssertEquals([person.addresses count], [basePerson.addresses count], @"Wrong number of address objects");
+    STAssertEqualObjects([(JiveAddress *)[person.addresses objectAtIndex:0] value],
+                         [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
+                         @"Wrong Address object class");
+    STAssertEquals([person.emails count], [basePerson.emails count], @"Wrong number of email objects");
+    STAssertEqualObjects([(JiveEmail *)[person.emails objectAtIndex:0] value],
+                         [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
+                         @"Wrong email object class");
+    STAssertEquals([person.phoneNumbers count], [basePerson.phoneNumbers count], @"Wrong number of phone number objects");
+    STAssertEqualObjects([(JivePhoneNumber *)[person.phoneNumbers objectAtIndex:0] value],
+                         [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
+                         @"Wrong phone number object class");
+    STAssertEquals([person.photos count], [basePerson.photos count], @"Wrong number of photo objects");
+    STAssertEqualObjects([person.photos objectAtIndex:0], [basePerson.photos objectAtIndex:0], @"Wrong photo object class");
+    STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
+    STAssertEqualObjects([person.tags objectAtIndex:0], [basePerson.tags objectAtIndex:0], @"Wrong tag object class");
+    STAssertEquals([person.resources count], [basePerson.resources count], @"Wrong number of resource objects");
+//    for (id object in person.resources) {
+//        STAssertEquals([object class], [JiveResource class], @"Wrong resource object class");
+//    }
+}
+
+- (void)testPersonParsingAlternate {
+    JivePerson *basePerson = [[JivePerson alloc] init];
+    JiveAddress *address = [[JiveAddress alloc] init];
+    JivePersonJive *personJive = [[JivePersonJive alloc] init];
+    JiveName *name = [[JiveName alloc] init];
+    NSString *tag = @"Gigantic";
+    JiveEmail *email = [[JiveEmail alloc] init];
+    JivePhoneNumber *phoneNumber = [[JivePhoneNumber alloc] init];
+    NSString *photoURI = @"http://com.dummy/png.photo";
+    
+    address.value = @"house";
+    personJive.username = @"name";
+    name.familyName = @"Bushnell";
+    phoneNumber.value = @"777-7777";
+    email.value = @"something.com";
+    basePerson.displayName = @"display name";
+    basePerson.jiveId = @"87654";
+    basePerson.location = @"New Mexico";
+    basePerson.status = @"No status";
+    basePerson.thumbnailUrl = @"http://com.dummy/png.thumbnail";
+    basePerson.type = @"walaby";
+    [basePerson setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
+    [basePerson setValue:[NSNumber numberWithInt:4] forKey:@"followingCount"];
+    [basePerson setValue:name forKey:@"name"];
+    [basePerson setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
+    [basePerson setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
+    [basePerson setValue:[NSArray arrayWithObject:address] forKey:@"addresses"];
+    [basePerson setValue:personJive forKey:@"jive"];
+    [basePerson setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    [basePerson setValue:[NSArray arrayWithObject:email] forKey:@"emails"];
+    [basePerson setValue:[NSArray arrayWithObject:phoneNumber] forKey:@"phoneNumbers"];
+    [basePerson setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
+    
+    id JSON = [basePerson toJSONDictionary];
+    
+    NSLog(@"%@", JSON);
+    
+    JivePerson *person = [JivePerson instanceFromJSON:JSON];
+    
+    STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+    STAssertEqualObjects(person.displayName, basePerson.displayName, @"Wrong display name");
+    STAssertEqualObjects(person.followerCount, basePerson.followerCount, @"Wrong follower count");
+    STAssertEqualObjects(person.followingCount, basePerson.followingCount, @"Wrong following count");
+    STAssertEqualObjects(person.jiveId, basePerson.jiveId, @"Wrong id");
+    STAssertEqualObjects(person.jive.username, basePerson.jive.username, @"Wrong Jive Person");
+    STAssertEqualObjects(person.location, basePerson.location, @"Wrong location");
+    STAssertEqualObjects(person.name.familyName, basePerson.name.familyName, @"Wrong name");
+    STAssertEqualObjects(person.published, basePerson.published, @"Wrong published date");
+    STAssertEqualObjects(person.status, basePerson.status, @"Wrong status");
+    STAssertEqualObjects(person.thumbnailUrl, basePerson.thumbnailUrl, @"Wrong thumbnailUrl");
+    STAssertEqualObjects(person.type, basePerson.type, @"Wrong type");
+    STAssertEqualObjects(person.updated, basePerson.updated, @"Wrong updated date");
+    STAssertEquals([person.addresses count], [basePerson.addresses count], @"Wrong number of address objects");
+    STAssertEqualObjects([(JiveAddress *)[person.addresses objectAtIndex:0] value],
+                         [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
+                         @"Wrong Address object class");
+    STAssertEquals([person.emails count], [basePerson.emails count], @"Wrong number of email objects");
+    STAssertEqualObjects([(JiveEmail *)[person.emails objectAtIndex:0] value],
+                         [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
+                         @"Wrong email object class");
+    STAssertEquals([person.phoneNumbers count], [basePerson.phoneNumbers count], @"Wrong number of phone number objects");
+    STAssertEqualObjects([(JivePhoneNumber *)[person.phoneNumbers objectAtIndex:0] value],
+                         [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
+                         @"Wrong phone number object class");
+    STAssertEquals([person.photos count], [basePerson.photos count], @"Wrong number of photo objects");
+    STAssertEqualObjects([person.photos objectAtIndex:0], [basePerson.photos objectAtIndex:0], @"Wrong photo object class");
+    STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
+    STAssertEqualObjects([person.tags objectAtIndex:0], [basePerson.tags objectAtIndex:0], @"Wrong tag object class");
+    STAssertEquals([person.resources count], [basePerson.resources count], @"Wrong number of resource objects");
+//    for (id object in person.resources) {
+//        STAssertEquals([object class], [JiveResource class], @"Wrong resource object class");
+//    }
+}
 
 @end

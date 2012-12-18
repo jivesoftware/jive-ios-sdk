@@ -188,7 +188,8 @@
     
 }
 
-
-
+- (id)toJSONDictionary {
+    return nil;
+}
 
 @end

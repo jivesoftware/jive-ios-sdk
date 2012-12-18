@@ -38,6 +38,17 @@
     
 }
 
+- (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag {
+    if (array.count > 0) {
+        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:array.count];
+        
+        for (JiveObject *object in array)
+            [JSONArray addObject:object.toJSONDictionary];
+        
+        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:tag];
+    }
+}
+
 - (id)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
@@ -50,6 +61,9 @@
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:self.followerCount forKey:@"followerCount"];
     [dictionary setValue:self.followingCount forKey:@"followingCount"];
+    [self addArrayElements:addresses toJSONDictionary:dictionary forTag:@"addresses"];
+    [self addArrayElements:emails toJSONDictionary:dictionary forTag:@"emails"];
+    [self addArrayElements:phoneNumbers toJSONDictionary:dictionary forTag:@"phoneNumbers"];
     if (published)
         [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
     
@@ -62,38 +76,11 @@
     if (jive)
         [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
     
-    if (addresses) {
-        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:addresses.count];
-        
-        for (JiveAddress *address in addresses)
-            [JSONArray addObject:address.toJSONDictionary];
-
-        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:@"address"];
-    }
-    
     if (tags)
         [dictionary setValue:[tags copy] forKey:@"tags"];
     
     if (photos)
         [dictionary setValue:[photos copy] forKey:@"photos"];
-    
-    if (emails) {
-        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:emails.count];
-        
-        for (JiveEmail *address in emails)
-            [JSONArray addObject:address.toJSONDictionary];
-        
-        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:@"emails"];
-    }
-    
-    if (phoneNumbers) {
-        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:phoneNumbers.count];
-        
-        for (JivePhoneNumber *address in phoneNumbers)
-            [JSONArray addObject:address.toJSONDictionary];
-        
-        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:@"phoneNumbers"];
-    }
     
     return dictionary;
 }
