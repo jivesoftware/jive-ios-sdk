@@ -87,11 +87,15 @@
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 - (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
+- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
 
 // Environment
 - (void) filterableFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
 - (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
 
 // Places
 - (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
