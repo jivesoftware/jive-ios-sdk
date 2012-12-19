@@ -77,7 +77,7 @@
 		0F5F1A19167FBE1B00BA616E /* JiveEmailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A18167FBE1B00BA616E /* JiveEmailTests.m */; };
 		0F5F1A1C167FBF0100BA616E /* JivePhoneNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A1B167FBF0100BA616E /* JivePhoneNumberTests.m */; };
 		0F5F1A1F167FC50800BA616E /* JivePersonJiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A1E167FC50800BA616E /* JivePersonJiveTests.m */; };
-		0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5F1A201680DFFF00BA616E /* JiveResourceEntry.h */; };
+		0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5F1A201680DFFF00BA616E /* JiveResourceEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F5F1A231680E00000BA616E /* JiveResourceEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A211680DFFF00BA616E /* JiveResourceEntry.m */; };
 		0F5F1A261680E01B00BA616E /* JiveResourceEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A251680E01B00BA616E /* JiveResourceEntryTests.m */; };
 		0FA17D19166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */; };
@@ -1189,10 +1189,10 @@
 				B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */,
 				0FCB6635166E91DE00617CE4 /* JiveSearchRequestOptions.h in Headers */,
 				0FCB662E166E8AE800617CE4 /* JiveSearchPlacesRequestOptions.h in Headers */,
+				0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */,
 				0F187E7A16692F2B001FCB51 /* JiveTrendingPeopleRequestOptions.h in Headers */,
 				B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */,
 				B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */,
-				0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
