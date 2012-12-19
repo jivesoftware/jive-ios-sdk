@@ -404,7 +404,6 @@
     id JSON = [basePerson toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
-    NSLog(@"%@", JSON);
     
     JivePerson *person = [JivePerson instanceFromJSON:JSON];
     
@@ -483,7 +482,6 @@
     id JSON = [basePerson toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
-    NSLog(@"%@", JSON);
     
     JivePerson *person = [JivePerson instanceFromJSON:JSON];
     
