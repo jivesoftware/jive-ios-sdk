@@ -1293,12 +1293,12 @@
 
 - (void) testGetPlaces {
     
-    JivePlacePlacesRequestOptions *options = [[JivePlacePlacesRequestOptions alloc] init];
+    JivePlacesRequestOptions *options = [[JivePlacesRequestOptions alloc] init];
     
-    [options addType:@"blog"];
+    [options addEntityType:@"37" descriptor:@"2345"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=type(blog)" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)" isEqualToString:[value absoluteString]];
         return same;
     }]];
     

@@ -399,7 +399,7 @@
     [operation start];
 }
 
-- (void) places:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     [self placeList:@"" withOptions:options onComplete:complete onError:error];
 }
 

@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JivePlacePlacesRequestOptionsTests.h"
+#import "JivePlacesRequestOptionsTests.h"
 #import "JiveContentRequestOptions.h"
 
-@interface JiveContentRequestOptionsTests : JivePlacePlacesRequestOptionsTests
+@interface JiveContentRequestOptionsTests : JivePlacesRequestOptionsTests
 
 @property (readonly) JiveContentRequestOptions *contentOptions;
 
