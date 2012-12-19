@@ -390,13 +390,29 @@
     [self getPeopleArray:[NSString stringWithFormat:@"contents/%@/likes", contentId] withOptions:options onComplete:complete onError:error];
 }
 
-- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/recommended" options:options andArgs:nil];
+- (void) placeList:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places%@" options:options andArgs:callName, nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
     [operation start];
+}
+
+- (void) places:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self placeList:@"" withOptions:options onComplete:complete onError:error];
+}
+
+- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self placeList:@"/recommended" withOptions:options onComplete:complete onError:error];
+}
+
+- (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self placeList:@"/trending" withOptions:options onComplete:complete onError:error];
+}
+
+- (void) placePlaces:(NSString *)placeID withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [self placeList:[NSString stringWithFormat:@"/%@/places", placeID] withOptions:options onComplete:complete onError:error];
 }
 
 #pragma mark - private API
