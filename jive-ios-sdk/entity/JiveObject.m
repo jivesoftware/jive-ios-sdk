@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
+#define JIVE_JSON_DEBUG 0
+
 #import "JiveObject.h"
 
 #import <objc/runtime.h>
@@ -68,7 +70,9 @@
             if (ivar) {
                 [self handlePrimitiveProperty:key fromJSON:[JSON objectForKey:key]];
             } else {
+#if JIVE_JSON_DEBUG
                 NSLog(@"Extra field - %@", key);
+#endif
                _extraFieldsDetected = YES;
             }
         }
@@ -86,9 +90,11 @@
 }
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+#if JIVE_JSON_DEBUG
     NSLog(@"Warning: NSDictionary not parsed.");
     NSLog(@"%@", JSON);
     NSLog(@"Figure it out.");
+#endif
     return nil;
 }
 
@@ -117,10 +123,12 @@
         if (subcls) {
             return [subcls instancesFromJSONList:JSON];
         } else {
+#if JIVE_JSON_DEBUG
             // should be an array of strings if not mapped to an entity
             if ([JSON count] > 0 && ![[JSON objectAtIndex:0] isKindOfClass:[NSString class]]) {
                 NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.", property);
             }
+#endif
             return JSON;
         }
     }
@@ -143,13 +151,17 @@
              } else if ([cls isSubclassOfClass:[NSDictionary class]]) {
                  obj = [self parseDictionaryForProperty:property fromJSON:JSON];
              } else {
+#if JIVE_JSON_DEBUG
                  NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", cls);
+#endif
              }
          }
         
     } else {
+#if JIVE_JSON_DEBUG
         // We don't yet handle lists for example
         NSLog(@"Warning: Unable to process JSON types of %@. This is not yet supported.", [JSON class]);
+#endif
     }
     
     return obj;
