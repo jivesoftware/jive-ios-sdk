@@ -1,0 +1,1530 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/579196",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "Now extended through 1/31/13",
+      "url" : "https://brewspace.jiveland.com/message/579196#579196",
+      "published" : "2012-12-06T00:21:38.492+0000",
+      "updated" : "2012-12-06T00:21:38.492+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/scott.donahue\">Scott Donahue</a> replied to <a href=\"https://brewspace.jiveland.com/message/579196#579196\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/579196#579196",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4635",
+      "displayName" : "Scott Donahue",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4635/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/scott.donahue",
+      "published" : "2012-03-27T07:00:07.745+0000",
+      "updated" : "2012-12-19T23:17:38.232+0000"
+    },
+    "published" : "2012-12-06T00:21:38.871+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578856",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "Fidel Fernandez, I can certainly help, will get them extended right now.",
+      "url" : "https://brewspace.jiveland.com/message/578856#578856",
+      "published" : "2012-12-05T19:39:43.973+0000",
+      "updated" : "2012-12-05T19:39:43.973+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/scott.donahue\">Scott Donahue</a> replied to <a href=\"https://brewspace.jiveland.com/message/578856#578856\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/578856#578856",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4635",
+      "displayName" : "Scott Donahue",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4635/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/scott.donahue",
+      "published" : "2012-03-27T07:00:07.745+0000",
+      "updated" : "2012-12-19T23:17:38.232+0000"
+    },
+    "published" : "2012-12-05T19:39:44.461+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/578288",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "Scott Donahue, Hosain was able to extend their eval to end of November but we are still in the RFP phase and need to extend it for the Japanese folks of Honda?&nbsp; Can you turn that around quickly?&nbsp; I'm only asking you because Hosain took care of",
+      "url" : "https://brewspace.jiveland.com/message/578288#578288",
+      "published" : "2012-12-05T05:31:45.371+0000",
+      "updated" : "2012-12-05T05:31:45.371+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> replied to <a href=\"https://brewspace.jiveland.com/message/578288#578288\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/578288#578288",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-12-05T05:31:45.629+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/547084",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "Also, can you send me the url and the ability to go in and see what they&#8217;ve been doing?",
+      "url" : "https://brewspace.jiveland.com/message/547084#547084",
+      "published" : "2012-10-18T20:37:54.686+0000",
+      "updated" : "2012-10-18T20:37:54.686+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> replied to <a href=\"https://brewspace.jiveland.com/message/547084#547084\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/547084#547084",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-10-18T20:37:54.871+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/547082",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "That date is fine.&nbsp; Do they have Admin rights to add Domains for the Japenese users?",
+      "url" : "https://brewspace.jiveland.com/message/547082#547082",
+      "published" : "2012-10-18T20:37:18.673+0000",
+      "updated" : "2012-10-18T20:37:18.673+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> replied to <a href=\"https://brewspace.jiveland.com/message/547082#547082\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/547082#547082",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-10-18T20:37:18.920+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/547070",
+      "displayName" : "Re: Global Roll Out with Japan",
+      "objectType" : "jive:message",
+      "summary" : "Done. What would you like the end date to be set to? Currently set till the end of November but can be changed.",
+      "url" : "https://brewspace.jiveland.com/message/547070#547070",
+      "published" : "2012-10-18T20:30:58.653+0000",
+      "updated" : "2012-10-18T20:30:58.653+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/hosain.kangarloo\">Hosain Kangarloo</a> replied to <a href=\"https://brewspace.jiveland.com/message/547070#547070\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/message/547070#547070",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4633",
+      "displayName" : "Hosain Kangarloo",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4633/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/hosain.kangarloo",
+      "published" : "2012-03-27T07:00:07.691+0000",
+      "updated" : "2012-10-27T08:34:11.545+0000"
+    },
+    "published" : "2012-10-18T20:31:06.065+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+        "displayName" : "Global Roll Out with Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+        "url" : "https://brewspace.jiveland.com/thread/106930",
+        "published" : "2012-10-18T19:07:16.928+0000",
+        "updated" : "2012-12-06T00:21:38.492+0000"
+      },
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/351747",
+      "displayName" : "Global Roll Out with Japan",
+      "objectType" : "jive:discussion",
+      "summary" : "Hosain Kangarloo, Honda wants to show the Japanese folks the process they made with the TryJive instance.&nbsp; Can you re-open that up and give me access as well?",
+      "url" : "https://brewspace.jiveland.com/thread/106930",
+      "published" : "2012-10-18T19:07:16.928+0000",
+      "updated" : "2012-12-06T00:21:38.492+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> created <a href=\"https://brewspace.jiveland.com/thread/106930\">Global Roll Out with Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Global Roll Out with Japan",
+    "url" : "https://brewspace.jiveland.com/thread/106930",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-10-18T19:07:17.617+0000",
+    "verb" : "jive:created",
+    "jive" : {
+      "collection" : "2-546940",
+      "collectionUpdated" : "2012-12-06T00:21:38.871+0000"
+    },
+    "updated" : "2012-10-18T19:07:16.928+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/575229",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Hey Tatsuro.  I hope it's not too late.  Brewspace has the latest and greatest.  We've had strings reviewed. The problem is that strings sometimes are reused across the application, hence working bad for some places.  Let me know any feedback you can",
+      "url" : "https://brewspace.jiveland.com/message/575229#575229",
+      "published" : "2012-11-30T13:01:46.988+0000",
+      "updated" : "2012-11-30T13:01:46.988+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/575229#575229\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/575229#575229",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-30T13:01:47.136+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/575005",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Francisco Vives Daniel Neumann Sarah Huang can someone please provide access to any environment where Jive can be localized in Japanese using the translation powered by Smartling and not Lingotek?&nbsp; It would be great if we could have Tatsuro Alpert",
+      "url" : "https://brewspace.jiveland.com/message/575005#575005",
+      "published" : "2012-11-29T23:41:40.346+0000",
+      "updated" : "2012-11-29T23:41:40.346+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/ken.granger\">Ken Granger</a> replied to <a href=\"https://brewspace.jiveland.com/message/575005#575005\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/575005#575005",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3217",
+      "displayName" : "Ken Granger",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3217/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/ken.granger",
+      "published" : "2010-06-04T20:21:42.372+0000",
+      "updated" : "2012-12-19T23:47:53.515+0000"
+    },
+    "published" : "2012-11-29T23:41:40.649+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574995",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Ken Granger Daniel Neumann - can one of you provide Tatsuro Alpert access to the latest release of the cloud version asap?&nbsp; Just spoke to Tatsuro and he agreed to take a look and provide feedback.&nbsp; Tatsuro's last day at Jive is tomorrow so he",
+      "url" : "https://brewspace.jiveland.com/message/574995#574995",
+      "published" : "2012-11-29T23:13:28.778+0000",
+      "updated" : "2012-11-29T23:13:28.778+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/devan.batavia\">Devan Batavia</a> replied to <a href=\"https://brewspace.jiveland.com/message/574995#574995\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574995#574995",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+      "displayName" : "Devan Batavia",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/devan.batavia",
+      "published" : "2007-11-09T23:58:56.921+0000",
+      "updated" : "2012-12-19T23:07:18.985+0000"
+    },
+    "published" : "2012-11-29T23:13:28.988+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574913",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "I have also noticed that the Japanese translations have improved significantly.   It seems thought that some items like this Japanese translation for \"just joined the community\" that have been a part of the product for a long time are still not",
+      "url" : "https://brewspace.jiveland.com/message/574913#574913",
+      "published" : "2012-11-29T22:15:42.847+0000",
+      "updated" : "2012-11-29T22:15:42.847+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/tatsuro.alpert\">Tatsuro Alpert</a> replied to <a href=\"https://brewspace.jiveland.com/message/574913#574913\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574913#574913",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4254",
+      "displayName" : "Tatsuro Alpert",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4254/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/tatsuro.alpert",
+      "published" : "2011-09-06T20:57:12.117+0000",
+      "updated" : "2012-12-04T08:00:03.703+0000"
+    },
+    "published" : "2012-11-29T22:15:43.200+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574525",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Yes, please see my reply in Translation for Honda Japan",
+      "url" : "https://brewspace.jiveland.com/message/574525#574525",
+      "published" : "2012-11-29T18:41:55.604+0000",
+      "updated" : "2012-11-29T18:41:55.604+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574525#574525\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574525#574525",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T18:41:55.787+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574539",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Can we get someone to look at the Japanese translation?&nbsp; If I'm taking this in front of executives, we need to get some feedback beforehand.",
+      "url" : "https://brewspace.jiveland.com/message/574539#574539",
+      "published" : "2012-11-29T18:37:03.707+0000",
+      "updated" : "2012-11-29T18:37:03.707+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/devan.batavia\">Devan Batavia</a> replied to <a href=\"https://brewspace.jiveland.com/message/574539#574539\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574539#574539",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+      "displayName" : "Devan Batavia",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/devan.batavia",
+      "published" : "2007-11-09T23:58:56.921+0000",
+      "updated" : "2012-12-19T23:07:18.985+0000"
+    },
+    "published" : "2012-11-29T18:37:03.861+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574523",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "We haven't had any feedback on Japanese yet, but we've had feedback about Russian and French so far, and the feedback was good, so I'm just assuming the general quality should be better.",
+      "url" : "https://brewspace.jiveland.com/message/574523#574523",
+      "published" : "2012-11-29T18:34:15.108+0000",
+      "updated" : "2012-11-29T18:34:15.108+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574523#574523\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574523#574523",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T18:34:15.273+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574521",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Daniel Neumann - out of curiosity, how different (hopefully better) is the Japanese translation now compared to when we had Lingotek?&nbsp; Have we had an independent person/organization (or our internal folks) compare the two?",
+      "url" : "https://brewspace.jiveland.com/message/574521#574521",
+      "published" : "2012-11-29T18:31:05.671+0000",
+      "updated" : "2012-11-29T18:31:05.671+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/devan.batavia\">Devan Batavia</a> replied to <a href=\"https://brewspace.jiveland.com/message/574521#574521\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574521#574521",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+      "displayName" : "Devan Batavia",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/devan.batavia",
+      "published" : "2007-11-09T23:58:56.921+0000",
+      "updated" : "2012-12-19T23:07:18.985+0000"
+    },
+    "published" : "2012-11-29T18:31:05.898+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574456",
+      "displayName" : "Re: Honda Japan Meeting",
+      "objectType" : "jive:message",
+      "summary" : "Naming a few Japanese speaking Jivers who could help rather than a hired translator. &nbsp;  Tatsuro Alpert, Chieko Higashi. &nbsp;  If needed I can get you in touch with one of the translators who ran the current Japanese localization (based in Japan)",
+      "url" : "https://brewspace.jiveland.com/message/574456#574456",
+      "published" : "2012-11-29T17:46:03.471+0000",
+      "updated" : "2012-11-29T17:46:03.471+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574456#574456\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/message/574456#574456",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T17:46:03.782+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+        "displayName" : "Honda Japan Meeting",
+        "objectType" : "jive:discussion",
+        "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+        "url" : "https://brewspace.jiveland.com/thread/111744",
+        "published" : "2012-11-29T04:41:35.289+0000",
+        "updated" : "2012-11-30T13:01:46.988+0000"
+      },
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367450",
+      "displayName" : "Honda Japan Meeting",
+      "objectType" : "jive:discussion",
+      "summary" : "Although we are still in the \"quiet period\" of the Honda RFP process, Fidel Fernandez and I met with the Honda America team to review the lingering concerns &amp; requirements set forth by their Japanese counter parts.&nbsp; IBM will be given the same",
+      "url" : "https://brewspace.jiveland.com/thread/111744",
+      "published" : "2012-11-29T04:41:35.289+0000",
+      "updated" : "2012-11-30T13:01:46.988+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/ken.granger\">Ken Granger</a> created <a href=\"https://brewspace.jiveland.com/thread/111744\">Honda Japan Meeting</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Honda Japan Meeting",
+    "url" : "https://brewspace.jiveland.com/thread/111744",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3217",
+      "displayName" : "Ken Granger",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3217/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/ken.granger",
+      "published" : "2010-06-04T20:21:42.372+0000",
+      "updated" : "2012-12-19T23:47:53.515+0000"
+    },
+    "published" : "2012-11-29T04:41:35.756+0000",
+    "verb" : "jive:created",
+    "jive" : {
+      "collection" : "2-574120",
+      "collectionUpdated" : "2012-11-30T13:01:47.136+0000"
+    },
+    "updated" : "2012-11-29T22:34:25.000+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/575227",
+      "displayName" : "Re: RE: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "Based on that, I believe the best approach is showing Jive 7, with emphasis on the features present in Jive 6, and bypassing the ones new to Jive 7 (like most of the onboarding stuff).  I'll get the linguistic QA over Jive 7, and will (if needed) apply",
+      "url" : "https://brewspace.jiveland.com/message/575227#575227",
+      "published" : "2012-11-30T12:57:59.185+0000",
+      "updated" : "2012-11-30T12:57:59.185+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/575227#575227\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: RE: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/575227#575227",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-30T12:57:59.863+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574980",
+      "displayName" : "RE: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "I&lsquo;m less concerned with the version of Jive we demo and more concerned with making sure whatever we show is equipped with the latest Smartling powered localization.&nbsp; &nbsp;",
+      "url" : "https://brewspace.jiveland.com/message/574980#574980",
+      "published" : "2012-11-29T23:02:25.503+0000",
+      "updated" : "2012-11-29T23:02:25.503+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/ken.granger\">Ken Granger</a> replied to <a href=\"https://brewspace.jiveland.com/message/574980#574980\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "RE: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574980#574980",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3217",
+      "displayName" : "Ken Granger",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3217/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/ken.granger",
+      "published" : "2010-06-04T20:21:42.372+0000",
+      "updated" : "2012-12-19T23:47:53.515+0000"
+    },
+    "published" : "2012-11-29T23:02:25.746+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574775",
+      "displayName" : "Re: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "Ken, your thoughts here?",
+      "url" : "https://brewspace.jiveland.com/message/574775#574775",
+      "published" : "2012-11-29T20:52:38.860+0000",
+      "updated" : "2012-11-29T20:52:38.860+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> replied to <a href=\"https://brewspace.jiveland.com/message/574775#574775\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574775#574775",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-11-29T20:52:38.984+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574774",
+      "displayName" : "Re: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "So I know how to prioritize linguistic QA, are you going to demo 7c1? (note there's not a lot of UI change since 6.0.x) or will you go with pre-feature-complete 6.0.1?",
+      "url" : "https://brewspace.jiveland.com/message/574774#574774",
+      "published" : "2012-11-29T20:48:14.644+0000",
+      "updated" : "2012-11-29T20:48:14.644+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574774#574774\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574774#574774",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T20:48:14.784+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574759",
+      "displayName" : "Re: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "Alan Mon (SE from East) will be in the room with me.",
+      "url" : "https://brewspace.jiveland.com/message/574759#574759",
+      "published" : "2012-11-29T20:41:52.198+0000",
+      "updated" : "2012-11-29T20:41:52.198+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/devan.batavia\">Devan Batavia</a> replied to <a href=\"https://brewspace.jiveland.com/message/574759#574759\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574759#574759",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+      "displayName" : "Devan Batavia",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/devan.batavia",
+      "published" : "2007-11-09T23:58:56.921+0000",
+      "updated" : "2012-12-19T23:07:18.985+0000"
+    },
+    "published" : "2012-11-29T20:41:52.336+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574745",
+      "displayName" : "RE: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "Honda Japan&lsquo;s requirements are super high level and I don&lsquo;t think they are looking for a technical deep dive demo.&nbsp; However, we need to have someone in the room that can address technical questions as they come up.&nbsp; The meeting in",
+      "url" : "https://brewspace.jiveland.com/message/574745#574745",
+      "published" : "2012-11-29T20:39:50.934+0000",
+      "updated" : "2012-11-29T20:39:50.934+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/ken.granger\">Ken Granger</a> replied to <a href=\"https://brewspace.jiveland.com/message/574745#574745\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "RE: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574745#574745",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3217",
+      "displayName" : "Ken Granger",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3217/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/ken.granger",
+      "published" : "2010-06-04T20:21:42.372+0000",
+      "updated" : "2012-12-19T23:47:53.515+0000"
+    },
+    "published" : "2012-11-29T20:39:51.059+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574734",
+      "displayName" : "Re: RE: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "RTM could help but I wouldn't be comfortable with them leading the demo.&nbsp; They've not really done this before.&nbsp; We would have to have them trained in the next 7 days if this is the avenue we take.&nbsp; Fidel - let's chat otp after 3pm today.",
+      "url" : "https://brewspace.jiveland.com/message/574734#574734",
+      "published" : "2012-11-29T20:32:05.436+0000",
+      "updated" : "2012-11-29T20:32:05.436+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/devan.batavia\">Devan Batavia</a> replied to <a href=\"https://brewspace.jiveland.com/message/574734#574734\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: RE: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574734#574734",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2172",
+      "displayName" : "Devan Batavia",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2172/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/devan.batavia",
+      "published" : "2007-11-09T23:58:56.921+0000",
+      "updated" : "2012-12-19T23:07:18.985+0000"
+    },
+    "published" : "2012-11-29T20:32:05.620+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574696",
+      "displayName" : "Re: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "Ah, OK, their company is RTM... roger that",
+      "url" : "https://brewspace.jiveland.com/message/574696#574696",
+      "published" : "2012-11-29T19:58:12.590+0000",
+      "updated" : "2012-11-29T19:58:12.590+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574696#574696\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574696#574696",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T19:58:12.759+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574693",
+      "displayName" : "Re: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "No, we have a Partner who is local in Japan.&nbsp; They might be able to assist us with regards to our efforts to support Honda in Japan.&nbsp; I'm not sure what RTM stands for but they are an existing Jive Partner out of Japan.",
+      "url" : "https://brewspace.jiveland.com/message/574693#574693",
+      "published" : "2012-11-29T19:56:55.216+0000",
+      "updated" : "2012-11-29T19:56:55.216+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/fidel.fernandez\">Fidel Fernandez</a> replied to <a href=\"https://brewspace.jiveland.com/message/574693#574693\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574693#574693",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/4664",
+      "displayName" : "Fidel Fernandez",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/4664/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/fidel.fernandez",
+      "published" : "2012-04-27T07:00:03.615+0000",
+      "updated" : "2012-12-19T23:28:13.267+0000"
+    },
+    "published" : "2012-11-29T19:56:55.355+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/574692",
+      "displayName" : "Re: RE: Translation for Honda Japan",
+      "objectType" : "jive:message",
+      "summary" : "did you mean RTM for Release To Manufacturing? I think you are talking about something else...",
+      "url" : "https://brewspace.jiveland.com/message/574692#574692",
+      "published" : "2012-11-29T19:54:24.072+0000",
+      "updated" : "2012-11-29T19:54:24.072+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/daniel.neumann\">Daniel Neumann</a> replied to <a href=\"https://brewspace.jiveland.com/message/574692#574692\">Translation for Honda Japan</a> in <a href=\"https://brewspace.jiveland.com/groups/honda\">Honda</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+      "displayName" : "Honda",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar"
+      },
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/groups/honda",
+      "published" : "2012-06-08T18:51:23.740+0000",
+      "updated" : "2012-12-06T00:21:38.604+0000"
+    },
+    "title" : "Re: RE: Translation for Honda Japan",
+    "url" : "https://brewspace.jiveland.com/message/574692#574692",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/2629",
+      "displayName" : "Daniel Neumann",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/2629/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/daniel.neumann",
+      "published" : "2008-05-05T18:19:04.285+0000",
+      "updated" : "2012-12-19T23:34:51.370+0000"
+    },
+    "published" : "2012-11-29T19:54:24.192+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/367453",
+        "displayName" : "Translation for Honda Japan",
+        "objectType" : "jive:discussion",
+        "summary" : "We are in the final stages of a large RFP process with Honda.&nbsp; This opportunity started off as a US only initiative and we are competing with IBM. We smoked IBM and the US evaluation committee tasked with finding a \"collaboration solution\" has made",
+        "url" : "https://brewspace.jiveland.com/thread/111745",
+        "published" : "2012-11-29T05:00:25.799+0000",
+        "updated" : "2012-11-30T12:57:59.185+0000"
+      },
+      "collection" : "2-574121",
+      "collectionUpdated" : "2012-11-30T12:57:59.863+0000"
+    },
+    "updated" : "2012-11-29T16:55:03.045+0000"
+  } ],
+  "itemsPerPage" : 25,
+  "links" : {
+    "next" : "https://brewspace.jiveland.com/api/core/v3/places/301838/activities?fields=%40all&count=25&before=2012-11-30T12%3A57%3A59.863%2B0000",
+    "previous" : "https://brewspace.jiveland.com/api/core/v3/places/301838/activities?fields=%40all&count=25&after=2012-12-06T00%3A21%3A38.871%2B0000"
+  }
+}

@@ -415,6 +415,24 @@
     [self placeList:[NSString stringWithFormat:@"/%@/places", placeID] withOptions:options onComplete:complete onError:error];
 }
 
+- (void) place:(NSString *)placeId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/%@" options:options andArgs:placeId, nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePlace *(id JSON) {
+        return [JivePlace instanceFromJSON:JSON];
+    }];
+    
+    [operation start];
+}
+
+- (void) placeActivities:(NSString *)placeId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/places/%@/activities" options:options andArgs:placeId, nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - private API
 
 - (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
