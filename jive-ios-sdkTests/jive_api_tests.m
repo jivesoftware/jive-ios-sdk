@@ -1355,6 +1355,33 @@
     }];
 }
 
+- (void) testGetBlogOperation {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/blog?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"blog" andAuthDelegate:mockAuthDelegate];
+    
+    __block BOOL operationComplete = NO;
+    NSOperation* operation = [jive blogOperation:@"8192" withOptions:options onComplete:^(JiveBlog *blog) {
+        // Called 3rd
+        STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        operationComplete = YES;
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+}
+
 - (void) testGetBlog {
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"name"];
@@ -1369,9 +1396,9 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive blog:@"2918" withOptions:options onComplete:^(JivePerson *person) {
+        [jive blog:@"2918" withOptions:options onComplete:^(JiveBlog *blog) {
             // Called 3rd
-            STAssertEquals([person class], [JiveBlog class], @"Wrong item class");
+            STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

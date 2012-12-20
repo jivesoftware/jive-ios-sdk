@@ -333,13 +333,15 @@
     [operation start];
 }
 
-- (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation *)blogOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/blog" options:options andArgs:personId,nil];
-    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveBlog instanceFromJSON:JSON];
     }];
-    
-    [operation start];
+}
+
+- (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
+    [[self blogOperation:personId withOptions:options onComplete:complete onError:error] start];
 }
 
 - (JAPIRequestOperation *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
