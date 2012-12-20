@@ -460,47 +460,71 @@
     [[self getPeopleArray:[NSString stringWithFormat:@"contents/%@/likes", contentId] withOptions:options onComplete:complete onError:error] start];
 }
 
-- (void) placeList:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places%@" options:options andArgs:callName, nil];
-    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
-    
-    [operation start];
+}
+
+- (void) placeList:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self placeListOperation:callName withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self placeListOperation:@"" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [self placeList:@"" withOptions:options onComplete:complete onError:error];
+    [[self placesOperation:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self placeListOperation:@"/recommended" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [self placeList:@"/recommended" withOptions:options onComplete:complete onError:error];
+    [[self recommendedPlacesOperation:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self placeListOperation:@"/trending" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [self placeList:@"/trending" withOptions:options onComplete:complete onError:error];
+    [[self trendingPlacesOperation:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)placePlacesOperation:(NSString *)placeId withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self placeListOperation:[NSString stringWithFormat:@"/%@/places", placeId] withOptions:options onComplete:complete onError:error];
 }
 
 - (void) placePlaces:(NSString *)placeID withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [self placeList:[NSString stringWithFormat:@"/%@/places", placeID] withOptions:options onComplete:complete onError:error];
+    [[self placePlacesOperation:placeID withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)placeOperation:(NSString *)placeId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/%@" options:options andArgs:placeId, nil];
+    
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePlace *(id JSON) {
+        return [JivePlace instanceFromJSON:JSON];
+    }];
 }
 
 - (void) place:(NSString *)placeId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/%@" options:options andArgs:placeId, nil];
-    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePlace *(id JSON) {
-        return [JivePlace instanceFromJSON:JSON];
+    [[self placeOperation:placeId withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *)placeActivitiesOperation:(NSString *)placeId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/places/%@/activities" options:options andArgs:placeId, nil];
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
-    
-    [operation start];
 }
 
 - (void) placeActivities:(NSString *)placeId withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/places/%@/activities" options:options andArgs:placeId, nil];
-    JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveInboxEntry instancesFromJSONList:[JSON objectForKey:@"list"]];
-    }];
-    
-    [operation start];
+    [[self placeActivitiesOperation:placeId withOptions:options onComplete:complete onError:error] start];
 }
 
 #pragma mark - private API
