@@ -528,6 +528,37 @@
     }];
 }
 
+- (void) testSearchPeopleRequestOperation {
+ 
+    JiveSearchPeopleRequestOptions *options = [[JiveSearchPeopleRequestOptions alloc] init];
+    options.sort = JiveSortOrderUpdatedAsc;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/search/people?sort=updatedAsc" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"search_people_response" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive searchPeopleRequestOperation:options onComplete:^(NSArray *people) {
+        STAssertEquals([people count], (NSUInteger)13, @"Wrong number of items parsed");
+        STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertNotNil(operation, @"searchPeopleRequestOperation returned nil");
+    STAssertTrue([operation isKindOfClass:[JAPIRequestOperation class]], @"Incorrect operation type/class returned from searchPeopleRequestOperation");
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+    [queue waitUntilAllOperationsAreFinished];
+}
+
 - (void) testSearchPeopleServiceCall {
     JiveSearchPeopleRequestOptions *options = [[JiveSearchPeopleRequestOptions alloc] init];    
     options.sort = JiveSortOrderUpdatedAsc;
@@ -556,6 +587,40 @@
     }];
 }
 
+- (void) testSearchPlacesRequestOperation {
+    
+    JiveSearchPlacesRequestOptions *options = [[JiveSearchPlacesRequestOptions alloc] init];
+    options.sort = JiveSortOrderUpdatedAsc;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/search/places?sort=updatedAsc" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"search_places_response" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation =  [jive searchPlacesRequestOperation:options onComplete:^(NSArray *places) {
+        // Called 3rd
+        STAssertEquals([places count], (NSUInteger)10, @"Wrong number of items parsed");
+        STAssertTrue([[places objectAtIndex:0] isKindOfClass:[JivePlace class]], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertNotNil(operation, @"searchPlacesRequestOperation returned nil");
+    STAssertTrue([operation isKindOfClass:[JAPIRequestOperation class]], @"Incorrect operation type/class returned from searchPlacesRequestOperation");
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+    [queue waitUntilAllOperationsAreFinished];
+    
+}
+
 - (void) testSearchPlacesServiceCall {
     JiveSearchPlacesRequestOptions *options = [[JiveSearchPlacesRequestOptions alloc] init];    
     options.sort = JiveSortOrderUpdatedAsc;
@@ -582,6 +647,37 @@
             STFail([error localizedDescription]);
         }];
     }];
+}
+
+- (void) testSearchContentsRequestOperation {
+    JiveSearchContentsRequestOptions *options = [[JiveSearchContentsRequestOptions alloc] init];
+    options.sort = JiveSortOrderUpdatedAsc;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/search/contents?sort=updatedAsc" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"search_contents_response" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive searchContentsRequestOperation:options onComplete:^(NSArray *contents) {
+            // Called 3rd
+            STAssertEquals([contents count], (NSUInteger)7, @"Wrong number of items parsed");
+            STAssertTrue([[contents objectAtIndex:0] isKindOfClass:[JiveContent class]], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+   
+    STAssertNotNil(operation, @"searchContentsRequestOperation returned nil");
+    STAssertTrue([operation isKindOfClass:[JAPIRequestOperation class]], @"Incorrect operation type/class returned from searchContentsRequestOperation");
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+    [queue waitUntilAllOperationsAreFinished];
 }
 
 - (void) testSearchContentsServiceCall {

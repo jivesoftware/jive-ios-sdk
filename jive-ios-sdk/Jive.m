@@ -247,32 +247,53 @@
     [operation start];
 }
 
-- (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation*) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/people" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
+    return operation;
+}
+
+- (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^)(NSArray *people))complete onError:(void (^)(NSError *))error {
+    
+    JAPIRequestOperation* operation = [self searchPeopleRequestOperation:options onComplete:complete onError:error];
+    
     [operation start];
 }
 
-- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation*) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
     
+    return operation;
+}
+
+- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
+
+    JAPIRequestOperation* operation = [self searchPlacesRequestOperation:options onComplete:complete onError:error];
+    
     [operation start];
 }
 
-- (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation*) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
     }];
+    
+    return operation;
+}
+
+- (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
+    
+    JAPIRequestOperation* operation = [self searchContentsRequestOperation:options onComplete:complete onError:error];
     
     [operation start];
 }
