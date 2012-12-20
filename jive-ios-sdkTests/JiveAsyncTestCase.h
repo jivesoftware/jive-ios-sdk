@@ -11,5 +11,6 @@
 @interface JiveAsyncTestCase : SenTestCase
 
 - (void)waitForTimeout:(void (^)(void(^finishedBlock)(void)))asynchBlock;
+- (void)runOperation:(NSOperation *)operation untilComplete:(BOOL (^)(void))operationComplete;
 
 @end
