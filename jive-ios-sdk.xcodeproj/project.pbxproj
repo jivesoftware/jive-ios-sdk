@@ -81,7 +81,7 @@
 		0F5F1A231680E00000BA616E /* JiveResourceEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A211680DFFF00BA616E /* JiveResourceEntry.m */; };
 		0F5F1A261680E01B00BA616E /* JiveResourceEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A251680E01B00BA616E /* JiveResourceEntryTests.m */; };
 		0F6E3169168269E500E5F7CC /* recommended_places.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E3168168269E500E5F7CC /* recommended_places.json */; };
-		0F6E316C1682731000E5F7CC /* JivePlacesRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6E316A1682731000E5F7CC /* JivePlacesRequestOptions.h */; };
+		0F6E316C1682731000E5F7CC /* JivePlacesRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6E316A1682731000E5F7CC /* JivePlacesRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F6E316D1682731000E5F7CC /* JivePlacesRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E316B1682731000E5F7CC /* JivePlacesRequestOptions.m */; };
 		0F6E3170168273F200E5F7CC /* JivePlacesRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E316F168273F200E5F7CC /* JivePlacesRequestOptionsTests.m */; };
 		0F6E31761682877800E5F7CC /* place.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E31751682877800E5F7CC /* place.json */; };
@@ -1211,9 +1211,9 @@
 				0FCB662E166E8AE800617CE4 /* JiveSearchPlacesRequestOptions.h in Headers */,
 				0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */,
 				0F187E7A16692F2B001FCB51 /* JiveTrendingPeopleRequestOptions.h in Headers */,
+				0F6E316C1682731000E5F7CC /* JivePlacesRequestOptions.h in Headers */,
 				B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */,
 				B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */,
-				0F6E316C1682731000E5F7CC /* JivePlacesRequestOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
