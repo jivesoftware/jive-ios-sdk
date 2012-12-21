@@ -94,11 +94,14 @@
     [place setValue:parentPlace forKey:@"parentPlace"];
     [place setValue:[NSArray arrayWithObject:contentType] forKey:@"contentTypes"];
     place.parent = @"Parent";
+    [place performSelector:@selector(handlePrimitiveProperty:fromJSON:)
+                withObject:@"visibleToExternalContributors"
+                withObject:(__bridge id)kCFBooleanTrue];
     
     JSON = [place toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)18, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)19, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"name"], place.name, @"Wrong name.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"displayName"], place.displayName, @"Wrong display name.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], place.jiveId, @"Wrong id.");
@@ -114,6 +117,12 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"published"], @"1970-01-01T00:00:00.000+0000", @"Wrong published date");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"updated"], @"1970-01-01T00:16:40.123+0000", @"Wrong updated date");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"parent"], place.parent, @"Wrong parent");
+    
+    id visibility = [(NSDictionary *)JSON objectForKey:@"visibleToExternalContributors"];
+    
+    STAssertNotNil(visibility, @"Missing visibility");
+    if (visibility)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)visibility), @"Wrong visiblity");
     
     NSArray *parentContentJSON = [(NSDictionary *)JSON objectForKey:@"parentContent"];
     
@@ -182,6 +191,7 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"published"], @"1970-01-01T00:16:40.123+0000", @"Wrong published date");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"updated"], @"1970-01-01T00:00:00.000+0000", @"Wrong updated date");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"parent"], place.parent, @"Wrong parent");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"visibleToExternalContributors"], @"Visibility included?");
     
     NSArray *parentContentJSON = [(NSDictionary *)JSON objectForKey:@"parentContent"];
     
@@ -264,6 +274,9 @@
     [basePlace setValue:[NSArray arrayWithObject:contentType] forKey:@"contentTypes"];
     basePlace.parent = @"Parent";
     [basePlace setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    [basePlace performSelector:@selector(handlePrimitiveProperty:fromJSON:)
+                    withObject:@"visibleToExternalContributors"
+                    withObject:(__bridge id)kCFBooleanTrue];
     
     id JSON = [basePlace toJSONDictionary];
     
@@ -289,6 +302,7 @@
     STAssertEqualObjects(place.parent, basePlace.parent, @"Wrong parent");
     STAssertEqualObjects(place.parentContent.name, parentContent.name, @"Wrong parentContent name");
     STAssertEqualObjects(place.parentPlace.name, parentPlace.name, @"Wrong parentPlace name");
+    STAssertTrue(place.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
     STAssertEquals([place.contentTypes count], [basePlace.contentTypes count], @"Wrong number of contentType objects");
     STAssertEqualObjects([place.contentTypes objectAtIndex:0], [basePlace.contentTypes objectAtIndex:0], @"Wrong contentType object class");
     STAssertEquals([place.resources count], [basePlace.resources count], @"Wrong number of resource objects");
@@ -352,6 +366,7 @@
     STAssertEqualObjects(place.parent, basePlace.parent, @"Wrong parent");
     STAssertEqualObjects(place.parentContent.name, parentContent.name, @"Wrong parentContent name");
     STAssertEqualObjects(place.parentPlace.name, parentPlace.name, @"Wrong parentPlace name");
+    STAssertFalse(place.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
     STAssertEquals([place.contentTypes count], [basePlace.contentTypes count], @"Wrong number of contentType objects");
     STAssertEqualObjects([place.contentTypes objectAtIndex:0], [basePlace.contentTypes objectAtIndex:0], @"Wrong contentType object class");
     STAssertEquals([place.resources count], [basePlace.resources count], @"Wrong number of resource objects");

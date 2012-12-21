@@ -88,6 +88,9 @@
     if (contentTypes)
         [dictionary setValue:[contentTypes copy] forKey:@"contentTypes"];
     
+    if (visibleToExternalContributors)
+        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"visibleToExternalContributors"];
+    
     return dictionary;
 }
 
