@@ -7,6 +7,7 @@
 //
 
 #import "JiveAsyncTestCase.h"
+#import "JAPIRequestOperation.h"
 
 @implementation JiveAsyncTestCase
 
@@ -28,6 +29,24 @@
     }
     
     STAssertTrue(finished, @"Asynchronous call never finished.");
+}
+
+- (void)runOperation:(NSOperation *)operation untilComplete:(BOOL (^)(void))operationComplete {
+    STAssertNotNil(operation, @"Invalid operation");
+    STAssertTrue([operation isKindOfClass:[JAPIRequestOperation class]], @"Incorrect operation type/class.");
+    
+    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:5.0];
+    NSDate *dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [queue addOperation:operation];
+    while (!operationComplete() && ([loopUntil timeIntervalSinceNow] > 0)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:dt];
+        dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    }
+    
+    STAssertTrue(operationComplete(), @"Asynchronous call never finished.");
 }
 
 @end

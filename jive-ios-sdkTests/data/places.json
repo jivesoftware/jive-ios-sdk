@@ -2,364 +2,2423 @@ throw 'allowIllegalResourceCall is false.';
 {
   "list" : [ {
     "type" : "group",
-    "name" : "Honda",
+    "memberCount" : 8,
+    "creator" : {
+      "name" : {
+        "givenName" : "Phil",
+        "familyName" : "Varner",
+        "formatted" : "Phil Varner"
+      },
+      "type" : "person",
+      "displayName" : "Phil Varner",
+      "jive" : {
+        "level" : {
+          "name" : "Terbium",
+          "points" : 7453
+        },
+        "username" : "phil.varner"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/phil.varner",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2885/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2885",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2885"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "!'\",.?*@`~-+_=/\\:$&",
+    "displayName" : "1523001374",
+    "status" : "Active",
+    "description" : "",
+    "contentTypes" : [ "blog", "discussions", "updates", "videos" ],
+    "viewCount" : 66,
+    "published" : "2011-01-28T22:03:53.296+0000",
+    "updated" : "2012-03-21T20:32:31.920+0000",
     "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 7,
     "resources" : {
       "invites" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/301838",
-        "allowed" : [ "GET", "POST" ]
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/95191",
+        "allowed" : [ "GET" ]
       },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F301838)",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F95191)",
         "allowed" : [ "GET" ]
       },
       "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/announcements",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/groups/honda",
+        "ref" : "https://brewspace.jiveland.com/groups/1523001374",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/categories",
         "allowed" : [ "GET" ]
       },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/followingIn",
-        "allowed" : [ "GET" ]
-      },
-      "blog" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301839",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/followingIn",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/avatar",
         "allowed" : [ "GET" ]
       },
       "members" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/301838",
-        "allowed" : [ "GET", "POST" ]
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/95191",
+        "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/95191/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "4005"
+    "id" : "2420"
   }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/3931",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "???????",
+    "displayName" : "rupa.chinna",
+    "status" : "Active",
+    "description" : "test case",
+    "viewCount" : 5,
+    "published" : "2011-05-27T08:53:55.444+0000",
+    "updated" : "2011-05-27T08:53:55.444+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 0,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F115767)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/115767",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/rupa.chinna/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/115767/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/115767/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "19585"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/155729",
     "type" : "space",
-    "name" : "Data Center Information",
+    "locale" : "en_US",
+    "childCount" : 0,
+    "name" : "1.10.X Issue Tracking",
+    "displayName" : "issues",
+    "status" : "Active",
+    "description" : "post clearspace related bugs, improvements, and tasks here",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "videos" ],
+    "viewCount" : 619,
+    "published" : "2007-07-31T16:29:32.616+0000",
+    "updated" : "2012-01-17T01:21:27.207+0000",
     "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
     "resources" : {
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F154715)",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F93790)",
         "allowed" : [ "GET" ]
       },
       "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/announcements",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/community/hosting/data-center-information",
+        "ref" : "https://brewspace.jiveland.com/community/quality/qe-archive/issues",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/categories",
         "allowed" : [ "GET" ]
       },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/followingIn",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/followingIn",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/avatar",
         "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/154715/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93790/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "2413"
+    "id" : "2069"
   }, {
-    "type" : "project",
-    "name" : "Volcano Corp",
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/2823",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "12%",
+    "displayName" : "olivia",
+    "status" : "Active",
+    "description" : "12% is reported to be the amount of coding time developers spend thinking of variable names. Thus, until I've got something better than Olivia Teich's blog, 12% it is.",
+    "viewCount" : 89,
+    "published" : "2009-08-31T04:56:56.360+0000",
+    "updated" : "2010-02-03T01:08:04.355+0000",
     "visibleToExternalContributors" : false,
+    "followerCount" : 2,
     "resources" : {
-      "checkpoints" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/320458",
-        "allowed" : [ "GET" ]
-      },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F320458)",
-        "allowed" : [ "GET" ]
-      },
-      "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F92647)&filter=type(post)",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92647",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/groups/josh-raditch-west-coast-sales-territory-southern-ca-nv-id-mt-wy/projects/volcano-corp",
-        "allowed" : [ "GET" ]
-      },
-      "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/categories",
-        "allowed" : [ "GET" ]
-      },
-      "tasks" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/tasks",
-        "allowed" : [ "GET", "POST" ]
-      },
-      "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/places",
+        "ref" : "https://brewspace.jiveland.com/blogs/olivia",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/followingIn",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92647/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92647/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "11440"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/2197",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "13 dimes and 2 assists",
+    "displayName" : "nebiyu",
+    "status" : "Active",
+    "description" : "To understand the title of this blog check out the video of Stephon Marbury on Mike'd Up With Mike Lupica from WNBC New York on YouTube: http://www.youtube.com/watch?v=zWxgbyYrT5A",
+    "viewCount" : 77,
+    "published" : "2008-01-25T02:30:17.218+0000",
+    "updated" : "2010-02-06T00:47:12.128+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F91239)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91239",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/blogs/nebiyu",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91239/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91239/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4543"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/349184",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "13 Stock (Delivery Partner)",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "Supporting 13 Stock enablement and delivery in Germany.  http://www.13stock.de/",
+    "viewCount" : 0,
+    "published" : "2012-10-11T09:30:48.910+0000",
+    "updated" : "2012-10-11T09:30:48.910+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F349185)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349185",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/13-stock-delivery-partner/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349185/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349185/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "25515"
+  }, {
+    "type" : "group",
+    "memberCount" : 1,
+    "creator" : {
+      "name" : {
+        "givenName" : "Mickey",
+        "familyName" : "Heynen",
+        "formatted" : "Mickey Heynen"
+      },
+      "type" : "person",
+      "displayName" : "Mickey Heynen",
+      "jive" : {
+        "level" : {
+          "name" : "Chromium",
+          "points" : 1179
+        },
+        "username" : "mickey.heynen"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/mickey.heynen",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4674/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4674",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "4674"
+    },
+    "groupType" : "OPEN",
+    "name" : "13 Stock (Delivery Partner)",
+    "displayName" : "13-stock-delivery-partner",
+    "status" : "Active",
+    "description" : "Supporting 13 Stock enablement and delivery in Germany.  http://www.13stock.de/",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+    "viewCount" : 17,
+    "published" : "2012-10-11T09:30:48.860+0000",
+    "updated" : "2012-11-01T10:32:04.046+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "13th_floor", "13_stock", "delivery_partners_germany" ],
+    "followerCount" : 1,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/349184",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F349184)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/13-stock-delivery-partner",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/followingIn",
         "allowed" : [ "GET" ]
       },
       "blog" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320459",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349185",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/avatar",
         "allowed" : [ "GET" ]
       },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/349184",
+        "allowed" : [ "GET", "POST" ]
+      },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/320458/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349184/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "3414"
+    "id" : "4443"
   }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/143198",
     "type" : "project",
-    "name" : "Xchanging - Social Intranet",
+    "startDate" : "2011-12-13T08:00:00.000+0000",
+    "dueDate" : "2012-12-14T07:59:59.999+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Renu",
+        "familyName" : "Gupta",
+        "formatted" : "Renu Gupta"
+      },
+      "type" : "person",
+      "displayName" : "Renu Gupta",
+      "jive" : {
+        "level" : {
+          "name" : "Iron",
+          "points" : 1283
+        },
+        "username" : "renu.gupta"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/renu.gupta",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4320/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4320",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "4320"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "1-800-Flowers",
+    "displayName" : "1-800-flowers",
+    "status" : "Active",
+    "description" : "Prospect.",
+    "contentTypes" : [ "blog", "updates", "videos", "ideas", "documents", "files", "projects", "polls", "discussions", "tasks" ],
+    "viewCount" : 14,
+    "published" : "2011-12-13T22:45:20.178+0000",
+    "updated" : "2011-12-13T22:58:54.192+0000",
     "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 1,
     "resources" : {
       "checkpoints" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/172163",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/157498",
         "allowed" : [ "GET" ]
       },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F172163)",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F157498)",
         "allowed" : [ "GET" ]
       },
       "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/announcements",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/groups/rosemary-smart-opportunities/projects/xchanging--social-intranet",
+        "ref" : "https://brewspace.jiveland.com/groups/renu-guptas-territory/projects/1-800-flowers",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/categories",
         "allowed" : [ "GET" ]
       },
       "tasks" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/tasks",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/tasks",
         "allowed" : [ "GET", "POST" ]
       },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/followingIn",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/followingIn",
         "allowed" : [ "GET" ]
       },
       "blog" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172164",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157499",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/avatar",
         "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/172163/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157498/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "2622"
+    "id" : "2149"
   }, {
-    "type" : "project",
-    "name" : "MaRS DD Healthcare Innovation Network RFP",
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/157498",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "1-800-Flowers",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "Prospect.",
+    "viewCount" : 1,
+    "published" : "2011-12-13T22:45:20.190+0000",
+    "updated" : "2011-12-13T22:45:20.190+0000",
     "visibleToExternalContributors" : false,
+    "followerCount" : 1,
     "resources" : {
-      "checkpoints" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/349099",
-        "allowed" : [ "GET" ]
-      },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F349099)",
-        "allowed" : [ "GET" ]
-      },
-      "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F157499)&filter=type(post)",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157499",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/groups/territory-sales-planning-csd-canada/projects/mars-dd-healthcare-innovation-network-rfp",
+        "ref" : "https://brewspace.jiveland.com/projects/1-800-flowers/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157499/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157499/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "23223"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/335158",
+    "type" : "project",
+    "startDate" : "2012-11-15T08:00:00.000+0000",
+    "dueDate" : "2013-01-01T07:59:59.999+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Julie",
+        "familyName" : "Heneghan",
+        "formatted" : "Julie Heneghan"
+      },
+      "type" : "person",
+      "displayName" : "Julie Heneghan",
+      "jive" : {
+        "level" : {
+          "name" : "Calcium",
+          "points" : 808
+        },
+        "username" : "julie.heneghan"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/julie.heneghan",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5100/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5100",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5100"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "1E",
+    "displayName" : "1e",
+    "status" : "Active",
+    "description" : "1E pursuit",
+    "contentTypes" : [ "blog", "updates", "videos", "ideas", "documents", "files", "projects", "polls", "discussions", "tasks" ],
+    "viewCount" : 1,
+    "published" : "2012-11-15T11:13:30.812+0000",
+    "updated" : "2012-11-15T11:17:16.545+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "requirements", "1e" ],
+    "followerCount" : 1,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/362636",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F362636)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/julie-heneghan-sales-pipeline/projects/1e",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/categories",
         "allowed" : [ "GET" ]
       },
       "tasks" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/tasks",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/tasks",
         "allowed" : [ "GET", "POST" ]
       },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/followingIn",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362637",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/avatar",
         "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/349099/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362636/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "3783"
+    "id" : "3923"
   }, {
-    "type" : "project",
-    "name" : "Cerner Account",
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/362636",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "1E",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "1E pursuit",
+    "viewCount" : 0,
+    "published" : "2012-11-15T11:13:30.916+0000",
+    "updated" : "2012-11-15T11:13:30.916+0000",
     "visibleToExternalContributors" : false,
+    "followerCount" : 1,
     "resources" : {
-      "checkpoints" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/152149",
-        "allowed" : [ "GET" ]
-      },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F152149)",
-        "allowed" : [ "GET" ]
-      },
-      "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F362637)&filter=type(post)",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362637",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/groups/central-mountain-mania-lks-csd-group/projects/cerner-account",
+        "ref" : "https://brewspace.jiveland.com/projects/1e/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362637/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/362637/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "25715"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/93843",
+    "type" : "project",
+    "locale" : "en_US",
+    "startDate" : "2010-12-02T08:00:00.000+0000",
+    "dueDate" : "2011-03-31T06:59:59.999+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Megan",
+        "familyName" : "Ross Farrell",
+        "formatted" : "Megan Ross Farrell"
+      },
+      "type" : "person",
+      "displayName" : "Megan Ross Farrell",
+      "jive" : {
+        "level" : {
+          "name" : "Polonium",
+          "points" : 13358
+        },
+        "username" : "megan"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/megan",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2021",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2021"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "1.  Gartner Portals, Content, Collaboration Summit (3/28/11)",
+    "displayName" : "1-gartner-portals-content-collaboration-summit-32811",
+    "status" : "Active",
+    "description" : "",
+    "contentTypes" : [ "blog", "videos", "documents", "files", "projects", "polls", "discussions", "tasks" ],
+    "viewCount" : 319,
+    "published" : "2010-12-02T16:01:27.414+0000",
+    "updated" : "2011-11-01T21:48:49.923+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 2,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/90861",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F90861)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/community/marketing/trade_show/projects/1-gartner-portals-content-collaboration-summit-32811",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/categories",
         "allowed" : [ "GET" ]
       },
       "tasks" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/tasks",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/tasks",
         "allowed" : [ "GET", "POST" ]
       },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/followingIn",
-        "allowed" : [ "GET" ]
-      },
-      "blog" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152150",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/followingIn",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/avatar",
         "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/152149/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90861/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "2043"
+    "id" : "943"
   }, {
-    "type" : "space",
-    "name" : "CSC",
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/93843",
+    "type" : "project",
+    "locale" : "en_US",
+    "startDate" : "2011-12-14T08:00:00.000+0000",
+    "dueDate" : "2012-03-16T06:59:59.999+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Megan",
+        "familyName" : "Ross Farrell",
+        "formatted" : "Megan Ross Farrell"
+      },
+      "type" : "person",
+      "displayName" : "Megan Ross Farrell",
+      "jive" : {
+        "level" : {
+          "name" : "Polonium",
+          "points" : 13358
+        },
+        "username" : "megan"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/megan",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2021/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2021",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2021"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "1. Gartner Portals, Content, Collaboration Summit - Orlando (3/12/12 - 3/14/12)",
+    "displayName" : "1-gartner-portals-content-collaboration-summit--orlando-31212--31412",
+    "status" : "Active",
+    "description" : "",
+    "contentTypes" : [ "blog", "videos", "documents", "files", "projects", "polls", "discussions", "tasks" ],
+    "viewCount" : 175,
+    "published" : "2011-12-14T18:54:14.856+0000",
+    "updated" : "2012-03-21T14:51:15.585+0000",
     "visibleToExternalContributors" : false,
+    "tags" : [ "gpcc", "gartner_portals_content_collaboration" ],
+    "followerCount" : 2,
     "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/157656",
+        "allowed" : [ "GET" ]
+      },
       "contents" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F93553)",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F157656)",
         "allowed" : [ "GET" ]
       },
       "announcements" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/announcements",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/announcements",
         "allowed" : [ "GET" ]
       },
       "self" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656",
         "allowed" : [ "GET" ]
       },
       "html" : {
-        "ref" : "https://brewspace.jiveland.com/community/sales/topcustomers/csc",
+        "ref" : "https://brewspace.jiveland.com/community/marketing/trade_show/projects/1-gartner-portals-content-collaboration-summit--orlando-31212--31412",
         "allowed" : [ "GET" ]
       },
       "categories" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/categories",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/categories",
         "allowed" : [ "GET" ]
       },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
       "places" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/places",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/places",
         "allowed" : [ "GET" ]
       },
       "followingIn" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/followingIn",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/followingIn",
         "allowed" : [ "GET" ]
       },
       "blog" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92505",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/178213",
         "allowed" : [ "GET" ]
       },
       "avatar" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/avatar",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/avatar",
         "allowed" : [ "GET" ]
       },
       "activity" : {
-        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93553/activities",
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/157656/activities",
         "allowed" : [ "GET" ]
       }
     },
-    "id" : "2225"
-  } ]
+    "id" : "2156"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/157656",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "1. Gartner Portals, Content, Collaboration Summit - Orlando (3/12/12 - 3/14/12)",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "",
+    "viewCount" : 12,
+    "published" : "2012-03-14T14:01:58.684+0000",
+    "updated" : "2012-03-14T14:01:58.684+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 2,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F178213)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/178213",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/community/marketing/trade_show/projects/1-gartner-portals-content-collaboration-summit--orlando-31212--31412/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/178213/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/178213/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "24203"
+  }, {
+    "type" : "group",
+    "memberCount" : 5,
+    "creator" : {
+      "name" : {
+        "givenName" : "Ryan",
+        "familyName" : "Burghard",
+        "formatted" : "Ryan Burghard"
+      },
+      "type" : "person",
+      "displayName" : "Ryan Burghard",
+      "jive" : {
+        "level" : {
+          "name" : "Tin",
+          "points" : 4757
+        },
+        "username" : "ryan.burghard"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/ryan.burghard",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2069/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2069",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2069"
+    },
+    "groupType" : "OPEN",
+    "name" : "2008 Beard Off",
+    "displayName" : "2008-beard-off",
+    "status" : "Active",
+    "description" : "We are men! \r\nManly Men! \r\nMen growing facial hair!\r\nFacial hair!\r\nWandering around the office with our faces bare! (at least to start with)",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "updates", "videos" ],
+    "viewCount" : 434,
+    "published" : "2008-11-05T20:13:28.541+0000",
+    "updated" : "2010-10-12T18:00:05.055+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "beard", "beard_off", "facial_hair" ],
+    "followerCount" : 5,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/90204",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F90204)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2008-beard-off",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92044",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/90204",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90204/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1249"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/90204",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "2008 Beard Off",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "We are men! \r\nManly Men! \r\nMen growing facial hair!\r\nFacial hair!\r\nWandering around the office with our faces bare! (at least to start with)",
+    "viewCount" : 19,
+    "published" : "2008-11-05T20:13:28.557+0000",
+    "updated" : "2008-11-05T20:13:28.557+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 2,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F92044)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92044",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2008-beard-off/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92044/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/92044/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "8356"
+  }, {
+    "type" : "group",
+    "memberCount" : 8,
+    "creator" : {
+      "name" : {
+        "givenName" : "David",
+        "familyName" : "Greenberg",
+        "formatted" : "David Greenberg"
+      },
+      "type" : "person",
+      "displayName" : "David Greenberg",
+      "jive" : {
+        "level" : {
+          "name" : "Silver",
+          "points" : 4207
+        },
+        "username" : "david.greenberg"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/david.greenberg",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2118",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2118"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "2009 Fall Launch (PRIVATE)",
+    "displayName" : "2009-fall-launch-private",
+    "status" : "Active",
+    "description" : "group for team members working on rocking the Fall 2009 Launch.  Cross functional.  4.0",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "updates", "videos" ],
+    "viewCount" : 1142,
+    "published" : "2009-07-23T18:11:22.190+0000",
+    "updated" : "2010-07-01T21:02:42.678+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "launch", "4.0" ],
+    "followerCount" : 7,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/90003",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F90003)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2009-fall-launch-private",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/90003",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90003/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1526"
+  }, {
+    "type" : "group",
+    "memberCount" : 7,
+    "creator" : {
+      "name" : {
+        "givenName" : "Suzame",
+        "familyName" : "Tong",
+        "formatted" : "Suzame Tong"
+      },
+      "type" : "person",
+      "displayName" : "Suzame Tong",
+      "jive" : {
+        "level" : {
+          "name" : "Dysprosium",
+          "points" : 7672
+        },
+        "username" : "suzame.tong"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/suzame.tong",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2738/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2738",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2738"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "2010 Sales Playbook",
+    "displayName" : "2010-sales-playbook",
+    "status" : "Active",
+    "description" : "The epicenter of playbook content, design & production",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "videos" ],
+    "viewCount" : 269,
+    "published" : "2009-11-30T19:23:04.518+0000",
+    "updated" : "2010-10-18T22:53:44.596+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "content", "sales_kickoff", "playbook", "2010" ],
+    "followerCount" : 6,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/90039",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F90039)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2010-sales-playbook",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/90039",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90039/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1656"
+  }, {
+    "type" : "group",
+    "memberCount" : 4,
+    "creator" : {
+      "name" : {
+        "givenName" : "David",
+        "familyName" : "Greenberg",
+        "formatted" : "David Greenberg"
+      },
+      "type" : "person",
+      "displayName" : "David Greenberg",
+      "jive" : {
+        "level" : {
+          "name" : "Silver",
+          "points" : 4207
+        },
+        "username" : "david.greenberg"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/david.greenberg",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2118/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2118",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2118"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "2010 Sept Strike Planning (Private)",
+    "displayName" : "2010-sept-strike-planning-private",
+    "status" : "Active",
+    "description" : "where the magic happens",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+    "viewCount" : 81,
+    "published" : "2010-08-10T21:29:29.863+0000",
+    "updated" : "2012-03-05T22:10:57.605+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 4,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/91057",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F91057)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2010-sept-strike-planning-private",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/91057",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91057/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2081"
+  }, {
+    "type" : "group",
+    "memberCount" : 13,
+    "creator" : {
+      "name" : {
+        "givenName" : "Christopher",
+        "familyName" : "Morace",
+        "formatted" : "Christopher Morace"
+      },
+      "type" : "person",
+      "displayName" : "Christopher Morace",
+      "jive" : {
+        "level" : {
+          "name" : "Thallium",
+          "points" : 12576
+        },
+        "username" : "chris.morace"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/chris.morace",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2158/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2158",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2158"
+    },
+    "groupType" : "OPEN",
+    "name" : "2010 Tahoe UX Summit",
+    "displayName" : "2010-tahoe-ux-summit",
+    "status" : "Active",
+    "description" : "As Jive contemplates the largest re-imagining of its application since it first release Clearspace in February 2007 a brave band of cross functional heroes is assembling in Lake Tahoe to flesh out the groundwork that will change the face of social business software forever.",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "videos" ],
+    "viewCount" : 2572,
+    "published" : "2010-04-29T02:40:23.549+0000",
+    "updated" : "2012-08-10T16:50:11.193+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 12,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/90516",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F90516)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2010-tahoe-ux-summit",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93023",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/90516",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/90516/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1892"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/90516",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "2010 Tahoe UX Summit",
+    "displayName" : "",
+    "status" : "Active",
+    "description" : "As Jive contemplates the largest re-imagining of its application since it first release Clearspace in February 2007 a brave band of cross functional heroes is assembling in Lake Tahoe to flesh out the groundwork that will change the face of social business software forever.",
+    "viewCount" : 10,
+    "published" : "2010-04-29T02:40:25.378+0000",
+    "updated" : "2010-04-29T02:40:25.378+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 10,
+    "resources" : {
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F93023)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93023",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2010-tahoe-ux-summit/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93023/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93023/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "14116"
+  }, {
+    "type" : "group",
+    "memberCount" : 10,
+    "creator" : {
+      "name" : {
+        "givenName" : "Josh",
+        "familyName" : "Brown",
+        "formatted" : "Josh Brown"
+      },
+      "type" : "person",
+      "displayName" : "Josh Brown",
+      "jive" : {
+        "level" : {
+          "name" : "Scandium",
+          "points" : 912
+        },
+        "username" : "josh.brown"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/josh.brown",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2887/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2887",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2887"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "2011 Audit",
+    "displayName" : "2011-audit",
+    "status" : "Active",
+    "description" : "",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+    "viewCount" : 67,
+    "published" : "2012-01-12T22:15:12.133+0000",
+    "updated" : "2012-01-17T23:09:27.348+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "finance", "accounting", "sec", "kpmg" ],
+    "followerCount" : 10,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/162166",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F162166)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2011-audit",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/162166",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/162166/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3452"
+  }, {
+    "type" : "group",
+    "memberCount" : 2,
+    "creator" : {
+      "name" : {
+        "givenName" : "Candice",
+        "familyName" : "Lipps",
+        "formatted" : "Candice Lipps"
+      },
+      "type" : "person",
+      "displayName" : "Candice Lipps",
+      "jive" : {
+        "level" : {
+          "name" : "Potassium",
+          "points" : 716
+        },
+        "username" : "candice.lipps"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/candice.lipps",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3409/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3409",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3409"
+    },
+    "groupType" : "PRIVATE",
+    "name" : "2011 Customer Press Program",
+    "displayName" : "2011-customer-press-strategy",
+    "status" : "Active",
+    "description" : "",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "videos" ],
+    "viewCount" : 62,
+    "published" : "2010-12-14T21:59:39.716+0000",
+    "updated" : "2011-08-22T18:05:18.992+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 2,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/91600",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F91600)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2011-customer-press-strategy",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/91600",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91600/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2289"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/93718",
+    "type" : "project",
+    "locale" : "en_US",
+    "startDate" : "2011-03-24T07:00:00.000+0000",
+    "dueDate" : "2011-07-01T06:59:59.999+0000",
+    "creator" : {
+      "name" : {
+        "givenName" : "Patrick",
+        "familyName" : "Lin",
+        "formatted" : "Patrick Lin"
+      },
+      "type" : "person",
+      "displayName" : "Patrick Lin",
+      "jive" : {
+        "level" : {
+          "name" : "Rhodium",
+          "points" : 3883
+        },
+        "username" : "patrick.lin"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/patrick.lin",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3552/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3552",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3552"
+    },
+    "projectStatus" : "HIGH",
+    "name" : "2011 PM Portfolio Planning",
+    "displayName" : "2011-pm-portfolio-planning",
+    "status" : "Active",
+    "description" : "This project is about informing PM's longer-range planning effort, which is focused on getting a better understanding of what we should be building in order to address the opportunities that have the greatest market potential.  The goal is a bit different than many similar-sounding efforts to date, which have taken our product as a given and figured out how to position it for a variety of uses.",
+    "contentTypes" : [ "blog", "videos", "ideas", "documents", "files", "projects", "polls", "discussions", "tasks" ],
+    "viewCount" : 173,
+    "published" : "2011-03-24T08:45:21.041+0000",
+    "updated" : "2012-11-27T12:00:14.256+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ "planning", "pm", "portfolio" ],
+    "followerCount" : 4,
+    "resources" : {
+      "checkpoints" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/checkpoints/105086",
+        "allowed" : [ "GET" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F105086)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/community/products/projects/2011-pm-portfolio-planning",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/categories",
+        "allowed" : [ "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/105086/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1197"
+  }, {
+    "type" : "group",
+    "memberCount" : 11,
+    "creator" : {
+      "name" : {
+        "givenName" : "Cameron",
+        "familyName" : "Deatsch",
+        "formatted" : "Cameron Deatsch"
+      },
+      "type" : "person",
+      "displayName" : "Cameron Deatsch",
+      "jive" : {
+        "level" : {
+          "name" : "Caesium",
+          "points" : 5565
+        },
+        "username" : "cameron.deatsch"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/cameron.deatsch",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2645/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2645",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2645"
+    },
+    "groupType" : "OPEN",
+    "name" : "2011 Sales Kickoff",
+    "displayName" : "2011-sales-kickoff",
+    "status" : "Active",
+    "description" : "Details related to Sales Kickoss",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+    "viewCount" : 648,
+    "published" : "2010-11-11T21:06:05.799+0000",
+    "updated" : "2012-12-10T23:25:33.803+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 12,
+    "resources" : {
+      "invites" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/invites/places/91494",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Fbrewspace.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F91494)",
+        "allowed" : [ "GET" ]
+      },
+      "announcements" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/announcements",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/groups/2011-sales-kickoff",
+        "allowed" : [ "GET" ]
+      },
+      "categories" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/categories",
+        "allowed" : [ "GET" ]
+      },
+      "places" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/places",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/93499",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/91494",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/places/91494/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2237"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25,
+  "links" : {
+    "next" : "https://brewspace.jiveland.com/api/core/v3/places?sort=titleAsc&fields=%40all&count=25&startIndex=25"
+  }
 }
