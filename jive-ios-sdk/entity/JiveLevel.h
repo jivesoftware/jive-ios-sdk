@@ -18,6 +18,6 @@
 @property(nonatomic, readonly) NSString* name;
 
 // Number of status level points that this person has achieved.
-@property(nonatomic, readonly) NSInteger points;
+@property(nonatomic, readonly) NSNumber *points;
 
 @end

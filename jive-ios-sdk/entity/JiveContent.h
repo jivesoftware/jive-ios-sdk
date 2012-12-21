@@ -20,7 +20,7 @@
 @property(nonatomic, readonly, strong) JiveContentBody* content;
 
 // Number of people following this object.
-@property(nonatomic, readonly) NSInteger followerCount;
+@property(nonatomic, readonly) NSNumber *followerCount;
 
 // Highlight snippet of a search match in the body or description.
 @property(nonatomic, readonly, copy) NSString* highlightBody;
@@ -35,7 +35,7 @@
 @property(nonatomic, readonly, copy) NSString* jiveId;
 
 // Number of people who have liked this object.
-@property(nonatomic, readonly) NSInteger likeCount;
+@property(nonatomic, readonly) NSNumber *likeCount;
 
 // URI of the parent place of this content object. When visibility is place then the URI points to a place (and is required on create). Otherwise, this field is not part of the returned JSON (and must not be included on create).
 @property(nonatomic, copy) NSString* parent;
@@ -50,7 +50,7 @@
 @property(nonatomic, readonly, strong) NSDate* published;
 
 // Number of replies to this object.
-@property(nonatomic, readonly) NSInteger replyCount;
+@property(nonatomic, readonly) NSNumber *replyCount;
 
 // Resource links (and related permissions for the requesting person) relevant to this object.
 @property(nonatomic, readonly, strong) NSDictionary* resources;
@@ -72,7 +72,7 @@
 @property(nonatomic, readonly, strong) NSDate* updated;
 
 // Number of times this content object has been viewed.
-@property(nonatomic, readonly) NSInteger viewCount;
+@property(nonatomic, readonly) NSNumber *viewCount;
 
 
 

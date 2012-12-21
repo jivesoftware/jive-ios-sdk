@@ -30,7 +30,7 @@
 @property(nonatomic) bool visibleToExternalContributors;
 
 // The current number of votes on this poll.
-@property(nonatomic, readonly) NSInteger voteCount;
+@property(nonatomic, readonly) NSNumber *voteCount;
 
 // The options voted by the user making the request. String[]
 @property(nonatomic, readonly, strong) NSArray* votes;
