@@ -9,5 +9,15 @@
 #import "JiveSummary.h"
 
 @implementation JiveSummary
+
 @synthesize html, jiveId, name, type, uri;
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:self.name forKey:@"name"];
+    
+    return dictionary;
+}
+
 @end
