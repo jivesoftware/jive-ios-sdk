@@ -12,13 +12,13 @@
 @interface JiveMediaLink : JiveObject
 
 // Hint to the consumer about the length, in seconds, of the media resource identified by the url field.
-@property(nonatomic, readonly) NSInteger duration;
+@property(nonatomic, readonly) NSNumber *duration;
 
 // Hint to the consumer about the height, in pixels, of the media resource identified by the url field.
-@property(nonatomic, readonly) NSInteger height;
+@property(nonatomic, readonly) NSNumber *height;
 
 // Hint to the consumer about the width, in pixels, of the media resource identified by the url field.
-@property(nonatomic, readonly) NSInteger width;
+@property(nonatomic, readonly) NSNumber *width;
 
 // URI of the media resource being linked.
 @property(nonatomic, readonly) NSURL* url;

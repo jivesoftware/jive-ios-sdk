@@ -9,5 +9,17 @@
 #import "JiveLevel.h"
 
 @implementation JiveLevel
+
 @synthesize description, name, points;
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:self.description forKey:@"description"];
+    [dictionary setValue:self.name forKey:@"name"];
+    [dictionary setValue:self.points forKey:@"points"];
+    
+    return dictionary;
+}
+
 @end
