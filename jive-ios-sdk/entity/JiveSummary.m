@@ -16,6 +16,10 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:self.name forKey:@"name"];
+    [dictionary setValue:self.jiveId forKey:@"id"];
+    [dictionary setValue:self.html forKey:@"html"];
+    [dictionary setValue:self.type forKey:@"type"];
+    [dictionary setValue:self.uri forKey:@"uri"];
     
     return dictionary;
 }
