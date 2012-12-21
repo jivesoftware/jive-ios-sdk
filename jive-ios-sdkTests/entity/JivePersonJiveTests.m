@@ -46,6 +46,36 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"locale"], person.locale, @"Wrong locale.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"timeZone"], person.timeZone, @"Wrong time zone");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"username"], person.username, @"Wrong username");
+    
+    id enabled = [(NSDictionary *)JSON objectForKey:@"enabled"];
+    
+    STAssertNotNil(enabled, @"Missing visibility");
+    if (enabled)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)enabled), @"Wrong enabled");
+    
+    id external = [(NSDictionary *)JSON objectForKey:@"external"];
+    
+    STAssertNotNil(external, @"Missing external");
+    if (external)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)external), @"Wrong external");
+    
+    id externalContributor = [(NSDictionary *)JSON objectForKey:@"externalContributor"];
+    
+    STAssertNotNil(externalContributor, @"Missing externalContributor");
+    if (externalContributor)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)externalContributor), @"Wrong externalContributor");
+    
+    id federated = [(NSDictionary *)JSON objectForKey:@"federated"];
+    
+    STAssertNotNil(federated, @"Missing federated");
+    if (federated)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)federated), @"Wrong federated");
+    
+    id visible = [(NSDictionary *)JSON objectForKey:@"visible"];
+    
+    STAssertNotNil(visible, @"Missing visible");
+    if (visible)
+        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)visible), @"Wrong visible");
 }
 
 - (void)testToJSON_alternate {
@@ -68,6 +98,11 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"locale"], person.locale, @"Wrong locale.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"timeZone"], person.timeZone, @"Wrong time zone");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"username"], person.username, @"Wrong username");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"enabled"], @"enabled included?");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"external"], @"external included?");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"externalContributor"], @"externalContributor included?");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"federated"], @"federated included?");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"visible"], @"visible included?");
 }
 
 - (void)testPlaceParsing {
