@@ -9,5 +9,15 @@
 #import "JiveContentBody.h"
 
 @implementation JiveContentBody
+
 @synthesize text, type;
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:type forKey:@"type"];
+    
+    return dictionary;
+}
+
 @end
