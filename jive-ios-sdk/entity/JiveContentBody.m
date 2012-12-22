@@ -15,6 +15,7 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
+    [dictionary setValue:text forKey:@"text"];
     [dictionary setValue:type forKey:@"type"];
     
     return dictionary;
