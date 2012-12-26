@@ -8,13 +8,28 @@
 
 #import "JiveExtension.h"
 #import "JiveActivityObject.h"
+#import "NSThread+JiveISO8601DateFormatter.h"
 
 @implementation JiveExtension
 
 @synthesize collection, collectionUpdated, display, parent, read, state, update;
 
 - (NSDictionary *)toJSONDictionary {
-    return [NSDictionary dictionaryWithObject:state forKey:@"state"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    
+    [dictionary setValue:collection forKey:@"collection"];
+    [dictionary setValue:display forKey:@"display"];
+    [dictionary setValue:read forKey:@"read"];
+    [dictionary setValue:[update absoluteString] forKey:@"update"];
+    [dictionary setValue:state forKey:@"state"];
+    if (collectionUpdated)
+        [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:@"collectionUpdated"];
+    
+    if (parent)
+        [dictionary setValue:[parent toJSONDictionary] forKey:@"parent"];
+    
+    return dictionary;
 }
 
 @end
