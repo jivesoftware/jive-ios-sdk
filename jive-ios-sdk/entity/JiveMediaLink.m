@@ -13,7 +13,14 @@
 @synthesize duration, height, width, url;
 
 - (NSDictionary *)toJSONDictionary {
-    return [NSDictionary dictionaryWithObject:[url absoluteString] forKey:@"url"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:duration forKey:@"duration"];
+    [dictionary setValue:height forKey:@"height"];
+    [dictionary setValue:width forKey:@"width"];
+    [dictionary setValue:[url absoluteString] forKey:@"url"];
+    
+    return dictionary;
 }
 
 @end
