@@ -10,5 +10,11 @@
 #import "JiveMediaLink.h"
 
 @implementation JiveActivityObject
+
 @synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:jiveId forKey:@"id"];
+}
+
 @end

@@ -9,5 +9,11 @@
 #import "JiveMediaLink.h"
 
 @implementation JiveMediaLink
+
 @synthesize duration, height, width, url;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:[url absoluteString] forKey:@"url"];
+}
+
 @end

@@ -10,5 +10,11 @@
 #import "JiveActivityObject.h"
 
 @implementation JiveExtension
+
 @synthesize collection, collectionUpdated, display, parent, read, state, update;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:state forKey:@"state"];
+}
+
 @end

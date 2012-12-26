@@ -10,5 +10,11 @@
 #import "JiveEmbedded.h"
 
 @implementation JiveOpenSocial
+
 @synthesize actionLinks, deliverTo, embed;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:[deliverTo copy] forKey:@"deliverTo"];
+}
+
 @end
