@@ -13,7 +13,13 @@
 @synthesize caption, httpVerb, target;
 
 - (NSDictionary *)toJSONDictionary {
-    return [NSDictionary dictionaryWithObject:httpVerb forKey:@"httpVerb"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:caption forKey:@"caption"];
+    [dictionary setValue:httpVerb forKey:@"httpVerb"];
+    [dictionary setValue:[target absoluteString] forKey:@"target"];
+    
+    return dictionary;
 }
 
 @end
