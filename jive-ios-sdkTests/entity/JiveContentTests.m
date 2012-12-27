@@ -95,6 +95,9 @@
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
+    
+    content.type = nil; // Clear derived class type
+    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -106,7 +109,7 @@
     [parentPlace setValue:@"place" forKey:@"name"];
     content.parent = @"parent";
     content.subject = @"Subject";
-    content.type = @"place";
+    content.type = @"not a real type";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
@@ -172,6 +175,9 @@
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
+    
+    content.type = nil; // Clear derived class type
+    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -183,7 +189,7 @@
     [parentPlace setValue:@"school" forKey:@"name"];
     content.parent = @"William";
     content.subject = @"Writing";
-    content.type = @"person";
+    content.type = @"another non-type";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
@@ -244,7 +250,7 @@
     STAssertEqualObjects([(NSDictionary *)parentPlaceJSON objectForKey:@"name"], parentPlace.name, @"Wrong value");
 }
 
-- (void)testPlaceParsing {
+- (void)testContentParsing {
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
@@ -262,7 +268,6 @@
     [parentPlace setValue:@"place" forKey:@"name"];
     content.parent = @"parent";
     content.subject = @"Subject";
-    content.type = @"place";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
@@ -309,7 +314,7 @@
     STAssertEqualObjects([(JiveResourceEntry *)[newContent.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
-- (void)testPlaceParsingAlternate {
+- (void)testContentParsingAlternate {
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
@@ -327,7 +332,6 @@
     [parentPlace setValue:@"school" forKey:@"name"];
     content.parent = @"William";
     content.subject = @"Writing";
-    content.type = @"person";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
