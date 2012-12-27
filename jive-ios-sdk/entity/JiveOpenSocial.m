@@ -14,7 +14,24 @@
 @synthesize actionLinks, deliverTo, embed;
 
 - (NSDictionary *)toJSONDictionary {
-    return [NSDictionary dictionaryWithObject:[deliverTo copy] forKey:@"deliverTo"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    if (embed)
+        [dictionary setValue:[embed toJSONDictionary] forKey:@"embed"];
+    
+    if (deliverTo)
+        [dictionary setValue:[deliverTo copy] forKey:@"deliverTo"];
+    
+    if (actionLinks.count > 0) {
+        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:actionLinks.count];
+        
+        for (JiveObject *object in actionLinks)
+            [JSONArray addObject:object.toJSONDictionary];
+        
+        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:@"actionLinks"];
+    }
+    
+    return dictionary;
 }
 
 @end

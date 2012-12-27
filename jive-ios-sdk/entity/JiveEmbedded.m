@@ -9,5 +9,11 @@
 #import "JiveEmbedded.h"
 
 @implementation JiveEmbedded
+
 @synthesize context, gadget, preferredExperience, previewImage, url;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:[url absoluteString] forKey:@"url"];
+}
+
 @end

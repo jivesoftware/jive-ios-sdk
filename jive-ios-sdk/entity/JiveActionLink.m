@@ -9,5 +9,11 @@
 #import "JiveActionLink.h"
 
 @implementation JiveActionLink
+
 @synthesize caption, httpVerb, target;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:httpVerb forKey:@"httpVerb"];
+}
+
 @end
