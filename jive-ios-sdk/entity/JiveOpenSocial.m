@@ -8,10 +8,19 @@
 
 #import "JiveOpenSocial.h"
 #import "JiveEmbedded.h"
+#import "JiveActionLink.h"
 
 @implementation JiveOpenSocial
 
 @synthesize actionLinks, deliverTo, embed;
+
+- (Class) arrayMappingFor:(NSString*) propertyName {
+    if (propertyName == @"actionLinks") {
+        return [JiveActionLink class];
+    }
+    
+    return nil;
+}
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
