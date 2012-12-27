@@ -421,17 +421,32 @@
     STAssertEqualObjects(person.type, basePerson.type, @"Wrong type");
     STAssertEqualObjects(person.updated, basePerson.updated, @"Wrong updated date");
     STAssertEquals([person.addresses count], [basePerson.addresses count], @"Wrong number of address objects");
-    STAssertEqualObjects([(JiveAddress *)[person.addresses objectAtIndex:0] value],
-                         [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
-                         @"Wrong Address object class");
+    if ([person.addresses count] > 0) {
+        id convertedAddress = [person.addresses objectAtIndex:0];
+        STAssertEquals([convertedAddress class], [JiveAddress class], @"Wrong address object class");
+        if ([[convertedAddress class] isSubclassOfClass:[JiveAddress class]])
+            STAssertEqualObjects([(JiveAddress *)convertedAddress value],
+                                 [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
+                                 @"Wrong Address object");
+    }
     STAssertEquals([person.emails count], [basePerson.emails count], @"Wrong number of email objects");
-    STAssertEqualObjects([(JiveEmail *)[person.emails objectAtIndex:0] value],
-                         [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
-                         @"Wrong email object class");
+    if ([person.emails count] > 0) {
+        id convertedEmail = [person.emails objectAtIndex:0];
+        STAssertEquals([convertedEmail class], [JiveEmail class], @"Wrong email object class");
+        if ([[convertedEmail class] isSubclassOfClass:[JiveEmail class]])
+            STAssertEqualObjects([(JiveEmail *)convertedEmail value],
+                                 [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
+                                 @"Wrong email object");
+    }
     STAssertEquals([person.phoneNumbers count], [basePerson.phoneNumbers count], @"Wrong number of phone number objects");
-    STAssertEqualObjects([(JivePhoneNumber *)[person.phoneNumbers objectAtIndex:0] value],
-                         [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
-                         @"Wrong phone number object class");
+    if ([person.phoneNumbers count] > 0) {
+        id convertedPhoneNumber = [person.phoneNumbers objectAtIndex:0];
+        STAssertEquals([convertedPhoneNumber class], [JivePhoneNumber class], @"Wrong phone number object class");
+        if ([[convertedPhoneNumber class] isSubclassOfClass:[JivePhoneNumber class]])
+            STAssertEqualObjects([(JivePhoneNumber *)convertedPhoneNumber value],
+                                 [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
+                                 @"Wrong phone number object");
+    }
     STAssertEquals([person.photos count], [basePerson.photos count], @"Wrong number of photo objects");
     STAssertEqualObjects([person.photos objectAtIndex:0], [basePerson.photos objectAtIndex:0], @"Wrong photo object class");
     STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
@@ -499,17 +514,32 @@
     STAssertEqualObjects(person.type, basePerson.type, @"Wrong type");
     STAssertEqualObjects(person.updated, basePerson.updated, @"Wrong updated date");
     STAssertEquals([person.addresses count], [basePerson.addresses count], @"Wrong number of address objects");
-    STAssertEqualObjects([(JiveAddress *)[person.addresses objectAtIndex:0] value],
-                         [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
-                         @"Wrong Address object class");
+    if ([person.addresses count] > 0) {
+        id convertedAddress = [person.addresses objectAtIndex:0];
+        STAssertEquals([convertedAddress class], [JiveAddress class], @"Wrong address object class");
+        if ([[convertedAddress class] isSubclassOfClass:[JiveAddress class]])
+            STAssertEqualObjects([(JiveAddress *)convertedAddress value],
+                                 [(JiveAddress *)[basePerson.addresses objectAtIndex:0] value],
+                                 @"Wrong Address object");
+    }
     STAssertEquals([person.emails count], [basePerson.emails count], @"Wrong number of email objects");
-    STAssertEqualObjects([(JiveEmail *)[person.emails objectAtIndex:0] value],
-                         [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
-                         @"Wrong email object class");
+    if ([person.emails count] > 0) {
+        id convertedEmail = [person.emails objectAtIndex:0];
+        STAssertEquals([convertedEmail class], [JiveEmail class], @"Wrong email object class");
+        if ([[convertedEmail class] isSubclassOfClass:[JiveEmail class]])
+            STAssertEqualObjects([(JiveEmail *)convertedEmail value],
+                                 [(JiveEmail *)[basePerson.emails objectAtIndex:0] value],
+                                 @"Wrong email object");
+    }
     STAssertEquals([person.phoneNumbers count], [basePerson.phoneNumbers count], @"Wrong number of phone number objects");
-    STAssertEqualObjects([(JivePhoneNumber *)[person.phoneNumbers objectAtIndex:0] value],
-                         [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
-                         @"Wrong phone number object class");
+    if ([person.phoneNumbers count] > 0) {
+        id convertedPhoneNumber = [person.phoneNumbers objectAtIndex:0];
+        STAssertEquals([convertedPhoneNumber class], [JivePhoneNumber class], @"Wrong phone number object class");
+        if ([[convertedPhoneNumber class] isSubclassOfClass:[JivePhoneNumber class]])
+            STAssertEqualObjects([(JivePhoneNumber *)convertedPhoneNumber value],
+                                 [(JivePhoneNumber *)[basePerson.phoneNumbers objectAtIndex:0] value],
+                                 @"Wrong phone number object");
+    }
     STAssertEquals([person.photos count], [basePerson.photos count], @"Wrong number of photo objects");
     STAssertEqualObjects([person.photos objectAtIndex:0], [basePerson.photos objectAtIndex:0], @"Wrong photo object class");
     STAssertEquals([person.tags count], [basePerson.tags count], @"Wrong number of tag objects");
