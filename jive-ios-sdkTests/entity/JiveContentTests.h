@@ -7,7 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JiveContent.h"
 
 @interface JiveContentTests : SenTestCase
+
+@property (nonatomic, strong) JiveContent *content;
 
 @end
