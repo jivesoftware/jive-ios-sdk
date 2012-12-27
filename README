@@ -1,3 +1,5 @@
+Make sure to update submodules after cloning:
+git submodule update --init --recursive
 
 https://devcenter.apps.jivesoftware.com/api/rest/
 
