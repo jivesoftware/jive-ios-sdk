@@ -12,4 +12,21 @@
 
 @synthesize rootType, rootURI;
 
+- (id)init {
+    if ((self = [super init])) {
+        self.type = @"comment";
+    }
+    
+    return self;
+}
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
+    
+    [dictionary setValue:rootType forKey:@"rootType"];
+    [dictionary setValue:rootURI forKey:@"rootURI"];
+    
+    return dictionary;
+}
+
 @end
