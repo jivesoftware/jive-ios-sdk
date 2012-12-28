@@ -9,5 +9,10 @@
 #import "JiveAttachment.h"
 
 @implementation JiveAttachment
+
 @synthesize contentType, doUpload, jiveId, name, resources, size, url;
+
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:contentType forKey:@"contentType"];
+}
 @end
