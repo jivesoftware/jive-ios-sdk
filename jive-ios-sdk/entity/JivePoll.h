@@ -27,7 +27,7 @@
 @property(nonatomic, copy) NSString* visibility;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic) bool visibleToExternalContributors;
+@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 // The current number of votes on this poll.
 @property(nonatomic, readonly) NSNumber *voteCount;
