@@ -31,7 +31,7 @@
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    STAssertEqualObjects([JSON objectForKey:@"type"], self.document.type, @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:@"type"], @"document", @"Wrong type");
     
     attachment.contentType = @"person";
     approver.displayName = @"Jimmy";

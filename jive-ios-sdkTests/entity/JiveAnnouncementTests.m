@@ -23,7 +23,7 @@
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.announcement.type, @"Wrong type");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], @"announcement", @"Wrong type");
     
     self.announcement.subjectURI = @"/place/123456";
     self.announcement.publishDate = [NSDate dateWithTimeIntervalSince1970:0];
