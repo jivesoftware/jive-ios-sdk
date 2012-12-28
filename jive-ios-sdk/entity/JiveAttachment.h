@@ -14,7 +14,7 @@
 @property(nonatomic, copy) NSString* contentType;
 
 // An indicator of whether an attachment is new and should be uploaded.
-@property(nonatomic) bool doUpload;
+@property(nonatomic, strong) NSNumber *doUpload;
 
 // Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
 @property(nonatomic, readonly, copy) NSString* jiveId;
@@ -29,7 +29,7 @@
 @property(nonatomic, readonly, strong) NSNumber* size;
 
 // The URL to retrieve the binary content of this attachment.
-@property(nonatomic, copy) NSString* url;
+@property(nonatomic, copy) NSURL* url;
 
 
 @end
