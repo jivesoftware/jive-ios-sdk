@@ -12,4 +12,20 @@
 
 @synthesize visibleToExternalContributors;
 
+- (id)init {
+    if ((self = [super init])) {
+        self.type = @"dm";
+    }
+    
+    return self;
+}
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
+    
+    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    
+    return dictionary;
+}
+
 @end
