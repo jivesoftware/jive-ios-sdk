@@ -35,17 +35,6 @@
     return nil;
 }
 
-- (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag {
-    if (array.count > 0) {
-        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:array.count];
-        
-        for (JiveObject *object in array)
-            [JSONArray addObject:object.toJSONDictionary];
-        
-        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:tag];
-    }
-}
-
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     

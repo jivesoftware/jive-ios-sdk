@@ -25,20 +25,12 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
+    [self addArrayElements:actionLinks toJSONDictionary:dictionary forTag:@"actionLinks"];
     if (embed)
         [dictionary setValue:[embed toJSONDictionary] forKey:@"embed"];
     
     if (deliverTo)
         [dictionary setValue:[deliverTo copy] forKey:@"deliverTo"];
-    
-    if (actionLinks.count > 0) {
-        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:actionLinks.count];
-        
-        for (JiveObject *object in actionLinks)
-            [JSONArray addObject:object.toJSONDictionary];
-        
-        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:@"actionLinks"];
-    }
     
     return dictionary;
 }

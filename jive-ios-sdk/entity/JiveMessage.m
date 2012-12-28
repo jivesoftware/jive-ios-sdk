@@ -36,18 +36,9 @@
     [dictionary setValue:helpful forKey:@"helpful"];
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
     [dictionary setValue:discussion forKey:@"discussion"];
+    [self addArrayElements:attachments toJSONDictionary:dictionary forTag:@"attachments"];
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];
-    
-    if (attachments) {
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity:attachments.count];
-        
-        for (JiveObject *attachment in attachments) {
-            [array addObject:[attachment toJSONDictionary]];
-        }
-        
-        [dictionary setValue:[NSArray arrayWithArray:array] forKey:@"attachments"];
-    }
     
     return dictionary;
 }
