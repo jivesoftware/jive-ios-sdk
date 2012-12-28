@@ -37,7 +37,7 @@
 // Tags associated with this object. String[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
-// The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. PeopleURI[] or People[]
+// The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
 @property(nonatomic, readonly, strong) NSArray* users;
 
 // The visibility policy for this discussion. Valid values are:
