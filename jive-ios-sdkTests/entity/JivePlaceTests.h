@@ -7,7 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JivePlace.h"
 
 @interface JivePlaceTests : SenTestCase
+
+@property (nonatomic, strong) JivePlace *place;
 
 @end

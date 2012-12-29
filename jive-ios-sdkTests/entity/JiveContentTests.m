@@ -7,7 +7,6 @@
 //
 
 #import "JiveContentTests.h"
-#import "JiveContent.h"
 #import "JiveAnnouncement.h"
 #import "JiveMessage.h"
 #import "JiveDocument.h"
@@ -22,6 +21,16 @@
 #import "JiveResourceEntry.h"
 
 @implementation JiveContentTests
+
+@synthesize content;
+
+- (void)setUp {
+    content = [[JiveContent alloc] init];
+}
+
+- (void)tearDown {
+    content = nil;
+}
 
 - (void)testEntityClass {
     
@@ -82,11 +91,13 @@
 }
 
 - (void)testToJSON {
-    JiveContent *content = [[JiveContent alloc] init];
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
+    
+    content.type = nil; // Clear derived class type
+    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -98,7 +109,7 @@
     [parentPlace setValue:@"place" forKey:@"name"];
     content.parent = @"parent";
     content.subject = @"Subject";
-    content.type = @"place";
+    content.type = @"not a real type";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
@@ -160,11 +171,13 @@
 }
 
 - (void)testToJSON_alternate {
-    JiveContent *content = [[JiveContent alloc] init];
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
+    
+    content.type = nil; // Clear derived class type
+    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -176,7 +189,7 @@
     [parentPlace setValue:@"school" forKey:@"name"];
     content.parent = @"William";
     content.subject = @"Writing";
-    content.type = @"person";
+    content.type = @"another non-type";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     [content setValue:contentBody forKey:@"content"];
@@ -237,8 +250,7 @@
     STAssertEqualObjects([(NSDictionary *)parentPlaceJSON objectForKey:@"name"], parentPlace.name, @"Wrong value");
 }
 
-- (void)testPlaceParsing {
-    JiveContent *baseContent = [[JiveContent alloc] init];
+- (void)testContentParsing {
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
@@ -254,57 +266,55 @@
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
-    baseContent.parent = @"parent";
-    baseContent.subject = @"Subject";
-    baseContent.type = @"place";
-    [baseContent setValue:@"1234" forKey:@"jiveId"];
-    [baseContent setValue:author forKey:@"author"];
-    [baseContent setValue:contentBody forKey:@"content"];
-    [baseContent setValue:parentContent forKey:@"parentContent"];
-    [baseContent setValue:parentPlace forKey:@"parentPlace"];
-    [baseContent setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
-    [baseContent setValue:@"body" forKey:@"highlightBody"];
-    [baseContent setValue:@"subject" forKey:@"highlightSubject"];
-    [baseContent setValue:@"tags" forKey:@"highlightTags"];
-    [baseContent setValue:[NSNumber numberWithInt:12] forKey:@"likeCount"];
-    [baseContent setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [baseContent setValue:[NSNumber numberWithInt:33] forKey:@"replyCount"];
-    [baseContent setValue:@"status" forKey:@"status"];
-    [baseContent setValue:[NSDate dateWithTimeIntervalSince1970:1.234] forKey:@"updated"];
-    [baseContent setValue:[NSNumber numberWithInt:6] forKey:@"viewCount"];
-    [baseContent setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    content.parent = @"parent";
+    content.subject = @"Subject";
+    [content setValue:@"1234" forKey:@"jiveId"];
+    [content setValue:author forKey:@"author"];
+    [content setValue:contentBody forKey:@"content"];
+    [content setValue:parentContent forKey:@"parentContent"];
+    [content setValue:parentPlace forKey:@"parentPlace"];
+    [content setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
+    [content setValue:@"body" forKey:@"highlightBody"];
+    [content setValue:@"subject" forKey:@"highlightSubject"];
+    [content setValue:@"tags" forKey:@"highlightTags"];
+    [content setValue:[NSNumber numberWithInt:12] forKey:@"likeCount"];
+    [content setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
+    [content setValue:[NSNumber numberWithInt:33] forKey:@"replyCount"];
+    [content setValue:@"status" forKey:@"status"];
+    [content setValue:[NSDate dateWithTimeIntervalSince1970:1.234] forKey:@"updated"];
+    [content setValue:[NSNumber numberWithInt:6] forKey:@"viewCount"];
+    [content setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    id JSON = [baseContent toJSONDictionary];
+    id JSON = [content toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveContent *content = [JiveContent instanceFromJSON:JSON];
+    JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
     
-    STAssertEquals([content class], [baseContent class], @"Wrong item class");
-    STAssertEqualObjects(content.jiveId, baseContent.jiveId, @"Wrong id");
-    STAssertEqualObjects(content.type, baseContent.type, @"Wrong type");
-    STAssertEqualObjects(content.parent, baseContent.parent, @"Wrong parent");
-    STAssertEqualObjects(content.subject, baseContent.subject, @"Wrong subject");
-    STAssertEqualObjects(content.followerCount, baseContent.followerCount, @"Wrong followerCount");
-    STAssertEqualObjects(content.highlightBody, baseContent.highlightBody, @"Wrong highlightBody");
-    STAssertEqualObjects(content.highlightSubject, baseContent.highlightSubject, @"Wrong highlightSubject");
-    STAssertEqualObjects(content.highlightTags, baseContent.highlightTags, @"Wrong highlightTags");
-    STAssertEqualObjects(content.likeCount, baseContent.likeCount, @"Wrong likeCount");
-    STAssertEqualObjects(content.published, baseContent.published, @"Wrong published");
-    STAssertEqualObjects(content.replyCount, baseContent.replyCount, @"Wrong replyCount");
-    STAssertEqualObjects(content.status, baseContent.status, @"Wrong status");
-    STAssertEqualObjects(content.updated, baseContent.updated, @"Wrong updated");
-    STAssertEqualObjects(content.viewCount, baseContent.viewCount, @"Wrong viewCount");
-    STAssertEqualObjects(content.author.displayName, baseContent.author.displayName, @"Wrong author.displayName");
-    STAssertEqualObjects(content.content.type, baseContent.content.type, @"Wrong content.type");
-    STAssertEqualObjects(content.parentContent.name, baseContent.parentContent.name, @"Wrong parentContent.name");
-    STAssertEqualObjects(content.parentPlace.name, baseContent.parentPlace.name, @"Wrong parentPlace.name");
-    STAssertEquals([content.resources count], [baseContent.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[content.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+    STAssertTrue([[newContent class] isSubclassOfClass:[content class]], @"Wrong item class");
+    STAssertEqualObjects(newContent.jiveId, content.jiveId, @"Wrong id");
+    STAssertEqualObjects(newContent.type, content.type, @"Wrong type");
+    STAssertEqualObjects(newContent.parent, content.parent, @"Wrong parent");
+    STAssertEqualObjects(newContent.subject, content.subject, @"Wrong subject");
+    STAssertEqualObjects(newContent.followerCount, content.followerCount, @"Wrong followerCount");
+    STAssertEqualObjects(newContent.highlightBody, content.highlightBody, @"Wrong highlightBody");
+    STAssertEqualObjects(newContent.highlightSubject, content.highlightSubject, @"Wrong highlightSubject");
+    STAssertEqualObjects(newContent.highlightTags, content.highlightTags, @"Wrong highlightTags");
+    STAssertEqualObjects(newContent.likeCount, content.likeCount, @"Wrong likeCount");
+    STAssertEqualObjects(newContent.published, content.published, @"Wrong published");
+    STAssertEqualObjects(newContent.replyCount, content.replyCount, @"Wrong replyCount");
+    STAssertEqualObjects(newContent.status, content.status, @"Wrong status");
+    STAssertEqualObjects(newContent.updated, content.updated, @"Wrong updated");
+    STAssertEqualObjects(newContent.viewCount, content.viewCount, @"Wrong viewCount");
+    STAssertEqualObjects(newContent.author.displayName, content.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newContent.content.type, content.content.type, @"Wrong content.type");
+    STAssertEqualObjects(newContent.parentContent.name, content.parentContent.name, @"Wrong parentContent.name");
+    STAssertEqualObjects(newContent.parentPlace.name, content.parentPlace.name, @"Wrong parentPlace.name");
+    STAssertEquals([newContent.resources count], [content.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects([(JiveResourceEntry *)[newContent.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
-- (void)testPlaceParsingAlternate {
-    JiveContent *baseContent = [[JiveContent alloc] init];
+- (void)testContentParsingAlternate {
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
     JiveSummary *parentContent = [[JiveSummary alloc] init];
@@ -320,53 +330,52 @@
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];
-    baseContent.parent = @"William";
-    baseContent.subject = @"Writing";
-    baseContent.type = @"person";
-    [baseContent setValue:@"8743" forKey:@"jiveId"];
-    [baseContent setValue:author forKey:@"author"];
-    [baseContent setValue:contentBody forKey:@"content"];
-    [baseContent setValue:parentContent forKey:@"parentContent"];
-    [baseContent setValue:parentPlace forKey:@"parentPlace"];
-    [baseContent setValue:[NSNumber numberWithInt:7] forKey:@"followerCount"];
-    [baseContent setValue:@"green" forKey:@"highlightBody"];
-    [baseContent setValue:@"white" forKey:@"highlightSubject"];
-    [baseContent setValue:@"blue" forKey:@"highlightTags"];
-    [baseContent setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
-    [baseContent setValue:[NSDate dateWithTimeIntervalSince1970:1.234] forKey:@"published"];
-    [baseContent setValue:[NSNumber numberWithInt:8] forKey:@"replyCount"];
-    [baseContent setValue:@"upside down" forKey:@"status"];
-    [baseContent setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
-    [baseContent setValue:[NSNumber numberWithInt:44] forKey:@"viewCount"];
-    [baseContent setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    content.parent = @"William";
+    content.subject = @"Writing";
+    [content setValue:@"8743" forKey:@"jiveId"];
+    [content setValue:author forKey:@"author"];
+    [content setValue:contentBody forKey:@"content"];
+    [content setValue:parentContent forKey:@"parentContent"];
+    [content setValue:parentPlace forKey:@"parentPlace"];
+    [content setValue:[NSNumber numberWithInt:7] forKey:@"followerCount"];
+    [content setValue:@"green" forKey:@"highlightBody"];
+    [content setValue:@"white" forKey:@"highlightSubject"];
+    [content setValue:@"blue" forKey:@"highlightTags"];
+    [content setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
+    [content setValue:[NSDate dateWithTimeIntervalSince1970:1.234] forKey:@"published"];
+    [content setValue:[NSNumber numberWithInt:8] forKey:@"replyCount"];
+    [content setValue:@"upside down" forKey:@"status"];
+    [content setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
+    [content setValue:[NSNumber numberWithInt:44] forKey:@"viewCount"];
+    [content setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    id JSON = [baseContent toJSONDictionary];
+    id JSON = [content toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveContent *content = [JiveContent instanceFromJSON:JSON];
+    JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
     
-    STAssertEquals([content class], [baseContent class], @"Wrong item class");
-    STAssertEqualObjects(content.jiveId, baseContent.jiveId, @"Wrong id");
-    STAssertEqualObjects(content.type, baseContent.type, @"Wrong type");
-    STAssertEqualObjects(content.parent, baseContent.parent, @"Wrong parent");
-    STAssertEqualObjects(content.subject, baseContent.subject, @"Wrong subject");
-    STAssertEqualObjects(content.followerCount, baseContent.followerCount, @"Wrong followerCount");
-    STAssertEqualObjects(content.highlightBody, baseContent.highlightBody, @"Wrong highlightBody");
-    STAssertEqualObjects(content.highlightSubject, baseContent.highlightSubject, @"Wrong highlightSubject");
-    STAssertEqualObjects(content.highlightTags, baseContent.highlightTags, @"Wrong highlightTags");
-    STAssertEqualObjects(content.likeCount, baseContent.likeCount, @"Wrong likeCount");
-    STAssertEqualObjects(content.published, baseContent.published, @"Wrong published");
-    STAssertEqualObjects(content.replyCount, baseContent.replyCount, @"Wrong replyCount");
-    STAssertEqualObjects(content.status, baseContent.status, @"Wrong status");
-    STAssertEqualObjects(content.updated, baseContent.updated, @"Wrong updated");
-    STAssertEqualObjects(content.viewCount, baseContent.viewCount, @"Wrong viewCount");
-    STAssertEqualObjects(content.author.displayName, baseContent.author.displayName, @"Wrong author.displayName");
-    STAssertEqualObjects(content.content.type, baseContent.content.type, @"Wrong content.type");
-    STAssertEqualObjects(content.parentContent.name, baseContent.parentContent.name, @"Wrong parentContent.name");
-    STAssertEqualObjects(content.parentPlace.name, baseContent.parentPlace.name, @"Wrong parentPlace.name");
-    STAssertEquals([content.resources count], [baseContent.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[content.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+    STAssertTrue([[newContent class] isSubclassOfClass:[content class]], @"Wrong item class");
+    STAssertEqualObjects(newContent.jiveId, content.jiveId, @"Wrong id");
+    STAssertEqualObjects(newContent.type, content.type, @"Wrong type");
+    STAssertEqualObjects(newContent.parent, content.parent, @"Wrong parent");
+    STAssertEqualObjects(newContent.subject, content.subject, @"Wrong subject");
+    STAssertEqualObjects(newContent.followerCount, content.followerCount, @"Wrong followerCount");
+    STAssertEqualObjects(newContent.highlightBody, content.highlightBody, @"Wrong highlightBody");
+    STAssertEqualObjects(newContent.highlightSubject, content.highlightSubject, @"Wrong highlightSubject");
+    STAssertEqualObjects(newContent.highlightTags, content.highlightTags, @"Wrong highlightTags");
+    STAssertEqualObjects(newContent.likeCount, content.likeCount, @"Wrong likeCount");
+    STAssertEqualObjects(newContent.published, content.published, @"Wrong published");
+    STAssertEqualObjects(newContent.replyCount, content.replyCount, @"Wrong replyCount");
+    STAssertEqualObjects(newContent.status, content.status, @"Wrong status");
+    STAssertEqualObjects(newContent.updated, content.updated, @"Wrong updated");
+    STAssertEqualObjects(newContent.viewCount, content.viewCount, @"Wrong viewCount");
+    STAssertEqualObjects(newContent.author.displayName, content.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newContent.content.type, content.content.type, @"Wrong content.type");
+    STAssertEqualObjects(newContent.parentContent.name, content.parentContent.name, @"Wrong parentContent.name");
+    STAssertEqualObjects(newContent.parentPlace.name, content.parentPlace.name, @"Wrong parentPlace.name");
+    STAssertEquals([newContent.resources count], [content.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects([(JiveResourceEntry *)[newContent.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 @end

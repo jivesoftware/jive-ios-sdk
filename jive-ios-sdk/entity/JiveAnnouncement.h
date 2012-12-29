@@ -14,7 +14,7 @@
 @property(nonatomic, strong) NSDate* endDate;
 
 // The display URL for the image associated with this Announcement. May be null for announcements that don't have an image.
-@property(nonatomic, copy) NSString* image;
+@property(nonatomic, copy) NSURL* image;
 
 // The date and time after which the announcement should start being displayed. If no publish date is specified during creation then it will default to now.
 @property(nonatomic, strong) NSDate* publishDate;
@@ -29,6 +29,6 @@
 @property(nonatomic, readonly, copy) NSString* subjectURITargetType;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic) bool visibleToExternalContributors;
+@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 @end

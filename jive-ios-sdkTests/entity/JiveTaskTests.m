@@ -1,0 +1,142 @@
+//
+//  JiveTaskTests.m
+//  jive-ios-sdk
+//
+//  Created by Orson Bushnell on 12/28/12.
+//  Copyright (c) 2012 Jive Software. All rights reserved.
+//
+
+#import "JiveTaskTests.h"
+
+@implementation JiveTaskTests
+
+- (void)setUp {
+    self.content = [[JiveTask alloc] init];
+}
+
+- (JiveTask *)task {
+    return (JiveTask *)self.content;
+}
+
+- (void)testTaskToJSON {
+    NSString *subTask = @"subTask";
+    NSString *tag = @"wordy";
+    NSDictionary *JSON = [self.task toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], @"task", @"Wrong type");
+    
+    [self.task setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
+    self.task.parentTask = @"parentTask";
+    self.task.subTasks = [NSArray arrayWithObject:subTask];
+    [self.task setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    self.task.visibleToExternalContributors = [NSNumber numberWithBool:YES];
+    
+    JSON = [self.task toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:@"type"], self.task.type, @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:@"parentTask"], self.task.parentTask, @"Wrong parentTask");
+    STAssertEqualObjects([JSON objectForKey:@"completed"], self.task.completed, @"Wrong completed");
+    STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.task.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEqualObjects([JSON objectForKey:@"dueDate"], @"1970-01-01T00:00:00.000+0000", @"Wrong dueDate");
+    
+    NSArray *tagsJSON = [JSON objectForKey:@"tags"];
+    
+    STAssertTrue([[tagsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([tagsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
+    
+    NSArray *subTasksJSON = [JSON objectForKey:@"subTasks"];
+    
+    STAssertTrue([[subTasksJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([subTasksJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([subTasksJSON objectAtIndex:0], subTask, @"Wrong value");
+}
+
+- (void)testTaskToJSON_alternate {
+    NSString *subTask = @"76543";
+    NSString *tag = @"concise";
+    
+    [self.task setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];
+    self.task.parentTask = @"23456";
+    self.task.subTasks = [NSArray arrayWithObject:subTask];
+    [self.task setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    self.task.completed = [NSNumber numberWithBool:YES];
+    
+    NSDictionary *JSON = [self.task toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:@"type"], self.task.type, @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:@"parentTask"], self.task.parentTask, @"Wrong parentTask");
+    STAssertEqualObjects([JSON objectForKey:@"completed"], self.task.completed, @"Wrong completed");
+    STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.task.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEqualObjects([JSON objectForKey:@"dueDate"], @"1970-01-01T00:16:40.123+0000", @"Wrong dueDate");
+    
+    NSArray *tagsJSON = [JSON objectForKey:@"tags"];
+    
+    STAssertTrue([[tagsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([tagsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
+    
+    NSArray *subTasksJSON = [JSON objectForKey:@"subTasks"];
+    
+    STAssertTrue([[subTasksJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([subTasksJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([subTasksJSON objectAtIndex:0], subTask, @"Wrong value");
+}
+
+- (void)testPostParsing {
+    NSString *subTask = @"subTask";
+    NSString *tag = @"wordy";
+    
+    [self.task setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
+    self.task.parentTask = @"parentTask";
+    self.task.subTasks = [NSArray arrayWithObject:subTask];
+    [self.task setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    self.task.visibleToExternalContributors = [NSNumber numberWithBool:YES];
+    
+    id JSON = [self.task toJSONDictionary];
+    JiveTask *newContent = [JiveTask instanceFromJSON:JSON];
+    
+    STAssertTrue([[newContent class] isSubclassOfClass:[self.task class]], @"Wrong item class");
+    STAssertEqualObjects(newContent.type, self.task.type, @"Wrong type");
+    STAssertEqualObjects(newContent.parentTask, self.task.parentTask, @"Wrong parentTask");
+    STAssertEqualObjects(newContent.dueDate, self.task.dueDate, @"Wrong dueDate");
+    STAssertEqualObjects(newContent.completed, self.task.completed, @"Wrong completed");
+    STAssertEqualObjects(newContent.visibleToExternalContributors, self.task.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEquals([newContent.tags count], [self.task.tags count], @"Wrong number of tags");
+    STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
+    STAssertEquals([newContent.subTasks count], [self.task.subTasks count], @"Wrong number of subTasks");
+    STAssertEqualObjects([newContent.subTasks objectAtIndex:0], subTask, @"Wrong subTask");
+}
+
+- (void)testPostParsingAlternate {
+    NSString *subTask = @"76543";
+    NSString *tag = @"concise";
+    
+    [self.task setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];
+    self.task.parentTask = @"23456";
+    self.task.subTasks = [NSArray arrayWithObject:subTask];
+    [self.task setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    self.task.completed = [NSNumber numberWithBool:YES];
+    
+    id JSON = [self.task toJSONDictionary];
+    JiveTask *newContent = [JiveTask instanceFromJSON:JSON];
+    
+    STAssertTrue([[newContent class] isSubclassOfClass:[self.task class]], @"Wrong item class");
+    STAssertEqualObjects(newContent.type, self.task.type, @"Wrong type");
+    STAssertEqualObjects(newContent.parentTask, self.task.parentTask, @"Wrong parentTask");
+    STAssertEqualObjects(newContent.dueDate, self.task.dueDate, @"Wrong dueDate");
+    STAssertEqualObjects(newContent.completed, self.task.completed, @"Wrong completed");
+    STAssertEqualObjects(newContent.visibleToExternalContributors, self.task.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEquals([newContent.tags count], [self.task.tags count], @"Wrong number of tags");
+    STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
+    STAssertEquals([newContent.subTasks count], [self.task.subTasks count], @"Wrong number of subTasks");
+    STAssertEqualObjects([newContent.subTasks objectAtIndex:0], subTask, @"Wrong subTask");
+}
+
+@end

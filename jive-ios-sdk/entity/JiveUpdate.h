@@ -20,7 +20,7 @@
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic) bool visibleToExternalContributors;
+@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 
 @end

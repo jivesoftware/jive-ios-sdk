@@ -24,7 +24,7 @@
 
 /* Either an http/https URI of an image that can be used as a preview for the embedded content, or a data: URI containing the bits of the preview image.
  */
-@property(nonatomic, readonly, strong) NSURL* previewImage;
+@property(nonatomic, readonly, strong) NSString* previewImage;
 
 /* URL to a web page that allows virtually any web-accessible resource to be used as an embedded experience. Either gadget or url (but not both) MUST be present.
  */

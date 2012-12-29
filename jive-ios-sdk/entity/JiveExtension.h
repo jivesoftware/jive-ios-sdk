@@ -32,7 +32,7 @@
 
 // Flag indicating the inbox entry corresponding to this activity has been read.
 // Only present on activities that correspond to inbox entries
-@property(nonatomic, readonly) BOOL read;
+@property(nonatomic, readonly) NSNumber *read;
 
 // Flag indicating the current state of an action. Valid values are:
 // awaiting_action

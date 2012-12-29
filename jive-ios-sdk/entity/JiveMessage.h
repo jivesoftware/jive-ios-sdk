@@ -11,7 +11,7 @@
 @interface JiveMessage : JiveContent
 
 // Flag indicating that this message contains the correct answer to the question posed in this discussion.
-@property(nonatomic) bool answer;
+@property(nonatomic, strong) NSNumber *answer;
 
 // List of attachments to this message (if any).
 @property(nonatomic, strong) NSArray* attachments;
@@ -20,13 +20,13 @@
 @property(nonatomic, readonly, copy) NSString* discussion;
 
 // Flag indicating that this message contains a helpful answer to the question posed in this discussion.
-@property(nonatomic) bool helpful;
+@property(nonatomic, strong) NSNumber *helpful;
 
 // Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic, readonly) bool visibleToExternalContributors;
+@property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 
 @end

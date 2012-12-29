@@ -14,12 +14,12 @@
 @property(nonatomic, strong) NSDictionary* favoriteObject;
 
 // Flag indicating that this favorite is private, and thus not shared.
-@property(nonatomic) bool private;
+@property(nonatomic, strong) NSNumber *private;
 
 // Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic) bool visibleToExternalContributors;
+@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 @end
