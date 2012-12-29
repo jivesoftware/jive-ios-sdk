@@ -22,6 +22,10 @@
     place = [[JivePlace alloc] init];
 }
 
+- (void)tearDown {
+    place = nil;
+}
+
 - (void)testHandlePrimitivePropertyFromJSON {
     STAssertFalse(place.visibleToExternalContributors, @"PRECONDITION: default is false");
     
@@ -66,12 +70,13 @@
 }
 
 - (void)testToJSON {
+    place.type = nil; // Remove derived class type specifier.
+
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
     NSString *contentType = @"First";
     NSDictionary *JSON = [place toJSONDictionary];
     
-    place.type = nil; // Remove derived class type specifier.
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
@@ -205,14 +210,11 @@
 - (void)testToJSON_contentTypes {
     NSString *contentType1 = @"First";
     NSString *contentType2 = @"Last";
-    id JSON = [place toJSONDictionary];
     
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
-    
+    place.type = nil; // Remove derived class type specifier.
     [place setValue:[NSArray arrayWithObject:contentType1] forKey:@"contentTypes"];
     
-    JSON = [place toJSONDictionary];
+    NSDictionary *JSON = [place toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
