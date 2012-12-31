@@ -285,10 +285,8 @@
 		B86B0B4F166D0105008E525E /* JiveSearchParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D57A1653032B000D9BE9 /* JiveSearchParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8A6BA6A1691F62D00996448 /* JiveProject.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A6BA681691F62D00996448 /* JiveProject.h */; };
 		B8A6BA6B1691F62D00996448 /* JiveProject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA691691F62D00996448 /* JiveProject.m */; };
-		B8A6BA6C1691F62D00996448 /* JiveProject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA691691F62D00996448 /* JiveProject.m */; };
 		B8A6BA6F1691F63B00996448 /* Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A6BA6D1691F63B00996448 /* Jive.h */; };
 		B8A6BA701691F63B00996448 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA6E1691F63B00996448 /* Jive.m */; };
-		B8A6BA711691F63B00996448 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA6E1691F63B00996448 /* Jive.m */; };
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
 		B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7C1614FF8200082926 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1696,8 +1694,6 @@
 				0F9EB873168E733000E9F09D /* JiveUpdateTests.m in Sources */,
 				0F9EB876168E794200E9F09D /* JiveSpaceTests.m in Sources */,
 				0F9EB879168E7C3600E9F09D /* JiveGroupTests.m in Sources */,
-				B8A6BA6C1691F62D00996448 /* JiveProject.m in Sources */,
-				B8A6BA711691F63B00996448 /* Jive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
