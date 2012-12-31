@@ -205,6 +205,13 @@
 }
 
 // Announcements
+- (void) announcementsWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self announcementsOperationWithOptions:options
+                                                                   onComplete:completeBlock
+                                                                      onError:errorBlock];
+    [operation start];
+}
+
 - (void) announcementWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
     JAPIRequestOperation *operation = [self announcementOperationWithAnnouncement:announcement
                                                                           options:options
@@ -226,6 +233,19 @@
                                                                            onComplete:completeBlock
                                                                               onError:errorBlock];
     [operation start];
+}
+
+- (JAPIRequestOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/announcements"
+                                              options:options
+                                              andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JiveAnnouncement instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
 }
 
 - (JAPIRequestOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
