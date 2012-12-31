@@ -8,18 +8,18 @@
 
 #import "JiveContent.h"
 
-@interface JiveDiscusson : JiveContent
+@interface JiveDiscussion : JiveContent
 
 // Categories associated with this object. Places define the list of possible categories. Strings
 @property(nonatomic, strong) NSArray* categories;
 
 // Flag indicating that this discussion is a question.
-@property(nonatomic) bool question;
+@property(nonatomic, strong) NSNumber *question;
 
-// Tags associated with this object.
+// Tags associated with this object. String[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
-// The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. People[]
+// The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
 @property(nonatomic, readonly, strong) NSArray* users;
 
 // The visibility policy for this discussion. Valid values are:
@@ -29,7 +29,7 @@
 @property(nonatomic, copy) NSString* visibility;
 
 // Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic) bool visibleToExternalContributors;
+@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 
 @end
