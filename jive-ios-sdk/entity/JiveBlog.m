@@ -10,4 +10,12 @@
 
 @implementation JiveBlog
 
+- (id)init {
+    if ((self = [super init])) {
+        self.type = @"blog";
+    }
+    
+    return self;
+}
+
 @end
