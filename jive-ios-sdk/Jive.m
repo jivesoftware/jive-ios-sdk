@@ -813,6 +813,22 @@
     [operation start];
 }
 
+- (void) announcementsForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self announcementsOperationForPlace:place
+                                                                   options:options
+                                                                onComplete:completeBlock
+                                                                   onError:errorBlock];
+    [operation start];
+}
+
+- (void) avatarForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self avatarOperationForPlace:place
+                                                   options:options
+                                                onComplete:completeBlock
+                                                   onError:errorBlock];
+    [operation start];
+}
+
 - (JAPIRequestOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
     JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
     NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
@@ -834,6 +850,42 @@
     JAPIRequestOperation *operation = [self operationWithRequest:request
                                                       onComplete:completeBlock
                                                          onError:errorBlock];
+    return operation;
+}
+
+- (JAPIRequestOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *announcementsResourceEntry = [place.resources objectForKey:@"announcements"];
+    NSURLRequest *request = [self requestWithTemplate:[announcementsResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JiveAnnouncement instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
+- (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *avatarResourceEntry = [place.resources objectForKey:@"avatar"];
+    NSURLRequest *request = [self requestWithTemplate:[avatarResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
+    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
+    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
+                                                                              imageProcessingBlock:NULL
+                                                                                           success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        if (heapCompleteBlock) {
+            heapCompleteBlock(image);
+        }
+    })
+                                                                                           failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        if (heapErrorBlock) {
+            heapErrorBlock(error);
+        }
+    })];
     return operation;
 }
 
