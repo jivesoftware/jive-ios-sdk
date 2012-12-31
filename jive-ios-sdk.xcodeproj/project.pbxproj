@@ -757,6 +757,8 @@
 		0F0913651665391D0036C4E8 /* RequestOptions */ = {
 			isa = PBXGroup;
 			children = (
+				0F9EB8C6169205B500E9F09D /* JiveAnnouncementRequestOptions.h */,
+				0F9EB8C7169205B500E9F09D /* JiveAnnouncementRequestOptions.m */,
 				0F187EA916695F3D001FCB51 /* JiveAuthorCommentRequestOptions.h */,
 				0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */,
 				0F09149F1666905A0036C4E8 /* JiveAutoCategorizeRequestOptions.h */,
@@ -812,8 +814,6 @@
 				0F187E7316692F2B001FCB51 /* JiveTrendingPeopleRequestOptions.m */,
 				0F09147D166687C10036C4E8 /* JiveWelcomeRequestOptions.h */,
 				0F09147E166687C10036C4E8 /* JiveWelcomeRequestOptions.m */,
-				0F9EB8C6169205B500E9F09D /* JiveAnnouncementRequestOptions.h */,
-				0F9EB8C7169205B500E9F09D /* JiveAnnouncementRequestOptions.m */,
 			);
 			path = RequestOptions;
 			sourceTree = "<group>";
