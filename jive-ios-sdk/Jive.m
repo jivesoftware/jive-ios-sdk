@@ -55,6 +55,28 @@
 
 #pragma mark - public API
 
+// Activities
+- (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self activitiesOperationWithOptions:options
+                                                                onComplete:completeBlock
+                                                                   onError:errorBlock];
+    [operation start];
+}
+
+- (JAPIRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities"
+                                              options:options
+                                              andArgs:nil];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON){
+        return [JiveActivityObject instanceFromJSON:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
     [self inbox:nil onComplete:complete onError:error];
@@ -380,36 +402,6 @@
     [[self resourcesOperation:complete onError:error] start];
 }
 
-- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
-    NSURL *contentURL = [NSURL URLWithString:activityObject.jiveId];
-    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
-    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
-                                            forURL:contentURL];
-    
-    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:^id(id JSON) {
-                                                     return [JiveContent instanceFromJSON:JSON];
-                                                 }];
-    [operation start];
-}
-
-- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
-    NSURL *rootContentURL = [NSURL URLWithString:comment.rootURI];
-    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:rootContentURL];
-    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
-                                            forURL:rootContentURL];
-    
-    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:^id(id JSON) {
-                                                     return [JiveContent instanceFromJSON:JSON];
-                                                 }];
-    [operation start];
-}
-
 - (void) contentFromURL:(NSURL *)contentURL onComplete:(void (^)(JiveContent *content))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
@@ -495,6 +487,36 @@
 
 - (void) contentLikedBy:(NSString *)contentId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     [[self contentLikedByOperation:contentId withOptions:options onComplete:complete onError:error] start];
+}
+
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    NSURL *contentURL = [NSURL URLWithString:activityObject.jiveId];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:contentURL];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:^id(id JSON) {
+                                                     return [JiveContent instanceFromJSON:JSON];
+                                                 }];
+    [operation start];
+}
+
+- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    NSURL *rootContentURL = [NSURL URLWithString:comment.rootURI];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:rootContentURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:rootContentURL];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:^id(id JSON) {
+                                                     return [JiveContent instanceFromJSON:JSON];
+                                                 }];
+    [operation start];
 }
 
 - (JAPIRequestOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
