@@ -829,6 +829,14 @@
     [operation start];
 }
 
+- (void) tasksForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self tasksOperationForPlace:place
+                                                  options:options
+                                               onComplete:completeBlock
+                                                  onError:errorBlock];
+    [operation start];
+}
+
 - (JAPIRequestOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
     JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
     NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
@@ -885,6 +893,20 @@
         if (heapErrorBlock) {
             heapErrorBlock(error);
         }
+    })];
+    return operation;
+}
+
+- (NSOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *tasksResourceEntry = [place.resources objectForKey:@"tasks"];
+    NSURLRequest *request = [self requestWithTemplate:[tasksResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    NSOperation *operation = [self operationWithRequest:request
+                                             onComplete:completeBlock
+                                                onError:errorBlock
+                                        responseHandler:(^id(id JSON) {
+        return [JiveTask instancesFromJSONList:[JSON objectForKey:@"list"]];
     })];
     return operation;
 }
