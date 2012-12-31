@@ -114,6 +114,7 @@
 		0F9EB8C8169205B500E9F09D /* JiveAnnouncementRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EB8C6169205B500E9F09D /* JiveAnnouncementRequestOptions.h */; };
 		0F9EB8C9169205B500E9F09D /* JiveAnnouncementRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EB8C7169205B500E9F09D /* JiveAnnouncementRequestOptions.m */; };
 		0F9EB8CC169205EC00E9F09D /* JiveAnnouncementRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EB8CB169205EC00E9F09D /* JiveAnnouncementRequestOptionsTests.m */; };
+		0F9EB8E31692153600E9F09D /* JiveDiscussionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EB8E21692153600E9F09D /* JiveDiscussionTests.m */; };
 		0FA17D19166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */; };
 		0FA17D1D16651C540008F833 /* JiveReturnFieldsRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */; };
 		0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5C478167B985A00419683 /* JivePersonTests.m */; };
@@ -195,7 +196,7 @@
 		7814D585165410C1000D9BE9 /* JiveSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D584165410C0000D9BE9 /* JiveSummary.m */; };
 		7814D588165411B0000D9BE9 /* JiveContentBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D587165411B0000D9BE9 /* JiveContentBody.m */; };
 		7814D58916541B45000D9BE9 /* JiveContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D57E16530A7A000D9BE9 /* JiveContent.m */; };
-		7814D58C16541C50000D9BE9 /* JiveDiscusson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D58B16541C4F000D9BE9 /* JiveDiscusson.m */; };
+		7814D58C16541C50000D9BE9 /* JiveDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D58B16541C4F000D9BE9 /* JiveDiscussion.m */; };
 		7814D58F16541E85000D9BE9 /* JiveMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D58E16541E84000D9BE9 /* JiveMessage.m */; };
 		7814D59216541FD3000D9BE9 /* JiveAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D59116541FD2000D9BE9 /* JiveAttachment.m */; };
 		7814D59516542131000D9BE9 /* JiveDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814D59416542130000D9BE9 /* JiveDocument.m */; };
@@ -250,7 +251,7 @@
 		B86B0B15166D00D8008E525E /* JivePhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 78185D79163EE65B0081DF7A /* JivePhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B86B0B16166D00D8008E525E /* JiveProfileEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 78185D7C163EE79D0081DF7A /* JiveProfileEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B86B0B17166D00D8008E525E /* JiveContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D57D16530A7A000D9BE9 /* JiveContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B86B0B18166D00D8008E525E /* JiveDiscusson.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D58A16541C4F000D9BE9 /* JiveDiscusson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B86B0B18166D00D8008E525E /* JiveDiscussion.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D58A16541C4F000D9BE9 /* JiveDiscussion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B86B0B19166D00D8008E525E /* JiveAnnouncement.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D58016531790000D9BE9 /* JiveAnnouncement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B86B0B1A166D00D8008E525E /* JiveMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D58D16541E84000D9BE9 /* JiveMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B86B0B1B166D00D8008E525E /* JiveDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 7814D59316542130000D9BE9 /* JiveDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -514,6 +515,8 @@
 		0F9EB8C7169205B500E9F09D /* JiveAnnouncementRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAnnouncementRequestOptions.m; sourceTree = "<group>"; };
 		0F9EB8CA169205EC00E9F09D /* JiveAnnouncementRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAnnouncementRequestOptionsTests.h; sourceTree = "<group>"; };
 		0F9EB8CB169205EC00E9F09D /* JiveAnnouncementRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAnnouncementRequestOptionsTests.m; sourceTree = "<group>"; };
+		0F9EB8E11692153600E9F09D /* JiveDiscussionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveDiscussionTests.h; sourceTree = "<group>"; };
+		0F9EB8E21692153600E9F09D /* JiveDiscussionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveDiscussionTests.m; sourceTree = "<group>"; };
 		0FA17D17166514670008F833 /* JiveReturnFieldsRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveReturnFieldsRequestOptionsTests.h; sourceTree = "<group>"; };
 		0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveReturnFieldsRequestOptionsTests.m; sourceTree = "<group>"; };
 		0FA17D1A166515710008F833 /* JiveRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveRequestOptions.h; sourceTree = "<group>"; };
@@ -646,8 +649,8 @@
 		7814D584165410C0000D9BE9 /* JiveSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSummary.m; sourceTree = "<group>"; };
 		7814D586165411B0000D9BE9 /* JiveContentBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveContentBody.h; sourceTree = "<group>"; };
 		7814D587165411B0000D9BE9 /* JiveContentBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveContentBody.m; sourceTree = "<group>"; };
-		7814D58A16541C4F000D9BE9 /* JiveDiscusson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveDiscusson.h; sourceTree = "<group>"; };
-		7814D58B16541C4F000D9BE9 /* JiveDiscusson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveDiscusson.m; sourceTree = "<group>"; };
+		7814D58A16541C4F000D9BE9 /* JiveDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveDiscussion.h; sourceTree = "<group>"; };
+		7814D58B16541C4F000D9BE9 /* JiveDiscussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveDiscussion.m; sourceTree = "<group>"; };
 		7814D58D16541E84000D9BE9 /* JiveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveMessage.h; sourceTree = "<group>"; };
 		7814D58E16541E84000D9BE9 /* JiveMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveMessage.m; sourceTree = "<group>"; };
 		7814D59016541FD2000D9BE9 /* JiveAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAttachment.h; sourceTree = "<group>"; };
@@ -884,79 +887,82 @@
 		0FCB66671670FC6000617CE4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				0FCB66681670FCDB00617CE4 /* JiveInboxEntryTests.h */,
-				0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */,
-				0FB5C477167B985A00419683 /* JivePersonTests.h */,
-				0FB5C478167B985A00419683 /* JivePersonTests.m */,
-				0FCB666E1671061A00617CE4 /* JiveContentTests.h */,
-				0FCB666F1671061A00617CE4 /* JiveContentTests.m */,
+				0F9EB849168CC06D00E9F09D /* JiveActionLinkTests.h */,
+				0F9EB84A168CC06D00E9F09D /* JiveActionLinkTests.m */,
+				0F9EB83D168B728800E9F09D /* JiveActivityObjectTests.h */,
+				0F9EB83E168B728800E9F09D /* JiveActivityObjectTests.m */,
+				0F5F1A11167F9C7100BA616E /* JiveAddressTests.h */,
+				0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */,
 				0F9EB84F168CFA0D00E9F09D /* JiveAnnouncementTests.h */,
 				0F9EB850168CFA0D00E9F09D /* JiveAnnouncementTests.m */,
-				0F9EB852168D0A3D00E9F09D /* JiveMessageTests.h */,
-				0F9EB853168D0A3D00E9F09D /* JiveMessageTests.m */,
+				0F9EB855168D1B5600E9F09D /* JiveAttachmentTests.h */,
+				0F9EB856168D1B5600E9F09D /* JiveAttachmentTests.m */,
+				0F9EB891169202E000E9F09D /* JiveBlogTests.h */,
+				0F9EB892169202E000E9F09D /* JiveBlogTests.m */,
+				0F9EB865168E605F00E9F09D /* JiveCommentTests.h */,
+				0F9EB866168E605F00E9F09D /* JiveCommentTests.m */,
+				0FCB666E1671061A00617CE4 /* JiveContentTests.h */,
+				0FCB666F1671061A00617CE4 /* JiveContentTests.m */,
+				0F6E321116853CD400E5F7CC /* JiveContentBodyTests.h */,
+				0F6E321216853CD400E5F7CC /* JiveContentBodyTests.m */,
+				0F9EB868168E62E600E9F09D /* JiveDirectMessageTests.h */,
+				0F9EB869168E62E700E9F09D /* JiveDirectMessageTests.m */,
+				0F9EB8E11692153600E9F09D /* JiveDiscussionTests.h */,
+				0F9EB8E21692153600E9F09D /* JiveDiscussionTests.m */,
 				0F9EB858168E0A4D00E9F09D /* JiveDocumentTests.h */,
 				0F9EB859168E0A4D00E9F09D /* JiveDocumentTests.m */,
+				0F5F1A17167FBE1B00BA616E /* JiveEmailTests.h */,
+				0F5F1A18167FBE1B00BA616E /* JiveEmailTests.m */,
+				0F9EB84C168CC37B00E9F09D /* JiveEmbeddedTests.h */,
+				0F9EB84D168CC37B00E9F09D /* JiveEmbeddedTests.m */,
+				0F9EB843168B8E2300E9F09D /* JiveExtensionTests.h */,
+				0F9EB844168B8E2300E9F09D /* JiveExtensionTests.m */,
+				0F9EB86B168E644F00E9F09D /* JiveFavoriteTests.h */,
+				0F9EB86C168E645000E9F09D /* JiveFavoriteTests.m */,
 				0F9EB85B168E3F9300E9F09D /* JiveFileTests.h */,
 				0F9EB85C168E3F9400E9F09D /* JiveFileTests.m */,
+				0F9EB877168E7C3400E9F09D /* JiveGroupTests.h */,
+				0F9EB878168E7C3500E9F09D /* JiveGroupTests.m */,
+				0FCB66681670FCDB00617CE4 /* JiveInboxEntryTests.h */,
+				0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */,
+				0F6E31C41684DCFF00E5F7CC /* JiveLevelTests.h */,
+				0F6E31C51684DCFF00E5F7CC /* JiveLevelTests.m */,
+				0F9EB840168B7CAF00E9F09D /* JiveMediaLinkTests.h */,
+				0F9EB841168B7CAF00E9F09D /* JiveMediaLinkTests.m */,
+				0F9EB852168D0A3D00E9F09D /* JiveMessageTests.h */,
+				0F9EB853168D0A3D00E9F09D /* JiveMessageTests.m */,
+				0F5F1A14167FB81000BA616E /* JiveNameTests.h */,
+				0F5F1A15167FB81000BA616E /* JiveNameTests.m */,
+				0F9EB846168B939C00E9F09D /* JiveOpenSocialTests.h */,
+				0F9EB847168B939C00E9F09D /* JiveOpenSocialTests.m */,
+				0F5F1A1D167FC50700BA616E /* JivePersonJiveTests.h */,
+				0F5F1A1E167FC50800BA616E /* JivePersonJiveTests.m */,
+				0FB5C477167B985A00419683 /* JivePersonTests.h */,
+				0FB5C478167B985A00419683 /* JivePersonTests.m */,
+				0F5F1A1A167FBF0100BA616E /* JivePhoneNumberTests.h */,
+				0F5F1A1B167FBF0100BA616E /* JivePhoneNumberTests.m */,
+				0FCB66711671065C00617CE4 /* JivePlaceTests.h */,
+				0FCB66721671065C00617CE4 /* JivePlaceTests.m */,
 				0F9EB85E168E48D900E9F09D /* JivePollTests.h */,
 				0F9EB85F168E48D900E9F09D /* JivePollTests.m */,
 				0F9EB862168E55B300E9F09D /* JivePostTests.h */,
 				0F9EB863168E55B400E9F09D /* JivePostTests.m */,
-				0F9EB865168E605F00E9F09D /* JiveCommentTests.h */,
-				0F9EB866168E605F00E9F09D /* JiveCommentTests.m */,
-				0F9EB868168E62E600E9F09D /* JiveDirectMessageTests.h */,
-				0F9EB869168E62E700E9F09D /* JiveDirectMessageTests.m */,
-				0F9EB86B168E644F00E9F09D /* JiveFavoriteTests.h */,
-				0F9EB86C168E645000E9F09D /* JiveFavoriteTests.m */,
+				0F9EB88E1691FF1E00E9F09D /* JiveProjectTests.h */,
+				0F9EB88F1691FF1E00E9F09D /* JiveProjectTests.m */,
+				0F5F1A241680E01B00BA616E /* JiveResourceEntryTests.h */,
+				0F5F1A251680E01B00BA616E /* JiveResourceEntryTests.m */,
+				0F9EB874168E794000E9F09D /* JiveSpaceTests.h */,
+				0F9EB875168E794000E9F09D /* JiveSpaceTests.m */,
+				0F6E31C11684C3DE00E5F7CC /* JiveSummaryTests.h */,
+				0F6E31C21684C3DE00E5F7CC /* JiveSummaryTests.m */,
 				0F9EB86E168E6C9400E9F09D /* JiveTaskTests.h */,
 				0F9EB86F168E6C9400E9F09D /* JiveTaskTests.m */,
 				0F9EB871168E732E00E9F09D /* JiveUpdateTests.h */,
 				0F9EB872168E732F00E9F09D /* JiveUpdateTests.m */,
-				0FCB66711671065C00617CE4 /* JivePlaceTests.h */,
-				0FCB66721671065C00617CE4 /* JivePlaceTests.m */,
-				0F9EB891169202E000E9F09D /* JiveBlogTests.h */,
-				0F9EB892169202E000E9F09D /* JiveBlogTests.m */,
-				0F9EB877168E7C3400E9F09D /* JiveGroupTests.h */,
-				0F9EB878168E7C3500E9F09D /* JiveGroupTests.m */,
-				0F9EB88E1691FF1E00E9F09D /* JiveProjectTests.h */,
-				0F9EB88F1691FF1E00E9F09D /* JiveProjectTests.m */,
-				0F9EB874168E794000E9F09D /* JiveSpaceTests.h */,
-				0F9EB875168E794000E9F09D /* JiveSpaceTests.m */,
-				0F5F1A11167F9C7100BA616E /* JiveAddressTests.h */,
-				0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */,
-				0F5F1A14167FB81000BA616E /* JiveNameTests.h */,
-				0F5F1A15167FB81000BA616E /* JiveNameTests.m */,
-				0F5F1A17167FBE1B00BA616E /* JiveEmailTests.h */,
-				0F5F1A18167FBE1B00BA616E /* JiveEmailTests.m */,
-				0F5F1A1A167FBF0100BA616E /* JivePhoneNumberTests.h */,
-				0F5F1A1B167FBF0100BA616E /* JivePhoneNumberTests.m */,
-				0F5F1A1D167FC50700BA616E /* JivePersonJiveTests.h */,
-				0F5F1A1E167FC50800BA616E /* JivePersonJiveTests.m */,
-				0F5F1A241680E01B00BA616E /* JiveResourceEntryTests.h */,
-				0F5F1A251680E01B00BA616E /* JiveResourceEntryTests.m */,
-				0F6E31C11684C3DE00E5F7CC /* JiveSummaryTests.h */,
-				0F6E31C21684C3DE00E5F7CC /* JiveSummaryTests.m */,
-				0F6E31C41684DCFF00E5F7CC /* JiveLevelTests.h */,
-				0F6E31C51684DCFF00E5F7CC /* JiveLevelTests.m */,
-				0F6E321116853CD400E5F7CC /* JiveContentBodyTests.h */,
-				0F6E321216853CD400E5F7CC /* JiveContentBodyTests.m */,
-				0F9EB83D168B728800E9F09D /* JiveActivityObjectTests.h */,
-				0F9EB83E168B728800E9F09D /* JiveActivityObjectTests.m */,
-				0F9EB840168B7CAF00E9F09D /* JiveMediaLinkTests.h */,
-				0F9EB841168B7CAF00E9F09D /* JiveMediaLinkTests.m */,
-				0F9EB843168B8E2300E9F09D /* JiveExtensionTests.h */,
-				0F9EB844168B8E2300E9F09D /* JiveExtensionTests.m */,
-				0F9EB846168B939C00E9F09D /* JiveOpenSocialTests.h */,
-				0F9EB847168B939C00E9F09D /* JiveOpenSocialTests.m */,
-				0F9EB849168CC06D00E9F09D /* JiveActionLinkTests.h */,
-				0F9EB84A168CC06D00E9F09D /* JiveActionLinkTests.m */,
-				0F9EB84C168CC37B00E9F09D /* JiveEmbeddedTests.h */,
-				0F9EB84D168CC37B00E9F09D /* JiveEmbeddedTests.m */,
-				0F9EB855168D1B5600E9F09D /* JiveAttachmentTests.h */,
-				0F9EB856168D1B5600E9F09D /* JiveAttachmentTests.m */,
 			);
-			path = entity;
-			sourceTree = "<group>";
+			name = entity;
+			path = "jive-ios-sdkTests/entity";
+			sourceTree = SOURCE_ROOT;
 		};
 		217FE0D11638520F00182AB5 /* entity */ = {
 			isa = PBXGroup;
@@ -981,8 +987,8 @@
 				7814D587165411B0000D9BE9 /* JiveContentBody.m */,
 				7814D5A216544E44000D9BE9 /* JiveDirectMessage.h */,
 				7814D5A316544E45000D9BE9 /* JiveDirectMessage.m */,
-				7814D58A16541C4F000D9BE9 /* JiveDiscusson.h */,
-				7814D58B16541C4F000D9BE9 /* JiveDiscusson.m */,
+				7814D58A16541C4F000D9BE9 /* JiveDiscussion.h */,
+				7814D58B16541C4F000D9BE9 /* JiveDiscussion.m */,
 				7814D59316542130000D9BE9 /* JiveDocument.h */,
 				7814D59416542130000D9BE9 /* JiveDocument.m */,
 				78185D67163ED7950081DF7A /* JiveEmail.h */,
@@ -1086,6 +1092,7 @@
 			isa = PBXGroup;
 			children = (
 				217FE0D11638520F00182AB5 /* entity */,
+				0FCB66671670FC6000617CE4 /* entity */,
 				2192BCFD16161F0700082926 /* JAPIRequestOperation.h */,
 				2192BCFE16161F0700082926 /* JAPIRequestOperation.m */,
 				B8A6BA6D1691F63B00996448 /* Jive.h */,
@@ -1123,7 +1130,6 @@
 		2192BC131614F33300082926 /* jive-ios-sdkTests */ = {
 			isa = PBXGroup;
 			children = (
-				0FCB66671670FC6000617CE4 /* entity */,
 				21AD976F161CBC96009A977D /* classes */,
 				21AD976E161CBC84009A977D /* tests */,
 				21AD975116163A98009A977D /* data */,
@@ -1292,7 +1298,7 @@
 				B86B0B15166D00D8008E525E /* JivePhoto.h in Headers */,
 				B86B0B16166D00D8008E525E /* JiveProfileEntry.h in Headers */,
 				B86B0B17166D00D8008E525E /* JiveContent.h in Headers */,
-				B86B0B18166D00D8008E525E /* JiveDiscusson.h in Headers */,
+				B86B0B18166D00D8008E525E /* JiveDiscussion.h in Headers */,
 				B86B0B19166D00D8008E525E /* JiveAnnouncement.h in Headers */,
 				B86B0B1A166D00D8008E525E /* JiveMessage.h in Headers */,
 				B86B0B1B166D00D8008E525E /* JiveDocument.h in Headers */,
@@ -1590,7 +1596,7 @@
 				7814D585165410C1000D9BE9 /* JiveSummary.m in Sources */,
 				7814D588165411B0000D9BE9 /* JiveContentBody.m in Sources */,
 				7814D58916541B45000D9BE9 /* JiveContent.m in Sources */,
-				7814D58C16541C50000D9BE9 /* JiveDiscusson.m in Sources */,
+				7814D58C16541C50000D9BE9 /* JiveDiscussion.m in Sources */,
 				7814D58F16541E85000D9BE9 /* JiveMessage.m in Sources */,
 				7814D59216541FD3000D9BE9 /* JiveAttachment.m in Sources */,
 				7814D59516542131000D9BE9 /* JiveDocument.m in Sources */,
@@ -1720,6 +1726,7 @@
 				0F9EB8901691FF1E00E9F09D /* JiveProjectTests.m in Sources */,
 				0F9EB893169202E100E9F09D /* JiveBlogTests.m in Sources */,
 				0F9EB8CC169205EC00E9F09D /* JiveAnnouncementRequestOptionsTests.m in Sources */,
+				0F9EB8E31692153600E9F09D /* JiveDiscussionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

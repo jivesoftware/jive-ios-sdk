@@ -10,6 +10,7 @@
 
 #import "JiveAnnouncement.h"
 #import "JiveMessage.h"
+#import "JiveDiscussion.h"
 #import "JiveDocument.h"
 #import "JiveFile.h"
 #import "JivePoll.h"
@@ -33,6 +34,7 @@
     if (!classDictionary)
         classDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[JiveAnnouncement class], @"announcement",
                            [JiveMessage class], @"message",
+                           [JiveDiscussion class], @"discussion",
                            [JiveDocument class], @"document",
                            [JiveFile class], @"file",
                            [JivePoll class], @"poll",
