@@ -84,6 +84,28 @@
     [operation start];
 }
 
+- (void) recentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self recentContentOperationWithOptions:options
+                                                                   onComplete:completeBlock
+                                                                      onError:errorBlock];
+    [operation start];
+}
+
+- (void) recentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self recentPeopleOperationWithOptions:options
+                                                                  onComplete:completeBlock
+                                                                     onError:errorBlock];
+    [operation start];
+}
+
+- (void) recentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self recentPlacesOperationWithOptions:options
+                                                                  onComplete:completeBlock
+                                                                     onError:errorBlock];
+    [operation start];
+}
+
+
 - (JAPIRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities"
                                               options:options
@@ -139,6 +161,49 @@
     })];
     return operation;
 }
+
+- (JAPIRequestOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/recent/content"
+                                              options:options
+                                              andArgs:nil];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/recent/people"
+                                              options:options
+                                              andArgs:nil];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/recent/places"
+                                              options:options
+                                              andArgs:nil];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JivePlace instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
