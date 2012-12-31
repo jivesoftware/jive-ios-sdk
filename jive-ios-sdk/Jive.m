@@ -204,6 +204,71 @@
     return operation;
 }
 
+// Announcements
+- (void) announcementWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self announcementOperationWithAnnouncement:announcement
+                                                                          options:options
+                                                                       onComplete:completeBlock
+                                                                          onError:errorBlock];
+    [operation start];
+}
+
+- (void) deleteAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self deleteAnnouncementOperationWithAnnouncement:announcement
+                                                                             onComplete:completeBlock
+                                                                                onError:errorBlock];
+    [operation start];
+}
+
+- (void) markAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self markAnnouncementOperationWithAnnouncement:announcement
+                                                                               asRead:read
+                                                                           onComplete:completeBlock
+                                                                              onError:errorBlock];
+    [operation start];
+}
+
+- (JAPIRequestOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *selfResourceEntry = [announcement.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JiveAnnouncement instanceFromJSON:JSON];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *selfResourceEntry = [announcement.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    [request setHTTPMethod:@"DELETE"];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock];
+    return operation;
+}
+
+- (JAPIRequestOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *readResourceEntry = [announcement.resources objectForKey:@"read"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[readResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    if (read) {
+        [request setHTTPMethod:@"POST"];
+    } else {
+        [request setHTTPMethod:@"DELETE"];
+    }
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock];
+    return operation;
+}
 
 // Inbox
 - (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
@@ -460,7 +525,7 @@
 }
 
 - (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
-
+    
     JAPIRequestOperation* operation = [self searchPlacesRequestOperation:options onComplete:complete onError:error];
     
     [operation start];
@@ -716,22 +781,25 @@
 
 #pragma mark - private API
 
-- (NSURLRequest*) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
-    
-    NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
-    NSString *queryString = [options toQueryString];
-    
-    if (queryString)
-        [requestString appendFormat:@"?%@", queryString];
-    
-    NSURL* requestURL = [NSURL URLWithString:requestString
-                               relativeToURL:_jiveInstance];
-    
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
-    [self maybeApplyCredentialsToMutableURLRequest:request
-                                            forURL:requestURL];
-    
-    return request;
+- (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
+    if (template) {
+        NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
+        NSString *queryString = [options toQueryString];
+        
+        if (queryString)
+            [requestString appendFormat:@"?%@", queryString];
+        
+        NSURL* requestURL = [NSURL URLWithString:requestString
+                                   relativeToURL:_jiveInstance];
+        
+        NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
+        [self maybeApplyCredentialsToMutableURLRequest:request
+                                                forURL:requestURL];
+        
+        return request;
+    } else {
+        return nil;
+    }
 }
 
 - (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
@@ -743,15 +811,37 @@
 }
 
 - (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
-    
-    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        id entity = handler(JSON);
-        complete(entity);
+    if (request) {
+        JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            id entity = handler(JSON);
+            complete(entity);
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+            error(err);
+        }];
         
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-        error(err);
-    }];
-    
+        return operation;
+    } else {
+        return nil;
+    }
+}
+
+- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(void)) complete onError:(void(^)(NSError* error)) error {
+    void (^nilObjectComplete)(id);
+    if (complete) {
+        void (^heapComplete)(void) = [complete copy];
+        nilObjectComplete = ^(id nilObject) {
+            heapComplete();
+        };
+    } else {
+        nilObjectComplete = NULL;
+    }
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:nilObjectComplete
+                                                         onError:error
+                                                 responseHandler:(^id(id JSON) {
+        return nil;
+    })];
     return operation;
 }
 
