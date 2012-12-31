@@ -63,6 +63,13 @@
     [operation start];
 }
 
+- (void) frequentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self frequentContentOperationWithOptions:options
+                                                                     onComplete:completeBlock
+                                                                        onError:errorBlock];
+    [operation start];
+}
+
 - (JAPIRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities"
                                               options:options
@@ -73,6 +80,20 @@
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON){
         return [JiveActivityObject instanceFromJSON:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (void (^)(NSError *error))errorBlock {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/frequent/content"
+                                              options:options
+                                              andArgs:nil];
+    
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [JiveContent instancesFromJSONList:[JSON objectForKey:@"list"]];
     })];
     return operation;
 }
