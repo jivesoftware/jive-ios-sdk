@@ -799,6 +799,25 @@
     [[self placeActivitiesOperation:placeId withOptions:options onComplete:complete onError:error] start];
 }
 
+- (void) deletePlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self deletePlaceOperationWithPlace:place
+                                                               onComplete:completeBlock
+                                                                  onError:errorBlock];
+    [operation start];
+}
+
+- (JAPIRequestOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    [request setHTTPMethod:@"DELETE"];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock];
+    return operation;
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
