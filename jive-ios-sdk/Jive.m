@@ -806,9 +806,28 @@
     [operation start];
 }
 
+- (void) deleteAvatarForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self deleteAvatarOperationForPlace:place
+                                                               onComplete:completeBlock
+                                                                  onError:errorBlock];
+    [operation start];
+}
+
 - (JAPIRequestOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
     JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
     NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    [request setHTTPMethod:@"DELETE"];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock];
+    return operation;
+}
+
+- (JAPIRequestOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *avatarResourceEntry = [place.resources objectForKey:@"avatar"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[avatarResourceEntry.ref path]
                                                      options:nil
                                                      andArgs:nil];
     [request setHTTPMethod:@"DELETE"];
