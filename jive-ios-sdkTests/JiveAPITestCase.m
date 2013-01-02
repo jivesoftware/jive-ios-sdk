@@ -10,17 +10,19 @@
 
 @implementation JiveAPITestCase
 
-- (void)setUp
-{
+#pragma mark - SenTestCase
+
+- (void)setUp {
     [super setUp];
     [NSURLProtocol registerClass:[MockJiveURLProtocol class]];
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     [super tearDown];
     [NSURLProtocol unregisterClass:[MockJiveURLProtocol class]];
 }
+
+#pragma mark - public API
 
 - (id) mockJiveAuthenticationDelegate:(NSString*) username password:(NSString*) password {
     // Mock Auth Delegate
@@ -53,6 +55,18 @@
     [[[mockJiveURLResponseDelegate expect] andReturn:mockResponseData] responseBodyForRequest];
     
     return mockJiveURLResponseDelegate;
+}
+
+- (id) entityForClass:(Class) entityClass
+        fromJSONNamed:(NSString *)jsonName {
+    NSString *jsonPath = [[NSBundle bundleForClass:[self class]] pathForResource:jsonName
+                                                                          ofType:@"json"];
+    NSData *rawJson = [NSData dataWithContentsOfFile:jsonPath];
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:rawJson
+                                                         options:0
+                                                           error:NULL];
+    id entity = [entityClass instanceFromJSON:JSON];
+    return entity;
 }
 
 @end

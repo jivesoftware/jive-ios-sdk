@@ -296,6 +296,8 @@
 		B8A6BA6B1691F62D00996448 /* JiveProject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA691691F62D00996448 /* JiveProject.m */; };
 		B8A6BA6F1691F63B00996448 /* Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A6BA6D1691F63B00996448 /* Jive.h */; };
 		B8A6BA701691F63B00996448 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA6E1691F63B00996448 /* Jive.m */; };
+		B8B19F0C16949AA0004B3DEC /* member_member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F0B16949AA0004B3DEC /* member_member.json */; };
+		B8B19F1116949F45004B3DEC /* member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F1016949F45004B3DEC /* member.json */; };
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
 		B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7C1614FF8200082926 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -730,6 +732,8 @@
 		B8A6BA691691F62D00996448 /* JiveProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveProject.m; sourceTree = "<group>"; };
 		B8A6BA6D1691F63B00996448 /* Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jive.h; sourceTree = "<group>"; };
 		B8A6BA6E1691F63B00996448 /* Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jive.m; sourceTree = "<group>"; };
+		B8B19F0B16949AA0004B3DEC /* member_member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member_member.json; sourceTree = "<group>"; };
+		B8B19F1016949F45004B3DEC /* member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member.json; sourceTree = "<group>"; };
 		B8DC02971666840C00BCC61D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8DC02991666841800BCC61D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inbox_mark_response.json; sourceTree = "<group>"; };
@@ -891,7 +895,7 @@
 			path = RequestOptions;
 			sourceTree = "<group>";
 		};
-		0FCB66671670FC6000617CE4 /* entity */ = {
+		0FCB66671670FC6000617CE4 /* entity tests */ = {
 			isa = PBXGroup;
 			children = (
 				0F9EB849168CC06D00E9F09D /* JiveActionLinkTests.h */,
@@ -969,7 +973,7 @@
 				0F9EB871168E732E00E9F09D /* JiveUpdateTests.h */,
 				0F9EB872168E732F00E9F09D /* JiveUpdateTests.m */,
 			);
-			name = entity;
+			name = "entity tests";
 			path = "jive-ios-sdkTests/entity";
 			sourceTree = SOURCE_ROOT;
 		};
@@ -1103,7 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				217FE0D11638520F00182AB5 /* entity */,
-				0FCB66671670FC6000617CE4 /* entity */,
+				0FCB66671670FC6000617CE4 /* entity tests */,
 				2192BCFD16161F0700082926 /* JAPIRequestOperation.h */,
 				2192BCFE16161F0700082926 /* JAPIRequestOperation.m */,
 				B8A6BA6D1691F63B00996448 /* Jive.h */,
@@ -1209,30 +1213,32 @@
 		21AD975116163A98009A977D /* data */ = {
 			isa = PBXGroup;
 			children = (
-				780A3D0016406C40000BFDFC /* collegues_response.json */,
-				B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */,
-				217FE0FB1638798900182AB5 /* inbox_response.json */,
-				21AD975216163A98009A977D /* my_response.json */,
-				0FCB665C166FB18C00617CE4 /* search_people_response.json */,
-				0FCB6663166FDAF200617CE4 /* search_places_response.json */,
-				0FCB66651670FA4800617CE4 /* search_contents_response.json */,
-				0F13CE38167137A800525E4E /* people_response.json */,
-				0F13CE3A1671463C00525E4E /* person_response.json */,
-				0F13CEB9167292DC00525E4E /* followers_response.json */,
-				0F13CEBD1672C6C200525E4E /* filterable_fields.json */,
-				0F13CEBF1672D09000525E4E /* supported_fields.json */,
-				0F13CEC11672D92D00525E4E /* recommended_people.json */,
-				0F13CEC31674093600525E4E /* resource_info.json */,
-				0F13CEC516740DF400525E4E /* trending_people.json */,
-				0F13CEC71674103B00525E4E /* person_activities.json */,
 				0F13CEC9167645EE00525E4E /* blog.json */,
-				0F13CEF01676ACCF00525E4E /* contents.json */,
+				780A3D0016406C40000BFDFC /* collegues_response.json */,
 				0F13CEF21677ADC500525E4E /* content_by_id.json */,
 				0F13CEF41677B7BB00525E4E /* content_comments.json */,
-				0F13CEF81677DA1B00525E4E /* places.json */,
-				0F6E3168168269E500E5F7CC /* recommended_places.json */,
+				0F13CEF01676ACCF00525E4E /* contents.json */,
+				B8B19F0F16949CBC004B3DEC /* entities */,
+				0F13CEBD1672C6C200525E4E /* filterable_fields.json */,
+				0F13CEB9167292DC00525E4E /* followers_response.json */,
+				B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */,
+				217FE0FB1638798900182AB5 /* inbox_response.json */,
+				B8B19F0B16949AA0004B3DEC /* member_member.json */,
+				21AD975216163A98009A977D /* my_response.json */,
+				0F13CE38167137A800525E4E /* people_response.json */,
+				0F13CEC71674103B00525E4E /* person_activities.json */,
+				0F13CE3A1671463C00525E4E /* person_response.json */,
 				0F6E31751682877800E5F7CC /* place.json */,
 				0F6E3177168289D800E5F7CC /* place_activities.json */,
+				0F13CEF81677DA1B00525E4E /* places.json */,
+				0F13CEC11672D92D00525E4E /* recommended_people.json */,
+				0F6E3168168269E500E5F7CC /* recommended_places.json */,
+				0F13CEC31674093600525E4E /* resource_info.json */,
+				0FCB66651670FA4800617CE4 /* search_contents_response.json */,
+				0FCB665C166FB18C00617CE4 /* search_people_response.json */,
+				0FCB6663166FDAF200617CE4 /* search_places_response.json */,
+				0F13CEBF1672D09000525E4E /* supported_fields.json */,
+				0F13CEC516740DF400525E4E /* trending_people.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1266,6 +1272,14 @@
 				B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */,
 			);
 			name = classes;
+			sourceTree = "<group>";
+		};
+		B8B19F0F16949CBC004B3DEC /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				B8B19F1016949F45004B3DEC /* member.json */,
+			);
+			path = entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1502,6 +1516,8 @@
 				0F6E3169168269E500E5F7CC /* recommended_places.json in Resources */,
 				0F6E31761682877800E5F7CC /* place.json in Resources */,
 				0F6E3178168289D800E5F7CC /* place_activities.json in Resources */,
+				B8B19F0C16949AA0004B3DEC /* member_member.json in Resources */,
+				B8B19F1116949F45004B3DEC /* member.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

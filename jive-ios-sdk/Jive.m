@@ -911,6 +911,87 @@
     return operation;
 }
 
+- (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self deleteMemberOperationWithMember:member
+                                                        onComplete:completeBlock
+                                                           onError:errorBlock];
+    [operation start];
+}
+
+- (void) memberWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self memberOperationWithMember:member
+                                                     options:options
+                                                  onComplete:completeBlock
+                                                     onError:errorBlock];
+    [operation start];
+}
+
+- (void) membersForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self membersOperationForGroup:group
+                                                    options:options
+                                                 onComplete:completeBlock
+                                                    onError:errorBlock];
+    [operation start];
+}
+
+- (void) membersForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    NSOperation *operation = [self membersOperationForPerson:person
+                                                     options:options
+                                                  onComplete:completeBlock
+                                                     onError:errorBlock];
+    return [operation start];
+}
+
+- (NSOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    [request setHTTPMethod:@"DELETE"];
+    NSOperation *operation = [self operationWithRequest:request
+                                             onComplete:completeBlock
+                                                onError:errorBlock];
+    return operation;
+}
+
+- (NSOperation *)memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
+    NSURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    NSOperation *operation = [self operationWithRequest:request
+                                             onComplete:completeBlock
+                                                onError:errorBlock
+                                        responseHandler:(^id(id JSON) {
+        return [JiveMember instanceFromJSON:JSON];
+    })];
+    return operation;
+}
+
+- (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *membersResourceEntry = [group.resources objectForKey:@"members"];
+    NSURLRequest *request = [self requestWithTemplate:[membersResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    NSOperation *operation = [self listOperationForClass:[JiveMember class]
+                                                 request:request
+                                              onComplete:completeBlock
+                                                 onError:errorBlock];
+    return operation;
+}
+
+- (NSOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *membersResourceEntry = [person.resources objectForKey:@"members"];
+    NSURLRequest *request = [self requestWithTemplate:[membersResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    NSOperation *operation = [self listOperationForClass:[JiveMember class]
+                                                 request:request
+                                              onComplete:completeBlock
+                                                 onError:errorBlock];
+    return operation;
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
@@ -960,6 +1041,16 @@
     } else {
         return nil;
     }
+}
+
+- (JAPIRequestOperation *)listOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(NSArray *))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [clazz instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
 }
 
 - (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(void)) complete onError:(void(^)(NSError* error)) error {

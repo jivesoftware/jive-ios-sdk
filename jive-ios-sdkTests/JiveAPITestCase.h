@@ -23,4 +23,7 @@
 - (id) mockJiveAuthenticationDelegate:(NSString*) username password:(NSString*) password;
 - (id) mockJiveAuthenticationDelegate;
 
+- (id) entityForClass:(Class) entityClass
+        fromJSONNamed:(NSString *)jsonName;
+
 @end

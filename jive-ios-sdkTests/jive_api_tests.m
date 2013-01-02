@@ -2366,4 +2366,30 @@
     }];
 }
 
+- (void) testMemberWithMember {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar"
+                                                                           password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/members/36391" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"member_member"
+                          andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveMember *member = [self entityForClass:[JiveMember class]
+                                    fromJSONNamed:@"member"];
+        [jive memberWithMember:member
+                       options:nil
+                    onComplete:(^(JiveMember *member) {
+            STAssertNotNil(member, nil);
+            finishedBlock();
+        })
+                       onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+        })];
+    }];
+}
+
 @end
