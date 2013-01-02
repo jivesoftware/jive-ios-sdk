@@ -13,4 +13,8 @@
 @synthesize array, availability, description, displayName, editable, name, required, since, type;
 @synthesize unpublished;
 
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:displayName forKey:@"displayName"];
+}
+
 @end

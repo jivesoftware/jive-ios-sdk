@@ -12,16 +12,16 @@
 @interface JiveObjectMetadata : JiveObject
 
 // Flag indicating whether objects of this type can be associated to (followed in) an activity stream. Present on Jive core object types only.
-@property(nonatomic, readonly) bool associatable;
+@property(nonatomic, readonly, copy) NSNumber *associatable;
 
 // Comments regarding when objects of this type will be available.
 @property(nonatomic, readonly, copy) NSString* availability;
 
 // Flag indicating whether objects of this type can have comments added to them. Present on Jive core object types only.
-@property(nonatomic, readonly) bool commentable;
+@property(nonatomic, readonly, copy) NSNumber *commentable;
 
 // Flag indicating whether this object type represents a Jive content object. Present on Jive core object types only.
-@property(nonatomic, readonly) bool content;
+@property(nonatomic, readonly, copy) NSNumber *content;
 
 // Description of this object type.
 @property(nonatomic, readonly, copy) NSString* description;
@@ -36,7 +36,7 @@
 @property(nonatomic, readonly, copy) NSString* name;
 
 // Flag indicating whether or not objects of this type are a Jive place (blog, group, project, or space). Present on Jive core object types only.
-@property(nonatomic, readonly) bool place;
+@property(nonatomic, readonly, copy) NSNumber *place;
 
 // The plural name of this object type. Present on Jive core object types only.
 @property(nonatomic, readonly, copy) NSString* plural;

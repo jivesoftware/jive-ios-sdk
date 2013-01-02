@@ -13,4 +13,8 @@
 @synthesize availability, description, example, hasBody, jsMethod, name, path, since, unpublished;
 @synthesize verb;
 
+- (NSDictionary *)toJSONDictionary {
+    return [NSDictionary dictionaryWithObject:name forKey:@"name"];
+}
+
 @end
