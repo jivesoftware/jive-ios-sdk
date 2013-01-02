@@ -250,9 +250,9 @@
                                                      options:nil
                                                      andArgs:nil];
     [request setHTTPMethod:@"DELETE"];
-    JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    JAPIRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
@@ -266,9 +266,9 @@
     } else {
         [request setHTTPMethod:@"DELETE"];
     }
-    JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    JAPIRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
@@ -840,9 +840,9 @@
                                                      options:nil
                                                      andArgs:nil];
     [request setHTTPMethod:@"DELETE"];
-    JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    JAPIRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
@@ -852,9 +852,9 @@
                                                      options:nil
                                                      andArgs:nil];
     [request setHTTPMethod:@"DELETE"];
-    JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    JAPIRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
@@ -943,9 +943,9 @@
                                                      options:nil
                                                      andArgs:nil];
     [request setHTTPMethod:@"DELETE"];
-    NSOperation *operation = [self operationWithRequest:request
-                                             onComplete:completeBlock
-                                                onError:errorBlock];
+    NSOperation *operation = [self emptyOperationWithRequest:request
+                                                  onComplete:completeBlock
+                                                     onError:errorBlock];
     return operation;
 }
 
@@ -1056,7 +1056,7 @@
     return operation;
 }
 
-- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(void)) complete onError:(void(^)(NSError* error)) error {
+- (JAPIRequestOperation*) emptyOperationWithRequest:(NSURLRequest*) request onComplete:(void(^)(void)) complete onError:(void(^)(NSError* error)) error {
     void (^nilObjectComplete)(id);
     if (complete) {
         void (^heapComplete)(void) = [complete copy];
