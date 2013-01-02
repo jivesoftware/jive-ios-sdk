@@ -237,12 +237,10 @@
     NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
                                                      options:nil
                                                      andArgs:nil];
-    JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:(^id(id JSON) {
-        return [JiveAnnouncement instanceFromJSON:JSON];
-    })];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveAnnouncement class]
+                                                            request:request
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     return operation;
 }
 
@@ -401,9 +399,11 @@
 - (JAPIRequestOperation *)personOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
     
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePerson *(id JSON) {
-        return [JivePerson instanceFromJSON:JSON];
-    }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JivePerson class]
+                                                            request:request
+                                                         onComplete:complete
+                                                            onError:error];
+    return operation;
 }
 
 - (void) person:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
@@ -474,7 +474,7 @@
 - (JAPIRequestOperation *) followersOperation:(NSString *)personId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/@followers" options:options andArgs:personId,nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JivePerson class]
-                                                      request:request
+                                                          request:request
                                                        onComplete:complete
                                                           onError:error];
     return operation;
@@ -512,7 +512,7 @@
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/people" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JivePerson class]
-                                                      request:request
+                                                          request:request
                                                        onComplete:complete
                                                           onError:error];
     return operation;
@@ -528,7 +528,7 @@
     
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:options andArgs:nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
-                                                      request:request
+                                                          request:request
                                                        onComplete:complete
                                                           onError:error];
     
@@ -560,9 +560,11 @@
 
 - (JAPIRequestOperation *)blogOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/people/%@/blog" options:options andArgs:personId,nil];
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveBlog instanceFromJSON:JSON];
-    }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveBlog class]
+                                                            request:request
+                                                         onComplete:complete
+                                                            onError:error];
+    return operation;
 }
 
 - (void) blog:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
@@ -610,12 +612,10 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:^id(id JSON) {
-                                                     return [JiveContent instanceFromJSON:JSON];
-                                                 }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                            request:mutableURLRequest
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     [operation start];
 }
 
@@ -666,9 +666,11 @@
 
 - (JAPIRequestOperation *)contentOperation:(NSString *)contentId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
     NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/contents/%@" options:options andArgs:contentId, nil];
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveContent instanceFromJSON:JSON];
-    }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                            request:request
+                                                         onComplete:complete
+                                                            onError:error];
+    return operation;
 }
 
 - (void) content:(NSString *)contentId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
@@ -679,8 +681,8 @@
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/contents/%@/comments" options:options andArgs:contentId, nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JiveComment class]
                                                           request:request
-                                                      onComplete:complete
-                                                         onError:error];
+                                                       onComplete:complete
+                                                          onError:error];
     return operation;
 }
 
@@ -702,12 +704,10 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:^id(id JSON) {
-                                                     return [JiveContent instanceFromJSON:JSON];
-                                                 }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                            request:mutableURLRequest
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     [operation start];
 }
 
@@ -717,12 +717,10 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:rootContentURL];
     
-    JAPIRequestOperation *operation = [self operationWithRequest:mutableURLRequest
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock
-                                                 responseHandler:^id(id JSON) {
-                                                     return [JiveContent instanceFromJSON:JSON];
-                                                 }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                            request:mutableURLRequest
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     [operation start];
 }
 
@@ -731,8 +729,8 @@
     
     JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
                                                           request:request
-                                                      onComplete:complete
-                                                         onError:error];
+                                                       onComplete:complete
+                                                          onError:error];
     return operation;
 }
 
@@ -775,9 +773,11 @@
 - (JAPIRequestOperation *)placeOperation:(NSString *)placeId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places/%@" options:options andArgs:placeId, nil];
     
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^JivePlace *(id JSON) {
-        return [JivePlace instanceFromJSON:JSON];
-    }];
+    JAPIRequestOperation *operation = [self entityOperationForClass:[JivePlace class]
+                                                            request:request
+                                                         onComplete:complete
+                                                            onError:error];
+    return operation;
 }
 
 - (void) place:(NSString *)placeId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
@@ -865,8 +865,8 @@
                                               andArgs:nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JiveAnnouncement class]
                                                           request:request
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+                                                       onComplete:completeBlock
+                                                          onError:errorBlock];
     return operation;
 }
 
@@ -899,8 +899,8 @@
                                               andArgs:nil];
     NSOperation *operation = [self listOperationForClass:[JiveTask class]
                                                  request:request
-                                             onComplete:completeBlock
-                                                onError:errorBlock];
+                                              onComplete:completeBlock
+                                                 onError:errorBlock];
     return operation;
 }
 
@@ -954,12 +954,10 @@
     NSURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
                                               options:options
                                               andArgs:nil];
-    NSOperation *operation = [self operationWithRequest:request
-                                             onComplete:completeBlock
-                                                onError:errorBlock
-                                        responseHandler:(^id(id JSON) {
-        return [JiveMember instanceFromJSON:JSON];
-    })];
+    NSOperation *operation = [self entityOperationForClass:[JiveMember class]
+                                                   request:request
+                                                onComplete:completeBlock
+                                                   onError:errorBlock];
     return operation;
 }
 
@@ -1044,6 +1042,16 @@
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
         return [clazz instancesFromJSONList:[JSON objectForKey:@"list"]];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation *)entityOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(id))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:completeBlock
+                                                         onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        return [clazz instanceFromJSON:JSON];
     })];
     return operation;
 }
