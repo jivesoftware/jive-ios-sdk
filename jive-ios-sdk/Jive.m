@@ -942,14 +942,18 @@
     }
 }
 
-- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) complete onError:(void(^)(NSError* error)) error responseHandler: (id(^)(id)) handler {
+- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(void(^)(NSError* error)) errorBlock responseHandler: (id(^)(id JSON)) handler {
     if (request) {
         JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             id entity = handler(JSON);
-            complete(entity);
+            if (completeBlock) {
+                completeBlock(entity);
+            }
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
-            error(err);
+            if (errorBlock) {
+                errorBlock(err);
+            }
         }];
         
         return operation;
