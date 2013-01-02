@@ -911,6 +911,8 @@
     return operation;
 }
 
+#pragma mark - Members
+
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSOperation *operation = [self deleteMemberOperationWithMember:member
                                                         onComplete:completeBlock
