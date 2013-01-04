@@ -2534,4 +2534,63 @@
 //    }];
 //}
 
+- (void) testFollowingInOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"followingIn_streams" andAuthDelegate:mockAuthDelegate];
+    
+    __block BOOL operationComplete = NO;
+    NSOperation* operation = [jive followingInOperation:source withOptions:options onComplete:^(NSArray *streams) {
+        // Called 3rd
+        STAssertEquals([streams count], (NSUInteger)1, @"Wrong number of items parsed");
+        STAssertTrue([[streams objectAtIndex:0] isKindOfClass:[JiveStream class]], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        operationComplete = YES;
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+}
+
+- (void) testFollowingIn {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"followingIn_streams" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive followingIn:source withOptions:options onComplete:^(NSArray *streams) {
+            // Called 3rd
+            STAssertEquals([streams count], (NSUInteger)1, @"Wrong number of items parsed");
+            STAssertTrue([[streams objectAtIndex:0] isKindOfClass:[JiveStream class]], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
