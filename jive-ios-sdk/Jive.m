@@ -589,6 +589,32 @@
     [[self blogOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(void (^)(NSError *error))error {
+    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"avatar"];
+    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
+                                              options:nil
+                                              andArgs:nil];
+    void (^heapCompleteBlock)(UIImage *) = [complete copy];
+    void (^heapErrorBlock)(NSError *) = [error copy];
+    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
+                                                                              imageProcessingBlock:NULL
+                                                                                           success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        if (heapCompleteBlock) {
+            heapCompleteBlock(image);
+        }
+    })
+                                                                                           failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        if (heapErrorBlock) {
+            heapErrorBlock(error);
+        }
+    })];
+    return operation;
+}
+
+- (void) avatarForPerson:(JivePerson *)person onComplete:(void (^)(UIImage *))complete onError:(void (^)(NSError *))error {
+    [[self avatarForPersonOperation:person onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (JAPIRequestOperation*) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {

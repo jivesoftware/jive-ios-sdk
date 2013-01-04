@@ -2470,4 +2470,68 @@
     }];
 }
 
+//- (void) testPersonAvatarOperation {
+//    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+//    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+//    __block NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"avatar" ofType:@"png"];
+//    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+//    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+//        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/avatar" isEqualToString:[value absoluteString]];
+//        return same;
+//    }]];
+//    
+//    mockJiveURLResponseDelegate = [OCMockObject mockForProtocol:@protocol(MockJiveURLResponseDelegate)];
+//    [[[mockJiveURLResponseDelegate stub] andReturn:nil] errorForRequest];
+//    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:url statusCode:200 HTTPVersion:@"1.0" headerFields:[NSDictionary dictionaryWithObjectsAndKeys:@"image/png", @"Content-Type", nil]];
+//    [[[mockJiveURLResponseDelegate expect] andReturn:response] responseForRequest];
+//    NSData *mockResponseData = [NSData dataWithContentsOfFile:contentPath];
+//    
+//    [[[mockJiveURLResponseDelegate expect] andReturn:mockResponseData] responseBodyForRequest];
+//    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+//    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+//    
+//    __block BOOL operationComplete = NO;
+//    NSOperation* operation = [jive avatarForPersonOperation:source onComplete:^(UIImage *avatarImage) {
+//        UIImage *testImage = [UIImage imageNamed:@"avatar.png"];
+//        STAssertEqualObjects(testImage, avatarImage, @"Wrong image returned");
+//        // Check that delegates where actually called
+//        [mockAuthDelegate verify];
+//        [mockJiveURLResponseDelegate verify];
+//        operationComplete = YES;
+//    } onError:^(NSError *error) {
+//        STFail([error localizedDescription]);
+//    }];
+//    
+//    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+//}
+
+//- (void) testPersonAvatarServiceCall {
+//    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+//    __block NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"avatar" ofType:@"png"];
+//    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+//    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+//        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/avatar" isEqualToString:[value absoluteString]];
+//        return same;
+//    }]];
+//    
+//    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+//    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+//    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+//    
+//    // Make the call
+//    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+//        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+//        [jive avatarForPerson:source onComplete:^(UIImage *avatarImage) {
+//            UIImage *testImage = [UIImage imageNamed:@"avatar.png"];
+//            STAssertEqualObjects(testImage, avatarImage, @"Wrong image returned");
+//            // Check that delegates where actually called
+//            [mockAuthDelegate verify];
+//            [mockJiveURLResponseDelegate verify];
+//            finishedBlock();
+//        } onError:^(NSError *error) {
+//            STFail([error localizedDescription]);
+//        }];
+//    }];
+//}
+
 @end
