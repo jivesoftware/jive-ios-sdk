@@ -1,0 +1,132 @@
+{
+  "type" : "discussion",
+  "attachments" : [ ],
+  "question" : true,
+  "visibility" : "place",
+  "parent" : "https://brewspace.jiveland.com/api/core/v3/places/151963",
+  "categories" : [ ],
+  "content" : {
+    "type" : "text/html",
+    "text" : "<body><!-- [DocumentBodyStart:cc2b6b27-7b1e-43c6-83be-1e9e3bceec97] --><div class=\"jive-rendered-content\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2196\" data-objectType=\"3\" href=\"https://brewspace.jiveland.com/people/stewart.wachs\">Stewart Wachs</a></p><p>cc <a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2827\" data-objectType=\"3\" href=\"https://brewspace.jiveland.com/people/meg.splaine\">Meg Splaine</a></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Hitachi signed the External Upgrade SOW - I told them that once we had that I would re-visit expediting their schedule to meet their 4/15/2013 go live date which would mean we'd have to start Dev early Jan and finish Feb 2. It's 108 hours / 3 weeks of pure dev. Please let me know what we can do, I have a status call with them on Tues. Thx!</p></div><!-- [DocumentBodyEnd:cc2b6b27-7b1e-43c6-83be-1e9e3bceec97] --></body>"
+  },
+  "status" : "published",
+  "subject" : "Hitachi dates",
+  "viewCount" : 7,
+  "author" : {
+    "name" : {
+      "givenName" : "Jennifer",
+      "familyName" : "Klafin",
+      "formatted" : "Jennifer Klafin"
+    },
+    "type" : "person",
+    "displayName" : "Jennifer Klafin",
+    "jive" : {
+      "level" : {
+        "name" : "Dysprosium",
+        "points" : 7629
+      },
+      "username" : "jennifer.klafin"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/jennifer.klafin",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/4192/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/4192",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4192"
+  },
+  "published" : "2012-12-10T22:52:44.148+0000",
+  "replyCount" : 2,
+  "visibleToExternalContributors" : false,
+  "updated" : "2012-12-11T00:17:49.007+0000",
+  "tags" : [ ],
+  "followerCount" : 2,
+  "likeCount" : 0,
+  "resources" : {
+    "likes" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372088/likes",
+      "allowed" : [ "GET", "POST" ]
+    },
+    "read" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372088/read",
+      "allowed" : [ "DELETE", "POST" ]
+    },
+    "self" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372088",
+      "allowed" : [ "GET" ]
+    },
+    "html" : {
+      "ref" : "https://brewspace.jiveland.com/thread/113109",
+      "allowed" : [ "GET" ]
+    },
+    "attachments" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/372088",
+      "allowed" : [ "GET" ]
+    },
+    "followingIn" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372088/followingIn",
+      "allowed" : [ "GET" ]
+    },
+    "messages" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/contents/372088",
+      "allowed" : [ "GET", "POST" ]
+    },
+    "images" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/372088",
+      "allowed" : [ "GET" ]
+    },
+    "comments" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372088/comments",
+      "allowed" : [ "GET", "POST" ]
+    }
+  },
+  "id" : "113109"
+}

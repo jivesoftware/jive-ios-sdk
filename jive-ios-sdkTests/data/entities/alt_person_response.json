@@ -1,0 +1,140 @@
+{
+  "name" : {
+    "givenName" : "Rob",
+    "familyName" : "Derstadt",
+    "formatted" : "Rob Derstadt"
+  },
+  "location" : "Portland",
+  "type" : "person",
+  "displayName" : "Rob Derstadt",
+  "status" : "I miss shorts &amp; flip-flops.",
+  "followingCount" : 117,
+  "published" : "2010-12-21T15:50:10.556+0000",
+  "thumbnailUrl" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+  "jive" : {
+    "timeZone" : "America/Los_Angeles",
+    "level" : {
+      "name" : "Vanadium",
+      "points" : 1049
+    },
+    "locale" : "en_US",
+    "username" : "rob.derstadt",
+    "enabled" : true,
+    "profile" : [ {
+      "value" : "Sr. Software Engineer",
+      "jive_label" : "Title"
+    }, {
+      "value" : "Engineering",
+      "jive_label" : "Department"
+    }, {
+      "value" : "12/21/2010",
+      "jive_label" : "Hire Date"
+    }, {
+      "value" : "I'm originally from Ohio, but also spent time in New Jersey and Wisconsin before attending the University of Colorado in Boulder (Computer Science). I moved to Portland when I graduated in 2000.\r\n\r\nI enjoy skiing, mountain biking, windsurfing, diving and hunting. I'm also interested in brewing (beer & mead), wooden boat building and read a lot of (technical) history.",
+      "jive_label" : "Biography"
+    }, {
+      "value" : "iOS at the moment",
+      "jive_label" : "Expertise"
+    }, {
+      "value" : "rderstadt@gmail.com",
+      "jive_label" : "Alternate Email"
+    }, {
+      "value" : "Jive Software",
+      "jive_label" : "Company"
+    }, {
+      "value" : "Jive iPad App",
+      "jive_label" : "Current Goals"
+    }, {
+      "value" : "Webtrends\r\nPortland General Electric\r\n",
+      "jive_label" : "Previous Companies"
+    }, {
+      "value" : "CF3",
+      "jive_label" : "Office"
+    }, {
+      "value" : "@rderstadt",
+      "jive_label" : "Twitter ID"
+    } ],
+    "external" : false,
+    "visible" : true,
+    "externalContributor" : false,
+    "federated" : true
+  },
+  "updated" : "2013-01-03T18:28:20.448+0000",
+  "emails" : [ {
+    "value" : "rob.derstadt@jivesoftware.com",
+    "type" : "work",
+    "jive_label" : "Email",
+    "primary" : true
+  } ],
+  "phoneNumbers" : [ {
+    "value" : "503.548.6008",
+    "type" : "work",
+    "jive_label" : "Phone Number",
+    "primary" : true
+  } ],
+  "photos" : [ {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images/1/data"
+  }, {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images/2/data"
+  }, {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images/3/data"
+  }, {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images/4/data"
+  } ],
+  "followerCount" : 85,
+  "resources" : {
+    "reports" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@reports",
+      "allowed" : [ "GET" ]
+    },
+    "manager" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@manager",
+      "allowed" : [ "GET" ]
+    },
+    "self" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "allowed" : [ "GET" ]
+    },
+    "avatar" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+      "allowed" : [ "GET" ]
+    },
+    "blog" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/blog",
+      "allowed" : [ "GET" ]
+    },
+    "colleagues" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues",
+      "allowed" : [ "GET" ]
+    },
+    "followers" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@followers",
+      "allowed" : [ "GET" ]
+    },
+    "following" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@following",
+      "allowed" : [ "GET" ]
+    },
+    "images" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images",
+      "allowed" : [ "GET" ]
+    },
+    "html" : {
+      "ref" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "allowed" : [ "GET" ]
+    },
+    "followingIn" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn",
+      "allowed" : [ "GET" ]
+    },
+    "activity" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
+      "allowed" : [ "GET" ]
+    },
+    "members" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
+      "allowed" : [ "GET" ]
+    }
+  },
+  "id" : "3550"
+}

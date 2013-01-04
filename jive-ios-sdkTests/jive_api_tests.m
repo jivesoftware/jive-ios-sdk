@@ -409,18 +409,19 @@
 }
 
 - (void) testColleguesOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.startIndex = 5;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@colleagues?startIndex=5" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues?startIndex=5" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive colleguesOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive colleguesOperation:source withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -441,7 +442,7 @@
     options.startIndex = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@colleagues?startIndex=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues?startIndex=10" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -449,7 +450,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive collegues:@"2918" withOptions:options onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive collegues:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -465,16 +467,17 @@
 }
 
 - (void) testFollowersOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@followers" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@followers" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive followersOperation:@"8192" onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive followersOperation:source onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -493,7 +496,7 @@
 - (void) testFollowersServiceCall {    
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@followers" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@followers" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -502,7 +505,8 @@
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"2918" onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive followers:source onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -520,7 +524,7 @@
 - (void) testFollowersServiceCallUsesPersonID {
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@followers" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@followers" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -529,7 +533,8 @@
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+        [jive followers:source onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -545,19 +550,20 @@
 }
 
 - (void) testFollowersOperationWithOptions {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.startIndex = 10;
     options.count = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@followers?count=10&startIndex=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@followers?count=10&startIndex=10" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive followersOperation:@"2918" withOptions:options onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive followersOperation:source withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -580,7 +586,7 @@
     [options addField:@"dummy"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@followers?fields=dummy&count=5" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@followers?fields=dummy&count=5" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -589,7 +595,8 @@
     // Make the call
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" withOptions:options onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive followers:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -613,7 +620,7 @@
     [options addField:@"third"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@followers?fields=dummy,second,third&count=3&startIndex=6" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@followers?fields=dummy,second,third&count=3&startIndex=6" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -621,7 +628,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive followers:@"8192" withOptions:options onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive followers:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -862,18 +870,19 @@
 }
 
 - (void) testPersonOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2203?fields=id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive personOperation:@"2203" withOptions:options onComplete:^(JivePerson *person) {
+    NSOperation* operation = [jive personOperation:source withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
         
@@ -894,7 +903,7 @@
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3220?fields=name,id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316?fields=name,id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -902,7 +911,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive person:@"3220" withOptions:options onComplete:^(JivePerson *person) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive person:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
             
@@ -1300,18 +1310,19 @@
 }
 
 - (void) testPersonActivitiesOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
     options.after = [NSDate dateWithTimeIntervalSince1970:0.123];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/activities?after=1970-01-01T00%3A00%3A00.123%2B0000" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/activities?after=1970-01-01T00%3A00%3A00.123%2B0000" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive activitiesOperation:@"8192" withOptions:options onComplete:^(NSArray *activities) {
+    NSOperation* operation = [jive activitiesOperation:source withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertEquals([[activities objectAtIndex:0] class], [JiveInboxEntry class], @"Wrong item class");
@@ -1332,7 +1343,7 @@
     options.after = [NSDate dateWithTimeIntervalSince1970:0];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/activities?after=1970-01-01T00%3A00%3A00.000%2B0000" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/activities?after=1970-01-01T00%3A00%3A00.000%2B0000" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1340,7 +1351,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive activities:@"2918" withOptions:options onComplete:^(NSArray *activities) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive activities:source withOptions:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[activities objectAtIndex:0] class], [JiveInboxEntry class], @"Wrong item class");
@@ -1356,18 +1368,19 @@
 }
 
 - (void) testGetBlogOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/blog?fields=id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/blog?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"blog" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive blogOperation:@"8192" withOptions:options onComplete:^(JiveBlog *blog) {
+    NSOperation* operation = [jive blogOperation:source withOptions:options onComplete:^(JiveBlog *blog) {
         // Called 3rd
         STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
         
@@ -1388,7 +1401,7 @@
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/blog?fields=name,id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/blog?fields=name,id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1396,7 +1409,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive blog:@"2918" withOptions:options onComplete:^(JiveBlog *blog) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive blog:source withOptions:options onComplete:^(JiveBlog *blog) {
             // Called 3rd
             STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
             
@@ -1411,18 +1425,19 @@
 }
 
 - (void) testGetManagerOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@manager?fields=id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@manager?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive managerOperation:@"8192" withOptions:options onComplete:^(JivePerson *person) {
+    NSOperation* operation = [jive managerOperation:source withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
         
@@ -1443,7 +1458,7 @@
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@manager?fields=name,id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@manager?fields=name,id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1451,7 +1466,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive manager:@"2918" withOptions:options onComplete:^(JivePerson *person) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive manager:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
             
@@ -1466,18 +1482,19 @@
 }
 
 - (void) testGetReportsOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.count = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@reports?count=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@reports?count=10" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive reportsOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive reportsOperation:source withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -1498,7 +1515,7 @@
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@reports?count=3" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@reports?count=3" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1506,7 +1523,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive reports:@"2918" withOptions:options onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive reports:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -1522,18 +1540,19 @@
 }
 
 - (void) testGetFollowingOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.count = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/8192/@following?count=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/@following?count=10" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive followingOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive followingOperation:source withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -1554,7 +1573,7 @@
     options.count = 3;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/2918/@following?count=3" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/@following?count=3" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1562,7 +1581,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive following:@"2918" withOptions:options onComplete:^(NSArray *people) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive following:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -1862,18 +1882,19 @@
 }
 
 - (void) testGetContentsByIDOperation {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/456789?fields=id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive contentOperation:@"456789" withOptions:options onComplete:^(JiveContent *content) {
+    NSOperation* operation = [jive contentOperation:source withOptions:options onComplete:^(JiveContent *content) {
         // Called 3rd
         STAssertEquals([content class], [JiveUpdate class], @"Wrong item class");
         
@@ -1889,13 +1910,12 @@
 }
 
 - (void) testGetContentsByID {
-    
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"name"];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124?fields=name,id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372088?fields=name,id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1903,7 +1923,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive content:@"372124" withOptions:options onComplete:^(JiveContent *content) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
+        [jive content:source withOptions:options onComplete:^(JiveContent *content) {
             // Called 3rd
             STAssertEquals([content class], [JiveUpdate class], @"Wrong item class");
             
@@ -1918,18 +1939,19 @@
 }
 
 - (void) testGetCommentsForContentOperation {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
     JiveCommentsRequestOptions *options = [[JiveCommentsRequestOptions alloc] init];
     options.excludeReplies = YES;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/456789/comments?excludeReplies=true" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/comments?excludeReplies=true" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"content_comments" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive commentsForContentOperation:@"456789" withOptions:options onComplete:^(NSArray *comments) {
+    NSOperation* operation = [jive commentsForContentOperation:source withOptions:options onComplete:^(NSArray *comments) {
         // Called 3rd
         STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -1951,7 +1973,7 @@
     options.hierarchical = YES;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372098/comments?hierarchical=true" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372088/comments?hierarchical=true" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1959,7 +1981,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive commentsForContent:@"372098" withOptions:options onComplete:^(NSArray *comments) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
+        [jive commentsForContent:source withOptions:options onComplete:^(NSArray *comments) {
             // Called 3rd
             STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -1975,18 +1998,19 @@
 }
 
 - (void) testGetContentLikesOperation {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.startIndex = 10;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/456789/likes?startIndex=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/likes?startIndex=10" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive contentLikedByOperation:@"456789" withOptions:options onComplete:^(NSArray *people) {
+    NSOperation* operation = [jive contentLikedByOperation:source withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -2008,7 +2032,7 @@
     options.startIndex = 5;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372098/likes?startIndex=5" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372088/likes?startIndex=5" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -2016,7 +2040,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive contentLikedBy:@"372098" withOptions:options onComplete:^(NSArray *people) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
+        [jive contentLikedBy:source withOptions:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -2200,18 +2225,19 @@
 }
 
 - (void) testGetPlacesPlacesOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
     JivePlacePlacesRequestOptions *options = [[JivePlacePlacesRequestOptions alloc] init];
     [options addType:@"question"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/87654/places?filter=type(question)" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/95191/places?filter=type(question)" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"recommended_places" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive placePlacesOperation:@"87654" withOptions:options onComplete:^(NSArray *places) {
+    NSOperation* operation = [jive placePlacesOperation:source withOptions:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)7, @"Wrong number of items parsed");
         STAssertTrue([[[places objectAtIndex:0] class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
@@ -2232,7 +2258,7 @@
     [options addType:@"blog"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/12345/places?filter=type(blog)" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/301838/places?filter=type(blog)" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -2240,7 +2266,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive placePlaces:@"12345" withOptions:options onComplete:^(NSArray *places) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        [jive placePlaces:source withOptions:options onComplete:^(NSArray *places) {
             // Called 3rd
             STAssertEquals([places count], (NSUInteger)7, @"Wrong number of items parsed");
             STAssertTrue([[[places objectAtIndex:0] class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
@@ -2256,18 +2283,19 @@
 }
 
 - (void) testGetPlaceByIdOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/87654?fields=id" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/95191?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"place" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive placeOperation:@"87654" withOptions:options onComplete:^(JivePlace *place) {
+    NSOperation* operation = [jive placeOperation:source withOptions:options onComplete:^(JivePlace *place) {
         // Called 3rd
         STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
         
@@ -2296,7 +2324,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive place:@"301838" withOptions:options onComplete:^(JivePlace *place) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        [jive place:source withOptions:options onComplete:^(JivePlace *place) {
             // Called 3rd
             STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
             
@@ -2311,18 +2340,19 @@
 }
 
 - (void) testPlaceActivitiesOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
     JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
     options.after = [NSDate dateWithTimeIntervalSince1970:1.234];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/87654/activities?after=1970-01-01T00%3A00%3A01.234%2B0000" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/95191/activities?after=1970-01-01T00%3A00%3A01.234%2B0000" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"place_activities" andAuthDelegate:mockAuthDelegate];
     
     __block BOOL operationComplete = NO;
-    NSOperation* operation = [jive placeActivitiesOperation:@"87654" withOptions:options onComplete:^(NSArray *activities) {
+    NSOperation* operation = [jive placeActivitiesOperation:source withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)27, @"Wrong number of items parsed");
         STAssertEquals([[activities objectAtIndex:0] class], [JiveInboxEntry class], @"Wrong item class");
@@ -2351,7 +2381,8 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive placeActivities:@"301838" withOptions:options onComplete:^(NSArray *activities) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        [jive placeActivities:source withOptions:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)27, @"Wrong number of items parsed");
             STAssertEquals([[activities objectAtIndex:0] class], [JiveInboxEntry class], @"Wrong item class");
