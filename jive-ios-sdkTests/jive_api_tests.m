@@ -2423,4 +2423,51 @@
     }];
 }
 
+- (void) testDeletePersonOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
+    
+    __block BOOL operationComplete = NO;
+    JAPIRequestOperation* operation = [jive deletePersonOperation:source onComplete:^() {
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+        operationComplete = YES;
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(@"DELETE", operation.request.HTTPMethod, @"Wrong http method used");
+    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+}
+
+- (void) testDeletePersonServiceCall {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive deletePerson:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end

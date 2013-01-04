@@ -465,6 +465,20 @@
     [[self person:personId reportsOperation:reportsPersonId withOptions:options onComplete:complete onError:error] start];
 }
 
+- (JAPIRequestOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) deletePerson:(JivePerson *)person onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self deletePersonOperation:person onComplete:complete onError:error] start];
+}
+
 - (JAPIRequestOperation *)activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"activity"];
     NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
