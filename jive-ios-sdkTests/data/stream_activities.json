@@ -1,0 +1,1370 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/380247",
+      "displayName" : "Pull the Fire Alarm...Sarah Marx is officially a Jiver!",
+      "objectType" : "jive:post",
+      "summary" : "It is my pleasure to officially (well re-officially) welcome Sarah Marx&nbsp; to the Jive Team as the Office Manager for Palo Alto.&nbsp; On Sarah's first day temping at Jive, it was evident she had the makings of a Jiver; she dove in, greeted all guests",
+      "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver",
+      "published" : "2013-01-04T20:51:26.425+0000",
+      "updated" : "2013-01-04T20:51:26.434+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver\">Pull the Fire Alarm...Sarah Marx is officially a Jiver!</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/160116",
+      "displayName" : "Tanja Amlie's Blog",
+      "objectType" : "jive:blog",
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog",
+      "published" : "2012-01-03T17:32:47.628+0000",
+      "updated" : "2013-01-04T23:29:15.334+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-04T21:56:29.945+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/379287",
+      "displayName" : "What's up at Producteev? Some news for all of you Jivers",
+      "objectType" : "jive:post",
+      "summary" : "Hey Jivers! &nbsp;  Just wanted to take a couple of minutes to share what's on the plate of the Producteev team these days. &nbsp;  - First, Happy New Year to all, we can't be anymore pumped about the road ahead for 2013. Stay tuned  &nbsp;  - We've",
+      "url" : "https://brewspace.jiveland.com/people/ilan.abehassera/blog/2013/01/02/whats-up-at-producteev-some-news-for-all-of-you-jivers",
+      "published" : "2013-01-03T00:01:47.517+0000",
+      "updated" : "2013-01-03T00:01:47.527+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/people/ilan.abehassera/blog/2013/01/02/whats-up-at-producteev-some-news-for-all-of-you-jivers\">What's up at Producteev? Some news for all of you Jivers</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/379286",
+      "displayName" : "Ilan Abehassera's Blog",
+      "objectType" : "jive:blog",
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/people/ilan.abehassera/blog",
+      "published" : "2013-01-03T00:01:46.725+0000",
+      "updated" : "2013-01-03T00:01:46.725+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-03T16:44:18.766+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/376623",
+      "displayName" : "I miss shorts &amp;amp; flip-flops.",
+      "objectType" : "jive:update",
+      "summary" : "I miss shorts &amp; flip-flops.",
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt/status/156315",
+      "published" : "2012-12-20T20:59:55.833+0000",
+      "updated" : "2012-12-20T20:59:55.833+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/people/rob.derstadt/status/156315\">wallentry</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "displayName" : "Rob Derstadt",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "published" : "2010-12-21T15:50:10.556+0000",
+      "updated" : "2013-01-04T23:05:08.423+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-02T21:53:22.472+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/509111",
+      "displayName" : "Receiving a 502 Bad Gateway error when sending a PUT request to Brewspace",
+      "objectType" : "jive:comment",
+      "summary" : "My first guess was incorrect. The issue was a simple Nginx configuration oversight. Our default Nginx proxy configuration only allows GET, HEAD, and POST. Removing this restriction for this particular proxy has solved the problem. Thanks for testing,",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-107275#comment-509111",
+      "published" : "2013-01-02T17:17:04.772+0000",
+      "updated" : "2013-01-02T17:17:04.772+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/docs/DOC-107275#comment-509111\">Receiving a 502 Bad Gateway error when sending a PUT request to Brewspace</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/509107",
+      "displayName" : "Receiving a 502 Bad Gateway error when sending a PUT request to Brewspace",
+      "objectType" : "jive:comment",
+      "summary" : "This might be due to application traffic analysis on a specific firewall rule. I will disable the feature on this specific rule to confirm one way or the other. Please test again when you can.",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-107275#comment-509107",
+      "published" : "2013-01-02T17:06:04.147+0000",
+      "updated" : "2013-01-02T17:06:04.147+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-02T17:17:48.119+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/378321",
+      "displayName" : "Change Control - Moving to JIRA!",
+      "objectType" : "jive:post",
+      "summary" : "We are now ready to begin the transition to JIRA for tracking Change Control requests.&nbsp; I have seeded the open requests from December into JIRA and listed the JIRA #'s in the table. &nbsp;  Change Control Meeting Agenda and Master Schedule -",
+      "url" : "https://brewspace.jiveland.com/groups/sungard-managem/blog/2012/12/28/change-control--moving-to-jira",
+      "published" : "2012-12-28T22:10:54.544+0000",
+      "updated" : "2012-12-28T22:10:54.554+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/groups/sungard-managem/blog/2012/12/28/change-control--moving-to-jira\">Change Control - Moving to JIRA!</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/94674",
+      "displayName" : "Jive Change Control",
+      "objectType" : "jive:blog",
+      "summary" : "Tracking of Projects and Issues",
+      "url" : "https://brewspace.jiveland.com/groups/sungard-managem/blog",
+      "published" : "2011-01-27T16:21:33.658+0000",
+      "updated" : "2011-01-27T16:21:33.658+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-02T15:41:16.191+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/378460",
+      "displayName" : "2012 . . . That's a Wrap!!!",
+      "objectType" : "jive:post",
+      "summary" : "And what a year it was . . . . I just wanted to take us all back for a moment to reflect on just how far we've come together over the past 12 months as a company.&nbsp; As you may know, we end the year with over 520 employees worldwide, we do business in",
+      "url" : "https://brewspace.jiveland.com/people/tony.zingale/blog/2012/12/30/2012-thats-a-wrap",
+      "published" : "2012-12-30T18:00:00.628+0000",
+      "updated" : "2012-12-30T18:00:00.642+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/people/tony.zingale/blog/2012/12/30/2012-thats-a-wrap\">2012 . . . That's a Wrap!!!</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/92882",
+      "displayName" : "TZ's Blog",
+      "objectType" : "jive:blog",
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/people/tony.zingale/blog",
+      "published" : "2010-02-22T19:18:17.560+0000",
+      "updated" : "2010-04-10T16:07:05.705+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-30T22:39:35.464+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/376383",
+      "displayName" : "The 25 Funniest AutoCorrects Of 2012",
+      "objectType" : "jive:discussion",
+      "summary" : "The 25 Funniest AutoCorrects Of 2012  BuzzFeed  BRB, throwing out my iPhone. (via Damn You, Autocorrect )   I laughed so hard I cried... http://www.buzzfeed.com/daves4/the-25-funniest-autocorrects-of-2012    Shared with Jive Anywhere",
+      "url" : "https://brewspace.jiveland.com/thread/114414",
+      "published" : "2012-12-20T15:12:18.571+0000",
+      "updated" : "2013-01-03T21:53:02.621+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/message/589427#589427\">The 25 Funniest AutoCorrects Of 2012</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/89955",
+      "displayName" : "IN CASE YOU AREN'T ON REDDIT",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/89955/avatar"
+      },
+      "summary" : "SEE GROUP NAME.",
+      "url" : "https://brewspace.jiveland.com/groups/awesome",
+      "published" : "2008-06-06T23:26:18.044+0000",
+      "updated" : "2013-01-04T22:47:37.733+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-29T00:52:40.837+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/592168",
+      "displayName" : "Re: Docs Questions about Configuring Jive Present",
+      "objectType" : "jive:message",
+      "summary" : "Just wanted to let you know that these changes are now published for customers.",
+      "url" : "https://brewspace.jiveland.com/message/592168#592168",
+      "published" : "2012-12-28T20:31:03.665+0000",
+      "updated" : "2012-12-28T20:31:03.665+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/message/592168#592168\">Docs Questions about Configuring Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/591614",
+      "displayName" : "Re: Docs Questions about Configuring Jive Present",
+      "objectType" : "jive:message",
+      "summary" : "Yes, looks good. Thank you very much!",
+      "url" : "https://brewspace.jiveland.com/message/591614#591614",
+      "published" : "2012-12-27T18:12:39.249+0000",
+      "updated" : "2012-12-27T22:46:56.290+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-28T20:52:20.944+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/591283",
+      "displayName" : "Re: Docs Questions about Configuring Jive Present",
+      "objectType" : "jive:message",
+      "summary" : "I updated in our source files. I'll try to push this change Friday, depending on build team resources.",
+      "url" : "https://brewspace.jiveland.com/message/591283#591283",
+      "published" : "2012-12-26T20:43:07.860+0000",
+      "updated" : "2012-12-26T20:43:07.860+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/message/591283#591283\">Docs Questions about Configuring Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/591137",
+      "displayName" : "Re: Docs Questions about Configuring Jive Present",
+      "objectType" : "jive:message",
+      "summary" : "Sorry for the confusion, I meant the outbound ip address of Showpad is changed, which is the inbound for our customers. :-)   The section you are ref. to as an example is the correct one. Just globally replace 188.93.102.115 with 188.93.102.111 in our",
+      "url" : "https://brewspace.jiveland.com/message/591137#591137",
+      "published" : "2012-12-26T17:43:29.060+0000",
+      "updated" : "2012-12-26T17:43:29.060+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-26T21:08:41.000+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/591186",
+      "displayName" : "",
+      "objectType" : "jive:message",
+      "summary" : "replying to discussion",
+      "url" : "https://brewspace.jiveland.com/message/591186#591186",
+      "published" : "2012-12-26T19:11:39.201+0000",
+      "updated" : "2012-12-26T19:11:39.201+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> liked <a href=\"https://brewspace.jiveland.com/message/591186#591186\">Test discussion for MOBDEV-3484</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377367",
+      "displayName" : "Test discussion for MOBDEV-3484",
+      "objectType" : "jive:discussion",
+      "summary" : "Test discussion for MOBDEV-3484",
+      "url" : "https://brewspace.jiveland.com/thread/114710",
+      "published" : "2012-12-22T05:44:14.084+0000",
+      "updated" : "2012-12-26T20:24:07.246+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-26T19:17:18.132+0000",
+    "verb" : "jive:liked",
+    "jive" : {
+      "collection" : "447369365-447369365",
+      "collectionUpdated" : "2013-01-04T21:56:29.945+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.173+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/511740",
+      "displayName" : "Pull the Fire Alarm...Sarah Marx is officially a Jiver!",
+      "objectType" : "jive:comment",
+      "summary" : "Congratulations, Well deserved!",
+      "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver#comment-511740",
+      "published" : "2013-01-04T21:56:07.954+0000",
+      "updated" : "2013-01-04T21:56:07.954+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver#comment-511740\">Pull the Fire Alarm...Sarah Marx is officially a Jiver!</a> in <a href=\"https://brewspace.jiveland.com/people/tanja.amlie/blog\">Tanja Amlie's Blog</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/160116",
+      "displayName" : "Tanja Amlie's Blog",
+      "objectType" : "jive:blog",
+      "summary" : "",
+      "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog",
+      "published" : "2012-01-03T17:32:47.628+0000",
+      "updated" : "2013-01-04T23:29:15.334+0000"
+    },
+    "title" : "Pull the Fire Alarm...Sarah Marx is officially a Jiver!",
+    "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver#comment-511740",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-04T21:56:12.142+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/380247",
+        "displayName" : "Pull the Fire Alarm...Sarah Marx is officially a Jiver!",
+        "objectType" : "jive:post",
+        "summary" : "It is my pleasure to officially (well re-officially) welcome Sarah Marx&nbsp; to the Jive Team as the Office Manager for Palo Alto.&nbsp; On Sarah's first day temping at Jive, it was evident she had the makings of a Jiver; she dove in, greeted all guests",
+        "url" : "https://brewspace.jiveland.com/people/tanja.amlie/blog/2013/01/04/pull-the-fire-alarmsarah-marx-is-officially-a-jiver",
+        "published" : "2013-01-04T20:51:26.425+0000",
+        "updated" : "2013-01-04T20:51:26.434+0000"
+      },
+      "collection" : "38-28884",
+      "collectionUpdated" : "2013-01-04T21:56:12.142+0000"
+    },
+    "updated" : "2013-01-04T20:51:26.434+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/594615",
+      "displayName" : "Re: App loads blank - pulled logs",
+      "objectType" : "jive:message",
+      "summary" : "Logged as https://jira.jivesoftware.com/browse/MOBDEV-3571",
+      "url" : "https://brewspace.jiveland.com/message/594615#594615",
+      "published" : "2013-01-04T18:42:58.686+0000",
+      "updated" : "2013-01-04T18:42:58.686+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> replied to <a href=\"https://brewspace.jiveland.com/message/594615#594615\">App loads blank - pulled logs</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-mobile-beta\">Jive Mobile Beta</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/305860",
+      "displayName" : "Jive Mobile Beta",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/305860/avatar"
+      },
+      "summary" : "Group for people interested in trying the bleeding edge Jive Mobile Native releases for Android and iPhone.",
+      "url" : "https://brewspace.jiveland.com/groups/jive-mobile-beta",
+      "published" : "2012-06-19T21:27:28.444+0000",
+      "updated" : "2013-01-04T23:28:46.659+0000"
+    },
+    "title" : "Re: App loads blank - pulled logs",
+    "url" : "https://brewspace.jiveland.com/message/594615#594615",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-04T18:42:59.719+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/379112",
+        "displayName" : "App loads blank - pulled logs",
+        "objectType" : "jive:discussion",
+        "summary" : "A few times for me now, the app has come up blank:   &nbsp;  Here are the logs: &nbsp; ",
+        "url" : "https://brewspace.jiveland.com/thread/115101",
+        "published" : "2013-01-02T21:07:33.900+0000",
+        "updated" : "2013-01-04T23:28:43.850+0000"
+      },
+      "collection" : "2-593072",
+      "collectionUpdated" : "2013-01-04T18:42:59.719+0000"
+    },
+    "updated" : "2013-01-02T21:07:33.900+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/593112",
+      "displayName" : "Re: App loads blank - pulled logs",
+      "objectType" : "jive:message",
+      "summary" : "Jared, which version are you using? Evan Ku, have you ever seen this before?",
+      "url" : "https://brewspace.jiveland.com/message/593112#593112",
+      "published" : "2013-01-02T21:31:35.693+0000",
+      "updated" : "2013-01-02T21:31:35.693+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> replied to <a href=\"https://brewspace.jiveland.com/message/593112#593112\">App loads blank - pulled logs</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-mobile-beta\">Jive Mobile Beta</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/305860",
+      "displayName" : "Jive Mobile Beta",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/305860/avatar"
+      },
+      "summary" : "Group for people interested in trying the bleeding edge Jive Mobile Native releases for Android and iPhone.",
+      "url" : "https://brewspace.jiveland.com/groups/jive-mobile-beta",
+      "published" : "2012-06-19T21:27:28.444+0000",
+      "updated" : "2013-01-04T23:28:46.659+0000"
+    },
+    "title" : "Re: App loads blank - pulled logs",
+    "url" : "https://brewspace.jiveland.com/message/593112#593112",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-02T21:31:37.811+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/379112",
+        "displayName" : "App loads blank - pulled logs",
+        "objectType" : "jive:discussion",
+        "summary" : "A few times for me now, the app has come up blank:   &nbsp;  Here are the logs: &nbsp; ",
+        "url" : "https://brewspace.jiveland.com/thread/115101",
+        "published" : "2013-01-02T21:07:33.900+0000",
+        "updated" : "2013-01-04T23:28:43.850+0000"
+      },
+      "collection" : "2-593072",
+      "collectionUpdated" : "2013-01-04T18:42:59.719+0000"
+    },
+    "updated" : "2013-01-02T21:07:33.900+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/messages/594557",
+      "displayName" : "Re: Feedback on Tornado - Part XIII",
+      "objectType" : "jive:message",
+      "summary" : "Evan Ku, can you please file these issues. Thanks.",
+      "url" : "https://brewspace.jiveland.com/message/594557#594557",
+      "published" : "2013-01-04T17:58:50.073+0000",
+      "updated" : "2013-01-04T17:58:50.073+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> replied to <a href=\"https://brewspace.jiveland.com/message/594557#594557\">Feedback on Tornado - Part XIII</a> in <a href=\"https://brewspace.jiveland.com/groups/jive-mobile-beta\">Jive Mobile Beta</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/305860",
+      "displayName" : "Jive Mobile Beta",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/305860/avatar"
+      },
+      "summary" : "Group for people interested in trying the bleeding edge Jive Mobile Native releases for Android and iPhone.",
+      "url" : "https://brewspace.jiveland.com/groups/jive-mobile-beta",
+      "published" : "2012-06-19T21:27:28.444+0000",
+      "updated" : "2013-01-04T23:28:46.659+0000"
+    },
+    "title" : "Re: Feedback on Tornado - Part XIII",
+    "url" : "https://brewspace.jiveland.com/message/594557#594557",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-04T17:58:50.625+0000",
+    "verb" : "jive:replied",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/380082",
+        "displayName" : "Feedback on Tornado - Part XIII",
+        "objectType" : "jive:discussion",
+        "summary" : "In general, the UI in 2.0.0rc1 #2 is looking far more polished. &nbsp;  The following bugs are mostly from the #12 that's been available to beta testers for the past couple weeks:  The loading spinner jitters horizontally after clicking on content from",
+        "url" : "https://brewspace.jiveland.com/thread/115342",
+        "published" : "2013-01-04T17:19:20.485+0000",
+        "updated" : "2013-01-04T18:35:07.784+0000"
+      },
+      "collection" : "2-594475",
+      "collectionUpdated" : "2013-01-04T17:58:50.625+0000"
+    },
+    "updated" : "2013-01-04T17:19:20.485+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/contents/379846",
+      "displayName" : "My buddy made this amazing fishing app for the Blackberry over the holiday.",
+      "objectType" : "jive:update",
+      "summary" : "My buddy made this amazing fishing app for the Blackberry over the holiday.",
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt/status/158045",
+      "published" : "2013-01-03T23:00:46.844+0000",
+      "updated" : "2013-01-03T23:00:46.844+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> created <a href=\"https://brewspace.jiveland.com/people/rob.derstadt/status/158045\">wallentry</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "title" : "My buddy made this amazing fishing app for the Blackberry over the holiday.",
+    "url" : "https://brewspace.jiveland.com/people/rob.derstadt/status/158045",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "displayName" : "Rob Derstadt",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "published" : "2010-12-21T15:50:10.556+0000",
+      "updated" : "2013-01-04T23:05:08.423+0000"
+    },
+    "published" : "2013-01-03T23:01:22.171+0000",
+    "verb" : "jive:created",
+    "jive" : {
+      "collection" : "1464927464-158045",
+      "collectionUpdated" : "2013-01-03T23:01:22.171+0000"
+    },
+    "updated" : "2013-01-03T23:00:46.844+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/510673",
+      "displayName" : "i_love_sales_managers_card.jpg",
+      "objectType" : "jive:comment",
+      "summary" : "Test from Brewspace",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-510673",
+      "published" : "2013-01-03T19:41:38.138+0000",
+      "updated" : "2013-01-03T19:41:38.138+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-106994#comment-510673\">i_love_sales_managers_card.jpg</a> in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "title" : "i_love_sales_managers_card.jpg",
+    "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-510673",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-03T19:41:41.119+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377198",
+        "displayName" : "i_love_sales_managers_card.jpg",
+        "objectType" : "jive:document",
+        "summary" : "This documents represents an asset that resides in Jive Present.   Name: i_love_sales_managers_card.jpg  Type: photo &nbsp;     Only the administrator of Jive Present can modify this document, and assign it to different tablet users.",
+        "url" : "https://brewspace.jiveland.com/docs/DOC-106994",
+        "published" : "2012-12-21T21:22:13.135+0000",
+        "updated" : "2013-01-02T17:14:04.393+0000"
+      },
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/510649",
+      "displayName" : "i_love_sales_managers_card.jpg",
+      "objectType" : "jive:comment",
+      "summary" : "test from showpad",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-510649",
+      "published" : "2013-01-03T19:41:04.790+0000",
+      "updated" : "2013-01-03T19:41:04.790+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-106994#comment-510649\">i_love_sales_managers_card.jpg</a> in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "title" : "i_love_sales_managers_card.jpg",
+    "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-510649",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-03T19:41:06.905+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377198",
+        "displayName" : "i_love_sales_managers_card.jpg",
+        "objectType" : "jive:document",
+        "summary" : "This documents represents an asset that resides in Jive Present.   Name: i_love_sales_managers_card.jpg  Type: photo &nbsp;     Only the administrator of Jive Present can modify this document, and assign it to different tablet users.",
+        "url" : "https://brewspace.jiveland.com/docs/DOC-106994",
+        "published" : "2012-12-21T21:22:13.135+0000",
+        "updated" : "2013-01-02T17:14:04.393+0000"
+      },
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> created  in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-03T19:40:44.095+0000",
+    "verb" : "jive:created",
+    "jive" : {
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> created  in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-03T19:39:40.327+0000",
+    "verb" : "jive:created",
+    "jive" : {
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/509155",
+      "displayName" : "i_love_sales_managers_card.jpg",
+      "objectType" : "jive:comment",
+      "summary" : "Test from Jive Present to brewspace",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-509155",
+      "published" : "2013-01-02T17:13:24.971+0000",
+      "updated" : "2013-01-02T17:13:24.971+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-106994#comment-509155\">i_love_sales_managers_card.jpg</a> in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "title" : "i_love_sales_managers_card.jpg",
+    "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-509155",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2013-01-02T17:13:27.546+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377198",
+        "displayName" : "i_love_sales_managers_card.jpg",
+        "objectType" : "jive:document",
+        "summary" : "This documents represents an asset that resides in Jive Present.   Name: i_love_sales_managers_card.jpg  Type: photo &nbsp;     Only the administrator of Jive Present can modify this document, and assign it to different tablet users.",
+        "url" : "https://brewspace.jiveland.com/docs/DOC-106994",
+        "published" : "2012-12-21T21:22:13.135+0000",
+        "updated" : "2013-01-02T17:14:04.393+0000"
+      },
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/507406",
+      "displayName" : "i_love_sales_managers_card.jpg",
+      "objectType" : "jive:comment",
+      "summary" : "Test from brewspace to Jive Present",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-507406",
+      "published" : "2012-12-27T23:08:11.153+0000",
+      "updated" : "2012-12-27T23:08:11.153+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-106994#comment-507406\">i_love_sales_managers_card.jpg</a> in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "title" : "i_love_sales_managers_card.jpg",
+    "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-507406",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-27T23:08:14.615+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377198",
+        "displayName" : "i_love_sales_managers_card.jpg",
+        "objectType" : "jive:document",
+        "summary" : "This documents represents an asset that resides in Jive Present.   Name: i_love_sales_managers_card.jpg  Type: photo &nbsp;     Only the administrator of Jive Present can modify this document, and assign it to different tablet users.",
+        "url" : "https://brewspace.jiveland.com/docs/DOC-106994",
+        "published" : "2012-12-21T21:22:13.135+0000",
+        "updated" : "2013-01-02T17:14:04.393+0000"
+      },
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/comments/505958",
+      "displayName" : "i_love_sales_managers_card.jpg",
+      "objectType" : "jive:comment",
+      "summary" : "This above was created as a test and will not show up in your profile on Jive Present. This is an example of how all content uploaded on Jive Present will be represented in this space. Comments made in Jive will be visible on the content in Jive Present.",
+      "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-505958",
+      "published" : "2012-12-21T21:36:20.118+0000",
+      "updated" : "2012-12-21T21:36:20.118+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> commented on <a href=\"https://brewspace.jiveland.com/docs/DOC-106994#comment-505958\">i_love_sales_managers_card.jpg</a> in <a href=\"https://brewspace.jiveland.com/community/sales/sales_tools/jive-present\">Jive Present</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "target" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/375364",
+      "displayName" : "Jive Present",
+      "objectType" : "jive:space",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/375364/avatar"
+      },
+      "summary" : "This is the space where Jive Present content will live. \r\n\r\nComments on Jive Present material will sync between brewspace and Jive Present here.",
+      "url" : "https://brewspace.jiveland.com/community/sales/sales_tools/jive-present",
+      "published" : "2012-12-18T17:26:19.409+0000",
+      "updated" : "2013-01-04T21:40:00.814+0000"
+    },
+    "title" : "i_love_sales_managers_card.jpg",
+    "url" : "https://brewspace.jiveland.com/docs/DOC-106994#comment-505958",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-21T21:36:22.111+0000",
+    "verb" : "jive:commented",
+    "jive" : {
+      "parent" : {
+        "id" : "https://brewspace.jiveland.com/api/core/v3/contents/377198",
+        "displayName" : "i_love_sales_managers_card.jpg",
+        "objectType" : "jive:document",
+        "summary" : "This documents represents an asset that resides in Jive Present.   Name: i_love_sales_managers_card.jpg  Type: photo &nbsp;     Only the administrator of Jive Present can modify this document, and assign it to different tablet users.",
+        "url" : "https://brewspace.jiveland.com/docs/DOC-106994",
+        "published" : "2012-12-21T21:22:13.135+0000",
+        "updated" : "2013-01-02T17:14:04.393+0000"
+      },
+      "collection" : "102-106994",
+      "collectionUpdated" : "2013-01-03T19:41:41.119+0000"
+    },
+    "updated" : "2013-01-02T17:14:04.393+0000"
+  }, {
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> connected ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "displayName" : "Rob Derstadt",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "published" : "2010-12-21T15:50:10.556+0000",
+      "updated" : "2013-01-04T23:05:08.423+0000"
+    },
+    "published" : "2013-01-03T16:19:12.815+0000",
+    "verb" : "jive:connected",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Niobium",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-93.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/Philippe.VanNuijs\">Philippe Van Nuijs</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3554",
+      "displayName" : "Philippe Van Nuijs",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3554/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/Philippe.VanNuijs",
+      "published" : "2010-12-29T20:03:39.237+0000",
+      "updated" : "2013-01-05T00:00:01.898+0000"
+    },
+    "published" : "2012-12-28T04:05:03.670+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Oxygen",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-60.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+      "displayName" : "Heath Borders",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/heath.borders",
+      "published" : "2012-11-16T23:25:33.658+0000",
+      "updated" : "2013-01-04T22:55:07.807+0000"
+    },
+    "published" : "2012-12-27T16:54:41.221+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Nitrogen",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-59.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+      "displayName" : "Heath Borders",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/heath.borders",
+      "published" : "2012-11-16T23:25:33.658+0000",
+      "updated" : "2013-01-04T22:55:07.807+0000"
+    },
+    "published" : "2012-12-17T17:08:24.464+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/places/305860",
+      "displayName" : "Jive Mobile Beta",
+      "objectType" : "jive:group",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/places/305860/avatar"
+      },
+      "summary" : "Group for people interested in trying the bleeding edge Jive Mobile Native releases for Android and iPhone.",
+      "url" : "https://brewspace.jiveland.com/groups/jive-mobile-beta",
+      "published" : "2012-06-19T21:27:28.444+0000",
+      "updated" : "2013-01-04T23:28:46.659+0000"
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> joined <a href=\"https://brewspace.jiveland.com/groups/jive-mobile-beta\">Jive Mobile Beta</a>",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "title" : "Jive Mobile Beta",
+    "url" : "https://brewspace.jiveland.com/groups/jive-mobile-beta",
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+      "displayName" : "Heath Borders",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/heath.borders",
+      "published" : "2012-11-16T23:25:33.658+0000",
+      "updated" : "2013-01-04T22:55:07.807+0000"
+    },
+    "published" : "2012-12-12T22:34:25.964+0000",
+    "verb" : "jive:joined",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> connected ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "displayName" : "Rob Derstadt",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "published" : "2010-12-21T15:50:10.556+0000",
+      "updated" : "2013-01-04T23:05:08.423+0000"
+    },
+    "published" : "2012-12-10T18:17:47.953+0000",
+    "verb" : "jive:connected",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Vanadium",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-75.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/rob.derstadt\">Rob Derstadt</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+      "displayName" : "Rob Derstadt",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/rob.derstadt",
+      "published" : "2010-12-21T15:50:10.556+0000",
+      "updated" : "2013-01-04T23:05:08.423+0000"
+    },
+    "published" : "2012-12-10T18:17:47.946+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> connected ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+      "displayName" : "Heath Borders",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/heath.borders",
+      "published" : "2012-11-16T23:25:33.658+0000",
+      "updated" : "2013-01-04T22:55:07.807+0000"
+    },
+    "published" : "2012-12-07T18:47:03.792+0000",
+    "verb" : "jive:connected",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Carbon",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-58.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/heath.borders\">Heath Borders</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+      "displayName" : "Heath Borders",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/heath.borders",
+      "published" : "2012-11-16T23:25:33.658+0000",
+      "updated" : "2013-01-04T22:55:07.807+0000"
+    },
+    "published" : "2012-12-07T18:27:29.068+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  }, {
+    "object" : {
+      "displayName" : "Beryllium",
+      "objectType" : "jive:level",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/images/status/statusicon-56.gif"
+      }
+    },
+    "content" : "<a href=\"https://brewspace.jiveland.com/people/linh.tran\">Linh Tran</a> promoted ",
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://brewspace.jiveland.com"
+    },
+    "actor" : {
+      "id" : "https://brewspace.jiveland.com/api/core/v3/people/5236",
+      "displayName" : "Linh Tran",
+      "objectType" : "jive:person",
+      "image" : {
+        "url" : "https://brewspace.jiveland.com/api/core/v3/people/5236/avatar"
+      },
+      "url" : "https://brewspace.jiveland.com/people/linh.tran",
+      "published" : "2012-10-12T22:46:23.641+0000",
+      "updated" : "2013-01-04T21:45:18.791+0000"
+    },
+    "published" : "2012-12-07T17:35:49.437+0000",
+    "verb" : "jive:promoted",
+    "jive" : {
+      "collection" : "-1864883264--1864883264",
+      "collectionUpdated" : "2013-01-03T16:19:12.815+0000"
+    },
+    "updated" : "2013-01-05T00:13:37.371+0000"
+  } ],
+  "itemsPerPage" : 25,
+  "links" : {
+    "next" : "https://brewspace.jiveland.com/api/core/v3/streams/10872/activities?fields=%40all&count=25&before=2013-01-03T16%3A19%3A12.815%2B0000",
+    "previous" : "https://brewspace.jiveland.com/api/core/v3/streams/10872/activities?fields=%40all&count=25&after=2013-01-04T21%3A56%3A29.945%2B0000"
+  }
+}

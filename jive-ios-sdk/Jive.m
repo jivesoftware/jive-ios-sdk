@@ -86,6 +86,17 @@
                                  onError:error];
 }
 
+- (JAPIRequestOperation *)activitiesResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self listOperationForClass:[JiveActivityObject class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
 - (JAPIRequestOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
     
@@ -506,15 +517,10 @@
 }
 
 - (JAPIRequestOperation *)activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"activity"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    
-    return [self listOperationForClass:[JiveInboxEntry class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self activitiesResourceOperation:[person.resources objectForKey:@"activity"]
+                                 withOptions:options
+                                  onComplete:complete
+                                     onError:error];
 }
 
 - (void) activities:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error {
@@ -886,15 +892,10 @@
 }
 
 - (JAPIRequestOperation *)placeActivitiesOperation:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"activity"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    
-    return [self listOperationForClass:[JiveInboxEntry class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self activitiesResourceOperation:[place.resources objectForKey:@"activity"]
+                                 withOptions:options
+                                  onComplete:complete
+                                     onError:error];
 }
 
 - (void) placeActivities:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -1088,6 +1089,64 @@
                                               onComplete:completeBlock
                                                  onError:errorBlock];
     return operation;
+}
+
+#pragma mark - Streams
+
+- (JAPIRequestOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
+    NSURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self entityOperationForClass:[JiveStream class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) stream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    [[self streamOperation:stream withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *) streamActivitiesOperation:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self activitiesResourceOperation:[stream.resources objectForKey:@"activity"]
+                                 withOptions:options
+                                  onComplete:complete
+                                     onError:error];
+}
+
+- (void) streamActivities:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self streamActivitiesOperation:stream withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/streams/connections/activities"
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self listOperationForClass:[JiveActivityObject class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
+- (void) streamConnectionsActivities:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self streamConnectionsActivitiesOperation:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) deleteStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self deleteStreamOperation:stream onComplete:complete onError:error] start];
 }
 
 #pragma mark - private API

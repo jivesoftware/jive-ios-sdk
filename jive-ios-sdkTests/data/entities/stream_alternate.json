@@ -1,0 +1,106 @@
+{
+  "name" : "",
+  "id" : "10433",
+  "type" : "stream",
+  "source" : "connections",
+  "published" : "2012-11-12T23:02:05.169+0000",
+  "person" : {
+    "name" : {
+      "givenName" : "Orson",
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell"
+    },
+    "type" : "person",
+    "displayName" : "Orson Bushnell",
+    "jive" : {
+      "level" : {
+        "name" : "Fluorine",
+        "points" : 215
+      },
+      "username" : "orson.bushnell"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+        "allowed" : [ "GET", "PUT" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "streams" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5316"
+  },
+  "receiveEmails" : false,
+  "updated" : "2012-12-20T23:20:08.590+0000",
+  "resources" : {
+    "associations" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/streams/10433/associations",
+      "allowed" : [ "GET", "DELETE", "POST" ]
+    },
+    "self" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/streams/10433",
+      "allowed" : [ "GET", "DELETE", "PUT" ]
+    },
+    "html" : {
+      "ref" : "https://brewspace.jiveland.com/activity?streamSource=connections&streamID=10433",
+      "allowed" : [ "GET" ]
+    },
+    "activity" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/streams/10433/activities",
+      "allowed" : [ "GET" ]
+    }
+  }
+}
