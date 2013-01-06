@@ -368,7 +368,6 @@
     
     [self createJiveAPIObjectWithResponse:@"my_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive meOperation:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -376,12 +375,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testMyServiceCall {    
@@ -419,7 +417,6 @@
     
     [self createJiveAPIObjectWithResponse:@"collegues_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive colleguesOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
@@ -428,12 +425,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testColleguesServiceCall {    
@@ -473,7 +469,6 @@
     
     [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive followersOperation:@"8192" onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
@@ -482,12 +477,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testFollowersServiceCall {    
@@ -556,7 +550,6 @@
     
     [self createJiveAPIObjectWithResponse:@"followers_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive followersOperation:@"2918" withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
@@ -565,12 +558,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testFollowersServiceCallWithOptions {
@@ -648,7 +640,6 @@
     
     [self createJiveAPIObjectWithResponse:@"search_people_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive searchPeopleRequestOperation:options onComplete:^(NSArray *people) {
         STAssertEquals([people count], (NSUInteger)13, @"Wrong number of items parsed");
         STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
@@ -656,12 +647,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testSearchPeopleServiceCall {
@@ -704,7 +694,6 @@
     
     [self createJiveAPIObjectWithResponse:@"search_places_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation =  [jive searchPlacesRequestOperation:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)10, @"Wrong number of items parsed");
@@ -713,12 +702,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testSearchPlacesServiceCall {
@@ -760,7 +748,6 @@
     
     [self createJiveAPIObjectWithResponse:@"search_contents_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive searchContentsRequestOperation:options onComplete:^(NSArray *contents) {
         // Called 3rd
         STAssertEquals([contents count], (NSUInteger)7, @"Wrong number of items parsed");
@@ -769,12 +756,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testSearchContentsServiceCall {
@@ -816,7 +802,6 @@
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive peopleOperation:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
@@ -825,12 +810,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPeopleServiceCall {
@@ -872,7 +856,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive personOperation:@"2203" withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -880,12 +863,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPersonServiceCall {
@@ -925,7 +907,6 @@
     
     [self createJiveAPIObjectWithResponse:@"filterable_fields" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive filterableFieldsOperation:^(NSArray *fields) {
         // Called 3rd
         CFStringRef referenceString = CFStringCreateWithCString(nil, "a", kCFStringEncodingMacRoman); // Make a real CFStringRef not a CFConstStringRef
@@ -936,12 +917,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testFilterableFields {    
@@ -980,7 +960,6 @@
     
     [self createJiveAPIObjectWithResponse:@"supported_fields" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive supportedFieldsOperation:^(NSArray *fields) {
         // Called 3rd
         CFStringRef referenceString = CFStringCreateWithCString(nil, "a", kCFStringEncodingMacRoman); // Make a real CFStringRef not a CFConstStringRef
@@ -991,12 +970,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testSupportedFields {    
@@ -1037,7 +1015,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive personByEmailOperation:@"email_test" withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -1045,12 +1022,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPersonByEmail {
@@ -1092,7 +1068,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive personByUserNameOperation:@"Name" withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -1100,12 +1075,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPersonByUserName {
@@ -1147,7 +1121,6 @@
     
     [self createJiveAPIObjectWithResponse:@"recommended_people" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive recommendedPeopleOperation:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)1, @"Wrong number of items parsed");
@@ -1156,12 +1129,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testRecommendedPeople {
@@ -1201,7 +1173,6 @@
     
     [self createJiveAPIObjectWithResponse:@"resource_info" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive resourcesOperation:^(NSArray *resources) {
         // Called 3rd
         STAssertEquals([resources count], (NSUInteger)19, @"Wrong number of items parsed");
@@ -1210,12 +1181,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testResources {    
@@ -1254,7 +1224,6 @@
     
     [self createJiveAPIObjectWithResponse:@"trending_people" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive trendingOperation:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -1263,12 +1232,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testTrendingPeople {
@@ -1310,7 +1278,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive activitiesOperation:@"8192" withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
@@ -1319,12 +1286,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPersonActivities {
@@ -1366,7 +1332,6 @@
     
     [self createJiveAPIObjectWithResponse:@"blog" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive blogOperation:@"8192" withOptions:options onComplete:^(JiveBlog *blog) {
         // Called 3rd
         STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
@@ -1374,12 +1339,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetBlog {
@@ -1421,7 +1385,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive managerOperation:@"8192" withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -1429,12 +1392,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetManager {
@@ -1476,7 +1438,6 @@
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive reportsOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
@@ -1485,12 +1446,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetReports {
@@ -1532,7 +1492,6 @@
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive followingOperation:@"8192" withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
@@ -1541,12 +1500,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetFollowing {
@@ -1588,7 +1546,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive person:@"8192" reportsOperation:@"1876" withOptions:options onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertEquals([person class], [JivePerson class], @"Wrong item class");
@@ -1596,12 +1553,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetReportsFrom {
@@ -1644,7 +1600,6 @@
     
     [self createJiveAPIObjectWithResponse:@"contents" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive contentsOperation:options onComplete:^(NSArray *contents) {
         // Called 3rd
         STAssertEquals([contents count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -1653,12 +1608,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetContents {
@@ -1700,7 +1654,6 @@
     
     [self createJiveAPIObjectWithResponse:@"contents" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive popularContentsOperation:options onComplete:^(NSArray *contents) {
         // Called 3rd
         STAssertEquals([contents count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -1709,12 +1662,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetPopularContents {
@@ -1758,7 +1710,6 @@
     
     [self createJiveAPIObjectWithResponse:@"contents" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive recommendedContentsOperation:options onComplete:^(NSArray *contents) {
         // Called 3rd
         STAssertEquals([contents count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -1767,12 +1718,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetRecommendedContents {
@@ -1815,7 +1765,6 @@
     
     [self createJiveAPIObjectWithResponse:@"contents" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive trendingContentsOperation:options onComplete:^(NSArray *contents) {
         // Called 3rd
         STAssertEquals([contents count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -1824,12 +1773,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetTrendingContents {
@@ -1872,7 +1820,6 @@
     
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive contentOperation:@"456789" withOptions:options onComplete:^(JiveContent *content) {
         // Called 3rd
         STAssertEquals([content class], [JiveUpdate class], @"Wrong item class");
@@ -1880,12 +1827,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetContentsByID {
@@ -1928,7 +1874,6 @@
     
     [self createJiveAPIObjectWithResponse:@"content_comments" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive commentsForContentOperation:@"456789" withOptions:options onComplete:^(NSArray *comments) {
         // Called 3rd
         STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
@@ -1937,12 +1882,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetCommentsForContent {
@@ -1985,7 +1929,6 @@
     
     [self createJiveAPIObjectWithResponse:@"people_response" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive contentLikedByOperation:@"456789" withOptions:options onComplete:^(NSArray *people) {
         // Called 3rd
         STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
@@ -1994,12 +1937,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetContentLikes {
@@ -2042,7 +1984,6 @@
     
     [self createJiveAPIObjectWithResponse:@"recommended_places" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive recommendedPlacesOperation:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)7, @"Wrong number of items parsed");
@@ -2051,12 +1992,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetRecommendedPlaces {
@@ -2098,7 +2038,6 @@
     
     [self createJiveAPIObjectWithResponse:@"recommended_places" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive trendingPlacesOperation:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)7, @"Wrong number of items parsed");
@@ -2107,12 +2046,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetTrendingPlaces {
@@ -2154,7 +2092,6 @@
     
     [self createJiveAPIObjectWithResponse:@"places" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive placesOperation:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)25, @"Wrong number of items parsed");
@@ -2163,12 +2100,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetPlaces {
@@ -2210,7 +2146,6 @@
     
     [self createJiveAPIObjectWithResponse:@"recommended_places" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive placePlacesOperation:@"87654" withOptions:options onComplete:^(NSArray *places) {
         // Called 3rd
         STAssertEquals([places count], (NSUInteger)7, @"Wrong number of items parsed");
@@ -2219,12 +2154,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetPlacesPlaces {
@@ -2266,7 +2200,6 @@
     
     [self createJiveAPIObjectWithResponse:@"place" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive placeOperation:@"87654" withOptions:options onComplete:^(JivePlace *place) {
         // Called 3rd
         STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
@@ -2274,12 +2207,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testGetPlaceById {
@@ -2321,7 +2253,6 @@
     
     [self createJiveAPIObjectWithResponse:@"place_activities" andAuthDelegate:mockAuthDelegate];
     
-    __block BOOL operationComplete = NO;
     NSOperation* operation = [jive placeActivitiesOperation:@"87654" withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)27, @"Wrong number of items parsed");
@@ -2330,12 +2261,11 @@
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
-        operationComplete = YES;
     } onError:^(NSError *error) {
         STFail([error localizedDescription]);
     }];
     
-    [self runOperation:operation untilComplete:^{ return operationComplete; }];
+    [self runOperation:operation];
 }
 
 - (void) testPlaceActivities {
