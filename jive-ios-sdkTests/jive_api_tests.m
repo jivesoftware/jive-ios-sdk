@@ -1868,13 +1868,15 @@
     options.excludeReplies = YES;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/456789/comments?excludeReplies=true" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/comments?excludeReplies=true" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
     [self createJiveAPIObjectWithResponse:@"content_comments" andAuthDelegate:mockAuthDelegate];
     
-    NSOperation* operation = [jive commentsForContentOperation:@"456789" withOptions:options onComplete:^(NSArray *comments) {
+    JiveContent *content = [self entityForClass:[JiveContent class]
+                                  fromJSONNamed:@"content"];
+    NSOperation* operation = [jive commentsOperationForContent:content withOptions:options onComplete:^(NSArray *comments) {
         // Called 3rd
         STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -1895,7 +1897,7 @@
     options.hierarchical = YES;
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372098/comments?hierarchical=true" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/comments?hierarchical=true" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -1903,7 +1905,9 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive commentsForContent:@"372098" withOptions:options onComplete:^(NSArray *comments) {
+        JiveContent *content = [self entityForClass:[JiveContent class]
+                                      fromJSONNamed:@"content"];
+        [jive commentsForContent:content withOptions:options onComplete:^(NSArray *comments) {
             // Called 3rd
             STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");

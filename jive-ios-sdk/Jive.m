@@ -677,8 +677,11 @@
     [[self contentOperation:contentId withOptions:options onComplete:complete onError:error] start];
 }
 
-- (JAPIRequestOperation *)commentsForContentOperation:(NSString *)contentId withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/contents/%@/comments" options:options andArgs:contentId, nil];
+- (JAPIRequestOperation *) commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *commentsResourceEntry = [content.resources objectForKey:@"comments"];
+    NSURLRequest *request = [self requestWithTemplate:[commentsResourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
     JAPIRequestOperation *operation = [self listOperationForClass:[JiveComment class]
                                                           request:request
                                                        onComplete:complete
@@ -686,8 +689,8 @@
     return operation;
 }
 
-- (void) commentsForContent:(NSString *)contentId withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [[self commentsForContentOperation:contentId withOptions:options onComplete:complete onError:error] start];
+- (void) commentsForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self commentsOperationForContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
 - (JAPIRequestOperation *)contentLikedByOperation:(NSString *)contentId withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
