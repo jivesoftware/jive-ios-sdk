@@ -11,7 +11,7 @@
 #import "JiveContentBody.h"
 #import "JiveSummary.h"
 
-@interface JiveStream : JiveObject
+@interface JiveStreamEntity : JiveObject
 
 // Author of this content object.
 @property(nonatomic, readonly, strong) JivePerson* author;
