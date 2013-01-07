@@ -783,7 +783,7 @@
     [[self contentOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (JAPIRequestOperation *)commentsForContentOperation:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (JAPIRequestOperation *)commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"comments"];
     NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
                                               options:options
@@ -796,7 +796,7 @@
 }
 
 - (void) commentsForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    [[self commentsForContentOperation:content withOptions:options onComplete:complete onError:error] start];
+    [[self commentsOperationForContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
 - (JAPIRequestOperation *)contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
