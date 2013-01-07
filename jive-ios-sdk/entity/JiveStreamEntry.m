@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveStreamEntity.h"
+#import "JiveStreamEntry.h"
 #import "NSThread+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
-@implementation JiveStreamEntity
+@implementation JiveStreamEntry
 
 @synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId;
 @synthesize likeCount, parent, parentContent, parentPlace, published, replyCount, resources, status;

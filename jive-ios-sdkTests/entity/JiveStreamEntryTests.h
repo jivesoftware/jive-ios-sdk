@@ -7,10 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "JiveStreamEntity.h"
+#import "JiveStreamEntry.h"
 
-@interface JiveStreamEntityTests : SenTestCase
+@interface JiveStreamEntryTests : SenTestCase
 
-@property (nonatomic, strong) JiveStreamEntity *stream;
+@property (nonatomic, strong) JiveStreamEntry *stream;
 
 @end

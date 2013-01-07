@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveStreamEntityTests.h"
+#import "JiveStreamEntryTests.h"
 #import "JiveResourceEntry.h"
 
-@implementation JiveStreamEntityTests
+@implementation JiveStreamEntryTests
 
 @synthesize stream;
 
 - (void)setUp {
-    stream = [[JiveStreamEntity alloc] init];
+    stream = [[JiveStreamEntry alloc] init];
 }
 
 - (void)tearDown {
@@ -242,7 +242,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveStreamEntity *newStream = [JiveStreamEntity instanceFromJSON:JSON];
+    JiveStreamEntry *newStream = [JiveStreamEntry instanceFromJSON:JSON];
     
     STAssertTrue([[newStream class] isSubclassOfClass:[stream class]], @"Wrong item class");
     STAssertEqualObjects(newStream.jiveId, stream.jiveId, @"Wrong id");
@@ -314,7 +314,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveStreamEntity *newStream = [JiveStreamEntity instanceFromJSON:JSON];
+    JiveStreamEntry *newStream = [JiveStreamEntry instanceFromJSON:JSON];
     
     STAssertTrue([[newStream class] isSubclassOfClass:[stream class]], @"Wrong item class");
     STAssertEqualObjects(newStream.jiveId, stream.jiveId, @"Wrong id");
