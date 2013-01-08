@@ -870,6 +870,20 @@
     [[self contentOperation:content likes:read onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) deleteContent:(JiveContent *)content onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self deleteContentOperation:content onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
