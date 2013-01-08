@@ -17,7 +17,6 @@ typedef enum _JiveAuthentication {
 @interface JiveCredentials : NSObject
 
 - (id) initWithUserName:(NSString*) username password:(NSString*) password;
-- (id) initWithOAuthToken:(NSString*) token;
 
 - (void) applyToRequest:(NSMutableURLRequest*) request;
 
