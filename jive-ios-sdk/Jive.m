@@ -1106,6 +1106,26 @@
     return operation;
 }
 
+- (NSOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:options
+                                                     andArgs:nil];
+    NSDictionary *JSON = member.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JiveMember class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updateMember:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *))complete onError:(void (^)(NSError *))error {
+    [[self updateMemberOperation:member withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Streams
 
 - (JAPIRequestOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
