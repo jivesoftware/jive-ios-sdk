@@ -1082,6 +1082,26 @@
     [[self placeFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:options
+                                                     andArgs:nil];
+    NSDictionary *JSON = place.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JivePlace class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updatePlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    [[self updatePlaceOperation:place withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -1273,6 +1293,15 @@
 }
 
 #pragma mark - private API
+
+- (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource template:(NSString *)path options:(NSObject<JiveRequestOptions>*)options andArgs:(NSString*)args, ... {
+    NSMutableURLRequest *request = [self requestWithTemplate:path options:options andArgs:args];
+    NSDictionary *JSON = bodySource.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    return request;
+}
 
 - (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
     if (template) {
