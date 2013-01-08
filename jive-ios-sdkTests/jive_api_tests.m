@@ -2956,11 +2956,11 @@
 
 - (void) testStreamAssociationsOperation {
     JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
-    JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
-    options.startIndex = 5;
+    JiveAssociationsRequestOptions *options = [[JiveAssociationsRequestOptions alloc] init];
+    [options addType:@"dm"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations?startIndex=5" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations?filter=type(dm)" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -2982,11 +2982,11 @@
 }
 
 - (void) testStreamAssociations {
-    JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
-    options.startIndex = 10;
+    JiveAssociationsRequestOptions *options = [[JiveAssociationsRequestOptions alloc] init];
+    [options addType:@"message"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10433/associations?startIndex=10" isEqualToString:[value absoluteString]];
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10433/associations?filter=type(message)" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
