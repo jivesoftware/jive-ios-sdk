@@ -3224,4 +3224,94 @@
     }];
 }
 
+- (void) testContentLikesOperation {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/likes" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
+    
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive contentOperation:source likes:YES onComplete:^() {
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testContentLikes {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372088/likes" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
+        [jive content:source likes:YES onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testContentLikesOperation_unread {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372088/likes" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
+    
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive contentOperation:source likes:NO onComplete:^() {
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testContentLikes_unread {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/likes" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
+        [jive content:source likes:NO onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
