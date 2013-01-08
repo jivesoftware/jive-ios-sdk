@@ -131,6 +131,14 @@
       "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
       "allowed" : [ "GET" ]
     },
+    "tasks" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/tasks",
+      "allowed" : [ "GET" ]
+    },
+    "streams" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/streams",
+      "allowed" : [ "GET" ]
+    },
     "members" : {
       "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
       "allowed" : [ "GET" ]

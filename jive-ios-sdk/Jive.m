@@ -97,6 +97,17 @@
                                onError:error];
 }
 
+- (JAPIRequestOperation *)streamsResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self listOperationForClass:[JiveStream class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
 - (JAPIRequestOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
     
@@ -622,19 +633,25 @@
 }
 
 - (JAPIRequestOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"followingIn"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    
-    return [self listOperationForClass:[JiveStream class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
+    return [self streamsResourceOperation:[person.resources objectForKey:@"followingIn"]
+                              withOptions:options
+                               onComplete:complete
+                                  onError:error];
 }
 
 - (void) followingIn:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     [[self followingInOperation:person withOptions:options onComplete:complete onError:error] start];
+}
+
+- (JAPIRequestOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self streamsResourceOperation:[person.resources objectForKey:@"streams"]
+                              withOptions:options
+                               onComplete:complete
+                                  onError:error];
+}
+
+- (void) streams:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self streamsOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
 #pragma mark - Search
