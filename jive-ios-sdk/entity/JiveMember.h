@@ -13,13 +13,13 @@
 @interface JiveMember : JiveObject
 
 // Group to which this member belongs.
-@property (nonatomic, readonly) JiveGroup *group;
+@property (nonatomic, readonly, strong) JiveGroup *group;
 
 // Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
-@property(nonatomic, readonly) NSString* jiveId;
+@property(nonatomic, readonly, strong) NSString* jiveId;
 
 // Jive person that is a member of the specified group.
-@property (nonatomic, readonly) JivePerson *person;
+@property(nonatomic, readonly, strong) JivePerson *person;
 
 // Date and time when this content object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
@@ -36,7 +36,7 @@
 @property(nonatomic, strong) NSString* state;
 
 // The object type of this object.
-@property(nonatomic, readonly) NSString* type;
+@property(nonatomic, readonly, strong) NSString* type;
 
 // Date and time this content object was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
