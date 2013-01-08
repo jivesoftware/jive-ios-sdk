@@ -128,7 +128,7 @@
 }
 
 - (JAPIRequestOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/places%@" options:options andArgs:callName, nil];
+    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
     
     JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
                                                           request:request
@@ -204,15 +204,10 @@
 }
 
 - (JAPIRequestOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/frequent/content"
-                                              options:options
-                                              andArgs:nil];
-    
-    JAPIRequestOperation *operation = [self listOperationForClass:[JiveContent class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self contentsListOperation:@"activities/frequent/content"
+                           withOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (JAPIRequestOperation *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -220,27 +215,17 @@
 }
 
 - (JAPIRequestOperation *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/frequent/places"
-                                              options:options
-                                              andArgs:nil];
-    
-    JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self placeListOperation:@"activities/frequent/places"
+                        withOptions:options
+                         onComplete:completeBlock
+                            onError:errorBlock];
 }
 
 - (JAPIRequestOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/recent/content"
-                                              options:options
-                                              andArgs:nil];
-    
-    JAPIRequestOperation *operation = [self listOperationForClass:[JiveContent class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self contentsListOperation:@"activities/recent/content"
+                           withOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (JAPIRequestOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -248,15 +233,10 @@
 }
 
 - (JAPIRequestOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities/recent/places"
-                                              options:options
-                                              andArgs:nil];
-    
-    JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self placeListOperation:@"activities/recent/places"
+                        withOptions:options
+                         onComplete:completeBlock
+                            onError:errorBlock];
 }
 
 #pragma mark - Announcements
@@ -667,14 +647,10 @@
 }
 
 - (JAPIRequestOperation*) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
-    
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/places" options:options andArgs:nil];
-    JAPIRequestOperation *operation = [self listOperationForClass:[JivePlace class]
-                                                          request:request
-                                                       onComplete:complete
-                                                          onError:error];
-    
-    return operation;
+    return [self placeListOperation:@"search/places"
+                        withOptions:options
+                         onComplete:complete
+                            onError:error];
 }
 
 - (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error {
@@ -684,13 +660,10 @@
 }
 
 - (JAPIRequestOperation*) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
-    
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/search/contents" options:options andArgs:nil];
-    JAPIRequestOperation *operation = [self listOperationForClass:[JiveContent class]
-                                                          request:request
-                                                       onComplete:complete
-                                                          onError:error];
-    return operation;
+    return [self contentsListOperation:@"search/contents"
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error {
@@ -853,7 +826,7 @@
 #pragma mark - Places
 
 - (JAPIRequestOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self placeListOperation:@"" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:@"places" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -861,7 +834,7 @@
 }
 
 - (JAPIRequestOperation *)recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self placeListOperation:@"/recommended" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:@"places/recommended" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -869,7 +842,7 @@
 }
 
 - (JAPIRequestOperation *)trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self placeListOperation:@"/trending" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:@"places/trending" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
