@@ -1,0 +1,3897 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "type" : "-734134279",
+    "id" : "5316"
+  }, {
+    "type" : "document",
+    "status" : "published",
+    "attachments" : [ ],
+    "restrictComments" : false,
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/91264",
+    "categories" : [ ],
+    "authors" : [ {
+      "name" : {
+        "givenName" : "Joleine",
+        "familyName" : "Sigler",
+        "formatted" : "Joleine Sigler"
+      },
+      "type" : "person",
+      "displayName" : "Joleine Sigler",
+      "jive" : {
+        "level" : {
+          "name" : "Selenium",
+          "points" : 2112
+        },
+        "username" : "joleine"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/joleine",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2066",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2066"
+    }, {
+      "name" : {
+        "givenName" : "Kate",
+        "familyName" : "Johnson",
+        "formatted" : "Kate Johnson"
+      },
+      "type" : "person",
+      "displayName" : "Kate Johnson",
+      "jive" : {
+        "level" : {
+          "name" : "Scandium",
+          "points" : 864
+        },
+        "username" : "kate.johnson"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/kate.johnson",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2728/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2728",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2728"
+    } ],
+    "visibility" : "place",
+    "authorship" : "limited",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:a609691b-5061-41f2-abd9-21585054429b] --><div class=\"jive-rendered-content\"><h3>Note: For questions about Compli, please contact Helen Fieler.</h3><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Please note that Compli will only work properly in Firefox and Internet Explorer. While we understand the need for cross-browser compatibility with applications, at this point we can not make them support Safari or Chrome. Apologies for any inconvenience this causes.</p><h3></h3><h3></h3><h3></h3><h3></h3><h3>What is Compli?</h3><p>Compli (pronounced &#8220;complee&rdquo;) is a web-based tool for automating business processes, distributing information and collecting electronic signatures. With Compli, company policies, trainings, forms, procedures and other paper documents are placed online so you can access them from any computer at any time.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><h3>What Can I Do with Compli?</h3><ul><li>Review your Employee Handbook</li><li>Review and sign required company policies</li><li>Review and sign required compliance related documents</li><li>Complete required trainings</li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><h3>How Do I Login to Compli?</h3><ol start=\"1\"><li>Point your web browser to <span style=\"text-decoration: underline;\"><strong>www.compli.com</strong></span></li><li>Click <strong>Customer Login</strong> on the right.</li><li>The first time you log in type your <strong>User Name</strong> (email address) and your temporary password (Welcome1).</li><li>Then click on \"advanced options\" and enter <strong>Jive Software</strong> under Company name</li><li>Then click the login button.</li></ol><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><h3></h3><h3><span style=\"font-size: 10pt;\"><strong>What is my User Name?</strong></span></h3><p><span style=\"font-size: 10pt;\">Your User Name is your company email address (*prior to your hire date your user name is your personal email address).</span></p><p><span style=\"font-size: 10pt;\"><strong>What is my Password?</strong></span></p><p><span style=\"font-size: 10pt;\">If this is your first time logging in, the temporary password is <strong>Welcome1</strong>. If you don&#8217;t know your password and have a company email address, click &#8220;Forgot my password&rdquo; on the login page to reset it. Otherwise, please contact Helen Fieler.</span></p><p><span style=\"font-size: 10pt;\"><strong>What is my Company Name?</strong></span></p><p><span style=\"font-size: 10pt;\">You may be prompted to enter a company name the first time you login. If so, enter <strong>Jive Software</strong> or check with your Human Resources department for help.</span></p><h3></h3><h3></h3><h3><span style=\"font-size: 10pt;\"><strong>How do I use the Compli Inbox?</strong></span></h3><p style=\"margin-bottom: 6pt;\"><span style=\"font-size: 10pt;\">Your <strong>Inbox</strong> contains company policies, trainings, and forms that you are required to act on. These items are accessible by selecting the appropriate title you wish to review and clicking on it.</span></p><h3></h3><h3><span style=\"font-size: 10pt;\">How do I sign my required Policies?</span></h3><p><span style=\"font-size: 10pt;\"><span style=\"font-size: 10pt;\">To complete the policy requirements from</span> your Inbox, click on the policy title, review the policy, enter your password into the password field at the bottom of the policy, and then click the Apply button.</span></p><h3></h3><h3></h3><h3><span style=\"font-size: 10pt;\">How do I complete my required Trainings?</span></h3><p><span style=\"font-size: 10pt;\">To complete the required trainings from your Inbox, click on the training title, review the training introduction, click the Continue button, and complete the training.</span></p><h3></h3><h3></h3><h3><span style=\"font-size: 10pt;\">How do I complete my required Forms</span></h3><p><span style=\"font-size: 10pt;\">To complete the form requirements from your Inbox, click on the form title, review the form instructions, fill out the appropriate sections, and send to the appropriate person as per the routing instructions.</span></p><h3><span style=\"font-size: 10pt;\"><strong>How do I fill out a Form?</strong></span></h3><p><span style=\"font-size: 10pt;\">To fill out a form, click on the Forms tab, then click on the form title, review the form instructions, fill out the appropriate sections, and send to the appropriate person as per the routing instructions.</span></p><h3><span style=\"font-size: 10pt;\"><strong>How do I review my Employee Handbook?</strong></span></h3><p><span style=\"font-size: 10pt;\">To review your Employee Handbook and other company policies, click on the Policies tab and then select the policy you wish to review.</span></p><h3><span style=\"font-size: 10pt;\"><strong>How do I review my Personnel File?</strong></span></h3><p><span style=\"font-size: 10pt;\">Click on your name at the top of the screen to review your personnel file. Click on the History sub-tab at the bottom to view completed items.</span></p><h3></h3><h3><span style=\"font-size: 10pt;\">Help Content</span></h3><p>To review detailed Help Content regarding any section of your Compli system, click the Help link at the top of your window. To contact your internal Compli Administrator (Helen Fieler), click the red Help Contact button for name and phone number or email.</p></div><!-- [DocumentBodyEnd:a609691b-5061-41f2-abd9-21585054429b] --></body>"
+    },
+    "subject" : "Welcome to Compli",
+    "viewCount" : 1081,
+    "author" : {
+      "name" : {
+        "givenName" : "Joleine",
+        "familyName" : "Sigler",
+        "formatted" : "Joleine Sigler"
+      },
+      "type" : "person",
+      "displayName" : "Joleine Sigler",
+      "jive" : {
+        "level" : {
+          "name" : "Selenium",
+          "points" : 2112
+        },
+        "username" : "joleine"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/joleine",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2066/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2066",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2066"
+    },
+    "published" : "2009-09-11T16:19:04.318+0000",
+    "replyCount" : 21,
+    "visibleToExternalContributors" : false,
+    "updated" : "2011-08-09T16:42:35.069+0000",
+    "tags" : [ "forms", "compli" ],
+    "followerCount" : 10,
+    "likeCount" : 0,
+    "resources" : {
+      "versions" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/versions/40483",
+        "allowed" : [ "GET" ]
+      },
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/40483/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/40483/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/40483",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/docs/DOC-22766",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/40483",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/40483/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/40483/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "22766"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "First day almost done. Still working on access to all the tools.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:e3415367-16b2-47f4-a9e1-263462c858ac] --><div class=\"jive-rendered-content\"><span>First day almost done. Still working on access to all the tools.</span></div><!-- [DocumentBodyEnd:e3415367-16b2-47f4-a9e1-263462c858ac] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-20T00:16:32.030+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-20T00:16:32.030+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/364435/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/364435/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/364435",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/364435",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/150173",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/364435/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/364435/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150173"
+  }, {
+    "type" : "dm",
+    "subject" : "Hey guys,&nbsp; You should both have received two invites to join Jive's Apple iOS dev accounts. The...",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    }, {
+      "name" : {
+        "givenName" : "Heath",
+        "familyName" : "Borders",
+        "formatted" : "Heath Borders"
+      },
+      "type" : "person",
+      "displayName" : "Heath Borders",
+      "jive" : {
+        "level" : {
+          "name" : "Oxygen",
+          "points" : 141
+        },
+        "username" : "heath.borders"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/heath.borders",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5327",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5327"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:e533ac1f-2909-4754-9f61-0fde82880ed9] --><div class=\"jive-rendered-content\"><span>Hey guys,</span><br/><br/><span>You should both have received two invites to join Jive's Apple iOS dev accounts. The Jive Inc account is what we use for internal/beta testing and the other is the \"real\" account we use for apps released on the store.&nbsp;</span></div><!-- [DocumentBodyEnd:e533ac1f-2909-4754-9f61-0fde82880ed9] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "Rob",
+        "familyName" : "Derstadt",
+        "formatted" : "Rob Derstadt"
+      },
+      "type" : "person",
+      "displayName" : "Rob Derstadt",
+      "jive" : {
+        "level" : {
+          "name" : "Vanadium",
+          "points" : 1057
+        },
+        "username" : "rob.derstadt"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/rob.derstadt",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3550"
+    },
+    "published" : "2012-11-20T17:12:02.066+0000",
+    "replyCount" : 2,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-20T17:12:02.066+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/150280",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150280"
+  }, {
+    "type" : "dm",
+    "subject" : "Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    }, {
+      "name" : {
+        "givenName" : "Heath",
+        "familyName" : "Borders",
+        "formatted" : "Heath Borders"
+      },
+      "type" : "person",
+      "displayName" : "Heath Borders",
+      "jive" : {
+        "level" : {
+          "name" : "Oxygen",
+          "points" : 141
+        },
+        "username" : "heath.borders"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/heath.borders",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5327",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5327"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:6d7d10a2-bdf4-4007-a193-470ca49f0c6f] --><div class=\"jive-rendered-content\"><span>Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share.</span><br/><br/><span>Thanks!</span></div><!-- [DocumentBodyEnd:6d7d10a2-bdf4-4007-a193-470ca49f0c6f] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "John",
+        "familyName" : "Ellenich",
+        "formatted" : "John Ellenich"
+      },
+      "type" : "person",
+      "displayName" : "John Ellenich",
+      "jive" : {
+        "level" : {
+          "name" : "Argon",
+          "points" : 645
+        },
+        "username" : "john.ellenich"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/john.ellenich",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5151",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5151"
+    },
+    "published" : "2012-11-20T18:32:00.170+0000",
+    "replyCount" : 7,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-20T18:32:00.170+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150323/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150323/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150323",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/150323",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150323/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150323"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Done for the week. Looking forward to the feast tomorrow.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:c9dae5c6-d641-41de-96de-c89d9cca4395] --><div class=\"jive-rendered-content\"><span>Done for the week. Looking forward to the feast tomorrow.</span></div><!-- [DocumentBodyEnd:c9dae5c6-d641-41de-96de-c89d9cca4395] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 1,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-22T00:00:59.011+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-22T00:00:59.011+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365401/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365401/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/365401",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365401",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/150678",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365401/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365401/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150678"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/365723",
+    "type" : "post",
+    "status" : "published",
+    "categories" : [ ],
+    "attachments" : [ ],
+    "publishDate" : "2012-11-26T14:38:02.383+0000",
+    "permalink" : "https://brewspace.jiveland.com/people/orson.bushnell/blog/2012/11/26/first-week-blog-post",
+    "restrictComments" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:f8ef026c-ce4f-4620-9fb8-539f58600d44] --><div class=\"jive-rendered-content\"><p>I was hired along with a number of other people last week. So I have been reading a lot of first week blogs about the last week. And what I have realized is that I just don't have anything to add about last week. It was one of the better weeks, what with Thanksgiving happening in the middle. I met a lot of enthusiastic people. I had problems with ADP. You know, the usual stuff. So that is my first week blog.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Happy to be here.</p></div><!-- [DocumentBodyEnd:f8ef026c-ce4f-4620-9fb8-539f58600d44] --></body>"
+    },
+    "subject" : "First week blog post",
+    "viewCount" : 78,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-26T14:38:02.382+0000",
+    "replyCount" : 8,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-26T14:38:02.382+0000",
+    "tags" : [ "first_week" ],
+    "followerCount" : 7,
+    "likeCount" : 11,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365724/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365724/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365724",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/blog/2012/11/26/first-week-blog-post",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/365724",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365724/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365724/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "28334"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Going to doctor. Be back before lunch.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:d7f36cbc-bab5-42a5-9fab-bce4fb327856] --><div class=\"jive-rendered-content\"><span>Going to doctor. Be back before lunch.</span></div><!-- [DocumentBodyEnd:d7f36cbc-bab5-42a5-9fab-bce4fb327856] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-26T15:45:53.471+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-26T15:45:53.471+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365743/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365743/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/365743",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365743",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/150828",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365743/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365743/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150828"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Back at work",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:e825a54e-7d0f-412b-b4c1-ce763cf18fe3] --><div class=\"jive-rendered-content\"><span>Back at work</span></div><!-- [DocumentBodyEnd:e825a54e-7d0f-412b-b4c1-ce763cf18fe3] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 1,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-26T18:23:11.895+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-26T18:23:11.895+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365902/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365902/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/365902",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365902",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/150893",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365902/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365902/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "150893"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/345227",
+    "type" : "post",
+    "status" : "published",
+    "categories" : [ ],
+    "attachments" : [ ],
+    "publishDate" : "2012-11-26T18:03:00.000+0000",
+    "permalink" : "https://brewspace.jiveland.com/people/volkan.ozcelik/blog/2012/11/26/who-has-time-for-that",
+    "restrictComments" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:3ce2d421-919b-4c52-a819-007c0c715007] --><div class=\"jive-rendered-content\"><p>I'm writing <a class=\"jive-link-external-small\" href=\"http://o2js.com/interview-questions/\"><strong>a book on JavaScript</strong></a> (70% complete and it's on preorder).</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>I'm a technical editor of an <strong>HTML5/CSS3/RWD</strong> book of pact <a class=\"jive-link-external-small\" href=\"http://www.packtpub.com/\">http://www.packtpub.com/</a></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>I'm learning Objective C in between:</p><p>I don't have enough Objective C kung-fu to <strong>yet</strong> knock down 10 people who jump to me in a dark alley, but I am good enough to read, debug and contribute to a well-written code.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>I have a 5-month-old baby girl who (forcefully) grabs attention every moment she's awake.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>And I want to (metaphorically) punch anyone picking at me saying that they simply do not have enough time to pursue their dreams.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Oh come on!</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>You do not <strong>have</strong> time...</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>You <strong>make</strong> time.</p></div><!-- [DocumentBodyEnd:3ce2d421-919b-4c52-a819-007c0c715007] --></body>"
+    },
+    "subject" : "Who has Time for That?",
+    "viewCount" : 162,
+    "author" : {
+      "name" : {
+        "givenName" : "Volkan",
+        "familyName" : "Ozcelik",
+        "formatted" : "Volkan Ozcelik"
+      },
+      "type" : "person",
+      "displayName" : "Volkan Ozcelik",
+      "jive" : {
+        "level" : {
+          "name" : "Calcium",
+          "points" : 798
+        },
+        "username" : "volkan.ozcelik"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/volkan.ozcelik",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5189/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5189",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5189"
+    },
+    "published" : "2012-11-26T18:03:28.734+0000",
+    "replyCount" : 12,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-26T18:04:24.191+0000",
+    "tags" : [ "goals", "progress", "personal", "productivity", "objectives", "life", "diary", "dreams", "activity_log", "achivements" ],
+    "followerCount" : 9,
+    "likeCount" : 12,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365882/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365882/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365882",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/volkan.ozcelik/blog/2012/11/26/who-has-time-for-that",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/365882",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365882/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/365882/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "28341"
+  }, {
+    "type" : "document",
+    "status" : "published",
+    "attachments" : [ ],
+    "restrictComments" : false,
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/91256",
+    "categories" : [ ],
+    "visibility" : "place",
+    "authorship" : "open",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:6593d502-e804-4b91-a7dc-74269a9f3f21] --><div class=\"jive-rendered-content\"><p>This document outlines a common set of applications used by Jive Software developers. If you're rebuilding your box or setting up a new machine for dev use, refer to this document to get everything set up.&nbsp; This document is copied from our old KB--please update as appropriate!</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>Applications</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>Ant (<a class=\"jive-link-external-small\" href=\"http://ant.apache.org/\">http://ant.apache.org/</a>)</p></li><li><p>DbVisualizer (<a class=\"jive-link-external-small\" href=\"http://www.minq.se/products/dbvis/\">http://www.minq.se/products/dbvis/</a>)</p></li><li><p>Firefox (<a class=\"jive-link-external-small\" href=\"http://www.mozilla.org/\">http://www.mozilla.org/</a>) (see below for plugins)</p></li><li><p>IntelliJ (<a class=\"jive-link-external-small\" href=\"http://www.intellij.com/\">http://www.intellij.com/</a>) -- licenses are in <a class=\"jive-link-wiki-small\" data-containerId=\"2000\" data-containerType=\"14\" data-objectId=\"4044\" data-objectType=\"102\" href=\"https://brewspace.jiveland.com/docs/DOC-4044\"><span>Brewspace</span></a></p></li><li><p>JDKs: 1.6.0, 1.5.0 (default) (this also includs a local copy of the docs)</p><ul><li><p>Most Operating Systems: (<a class=\"jive-link-external-small\" href=\"http://www.oracle.com/technetwork/java/index.html\">Oracle Technology Network for Java Developers</a>)</p></li></ul></li></ul><ul><li><p>Tomcat (<a class=\"jive-link-external-small\" href=\"http://jakarta.apache.org/tomcat/\">http://jakarta.apache.org/tomcat/</a>)</p></li><li><p>Resin (<a class=\"jive-link-external-small\" href=\"http://www.caucho.com/\">http://www.caucho.com/</a>)</p></li><li><p>MySQL with JDBC driver (<a class=\"jive-link-external-small\" href=\"http://www.mysql.com/\">http://www.mysql.com/</a>)</p></li><li><p>Putty (<a class=\"jive-link-external-small\" href=\"http://www.chiark.greenend.org.uk/%7Esgtatham/putty/\">http://www.chiark.greenend.org.uk/~sgtatham/putty/</a>)</p></li><li><p>WinSCP (<a class=\"jive-link-external-small\" href=\"http://winscp.net/eng/\">http://winscp.net/eng/</a>)</p></li><li><p>SVN Clients</p><ul><li><p>Windows: Tortoise SVN (<a class=\"jive-link-external-small\" href=\"http://tortoisesvn.tigris.org/\">http://tortoisesvn.tigris.org/</a>)</p></li><li><p>Mac: A good guide is <a class=\"jive-link-external-small\" href=\"http://blog.joshbuhler.com/index.php?year=2005&amp;monthnum=07&amp;day=05&amp;name=setting-up-the-subversion-client-on-mac-os-x&amp;page=\">here</a></p><ul><li><p>Subversion Client (<a class=\"jive-link-external-small\" href=\"http://metissian.com/projects/macosx/subversion/\">http://metissian.com/projects/macosx/subversion/</a>)</p></li><li><p>SCP Plugin for Finder integration: (<a class=\"jive-link-external-small\" href=\"http://scplugin.tigris.org/\">http://scplugin.tigris.org/)</a></p></li><li><p>svnx gui client (<a class=\"jive-link-external-small\" href=\"http://www.lachoseinteractive.net/en/community/subversion/svnx/download/\">http://www.lachoseinteractive.net/en/community/subversion/svnx/download/)</a></p></li></ul></li></ul></li><li><p>WinMerge (<a class=\"jive-link-external-small\" href=\"http://winmerge.sourceforge.net/\">http://winmerge.sourceforge.net/</a>)</p></li><li><p>IM (Spark)</p></li><li><p>Text Editor (UltraEdit, Notepad++ <a class=\"jive-link-external-small\" href=\"http://notepad-plus.sourceforge.net/uk/site.htm\">http://notepad-plus.sourceforge.net/uk/site.htm</a> vim <a class=\"jive-link-external-small\" href=\"http://www.vim.org/\">http://www.vim.org/</a>).</p></li><li><p>Opera browser (for testing if you want: (<a class=\"jive-link-external-small\" href=\"http://www.opera.com/\">http://www.opera.com/</a>)</p></li><li>IETester (Windows only, for IE6: <a class=\"jive-link-external-small\" href=\"http://www.my-debugbar.com/wiki/IETester/HomePage\">http://www.my-debugbar.com/wiki/IETester/HomePage</a>)</li><li><p>RealVNC Viewer (<a class=\"jive-link-external-small\" href=\"http://www.realvnc.com/\">http://www.realvnc.com</a>)</p></li><li><p>VMWare Server</p></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>Environment Variables</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>JAVA_HOME (should point to latest Java install)</p></li><li><p>ANT_HOME</p></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>FireFox plugins</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>Firebug (<a class=\"jive-link-external-small\" href=\"http://www.getfirebug.com/\">http://www.getfirebug.com</a>)</p></li><li><p>Web Developer (<a class=\"jive-link-external-small\" href=\"http://chrispederick.com/work/firefox/webdeveloper/\">http://chrispederick.com/work/firefox/webdeveloper/</a>)</p></li><li><p>IE View (<a class=\"jive-link-external-small\" href=\"http://ieview.mozdev.org/\">http://ieview.mozdev.org/</a>)</p></li><li><p>ColorZilla (<a class=\"jive-link-external-small\" href=\"http://www.iosart.com/firefox/colorzilla/\">http://www.iosart.com/firefox/colorzilla/</a>)</p></li><li><p>Console2 (<a class=\"jive-link-external-small\" href=\"http://console2.mozdev.org/\">http://console2.mozdev.org/</a>)</p></li><li><p>Tab Preview (<a class=\"jive-link-external-small\" href=\"http://ted.mielczarek.org/code/mozilla/tabpreview/\">http://ted.mielczarek.org/code/mozilla/tabpreview/</a>)</p></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>Explorer Addons</strong></p><ul><li><a class=\"jive-link-external-small\" href=\"http://is.gd/T9V\">IE Developer Toolbar</a> (IE6 or 7, only works on installed IEs, not on stand-alones)</li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>IntelliJ Plugins</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>SQL Plugin (this is much like DbVisualizer)</p></li><li><p>Resin</p></li><li><p>RegexPlugin</p></li><li><p>SimpleUML</p></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>Java Development</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>Junit (<a class=\"jive-link-external-small\" href=\"http://www.junit.org/\">http://www.junit.org/</a>)</p></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong>Windows Utilities</strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><p>Process Explorer (<a class=\"jive-link-external-small\" href=\"http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx\">http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx</a>)</p></li><li><p>PowerToys (<a class=\"jive-link-external-small\" href=\"http://www.microsoft.com/windowsxp/downloads/powertoys/xppowertoys.mspx\">http://www.microsoft.com/windowsxp/downloads/powertoys/xppowertoys.mspx</a>)</p></li></ul></div><!-- [DocumentBodyEnd:6593d502-e804-4b91-a7dc-74269a9f3f21] --></body>"
+    },
+    "subject" : "Common Developer Stack",
+    "viewCount" : 1138,
+    "author" : {
+      "name" : {
+        "givenName" : "Kevin",
+        "familyName" : "Williams",
+        "formatted" : "Kevin Williams"
+      },
+      "type" : "person",
+      "displayName" : "Kevin Williams",
+      "jive" : {
+        "level" : {
+          "name" : "Gold",
+          "points" : 11758
+        },
+        "username" : "kevin"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/kevin",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2024/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2024",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2024"
+    },
+    "published" : "2007-12-10T16:46:22.247+0000",
+    "replyCount" : 10,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-26T19:10:30.834+0000",
+    "tags" : [ "applications", "intellij", "developer_stack" ],
+    "followerCount" : 12,
+    "likeCount" : 0,
+    "resources" : {
+      "versions" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/versions/12459",
+        "allowed" : [ "GET" ]
+      },
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/12459/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/12459/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/12459",
+        "allowed" : [ "GET", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/docs/DOC-7175",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/12459",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/12459/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/12459/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "7175"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Working at home due to a migraine",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:fe5ad382-725d-4f6f-92e1-6400edfbaa6a] --><div class=\"jive-rendered-content\"><span>Working at home due to a migraine</span></div><!-- [DocumentBodyEnd:fe5ad382-725d-4f6f-92e1-6400edfbaa6a] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 3,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-28T15:21:42.730+0000",
+    "replyCount" : 1,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-28T15:21:42.730+0000",
+    "tags" : [ ],
+    "followerCount" : 2,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/366911/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/366911/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/366911",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/366911",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/151442",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/366911/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/366911/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "151442"
+  }, {
+    "type" : "dm",
+    "subject" : "Yo,&nbsp; Just was thinking it might be a good idea to sit down for about about 30 minutes a couple days...",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    }, {
+      "name" : {
+        "givenName" : "Rob",
+        "familyName" : "Derstadt",
+        "formatted" : "Rob Derstadt"
+      },
+      "type" : "person",
+      "displayName" : "Rob Derstadt",
+      "jive" : {
+        "level" : {
+          "name" : "Vanadium",
+          "points" : 1057
+        },
+        "username" : "rob.derstadt"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/rob.derstadt",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3550"
+    }, {
+      "name" : {
+        "givenName" : "Heath",
+        "familyName" : "Borders",
+        "formatted" : "Heath Borders"
+      },
+      "type" : "person",
+      "displayName" : "Heath Borders",
+      "jive" : {
+        "level" : {
+          "name" : "Oxygen",
+          "points" : 141
+        },
+        "username" : "heath.borders"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/heath.borders",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5327",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5327"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:4cfb6c2f-cf48-4f1f-9566-b05cc972ee6c] --><div class=\"jive-rendered-content\"><span>Yo,</span><br/><br/><span>Just was thinking it might be a good idea to sit down for about about 30 minutes a couple days a week and shoot-the-shit about general app-y stuff.</span><br/><br/><span>Rob and I had a quick Skype today w/ the sliding panel interactions and I think it helped a lot! More of a developer/designer chat vs the stand ups and status checks and crap. This obviously would be more of a front end UI chat vs SDK/Data/Development discussion and no managers. Super informal.</span><br/><br/><span>Let me know what you guys think and I'll set something up!</span><br/><br/><span>-john</span></div><!-- [DocumentBodyEnd:4cfb6c2f-cf48-4f1f-9566-b05cc972ee6c] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "John",
+        "familyName" : "Ellenich",
+        "formatted" : "John Ellenich"
+      },
+      "type" : "person",
+      "displayName" : "John Ellenich",
+      "jive" : {
+        "level" : {
+          "name" : "Argon",
+          "points" : 645
+        },
+        "username" : "john.ellenich"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/john.ellenich",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5151",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5151"
+    },
+    "published" : "2012-11-28T01:00:57.570+0000",
+    "replyCount" : 4,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-28T01:00:57.570+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/151365/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/151365/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/151365",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/151365",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/151365/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "151365"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Heading out to get my migraine treated.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:60b0bede-545f-4144-88a1-15df54aadb9f] --><div class=\"jive-rendered-content\"><span>Heading out to get my migraine treated.</span></div><!-- [DocumentBodyEnd:60b0bede-545f-4144-88a1-15df54aadb9f] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 1,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-28T23:40:36.871+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-28T23:40:36.871+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367329/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367329/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/367329",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367329",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/151618",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367329/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367329/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "151618"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Back at work in Jiverado",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:90b05ec0-99a8-4988-b8e2-e926e3eca012] --><div class=\"jive-rendered-content\"><span>Back at work in Jiverado</span></div><!-- [DocumentBodyEnd:90b05ec0-99a8-4988-b8e2-e926e3eca012] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 1,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-11-29T15:17:35.531+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-29T15:17:35.531+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 1,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367525/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367525/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/367525",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367525",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/151710",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367525/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/367525/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "151710"
+  }, {
+    "type" : "message",
+    "subject" : "GHUnit and OCUnit",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/367732",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:5dce1827-949d-476e-961f-2ff11c5304bb] --><div class=\"jive-rendered-content\"><p>There are some discussion between GHUnit or OCUnit should be used&nbsp; in QA Automation SDK framework.&nbsp; I prefer GHUnit myself (my knowledge about XCode and Object C limited). Below is my 2 cents thought between 2 of them</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong><em>GHUnit</em></strong></p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\"><strong></strong>&nbsp;</p><p>Advantages:</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>1)every test class has \"setupClass\" method which </p><p>&nbsp;&nbsp;&nbsp;&nbsp; - can initialize the variable used for all test cases in that class</p><p>&nbsp;&nbsp;&nbsp;&nbsp; - control the data feeder into test case </p><p>2)easy integrate with Jenkins</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Disadvantages:</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>- need to plug in the project</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><strong><em>OCUnit</em></strong></p><p><strong><em><br/></em></strong></p><p><strong></strong>Advantages:</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>1)Built-in feature in Xcode</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Disadvantages:</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>- doesn't have 'setupClass' method in every test class </p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Please let me your feed back about it.&nbsp; </p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Thanks</p><p>Linh</p></div><!-- [DocumentBodyEnd:5dce1827-949d-476e-961f-2ff11c5304bb] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Linh",
+        "familyName" : "Tran",
+        "formatted" : "Linh Tran"
+      },
+      "type" : "person",
+      "displayName" : "Linh Tran",
+      "jive" : {
+        "level" : {
+          "name" : "Beryllium",
+          "points" : 74
+        },
+        "username" : "linh.tran"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@following",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/images",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/linh.tran",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5236",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/activities",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5236"
+    },
+    "published" : "2012-11-29T19:25:42.112+0000",
+    "replyCount" : 1,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-11-29T19:25:42.112+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/574601/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/574601",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/574601#574601",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/574601",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/574601/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "574601"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/365723",
+    "type" : "post",
+    "status" : "published",
+    "categories" : [ ],
+    "attachments" : [ ],
+    "publishDate" : "2012-12-03T16:39:00.000+0000",
+    "permalink" : "https://brewspace.jiveland.com/people/orson.bushnell/blog/2012/12/03/of-migraines-and-men",
+    "restrictComments" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:2b49d6d2-2543-4e7f-b74b-639c13cfbafc] --><div class=\"jive-rendered-content\"><p>Last week I didn't have much to say. This week I feel the need to talk about my health.</p><p>I get migraines.</p><p>Since being hired I have had 3, 2 after I started working here. This would be a cluster. Recently I have been having 2-4 clusters a year.</p><p>I have identified 3 groups of causes. 2 types of allergens and a kinesthetic issue.</p><p>First, I am allergic to SLS (Sodium Laurel Sulfate), commonly found in shampoo. I may also be allergic to a related compound, Sodium Laureth Sulfate. Early on in my suffering the shampoo that I had been using was discontinued, while searching for a replacement brand I discovered my allergy to SLS. I have since found it in both liquid hand soaps and toothpaste. For the most part these compounds are avoidable and the small amount of exposure in \"public\" restrooms is not an issue.</p><p>Next are nuts. I have not yet tried to identify if only specific types of nuts are a problem, so currently I am avoiding all types of nuts. This is not the peanut allergy that people talk about in the news. When my migraine frequency increased 2 years ago, I saw a specialist who gave me a list of foods that my be triggers. There are still items on this list that I am avoiding because I have not had the chance to determine if they actually are allergens. Chocolate is the most desired of these untested foods.</p><p>Finally, if I am not careful about my posture I can lock up my neck, causing a migraine. I believe this is due to damage to one of the disks in my neck that I suffered over 10 years ago. The real issue here is that I am not usually aware that a change of position will cause a migraine until after the migraine starts.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>There are 2 ways that I treat each migraine. The immediate treatment is pain medication. If you ever see me eat a handful of advil, I am having a migraine. At one time I had a prescription migraine medicine since advil is only effective in the early stages. I have since learned how to identify the early stages so I don't need the prescription medicine. Unfortunately even the prescription medicine could only treat the symptoms and would not actually stop the migraine.</p><p>Ultimately the only treatment that I have found effective at stopping a migraine is chiropractic adjustment. After a migraine I arrange to see my Chiropractor at the earliest opportunity.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>I have identified 5 stages to my migraines. If I take advil during the first 2 stages I can avoid the 4th stage and many times the 3rd. The first 3 stages are identified by visual effects but no pain. The 4th stage is the crushing pain stage. The 5th stage is nebulous as I frequently can't tell that I am still having a migraine until something triggers a pain response. During the first 4 stages I cannot use a computer either because I can't see or because the pain is too great. I have not noticed any issues with using a computer in the 5th stage, but that is more because of the nature of the 5th stage than because there is no issue.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>What does this mean for Jive?</p><p>Very little. I may have to leave work early because a migraine started. I may have to work from home the next day so I can see my chiropractor. In the short term I may have more migraines until I get my desk arranged properly, which I work on every day.</p><p>I will be working from home at least 1 day every 2 weeks so I can get regular, preventative treatment. Other than that it will not have more than an occasional, short effect on my work.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Ultimately -</p><p>Don't worry, be happy.</p><p>I am. <img height=\"16px\" src=\"https://brewspace.jiveland.com/7.0.0.20121127153109.1db3721.release_7c1/images/emoticons/happy.png\" width=\"16px\"/></p></div><!-- [DocumentBodyEnd:2b49d6d2-2543-4e7f-b74b-639c13cfbafc] --></body>"
+    },
+    "subject" : "Of Migraines and Men",
+    "viewCount" : 230,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-12-03T16:39:02.096+0000",
+    "replyCount" : 26,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-03T16:39:02.101+0000",
+    "tags" : [ ],
+    "followerCount" : 9,
+    "likeCount" : 2,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368790/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368790/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368790",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/blog/2012/12/03/of-migraines-and-men",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/368790",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368790/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368790/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "28463"
+  }, {
+    "type" : "dm",
+    "subject" : "Hi Orson,&nbsp; Can you take a look at the search options? I think these got lost when Jake transitioned...",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    }, {
+      "name" : {
+        "givenName" : "Heath",
+        "familyName" : "Borders",
+        "formatted" : "Heath Borders"
+      },
+      "type" : "person",
+      "displayName" : "Heath Borders",
+      "jive" : {
+        "level" : {
+          "name" : "Oxygen",
+          "points" : 141
+        },
+        "username" : "heath.borders"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/heath.borders",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5327",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5327"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:4d0bd3f3-7634-49af-994e-95fee2cf33e2] --><div class=\"jive-rendered-content\"><span>Hi Orson,</span><br/><br/><span>Can you take a look at the search options? I think these got lost when Jake transitioned over to the RTE. I'll need them to complete the search view on the ipad. Thanks!</span><br/><br/></div><!-- [DocumentBodyEnd:4d0bd3f3-7634-49af-994e-95fee2cf33e2] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "Rob",
+        "familyName" : "Derstadt",
+        "formatted" : "Rob Derstadt"
+      },
+      "type" : "person",
+      "displayName" : "Rob Derstadt",
+      "jive" : {
+        "level" : {
+          "name" : "Vanadium",
+          "points" : 1057
+        },
+        "username" : "rob.derstadt"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/rob.derstadt",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3550"
+    },
+    "published" : "2012-12-04T05:29:19.450+0000",
+    "replyCount" : 2,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-04T05:29:19.450+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152570/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152570/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152570",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/152570",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152570/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "152570"
+  }, {
+    "type" : "dm",
+    "subject" : "Hi Orson,&nbsp; I put a redline for the content detail view in dropbox for you in the redlines folder....",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:2e707cf8-971b-44fb-a99f-15c9f27c22a1] --><div class=\"jive-rendered-content\"><span>Hi Orson,</span><br/><br/><span>I put a redline for the content detail view in dropbox for you in the redlines folder. Take a look and let me know if you have questions&hellip; I'll start getting you assets tomorrow.</span><br/><br/><span>-john</span></div><!-- [DocumentBodyEnd:2e707cf8-971b-44fb-a99f-15c9f27c22a1] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "John",
+        "familyName" : "Ellenich",
+        "formatted" : "John Ellenich"
+      },
+      "type" : "person",
+      "displayName" : "John Ellenich",
+      "jive" : {
+        "level" : {
+          "name" : "Argon",
+          "points" : 645
+        },
+        "username" : "john.ellenich"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/john.ellenich",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5151/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5151",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5151"
+    },
+    "published" : "2012-12-05T01:01:24.738+0000",
+    "replyCount" : 6,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-05T01:01:24.738+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152831/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152831/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152831",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/152831",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152831/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "152831"
+  }, {
+    "type" : "dm",
+    "subject" : "Hey Orson,&nbsp; I'm cleaning up some IT records. &nbsp;Can you please give me the number on the Jive asset...",
+    "participants" : [ {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    } ],
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5114",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:da43053a-1752-45c9-b658-8668402edaff] --><div class=\"jive-rendered-content\"><span>Hey Orson,</span><br/><br/><span>I'm cleaning up some IT records. &nbsp;Can you please give me the number on the Jive asset tag on the bottom of your MacBook?</span><br/><br/><br/><span>Thanks,</span><br/><span>Ryan...</span><br/></div><!-- [DocumentBodyEnd:da43053a-1752-45c9-b658-8668402edaff] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 0,
+    "author" : {
+      "name" : {
+        "givenName" : "Ryan",
+        "familyName" : "Ruark",
+        "formatted" : "Ryan Ruark"
+      },
+      "type" : "person",
+      "displayName" : "Ryan Ruark",
+      "jive" : {
+        "level" : {
+          "name" : "Iron",
+          "points" : 1279
+        },
+        "username" : "ryan.ruark"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/ryan.ruark",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5114/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5114",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5114"
+    },
+    "published" : "2012-12-05T18:29:20.536+0000",
+    "replyCount" : 2,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-05T18:29:20.536+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152957/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152957/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152957",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/inbox/dm/152957",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/152957/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "152957"
+  }, {
+    "type" : "document",
+    "status" : "published",
+    "attachments" : [ ],
+    "restrictComments" : false,
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/places/370588",
+    "categories" : [ ],
+    "visibility" : "place",
+    "authorship" : "open",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:df156e07-dff1-4bff-855d-ebe066e9a48c] --><div class=\"jive-rendered-content\"><p><a href=\"https://brewspace.jiveland.com/servlet/JiveServlet/showImage/102-104786-1-3163445/Star+Trek.jpg\"><img alt=\"Star Trek.jpg\" class=\"jive-image\" height=\"900\" src=\"https://brewspace.jiveland.com/servlet/JiveServlet/downloadImage/102-104786-1-3163445/607-900/Star+Trek.jpg\" style=\"width: 620px; height: 919px;\" width=\"607\"/></a></p></div><!-- [DocumentBodyEnd:df156e07-dff1-4bff-855d-ebe066e9a48c] --></body>"
+    },
+    "subject" : "NERD ALERT",
+    "viewCount" : 413,
+    "author" : {
+      "name" : {
+        "givenName" : "Justin",
+        "familyName" : "Hein",
+        "formatted" : "Justin Hein"
+      },
+      "type" : "person",
+      "displayName" : "Justin Hein",
+      "jive" : {
+        "level" : {
+          "name" : "Rubidium",
+          "points" : 2573
+        },
+        "username" : "justin.hein"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/justin.hein",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3485/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3485",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3485"
+    },
+    "published" : "2012-12-03T18:27:36.410+0000",
+    "replyCount" : 39,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-06T17:55:34.159+0000",
+    "tags" : [ ],
+    "followerCount" : 15,
+    "likeCount" : 20,
+    "resources" : {
+      "versions" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/versions/368902",
+        "allowed" : [ "GET" ]
+      },
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368902/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368902/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368902",
+        "allowed" : [ "GET", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/docs/DOC-104786",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/contents/368902",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368902/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/368902/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "104786"
+  }, {
+    "type" : "message",
+    "subject" : "iOS SDK smoke testing automation in Jenkins",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/371172",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:30cf2274-ee26-44e3-8096-375d1e55220c] --><div class=\"jive-rendered-content\"><p>Finally, the iOS SDK testing automation framework is in Jenkins, <a class=\"jive-link-external-small\" href=\"http://jenkins.jiveland.com/job/jive-sdk-ios-native-testing/\">jive-sdk-ios-native-testing [Jenkins]</a>. I want to thank all your supporting,&nbsp; special thanks to Rob, Heath, Orson, Evan and Inyang.&nbsp; This framework will be improved and maintained while working on iOS sdk testing.&nbsp; Please let me know if you have any idea to make it more robot and helpful.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Thanks</p><p>Linh</p></div><!-- [DocumentBodyEnd:30cf2274-ee26-44e3-8096-375d1e55220c] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Linh",
+        "familyName" : "Tran",
+        "formatted" : "Linh Tran"
+      },
+      "type" : "person",
+      "displayName" : "Linh Tran",
+      "jive" : {
+        "level" : {
+          "name" : "Beryllium",
+          "points" : 74
+        },
+        "username" : "linh.tran"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@following",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/images",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/linh.tran",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5236",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5236/activities",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5236"
+    },
+    "published" : "2012-12-07T17:35:48.861+0000",
+    "replyCount" : 3,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-07T17:35:48.861+0000",
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 2,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/580515/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/580515",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/580515#580515",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/580515",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/580515/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "580515"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Traveling to Palo Alto all... day... long.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:f821cfd9-7b5f-400e-8071-58c76339cf37] --><div class=\"jive-rendered-content\"><span>Traveling to Palo Alto all... day... long.</span></div><!-- [DocumentBodyEnd:f821cfd9-7b5f-400e-8071-58c76339cf37] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 3,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-12-12T14:15:05.879+0000",
+    "replyCount" : 1,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-12T14:15:05.879+0000",
+    "tags" : [ ],
+    "followerCount" : 2,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372886/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372886/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/372886",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372886",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/154394",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372886/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/372886/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "154394"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Made it to Palo Alto, feeling horrible. Jet lag sucks.",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:3f3b3558-d63d-4d34-a94e-26953e3d848c] --><div class=\"jive-rendered-content\"><span>Made it to Palo Alto, feeling horrible. Jet lag sucks.</span><br/></div><!-- [DocumentBodyEnd:3f3b3558-d63d-4d34-a94e-26953e3d848c] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 87,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-12-13T00:21:34.929+0000",
+    "replyCount" : 12,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-13T00:21:34.929+0000",
+    "tags" : [ ],
+    "followerCount" : 9,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373350/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373350/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/373350",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373350",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/154649",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373350/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373350/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "154649"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "update",
+    "subject" : "Jet lag gone. Now I just can't breath. What is in the air here?",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:e147b8db-39d3-4f5f-a960-ebb5ad134aea] --><div class=\"jive-rendered-content\"><span>Jet lag gone. Now I just can't breath. What is in the air here?</span></div><!-- [DocumentBodyEnd:e147b8db-39d3-4f5f-a960-ebb5ad134aea] --></body>"
+    },
+    "status" : "published",
+    "viewCount" : 4,
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2012-12-13T15:39:41.919+0000",
+    "replyCount" : 0,
+    "visibleToExternalContributors" : false,
+    "updated" : "2012-12-13T15:39:41.919+0000",
+    "tags" : [ ],
+    "followerCount" : 1,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373502/likes",
+        "allowed" : [ "GET" ]
+      },
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373502/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/images/contents/373502",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373502",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell/status/154732",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373502/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/373502/comments",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "154732"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25,
+  "links" : {
+    "next" : "https://brewspace.jiveland.com/api/core/v3/streams/10432/associations?count=25&startIndex=25"
+  }
+}

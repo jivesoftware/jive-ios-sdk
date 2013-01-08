@@ -1164,6 +1164,17 @@
     [[self deleteStreamOperation:stream onComplete:complete onError:error] start];
 }
 
+- (JAPIRequestOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self contentsResourceOperation:[stream.resources objectForKey:@"associations"]
+                               withOptions:options
+                                onComplete:complete
+                                   onError:error];
+}
+
+- (void) streamAssociations:(JiveStream *)stream withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self streamAssociationsOperation:stream withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
