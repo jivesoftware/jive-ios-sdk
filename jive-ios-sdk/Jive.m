@@ -1016,6 +1016,17 @@
     return operation;
 }
 
+- (JAPIRequestOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self streamsResourceOperation:[place.resources objectForKey:@"followingIn"]
+                              withOptions:options
+                               onComplete:complete
+                                  onError:error];
+}
+
+- (void) placeFollowingIn:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self placeFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
