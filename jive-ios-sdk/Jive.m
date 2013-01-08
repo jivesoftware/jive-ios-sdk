@@ -634,6 +634,22 @@
     [[self streamsOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
+- (JAPIRequestOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"tasks"];
+    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self listOperationForClass:[JiveContent class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
+- (void) tasks:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self tasksOperation:person withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (JAPIRequestOperation*) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {

@@ -1,0 +1,121 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "type" : "task",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:667443f4-93eb-470c-bbd3-af55be786912] --><div class=\"jive-rendered-content\"></div><!-- [DocumentBodyEnd:667443f4-93eb-470c-bbd3-af55be786912] --></body>"
+    },
+    "owner" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+    "dueDate" : "2013-01-05T07:59:59.999+0000",
+    "completed" : false,
+    "status" : "published",
+    "subject" : "Sample task for iOS SDK reference",
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 215
+        },
+        "username" : "orson.bushnell"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2013-01-03T22:01:21.522+0000",
+    "visibleToExternalContributors" : false,
+    "updated" : "2013-01-03T22:01:21.522+0000",
+    "tags" : [ "sdk", "ios" ],
+    "followerCount" : 1,
+    "resources" : {
+      "read" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/379791/read",
+        "allowed" : [ "DELETE", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/379791",
+        "allowed" : [ "GET", "DELETE", "PUT" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/tasks/8991",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/contents/379791/followingIn",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "8991"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

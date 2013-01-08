@@ -2784,4 +2784,60 @@
     }];
 }
 
+- (void) testPersonTasksOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    JiveSortedRequestOptions *options = [[JiveSortedRequestOptions alloc] init];
+    options.sort = JiveSortOrderTitleAsc;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/tasks?sort=titleAsc" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_tasks" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive tasksOperation:source withOptions:options onComplete:^(NSArray *tasks) {
+        // Called 3rd
+        STAssertEquals([tasks count], (NSUInteger)1, @"Wrong number of items parsed");
+        STAssertEquals([[tasks objectAtIndex:0] class], [JiveTask class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
+- (void) testPersonTasks {
+    JiveSortedRequestOptions *options = [[JiveSortedRequestOptions alloc] init];
+    options.sort = JiveSortOrderLatestActivityDesc;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/tasks?sort=latestActivityDesc" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_tasks" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive tasks:source withOptions:options onComplete:^(NSArray *tasks) {
+            // Called 3rd
+            STAssertEquals([tasks count], (NSUInteger)1, @"Wrong number of items parsed");
+            STAssertEquals([[tasks objectAtIndex:0] class], [JiveTask class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
