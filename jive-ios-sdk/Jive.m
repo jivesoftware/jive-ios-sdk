@@ -842,6 +842,20 @@
     [[self contentFollowingInOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"read"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    
+    [request setHTTPMethod:read ? @"POST" : @"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) content:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self contentOperation:content markAsRead:read onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
