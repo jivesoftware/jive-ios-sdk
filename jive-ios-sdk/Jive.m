@@ -836,6 +836,17 @@
     [operation start];
 }
 
+- (JAPIRequestOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self streamsResourceOperation:[content.resources objectForKey:@"followingIn"]
+                              withOptions:options
+                               onComplete:complete
+                                  onError:error];
+}
+
+- (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self contentFollowingInOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (JAPIRequestOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
