@@ -1175,6 +1175,26 @@
     [[self streamAssociationsOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:options
+                                                     andArgs:nil];
+    NSDictionary *JSON = stream.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JiveStream class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updateStream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    [[self updateStreamOperation:stream withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{

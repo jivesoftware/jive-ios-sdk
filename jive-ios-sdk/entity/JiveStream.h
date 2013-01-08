@@ -36,7 +36,7 @@
 // context - TODO definition
 // profile - TODO definition
 // watches - TODO definition
-@property(nonatomic, copy) NSString* source;
+@property(nonatomic, readonly, strong) NSString* source;
 
 // The object type of this object ("stream").
 @property(nonatomic, readonly, strong) NSString* type;

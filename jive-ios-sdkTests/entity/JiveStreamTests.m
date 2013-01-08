@@ -31,7 +31,7 @@
     person.displayName = @"author";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
-    stream.source = @"source";
+    [stream setValue:@"source" forKey:@"source"];
     [stream setValue:@"not a real type" forKey:@"type"];
     [stream setValue:@"1234" forKey:@"jiveId"];
     [stream setValue:person forKey:@"person"];
@@ -79,7 +79,7 @@
     person.displayName = @"author";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
-    stream.source = @"source";
+    [stream setValue:@"source" forKey:@"source"];
     [stream setValue:@"not a real type" forKey:@"type"];
     [stream setValue:@"1234" forKey:@"jiveId"];
     [stream setValue:person forKey:@"person"];
