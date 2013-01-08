@@ -884,6 +884,26 @@
     [[self deleteContentOperation:content onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:options
+                                                     andArgs:nil];
+    NSDictionary *JSON = content.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updateContent:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    [[self updateContentOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
