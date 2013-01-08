@@ -108,6 +108,17 @@
                                onError:error];
 }
 
+- (JAPIRequestOperation *)contentsResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
+                                              options:options
+                                              andArgs:nil];
+    
+    return [self listOperationForClass:[JiveContent class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
 - (JAPIRequestOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
     
@@ -272,14 +283,10 @@
 }
 
 - (JAPIRequestOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/announcements"
-                                              options:options
-                                              andArgs:nil];
-    JAPIRequestOperation *operation = [self listOperationForClass:[JiveAnnouncement class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self contentsListOperation:@"announcements"
+                           withOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (JAPIRequestOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -635,15 +642,10 @@
 }
 
 - (JAPIRequestOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"tasks"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    
-    return [self listOperationForClass:[JiveContent class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self contentsResourceOperation:[person.resources objectForKey:@"tasks"]
+                               withOptions:options
+                                onComplete:complete
+                                   onError:error];
 }
 
 - (void) tasks:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -790,15 +792,10 @@
 }
 
 - (JAPIRequestOperation *)commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"comments"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    
-    return [self listOperationForClass:[JiveComment class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self contentsResourceOperation:[content.resources objectForKey:@"comments"]
+                               withOptions:options
+                                onComplete:complete
+                                   onError:error];
 }
 
 - (void) commentsForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -971,15 +968,10 @@
 }
 
 - (JAPIRequestOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *announcementsResourceEntry = [place.resources objectForKey:@"announcements"];
-    NSURLRequest *request = [self requestWithTemplate:[announcementsResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    JAPIRequestOperation *operation = [self listOperationForClass:[JiveAnnouncement class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self contentsResourceOperation:[place.resources objectForKey:@"announcements"]
+                               withOptions:options
+                                onComplete:completeBlock
+                                   onError:errorBlock];
 }
 
 - (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -1005,15 +997,10 @@
 }
 
 - (NSOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *tasksResourceEntry = [place.resources objectForKey:@"tasks"];
-    NSURLRequest *request = [self requestWithTemplate:[tasksResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
-    NSOperation *operation = [self listOperationForClass:[JiveTask class]
-                                                 request:request
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
-    return operation;
+    return [self contentsResourceOperation:[place.resources objectForKey:@"tasks"]
+                               withOptions:options
+                                onComplete:completeBlock
+                                   onError:errorBlock];
 }
 
 - (JAPIRequestOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
