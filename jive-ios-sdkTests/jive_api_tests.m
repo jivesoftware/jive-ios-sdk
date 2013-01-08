@@ -2363,7 +2363,7 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    JAPIRequestOperation* operation = [jive deletePersonOperation:source onComplete:^() {
+    JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deletePersonOperation:source onComplete:^() {
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
@@ -2692,7 +2692,7 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
-    JAPIRequestOperation* operation = [jive deleteStreamOperation:source onComplete:^() {
+    JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteStreamOperation:source onComplete:^() {
         // Check that delegates where actually called
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];

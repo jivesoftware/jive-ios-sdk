@@ -34,14 +34,15 @@
     
     id json = [self JSONFromTestFile:@"inbox_response.json"];
     
-    JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:[json objectForKey:@"list"]];
+    NSDictionary *JSONList = [json objectForKey:@"list"];
+    JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:JSONList];
     
     STAssertNil(inboxEntry, @"JiveInboxEntry should have failed initialization when passed incorrect JSON.");
     
     NSArray* instances = [JiveInboxEntry instancesFromJSONList:[json objectForKey:@"list"]];
     
     STAssertNotNil(instances, @"JiveInboxEntry list should not be nil!");
-    STAssertTrue([instances count] == [[json objectForKey:@"list"] count], @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.", [[json objectForKey:@"list"] count], [instances count]);
+    STAssertTrue([instances count] == [JSONList count], @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.", [JSONList count], [instances count]);
 }
 
 @end

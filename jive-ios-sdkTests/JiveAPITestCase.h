@@ -13,7 +13,6 @@
 #import "JiveAsyncTestCase.h"
 #import "Jive.h"
 #import "JiveCredentials.h"
-#import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
 #import "OCMockObject+JiveAuthorizationDelegate.h"
 
