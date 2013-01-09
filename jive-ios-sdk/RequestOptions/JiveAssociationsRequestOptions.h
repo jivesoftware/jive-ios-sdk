@@ -14,6 +14,7 @@
 
 - (void)addType:(NSString *)newType;
 
+// Internal method referenced by derived classes.
 - (NSMutableArray *)buildFilter;
 
 @end

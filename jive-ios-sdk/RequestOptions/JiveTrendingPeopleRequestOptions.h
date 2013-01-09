@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSURL *url; // users that are trending in this place URI
 
+// Internal method referenced by derived classes.
 - (NSMutableArray *)buildFilter;
 
 @end

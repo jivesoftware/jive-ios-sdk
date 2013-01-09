@@ -14,6 +14,7 @@
 
 - (void)addTag:(NSString *)tag;
 
+// Internal method referenced by derived classes.
 - (NSMutableArray *)buildFilter;
 
 @end
