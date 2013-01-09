@@ -28,7 +28,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    person.displayName = @"author";
+    person.location = @"author";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
     [stream setValue:@"source" forKey:@"source"];
@@ -50,7 +50,7 @@
 - (void)testToJSON_alternate {
     JivePerson *person = [[JivePerson alloc] init];
     
-    person.displayName = @"Gibson";
+    person.location = @"Gibson";
     stream.name = @"William";
     [stream setValue:@"Writing" forKey:@"subject"];
     [stream setValue:@"another non-type" forKey:@"type"];
@@ -76,7 +76,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    person.displayName = @"author";
+    person.location = @"author";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
     [stream setValue:@"source" forKey:@"source"];
@@ -104,7 +104,7 @@
     STAssertEqualObjects(newStream.name, stream.name, @"Wrong name");
     STAssertEqualObjects(newStream.receiveEmails, stream.receiveEmails, @"Wrong receiveEmails");
     STAssertEqualObjects(newStream.source, stream.source, @"Wrong source");
-    STAssertEqualObjects(newStream.person.displayName, stream.person.displayName, @"Wrong person");
+    STAssertEqualObjects(newStream.person.location, stream.person.location, @"Wrong person");
     STAssertEqualObjects(newStream.published, stream.published, @"Wrong published");
     STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
     STAssertEquals([newStream.resources count], [stream.resources count], @"Wrong number of resource objects");
@@ -120,7 +120,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    person.displayName = @"Gibson";
+    person.location = @"Gibson";
     stream.name = @"William";
     [stream setValue:@"Writing" forKey:@"subject"];
     [stream setValue:@"another non-type" forKey:@"type"];
@@ -147,7 +147,7 @@
     STAssertEqualObjects(newStream.name, stream.name, @"Wrong name");
     STAssertEqualObjects(newStream.receiveEmails, stream.receiveEmails, @"Wrong receiveEmails");
     STAssertEqualObjects(newStream.source, @"custom", @"Wrong source");
-    STAssertEqualObjects(newStream.person.displayName, stream.person.displayName, @"Wrong person");
+    STAssertEqualObjects(newStream.person.location, stream.person.location, @"Wrong person");
     STAssertEqualObjects(newStream.published, stream.published, @"Wrong published");
     STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
     STAssertEquals([newStream.resources count], [stream.resources count], @"Wrong number of resource objects");

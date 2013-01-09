@@ -16,24 +16,23 @@
 
 @interface JivePerson : JiveObject
 
-
 // List of postal JiveAddresses belonging to this person, with standard types home,other,pobox,work and value type of address. JiveAddress[]
-@property(nonatomic, readonly, strong) NSArray* addresses;
+@property(nonatomic, strong) NSArray* addresses;
 
 // Formatted full name of this person, suitable for use in UI presentation. If the person has privacy settings that do not allow you to see his or her name, this will be the Jive username instead.
-@property(nonatomic, copy) NSString* displayName;
+@property(nonatomic, readonly, strong) NSString* displayName;
 
 // List of JiveEmail addresses belonging to this person, with standard types home, other, work and value type of string. JiveEmail[]
-@property(nonatomic, readonly, strong) NSArray* emails;
+@property(nonatomic, strong) NSArray* emails;
 
 // Number of people following this object.
-@property(nonatomic, readonly) NSNumber *followerCount;
+@property(nonatomic, readonly, strong) NSNumber *followerCount;
 
 // Number of people this person is following.
-@property(nonatomic, readonly) NSNumber *followingCount;
+@property(nonatomic, readonly, strong) NSNumber *followingCount;
 
 // Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
-@property(nonatomic, copy) NSString* jiveId;
+@property(nonatomic, readonly, strong) NSString* jiveId;
 
 // Jive extensions to OpenSocial person object.
 @property(nonatomic, readonly, strong) JivePersonJive* jive;
@@ -42,10 +41,10 @@
 @property(nonatomic, copy) NSString* location;
 
 // Name components for this person.
-@property(nonatomic, readonly, strong) JiveName* name;
+@property(nonatomic, strong) JiveName* name;
 
 // JivePhone numbers belonging to this person, with standard types: fax, home, mobile, other, pager, work. JivePhoneNumber[]
-@property(nonatomic, readonly, strong) NSArray* phoneNumbers;
+@property(nonatomic, strong) NSArray* phoneNumbers;
 
 // URI(s) of profile images for this person. To manage profile images in REST, use the images resource.
 @property(nonatomic, readonly, strong) NSArray* photos;
@@ -60,17 +59,16 @@
 @property(nonatomic, copy) NSString* status;
 
 // Defined tags for this person. NSString[]
-@property(nonatomic, readonly, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* tags;
 
 // URL of the thumbnail (avatar) image for this person.
-@property(nonatomic, copy) NSString* thumbnailUrl;
+@property(nonatomic, readonly, strong) NSString* thumbnailUrl;
 
 // The object type of this object ("person").
-@property(nonatomic, copy) NSString* type;
+@property(nonatomic, readonly) NSString* type;
 
 // Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
-
 
 
 @end

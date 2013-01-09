@@ -3492,14 +3492,14 @@
     }]];
     
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
-    source.displayName = @"displayName";
+    source.location = @"location";
     
     NSDictionary *JSON = [source toJSONDictionary];
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive updatePersonOperation:source onComplete:^(JivePerson *person) {
         // Called 3rd
         STAssertTrue([[person class] isSubclassOfClass:[JivePerson class]], @"Wrong item class");
-        STAssertEqualObjects(person.displayName, @"Orson Bushnell", @"New object not created");
+        STAssertEqualObjects(person.location, @"home on the range", @"New object not created");
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -3525,11 +3525,11 @@
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
-        source.displayName = @"alternate";
+        source.location = @"alternate";
         [jive updatePerson:source onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertTrue([[person class] isSubclassOfClass:[JivePerson class]], @"Wrong item class");
-            STAssertEqualObjects(person.displayName, @"Orson Bushnell", @"New object not created");
+            STAssertEqualObjects(person.location, @"home on the range", @"New object not created");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

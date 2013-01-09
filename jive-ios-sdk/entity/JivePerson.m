@@ -12,12 +12,14 @@
 #import "JiveAddress.h"
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
 @implementation JivePerson
-@synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, type, updated;
+@synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, updated;
 
+- (NSString *)type {
+    return @"person";
+}
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
     static NSDictionary *propertyClasses = nil;
@@ -46,36 +48,17 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
     
-    [dictionary setValue:self.displayName forKey:@"displayName"];
-    [dictionary setValue:self.jiveId forKey:@"id"];
     [dictionary setValue:self.location forKey:@"location"];
     [dictionary setValue:self.status forKey:@"status"];
-    [dictionary setValue:self.thumbnailUrl forKey:@"thumbnailUrl"];
-    [dictionary setValue:self.type forKey:@"type"];
-    [dictionary setValue:self.followerCount forKey:@"followerCount"];
-    [dictionary setValue:self.followingCount forKey:@"followingCount"];
     [self addArrayElements:addresses toJSONDictionary:dictionary forTag:@"addresses"];
     [self addArrayElements:emails toJSONDictionary:dictionary forTag:@"emails"];
     [self addArrayElements:phoneNumbers toJSONDictionary:dictionary forTag:@"phoneNumbers"];
-    if (published)
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
-    
-    if (updated)
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
-    
     if (name)
         [dictionary setValue:[name toJSONDictionary] forKey:@"name"];
     
-    if (jive)
-        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
-    
     if (tags)
         [dictionary setValue:[tags copy] forKey:@"tags"];
-    
-    if (photos)
-        [dictionary setValue:[photos copy] forKey:@"photos"];
     
     return dictionary;
 }

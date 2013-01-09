@@ -32,7 +32,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    author.displayName = @"author";
+    author.location = @"author";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
@@ -83,7 +83,7 @@
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSDictionary *contentJSON = [JSON objectForKey:@"content"];
     
@@ -121,7 +121,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    author.displayName = @"Gibson";
+    author.location = @"Gibson";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];
@@ -171,7 +171,7 @@
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSDictionary *contentJSON = [JSON objectForKey:@"content"];
     
@@ -211,7 +211,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.displayName = @"author";
+    author.location = @"author";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
@@ -259,7 +259,7 @@
     STAssertEqualObjects(newStream.status, stream.status, @"Wrong status");
     STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
     STAssertEqualObjects(newStream.viewCount, stream.viewCount, @"Wrong viewCount");
-    STAssertEqualObjects(newStream.author.displayName, stream.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newStream.author.location, stream.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStream.content.type, stream.content.type, @"Wrong content.type");
     STAssertEqualObjects(newStream.parentContent.name, stream.parentContent.name, @"Wrong parentContent.name");
     STAssertEqualObjects(newStream.parentPlace.name, stream.parentPlace.name, @"Wrong parentPlace.name");
@@ -284,7 +284,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.displayName = @"Gibson";
+    author.location = @"Gibson";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];
@@ -331,7 +331,7 @@
     STAssertEqualObjects(newStream.status, stream.status, @"Wrong status");
     STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
     STAssertEqualObjects(newStream.viewCount, stream.viewCount, @"Wrong viewCount");
-    STAssertEqualObjects(newStream.author.displayName, stream.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newStream.author.location, stream.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStream.content.type, stream.content.type, @"Wrong content.type");
     STAssertEqualObjects(newStream.parentContent.name, stream.parentContent.name, @"Wrong parentContent.name");
     STAssertEqualObjects(newStream.parentPlace.name, stream.parentPlace.name, @"Wrong parentPlace.name");

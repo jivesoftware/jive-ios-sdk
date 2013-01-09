@@ -28,7 +28,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"group", @"Wrong type");
     
-    creator.displayName = @"Harold";
+    creator.location = @"Harold";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"OPEN";
     [self.group setValue:[NSNumber numberWithInt:1] forKey:@"memberCount"];
@@ -52,14 +52,14 @@
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([creatorJSON objectForKey:@"displayName"], creator.displayName, @"Wrong value");
+    STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 
 - (void)testTaskToJSON_alternate {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.displayName = @"Maud";
+    creator.location = @"Maud";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"PRIVATE";
     [self.group setValue:[NSNumber numberWithInt:102] forKey:@"memberCount"];
@@ -83,14 +83,14 @@
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([creatorJSON objectForKey:@"displayName"], creator.displayName, @"Wrong value");
+    STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 
 - (void)testPostParsing {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";
     
-    creator.displayName = @"Harold";
+    creator.location = @"Harold";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"OPEN";
     [self.group setValue:[NSNumber numberWithInt:1] forKey:@"memberCount"];
@@ -105,14 +105,14 @@
     STAssertEqualObjects(newPlace.memberCount, self.group.memberCount, @"Wrong memberCount");
     STAssertEquals([newPlace.tags count], [self.group.tags count], @"Wrong number of tags");
     STAssertEqualObjects([newPlace.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEqualObjects(newPlace.creator.displayName, creator.displayName, @"Wrong creator displayName");
+    STAssertEqualObjects(newPlace.creator.location, creator.location, @"Wrong creator location");
 }
 
 - (void)testPostParsingAlternate {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.displayName = @"Maud";
+    creator.location = @"Maud";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"PRIVATE";
     [self.group setValue:[NSNumber numberWithInt:102] forKey:@"memberCount"];
@@ -127,7 +127,7 @@
     STAssertEqualObjects(newPlace.memberCount, self.group.memberCount, @"Wrong memberCount");
     STAssertEquals([newPlace.tags count], [self.group.tags count], @"Wrong number of tags");
     STAssertEqualObjects([newPlace.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEqualObjects(newPlace.creator.displayName, creator.displayName, @"Wrong creator displayName");
+    STAssertEqualObjects(newPlace.creator.location, creator.location, @"Wrong creator location");
 }
 
 @end

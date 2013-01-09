@@ -34,8 +34,8 @@
     STAssertEqualObjects([JSON objectForKey:@"type"], @"document", @"Wrong type");
     
     attachment.contentType = @"person";
-    approver.displayName = @"Jimmy";
-    author.displayName = @"author";
+    approver.location = @"Jimmy";
+    author.location = @"author";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -71,7 +71,7 @@
     STAssertTrue([[approversJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([approversJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEquals([approverJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([approverJSON objectForKey:@"displayName"], approver.displayName, @"Wrong value");
+    STAssertEqualObjects([approverJSON objectForKey:@"location"], approver.location, @"Wrong value");
     
     NSArray *authorsJSON = [JSON objectForKey:@"authors"];
     NSDictionary *authorJSON = [authorsJSON objectAtIndex:0];
@@ -79,7 +79,7 @@
     STAssertTrue([[authorsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([authorsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSArray *usersJSON = [JSON objectForKey:@"users"];
     
@@ -109,9 +109,9 @@
     NSString *tag = @"concise";
     
     attachment.contentType = @"place";
-    approver.displayName = @"Johns";
-    author.displayName = @"James Joyce";
-    user.displayName = @"one";
+    approver.location = @"Johns";
+    author.location = @"James Joyce";
+    user.location = @"one";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -147,7 +147,7 @@
     STAssertTrue([[approversJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([approversJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEquals([approverJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([approverJSON objectForKey:@"displayName"], approver.displayName, @"Wrong value");
+    STAssertEqualObjects([approverJSON objectForKey:@"location"], approver.location, @"Wrong value");
     
     NSArray *authorsJSON = [JSON objectForKey:@"authors"];
     NSDictionary *authorJSON = [authorsJSON objectAtIndex:0];
@@ -155,7 +155,7 @@
     STAssertTrue([[authorsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([authorsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSArray *usersJSON = [JSON objectForKey:@"users"];
     NSDictionary *userJSON = [usersJSON objectAtIndex:0];
@@ -163,7 +163,7 @@
     STAssertTrue([[usersJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([usersJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEquals([userJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([userJSON objectForKey:@"displayName"], user.displayName, @"Wrong value");
+    STAssertEqualObjects([userJSON objectForKey:@"location"], user.location, @"Wrong value");
     
     NSArray *tagsJSON = [JSON objectForKey:@"tags"];
     
@@ -238,8 +238,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.displayName = @"document";
-    person2.displayName = @"question";
+    person1.location = @"document";
+    person2.location = @"question";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"approvers"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -254,7 +254,7 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"approvers array not converted");
     STAssertEquals([array count], (NSUInteger)1, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value");
     
     [self.document setValue:[self.document.approvers arrayByAddingObject:person2] forKey:@"approvers"];
     
@@ -272,17 +272,17 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"approvers array not converted");
     STAssertEquals([array count], (NSUInteger)2, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person 1 object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value 1");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value 1");
     STAssertTrue([[object2 class] isSubclassOfClass:[NSDictionary class]], @"person 2 object not converted");
-    STAssertEqualObjects([object2 objectForKey:@"displayName"], person2.displayName, @"Wrong value 2");
+    STAssertEqualObjects([object2 objectForKey:@"location"], person2.location, @"Wrong value 2");
 }
 
 - (void)testToJSON_authors {
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.displayName = @"document";
-    person2.displayName = @"question";
+    person1.location = @"document";
+    person2.location = @"question";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"authors"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -297,7 +297,7 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"authors array not converted");
     STAssertEquals([array count], (NSUInteger)1, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value");
     
     [self.document setValue:[self.document.authors arrayByAddingObject:person2] forKey:@"authors"];
     
@@ -315,17 +315,17 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"authors array not converted");
     STAssertEquals([array count], (NSUInteger)2, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person 1 object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value 1");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value 1");
     STAssertTrue([[object2 class] isSubclassOfClass:[NSDictionary class]], @"person 2 object not converted");
-    STAssertEqualObjects([object2 objectForKey:@"displayName"], person2.displayName, @"Wrong value 2");
+    STAssertEqualObjects([object2 objectForKey:@"location"], person2.location, @"Wrong value 2");
 }
 
 - (void)testToJSON_users {
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.displayName = @"document";
-    person2.displayName = @"question";
+    person1.location = @"document";
+    person2.location = @"question";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"users"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -340,7 +340,7 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"users array not converted");
     STAssertEquals([array count], (NSUInteger)1, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value");
     
     [self.document setValue:[self.document.users arrayByAddingObject:person2] forKey:@"users"];
     
@@ -358,9 +358,9 @@
     STAssertTrue([[array class] isSubclassOfClass:[NSArray class]], @"users array not converted");
     STAssertEquals([array count], (NSUInteger)2, @"Wrong number of elements in the address array");
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"person 1 object not converted");
-    STAssertEqualObjects([object1 objectForKey:@"displayName"], person1.displayName, @"Wrong value 1");
+    STAssertEqualObjects([object1 objectForKey:@"location"], person1.location, @"Wrong value 1");
     STAssertTrue([[object2 class] isSubclassOfClass:[NSDictionary class]], @"person 2 object not converted");
-    STAssertEqualObjects([object2 objectForKey:@"displayName"], person2.displayName, @"Wrong value 2");
+    STAssertEqualObjects([object2 objectForKey:@"location"], person2.location, @"Wrong value 2");
 }
 
 - (void)testAnnouncementParsing {
@@ -372,9 +372,9 @@
     NSString *tag = @"wordy";
     
     attachment.contentType = @"person";
-    approver.displayName = @"Jimmy";
-    author.displayName = @"author";
-    user.displayName = @"user";
+    approver.location = @"Jimmy";
+    author.location = @"author";
+    user.location = @"user";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -412,21 +412,21 @@
         id convertedObject = [newContent.approvers objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], approver.displayName, @"Wrong approver object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
     }
     STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
     if ([newContent.authors count] > 0) {
         id convertedObject = [newContent.authors objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong author object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], author.displayName, @"Wrong author object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], author.location, @"Wrong author object");
     }
     STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
     if ([newContent.users count] > 0) {
         id convertedObject = [newContent.users objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong user object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], user.displayName, @"Wrong user object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], user.location, @"Wrong user object");
     }
 }
 
@@ -439,9 +439,9 @@
     NSString *tag = @"concise";
     
     attachment.contentType = @"place";
-    approver.displayName = @"Johns";
-    author.displayName = @"James Joyce";
-    user.displayName = @"one";
+    approver.location = @"Johns";
+    author.location = @"James Joyce";
+    user.location = @"one";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -479,21 +479,21 @@
         id convertedObject = [newContent.approvers objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], approver.displayName, @"Wrong approver object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
     }
     STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
     if ([newContent.authors count] > 0) {
         id convertedObject = [newContent.authors objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong author object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], author.displayName, @"Wrong author object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], author.location, @"Wrong author object");
     }
     STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
     if ([newContent.users count] > 0) {
         id convertedObject = [newContent.users objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong user object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject displayName], user.displayName, @"Wrong user object");
+            STAssertEqualObjects([(JivePerson *)convertedObject location], user.location, @"Wrong user object");
     }
 }
 

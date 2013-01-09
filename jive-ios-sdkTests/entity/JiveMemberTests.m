@@ -30,7 +30,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"member", @"Wrong type");
     
-    person.displayName = @"author";
+    person.location = @"author";
     group.displayName = @"group";
     member.state = @"banned";
     [member setValue:@"1234" forKey:@"jiveId"];
@@ -53,7 +53,7 @@
     
     STAssertTrue([[personJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([personJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([personJSON objectForKey:@"displayName"], person.displayName, @"Wrong value");
+    STAssertEqualObjects([personJSON objectForKey:@"location"], person.location, @"Wrong value");
     
     NSDictionary *groupJSON = [JSON objectForKey:@"group"];
     
@@ -66,7 +66,7 @@
     JivePerson *person = [[JivePerson alloc] init];
     JiveGroup *group = [[JiveGroup alloc] init];
     
-    person.displayName = @"Gibson";
+    person.location = @"Gibson";
     group.displayName = @"group";
     member.state = @"member";
     [member setValue:@"8743" forKey:@"jiveId"];
@@ -89,7 +89,7 @@
     
     STAssertTrue([[personJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([personJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([personJSON objectForKey:@"displayName"], person.displayName, @"Wrong value");
+    STAssertEqualObjects([personJSON objectForKey:@"location"], person.location, @"Wrong value");
     
     NSDictionary *groupJSON = [JSON objectForKey:@"group"];
     
@@ -108,7 +108,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:memberType] forKey:@"ref"];
-    person.displayName = @"author";
+    person.location = @"author";
     group.displayName = @"group";
     member.state = @"banned";
     [member setValue:@"1234" forKey:@"jiveId"];
@@ -127,7 +127,7 @@
     STAssertTrue([[newMember class] isSubclassOfClass:[member class]], @"Wrong item class");
     STAssertEqualObjects(newMember.jiveId, member.jiveId, @"Wrong id");
     STAssertEqualObjects(newMember.type, member.type, @"Wrong type");
-    STAssertEqualObjects(newMember.person.displayName, member.person.displayName, @"Wrong person");
+    STAssertEqualObjects(newMember.person.location, member.person.location, @"Wrong person");
     STAssertEqualObjects(newMember.group.displayName, member.group.displayName, @"Wrong group");
     STAssertEqualObjects(newMember.published, member.published, @"Wrong published");
     STAssertEqualObjects(newMember.updated, member.updated, @"Wrong updated");
@@ -146,7 +146,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:memberType] forKey:@"ref"];
-    person.displayName = @"Gibson";
+    person.location = @"Gibson";
     group.displayName = @"group";
     member.state = @"member";
     [member setValue:@"8743" forKey:@"jiveId"];
@@ -165,7 +165,7 @@
     STAssertTrue([[newMember class] isSubclassOfClass:[member class]], @"Wrong item class");
     STAssertEqualObjects(newMember.jiveId, member.jiveId, @"Wrong id");
     STAssertEqualObjects(newMember.type, member.type, @"Wrong type");
-    STAssertEqualObjects(newMember.person.displayName, member.person.displayName, @"Wrong person");
+    STAssertEqualObjects(newMember.person.location, member.person.location, @"Wrong person");
     STAssertEqualObjects(newMember.group.displayName, member.group.displayName, @"Wrong group");
     STAssertEqualObjects(newMember.published, member.published, @"Wrong published");
     STAssertEqualObjects(newMember.updated, member.updated, @"Wrong updated");

@@ -31,7 +31,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"static", @"Wrong type");
     
-    author.displayName = @"author";
+    author.location = @"author";
     place.displayName = @"place";
     jiveStatic.description = @"description";
     jiveStatic.filename = @"filename";
@@ -56,7 +56,7 @@
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSDictionary *placeJSON = [JSON objectForKey:@"place"];
     
@@ -69,7 +69,7 @@
     JivePerson *author = [[JivePerson alloc] init];
     JiveBlog *place = [[JiveBlog alloc] init];
     
-    author.displayName = @"Gibson";
+    author.location = @"Gibson";
     place.displayName = @"Home";
     jiveStatic.description = @"nothing";
     jiveStatic.filename = @"bad ju ju";
@@ -94,7 +94,7 @@
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([authorJSON objectForKey:@"displayName"], author.displayName, @"Wrong value");
+    STAssertEqualObjects([authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSDictionary *placeJSON = [JSON objectForKey:@"place"];
     
@@ -113,7 +113,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.displayName = @"author";
+    author.location = @"author";
     place.displayName = @"place";
     jiveStatic.description = @"description";
     jiveStatic.filename = @"filename";
@@ -137,7 +137,7 @@
     STAssertEqualObjects(newStatic.filename, jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects(newStatic.published, jiveStatic.published, @"Wrong published");
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
-    STAssertEqualObjects(newStatic.author.displayName, jiveStatic.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
     STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
@@ -153,7 +153,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.displayName = @"Gibson";
+    author.location = @"Gibson";
     place.displayName = @"Home";
     jiveStatic.description = @"nothing";
     jiveStatic.filename = @"bad ju ju";
@@ -177,7 +177,7 @@
     STAssertEqualObjects(newStatic.filename, jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects(newStatic.published, jiveStatic.published, @"Wrong published");
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
-    STAssertEqualObjects(newStatic.author.displayName, jiveStatic.author.displayName, @"Wrong author.displayName");
+    STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
     STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");

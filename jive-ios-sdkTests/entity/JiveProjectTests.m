@@ -27,7 +27,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"project", @"Wrong type");
     
-    creator.displayName = @"Harold";
+    creator.location = @"Harold";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"started" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
@@ -53,14 +53,14 @@
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([creatorJSON objectForKey:@"displayName"], creator.displayName, @"Wrong value");
+    STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 
 - (void)testTaskToJSON_alternate {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.displayName = @"Maud";
+    creator.location = @"Maud";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"complete" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];
@@ -86,14 +86,14 @@
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([creatorJSON objectForKey:@"displayName"], creator.displayName, @"Wrong value");
+    STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 
 - (void)testPostParsing {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";
     
-    creator.displayName = @"Harold";
+    creator.location = @"Harold";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"started" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
@@ -110,14 +110,14 @@
     STAssertEqualObjects(newProject.startDate, self.project.startDate, @"Wrong start date");
     STAssertEquals([newProject.tags count], [self.project.tags count], @"Wrong number of tags");
     STAssertEqualObjects([newProject.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEqualObjects(newProject.creator.displayName, creator.displayName, @"Wrong creator displayName");
+    STAssertEqualObjects(newProject.creator.location, creator.location, @"Wrong creator location");
 }
 
 - (void)testPostParsingAlternate {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.displayName = @"Maud";
+    creator.location = @"Maud";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"complete" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];
@@ -134,7 +134,7 @@
     STAssertEqualObjects(newProject.startDate, self.project.startDate, @"Wrong start date");
     STAssertEquals([newProject.tags count], [self.project.tags count], @"Wrong number of tags");
     STAssertEqualObjects([newProject.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEqualObjects(newProject.creator.displayName, creator.displayName, @"Wrong creator displayName");
+    STAssertEqualObjects(newProject.creator.location, creator.location, @"Wrong creator location");
 }
 
 @end
