@@ -667,6 +667,19 @@
     [[self updatePersonOperation:person onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"following"];
+    NSString *path = [[selfResourceEntry.ref path] stringByAppendingPathComponent:target.jiveId];
+    NSMutableURLRequest *request = [self requestWithTemplate:path options:nil andArgs:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) person:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self personOperation:person follow:target onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (NSOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {
