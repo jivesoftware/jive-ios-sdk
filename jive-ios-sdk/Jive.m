@@ -51,7 +51,7 @@
 #pragma mark - helper methods
 
 - (NSOperation *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"/api/core/v3/%@", callName, nil];
     
     return [self listOperationForClass:[JivePerson class]
                                request:request
@@ -60,9 +60,7 @@
 }
 
 - (NSOperation *) peopleResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self listOperationForClass:[JivePerson class]
                                request:request
@@ -71,9 +69,7 @@
 }
 
 - (NSOperation *)personResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self entityOperationForClass:[JivePerson class]
                                  request:request
@@ -82,9 +78,7 @@
 }
 
 - (NSOperation *)activitiesResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self listOperationForClass:[JiveActivityObject class]
                                request:request
@@ -93,9 +87,7 @@
 }
 
 - (NSOperation *)streamsResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self listOperationForClass:[JiveStream class]
                                request:request
@@ -104,9 +96,7 @@
 }
 
 - (NSOperation *)contentsResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self listOperationForClass:[JiveContent class]
                                request:request
@@ -115,8 +105,8 @@
 }
 
 - (NSOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/%@" options:options andArgs:personId,nil];
-    
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/people/%@", personId, nil];
     NSOperation *operation = [self entityOperationForClass:[JivePerson class]
                                                             request:request
                                                          onComplete:complete
@@ -125,7 +115,8 @@
 }
 
 - (NSOperation *) contentsListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/%@", callName, nil];
     NSOperation *operation = [self listOperationForClass:[JiveContent class]
                                                           request:request
                                                        onComplete:complete
@@ -134,8 +125,8 @@
 }
 
 - (NSOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/%@" options:options andArgs:callName, nil];
-    
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/%@", callName, nil];    
     NSOperation *operation = [self listOperationForClass:[JivePlace class]
                                                           request:request
                                                        onComplete:complete
@@ -198,10 +189,8 @@
 
 
 - (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/activities"
-                                              options:options
-                                              andArgs:nil];
-    
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/activities", nil];
     NSOperation *operation = [self listOperationForClass:[JiveActivityObject class]
                                                           request:request
                                                        onComplete:completeBlock
@@ -285,10 +274,8 @@
 }
 
 - (NSOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *selfResourceEntry = [announcement.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [announcement.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self entityOperationForClass:[JiveAnnouncement class]
                                                             request:request
                                                          onComplete:completeBlock
@@ -297,10 +284,8 @@
 }
 
 - (NSOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *selfResourceEntry = [announcement.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [announcement.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     [request setHTTPMethod:@"DELETE"];
     NSOperation *operation = [self emptyOperationWithRequest:request
                                                            onComplete:completeBlock
@@ -309,10 +294,8 @@
 }
 
 - (NSOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *readResourceEntry = [announcement.resources objectForKey:@"read"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[readResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [announcement.resources objectForKey:@"read"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     if (read) {
         [request setHTTPMethod:@"POST"];
     } else {
@@ -331,10 +314,8 @@
 }
 
 - (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
-    
-    
-    NSURLRequest* request = [self requestWithTemplate:@"/api/core/v3/inbox" options:options andArgs:nil];
-    
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/inbox", nil];
     NSOperation *operation = [self listOperationForClass:[JiveInboxEntry class]
                                                           request:request
                                                        onComplete:complete
@@ -496,10 +477,8 @@
 }
 
 - (NSOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -574,9 +553,7 @@
 
 - (NSOperation *)blogOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"blog"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self entityOperationForClass:[JiveBlog class]
                                  request:request
@@ -590,9 +567,7 @@
 
 - (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(void (^)(NSError *error))error {
     JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"avatar"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:nil
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     void (^heapCompleteBlock)(UIImage *) = [complete copy];
     void (^heapErrorBlock)(NSError *) = [error copy];
     AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
@@ -649,14 +624,11 @@
 
 - (NSOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+    NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:nil
-                                                     andArgs:nil];
-    NSDictionary *JSON = person.toJSONDictionary;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:body];
     return [self entityOperationForClass:[JivePerson class]
                                  request:request
                               onComplete:complete
@@ -670,7 +642,7 @@
 - (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"following"];
     NSString *path = [[selfResourceEntry.ref path] stringByAppendingPathComponent:target.jiveId];
-    NSMutableURLRequest *request = [self requestWithTemplate:path options:nil andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:path, nil];
     
     [request setHTTPMethod:@"PUT"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -722,7 +694,8 @@
 #pragma mark - Environment
 
 - (NSOperation *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/@filterableFields" options:nil andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:@"/api/core/v3/people/@filterableFields", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -734,7 +707,8 @@
 }
 
 - (NSOperation *)supportedFieldsOperation:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/@supportedFields" options:nil andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:@"/api/core/v3/people/@supportedFields", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -746,7 +720,8 @@
 }
 
 - (NSOperation *)resourcesOperation:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/people/@resources" options:nil andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:@"/api/core/v3/people/@resources", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveResource instancesFromJSONList:JSON];
@@ -805,9 +780,7 @@
 
 - (NSOperation *)contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"self"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
@@ -876,10 +849,8 @@
 }
 
 - (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"read"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"read"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     
     [request setHTTPMethod:read ? @"POST" : @"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -890,10 +861,8 @@
 }
 
 - (NSOperation *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"likes"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"likes"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     
     [request setHTTPMethod:read ? @"POST" : @"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -904,10 +873,8 @@
 }
 
 - (NSOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [content.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -919,14 +886,11 @@
 
 - (NSOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [content.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+    NSMutableURLRequest *request = [self requestWithJSONBody:content
                                                      options:options
-                                                     andArgs:nil];
-    NSDictionary *JSON = content.toJSONDictionary;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:body];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -965,9 +929,7 @@
 
 - (NSOperation *)placePlacesOperation:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"places"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self listOperationForClass:[JivePlace class]
                                request:request
@@ -981,9 +943,7 @@
 
 - (NSOperation *)placeOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"self"];
-    NSURLRequest *request = [self requestWithTemplate:[resourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self entityOperationForClass:[JivePlace class]
                                  request:request
@@ -1045,10 +1005,8 @@
 }
 
 - (NSOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     [request setHTTPMethod:@"DELETE"];
     NSOperation *operation = [self emptyOperationWithRequest:request
                                                            onComplete:completeBlock
@@ -1057,10 +1015,8 @@
 }
 
 - (NSOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *avatarResourceEntry = [place.resources objectForKey:@"avatar"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[avatarResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"avatar"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     [request setHTTPMethod:@"DELETE"];
     NSOperation *operation = [self emptyOperationWithRequest:request
                                                            onComplete:completeBlock
@@ -1076,10 +1032,8 @@
 }
 
 - (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *avatarResourceEntry = [place.resources objectForKey:@"avatar"];
-    NSURLRequest *request = [self requestWithTemplate:[avatarResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"avatar"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
     AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
@@ -1117,14 +1071,11 @@
 
 - (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+    NSMutableURLRequest *request = [self requestWithJSONBody:place
                                                      options:options
-                                                     andArgs:nil];
-    NSDictionary *JSON = place.toJSONDictionary;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:body];
     return [self entityOperationForClass:[JivePlace class]
                                  request:request
                               onComplete:complete
@@ -1169,10 +1120,8 @@
 }
 
 - (NSOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [member.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     [request setHTTPMethod:@"DELETE"];
     NSOperation *operation = [self emptyOperationWithRequest:request
                                                   onComplete:completeBlock
@@ -1181,10 +1130,8 @@
 }
 
 - (NSOperation *)memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
-    NSURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    JiveResourceEntry *resourceEntry = [member.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self entityOperationForClass:[JiveMember class]
                                                    request:request
                                                 onComplete:completeBlock
@@ -1193,10 +1140,8 @@
 }
 
 - (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *membersResourceEntry = [group.resources objectForKey:@"members"];
-    NSURLRequest *request = [self requestWithTemplate:[membersResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    JiveResourceEntry *resourceEntry = [group.resources objectForKey:@"members"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self listOperationForClass:[JiveMember class]
                                                  request:request
                                               onComplete:completeBlock
@@ -1205,10 +1150,8 @@
 }
 
 - (NSOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    JiveResourceEntry *membersResourceEntry = [person.resources objectForKey:@"members"];
-    NSURLRequest *request = [self requestWithTemplate:[membersResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"members"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self listOperationForClass:[JiveMember class]
                                                  request:request
                                               onComplete:completeBlock
@@ -1218,14 +1161,11 @@
 
 - (NSOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [member.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+    NSMutableURLRequest *request = [self requestWithJSONBody:member
                                                      options:options
-                                                     andArgs:nil];
-    NSDictionary *JSON = member.toJSONDictionary;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:body];
     return [self entityOperationForClass:[JiveMember class]
                                  request:request
                               onComplete:complete
@@ -1239,10 +1179,8 @@
 #pragma mark - Streams
 
 - (NSOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
-    NSURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                              options:options
-                                              andArgs:nil];
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
     return [self entityOperationForClass:[JiveStream class]
                                  request:request
@@ -1266,9 +1204,8 @@
 }
 
 - (NSOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSURLRequest *request = [self requestWithTemplate:@"/api/core/v3/streams/connections/activities"
-                                              options:options
-                                              andArgs:nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/streams/connections/activities", nil];
     
     return [self listOperationForClass:[JiveActivityObject class]
                                request:request
@@ -1281,10 +1218,8 @@
 }
 
 - (NSOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
-    JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
-                                                     options:nil
-                                                     andArgs:nil];
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -1307,14 +1242,11 @@
 
 - (NSOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
     JiveResourceEntry *selfResourceEntry = [stream.resources objectForKey:@"self"];
-    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+    NSMutableURLRequest *request = [self requestWithJSONBody:stream
                                                      options:options
-                                                     andArgs:nil];
-    NSDictionary *JSON = stream.toJSONDictionary;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
     
     [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody:body];
     return [self entityOperationForClass:[JiveStream class]
                                  request:request
                               onComplete:complete
@@ -1327,34 +1259,45 @@
 
 #pragma mark - private API
 
-- (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource template:(NSString *)path options:(NSObject<JiveRequestOptions>*)options andArgs:(NSString*)args, ... {
-    NSMutableURLRequest *request = [self requestWithTemplate:path options:options andArgs:args];
+- (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
+    if (!template)
+        return nil;
+    
+    NSMutableString* requestString = [[NSMutableString alloc] initWithFormat:template arguments:args];
+    NSString *queryString = [options toQueryString];
+    
+    if (queryString)
+        [requestString appendFormat:@"?%@", queryString];
+    
+    NSURL* requestURL = [NSURL URLWithString:requestString
+                               relativeToURL:_jiveInstance];
+    
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
+    [self maybeApplyCredentialsToMutableURLRequest:request
+                                            forURL:requestURL];
+    
+    return request;
+}
+
+- (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
+    va_list args;
+    va_start(args, template);
+    NSMutableURLRequest *request = [self requestWithOptions:options template:template andArguments:args];
+    va_end(args);
+    
+    return request;
+}
+
+- (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource options:(NSObject<JiveRequestOptions>*)options andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
+    va_list args;
+    va_start(args, template);
+    NSMutableURLRequest *request = [self requestWithOptions:options template:template andArguments:args];
+    va_end(args);
     NSDictionary *JSON = bodySource.toJSONDictionary;
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
     [request setHTTPBody:body];
     return request;
-}
-
-- (NSMutableURLRequest *) requestWithTemplate:(NSString*) template options:(NSObject<JiveRequestOptions>*) options andArgs:(NSString*) args,...{
-    if (template) {
-        NSMutableString* requestString = [NSMutableString stringWithFormat:template, args];
-        NSString *queryString = [options toQueryString];
-        
-        if (queryString)
-            [requestString appendFormat:@"?%@", queryString];
-        
-        NSURL* requestURL = [NSURL URLWithString:requestString
-                                   relativeToURL:_jiveInstance];
-        
-        NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
-        [self maybeApplyCredentialsToMutableURLRequest:request
-                                                forURL:requestURL];
-        
-        return request;
-    } else {
-        return nil;
-    }
 }
 
 - (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
