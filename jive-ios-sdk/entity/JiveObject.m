@@ -137,16 +137,17 @@
 
     if([JSON isKindOfClass:[NSDictionary class]]) {
         
-         for(NSString* key in JSON) {
-            
              if([obj respondsToSelector:@selector(lookupPropertyClass:)]) {
                 
+         for(NSString* key in JSON) {
+            
                 Class cls = [obj lookupPropertyClass:key];
                 
                 // Set property to new instance of cls or a primitive
                 id property = (cls) ? [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
                 
                 [obj setValue:property forKey:key];
+         }
              
              } else if ([cls isSubclassOfClass:[NSDictionary class]]) {
                  obj = [self parseDictionaryForProperty:property fromJSON:JSON];
@@ -155,7 +156,6 @@
                  NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", cls);
 #endif
              }
-         }
         
     } else {
 #if JIVE_JSON_DEBUG

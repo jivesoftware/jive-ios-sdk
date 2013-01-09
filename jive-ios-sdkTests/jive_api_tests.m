@@ -3483,4 +3483,62 @@
     }];
 }
 
+- (void) testUpdatePersonOperation {
+    JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
+    source.displayName = @"displayName";
+    
+    NSDictionary *JSON = [source toJSONDictionary];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive updatePersonOperation:source onComplete:^(JivePerson *person) {
+        // Called 3rd
+        STAssertTrue([[person class] isSubclassOfClass:[JivePerson class]], @"Wrong item class");
+        STAssertEqualObjects(person.displayName, @"Orson Bushnell", @"New object not created");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testUpdatePerson {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        source.displayName = @"alternate";
+        [jive updatePerson:source onComplete:^(JivePerson *person) {
+            // Called 3rd
+            STAssertTrue([[person class] isSubclassOfClass:[JivePerson class]], @"Wrong item class");
+            STAssertEqualObjects(person.displayName, @"Orson Bushnell", @"New object not created");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end

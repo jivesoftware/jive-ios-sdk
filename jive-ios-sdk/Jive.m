@@ -647,6 +647,26 @@
     [[self tasksOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithTemplate:[selfResourceEntry.ref path]
+                                                     options:nil
+                                                     andArgs:nil];
+    NSDictionary *JSON = person.toJSONDictionary;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JivePerson class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updatePerson:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [[self updatePersonOperation:person onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (NSOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {

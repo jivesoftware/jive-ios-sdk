@@ -20,19 +20,16 @@
 
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"addresses") {
-        return [JiveAddress class];
-    }
+    static NSDictionary *propertyClasses = nil;
     
-    if (propertyName == @"emails") {
-        return [JiveEmail class];
-    }
+    if (!propertyClasses)
+        propertyClasses = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [JiveAddress class], @"addresses",
+                           [JiveEmail class], @"emails",
+                           [JivePhoneNumber class], @"phoneNumbers",
+                           nil];
     
-    if (propertyName == @"phoneNumbers") {
-        return [JivePhoneNumber class];
-    }
-    
-    return nil;
+    return [propertyClasses objectForKey:propertyName];
 }
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
