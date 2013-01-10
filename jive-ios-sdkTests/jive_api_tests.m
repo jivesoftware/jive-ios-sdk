@@ -3642,4 +3642,58 @@
     }];
 }
 
+- (void) testActionsOperation {
+    JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
+    options.after = [NSDate dateWithTimeIntervalSince1970:0.123];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/actions?after=1970-01-01T00%3A00%3A00.123%2B0000" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive actionsOperation:options onComplete:^(NSArray *activities) {
+        // Called 3rd
+        STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
+- (void) testActions {
+    JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
+    options.after = [NSDate dateWithTimeIntervalSince1970:0];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/actions?after=1970-01-01T00%3A00%3A00.000%2B0000" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive actions:options onComplete:^(NSArray *activities) {
+            // Called 3rd
+            STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end

@@ -145,6 +145,10 @@
     [operation start];
 }
 
+- (void) actions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self actionsOperation:options onComplete:complete onError:error] start];
+}
+
 - (void) frequentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSOperation *operation = [self frequentContentOperationWithOptions:options
                                                                      onComplete:completeBlock
@@ -196,6 +200,16 @@
                                                        onComplete:completeBlock
                                                           onError:errorBlock];
     return operation;
+}
+
+- (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/actions", nil];
+    
+    return [self listOperationForClass:[JiveActivity class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
 }
 
 - (NSOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (void (^)(NSError *error))errorBlock {
