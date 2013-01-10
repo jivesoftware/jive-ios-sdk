@@ -134,6 +134,16 @@
     return operation;
 }
 
+- (NSOperation *) activityListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithOptions:options
+                                                andTemplate:@"/api/core/v3/%@", callName, nil];
+    
+    return [self listOperationForClass:[JiveActivity class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
 #pragma mark - public API
 #pragma mark - generic
 
@@ -191,25 +201,12 @@
     [operation start];
 }
 
-
 - (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
-    NSMutableURLRequest *request = [self requestWithOptions:options
-                                                andTemplate:@"/api/core/v3/activities", nil];
-    NSOperation *operation = [self listOperationForClass:[JiveActivity class]
-                                                          request:request
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
-    return operation;
+    return [self activityListOperation:@"activities" withOptions:options onComplete:completeBlock onError:errorBlock];
 }
 
 - (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSMutableURLRequest *request = [self requestWithOptions:options
-                                                andTemplate:@"/api/core/v3/actions", nil];
-    
-    return [self listOperationForClass:[JiveActivity class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self activityListOperation:@"actions" withOptions:options onComplete:complete onError:error];
 }
 
 - (NSOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (void (^)(NSError *error))errorBlock {
@@ -1218,13 +1215,7 @@
 }
 
 - (NSOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    NSMutableURLRequest *request = [self requestWithOptions:options
-                                                andTemplate:@"/api/core/v3/streams/connections/activities", nil];
-    
-    return [self listOperationForClass:[JiveActivity class]
-                               request:request
-                            onComplete:complete
-                               onError:error];
+    return [self activityListOperation:@"streams/connections/activities" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) streamConnectionsActivities:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
