@@ -80,7 +80,7 @@
 - (NSOperation *)activitiesResourceOperation:(JiveResourceEntry *)resourceEntry withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     
-    return [self listOperationForClass:[JiveActivityObject class]
+    return [self listOperationForClass:[JiveActivity class]
                                request:request
                             onComplete:complete
                                onError:error];
@@ -191,7 +191,7 @@
 - (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options
                                                 andTemplate:@"/api/core/v3/activities", nil];
-    NSOperation *operation = [self listOperationForClass:[JiveActivityObject class]
+    NSOperation *operation = [self listOperationForClass:[JiveActivity class]
                                                           request:request
                                                        onComplete:completeBlock
                                                           onError:errorBlock];
@@ -1207,7 +1207,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:options
                                                 andTemplate:@"/api/core/v3/streams/connections/activities", nil];
     
-    return [self listOperationForClass:[JiveActivityObject class]
+    return [self listOperationForClass:[JiveActivity class]
                                request:request
                             onComplete:complete
                                onError:error];

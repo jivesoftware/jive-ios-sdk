@@ -45,7 +45,7 @@
 #import "JiveResource.h"
 #import "JiveTrendingContentRequestOptions.h"
 #import "JiveDateLimitedRequestOptions.h"
-#import "JiveActivityObject.h"
+#import "JiveActivity.h"
 #import "JiveInboxEntry.h"
 #import "JiveContentRequestOptions.h"
 #import "JiveContent.h"

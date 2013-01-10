@@ -1292,7 +1292,7 @@
     NSOperation* operation = [jive activitiesOperation:source withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
-        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -1321,7 +1321,7 @@
         [jive activities:source withOptions:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
-            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -2286,7 +2286,7 @@
     NSOperation* operation = [jive placeActivitiesOperation:source withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)27, @"Wrong number of items parsed");
-        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -2315,7 +2315,7 @@
         [jive placeActivities:source withOptions:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)27, @"Wrong number of items parsed");
-            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -2587,7 +2587,7 @@
     NSOperation* operation = [jive streamActivitiesOperation:source withOptions:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)32, @"Wrong number of items parsed");
-        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -2616,7 +2616,7 @@
         [jive streamActivities:source withOptions:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)32, @"Wrong number of items parsed");
-            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -2642,7 +2642,7 @@
     NSOperation* operation = [jive streamConnectionsActivitiesOperation:options onComplete:^(NSArray *activities) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)32, @"Wrong number of items parsed");
-        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
         
         // Check that delegates where actually called
         [mockAuthDelegate verify];
@@ -2670,7 +2670,7 @@
         [jive streamConnectionsActivities:options onComplete:^(NSArray *activities) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)32, @"Wrong number of items parsed");
-            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivityObject class], @"Wrong item class");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -3578,6 +3578,60 @@
         JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
         JivePerson *target = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
         [jive person:source follow:target onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testActivitiesOperation {
+    JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
+    options.after = [NSDate dateWithTimeIntervalSince1970:0.123];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/activities?after=1970-01-01T00%3A00%3A00.123%2B0000" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive activitiesOperationWithOptions:options onComplete:^(NSArray *activities) {
+        // Called 3rd
+        STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
+        STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
+- (void) testActivities {
+    JiveDateLimitedRequestOptions *options = [[JiveDateLimitedRequestOptions alloc] init];
+    options.after = [NSDate dateWithTimeIntervalSince1970:0];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/activities?after=1970-01-01T00%3A00%3A00.000%2B0000" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive activitiesWithOptions:options onComplete:^(NSArray *activities) {
+            // Called 3rd
+            STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
+            STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
+            
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
