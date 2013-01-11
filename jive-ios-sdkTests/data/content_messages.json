@@ -1,0 +1,462 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/contents/372102",
+    "type" : "message",
+    "subject" : "Re: Brightcove trial account about to expipre",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/372102",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:22edc1c5-0c31-4942-b1fd-27f5bc6cea2b] --><div class=\"jive-rendered-content\"><p>I care <img height=\"16px\" src=\"https://brewspace.jiveland.com/7.0.0.2e93bab/images/emoticons/happy.png\" width=\"16px\"/> What's the cost of a permanent license? If we're enbaling their assets to be served up in Jive, wouldn't be in their best interest to give us a dev license? Bill could you reach out to them and see if we can work some magic? </p></div><!-- [DocumentBodyEnd:22edc1c5-0c31-4942-b1fd-27f5bc6cea2b] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Jeremy",
+        "familyName" : "Grant",
+        "formatted" : "Jeremy Grant"
+      },
+      "type" : "person",
+      "displayName" : "Jeremy Grant",
+      "jive" : {
+        "level" : {
+          "name" : "Tellurium",
+          "points" : 4943
+        },
+        "username" : "jeremy.grant"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/jeremy.grant",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2879/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2879",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2879"
+    },
+    "published" : "2012-12-10T23:54:37.287+0000",
+    "replyCount" : 3,
+    "updated" : "2012-12-10T23:54:37.287+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/582100/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/582100",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/582100#582100",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/582100",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/582100/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "582100"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/messages/582100",
+    "type" : "message",
+    "subject" : "Re: Brightcove trial account about to expipre",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/372102",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:e81bf992-5453-4a10-bd1d-04f23cd068a7] --><div class=\"jive-rendered-content\"><p>No - not going to deal with this for a while. Let this expire for now, it's OK.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>Of course, do we need this for testing? If so that changes things.</p></div><!-- [DocumentBodyEnd:e81bf992-5453-4a10-bd1d-04f23cd068a7] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Bill",
+        "familyName" : "Lynch",
+        "formatted" : "Bill Lynch"
+      },
+      "type" : "person",
+      "displayName" : "Bill Lynch",
+      "jive" : {
+        "level" : {
+          "name" : "Ytterbium",
+          "points" : 8845
+        },
+        "username" : "bill"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/bill",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2000/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2000",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2000"
+    },
+    "published" : "2012-12-13T19:35:38.813+0000",
+    "replyCount" : 2,
+    "updated" : "2012-12-13T19:35:38.813+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584966/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584966",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/584966#584966",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/584966",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584966/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "584966"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/messages/584966",
+    "type" : "message",
+    "subject" : "Re: Brightcove trial account about to expipre",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/372102",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:4211cb81-64a5-48e9-bf3a-015c41b63d23] --><div class=\"jive-rendered-content\"><p>Not needed anymore I don't think - ti's been tested and closed but if there are customer related issues found once 6.0.1 / Yeti are released we'd have to get a new account I guess.</p></div><!-- [DocumentBodyEnd:4211cb81-64a5-48e9-bf3a-015c41b63d23] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Mikhail",
+        "familyName" : "Khodorovskiy",
+        "formatted" : "Mikhail Khodorovskiy"
+      },
+      "type" : "person",
+      "displayName" : "Mikhail Khodorovskiy",
+      "jive" : {
+        "level" : {
+          "name" : "Antimony",
+          "points" : 4807
+        },
+        "username" : "mikhail.khodorovskiy"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/mikhail.khodorovskiy",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2942",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2942"
+    },
+    "published" : "2012-12-13T19:41:21.727+0000",
+    "replyCount" : 1,
+    "updated" : "2012-12-13T19:41:21.727+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584977/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584977",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/584977#584977",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/584977",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/584977/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "584977"
+  }, {
+    "parent" : "https://brewspace.jiveland.com/api/core/v3/messages/584977",
+    "type" : "message",
+    "subject" : "Re: Brightcove trial account about to expipre",
+    "attachments" : [ ],
+    "discussion" : "https://brewspace.jiveland.com/api/core/v3/contents/372102",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:ea3cf398-30c4-4852-9267-98e137cda0c4] --><div class=\"jive-rendered-content\"><p>I guess I was wrong Uma has not verified Brightcove in 6.0.1 yet so we will have somebody else to sign up for a new account and get harassed by their sales people again <img height=\"16px\" src=\"https://brewspace.jiveland.com/7.0.0.e59e4e8/images/emoticons/wink.png\" width=\"16px\"/>.</p></div><!-- [DocumentBodyEnd:ea3cf398-30c4-4852-9267-98e137cda0c4] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Mikhail",
+        "familyName" : "Khodorovskiy",
+        "formatted" : "Mikhail Khodorovskiy"
+      },
+      "type" : "person",
+      "displayName" : "Mikhail Khodorovskiy",
+      "jive" : {
+        "level" : {
+          "name" : "Antimony",
+          "points" : 4807
+        },
+        "username" : "mikhail.khodorovskiy"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://brewspace.jiveland.com/people/mikhail.khodorovskiy",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/people/2942/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/2942",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2942"
+    },
+    "published" : "2012-12-13T19:57:19.994+0000",
+    "replyCount" : 0,
+    "updated" : "2012-12-13T19:57:19.994+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/585033/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/585033",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/message/585033#585033",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/attachments/messages/585033",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/messages/585033/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "585033"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

@@ -3723,6 +3723,31 @@
     [self runOperation:operation];
 }
 
+- (void) testContentMessagesOperation_alternate {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/messages/contents/372124" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"content_messages" andAuthDelegate:mockAuthDelegate];
+    
+    NSOperation* operation = [jive messagesOperationForContent:source withOptions:nil onComplete:^(NSArray *messages) {
+        // Called 3rd
+        STAssertEquals([messages count], (NSUInteger)4, @"Wrong number of items parsed");
+        STAssertEquals([[messages objectAtIndex:0] class], [JiveMessage class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
 - (void) testGetMessage {
     JiveCommentsRequestOptions *options = [[JiveCommentsRequestOptions alloc] init];
     options.hierarchical = YES;
