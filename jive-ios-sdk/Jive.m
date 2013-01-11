@@ -912,6 +912,17 @@
     [[self updateContentOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    return [self contentsResourceOperation:[content.resources objectForKey:@"messages"]
+                               withOptions:options
+                                onComplete:complete
+                                   onError:error];
+}
+
+- (void) messagesForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self messagesOperationForContent:content withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
