@@ -3777,4 +3777,223 @@
     }];
 }
 
+- (void) testInvitesOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
+    JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
+    options.startIndex = 5;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/places/95191?startIndex=5" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invites" andAuthDelegate:mockAuthDelegate];
+    
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive invitesOperation:source withOptions:options onComplete:^(NSArray *invites) {
+        // Called 3rd
+        STAssertEquals([invites count], (NSUInteger)2, @"Wrong number of items parsed");
+        STAssertEquals([[invites objectAtIndex:0] class], [JiveInvite class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
+- (void) testInvites {
+    JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
+    options.startIndex = 10;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/places/301838?startIndex=10" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invites" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        [jive invites:source withOptions:options onComplete:^(NSArray *invites) {
+            // Called 3rd
+            STAssertEquals([invites count], (NSUInteger)2, @"Wrong number of items parsed");
+            STAssertEquals([[invites objectAtIndex:0] class], [JiveInvite class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testGetInviteOperation {
+    JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/1234567?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive inviteOperation:source withOptions:options onComplete:^(JiveInvite *invite) {
+        // Called 3rd
+        STAssertTrue([[invite class] isSubclassOfClass:[JiveInvite class]], @"Wrong item class");
+        STAssertEqualObjects(invite.invitee.displayName, @"Jennifer Klafin", @"Wrong invite returned.");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    [self runOperation:operation];
+}
+
+- (void) testGetInvite {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/654321?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite_alternate"];
+        [jive invite:source withOptions:options onComplete:^(JiveInvite *invite) {
+            // Called 3rd
+            STAssertTrue([[invite class] isSubclassOfClass:[JiveInvite class]], @"Wrong item class");
+            STAssertEqualObjects(invite.invitee.displayName, @"Stewart Wachs", @"Wrong invite returned.");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testDeleteInviteOperation {
+    JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/1234567" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive deleteInviteOperation:source onComplete:^() {
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testDeleteInvite {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/654321" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite_alternate"];
+        [jive deleteInvite:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testUpdateInviteOperation {
+    JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite"];
+    NSDictionary *jsonDictionary = @{@"id" : source.jiveId, @"state" : @"revoked"};
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/1234567?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive updateInviteOperation:source withState:JiveInviteRevoked andOptions:options onComplete:^(JiveInvite *invite) {
+        // Called 3rd
+        STAssertTrue([[invite class] isSubclassOfClass:[JiveInvite class]], @"Wrong item class");
+        STAssertEqualObjects(invite.invitee.displayName, @"Jennifer Klafin", @"Wrong invite returned.");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testUpdateInvite {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/654321?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invite" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveInvite *source = [self entityForClass:[JiveInvite class] fromJSONNamed:@"invite_alternate"];
+        [jive updateInvite:source withState:JiveInviteFulfilled andOptions:options onComplete:^(JiveInvite *invite) {
+            // Called 3rd
+            STAssertTrue([[invite class] isSubclassOfClass:[JiveInvite class]], @"Wrong item class");
+            STAssertEqualObjects(invite.invitee.displayName, @"Stewart Wachs", @"Wrong invite returned.");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end

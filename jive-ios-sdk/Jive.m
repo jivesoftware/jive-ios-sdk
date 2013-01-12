@@ -11,6 +11,12 @@
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
 
+@interface JiveInvite (internal)
+
++ (NSString *) jsonForState:(enum JiveInviteState)state;
+
+@end
+
 @interface Jive() {
     
 @private
@@ -1108,6 +1114,20 @@
     [[self updatePlaceOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) invitesOperation:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"invites"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
+    
+    return [self listOperationForClass:[JiveInvite class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
+- (void) invites:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self invitesOperation:place withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {
@@ -1271,6 +1291,52 @@
 
 - (void) updateStream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
     [[self updateStreamOperation:stream withOptions:options onComplete:complete onError:error] start];
+}
+
+#pragma mark - Invites
+
+- (NSOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [invite.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
+    
+    return [self entityOperationForClass:[JiveInvite class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) invite:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error {
+    [[self inviteOperation:invite withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [invite.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) deleteInvite:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error {
+    [[self deleteInviteOperation:invite onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [invite.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
+    NSDictionary *JSON = @{@"id" : invite.jiveId, @"state" : [JiveInvite jsonForState:state]};
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:body];
+    return [self entityOperationForClass:[JiveInvite class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) updateInvite:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error {
+    [[self updateInviteOperation:invite withState:state andOptions:options onComplete:complete onError:error] start];
 }
 
 #pragma mark - private API

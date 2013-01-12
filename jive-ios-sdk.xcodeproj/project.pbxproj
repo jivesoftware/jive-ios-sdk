@@ -154,6 +154,12 @@
 		0F9EBA99169F8A3C00E9F09D /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA97169F8A3A00E9F09D /* messages.json */; };
 		0F9EBA9B169F8A4600E9F09D /* message_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9A169F8A4600E9F09D /* message_alternate.json */; };
 		0F9EBA9D169F8FE900E9F09D /* content_messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9C169F8FE600E9F09D /* content_messages.json */; };
+		0F9EBAA016A082FB00E9F09D /* JiveInvite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBA9E16A082E200E9F09D /* JiveInvite.h */; };
+		0F9EBAA116A082FB00E9F09D /* JiveInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9F16A082F000E9F09D /* JiveInvite.m */; };
+		0F9EBAA416A0838000E9F09D /* JiveInviteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA316A0837E00E9F09D /* JiveInviteTests.m */; };
+		0F9EBAA616A0B9ED00E9F09D /* invites.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA516A0B9EA00E9F09D /* invites.json */; };
+		0F9EBAA816A0C0DD00E9F09D /* invite.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA716A0C0DA00E9F09D /* invite.json */; };
+		0F9EBAAA16A0C0E700E9F09D /* invite_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA916A0C0E600E9F09D /* invite_alternate.json */; };
 		0FA17D19166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */; };
 		0FA17D1D16651C540008F833 /* JiveReturnFieldsRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */; };
 		0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5C478167B985A00419683 /* JivePersonTests.m */; };
@@ -607,6 +613,13 @@
 		0F9EBA97169F8A3A00E9F09D /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
 		0F9EBA9A169F8A4600E9F09D /* message_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = message_alternate.json; sourceTree = "<group>"; };
 		0F9EBA9C169F8FE600E9F09D /* content_messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content_messages.json; sourceTree = "<group>"; };
+		0F9EBA9E16A082E200E9F09D /* JiveInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInvite.h; sourceTree = "<group>"; };
+		0F9EBA9F16A082F000E9F09D /* JiveInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveInvite.m; sourceTree = "<group>"; };
+		0F9EBAA216A0837C00E9F09D /* JiveInviteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInviteTests.h; sourceTree = "<group>"; };
+		0F9EBAA316A0837E00E9F09D /* JiveInviteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveInviteTests.m; sourceTree = "<group>"; };
+		0F9EBAA516A0B9EA00E9F09D /* invites.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invites.json; sourceTree = "<group>"; };
+		0F9EBAA716A0C0DA00E9F09D /* invite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invite.json; sourceTree = "<group>"; };
+		0F9EBAA916A0C0E600E9F09D /* invite_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invite_alternate.json; sourceTree = "<group>"; };
 		0FA17D17166514670008F833 /* JiveReturnFieldsRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveReturnFieldsRequestOptionsTests.h; sourceTree = "<group>"; };
 		0FA17D18166514670008F833 /* JiveReturnFieldsRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveReturnFieldsRequestOptionsTests.m; sourceTree = "<group>"; };
 		0FA17D1A166515710008F833 /* JiveRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveRequestOptions.h; sourceTree = "<group>"; };
@@ -1026,6 +1039,8 @@
 				0F9EB878168E7C3500E9F09D /* JiveGroupTests.m */,
 				0FCB66681670FCDB00617CE4 /* JiveInboxEntryTests.h */,
 				0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */,
+				0F9EBAA216A0837C00E9F09D /* JiveInviteTests.h */,
+				0F9EBAA316A0837E00E9F09D /* JiveInviteTests.m */,
 				0F6E31C41684DCFF00E5F7CC /* JiveLevelTests.h */,
 				0F6E31C51684DCFF00E5F7CC /* JiveLevelTests.m */,
 				0F9EB840168B7CAF00E9F09D /* JiveMediaLinkTests.h */,
@@ -1123,6 +1138,8 @@
 				783E15571655596A0094B6A7 /* JiveGroup.m */,
 				217FE0D21638524E00182AB5 /* JiveInboxEntry.h */,
 				217FE0D31638524E00182AB5 /* JiveInboxEntry.m */,
+				0F9EBA9E16A082E200E9F09D /* JiveInvite.h */,
+				0F9EBA9F16A082F000E9F09D /* JiveInvite.m */,
 				78185D6D163ED8EB0081DF7A /* JiveLevel.h */,
 				78185D6E163ED8EB0081DF7A /* JiveLevel.m */,
 				217FE0DB1638546900182AB5 /* JiveMediaLink.h */,
@@ -1358,6 +1375,8 @@
 				0F9EBA96169F8A3800E9F09D /* message.json */,
 				0F9EBA97169F8A3A00E9F09D /* messages.json */,
 				0F9EBA9C169F8FE600E9F09D /* content_messages.json */,
+				0F9EBAA516A0B9EA00E9F09D /* invites.json */,
+				0F9EBAA716A0C0DA00E9F09D /* invite.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -1404,6 +1423,7 @@
 				0F9EB9B31697A30F00E9F09D /* stream_alternate.json */,
 				B876DAFD1699CA1100C6F673 /* content.json */,
 				0F9EBA9A169F8A4600E9F09D /* message_alternate.json */,
+				0F9EBAA916A0C0E600E9F09D /* invite_alternate.json */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -1513,6 +1533,7 @@
 				B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */,
 				0F9EB9EE169BB06500E9F09D /* JiveAssociationsRequestOptions.h in Headers */,
 				0F9EBA91169E315500E9F09D /* JiveActivity.h in Headers */,
+				0F9EBAA016A082FB00E9F09D /* JiveInvite.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1667,6 +1688,9 @@
 				0F9EBA99169F8A3C00E9F09D /* messages.json in Resources */,
 				0F9EBA9B169F8A4600E9F09D /* message_alternate.json in Resources */,
 				0F9EBA9D169F8FE900E9F09D /* content_messages.json in Resources */,
+				0F9EBAA616A0B9ED00E9F09D /* invites.json in Resources */,
+				0F9EBAA816A0C0DD00E9F09D /* invite.json in Resources */,
+				0F9EBAAA16A0C0E700E9F09D /* invite_alternate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1832,6 +1856,7 @@
 				0F9EB9E2169B7D4500E9F09D /* JiveStream.m in Sources */,
 				0F9EB9EF169BB06500E9F09D /* JiveAssociationsRequestOptions.m in Sources */,
 				0F9EBA92169E315500E9F09D /* JiveActivity.m in Sources */,
+				0F9EBAA116A082FB00E9F09D /* JiveInvite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1920,6 +1945,7 @@
 				0F9EB9E5169B7D7A00E9F09D /* JiveStreamTests.m in Sources */,
 				0F9EB9F2169BB09600E9F09D /* JiveAssociationsRequestOptionsTests.m in Sources */,
 				0F9EBA95169E335400E9F09D /* JiveActivityTests.m in Sources */,
+				0F9EBAA416A0838000E9F09D /* JiveInviteTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
