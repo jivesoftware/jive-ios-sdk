@@ -4026,7 +4026,7 @@
     [self runOperation:operation];
 }
 
-- (void) testCreateAnnouncement {
+- (void) testCreateContent {
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"name"];
     [options addField:@"id"];
