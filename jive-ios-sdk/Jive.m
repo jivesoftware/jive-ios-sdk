@@ -929,6 +929,22 @@
     [[self messagesOperationForContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithJSONBody:content
+                                                     options:options
+                                                 andTemplate:@"/api/core/v3/contents", nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    [[self createContentOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
