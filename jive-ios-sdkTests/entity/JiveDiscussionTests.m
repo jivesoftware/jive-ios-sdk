@@ -86,7 +86,7 @@
     
     STAssertTrue([[usersJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([usersJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEquals([userJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([userJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([userJSON objectForKey:@"location"], user.location, @"Wrong value");
     
     NSArray *tagsJSON = [JSON objectForKey:@"tags"];

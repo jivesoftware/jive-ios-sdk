@@ -49,11 +49,16 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
+    [dictionary setValue:self.type forKey:@"type"];
+    [dictionary setValue:self.jiveId forKey:@"id"];
     [dictionary setValue:self.location forKey:@"location"];
     [dictionary setValue:self.status forKey:@"status"];
     [self addArrayElements:addresses toJSONDictionary:dictionary forTag:@"addresses"];
     [self addArrayElements:emails toJSONDictionary:dictionary forTag:@"emails"];
     [self addArrayElements:phoneNumbers toJSONDictionary:dictionary forTag:@"phoneNumbers"];
+    if (jive)
+        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
+    
     if (name)
         [dictionary setValue:[name toJSONDictionary] forKey:@"name"];
     

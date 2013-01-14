@@ -52,7 +52,7 @@
     NSDictionary *personJSON = [JSON objectForKey:@"person"];
     
     STAssertTrue([[personJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([personJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([personJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([personJSON objectForKey:@"location"], person.location, @"Wrong value");
     
     NSDictionary *groupJSON = [JSON objectForKey:@"group"];
@@ -88,7 +88,7 @@
     NSDictionary *personJSON = [JSON objectForKey:@"person"];
     
     STAssertTrue([[personJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([personJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([personJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([personJSON objectForKey:@"location"], person.location, @"Wrong value");
     
     NSDictionary *groupJSON = [JSON objectForKey:@"group"];

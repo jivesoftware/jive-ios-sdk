@@ -148,7 +148,7 @@
     NSArray *authorJSON = [(NSDictionary *)JSON objectForKey:@"author"];
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([(NSDictionary *)authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([(NSDictionary *)authorJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSArray *contentJSON = [(NSDictionary *)JSON objectForKey:@"content"];
@@ -228,7 +228,7 @@
     NSArray *authorJSON = [(NSDictionary *)JSON objectForKey:@"author"];
     
     STAssertTrue([[authorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([(NSDictionary *)authorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([(NSDictionary *)authorJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)authorJSON objectForKey:@"location"], author.location, @"Wrong value");
     
     NSArray *contentJSON = [(NSDictionary *)JSON objectForKey:@"content"];

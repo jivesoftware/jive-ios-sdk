@@ -17,13 +17,13 @@
 @interface JivePerson : JiveObject
 
 // List of postal JiveAddresses belonging to this person, with standard types home,other,pobox,work and value type of address. JiveAddress[]
-@property(nonatomic, strong) NSArray* addresses;
+@property(nonatomic, strong) NSArray* addresses; // Creation - optional
 
 // Formatted full name of this person, suitable for use in UI presentation. If the person has privacy settings that do not allow you to see his or her name, this will be the Jive username instead.
 @property(nonatomic, readonly, strong) NSString* displayName;
 
 // List of JiveEmail addresses belonging to this person, with standard types home, other, work and value type of string. JiveEmail[]
-@property(nonatomic, strong) NSArray* emails;
+@property(nonatomic, strong) NSArray* emails; // Creation - required
 
 // Number of people following this object.
 @property(nonatomic, readonly, strong) NSNumber *followerCount;
@@ -35,16 +35,16 @@
 @property(nonatomic, readonly, strong) NSString* jiveId;
 
 // Jive extensions to OpenSocial person object.
-@property(nonatomic, readonly, strong) JivePersonJive* jive;
+@property(nonatomic, strong) JivePersonJive* jive; // Creation - required
 
 // Geographic location of this person.
-@property(nonatomic, copy) NSString* location;
+@property(nonatomic, copy) NSString* location; // Creation - optional
 
 // Name components for this person.
-@property(nonatomic, strong) JiveName* name;
+@property(nonatomic, strong) JiveName* name; // Creation - required
 
 // JivePhone numbers belonging to this person, with standard types: fax, home, mobile, other, pager, work. JivePhoneNumber[]
-@property(nonatomic, strong) NSArray* phoneNumbers;
+@property(nonatomic, strong) NSArray* phoneNumbers; // Creation - optional
 
 // URI(s) of profile images for this person. To manage profile images in REST, use the images resource.
 @property(nonatomic, readonly, strong) NSArray* photos;
@@ -56,10 +56,10 @@
 @property(nonatomic, readonly, strong) NSDictionary* resources;
 
 // Most recent status update for this person.
-@property(nonatomic, copy) NSString* status;
+@property(nonatomic, copy) NSString* status; // Creation - optional
 
 // Defined tags for this person. NSString[]
-@property(nonatomic, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* tags; // Creation - optional
 
 // URL of the thumbnail (avatar) image for this person.
 @property(nonatomic, readonly, strong) NSString* thumbnailUrl;

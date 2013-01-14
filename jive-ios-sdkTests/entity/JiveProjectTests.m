@@ -52,7 +52,7 @@
     NSDictionary *creatorJSON = [JSON objectForKey:@"creator"];
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([creatorJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 
@@ -85,7 +85,7 @@
     NSDictionary *creatorJSON = [JSON objectForKey:@"creator"];
     
     STAssertTrue([[creatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([creatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([creatorJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([creatorJSON objectForKey:@"location"], creator.location, @"Wrong value");
 }
 

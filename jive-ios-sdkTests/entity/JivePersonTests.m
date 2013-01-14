@@ -29,12 +29,13 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], @"person", @"Wrong type");
     
-    personJive.username = @"Address 1";
+    personJive.username = @"Philip";
     address.value = @"address";
     name.familyName = @"family name";
-    email.value = @"email";
+    email.value = @"email@jive.com";
     phoneNumber.value = @"555-5555";
     [resource setValue:[NSURL URLWithString:photoURI] forKey:@"ref"];
     person.addresses = [NSArray arrayWithObject:address];
@@ -43,11 +44,11 @@
     [person setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
     [person setValue:[NSNumber numberWithInt:6] forKey:@"followingCount"];
     [person setValue:@"1234" forKey:@"jiveId"];
-    [person setValue:personJive forKey:@"jive"];
+    person.jive = personJive;
     person.location = @"USA";
     person.name = name;
     person.phoneNumbers = [NSArray arrayWithObject:phoneNumber];
-//    [person setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
+    [person setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
     [person setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
     [person setValue:[NSDictionary dictionaryWithObject:resource forKey:@"manager"] forKey:@"resources"];
     person.status = @"Status update";
@@ -58,11 +59,13 @@
     JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)10, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:@"id"], person.jiveId, @"Wrong id.");
     STAssertEqualObjects([JSON objectForKey:@"location"], person.location, @"Wrong location");
     STAssertEqualObjects([JSON objectForKey:@"status"], person.status, @"Wrong status update");
+    STAssertEqualObjects([JSON objectForKey:@"type"], person.type, @"Wrong type");
     
-    id nameJSON = [JSON objectForKey:@"name"];
+    NSDictionary *nameJSON = [JSON objectForKey:@"name"];
     
     STAssertTrue([[nameJSON class] isSubclassOfClass:[NSDictionary class]], @"Name not converted");
     STAssertEquals([nameJSON count], (NSUInteger)1, @"Name dictionary had the wrong number of entries");
@@ -74,6 +77,12 @@
     STAssertEquals([addressJSON count], (NSUInteger)1, @"Wrong number of elements in the address array");
     STAssertTrue([[[addressJSON objectAtIndex:0] class] isSubclassOfClass:[NSDictionary class]], @"Address object not converted");
     
+    NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
+    
+    STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([jiveJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([jiveJSON objectForKey:@"username"], personJive.username, @"Wrong user name");
+    
     NSArray *tagsJSON = [JSON objectForKey:@"tags"];
     
     STAssertTrue([[tagsJSON class] isSubclassOfClass:[NSArray class]], @"Tags array not converted");
@@ -81,24 +90,31 @@
     STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Tag object not converted");
     
     NSArray *emailsJSON = [JSON objectForKey:@"emails"];
+    NSDictionary *emailJSON = [emailsJSON objectAtIndex:0];
     
     STAssertTrue([[emailsJSON class] isSubclassOfClass:[NSArray class]], @"Emails array not converted");
     STAssertEquals([emailsJSON count], (NSUInteger)1, @"Wrong number of elements in the emails array");
-    STAssertTrue([[[emailsJSON objectAtIndex:0] class] isSubclassOfClass:[NSDictionary class]], @"Emails object not converted");
+    STAssertTrue([[emailJSON class] isSubclassOfClass:[NSDictionary class]], @"Emails object not converted");
+    STAssertEqualObjects([emailJSON objectForKey:@"value"], email.value, @"Wrong email");
     
     NSArray *phoneNumbersJSON = [JSON objectForKey:@"phoneNumbers"];
+    NSDictionary *numberJSON = [phoneNumbersJSON objectAtIndex:0];
     
     STAssertTrue([[phoneNumbersJSON class] isSubclassOfClass:[NSArray class]], @"Phone numbers array not converted");
     STAssertEquals([phoneNumbersJSON count], (NSUInteger)1, @"Wrong number of elements in the phone numbers array");
-    STAssertTrue([[[phoneNumbersJSON objectAtIndex:0] class] isSubclassOfClass:[NSDictionary class]], @"Phone numbers object not converted");
+    STAssertTrue([[numberJSON class] isSubclassOfClass:[NSDictionary class]], @"Phone numbers object not converted");
+    STAssertEqualObjects([numberJSON objectForKey:@"value"], phoneNumber.value, @"Wrong phone number");
 }
 
 - (void)testToJSON_alternate {
     JivePerson *person = [[JivePerson alloc] init];
     JiveName *name = [[JiveName alloc] init];
+    JivePersonJive *personJive = [[JivePersonJive alloc] init];
     NSString *tag = @"Giant";
     
+    personJive.username = @"Reginald";
     name.familyName = @"Bushnell";
+    person.jive = personJive;
     person.name = name;
     person.tags = [NSArray arrayWithObject:tag];
     person.location = @"Foxtrot";
@@ -107,7 +123,8 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], @"person", @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:@"location"], person.location, @"Wrong location");
     STAssertEqualObjects([JSON objectForKey:@"status"], person.status, @"Wrong status update");
     
@@ -116,6 +133,12 @@
     STAssertTrue([[nameJSON class] isSubclassOfClass:[NSDictionary class]], @"Name not converted");
     STAssertEquals([nameJSON count], (NSUInteger)1, @"Name dictionary had the wrong number of entries");
     STAssertEqualObjects([nameJSON objectForKey:@"familyName"], name.familyName, @"Wrong family name");
+    
+    NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
+    
+    STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([jiveJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([jiveJSON objectForKey:@"username"], personJive.username, @"Wrong user name");
     
     NSArray *tagsJSON = [JSON objectForKey:@"tags"];
     
@@ -136,7 +159,7 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     NSArray *addressJSON = [JSON objectForKey:@"addresses"];
     NSDictionary *object1 = [addressJSON objectAtIndex:0];
@@ -151,7 +174,7 @@
     JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     addressJSON = [JSON objectForKey:@"addresses"];
     object1 = [addressJSON objectAtIndex:0];
@@ -178,7 +201,7 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     NSArray *addressJSON = [JSON objectForKey:@"emails"];
     NSDictionary *object1 = [addressJSON objectAtIndex:0];
@@ -193,7 +216,7 @@
     JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     addressJSON = [JSON objectForKey:@"emails"];
     object1 = [addressJSON objectAtIndex:0];
@@ -220,7 +243,7 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     NSArray *addressJSON = [JSON objectForKey:@"phoneNumbers"];
     NSDictionary *object1 = [addressJSON objectAtIndex:0];
@@ -235,7 +258,7 @@
     JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     addressJSON = [JSON objectForKey:@"phoneNumbers"];
     object1 = [addressJSON objectAtIndex:0];
@@ -260,7 +283,7 @@
     NSDictionary *JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     NSArray *addressJSON = [JSON objectForKey:@"tags"];
     
@@ -273,7 +296,7 @@
     JSON = [person toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     addressJSON = [JSON objectForKey:@"tags"];
     STAssertTrue([[addressJSON class] isSubclassOfClass:[NSArray class]], @"Tags array not converted");
