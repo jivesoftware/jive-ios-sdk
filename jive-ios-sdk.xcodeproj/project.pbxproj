@@ -154,7 +154,7 @@
 		0F9EBA99169F8A3C00E9F09D /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA97169F8A3A00E9F09D /* messages.json */; };
 		0F9EBA9B169F8A4600E9F09D /* message_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9A169F8A4600E9F09D /* message_alternate.json */; };
 		0F9EBA9D169F8FE900E9F09D /* content_messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9C169F8FE600E9F09D /* content_messages.json */; };
-		0F9EBAA016A082FB00E9F09D /* JiveInvite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBA9E16A082E200E9F09D /* JiveInvite.h */; settings = {ATTRIBUTES = (); }; };
+		0F9EBAA016A082FB00E9F09D /* JiveInvite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBA9E16A082E200E9F09D /* JiveInvite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F9EBAA116A082FB00E9F09D /* JiveInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EBA9F16A082F000E9F09D /* JiveInvite.m */; };
 		0F9EBAA416A0838000E9F09D /* JiveInviteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA316A0837E00E9F09D /* JiveInviteTests.m */; };
 		0F9EBAA616A0B9ED00E9F09D /* invites.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EBAA516A0B9EA00E9F09D /* invites.json */; };
