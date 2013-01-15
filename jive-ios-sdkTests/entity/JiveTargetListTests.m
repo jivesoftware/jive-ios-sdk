@@ -8,6 +8,8 @@
 
 #import "JiveTargetListTests.h"
 #import "JiveResourceEntry.h"
+#import "NSString+JiveUTF8PercentEscape.h"
+
 
 @implementation JiveTargetListTests
 
@@ -53,9 +55,13 @@
 
 - (void)testAddEmail {
     NSString *sampleEmail1 = @"email@dummy.com";
+    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_encodeWithUTF8PercentEscaping];
     NSString *sampleEmail2 = @"email@super.com";
+    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_encodeWithUTF8PercentEscaping];
     NSArray *JSON = [targets toJSONArray:NO];
     
+    STAssertFalse([sampleEmail1 isEqualToString:sampleEmailEncoded1], @"PRECONDITION: test string not URL encoded");
+    STAssertFalse([sampleEmail2 isEqualToString:sampleEmailEncoded2], @"PRECONDITION: test string not URL encoded");
     STAssertNil(JSON, @"Empty list should not exist");
     
     [targets addEmailAddress:sampleEmail1];
@@ -65,7 +71,7 @@
     JSON = [targets toJSONArray:NO];
     STAssertTrue([[JSON class] isSubclassOfClass:[NSArray class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    STAssertEqualObjects([JSON objectAtIndex:0], sampleEmail1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:0], sampleEmailEncoded1, @"Wrong contents");
     
     [targets addEmailAddress:sampleEmail2];
     JSON = [targets toJSONArray:YES];
@@ -74,15 +80,19 @@
     JSON = [targets toJSONArray:NO];
     STAssertTrue([[JSON class] isSubclassOfClass:[NSArray class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
-    STAssertEqualObjects([JSON objectAtIndex:0], sampleEmail1, @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:1], sampleEmail2, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:0], sampleEmailEncoded1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:1], sampleEmailEncoded2, @"Wrong contents");
 }
 
 - (void)testAddUserName {
     NSString *sampleUserName1 = @"Orson Bushnell";
-    NSString *sampleUserName2 = @"Heath Borders";
+    NSString *sampleUserNameEncoded1 = [sampleUserName1 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleUserName2 = @"Heath Borders&";
+    NSString *sampleUserNameEncoded2 = [sampleUserName2 jive_encodeWithUTF8PercentEscaping];
     NSArray *JSON = [targets toJSONArray:NO];
     
+    STAssertFalse([sampleUserName1 isEqualToString:sampleUserNameEncoded1], @"PRECONDITION: test string not URL encoded");
+    STAssertFalse([sampleUserName2 isEqualToString:sampleUserNameEncoded2], @"PRECONDITION: test string not URL encoded");
     STAssertNil(JSON, @"Empty list should not exist");
     
     [targets addUserName:sampleUserName1];
@@ -92,7 +102,7 @@
     JSON = [targets toJSONArray:NO];
     STAssertTrue([[JSON class] isSubclassOfClass:[NSArray class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    STAssertEqualObjects([JSON objectAtIndex:0], sampleUserName1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:0], sampleUserNameEncoded1, @"Wrong contents");
     
     [targets addUserName:sampleUserName2];
     JSON = [targets toJSONArray:YES];
@@ -101,8 +111,8 @@
     JSON = [targets toJSONArray:NO];
     STAssertTrue([[JSON class] isSubclassOfClass:[NSArray class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
-    STAssertEqualObjects([JSON objectAtIndex:0], sampleUserName1, @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:1], sampleUserName2, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:0], sampleUserNameEncoded1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:1], sampleUserNameEncoded2, @"Wrong contents");
 }
 
 - (void)testAddEmailAndPerson {
@@ -113,9 +123,13 @@
     NSURL *sampleUrl1 = [NSURL URLWithString:@"http://dummy.com"];
     NSURL *sampleUrl2 = [NSURL URLWithString:@"http://super.com"];
     NSString *sampleEmail1 = @"email@dummy.com";
+    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_encodeWithUTF8PercentEscaping];
     NSString *sampleEmail2 = @"email@super.com";
+    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_encodeWithUTF8PercentEscaping];
     NSArray *JSON = [targets toJSONArray:NO];
     
+    STAssertFalse([sampleEmail1 isEqualToString:sampleEmailEncoded1], @"PRECONDITION: test string not URL encoded");
+    STAssertFalse([sampleEmail2 isEqualToString:sampleEmailEncoded2], @"PRECONDITION: test string not URL encoded");
     STAssertNil(JSON, @"Empty list should not exist");
     
     [resource1 setValue:sampleUrl1 forKey:@"ref"];
@@ -139,7 +153,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSArray class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectAtIndex:0], [sampleUrl1 absoluteString], @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:1], sampleEmail1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:1], sampleEmailEncoded1, @"Wrong contents");
     
     [targets addPerson:person2];
     JSON = [targets toJSONArray:YES];
@@ -153,7 +167,7 @@
     STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectAtIndex:0], [sampleUrl1 absoluteString], @"Wrong contents");
     STAssertEqualObjects([JSON objectAtIndex:1], [sampleUrl2 absoluteString], @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:2], sampleEmail1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:2], sampleEmailEncoded1, @"Wrong contents");
     
     [targets addEmailAddress:sampleEmail2];
     JSON = [targets toJSONArray:YES];
@@ -167,8 +181,8 @@
     STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectAtIndex:0], [sampleUrl1 absoluteString], @"Wrong contents");
     STAssertEqualObjects([JSON objectAtIndex:1], [sampleUrl2 absoluteString], @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:2], sampleEmail1, @"Wrong contents");
-    STAssertEqualObjects([JSON objectAtIndex:3], sampleEmail2, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:2], sampleEmailEncoded1, @"Wrong contents");
+    STAssertEqualObjects([JSON objectAtIndex:3], sampleEmailEncoded2, @"Wrong contents");
 }
 
 @end
