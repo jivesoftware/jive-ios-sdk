@@ -28,7 +28,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    person.location = @"author";
+    person.location = @"location";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
     [stream setValue:@"source" forKey:@"source"];
@@ -50,7 +50,7 @@
 - (void)testToJSON_alternate {
     JivePerson *person = [[JivePerson alloc] init];
     
-    person.location = @"Gibson";
+    person.location = @"Tower";
     stream.name = @"William";
     [stream setValue:@"Writing" forKey:@"subject"];
     [stream setValue:@"another non-type" forKey:@"type"];
@@ -76,7 +76,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    person.location = @"author";
+    person.location = @"location";
     stream.name = @"name";
     stream.receiveEmails = [NSNumber numberWithBool:YES];
     [stream setValue:@"source" forKey:@"source"];
@@ -120,7 +120,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    person.location = @"Gibson";
+    person.location = @"Tower";
     stream.name = @"William";
     [stream setValue:@"Writing" forKey:@"subject"];
     [stream setValue:@"another non-type" forKey:@"type"];

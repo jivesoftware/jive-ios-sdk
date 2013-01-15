@@ -34,8 +34,8 @@
     STAssertEqualObjects([JSON objectForKey:@"type"], @"document", @"Wrong type");
     
     attachment.contentType = @"person";
-    approver.location = @"Jimmy";
-    author.location = @"author";
+    approver.location = @"Tower";
+    author.location = @"location";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -109,9 +109,9 @@
     NSString *tag = @"concise";
     
     attachment.contentType = @"place";
-    approver.location = @"Johns";
-    author.location = @"James Joyce";
-    user.location = @"one";
+    approver.location = @"Restaurant";
+    author.location = @"Subway";
+    user.location = @"Theater";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -238,8 +238,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"document";
-    person2.location = @"question";
+    person1.location = @"location";
+    person2.location = @"Tower";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"approvers"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -281,8 +281,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"document";
-    person2.location = @"question";
+    person1.location = @"location";
+    person2.location = @"Tower";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"authors"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -324,8 +324,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"document";
-    person2.location = @"question";
+    person1.location = @"location";
+    person2.location = @"Tower";
     [self.document setValue:[NSArray arrayWithObject:person1] forKey:@"users"];
     
     NSDictionary *JSON = [self.document toJSONDictionary];
@@ -372,9 +372,9 @@
     NSString *tag = @"wordy";
     
     attachment.contentType = @"person";
-    approver.location = @"Jimmy";
-    author.location = @"author";
-    user.location = @"user";
+    approver.location = @"Tower";
+    author.location = @"location";
+    user.location = @"mountain";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];
@@ -439,9 +439,9 @@
     NSString *tag = @"concise";
     
     attachment.contentType = @"place";
-    approver.location = @"Johns";
-    author.location = @"James Joyce";
-    user.location = @"one";
+    approver.location = @"Restaurant";
+    author.location = @"Subway";
+    user.location = @"Theater";
     self.document.approvers = [NSArray arrayWithObject:approver];
     self.document.attachments = [NSArray arrayWithObject:attachment];
     self.document.authors = [NSArray arrayWithObject:author];

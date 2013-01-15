@@ -103,7 +103,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    author.location = @"author";
+    author.location = @"location";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
@@ -183,7 +183,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    author.location = @"Gibson";
+    author.location = @"Tower";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];
@@ -262,7 +262,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.location = @"author";
+    author.location = @"location";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
@@ -326,7 +326,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.location = @"Gibson";
+    author.location = @"Tower";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];

@@ -31,7 +31,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"static", @"Wrong type");
     
-    author.location = @"author";
+    author.location = @"location";
     place.displayName = @"place";
     jiveStatic.description = @"description";
     jiveStatic.filename = @"filename";
@@ -69,7 +69,7 @@
     JivePerson *author = [[JivePerson alloc] init];
     JiveBlog *place = [[JiveBlog alloc] init];
     
-    author.location = @"Gibson";
+    author.location = @"Tower";
     place.displayName = @"Home";
     jiveStatic.description = @"nothing";
     jiveStatic.filename = @"bad ju ju";
@@ -113,7 +113,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.location = @"author";
+    author.location = @"location";
     place.displayName = @"place";
     jiveStatic.description = @"description";
     jiveStatic.filename = @"filename";
@@ -153,7 +153,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    author.location = @"Gibson";
+    author.location = @"Tower";
     place.displayName = @"Home";
     jiveStatic.description = @"nothing";
     jiveStatic.filename = @"bad ju ju";

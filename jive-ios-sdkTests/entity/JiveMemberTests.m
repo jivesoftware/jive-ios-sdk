@@ -30,7 +30,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"member", @"Wrong type");
     
-    person.location = @"author";
+    person.location = @"location";
     group.displayName = @"group";
     member.state = @"banned";
     [member setValue:@"1234" forKey:@"jiveId"];
@@ -66,7 +66,7 @@
     JivePerson *person = [[JivePerson alloc] init];
     JiveGroup *group = [[JiveGroup alloc] init];
     
-    person.location = @"Gibson";
+    person.location = @"Tower";
     group.displayName = @"group";
     member.state = @"member";
     [member setValue:@"8743" forKey:@"jiveId"];
@@ -108,7 +108,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:memberType] forKey:@"ref"];
-    person.location = @"author";
+    person.location = @"location";
     group.displayName = @"group";
     member.state = @"banned";
     [member setValue:@"1234" forKey:@"jiveId"];
@@ -146,7 +146,7 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:memberType] forKey:@"ref"];
-    person.location = @"Gibson";
+    person.location = @"Tower";
     group.displayName = @"group";
     member.state = @"member";
     [member setValue:@"8743" forKey:@"jiveId"];

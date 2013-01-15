@@ -27,7 +27,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"project", @"Wrong type");
     
-    creator.location = @"Harold";
+    creator.location = @"location";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"started" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
@@ -60,7 +60,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.location = @"Maud";
+    creator.location = @"Tower";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"complete" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];
@@ -93,7 +93,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";
     
-    creator.location = @"Harold";
+    creator.location = @"location";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"started" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"dueDate"];
@@ -117,7 +117,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.location = @"Maud";
+    creator.location = @"Tower";
     [self.project setValue:creator forKey:@"creator"];
     [self.project setValue:@"complete" forKey:@"projectStatus"];
     [self.project setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"dueDate"];

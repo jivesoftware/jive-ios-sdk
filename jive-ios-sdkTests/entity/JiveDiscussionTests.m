@@ -66,7 +66,7 @@
     NSString *category = @"denomination";
     NSString *tag = @"concise";
     
-    user.location = @"one";
+    user.location = @"location";
     self.discussion.categories = [NSArray arrayWithObject:category];
     [self.discussion setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     [self.discussion setValue:[NSArray arrayWithObject:user] forKey:@"users"];
@@ -119,8 +119,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"discussion";
-    person2.location = @"question";
+    person1.location = @"Tower";
+    person2.location = @"Subway";
     [self.discussion setValue:[NSArray arrayWithObject:person1] forKey:@"users"];
     
     NSDictionary *JSON = [self.discussion toJSONDictionary];
@@ -163,7 +163,7 @@
     NSString *category = @"category";
     NSString *tag = @"wordy";
     
-    user.location = @"user";
+    user.location = @"Temple";
     self.discussion.categories = [NSArray arrayWithObject:category];
     [self.discussion setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     [self.discussion setValue:[NSArray arrayWithObject:user] forKey:@"users"];
@@ -196,7 +196,7 @@
     NSString *category = @"denomination";
     NSString *tag = @"concise";
     
-    user.location = @"one";
+    user.location = @"location";
     self.discussion.categories = [NSArray arrayWithObject:category];
     [self.discussion setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     [self.discussion setValue:[NSArray arrayWithObject:user] forKey:@"users"];

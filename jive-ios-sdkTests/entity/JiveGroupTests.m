@@ -28,7 +28,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"group", @"Wrong type");
     
-    creator.location = @"Harold";
+    creator.location = @"location";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"OPEN";
     [self.group setValue:[NSNumber numberWithInt:1] forKey:@"memberCount"];
@@ -59,7 +59,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.location = @"Maud";
+    creator.location = @"Restaurant";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"PRIVATE";
     [self.group setValue:[NSNumber numberWithInt:102] forKey:@"memberCount"];
@@ -90,7 +90,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";
     
-    creator.location = @"Harold";
+    creator.location = @"location";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"OPEN";
     [self.group setValue:[NSNumber numberWithInt:1] forKey:@"memberCount"];
@@ -112,7 +112,7 @@
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"concise";
     
-    creator.location = @"Maud";
+    creator.location = @"Restaurant";
     [self.group setValue:creator forKey:@"creator"];
     self.group.groupType = @"PRIVATE";
     [self.group setValue:[NSNumber numberWithInt:102] forKey:@"memberCount"];

@@ -30,7 +30,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"file", @"Wrong type");
     
-    author.location = @"author";
+    author.location = @"location";
     self.file.authors = [NSArray arrayWithObject:author];
     self.file.authorship = @"open";
     [self.file setValue:[NSURL URLWithString:@"http://dummy.com/text.txt"] forKey:@"binaryURL"];
@@ -83,8 +83,8 @@
     NSString *category = @"denomination";
     NSString *tag = @"concise";
     
-    author.location = @"James Joyce";
-    user.location = @"one";
+    author.location = @"Tower";
+    user.location = @"restaurant";
     self.file.authors = [NSArray arrayWithObject:author];
     self.file.authorship = @"limited";
     [self.file setValue:[NSURL URLWithString:@"http://super.com/mos.png"] forKey:@"binaryURL"];
@@ -136,8 +136,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"file";
-    person2.location = @"question";
+    person1.location = @"Tower";
+    person2.location = @"restaurant";
     [self.file setValue:[NSArray arrayWithObject:person1] forKey:@"authors"];
     
     NSDictionary *JSON = [self.file toJSONDictionary];
@@ -179,8 +179,8 @@
     JivePerson *person1 = [[JivePerson alloc] init];
     JivePerson *person2 = [[JivePerson alloc] init];
     
-    person1.location = @"file";
-    person2.location = @"question";
+    person1.location = @"Tower";
+    person2.location = @"restaurant";
     [self.file setValue:[NSArray arrayWithObject:person1] forKey:@"users"];
     
     NSDictionary *JSON = [self.file toJSONDictionary];
@@ -224,8 +224,8 @@
     NSString *category = @"category";
     NSString *tag = @"wordy";
     
-    author.location = @"author";
-    user.location = @"user";
+    author.location = @"location";
+    user.location = @"Subway";
     self.file.authors = [NSArray arrayWithObject:author];
     self.file.authorship = @"open";
     [self.file setValue:[NSURL URLWithString:@"http://dummy.com/text.txt"] forKey:@"binaryURL"];
@@ -271,8 +271,8 @@
     NSString *category = @"denomination";
     NSString *tag = @"concise";
     
-    author.location = @"James Joyce";
-    user.location = @"one";
+    author.location = @"Tower";
+    user.location = @"restaurant";
     self.file.authors = [NSArray arrayWithObject:author];
     self.file.authorship = @"limited";
     [self.file setValue:[NSURL URLWithString:@"http://super.com/mos.png"] forKey:@"binaryURL"];
