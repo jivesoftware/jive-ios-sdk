@@ -40,7 +40,7 @@
 @property(nonatomic, readonly) NSNumber* likeCount;
 
 // Formal name of this place. It must be unique among places of the same type in this Jive instance.
-@property(nonatomic, readonly, copy) NSString* name;
+@property(nonatomic, copy) NSString* name;
 
 // URI of the parent place of this content object. When visibility is place then the URI points to a place (and is required on create). Otherwise, this field is not part of the returned JSON (and must not be included on create).
 @property(nonatomic, copy) NSString* parent;

@@ -1213,6 +1213,22 @@
     [[self createTaskOperation:task forPlace:place withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithJSONBody:place
+                                                     options:options
+                                                 andTemplate:@"/api/core/v3/places", nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JivePlace class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error {
+    [[self createPlaceOperation:place withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {

@@ -93,7 +93,7 @@
     [place setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:6] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:33] forKey:@"viewCount"];
-    [place setValue:@"test name" forKey:@"name"];
+    place.name = @"test name";
     [place setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
     [place setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
     [place setValue:parentContent forKey:@"parentContent"];
@@ -166,7 +166,7 @@
     [place setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:12] forKey:@"viewCount"];
-    [place setValue:@"test name" forKey:@"name"];
+    place.name = @"test name";
     [place setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
     [place setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
     [place setValue:parentContent forKey:@"parentContent"];
@@ -262,7 +262,7 @@
     [place setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:6] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:33] forKey:@"viewCount"];
-    [place setValue:@"name" forKey:@"name"];
+    place.name = @"name";
     [place setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
     [place setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
     [place setValue:parentContent forKey:@"parentContent"];
@@ -328,7 +328,7 @@
     [place setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:12] forKey:@"viewCount"];
-    [place setValue:@"Alternate" forKey:@"name"];
+    place.name = @"Alternate";
     [place setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
     [place setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
     [place setValue:parentContent forKey:@"parentContent"];
