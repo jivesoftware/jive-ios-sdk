@@ -1196,6 +1196,23 @@
     [[self invitesOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createTaskOperation:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"tasks"];
+    NSMutableURLRequest *request = [self requestWithJSONBody:task
+                                                     options:options
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveTask class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createTask:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error {
+    [[self createTaskOperation:task forPlace:place withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock {

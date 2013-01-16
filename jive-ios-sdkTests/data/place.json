@@ -125,6 +125,10 @@
       "ref" : "https://brewspace.jiveland.com/api/core/v3/members/places/301838",
       "allowed" : [ "GET", "POST" ]
     },
+      "tasks" : {
+          "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/tasks",
+          "allowed" : [ "GET", "POST" ]
+      },
     "activity" : {
       "ref" : "https://brewspace.jiveland.com/api/core/v3/places/301838/activities",
       "allowed" : [ "GET" ]

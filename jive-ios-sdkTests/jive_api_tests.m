@@ -4340,4 +4340,70 @@
     }];
 }
 
+- (void) testCreatePlaceTaskOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
+    JiveTask *task = [[JiveTask alloc] init];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/95191/tasks?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
+    task.subject = @"subject";
+    task.dueDate = [NSDate date];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[task toJSONDictionary] options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createTaskOperation:task forPlace:source withOptions:options onComplete:^(JiveTask *task) {
+        // Called 3rd
+        STAssertEquals([task class], [JiveTask class], @"Wrong item class");
+        STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testCreatePlaceTask {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/301838/tasks?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        JiveTask *task = [[JiveTask alloc] init];
+        task.subject = @"Supercalifragalisticexpialidotious - is that spelled right?";
+        task.dueDate = [NSDate dateWithTimeIntervalSince1970:0];
+        [jive createTask:task forPlace:source withOptions:options onComplete:^(JiveTask *task) {
+            // Called 3rd
+            STAssertEquals([task class], [JiveTask class], @"Wrong item class");
+            STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
