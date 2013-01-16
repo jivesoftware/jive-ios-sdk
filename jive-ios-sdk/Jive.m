@@ -151,6 +151,18 @@
                                onError:error];
 }
 
+- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options andTemplate:(NSString *)template onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithJSONBody:content
+                                                     options:options
+                                                 andTemplate:template, nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
 #pragma mark - public API
 #pragma mark - generic
 
@@ -964,15 +976,11 @@
 }
 
 - (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
-    NSMutableURLRequest *request = [self requestWithJSONBody:content
-                                                     options:options
-                                                 andTemplate:@"/api/core/v3/contents", nil];
-    
-    [request setHTTPMethod:@"POST"];
-    return [self entityOperationForClass:[JiveContent class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
+    return [self createContentOperation:content
+                            withOptions:options
+                            andTemplate:@"/api/core/v3/contents"
+                             onComplete:complete
+                                onError:error];
 }
 
 - (void) createContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
@@ -998,15 +1006,11 @@
 }
 
 - (NSOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
-    NSMutableURLRequest *request = [self requestWithJSONBody:comment
-                                                     options:options
-                                                 andTemplate:@"/api/core/v3/comments", nil];
-    
-    [request setHTTPMethod:@"POST"];
-    return [self entityOperationForClass:[JiveContent class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
+    return [self createContentOperation:comment
+                            withOptions:options
+                            andTemplate:@"/api/core/v3/comments"
+                             onComplete:complete
+                                onError:error];
 }
 
 - (void) createComment:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
@@ -1014,15 +1018,11 @@
 }
 
 - (NSOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
-    NSMutableURLRequest *request = [self requestWithJSONBody:message
-                                                     options:options
-                                                 andTemplate:@"/api/core/v3/messages", nil];
-    
-    [request setHTTPMethod:@"POST"];
-    return [self entityOperationForClass:[JiveContent class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
+    return [self createContentOperation:message
+                            withOptions:options
+                            andTemplate:@"/api/core/v3/messages"
+                             onComplete:complete
+                                onError:error];
 }
 
 - (void) createMessage:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
