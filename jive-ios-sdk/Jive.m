@@ -1374,6 +1374,24 @@
     [[self updateInviteOperation:invite withState:state andOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"invites"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
+    NSDictionary *JSON = @{@"body" : message, @"invitees" : [targets toJSONArray:NO]};
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:body];
+    return [self listOperationForClass:[JiveInvite class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
+}
+
+- (void) createInviteTo:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+    [[self createInviteToOperation:place withMessage:message targets:targets andOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {

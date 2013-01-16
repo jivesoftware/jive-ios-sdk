@@ -4130,4 +4130,77 @@
     }];
 }
 
+- (void) testCreateInviteOperation {
+    JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
+    NSString *message = @"Message to send";
+    JiveTargetList *targets = [[JiveTargetList alloc] init];
+    JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/places/95191?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invites" andAuthDelegate:mockAuthDelegate];
+    [targets addUserName:@"Orson Bushnell"];
+    [targets addPerson:person];
+    
+    NSMutableDictionary *JSONDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+    
+    [JSONDictionary setValue:message forKey:@"body"];
+    [JSONDictionary setValue:[targets toJSONArray:NO] forKey:@"invitees"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createInviteToOperation:source withMessage:message targets:targets andOptions:options onComplete:^(NSArray *invites) {
+        // Called 3rd
+        STAssertEquals([invites count], (NSUInteger)2, @"Wrong number of items parsed");
+        STAssertEquals([[invites objectAtIndex:0] class], [JiveInvite class], @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testCreateInvite {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/invites/places/301838?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"invites" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
+        JiveTargetList *targets = [[JiveTargetList alloc] init];
+        JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [targets addPerson:person];
+        [jive createInviteTo:source withMessage:@"Message to send" targets:targets andOptions:options onComplete:^(NSArray *invites) {
+            // Called 3rd
+            STAssertEquals([invites count], (NSUInteger)2, @"Wrong number of items parsed");
+            STAssertEquals([[invites objectAtIndex:0] class], [JiveInvite class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end
