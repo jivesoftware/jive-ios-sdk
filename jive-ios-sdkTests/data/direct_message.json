@@ -1,0 +1,261 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "type" : "dm",
+  "subject" : "Hey guys,&nbsp; You should both have received two invites to join Jive's Apple iOS dev accounts. The...",
+  "participants" : [ {
+    "name" : {
+      "givenName" : "Orson",
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell"
+    },
+    "type" : "person",
+    "displayName" : "Orson Bushnell",
+    "jive" : {
+      "level" : {
+        "name" : "Neon",
+        "points" : 229
+      },
+      "username" : "orson.bushnell"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316",
+        "allowed" : [ "GET", "PUT" ]
+      },
+      "tasks" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "streams" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/orson.bushnell",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5316"
+  }, {
+    "name" : {
+      "givenName" : "Heath",
+      "familyName" : "Borders",
+      "formatted" : "Heath Borders"
+    },
+    "type" : "person",
+    "displayName" : "Heath Borders",
+    "jive" : {
+      "level" : {
+        "name" : "Oxygen",
+        "points" : 153
+      },
+      "username" : "heath.borders"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/heath.borders",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5327/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5327",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5327"
+  } ],
+  "parent" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+  "content" : {
+    "type" : "text/html",
+    "text" : "<body><!-- [DocumentBodyStart:62dc03af-d65c-4fa7-83ca-a1c1b420b83f] --><div class=\"jive-rendered-content\"><span>Hey guys,</span><br/><br/><span>You should both have received two invites to join Jive's Apple iOS dev accounts. The Jive Inc account is what we use for internal/beta testing and the other is the \"real\" account we use for apps released on the store.&nbsp;</span></div><!-- [DocumentBodyEnd:62dc03af-d65c-4fa7-83ca-a1c1b420b83f] --></body>"
+  },
+  "status" : "published",
+  "viewCount" : 0,
+  "author" : {
+    "name" : {
+      "givenName" : "Rob",
+      "familyName" : "Derstadt",
+      "formatted" : "Rob Derstadt"
+    },
+    "type" : "person",
+    "displayName" : "Rob Derstadt",
+    "jive" : {
+      "level" : {
+        "name" : "Vanadium",
+        "points" : 1061
+      },
+      "username" : "rob.derstadt"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://brewspace.jiveland.com/people/rob.derstadt",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/people/3550/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/3550",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3550"
+  },
+  "published" : "2012-11-20T17:12:02.066+0000",
+  "replyCount" : 2,
+  "updated" : "2012-11-20T17:12:02.066+0000",
+  "visibleToExternalContributors" : false,
+  "tags" : [ ],
+  "followerCount" : 0,
+  "resources" : {
+    "read" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/read",
+      "allowed" : [ "POST", "DELETE" ]
+    },
+    "images" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/images",
+      "allowed" : [ "GET" ]
+    },
+    "self" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280",
+      "allowed" : [ "GET" ]
+    },
+    "html" : {
+      "ref" : "https://brewspace.jiveland.com/inbox/dm/150280",
+      "allowed" : [ "GET" ]
+    },
+    "comments" : {
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/dms/150280/comments",
+      "allowed" : [ "GET", "POST" ]
+    }
+  },
+  "id" : "150280"
+}

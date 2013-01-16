@@ -10,6 +10,7 @@
 #import "JAPIRequestOperation.h"
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
+#import "JiveTargetList_internal.h"
 
 @interface JiveInvite (internal)
 
@@ -943,6 +944,24 @@
 
 - (void) createContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
     [[self createContentOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"/api/core/v3/dms", nil];
+    NSMutableDictionary *JSON = (NSMutableDictionary *)content.toJSONDictionary;
+    [JSON setValue:[targets toJSONArray:YES] forKey:@"participants"];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createDirectMessage:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error {
+    [[self createDirectMessageOperation:content withTargets:targets andOptions:options onComplete:complete onError:error] start];
 }
 
 #pragma mark - Places

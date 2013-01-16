@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 
 #import "JiveCredentials.h"
+#import "JiveTargetList_internal.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
 
@@ -4045,6 +4046,79 @@
             // Called 3rd
             STAssertEquals([content class], [JiveDiscussion class], @"Wrong item class");
             STAssertEqualObjects(content.subject, @"Hitachi dates", @"New object not created");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
+- (void) testCreateDirectMessageOperation {
+    JiveDirectMessage *source = [[JiveDirectMessage alloc] init];
+    JiveTargetList *targets = [[JiveTargetList alloc] init];
+    JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/dms?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"direct_message_alternate" andAuthDelegate:mockAuthDelegate];
+    source.content = [[JiveContentBody alloc] init];
+    source.content.text = @"Testing a direct message";
+    [targets addUserName:@"Orson Bushnell"];
+    [targets addPerson:person];
+    
+    NSMutableDictionary *JSONDictionary = (NSMutableDictionary *)[source toJSONDictionary];
+    
+    [JSONDictionary setValue:[targets toJSONArray:YES] forKey:@"participants"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createDirectMessageOperation:source withTargets:targets andOptions:options onComplete:^(JiveContent *content) {
+        // Called 3rd
+        STAssertEquals([content class], [JiveDirectMessage class], @"Wrong item class");
+        STAssertEqualObjects(content.subject, @"Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....", @"New object not created");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    [self runOperation:operation];
+}
+
+- (void) testCreateDirectMessage {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/dms?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"direct_message" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveDirectMessage *source = [[JiveDirectMessage alloc] init];
+        JiveTargetList *targets = [[JiveTargetList alloc] init];
+        JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [targets addPerson:person];
+        [jive createDirectMessage:source withTargets:targets andOptions:options onComplete:^(JiveContent *content) {
+            // Called 3rd
+            STAssertEquals([content class], [JiveDirectMessage class], @"Wrong item class");
+            STAssertEqualObjects(content.subject, @"Hey guys,&nbsp; You should both have received two invites to join Jive's Apple iOS dev accounts. The...", @"New object not created");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

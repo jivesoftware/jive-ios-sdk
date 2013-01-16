@@ -17,7 +17,7 @@
 @property(nonatomic, readonly, strong) JivePerson* author;
 
 // Content of this content object.
-@property(nonatomic, readonly, strong) JiveContentBody* content;
+@property(nonatomic, strong) JiveContentBody* content;
 
 // Number of people following this object.
 @property(nonatomic, readonly) NSNumber *followerCount;

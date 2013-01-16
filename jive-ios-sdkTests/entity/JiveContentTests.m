@@ -112,7 +112,7 @@
     content.type = @"not a real type";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
-    [content setValue:contentBody forKey:@"content"];
+    content.content = contentBody;
     [content setValue:parentContent forKey:@"parentContent"];
     [content setValue:parentPlace forKey:@"parentPlace"];
     [content setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
@@ -192,7 +192,7 @@
     content.type = @"another non-type";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
-    [content setValue:contentBody forKey:@"content"];
+    content.content = contentBody;
     [content setValue:parentContent forKey:@"parentContent"];
     [content setValue:parentPlace forKey:@"parentPlace"];
     [content setValue:[NSNumber numberWithInt:7] forKey:@"followerCount"];
@@ -270,7 +270,7 @@
     content.subject = @"Subject";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
-    [content setValue:contentBody forKey:@"content"];
+    content.content = contentBody;
     [content setValue:parentContent forKey:@"parentContent"];
     [content setValue:parentPlace forKey:@"parentPlace"];
     [content setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
@@ -334,7 +334,7 @@
     content.subject = @"Writing";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
-    [content setValue:contentBody forKey:@"content"];
+    content.content = contentBody;
     [content setValue:parentContent forKey:@"parentContent"];
     [content setValue:parentPlace forKey:@"parentPlace"];
     [content setValue:[NSNumber numberWithInt:7] forKey:@"followerCount"];
