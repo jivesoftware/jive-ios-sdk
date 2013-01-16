@@ -670,6 +670,22 @@
     [[self personOperation:person follow:target onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    NSMutableURLRequest *request = [self requestWithJSONBody:person
+                                                     options:options
+                                                 andTemplate:@"/api/core/v3/people", nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JivePerson class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createPerson:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error {
+    [[self createPersonOperation:person withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (NSOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {
