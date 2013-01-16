@@ -15,11 +15,12 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *company;
 @property (nonatomic, strong) NSString *office;
-@property (nonatomic, strong) NSDate *hiredAfter;
-@property (nonatomic, strong) NSDate *hiredBefore;
+@property (nonatomic, readonly) NSDate *hiredAfter;
+@property (nonatomic, readonly) NSDate *hiredBefore;
 @property (nonatomic, strong) NSArray *ids;
 @property (nonatomic, strong) NSString *query;
 
 - (void)addID:(NSString *)personID;
+- (void)setHireDateBetween:(NSDate *)after and:(NSDate *)before;
 
 @end
