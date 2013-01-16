@@ -7,6 +7,7 @@
 //
 
 #import "JiveFilterTagsRequestOptions.h"
+#import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveFilterTagsRequestOptions
 
@@ -15,7 +16,13 @@
     NSMutableArray *filterArray = [NSMutableArray array];
     
     if (self.tags) {
-        NSString *tagString = [self.tags componentsJoinedByString:@","];
+        NSMutableArray *encodedTags = [NSMutableArray arrayWithCapacity:self.tags.count];
+        
+        for (NSString *tag in self.tags) {
+            [encodedTags addObject:[tag jive_encodeWithUTF8PercentEscaping]];
+        }
+        
+        NSString *tagString = [encodedTags componentsJoinedByString:@","];
         
         [filterArray addObject:[NSString stringWithFormat:@"tag(%@)", tagString]];
     }
