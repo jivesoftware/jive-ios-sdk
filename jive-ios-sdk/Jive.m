@@ -686,6 +686,23 @@
     [[self createPersonOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createTaskOperation:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"tasks"];
+    NSMutableURLRequest *request = [self requestWithJSONBody:task
+                                                     options:options
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveTask class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createTask:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error {
+    [[self createTaskOperation:task forPerson:person withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Search
 
 - (NSOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error {
