@@ -47,6 +47,11 @@
 }
 
 - (void)addSearchTerm:(NSString *)term {
+    
+    term = [term stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
+    term = [term stringByReplacingOccurrencesOfString:@"," withString:@"\\,"];
+    term = [term stringByReplacingOccurrencesOfString:@"(" withString:@"\\("];
+    term = [term stringByReplacingOccurrencesOfString:@")" withString:@"\\)"];
     if (!self.search)
         self.search = [NSArray arrayWithObject:term];
     else

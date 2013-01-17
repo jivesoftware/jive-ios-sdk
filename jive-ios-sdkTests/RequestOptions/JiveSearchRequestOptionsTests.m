@@ -32,13 +32,13 @@
     asString = [self.options toQueryString];
     STAssertEqualObjects(@"filter=search(dm,mention)", asString, @"Wrong string contents");
     
-    [self.searchOptions addSearchTerm:@"share"];
+    [self.searchOptions addSearchTerm:@"(sh,a\\re)"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=search(dm,mention,share)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=search(dm,mention,%5C%28sh%5C%2Ca%5C%5Cre%5C%29)", asString, @"Wrong string contents");
     
     [self.searchOptions addSearchTerm:@"h)e(j,m"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=search(dm,mention,share,h%29e%28j%2Cm)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=search(dm,mention,%5C%28sh%5C%2Ca%5C%5Cre%5C%29,h%5C%29e%5C%28j%5C%2Cm)", asString, @"Wrong string contents");
 }
 
 - (void)testSearchWithFields {
