@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'jive-ios-sdk-tests' target in the 'jive-ios-sdk-tests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif

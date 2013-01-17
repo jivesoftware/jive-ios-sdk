@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
+		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
+		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
+		B8A71F1216A89DFA00A7D2CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */; };
+		B8A71F1816A89DFA00A7D2CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8A71F1616A89DFA00A7D2CE /* InfoPlist.strings */; };
+		B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */; };
+		B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B84966AE16A8A40800C1CF05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2192BBF91614F33300082926;
+			remoteInfo = "jive-ios-sdk";
+		};
+		B84966B016A8A40800C1CF05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2192BC0A1614F33300082926;
+			remoteInfo = "jive-ios-sdkTests";
+		};
+		B84966B316A8A40F00C1CF05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 21860614164C3B0B004AF2E2;
+			remoteInfo = "Jive Framework";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
+		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
+		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B8A71F0F16A89DFA00A7D2CE /* jive-ios-sdk-tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "jive-ios-sdk-tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8A71F1516A89DFA00A7D2CE /* jive-ios-sdk-tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jive-ios-sdk-tests-Info.plist"; sourceTree = "<group>"; };
+		B8A71F1716A89DFA00A7D2CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B8A71F1916A89DFA00A7D2CE /* JiveTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveTestCase.h; sourceTree = "<group>"; };
+		B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JiveTestCase.m; sourceTree = "<group>"; };
+		B8A71F1C16A89DFA00A7D2CE /* jive-ios-sdk-tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jive-ios-sdk-tests-Prefix.pch"; sourceTree = "<group>"; };
+		B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPlacesTest.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B8A71F0B16A89DFA00A7D2CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */,
+				B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */,
+				B8A71F1216A89DFA00A7D2CE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B81B0C1016A8B3320013CB48 /* people */ = {
+			isa = PBXGroup;
+			children = (
+				B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */,
+			);
+			path = people;
+			sourceTree = "<group>";
+		};
+		B84966A916A8A40800C1CF05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B84966AF16A8A40800C1CF05 /* libJive.a */,
+				B84966B116A8A40800C1CF05 /* jive-ios-sdkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B87DD39916A8A38D009CACF5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		B8A71EAB16A89CCE00A7D2CE = {
+			isa = PBXGroup;
+			children = (
+				B87DD39916A8A38D009CACF5 /* lib */,
+				B8A71F1316A89DFA00A7D2CE /* jive-ios-sdk-tests */,
+				B8A71EB916A89CCE00A7D2CE /* Frameworks */,
+				B8A71EB716A89CCE00A7D2CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B8A71EB716A89CCE00A7D2CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8A71F0F16A89DFA00A7D2CE /* jive-ios-sdk-tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8A71EB916A89CCE00A7D2CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */,
+				B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */,
+				B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */,
+				B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8A71F1316A89DFA00A7D2CE /* jive-ios-sdk-tests */ = {
+			isa = PBXGroup;
+			children = (
+				B8A71F1916A89DFA00A7D2CE /* JiveTestCase.h */,
+				B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */,
+				B81B0C1016A8B3320013CB48 /* people */,
+				B8B38AAA16A8BC3900066EEF /* places */,
+				B8A71F1416A89DFA00A7D2CE /* Supporting Files */,
+			);
+			path = "jive-ios-sdk-tests";
+			sourceTree = "<group>";
+		};
+		B8A71F1416A89DFA00A7D2CE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8A71F1516A89DFA00A7D2CE /* jive-ios-sdk-tests-Info.plist */,
+				B8A71F1616A89DFA00A7D2CE /* InfoPlist.strings */,
+				B8A71F1C16A89DFA00A7D2CE /* jive-ios-sdk-tests-Prefix.pch */,
+				B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B8B38AAA16A8BC3900066EEF /* places */ = {
+			isa = PBXGroup;
+			children = (
+				B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */,
+			);
+			path = places;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B8A71F0E16A89DFA00A7D2CE /* jive-ios-sdk-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8A71F1D16A89DFA00A7D2CE /* Build configuration list for PBXNativeTarget "jive-ios-sdk-tests" */;
+			buildPhases = (
+				B84966B716A8AAFF00C1CF05 /* ShellScript */,
+				B8A71F0A16A89DFA00A7D2CE /* Sources */,
+				B8A71F0B16A89DFA00A7D2CE /* Frameworks */,
+				B8A71F0C16A89DFA00A7D2CE /* Resources */,
+				B8A71F0D16A89DFA00A7D2CE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B84966B416A8A40F00C1CF05 /* PBXTargetDependency */,
+			);
+			name = "jive-ios-sdk-tests";
+			productName = "jive-ios-sdk-tests";
+			productReference = B8A71F0F16A89DFA00A7D2CE /* jive-ios-sdk-tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B8A71EAD16A89CCE00A7D2CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JV;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Jive Software";
+			};
+			buildConfigurationList = B8A71EB016A89CCE00A7D2CE /* Build configuration list for PBXProject "jive-ios-sdk-tests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B8A71EAB16A89CCE00A7D2CE;
+			productRefGroup = B8A71EB716A89CCE00A7D2CE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B84966A916A8A40800C1CF05 /* Products */;
+					ProjectRef = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B8A71F0E16A89DFA00A7D2CE /* jive-ios-sdk-tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B84966AF16A8A40800C1CF05 /* libJive.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJive.a;
+			remoteRef = B84966AE16A8A40800C1CF05 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B84966B116A8A40800C1CF05 /* jive-ios-sdkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "jive-ios-sdkTests.octest";
+			remoteRef = B84966B016A8A40800C1CF05 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B8A71F0C16A89DFA00A7D2CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A71F1816A89DFA00A7D2CE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B84966B716A8AAFF00C1CF05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/${TARGET_NAME}\"/cleanup-jive-framework-build.bash";
+			showEnvVarsInLog = 0;
+		};
+		B8A71F0D16A89DFA00A7D2CE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B8A71F0A16A89DFA00A7D2CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */,
+				B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */,
+				B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B84966B416A8A40F00C1CF05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Jive Framework";
+			targetProxy = B84966B316A8A40F00C1CF05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B8A71F1616A89DFA00A7D2CE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8A71F1716A89DFA00A7D2CE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B8A71EE716A89CCE00A7D2CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"${BUILT_PRODUCTS_DIR}\"";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Jive,
+					"-ObjC",
+					"-all_load",
+				);
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8A71EE816A89CCE00A7D2CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"${BUILT_PRODUCTS_DIR}\"";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Jive,
+					"-ObjC",
+					"-all_load",
+				);
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B8A71F1E16A89DFA00A7D2CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jive-ios-sdk-tests/jive-ios-sdk-tests-Prefix.pch";
+				INFOPLIST_FILE = "jive-ios-sdk-tests/jive-ios-sdk-tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B8A71F1F16A89DFA00A7D2CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jive-ios-sdk-tests/jive-ios-sdk-tests-Prefix.pch";
+				INFOPLIST_FILE = "jive-ios-sdk-tests/jive-ios-sdk-tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B8A71EB016A89CCE00A7D2CE /* Build configuration list for PBXProject "jive-ios-sdk-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A71EE716A89CCE00A7D2CE /* Debug */,
+				B8A71EE816A89CCE00A7D2CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8A71F1D16A89DFA00A7D2CE /* Build configuration list for PBXNativeTarget "jive-ios-sdk-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A71F1E16A89DFA00A7D2CE /* Debug */,
+				B8A71F1F16A89DFA00A7D2CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B8A71EAD16A89CCE00A7D2CE /* Project object */;
+}
