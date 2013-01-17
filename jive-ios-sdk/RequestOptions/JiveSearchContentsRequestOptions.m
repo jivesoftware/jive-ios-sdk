@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchContentsRequestOptions.h"
+#import "NSThread+JiveISO8601DateFormatter.h"
 
 @implementation JiveSearchContentsRequestOptions
 
@@ -37,19 +38,24 @@
 - (NSString *)toQueryString {
     
     NSString *queryString = [super toQueryString];
+    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
     
     if (self.after) {
+        NSString *formattedAfter = [dateFormatter stringFromDate:self.after];
+        
         if (queryString)
-            queryString = [queryString stringByAppendingFormat:@"&after=%@", self.after];
+            queryString = [queryString stringByAppendingFormat:@"&after=%@", formattedAfter];
         else
-            queryString = [NSString stringWithFormat:@"after=%@", self.after];
+            queryString = [NSString stringWithFormat:@"after=%@", formattedAfter];
     }
     
     if (self.before) {
+        NSString *formattedBefore = [dateFormatter stringFromDate:self.before];
+        
         if (queryString)
-            queryString = [queryString stringByAppendingFormat:@"&before=%@", self.before];
+            queryString = [queryString stringByAppendingFormat:@"&before=%@", formattedBefore];
         else
-            queryString = [NSString stringWithFormat:@"before=%@", self.before];
+            queryString = [NSString stringWithFormat:@"before=%@", formattedBefore];
     }
     
     return queryString;
