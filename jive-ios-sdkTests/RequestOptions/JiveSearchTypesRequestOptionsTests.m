@@ -51,13 +51,13 @@
     
     STAssertEqualObjects(@"filter=type(dm)", asString, @"Wrong string contents");
     
-    [self.typesOptions addType:@"mention"];
+    [self.typesOptions addType:@" mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=type(dm,mention)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=type(dm,%20mention)", asString, @"Wrong string contents");
     
     [self.typesOptions addType:@"share"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"filter=type(dm,mention,share)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=type(dm,%20mention,share)", asString, @"Wrong string contents");
 }
 
 - (void)testTypeWithFields {

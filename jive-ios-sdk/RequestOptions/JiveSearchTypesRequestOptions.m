@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchTypesRequestOptions.h"
+#import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveSearchTypesRequestOptions
 
@@ -15,7 +16,13 @@
     NSMutableArray *filter = [super buildFilter];
     
     if (self.types) {
-        NSString *typeFilters = [self.types componentsJoinedByString:@","];
+        NSMutableArray *encodedTypes = [NSMutableArray arrayWithCapacity:self.types.count];
+        
+        for (NSString *item in self.types) {
+            [encodedTypes addObject:[item jive_encodeWithUTF8PercentEscaping]];
+        }
+        
+        NSString *typeFilters = [encodedTypes componentsJoinedByString:@","];
         
         [filter addObject:[NSString stringWithFormat:@"type(%@)", typeFilters]];
     }

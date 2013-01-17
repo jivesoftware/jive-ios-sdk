@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchRequestOptions.h"
+#import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveSearchRequestOptions
 
@@ -15,7 +16,13 @@
     NSMutableArray *filter = [NSMutableArray array];
     
     if (self.search) {
-        NSString *searchTerms = [self.search componentsJoinedByString:@","];
+        NSMutableArray *encodedItems = [NSMutableArray arrayWithCapacity:self.search.count];
+        
+        for (NSString *item in self.search) {
+            [encodedItems addObject:[item jive_encodeWithUTF8PercentEscaping]];
+        }
+        
+        NSString *searchTerms = [encodedItems componentsJoinedByString:@","];
         
         [filter addObject:[NSString stringWithFormat:@"search(%@)", searchTerms]];
     }
@@ -40,11 +47,6 @@
 }
 
 - (void)addSearchTerm:(NSString *)term {
-    
-    term = [term stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-    term = [term stringByReplacingOccurrencesOfString:@"," withString:@"\\,"];
-    term = [term stringByReplacingOccurrencesOfString:@"(" withString:@"\\("];
-    term = [term stringByReplacingOccurrencesOfString:@")" withString:@"\\)"];
     if (!self.search)
         self.search = [NSArray arrayWithObject:term];
     else
