@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Jive Software. All rights reserved.
 //
 
-#import "JiveSearchRequestOptions.h"
+#import "JiveSearchRequestOptions_internal.h"
 #import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveSearchRequestOptions

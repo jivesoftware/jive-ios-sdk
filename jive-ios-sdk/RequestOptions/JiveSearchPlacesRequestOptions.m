@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchPlacesRequestOptions.h"
+#import "JiveSearchRequestOptions_internal.h"
 
 @implementation JiveSearchPlacesRequestOptions
 

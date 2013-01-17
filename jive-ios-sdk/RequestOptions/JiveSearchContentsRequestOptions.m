@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchContentsRequestOptions.h"
+#import "JiveSearchRequestOptions_internal.h"
 #import "NSThread+JiveISO8601DateFormatter.h"
 
 @implementation JiveSearchContentsRequestOptions

@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchPeopleRequestOptions.h"
+#import "JiveSearchRequestOptions_internal.h"
 
 @implementation JiveSearchPeopleRequestOptions
 

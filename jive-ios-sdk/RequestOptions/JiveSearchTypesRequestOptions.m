@@ -7,6 +7,7 @@
 //
 
 #import "JiveSearchTypesRequestOptions.h"
+#import "JiveSearchRequestOptions_internal.h"
 #import "NSString+JiveUTF8PercentEscape.h"
 
 @implementation JiveSearchTypesRequestOptions

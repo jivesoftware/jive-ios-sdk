@@ -14,7 +14,4 @@
 
 - (void)addSearchTerm:(NSString *)term; // Will escape ,\() for you.
 
-// Internal method referenced by derived classes.
-- (NSMutableArray *)buildFilter;
-
 @end
