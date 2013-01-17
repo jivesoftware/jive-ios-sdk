@@ -995,6 +995,8 @@
     
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -1462,6 +1464,8 @@
     
     [request setHTTPMethod:@"PUT"];
     [request setHTTPBody:body];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveInvite class]
                                  request:request
                               onComplete:complete
@@ -1480,6 +1484,8 @@
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:body];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self listOperationForClass:[JiveInvite class]
                                request:request
                             onComplete:complete
@@ -1530,6 +1536,8 @@
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
     [request setHTTPBody:body];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
 

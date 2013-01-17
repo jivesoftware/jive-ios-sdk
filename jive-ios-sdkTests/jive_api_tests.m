@@ -3038,7 +3038,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -3100,7 +3102,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -3387,7 +3391,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -3449,7 +3455,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -3510,7 +3518,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -3963,7 +3973,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4023,7 +4035,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4093,7 +4107,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4166,7 +4182,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4240,7 +4258,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4303,7 +4323,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4369,7 +4391,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4435,7 +4459,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4501,7 +4527,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 
@@ -4569,7 +4597,9 @@
     }];
     
     STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
     [self runOperation:operation];
 }
 

@@ -16,7 +16,7 @@
 #import "JiveCredentials.h"
 #import "JAPIRequestOperation.h"
 
-#undef RUN_LIVE 
+#undef RUN_LIVE
 
 #ifndef RUN_LIVE
 #define LIVE( x ) _ ## x
@@ -124,6 +124,42 @@
     
 }
 
-
+- (void) LIVE(testCreateBlogPost) {
+    NSURL *url = [NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"];
+    id mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"iOS-SDK-TestUser1" password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
+    
+    Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    JivePost *post = [[JivePost alloc] init];
+    __block JiveContent *postToDelete = nil;
+    
+    post.subject = @"Test blog 12345";
+    post.content = [[JiveContentBody alloc] init];
+    post.content.type = @"test/html";
+    post.content.text = @"<body><p>This is a test of the emergency broadcast system.</p></body>";
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
+            STAssertEqualObjects([newPost class], [JivePost class], @"Wrong content created");
+            postToDelete = newPost;
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"iOS-SDK-TestUser1" password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
+    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    [self waitForTimeout:^(void (^finishedBlock2)(void)) {
+        [jive deleteContent:postToDelete onComplete:^{
+            finishedBlock2();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock2();
+        }];
+    }];
+}
 
 @end
