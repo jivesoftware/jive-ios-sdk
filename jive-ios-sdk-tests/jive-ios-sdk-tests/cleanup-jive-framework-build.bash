@@ -6,12 +6,7 @@
 #  Created by Heath Borders on 1/17/13.
 #  Copyright (c) 2013 Jive Software. All rights reserved.
 
-#Cleanup Jive Framework build detritis
-echo Cleaning BUILT_PRODUCTS_DIR: "${BUILT_PRODUCTS_DIR}"
+echo Cleanup Jive Framework build detritis
 pushd "${BUILT_PRODUCTS_DIR}"
-echo BUILT_PRODUCTS_DIR contents:
-ls
-echo removing
 rm -rf Jive/ JiveHeaders/ libJive.a
-echo finished removing
 popd
