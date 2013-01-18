@@ -253,7 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PROJECT_DIR}/${TARGET_NAME}\"/cleanup-jive-framework-build.bash";
-			showEnvVarsInLog = 0;
 		};
 		B8A71F0D16A89DFA00A7D2CE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
