@@ -4635,4 +4635,71 @@
     }];
 }
 
+- (void) testCreateStreamOperation {
+    JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    JiveStream *source = [[JiveStream alloc] init];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/3550/streams?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    source.name = @"new stream";
+    source.receiveEmails = [NSNumber numberWithBool:YES];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createStreamOperation:source forPerson:person withOptions:options onComplete:^(JiveStream *stream) {
+        // Called 3rd
+        STAssertTrue([[stream class] isSubclassOfClass:[JiveStream class]], @"Wrong item class");
+        STAssertEqualObjects(stream.name, @"Test stream", @"Wrong stream name");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    } onError:^(NSError *error) {
+        STFail([error localizedDescription]);
+    }];
+    
+    STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+    STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+    STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json", @"Wrong content type");
+    STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+    [self runOperation:operation];
+}
+
+- (void) testCreateStream {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/5316/streams?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        JiveStream *source = [[JiveStream alloc] init];
+        source.name = @"Wrong Way";
+        [jive createStream:source forPerson:person withOptions:options onComplete:^(JiveStream *stream) {
+            // Called 3rd
+            STAssertTrue([[stream class] isSubclassOfClass:[JiveStream class]], @"Wrong item class");
+            STAssertEqualObjects(stream.name, @"The Team", @"Wrong stream name");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+        }];
+    }];
+}
+
 @end

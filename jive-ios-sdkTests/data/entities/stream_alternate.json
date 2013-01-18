@@ -1,5 +1,5 @@
 {
-  "name" : "",
+  "name" : "Test stream",
   "id" : "10433",
   "type" : "stream",
   "source" : "connections",
