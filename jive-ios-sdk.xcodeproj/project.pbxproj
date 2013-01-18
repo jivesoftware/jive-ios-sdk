@@ -1762,7 +1762,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nFRAMEWORK_ROOT_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework\"\n\nmkdir -p \"${FRAMEWORK_ROOT_PATH}/Versions/A/Headers\"\n\ncp \"${BUILT_PRODUCTS_DIR}/lib${PRODUCT_NAME}.a\" \"${FRAMEWORK_ROOT_PATH}/Versions/A/Jive\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${FRAMEWORK_ROOT_PATH}/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${FRAMEWORK_ROOT_PATH}/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${FRAMEWORK_ROOT_PATH}/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${FRAMEWORK_ROOT_PATH}/Versions/A/Headers\"\n\n";
-			showEnvVarsInLog = 0;
 		};
 		B8C4950C166928A400D19240 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1776,7 +1775,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "rm -rf \"${TARGET_BUILD_DIR}\"/Jive\ncp -r \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${TARGET_BUILD_DIR}\"/Jive";
-			showEnvVarsInLog = 0;
 		};
 		B8C4952216692BE700D19240 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
