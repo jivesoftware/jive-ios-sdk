@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */; };
 		B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVContentTest.m; sourceTree = "<group>"; };
 		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
 		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FC2FEC116AA146F00DDFF68 /* content */ = {
+			isa = PBXGroup;
+			children = (
+				0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */,
+			);
+			path = content;
+			sourceTree = "<group>";
+		};
 		B81B0C1016A8B3320013CB48 /* people */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 			children = (
 				B8A71F1916A89DFA00A7D2CE /* JiveTestCase.h */,
 				B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */,
+				0FC2FEC116AA146F00DDFF68 /* content */,
 				B81B0C1016A8B3320013CB48 /* people */,
 				B8B38AAA16A8BC3900066EEF /* places */,
 				B8A71F1416A89DFA00A7D2CE /* Supporting Files */,
@@ -277,6 +288,7 @@
 				B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */,
 				B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */,
 				B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */,
+				0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
