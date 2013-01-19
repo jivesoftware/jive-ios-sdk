@@ -1447,6 +1447,23 @@
     [[self updateStreamOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createStreamOperation:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    JiveResourceEntry *selfResourceEntry = [person.resources objectForKey:@"streams"];
+    NSMutableURLRequest *request = [self requestWithJSONBody:stream
+                                                     options:options
+                                                 andTemplate:[selfResourceEntry.ref path], nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveStream class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createStream:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
+    [[self createStreamOperation:stream forPerson:person withOptions:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Invites
 
 - (NSOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error {
