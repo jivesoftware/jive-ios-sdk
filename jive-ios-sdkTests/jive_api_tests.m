@@ -64,7 +64,7 @@
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries) {
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
             STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
             STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
             
@@ -89,10 +89,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -101,8 +101,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:1],
-    [inboxEntries objectAtIndex:11],
+    [returnedInboxEntries objectAtIndex:1],
+    [returnedInboxEntries objectAtIndex:11],
     ];
     
     [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
@@ -132,10 +132,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -144,8 +144,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:0],
-    [inboxEntries objectAtIndex:1],
+    [returnedInboxEntries objectAtIndex:0],
+    [returnedInboxEntries objectAtIndex:1],
     ];
     
     [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
@@ -175,10 +175,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -187,8 +187,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:0],
-    [inboxEntries objectAtIndex:1],
+    [returnedInboxEntries objectAtIndex:0],
+    [returnedInboxEntries objectAtIndex:1],
     ];
     
     [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
@@ -218,10 +218,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -230,8 +230,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:0],
-    [inboxEntries objectAtIndex:8],
+    [returnedInboxEntries objectAtIndex:0],
+    [returnedInboxEntries objectAtIndex:8],
     ];
     
     [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
@@ -268,10 +268,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -280,8 +280,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:1],
-    [inboxEntries objectAtIndex:2],
+    [returnedInboxEntries objectAtIndex:1],
+    [returnedInboxEntries objectAtIndex:2],
     ];
     
     [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
@@ -316,10 +316,10 @@
                                                           forRequestWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/inbox"]];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate2:mockJiveURLResponseDelegate2];
     
-    __block NSArray *inboxEntries = nil;
+    __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *returnedInboxEntries) {
-            inboxEntries = returnedInboxEntries;
+        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
             STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
@@ -328,8 +328,8 @@
     
     
     NSArray *markingInboxEntries = @[
-    [inboxEntries objectAtIndex:0],
-    [inboxEntries objectAtIndex:8],
+    [returnedInboxEntries objectAtIndex:0],
+    [returnedInboxEntries objectAtIndex:8],
     ];
     
     NSError *fakeError = [NSError jive_errorWithMultipleErrors:@[]];

@@ -352,6 +352,7 @@
 		B8B38B5716AA10A300066EEF /* JiveNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B5516AA10A300066EEF /* JiveNSString+URLArguments.m */; };
 		B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */; };
 		B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */; };
+		B8B38B8916AA205800066EEF /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B38B4916AA0F0300066EEF /* libOCMock.a */; };
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
 		B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7C1614FF8200082926 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -403,6 +404,13 @@
 			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
+		B8B38B8316AA205300066EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 030EF0DB14632FF700B04273;
 			remoteInfo = OCMockLib;
 		};
 /* End PBXContainerItemProxy section */
@@ -868,6 +876,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B38B8916AA205800066EEF /* libOCMock.a in Frameworks */,
 				B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */,
 				B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */,
 				2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */,
@@ -1613,6 +1622,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8B38B8416AA205300066EEF /* PBXTargetDependency */,
 				2192BC111614F33300082926 /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdkTests";
@@ -2007,6 +2017,11 @@
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
 			targetProxy = B84966B516A8A64500C1CF05 /* PBXContainerItemProxy */;
+		};
+		B8B38B8416AA205300066EEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockLib;
+			targetProxy = B8B38B8316AA205300066EEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

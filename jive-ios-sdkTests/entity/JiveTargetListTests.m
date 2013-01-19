@@ -8,7 +8,7 @@
 
 #import "JiveTargetListTests.h"
 #import "JiveResourceEntry.h"
-#import "NSString+JiveUTF8PercentEscape.h"
+#import "JiveNSString+URLArguments.h"
 
 
 @implementation JiveTargetListTests

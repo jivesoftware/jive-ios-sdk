@@ -8,7 +8,7 @@
 
 #import "JiveCategoryTests.h"
 #import "JiveResourceEntry.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 @implementation JiveCategoryTests
 

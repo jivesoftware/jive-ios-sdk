@@ -356,7 +356,7 @@
                                                 andTemplate:@"/api/core/v3/inbox", nil];
     
     JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSArray *inboxEntries = [JiveInboxEntry instancesFromJSONList:JSON];
+        NSArray *inboxEntries = [JiveInboxEntry instancesFromJSONList:JSON[@"list"]];
         
         NSDictionary *links = JSON[@"links"];
         NSURL *nextURL = [NSURL URLWithString:links[@"next"]];
