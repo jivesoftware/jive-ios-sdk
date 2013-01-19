@@ -236,7 +236,6 @@
 		2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */; };
 		2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */; };
 		2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */; };
-		2192BCAA16150E1E00082926 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BCA6161502D400082926 /* libOCMock.a */; };
 		2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFE16161F0700082926 /* JAPIRequestOperation.m */; };
 		21AD975316163A98009A977D /* my_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AD975216163A98009A977D /* my_response.json */; };
 		21AD9756161BAB4F009A977D /* JiveCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9755161BAB4F009A977D /* JiveCredentials.m */; };
@@ -281,10 +280,6 @@
 		788C5C76164B117B003D7B94 /* JiveSearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C75164B117B003D7B94 /* JiveSearchFilter.m */; };
 		788C5C7D164B12B4003D7B94 /* JiveSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C7C164B12B4003D7B94 /* JiveSearch.m */; };
 		78CCC63416517854006F7E72 /* JiveSearchContentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CCC63316517854006F7E72 /* JiveSearchContentParams.m */; };
-		B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */; };
-		B85807B51678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */; };
-		B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */ = {isa = PBXBuildFile; fileRef = B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */; };
-		B85807BC167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m in Sources */ = {isa = PBXBuildFile; fileRef = B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */; };
 		B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */; };
 		B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8657AED166FEDE900F946B5 /* NSError+Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657AEE166FEDE900F946B5 /* NSError+Jive.m */; };
@@ -351,6 +346,12 @@
 		B8A6BA701691F63B00996448 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA6E1691F63B00996448 /* Jive.m */; };
 		B8B19F0C16949AA0004B3DEC /* member_member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F0B16949AA0004B3DEC /* member_member.json */; };
 		B8B19F1116949F45004B3DEC /* member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F1016949F45004B3DEC /* member.json */; };
+		B8B38B5016AA100300066EEF /* JiveNSDictionary+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */; };
+		B8B38B5116AA100300066EEF /* JiveNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B4F16AA100300066EEF /* JiveNSDictionary+URLArguments.m */; };
+		B8B38B5616AA10A300066EEF /* JiveNSString+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5416AA10A300066EEF /* JiveNSString+URLArguments.h */; };
+		B8B38B5716AA10A300066EEF /* JiveNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B5516AA10A300066EEF /* JiveNSString+URLArguments.m */; };
+		B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */; };
+		B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */; };
 		B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02971666840C00BCC61D /* UIKit.framework */; };
 		B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC02991666841800BCC61D /* QuartzCore.framework */; };
 		B8EA3E22166DB00300568E12 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC7C1614FF8200082926 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -376,40 +377,33 @@
 			remoteGlobalIDString = 2192BBF81614F33300082926;
 			remoteInfo = "jive-ios-sdk";
 		};
-		2192BCA1161502D400082926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0A814632FD000B04273;
-			remoteInfo = OCMock;
-		};
-		2192BCA3161502D400082926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0C014632FD000B04273;
-			remoteInfo = OCMockTests;
-		};
-		2192BCA5161502D400082926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0DC14632FF700B04273;
-			remoteInfo = OCMockLib;
-		};
-		2192BCA7161502EE00082926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 030EF0DB14632FF700B04273;
-			remoteInfo = OCMockLib;
-		};
 		B84966B516A8A64500C1CF05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2192BBF01614F33300082926 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2192BBF81614F33300082926;
 			remoteInfo = "jive-ios-sdk";
+		};
+		B8B38B4416AA0F0300066EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0A814632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		B8B38B4616AA0F0300066EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0C014632FD000B04273;
+			remoteInfo = OCMockTests;
+		};
+		B8B38B4816AA0F0300066EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -745,7 +739,7 @@
 		2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		2192BC98161502D300082926 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		2192BC98161502D300082926 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		2192BCFD16161F0700082926 /* JAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAPIRequestOperation.h; sourceTree = "<group>"; };
 		2192BCFE16161F0700082926 /* JAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAPIRequestOperation.m; sourceTree = "<group>"; };
 		21AD975216163A98009A977D /* my_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_response.json; sourceTree = "<group>"; };
@@ -835,10 +829,6 @@
 		788C5C7C164B12B4003D7B94 /* JiveSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearch.m; sourceTree = "<group>"; };
 		78CCC63216517854006F7E72 /* JiveSearchContentParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchContentParams.h; sourceTree = "<group>"; };
 		78CCC63316517854006F7E72 /* JiveSearchContentParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentParams.m; sourceTree = "<group>"; };
-		B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+JiveISO8601DateFormatter.h"; sourceTree = "<group>"; };
-		B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+JiveISO8601DateFormatter.m"; sourceTree = "<group>"; };
-		B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JiveUTF8PercentEscape.h"; sourceTree = "<group>"; };
-		B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JiveUTF8PercentEscape.m"; sourceTree = "<group>"; };
 		B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAsyncTestCase.h; sourceTree = "<group>"; };
 		B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAsyncTestCase.m; sourceTree = "<group>"; };
 		B8657AED166FEDE900F946B5 /* NSError+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Jive.h"; sourceTree = "<group>"; };
@@ -850,6 +840,12 @@
 		B8A6BA6E1691F63B00996448 /* Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jive.m; sourceTree = "<group>"; };
 		B8B19F0B16949AA0004B3DEC /* member_member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member_member.json; sourceTree = "<group>"; };
 		B8B19F1016949F45004B3DEC /* member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member.json; sourceTree = "<group>"; };
+		B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "JiveNSDictionary+URLArguments.h"; path = "Foundation/JiveNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
+		B8B38B4F16AA100300066EEF /* JiveNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JiveNSDictionary+URLArguments.m"; path = "Foundation/JiveNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
+		B8B38B5416AA10A300066EEF /* JiveNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "JiveNSString+URLArguments.h"; path = "Foundation/JiveNSString+URLArguments.h"; sourceTree = "<group>"; };
+		B8B38B5516AA10A300066EEF /* JiveNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JiveNSString+URLArguments.m"; path = "Foundation/JiveNSString+URLArguments.m"; sourceTree = "<group>"; };
+		B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+JiveISO8601DateFormatter.h"; sourceTree = "<group>"; };
+		B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+JiveISO8601DateFormatter.m"; sourceTree = "<group>"; };
 		B8DC02971666840C00BCC61D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8DC02991666841800BCC61D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inbox_mark_response.json; sourceTree = "<group>"; };
@@ -874,7 +870,6 @@
 			files = (
 				B8DC029A1666841800BCC61D /* QuartzCore.framework in Frameworks */,
 				B8DC02981666840C00BCC61D /* UIKit.framework in Frameworks */,
-				2192BCAA16150E1E00082926 /* libOCMock.a in Frameworks */,
 				2192BC0C1614F33300082926 /* SenTestingKit.framework in Frameworks */,
 				2192BC0F1614F33300082926 /* Foundation.framework in Frameworks */,
 				2192BC121614F33300082926 /* libJive.a in Frameworks */,
@@ -1276,12 +1271,10 @@
 				7814D57B1653032B000D9BE9 /* JiveSearchParams.m */,
 				B8657AED166FEDE900F946B5 /* NSError+Jive.h */,
 				B8657AEE166FEDE900F946B5 /* NSError+Jive.m */,
-				B85807B9167926C800A9BCCF /* NSString+JiveUTF8PercentEscape.h */,
-				B85807BA167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m */,
-				B85807B21678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h */,
-				B85807B31678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m */,
 				0F0913651665391D0036C4E8 /* RequestOptions */,
 				2192BBFF1614F33300082926 /* Supporting Files */,
+				B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */,
+				B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */,
 			);
 			path = "jive-ios-sdk";
 			sourceTree = "<group>";
@@ -1318,12 +1311,13 @@
 		2192BC681614FF4E00082926 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B8B38B3B16AA0EB200066EEF /* google-toolbox-for-mac */,
 				21AD9758161BB4B2009A977D /* NSData+JiveBase64.h */,
 				21AD9759161BB4B2009A977D /* NSData+JiveBase64.m */,
 				2192BC7B1614FF8200082926 /* AFNetworking */,
 				2192BC98161502D300082926 /* OCMock.xcodeproj */,
 			);
-			name = lib;
+			path = lib;
 			sourceTree = "<group>";
 		};
 		2192BC7B1614FF8200082926 /* AFNetworking */ = {
@@ -1350,17 +1344,7 @@
 				2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
-			path = lib/AFNetworking/AFNetworking;
-			sourceTree = "<group>";
-		};
-		2192BC99161502D300082926 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2192BCA2161502D400082926 /* OCMock.framework */,
-				2192BCA4161502D400082926 /* OCMockTests.octest */,
-				2192BCA6161502D400082926 /* libOCMock.a */,
-			);
-			name = Products;
+			path = AFNetworking/AFNetworking;
 			sourceTree = "<group>";
 		};
 		21AD975116163A98009A977D /* data */ = {
@@ -1458,6 +1442,27 @@
 				0F9EBAC616A7376B00E9F09D /* comment_alternate.json */,
 			);
 			path = entities;
+			sourceTree = "<group>";
+		};
+		B8B38B3B16AA0EB200066EEF /* google-toolbox-for-mac */ = {
+			isa = PBXGroup;
+			children = (
+				B8B38B5416AA10A300066EEF /* JiveNSString+URLArguments.h */,
+				B8B38B5516AA10A300066EEF /* JiveNSString+URLArguments.m */,
+				B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */,
+				B8B38B4F16AA100300066EEF /* JiveNSDictionary+URLArguments.m */,
+			);
+			path = "google-toolbox-for-mac";
+			sourceTree = "<group>";
+		};
+		B8B38B3F16AA0F0300066EEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8B38B4516AA0F0300066EEF /* OCMock.framework */,
+				B8B38B4716AA0F0300066EEF /* OCMockTests.octest */,
+				B8B38B4916AA0F0300066EEF /* libOCMock.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1560,15 +1565,16 @@
 				0F9EB9E1169B7D4500E9F09D /* JiveStream.h in Headers */,
 				B8A6BA6F1691F63B00996448 /* Jive.h in Headers */,
 				0F6E316C1682731000E5F7CC /* JivePlacesRequestOptions.h in Headers */,
-				B85807B41678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.h in Headers */,
 				B86B0B47166D0105008E525E /* JAPIRequestOperation.h in Headers */,
-				B85807BB167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.h in Headers */,
 				0F9EB9EE169BB06500E9F09D /* JiveAssociationsRequestOptions.h in Headers */,
 				0F9EBA91169E315500E9F09D /* JiveActivity.h in Headers */,
 				0F9EBAA016A082FB00E9F09D /* JiveInvite.h in Headers */,
 				0F9EBAAD16A5BE1700E9F09D /* JiveTargetList.h in Headers */,
 				0F9EBAB316A5DE4400E9F09D /* JiveTargetList_internal.h in Headers */,
 				0FC2FE5516A8BE3300DDFF68 /* JiveSearchRequestOptions_internal.h in Headers */,
+				B8B38B5016AA100300066EEF /* JiveNSDictionary+URLArguments.h in Headers */,
+				B8B38B5616AA10A300066EEF /* JiveNSString+URLArguments.h in Headers */,
+				B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,7 +1613,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2192BCA8161502EE00082926 /* PBXTargetDependency */,
 				2192BC111614F33300082926 /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdkTests";
@@ -1636,7 +1641,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2192BC99161502D300082926 /* Products */;
+					ProductGroup = B8B38B3F16AA0F0300066EEF /* Products */;
 					ProjectRef = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
 				},
 			);
@@ -1650,25 +1655,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2192BCA2161502D400082926 /* OCMock.framework */ = {
+		B8B38B4516AA0F0300066EEF /* OCMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = OCMock.framework;
-			remoteRef = 2192BCA1161502D400082926 /* PBXContainerItemProxy */;
+			remoteRef = B8B38B4416AA0F0300066EEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2192BCA4161502D400082926 /* OCMockTests.octest */ = {
+		B8B38B4716AA0F0300066EEF /* OCMockTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = OCMockTests.octest;
-			remoteRef = 2192BCA3161502D400082926 /* PBXContainerItemProxy */;
+			remoteRef = B8B38B4616AA0F0300066EEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2192BCA6161502D400082926 /* libOCMock.a */ = {
+		B8B38B4916AA0F0300066EEF /* libOCMock.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOCMock.a;
-			remoteRef = 2192BCA5161502D400082926 /* PBXContainerItemProxy */;
+			remoteRef = B8B38B4816AA0F0300066EEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1880,8 +1885,6 @@
 				0FCB663D166E997100617CE4 /* JiveSearchContentsRequestOptions.m in Sources */,
 				0FCB6644166EAA0700617CE4 /* JiveSearchTypesRequestOptions.m in Sources */,
 				B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */,
-				B85807B51678F11F00A9BCCF /* NSThread+JiveISO8601DateFormatter.m in Sources */,
-				B85807BC167926C900A9BCCF /* NSString+JiveUTF8PercentEscape.m in Sources */,
 				0F5F1A231680E00000BA616E /* JiveResourceEntry.m in Sources */,
 				0F6E316D1682731000E5F7CC /* JivePlacesRequestOptions.m in Sources */,
 				B8A6BA6B1691F62D00996448 /* JiveProject.m in Sources */,
@@ -1896,6 +1899,9 @@
 				0F9EBA92169E315500E9F09D /* JiveActivity.m in Sources */,
 				0F9EBAA116A082FB00E9F09D /* JiveInvite.m in Sources */,
 				0F9EBAAE16A5BE1700E9F09D /* JiveTargetList.m in Sources */,
+				B8B38B5116AA100300066EEF /* JiveNSDictionary+URLArguments.m in Sources */,
+				B8B38B5716AA10A300066EEF /* JiveNSString+URLArguments.m in Sources */,
+				B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1996,11 +2002,6 @@
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
 			targetProxy = 2192BC101614F33300082926 /* PBXContainerItemProxy */;
-		};
-		2192BCA8161502EE00082926 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OCMockLib;
-			targetProxy = 2192BCA7161502EE00082926 /* PBXContainerItemProxy */;
 		};
 		B84966B616A8A64500C1CF05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

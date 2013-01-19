@@ -55,9 +55,9 @@
 
 - (void)testAddEmail {
     NSString *sampleEmail1 = @"email@dummy.com";
-    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_stringByEscapingForURLArgument];
     NSString *sampleEmail2 = @"email@super.com";
-    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_stringByEscapingForURLArgument];
     NSArray *JSON = [targets toJSONArray:NO];
     
     STAssertFalse([sampleEmail1 isEqualToString:sampleEmailEncoded1], @"PRECONDITION: test string not URL encoded");
@@ -86,9 +86,9 @@
 
 - (void)testAddUserName {
     NSString *sampleUserName1 = @"Orson Bushnell";
-    NSString *sampleUserNameEncoded1 = [sampleUserName1 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleUserNameEncoded1 = [sampleUserName1 jive_stringByEscapingForURLArgument];
     NSString *sampleUserName2 = @"Heath Borders&";
-    NSString *sampleUserNameEncoded2 = [sampleUserName2 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleUserNameEncoded2 = [sampleUserName2 jive_stringByEscapingForURLArgument];
     NSArray *JSON = [targets toJSONArray:NO];
     
     STAssertFalse([sampleUserName1 isEqualToString:sampleUserNameEncoded1], @"PRECONDITION: test string not URL encoded");
@@ -123,9 +123,9 @@
     NSURL *sampleUrl1 = [NSURL URLWithString:@"http://dummy.com"];
     NSURL *sampleUrl2 = [NSURL URLWithString:@"http://super.com"];
     NSString *sampleEmail1 = @"email@dummy.com";
-    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleEmailEncoded1 = [sampleEmail1 jive_stringByEscapingForURLArgument];
     NSString *sampleEmail2 = @"email@super.com";
-    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_encodeWithUTF8PercentEscaping];
+    NSString *sampleEmailEncoded2 = [sampleEmail2 jive_stringByEscapingForURLArgument];
     NSArray *JSON = [targets toJSONArray:NO];
     
     STAssertFalse([sampleEmail1 isEqualToString:sampleEmailEncoded1], @"PRECONDITION: test string not URL encoded");

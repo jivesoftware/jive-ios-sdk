@@ -7,7 +7,7 @@
 //
 
 #import "JiveSearchRequestOptions_internal.h"
-#import "NSString+JiveUTF8PercentEscape.h"
+#import "JiveNSString+URLArguments.h"
 
 @implementation JiveSearchRequestOptions
 
@@ -19,7 +19,7 @@
         NSMutableArray *encodedItems = [NSMutableArray arrayWithCapacity:self.search.count];
         
         for (NSString *item in self.search) {
-            [encodedItems addObject:[item jive_encodeWithUTF8PercentEscaping]];
+            [encodedItems addObject:[item jive_stringByEscapingForURLArgument]];
         }
         
         NSString *searchTerms = [encodedItems componentsJoinedByString:@","];

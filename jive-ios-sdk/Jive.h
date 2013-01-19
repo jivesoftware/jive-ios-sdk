@@ -66,6 +66,9 @@
 #import "JiveWelcomeRequestOptions.h"
 #import "JiveAuthorCommentRequestOptions.h"
 
+typedef void (^JiveErrorBlock)(NSError *error);
+typedef void (^JiveInboxCompleteBlock)(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate);
+
 @protocol JiveAuthorizationDelegate;
 
 @interface Jive : NSObject
@@ -181,8 +184,8 @@
 
 #pragma mark - Inbox
 
-- (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
-- (void) inbox:(JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error;
+- (void) inbox:(JiveInboxCompleteBlock)inboxCompleteBlock onError:(JiveErrorBlock)errorBlock;
+- (void) inbox:(JiveInboxOptions*) options onComplete:(JiveInboxCompleteBlock)inboxCompleteBlock onError:(JiveErrorBlock)errorBlock;
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
 - (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
 

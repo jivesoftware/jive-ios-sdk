@@ -20,7 +20,7 @@
 #import "JiveFavorite.h"
 #import "JiveTask.h"
 #import "JiveUpdate.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
 
@@ -70,7 +70,7 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:followerCount forKey:@"followerCount"];
     [dictionary setValue:highlightBody forKey:@"highlightBody"];

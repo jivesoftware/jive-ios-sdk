@@ -7,7 +7,7 @@
 //
 
 #import "JiveStatic.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
 @implementation JiveStatic
@@ -40,7 +40,7 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:description forKey:@"description"];
     [dictionary setValue:filename forKey:@"filename"];

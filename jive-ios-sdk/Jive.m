@@ -11,10 +11,18 @@
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
 #import "JiveTargetList_internal.h"
+#import "JiveNSDictionary+URLArguments.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 @interface JiveInvite (internal)
 
 + (NSString *) jsonForState:(enum JiveInviteState)state;
+
+@end
+
+@interface NSURL (JiveDateParameterValue)
+
+- (NSDate *)jive_dateFromValueOfParameterWithName:(NSString *)parameterName;
 
 @end
 
@@ -339,20 +347,31 @@
 
 #pragma mark - Inbox
 
-- (void) inbox:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
-    [self inbox:nil onComplete:complete onError:error];
+- (void) inbox:(JiveInboxCompleteBlock)inboxCompleteBlock onError:(JiveErrorBlock)errorBlock {
+    [self inbox:nil onComplete:inboxCompleteBlock onError:errorBlock];
 }
 
-- (void) inbox: (JiveInboxOptions*) options onComplete:(void(^)(NSArray*)) complete onError:(void(^)(NSError* error)) error {
+- (void) inbox:(JiveInboxOptions*) options onComplete:(JiveInboxCompleteBlock)inboxCompleteBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options
                                                 andTemplate:@"/api/core/v3/inbox", nil];
-    NSOperation *operation = [self listOperationForClass:[JiveInboxEntry class]
-                                                          request:request
-                                                       onComplete:complete
-                                                          onError:error];
     
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSArray *inboxEntries = [JiveInboxEntry instancesFromJSONList:JSON];
+        
+        NSDictionary *links = JSON[@"links"];
+        NSURL *nextURL = [NSURL URLWithString:links[@"next"]];
+        NSURL *previousURL = [NSURL URLWithString:links[@"previous"]];
+        
+        NSDate *earliestDate = [nextURL jive_dateFromValueOfParameterWithName:@"before"];
+        NSDate *latestDate = [previousURL jive_dateFromValueOfParameterWithName:@"after"];
+        
+        inboxCompleteBlock(inboxEntries, earliestDate, latestDate);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        if (errorBlock) {
+            errorBlock(err);
+        }
+    }];
     [operation start];
-    
 }
 
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *error))errorBlock {
@@ -1606,6 +1625,24 @@
         return nil;
     })];
     return operation;
+}
+
+@end
+
+@implementation NSURL (JiveDateParameterValue)
+
+- (NSDate *)jive_dateFromValueOfParameterWithName:(NSString *)parameterName {
+    NSDictionary *parameters = [NSDictionary jive_dictionaryWithHttpArgumentsString:[self query]];
+    if (parameters) {
+        NSString *dateISO8601 = parameters[parameterName];
+        if (dateISO8601) {
+            NSDateFormatter *ISO8601DateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+            NSDate *date = [ISO8601DateFormatter dateFromString:dateISO8601];
+            return date;
+        }
+    }
+    
+    return nil;
 }
 
 @end

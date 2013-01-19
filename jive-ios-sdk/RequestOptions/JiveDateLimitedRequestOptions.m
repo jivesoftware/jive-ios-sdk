@@ -7,8 +7,8 @@
 //
 
 #import "JiveDateLimitedRequestOptions.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
-#import "NSString+JiveUTF8PercentEscape.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "JiveNSString+URLArguments.h"
 
 @implementation JiveDateLimitedRequestOptions
 
@@ -18,13 +18,13 @@
     
     NSString *queryString = [super toQueryString];
     
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     if (!after) {
         if (!before) {
             return queryString;
         }
         
-        NSString *escapedFormattedBefore = [[dateFormatter stringFromDate:before] jive_encodeWithUTF8PercentEscaping];
+        NSString *escapedFormattedBefore = [[dateFormatter stringFromDate:before] jive_stringByEscapingForURLArgument];
         if (queryString) {
             return [NSString stringWithFormat:@"%@&before=%@",
                     queryString,
@@ -35,7 +35,7 @@
                 escapedFormattedBefore];
     }
     
-    NSString *escapedFormattedAfter =  [[dateFormatter stringFromDate:after] jive_encodeWithUTF8PercentEscaping];
+    NSString *escapedFormattedAfter =  [[dateFormatter stringFromDate:after] jive_stringByEscapingForURLArgument];
     if (queryString) {
         return [NSString stringWithFormat:@"%@&after=%@",
                 queryString,

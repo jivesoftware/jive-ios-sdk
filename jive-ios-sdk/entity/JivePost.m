@@ -7,7 +7,7 @@
 //
 
 #import "JivePost.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveAttachment.h"
 
 @implementation JivePost
@@ -33,7 +33,7 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:permalink forKey:@"permalink"];
     [dictionary setValue:restrictComments forKey:@"restrictComments"];

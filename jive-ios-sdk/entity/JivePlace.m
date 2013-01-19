@@ -13,7 +13,7 @@
 #import "JiveProject.h"
 #import "JiveSpace.h"
 #import "JiveSummary.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
 @implementation JivePlace
@@ -58,7 +58,7 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:self.displayName forKey:@"displayName"];
     [dictionary setValue:self.jiveId forKey:@"id"];

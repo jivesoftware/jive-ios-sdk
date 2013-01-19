@@ -8,7 +8,7 @@
 
 #import "JiveSearchTypesRequestOptions.h"
 #import "JiveSearchRequestOptions_internal.h"
-#import "NSString+JiveUTF8PercentEscape.h"
+#import "JiveNSString+URLArguments.h"
 
 @implementation JiveSearchTypesRequestOptions
 
@@ -20,7 +20,7 @@
         NSMutableArray *encodedTypes = [NSMutableArray arrayWithCapacity:self.types.count];
         
         for (NSString *item in self.types) {
-            [encodedTypes addObject:[item jive_encodeWithUTF8PercentEscaping]];
+            [encodedTypes addObject:[item jive_stringByEscapingForURLArgument]];
         }
         
         NSString *typeFilters = [encodedTypes componentsJoinedByString:@","];

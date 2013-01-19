@@ -8,7 +8,7 @@
 
 #import "JiveTargetList_internal.h"
 #import "JiveResourceEntry.h"
-#import "NSString+JiveUTF8PercentEscape.h"
+#import "JiveNSString+URLArguments.h"
 
 @implementation JiveTargetList
 
@@ -35,14 +35,14 @@
     if (!alternateIdentifiers)
         alternateIdentifiers = [NSMutableArray arrayWithCapacity:1];
     
-    [alternateIdentifiers addObject:[emailAddress jive_encodeWithUTF8PercentEscaping]];
+    [alternateIdentifiers addObject:[emailAddress jive_stringByEscapingForURLArgument]];
 }
 
 - (void)addUserName:(NSString *)userName {
     if (!alternateIdentifiers)
         alternateIdentifiers = [NSMutableArray arrayWithCapacity:1];
     
-    [alternateIdentifiers addObject:[userName jive_encodeWithUTF8PercentEscaping]];
+    [alternateIdentifiers addObject:[userName jive_stringByEscapingForURLArgument]];
 }
 
 @end

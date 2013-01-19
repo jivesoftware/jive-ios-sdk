@@ -11,7 +11,7 @@
 #import "JiveObject.h"
 
 #import <objc/runtime.h>
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 @implementation JiveObject
 
@@ -109,7 +109,7 @@
     }
     
     if(cls == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[NSThread currentThread].jive_ISO8601DateFormatter dateFromString:JSON];
+        return [[NSDateFormatter jive_threadLocalISO8601DateFormatter] dateFromString:JSON];
     }
     
     if(cls == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {

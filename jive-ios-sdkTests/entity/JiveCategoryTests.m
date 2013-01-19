@@ -103,7 +103,7 @@
     NSDate *published = [NSDate dateWithTimeIntervalSince1970:0];
     NSString *tag = @"First";
     NSDate *updated = [NSDate dateWithTimeIntervalSince1970:1000.123];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [JSON setValue:description forKey:@"description"];
     [JSON setValue:followerCount forKey:@"followerCount"];
@@ -150,7 +150,7 @@
     NSDate *published = [NSDate dateWithTimeIntervalSince1970:1000.123];
     NSString *tag = @"Gigantic";
     NSDate *updated = [NSDate dateWithTimeIntervalSince1970:0];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [JSON setValue:description forKey:@"description"];
     [JSON setValue:followerCount forKey:@"followerCount"];

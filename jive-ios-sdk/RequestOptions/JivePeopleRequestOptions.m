@@ -7,30 +7,30 @@
 //
 
 #import "JivePeopleRequestOptions.h"
-#import "NSString+JiveUTF8PercentEscape.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "JiveNSString+URLArguments.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 @implementation JivePeopleRequestOptions
 
 - (NSMutableArray *)buildFilter {
     
     NSMutableArray *filter = [super buildFilter];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
 
     if (self.title)
-        [filter addObject:[NSString stringWithFormat:@"title(%@)", [self.title jive_encodeWithUTF8PercentEscaping]]];
+        [filter addObject:[NSString stringWithFormat:@"title(%@)", [self.title jive_stringByEscapingForURLArgument]]];
     
     if (self.department)
-        [filter addObject:[NSString stringWithFormat:@"department(%@)", [self.department jive_encodeWithUTF8PercentEscaping]]];
+        [filter addObject:[NSString stringWithFormat:@"department(%@)", [self.department jive_stringByEscapingForURLArgument]]];
     
     if (self.location)
-        [filter addObject:[NSString stringWithFormat:@"location(%@)", [self.location jive_encodeWithUTF8PercentEscaping]]];
+        [filter addObject:[NSString stringWithFormat:@"location(%@)", [self.location jive_stringByEscapingForURLArgument]]];
     
     if (self.company)
-        [filter addObject:[NSString stringWithFormat:@"company(%@)", [self.company jive_encodeWithUTF8PercentEscaping]]];
+        [filter addObject:[NSString stringWithFormat:@"company(%@)", [self.company jive_stringByEscapingForURLArgument]]];
     
     if (self.office)
-        [filter addObject:[NSString stringWithFormat:@"office(%@)", [self.office jive_encodeWithUTF8PercentEscaping]]];
+        [filter addObject:[NSString stringWithFormat:@"office(%@)", [self.office jive_stringByEscapingForURLArgument]]];
     
     if (self.hiredAfter && self.hiredBefore && [self.hiredAfter compare:self.hiredBefore] == NSOrderedAscending)
         [filter addObject:[NSString stringWithFormat:@"hire-date(%@,%@)",
@@ -54,7 +54,7 @@
     }
     
     if (self.query) {
-        NSString *encodedQuery = [self.query jive_encodeWithUTF8PercentEscaping];
+        NSString *encodedQuery = [self.query jive_stringByEscapingForURLArgument];
         
         if (queryString)
             queryString = [queryString stringByAppendingFormat:@"&query=%@", encodedQuery];

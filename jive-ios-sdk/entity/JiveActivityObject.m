@@ -8,7 +8,7 @@
 
 #import "JiveActivityObject.h"
 #import "JiveMediaLink.h"
-#import "NSThread+JiveISO8601DateFormatter.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 @implementation JiveActivityObject
 
@@ -16,7 +16,7 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSThread currentThread].jive_ISO8601DateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:content forKey:@"content"];
     [dictionary setValue:jiveId forKey:@"id"];
