@@ -1897,7 +1897,7 @@
     
     [self createJiveAPIObjectWithResponse:@"content_comments" andAuthDelegate:mockAuthDelegate];
     
-    NSOperation* operation = [jive commentsOperationForContent:source withOptions:options onComplete:^(NSArray *comments, NSDate *earliestDate, NSDate *latestDate) {
+    NSOperation* operation = [jive commentsOperationForContent:source withOptions:options onComplete:^(NSArray *comments) {
         // Called 3rd
         STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -1927,7 +1927,7 @@
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
-        [jive commentsForContent:source withOptions:options onComplete:^(NSArray *comments, NSDate *earliestDate, NSDate *latestDate) {
+        [jive commentsForContent:source withOptions:options onComplete:^(NSArray *comments) {
             // Called 3rd
             STAssertEquals([comments count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertTrue([[[comments objectAtIndex:0] class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
