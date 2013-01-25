@@ -817,16 +817,29 @@
 #pragma mark - Content
 
 - (void) contentFromURL:(NSURL *)contentURL onComplete:(void (^)(JiveContent *content))completeBlock onError:(void (^)(NSError *error))errorBlock {
+    
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
+    
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    NSOperation *operation = [self entityOperationForClass:[JiveContent class]
+    NSOperation *operation = nil;
+    if([contentURL.query rangeOfString:@"filter="].location == NSNotFound) {
+        operation = [self entityOperationForClass:[JiveContent class]
                                                             request:mutableURLRequest
                                                          onComplete:completeBlock
                                                             onError:errorBlock];
+    } else {
+        operation = [self listOperationForClass:[JiveContent class] request:mutableURLRequest onComplete:^(NSArray *objects) {
+            completeBlock([objects objectAtIndex:0]);
+        } onError:errorBlock];
+    }
+    
+    
     [operation start];
 }
+
+
 
 - (NSOperation *)contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     return [self contentsListOperation:@"contents" withOptions:options onComplete:complete onError:error];
