@@ -60,6 +60,21 @@
     return [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
 }
 
+- (void) testJiveInstance {
+    
+    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+    
+    NSURL* originalJiveInstance = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    
+    jive = [[Jive alloc] initWithJiveInstance:originalJiveInstance
+                        authorizationDelegate:mockAuthDelegate];
+    
+    NSURL* configuredJiveInstance = [jive jiveInstanceURL];
+    
+    STAssertNotNil(configuredJiveInstance, @"jiveInstance URL should never be nil");
+    STAssertTrue([[configuredJiveInstance absoluteString] isEqualToString:[originalJiveInstance absoluteString]], @"Configured URL does not match original URL");
+}
+
 - (void) testInboxServiceCall {
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     

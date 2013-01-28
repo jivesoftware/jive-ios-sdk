@@ -75,6 +75,8 @@ typedef void (^JiveInboxCompleteBlock)(NSArray *inboxEntries, NSDate *earliestDa
 
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate;
 
+- (NSURL*) jiveInstanceURL;
+
 #pragma mark - Activities
 
 - (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))completeBlock onError:(void (^)(NSError *error))errorBlock;

@@ -63,6 +63,10 @@
     return self;
 }
 
+- (NSURL*) jiveInstanceURL {
+    return _jiveInstance;
+}
+
 #pragma mark - helper methods
 
 - (NSOperation *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
