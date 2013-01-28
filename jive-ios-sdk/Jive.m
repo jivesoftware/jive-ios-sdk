@@ -828,7 +828,7 @@
                                             forURL:contentURL];
     
     NSOperation *operation = nil;
-    if([contentURL.query rangeOfString:@"filter="].location == NSNotFound) {
+    if(contentURL.query == nil || [contentURL.query rangeOfString:@"filter="].location == NSNotFound) {
         operation = [self entityOperationForClass:[JiveContent class]
                                                             request:mutableURLRequest
                                                          onComplete:completeBlock
