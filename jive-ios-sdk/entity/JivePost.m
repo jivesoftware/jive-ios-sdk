@@ -24,7 +24,7 @@
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"attachments") {
+    if ([propertyName isEqualToString:@"attachments"]) {
         return [JiveAttachment class];
     }
     

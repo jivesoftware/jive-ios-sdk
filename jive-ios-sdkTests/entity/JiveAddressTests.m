@@ -33,11 +33,11 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"value"], address.value, @"Wrong id.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], address.type, @"Wrong type");
     
-    id primary = [(NSDictionary *)JSON objectForKey:@"primary"];
+    NSNumber *primary = [(NSDictionary *)JSON objectForKey:@"primary"];
     
     STAssertNotNil(primary, @"Missing primary");
     if (primary)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)primary), @"Wrong primary");
+        STAssertTrue([primary boolValue], @"Wrong primary");
 }
 
 - (void)testToJSON_alternate {

@@ -78,7 +78,7 @@
         value = [(NSArray*)value componentsJoinedByString:@","];
     }
     
-    bool isFilter = [[self filterParams] indexOfObject:property] != -1;
+    bool isFilter = [[self filterParams] indexOfObject:property] != NSNotFound;
     NSString *format = isFilter ? @"filter=%@(%@)" : @"%@=%@";
     
     return [NSString stringWithFormat:format, [self urlEscapeString:property], [self urlEscapeString:value]];

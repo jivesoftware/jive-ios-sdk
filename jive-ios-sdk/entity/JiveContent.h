@@ -74,7 +74,4 @@
 // Number of times this content object has been viewed.
 @property(nonatomic, readonly) NSNumber *viewCount;
 
-
-
-
 @end

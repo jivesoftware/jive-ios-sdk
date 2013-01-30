@@ -356,10 +356,10 @@
 }
 
 - (void) inbox:(JiveInboxOptions*) options onComplete:(JiveInboxCompleteBlock)inboxCompleteBlock onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self requestWithOptions:options
+    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options
                                                 andTemplate:@"/api/core/v3/inbox", nil];
     
-    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:mutableURLRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSArray *inboxEntries = [JiveInboxEntry instancesFromJSONList:JSON[@"list"]];
         
         NSDictionary *links = JSON[@"links"];
@@ -614,16 +614,16 @@
                                  onError:error];
 }
 
-- (void) blog:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error {
-    [[self blogOperation:person withOptions:options onComplete:complete onError:error] start];
+- (void) blog:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(JiveErrorBlock)errorBlock {
+    [[self blogOperation:person withOptions:options onComplete:complete onError:errorBlock] start];
 }
 
-- (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(void (^)(NSError *error))error {
+- (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
     JiveResourceEntry *resourceEntry = [person.resources objectForKey:@"avatar"];
-    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
+    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
     void (^heapCompleteBlock)(UIImage *) = [complete copy];
-    void (^heapErrorBlock)(NSError *) = [error copy];
-    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
+    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
+    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:mutableURLRequest
                                                                               imageProcessingBlock:NULL
                                                                                            success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         if (heapCompleteBlock) {
@@ -1199,10 +1199,10 @@
 
 - (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock {
     JiveResourceEntry *resourceEntry = [place.resources objectForKey:@"avatar"];
-    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
+    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
-    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request
+    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:mutableURLRequest
                                                                               imageProcessingBlock:NULL
                                                                                            success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         if (heapCompleteBlock) {
@@ -1602,15 +1602,15 @@
     }
 }
 
-- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(void(^)(NSError* error)) errorBlock responseHandler: (id(^)(id JSON)) handler {
+- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(JiveErrorBlock) errorBlock responseHandler: (id(^)(id JSON)) handler {
     if (request) {
-        JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             id entity = handler(JSON);
             if (completeBlock) {
                 completeBlock(entity);
             }
             
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
                 errorBlock(err);
             }
