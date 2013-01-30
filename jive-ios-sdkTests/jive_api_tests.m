@@ -2355,9 +2355,9 @@
                           andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        JiveMember *member = [self entityForClass:[JiveMember class]
+        JiveMember *testMember = [self entityForClass:[JiveMember class]
                                     fromJSONNamed:@"member"];
-        [jive memberWithMember:member
+        [jive memberWithMember:testMember
                        options:nil
                     onComplete:(^(JiveMember *member) {
             STAssertNotNil(member, nil);
@@ -4311,7 +4311,7 @@
 
 - (void) testCreateTaskOperation {
     JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
-    JiveTask *task = [[JiveTask alloc] init];
+    JiveTask *testTask = [[JiveTask alloc] init];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -4321,11 +4321,11 @@
     }]];
     
     [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
-    task.subject = @"subject";
-    task.dueDate = [NSDate date];
+    testTask.subject = @"subject";
+    testTask.dueDate = [NSDate date];
     
-    NSData *body = [NSJSONSerialization dataWithJSONObject:[task toJSONDictionary] options:0 error:nil];
-    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createTaskOperation:task forPerson:source withOptions:options onComplete:^(JiveTask *task) {
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createTaskOperation:testTask forPerson:source withOptions:options onComplete:^(JiveTask *task) {
         // Called 3rd
         STAssertEquals([task class], [JiveTask class], @"Wrong item class");
         STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
@@ -4359,10 +4359,10 @@
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JivePerson *source = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
-        JiveTask *task = [[JiveTask alloc] init];
-        task.subject = @"Supercalifragalisticexpialidotious - is that spelled right?";
-        task.dueDate = [NSDate dateWithTimeIntervalSince1970:0];
-        [jive createTask:task forPerson:source withOptions:options onComplete:^(JiveTask *task) {
+        JiveTask *testTask = [[JiveTask alloc] init];
+        testTask.subject = @"Supercalifragalisticexpialidotious - is that spelled right?";
+        testTask.dueDate = [NSDate dateWithTimeIntervalSince1970:0];
+        [jive createTask:testTask forPerson:source withOptions:options onComplete:^(JiveTask *task) {
             // Called 3rd
             STAssertEquals([task class], [JiveTask class], @"Wrong item class");
             STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
@@ -4379,7 +4379,7 @@
 
 - (void) testCreatePlaceTaskOperation {
     JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
-    JiveTask *task = [[JiveTask alloc] init];
+    JiveTask *testTask = [[JiveTask alloc] init];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -4389,11 +4389,11 @@
     }]];
     
     [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
-    task.subject = @"subject";
-    task.dueDate = [NSDate date];
+    testTask.subject = @"subject";
+    testTask.dueDate = [NSDate date];
     
-    NSData *body = [NSJSONSerialization dataWithJSONObject:[task toJSONDictionary] options:0 error:nil];
-    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createTaskOperation:task forPlace:source withOptions:options onComplete:^(JiveTask *task) {
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
+    JAPIRequestOperation* operation = (JAPIRequestOperation *)[jive createTaskOperation:testTask forPlace:source withOptions:options onComplete:^(JiveTask *task) {
         // Called 3rd
         STAssertEquals([task class], [JiveTask class], @"Wrong item class");
         STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
@@ -4427,10 +4427,10 @@
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JivePlace *source = [self entityForClass:[JivePlace class] fromJSONNamed:@"place"];
-        JiveTask *task = [[JiveTask alloc] init];
-        task.subject = @"Supercalifragalisticexpialidotious - is that spelled right?";
-        task.dueDate = [NSDate dateWithTimeIntervalSince1970:0];
-        [jive createTask:task forPlace:source withOptions:options onComplete:^(JiveTask *task) {
+        JiveTask *testTask = [[JiveTask alloc] init];
+        testTask.subject = @"Supercalifragalisticexpialidotious - is that spelled right?";
+        testTask.dueDate = [NSDate dateWithTimeIntervalSince1970:0];
+        [jive createTask:testTask forPlace:source withOptions:options onComplete:^(JiveTask *task) {
             // Called 3rd
             STAssertEquals([task class], [JiveTask class], @"Wrong item class");
             STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");

@@ -23,6 +23,12 @@
 
 #import "NSData+JiveBase64.h"
 
+// JIVE: Assume the source has correct sign conversion. Big assumption.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+
 //
 // Mapping from 6 bit pattern to ASCII character.
 //

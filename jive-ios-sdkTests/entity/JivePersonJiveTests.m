@@ -47,35 +47,35 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"timeZone"], person.timeZone, @"Wrong time zone");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"username"], person.username, @"Wrong username");
     
-    id enabled = [(NSDictionary *)JSON objectForKey:@"enabled"];
+    NSNumber *enabled = [(NSDictionary *)JSON objectForKey:@"enabled"];
     
     STAssertNotNil(enabled, @"Missing visibility");
     if (enabled)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)enabled), @"Wrong enabled");
+        STAssertTrue([enabled boolValue], @"Wrong enabled");
     
-    id external = [(NSDictionary *)JSON objectForKey:@"external"];
+    NSNumber *external = [(NSDictionary *)JSON objectForKey:@"external"];
     
     STAssertNotNil(external, @"Missing external");
     if (external)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)external), @"Wrong external");
+        STAssertTrue([external boolValue], @"Wrong external");
     
-    id externalContributor = [(NSDictionary *)JSON objectForKey:@"externalContributor"];
+    NSNumber *externalContributor = [(NSDictionary *)JSON objectForKey:@"externalContributor"];
     
     STAssertNotNil(externalContributor, @"Missing externalContributor");
     if (externalContributor)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)externalContributor), @"Wrong externalContributor");
+        STAssertTrue([externalContributor boolValue], @"Wrong externalContributor");
     
-    id federated = [(NSDictionary *)JSON objectForKey:@"federated"];
+    NSNumber *federated = [(NSDictionary *)JSON objectForKey:@"federated"];
     
     STAssertNotNil(federated, @"Missing federated");
     if (federated)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)federated), @"Wrong federated");
+        STAssertTrue([federated boolValue], @"Wrong federated");
     
-    id visible = [(NSDictionary *)JSON objectForKey:@"visible"];
+    NSNumber *visible = [(NSDictionary *)JSON objectForKey:@"visible"];
     
     STAssertNotNil(visible, @"Missing visible");
     if (visible)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)visible), @"Wrong visible");
+        STAssertTrue([visible boolValue], @"Wrong visible");
 }
 
 - (void)testToJSON_alternate {
