@@ -13,6 +13,7 @@
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
 #import "JiveResourceEntry.h"
+#import "JiveProfileEntry.h"
 
 @implementation JivePersonTests
 
@@ -445,13 +446,16 @@
     [basePerson setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
     NSMutableDictionary *JSON = (NSMutableDictionary *)[basePerson toJSONDictionary];
+    NSMutableDictionary *personJiveJSON = (NSMutableDictionary *)[personJive toJSONDictionary];
+    NSDictionary *profileJSON = [NSDictionary dictionaryWithObject:@"department" forKey:@"jive_label"];
     
+    [personJiveJSON setValue:[NSArray arrayWithObject:profileJSON] forKey:@"profile"];
     [JSON setValue:resourcesJSON forKey:@"resources"];
     [JSON setValue:@"display name" forKey:@"displayName"];
     [JSON setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
     [JSON setValue:[NSNumber numberWithInt:4] forKey:@"followingCount"];
     [JSON setValue:@"87654" forKey:@"jiveId"];
-    [JSON setValue:[personJive toJSONDictionary] forKey:@"jive"];
+    [JSON setValue:personJiveJSON forKey:@"jive"];
 //    [JSON setValue:[NSArray arrayWithObject:photoURI] forKey:@"photos"];
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"published"];
     [JSON setValue:@"http://com.dummy/png.thumbnail" forKey:@"thumbnailUrl"];
@@ -505,6 +509,13 @@
     STAssertEqualObjects([newPerson.tags objectAtIndex:0], [basePerson.tags objectAtIndex:0], @"Wrong tag object class");
     STAssertEquals([newPerson.resources count], [basePerson.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newPerson.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+    STAssertEquals([newPerson.jive.profile count], (NSUInteger)1, @"Wrong number of profile objects");
+    if ([newPerson.jive.profile count] > 0) {
+        JiveProfileEntry *convertedProfile = [newPerson.jive.profile objectAtIndex:0];
+        STAssertEquals([convertedProfile class], [JiveProfileEntry class], @"Wrong profile object class");
+        if ([[convertedProfile class] isSubclassOfClass:[JiveProfileEntry class]])
+            STAssertEqualObjects(convertedProfile.jive_label, @"department", @"Wrong profile object");
+    }
 }
 
 @end

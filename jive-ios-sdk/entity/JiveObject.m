@@ -144,7 +144,7 @@
                 Class propertyClass = [obj lookupPropertyClass:key];
                 
                 // Set property to new instance of cls or a primitive
-                id property = (propertyClass) ? [self getObjectOfType:propertyClass forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
+                id property = (propertyClass) ? [obj getObjectOfType:propertyClass forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
                 
                 [obj setValue:property forKey:key];
          }
