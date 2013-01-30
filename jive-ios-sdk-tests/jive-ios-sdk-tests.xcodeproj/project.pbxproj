@@ -15,6 +15,8 @@
 		B8A71F1816A89DFA00A7D2CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8A71F1616A89DFA00A7D2CE /* InfoPlist.strings */; };
 		B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */; };
 		B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */; };
+		B8D2511616B9749A00412DA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2511516B9749A00412DA5 /* MobileCoreServices.framework */; };
+		B8D2511A16B974A000412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2511916B974A000412DA5 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JiveTestCase.m; sourceTree = "<group>"; };
 		B8A71F1C16A89DFA00A7D2CE /* jive-ios-sdk-tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jive-ios-sdk-tests-Prefix.pch"; sourceTree = "<group>"; };
 		B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPlacesTest.m; sourceTree = "<group>"; };
+		B8D2511516B9749A00412DA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B8D2511916B974A000412DA5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D2511A16B974A000412DA5 /* SystemConfiguration.framework in Frameworks */,
+				B8D2511616B9749A00412DA5 /* MobileCoreServices.framework in Frameworks */,
 				B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */,
 				B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */,
 				B8A71F1216A89DFA00A7D2CE /* Foundation.framework in Frameworks */,
@@ -127,10 +133,12 @@
 		B8A71EB916A89CCE00A7D2CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */,
-				B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */,
 				B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */,
+				B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */,
+				B8D2511516B9749A00412DA5 /* MobileCoreServices.framework */,
 				B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */,
+				B8D2511916B974A000412DA5 /* SystemConfiguration.framework */,
+				B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
