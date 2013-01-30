@@ -15,7 +15,7 @@
 @synthesize actionLinks, deliverTo, embed;
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"actionLinks") {
+    if ([propertyName isEqualToString:@"actionLinks"]) {
         return [JiveActionLink class];
     }
     
