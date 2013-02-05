@@ -3625,7 +3625,7 @@
     
     [self createJiveAPIObjectWithResponse:@"person_activities" andAuthDelegate:mockAuthDelegate];
     
-    NSOperation* operation = [jive activitiesOperationWithOptions:options onComplete:^(NSArray *activities) {
+    NSOperation* operation = [jive activitiesOperationWithOptions:options onComplete:^(NSArray *activities, NSDate *earliestDate, NSDate *latestDate) {
         // Called 3rd
         STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
         STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
@@ -3653,7 +3653,7 @@
     
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive activitiesWithOptions:options onComplete:^(NSArray *activities) {
+        [jive activitiesWithOptions:options onComplete:^(NSArray *activities, NSDate *earliestDate, NSDate *latestDate) {
             // Called 3rd
             STAssertEquals([activities count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[activities objectAtIndex:0] class], [JiveActivity class], @"Wrong item class");
