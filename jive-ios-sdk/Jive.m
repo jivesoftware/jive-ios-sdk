@@ -1055,7 +1055,7 @@
     
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
@@ -1541,7 +1541,7 @@
     
     [request setHTTPMethod:@"PUT"];
     [request setHTTPBody:body];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveInvite class]
                                  request:request
@@ -1561,7 +1561,7 @@
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:body];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self listOperationForClass:[JiveInvite class]
                                request:request
@@ -1613,7 +1613,7 @@
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
