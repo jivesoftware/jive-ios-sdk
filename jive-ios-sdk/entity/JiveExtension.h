@@ -46,4 +46,8 @@
 // URI to update the read/unread state of the content object associated with this inbox entry. If the read field value is true, send a DELETE to this URI to mark it as unread. If the read field value is false, send a POST to this URI to mark it as read. Only present on activities that correspond to inbox entries
 @property(nonatomic, readonly) NSURL* update;
 
+@property(nonatomic, copy) NSURL *updateCollection;
+
+@property(nonatomic) BOOL collectionRead;
+
 @end
