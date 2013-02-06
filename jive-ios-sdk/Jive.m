@@ -265,11 +265,22 @@
     [operation start];
 }
 
-- (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(void (^)(NSError *error))errorBlock {
+- (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self activityDateLimitedListOperation:@"activities"
                                       withOptions:options
                                        onComplete:completeBlock
                                           onError:errorBlock];
+}
+
+- (NSOperation *) activitiesOperationWithURL:(NSURL *)activitiesURL onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:activitiesURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:activitiesURL];
+    NSOperation *operation = [self dateLimitedListOperationForClass:[JiveActivity class]
+                                                            request:mutableURLRequest
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
+    return operation;
 }
 
 - (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
