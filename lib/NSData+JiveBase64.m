@@ -306,14 +306,19 @@ char *JiveNewBase64Encode(
 	char *outputBuffer =
 		JiveNewBase64Encode([self bytes], [self length], true, &outputLength);
 	
-	NSString *result =
-		[[[NSString alloc]
-			initWithBytes:outputBuffer
-			length:outputLength
-			encoding:NSASCIIStringEncoding]
-		autorelease];
-	free(outputBuffer);
-	return result;
+    if (outputBuffer)
+    {
+        NSString *result =
+            [[[NSString alloc]
+                initWithBytes:outputBuffer
+                length:outputLength
+                encoding:NSASCIIStringEncoding]
+            autorelease];
+        free(outputBuffer);
+        return result;
+    } else {
+        return nil;
+    }
 }
 
 @end
