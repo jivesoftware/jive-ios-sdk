@@ -35,6 +35,7 @@
     self.file.authorship = @"open";
     [self.file setValue:[NSURL URLWithString:@"http://dummy.com/text.txt"] forKey:@"binaryURL"];
     self.file.categories = [NSArray arrayWithObject:category];
+    [self.file setValue:@42 forKey:@"size"];
     [self.file setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     [self.file setValue:[NSArray arrayWithObject:personURI] forKey:@"users"];
     self.file.visibility = @"hidden";
@@ -43,12 +44,13 @@
     JSON = [self.file toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)10, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.file.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:@"authorship"], self.file.authorship, @"Wrong authorship");
     STAssertEqualObjects([JSON objectForKey:@"binaryURL"], [self.file.binaryURL absoluteString], @"Wrong binaryURL");
     STAssertEqualObjects([JSON objectForKey:@"visibility"], self.file.visibility, @"Wrong visibility");
     STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.file.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEqualObjects([JSON objectForKey:@"size"], @42, @"Wrong size");
     
     NSArray *authorsJSON = [JSON objectForKey:@"authors"];
     NSDictionary *authorJSON = [authorsJSON objectAtIndex:0];

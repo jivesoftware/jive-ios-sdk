@@ -11,7 +11,7 @@
 
 @implementation JiveFile
 
-@synthesize authors, authorship, binaryURL, categories, tags, users, visibility;
+@synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility;
 @synthesize visibleToExternalContributors;
 
 - (id)init {
@@ -36,19 +36,23 @@
     
     [dictionary setValue:authorship forKey:@"authorship"];
     [dictionary setValue:[binaryURL absoluteString] forKey:@"binaryURL"];
+    [dictionary setValue:size forKey:@"size"];
     [dictionary setValue:visibility forKey:@"visibility"];
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
     [self addArrayElements:authors toJSONDictionary:dictionary forTag:@"authors"];
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
+    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]]) {
         [dictionary setValue:users forKey:@"users"];
-    else
+    } else {
         [self addArrayElements:users toJSONDictionary:dictionary forTag:@"users"];
+    }
     
-    if (tags)
+    if (tags) {
         [dictionary setValue:tags forKey:@"tags"];
+    }
     
-    if (categories)
+    if (categories) {
         [dictionary setValue:categories forKey:@"categories"];
+    }
     
     return dictionary;
 }
