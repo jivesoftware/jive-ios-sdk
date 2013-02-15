@@ -59,7 +59,7 @@
         _jiveInstance = jiveInstanceURL;
         _delegate = delegate;
     }
-    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     return self;
 }
 
