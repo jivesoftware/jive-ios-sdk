@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */; };
+		23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23680DAD16CAF9DB007EAF2F /* JVUtilities.m */; };
 		B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
@@ -45,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVContentTest.m; sourceTree = "<group>"; };
+		23680DAC16CAF9BA007EAF2F /* JVUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVUtilities.h; sourceTree = "<group>"; };
+		23680DAD16CAF9DB007EAF2F /* JVUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVUtilities.m; sourceTree = "<group>"; };
+		23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JiveBase64.h"; sourceTree = "<group>"; };
 		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
 		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
@@ -85,6 +89,23 @@
 				0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */,
 			);
 			path = content;
+			sourceTree = "<group>";
+		};
+		23680DA816CAF990007EAF2F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */,
+				23680DAD16CAF9DB007EAF2F /* JVUtilities.m */,
+				23680DAC16CAF9BA007EAF2F /* JVUtilities.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		23680DB016CAFA87007EAF2F /* inbox */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = inbox;
 			sourceTree = "<group>";
 		};
 		B81B0C1016A8B3320013CB48 /* people */ = {
@@ -146,6 +167,8 @@
 		B8A71F1316A89DFA00A7D2CE /* jive-ios-sdk-tests */ = {
 			isa = PBXGroup;
 			children = (
+				23680DB016CAFA87007EAF2F /* inbox */,
+				23680DA816CAF990007EAF2F /* Utilities */,
 				B8A71F1916A89DFA00A7D2CE /* JiveTestCase.h */,
 				B8A71F1A16A89DFA00A7D2CE /* JiveTestCase.m */,
 				0FC2FEC116AA146F00DDFF68 /* content */,
@@ -297,6 +320,7 @@
 				B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */,
 				B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */,
 				0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */,
+				23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

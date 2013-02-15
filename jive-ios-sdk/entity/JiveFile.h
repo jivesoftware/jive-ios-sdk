@@ -36,6 +36,7 @@
 // Categories associated with this object. Places define the list of possible categories. Strings
 @property(nonatomic, strong) NSArray* categories;
 
+@property(nonatomic, readonly, strong) NSNumber *size;
 
 // Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
