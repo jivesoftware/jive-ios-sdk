@@ -16,11 +16,11 @@
 @synthesize place, plural, resourceLinks, since;
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"fields") {
+    if ([propertyName isEqualToString:@"fields"]) {
         return [JiveField class];
     }
     
-    if (propertyName == @"resourceLinks") {
+    if ([propertyName isEqualToString:@"resourceLinks"]) {
         return [JiveResource class];
     }
     

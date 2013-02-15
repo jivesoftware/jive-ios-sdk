@@ -16,7 +16,8 @@
 @synthesize tags, users, visibility, visibleToExternalContributors;
 
 - (id)init {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.type = @"document";
     }
     
@@ -24,11 +25,13 @@
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"attachments") {
+    if ([propertyName isEqualToString:@"attachments"]) {
         return [JiveAttachment class];
     }
     
-    if (propertyName == @"approvers" || propertyName == @"authors" || propertyName == @"users") {
+    if ([propertyName isEqualToString:@"approvers"] ||
+        [propertyName isEqualToString:@"authors"] ||
+        [propertyName isEqualToString:@"users"]) {
         return [JivePerson class];
     }
     

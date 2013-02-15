@@ -23,6 +23,12 @@
 
 #import "NSData+JiveBase64.h"
 
+// JIVE: Assume the source has correct sign conversion. Big assumption.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wsign-conversion"
+
 //
 // Mapping from 6 bit pattern to ASCII character.
 //
@@ -300,14 +306,19 @@ char *JiveNewBase64Encode(
 	char *outputBuffer =
 		JiveNewBase64Encode([self bytes], [self length], true, &outputLength);
 	
-	NSString *result =
-		[[[NSString alloc]
-			initWithBytes:outputBuffer
-			length:outputLength
-			encoding:NSASCIIStringEncoding]
-		autorelease];
-	free(outputBuffer);
-	return result;
+    if (outputBuffer)
+    {
+        NSString *result =
+            [[[NSString alloc]
+                initWithBytes:outputBuffer
+                length:outputLength
+                encoding:NSASCIIStringEncoding]
+            autorelease];
+        free(outputBuffer);
+        return result;
+    } else {
+        return nil;
+    }
 }
 
 @end

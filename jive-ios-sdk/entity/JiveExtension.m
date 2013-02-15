@@ -12,7 +12,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -22,6 +22,7 @@
     [dictionary setValue:display forKey:@"display"];
     [dictionary setValue:read forKey:@"read"];
     [dictionary setValue:[update absoluteString] forKey:@"update"];
+    [dictionary setValue:[updateCollection absoluteString] forKey:@"updateCollection"];
     [dictionary setValue:state forKey:@"state"];
     if (collectionUpdated)
         [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:@"collectionUpdated"];

@@ -124,11 +124,11 @@
     STAssertEqualObjects([JSON objectForKey:@"updated"], @"1970-01-01T00:16:40.123+0000", @"Wrong updated date");
     STAssertEqualObjects([JSON objectForKey:@"parent"], place.parent, @"Wrong parent");
     
-    id visibility = [JSON objectForKey:@"visibleToExternalContributors"];
+    NSNumber *visibility = [JSON objectForKey:@"visibleToExternalContributors"];
     
     STAssertNotNil(visibility, @"Missing visibility");
     if (visibility)
-        STAssertTrue(CFBooleanGetValue((__bridge CFBooleanRef)visibility), @"Wrong visiblity");
+        STAssertTrue([visibility boolValue], @"Wrong visiblity");
     
     NSDictionary *parentContentJSON = [JSON objectForKey:@"parentContent"];
     

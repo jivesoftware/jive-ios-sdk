@@ -58,11 +58,11 @@
     [[[mock stub] andCall:@selector(hasAcceptableContentType) onObject:self] hasAcceptableContentType];
  
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [mock setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [mock setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *HTTPRequestOperation, id responseObject) {
             // Test succeeds if we get here
             STAssertNotNil(responseObject, @"JAPIRequestOperation returned nil response.");
             finishedBlock();
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(AFHTTPRequestOperation *HTTPRequestOperation, NSError *error) {
             STFail(@"Unable to load test data. %@", [error localizedDescription]);
         }];
         

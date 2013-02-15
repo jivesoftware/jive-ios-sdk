@@ -7,22 +7,14 @@
 //
 
 #import "JivePersonJive.h"
+#import "JiveProfileEntry.h"
 
 @implementation JivePersonJive
 
 @synthesize enabled, external, externalContributor, federated, level, locale, password, profile, timeZone, username, visible;
 
-- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value {
-    if ([property isEqualToString:@"enabled"])
-        enabled = CFBooleanGetValue((__bridge CFBooleanRef)(value));
-    else if ([property isEqualToString:@"external"])
-        external = CFBooleanGetValue((__bridge CFBooleanRef)(value));
-    else if ([property isEqualToString:@"externalContributor"])
-        externalContributor = CFBooleanGetValue((__bridge CFBooleanRef)(value));
-    else if ([property isEqualToString:@"federated"])
-        federated = CFBooleanGetValue((__bridge CFBooleanRef)(value));
-    else if ([property isEqualToString:@"visible"])
-        visible = CFBooleanGetValue((__bridge CFBooleanRef)(value));
+- (Class) arrayMappingFor:(NSString*) propertyName {
+    return [@"profile" isEqualToString:propertyName] ? [JiveProfileEntry class] : nil;
 }
 
 - (NSDictionary *)toJSONDictionary {
@@ -32,21 +24,10 @@
     [dictionary setValue:self.locale forKey:@"locale"];
     [dictionary setValue:self.timeZone forKey:@"timeZone"];
     [dictionary setValue:self.username forKey:@"username"];
-    
-    if (enabled)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"enabled"];
-    
-    if (external)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"external"];
-    
-    if (externalContributor)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"externalContributor"];
-    
-    if (federated)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"federated"];
-    
-    if (visible)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"visible"];
+    [dictionary setValue:self.enabled forKey:@"enabled"];
+    [dictionary setValue:self.external forKey:@"external"];
+    [dictionary setValue:self.externalContributor forKey:@"externalContributor"];
+    [dictionary setValue:self.federated forKey:@"federated"];
     
     return dictionary;
 }

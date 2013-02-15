@@ -98,28 +98,28 @@
     return nil;
 }
 
-- (id) getObjectOfType:(Class) cls forProperty:(NSString*) property FromJSON:(id) JSON {
+- (id) getObjectOfType:(Class) clazz forProperty:(NSString*) propertyName FromJSON:(id) JSON {
     
-    if(cls == [NSNumber class] && [JSON isKindOfClass:[NSNumber class]]) {
+    if(clazz == [NSNumber class] && [JSON isKindOfClass:[NSNumber class]]) {
         return [JSON copy];
     }
     
-    if(cls == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
+    if(clazz == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
         return [[NSString alloc] initWithString:JSON];
     }
     
-    if(cls == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
+    if(clazz == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
         return [[NSDateFormatter jive_threadLocalISO8601DateFormatter] dateFromString:JSON];
     }
     
-    if(cls == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
+    if(clazz == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
         return [[NSURL alloc] initWithString:JSON];
     }
     
-    if(cls == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {
+    if(clazz == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {
         // lookup the class this array is populated with, the default is NSString
         // TODO check if this is valid, using subcls to send a static message
-        Class subcls = [self arrayMappingFor:property];
+        Class subcls = [self arrayMappingFor:propertyName];
         if (subcls) {
             return [subcls instancesFromJSONList:JSON];
         } else {
@@ -133,7 +133,7 @@
         }
     }
     
-    id obj = [[cls alloc] init];
+    id obj = [[clazz alloc] init];
 
     if([JSON isKindOfClass:[NSDictionary class]]) {
         
@@ -141,16 +141,16 @@
                 
          for(NSString* key in JSON) {
             
-                Class cls = [obj lookupPropertyClass:key];
+                Class propertyClass = [obj lookupPropertyClass:key];
                 
                 // Set property to new instance of cls or a primitive
-                id property = (cls) ? [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
+                id property = (propertyClass) ? [obj getObjectOfType:propertyClass forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
                 
                 [obj setValue:property forKey:key];
          }
              
-             } else if ([cls isSubclassOfClass:[NSDictionary class]]) {
-                 obj = [self parseDictionaryForProperty:property fromJSON:JSON];
+             } else if ([clazz isSubclassOfClass:[NSDictionary class]]) {
+                 obj = [self parseDictionaryForProperty:propertyName fromJSON:JSON];
              } else {
 #if JIVE_JSON_DEBUG
                  NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", cls);

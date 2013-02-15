@@ -19,4 +19,7 @@
 - (NSDictionary *)toJSONDictionary;
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
 
+- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;
++ (Class) entityClass:(NSDictionary*) obj;
+
 @end

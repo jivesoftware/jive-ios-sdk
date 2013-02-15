@@ -21,7 +21,7 @@
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
-    if (propertyName == @"users") {
+    if ([propertyName isEqualToString:@"users"]) {
         return [JivePerson class];
     }
     
