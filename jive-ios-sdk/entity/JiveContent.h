@@ -25,7 +25,7 @@
 @interface JiveContent : JiveObject
 
 // Author of this content object.
-@property(nonatomic, strong) JivePerson* author;
+@property(nonatomic, readonly, strong) JivePerson* author;
 
 // Content of this content object.
 @property(nonatomic, strong) JiveContentBody* content;
