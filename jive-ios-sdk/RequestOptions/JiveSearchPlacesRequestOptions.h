@@ -19,8 +19,11 @@
 
 #import "JiveSearchTypesRequestOptions.h"
 
+//! \class JiveSearchPlacesRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchPlaces(List<String>,%20boolean,%20String,%20int,%20int,%20String)
 @interface JiveSearchPlacesRequestOptions : JiveSearchTypesRequestOptions
 
-@property (nonatomic) BOOL nameonly; // Optional boolean value indicating whether or not to limit search results to only people that match by name.
+//! Optional boolean value indicating whether or not to limit search results to only people that match by name.
+@property (nonatomic) BOOL nameonly;
 
 @end

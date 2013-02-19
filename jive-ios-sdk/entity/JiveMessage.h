@@ -19,24 +19,26 @@
 
 #import "JiveContent.h"
 
+//! \class JiveMessage
+//! https://developers.jivesoftware.com/api/v3/rest/MessageEntity.html
 @interface JiveMessage : JiveContent
 
-// Flag indicating that this message contains the correct answer to the question posed in this discussion.
+//! Flag indicating that this message contains the correct answer to the question posed in this discussion.
 @property(nonatomic, strong) NSNumber *answer;
 
-// List of attachments to this message (if any).
+//! List of attachments to this message (if any).
 @property(nonatomic, strong) NSArray* attachments;
 
-// URI of the discussion that this message belongs to.
+//! URI of the discussion that this message belongs to.
 @property(nonatomic, readonly, copy) NSString* discussion;
 
-// Flag indicating that this message contains a helpful answer to the question posed in this discussion.
+//! Flag indicating that this message contains a helpful answer to the question posed in this discussion.
 @property(nonatomic, strong) NSNumber *helpful;
 
-// Tags associated with this object.
+//! Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
 
-// Flag indicating that this content object is potentially visible to external contributors.
+//! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 

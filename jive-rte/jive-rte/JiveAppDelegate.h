@@ -21,6 +21,7 @@
 
 @class JiveViewController;
 
+//! \class JiveAppDelegate
 @interface JiveAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

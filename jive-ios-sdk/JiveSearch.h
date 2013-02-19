@@ -19,6 +19,7 @@
 
 #import "JiveObject.h"
 
+//! \class JiveSearch
 @interface JiveSearch : JiveObject
 
 @end

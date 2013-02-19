@@ -19,12 +19,14 @@
 
 #import "JiveObject.h"
 
+//! \class JiveProfileEntry
+//! https://developers.jivesoftware.com/api/v3/rest/ProfileEntity.html
 @interface JiveProfileEntry : JiveObject
 
-// Label for this profile entry.
+//! Label for this profile entry.
 @property(nonatomic, readonly, copy) NSString* jive_label;
 
-// Value for this profile entry.
+//! Value for this profile entry.
 @property(nonatomic, readonly, copy) NSString* value;
 
 @end

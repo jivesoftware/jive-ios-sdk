@@ -19,11 +19,16 @@
 
 #import "JivePlacesRequestOptions.h"
 
+//! \class JiveContentRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContents(List<String>,%20String,%20int,%20int,%20String)
 @interface JiveContentRequestOptions : JivePlacesRequestOptions
 
-@property (nonatomic, strong) NSArray *authors; // one or more person URIs
-@property (nonatomic, strong) NSURL *place; // place URI where the content lives
+//! one or more person URIs
+@property (nonatomic, strong) NSArray *authors;
+//! place URI where the content lives
+@property (nonatomic, strong) NSURL *place;
 
+//! Helper method to simplify adding an Author URL to the authors array.
 - (void)addAuthor:(NSURL *)url;
 
 @end

@@ -19,18 +19,20 @@
 
 #import "JiveContent.h"
 
+//! \class JiveUpdate
+//! https://developers.jivesoftware.com/api/v3/rest/UpdateEntity.html
 @interface JiveUpdate : JiveContent
 
-// If available, the latitude of the location from which this update was made.
+//! If available, the latitude of the location from which this update was made.
 @property(atomic, readonly, strong) NSNumber* latitude;
 
-// If available, the longitude of the location from which this update was made.
+//! If available, the longitude of the location from which this update was made.
 @property(atomic, readonly, strong) NSNumber* longitude;
 
-// Tags associated with this object.
+//! Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
 
-// Flag indicating that this content object is potentially visible to external contributors.
+//! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 

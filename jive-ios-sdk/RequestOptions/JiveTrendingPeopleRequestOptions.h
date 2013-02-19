@@ -19,9 +19,12 @@
 
 #import "JiveCountRequestOptions.h"
 
+//! \class JiveTrendingPeopleRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTrendingPeople(List<String>,%20int,%20String)
 @interface JiveTrendingPeopleRequestOptions : JiveCountRequestOptions
 
-@property (nonatomic, strong) NSURL *url; // users that are trending in this place URI
+//! users that are trending in this place URI
+@property (nonatomic, strong) NSURL *url;
 
 // Internal method referenced by derived classes.
 - (NSMutableArray *)buildFilter;

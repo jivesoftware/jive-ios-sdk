@@ -19,12 +19,14 @@
 
 #import "JiveObject.h"
 
+//! \class JiveContentBody
+//! https://developers.jivesoftware.com/api/v3/rest/ContentBodyEntity.html
 @interface JiveContentBody : JiveObject
 
-// The (typically HTML) text of the content object's body.
+//! The (typically HTML) text of the content object's body.
 @property(nonatomic, copy) NSString* text;
 
-// The MIME type of this content object's body (typically text/html).
+//! The MIME type of this content object's body (typically text/html).
 @property(nonatomic, copy) NSString* type;
 
 @end

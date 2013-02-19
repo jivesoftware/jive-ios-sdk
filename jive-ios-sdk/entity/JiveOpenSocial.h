@@ -22,15 +22,17 @@
 
 @class JiveEmbedded;
 
+//! \class JiveOpenSocial
+//! https://developers.jivesoftware.com/api/v3/rest/OpenSocialEntity.html
 @interface JiveOpenSocial : JiveObject
 
-// List of ActionLinks representing actions that a person might take against an actionable resource.
+//! List of ActionLinks representing actions that a person might take against an actionable resource.
 @property(nonatomic, readonly, strong) NSArray* actionLinks;
 
-// List of URIs of Persons to which this activity should be explicitly delivered.
+//! List of URIs of Persons to which this activity should be explicitly delivered.
 @property(nonatomic, readonly, strong) NSArray* deliverTo;
 
-// Metadata about an OpenSocial Embedded Experience associated with this activity.
+//! Metadata about an OpenSocial Embedded Experience associated with this activity.
 @property(nonatomic, readonly, strong) JiveEmbedded* embed;
 
 @end

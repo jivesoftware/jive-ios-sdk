@@ -19,19 +19,31 @@
 
 #import "JiveFilterTagsRequestOptions.h"
 
+//! \class JivePeopleRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPeople(String,%20String,%20int,%20int,%20String,%20List<String>,%20String)
 @interface JivePeopleRequestOptions : JiveFilterTagsRequestOptions
 
+//! Title to filter by. Can be mixed with other filters.
 @property (nonatomic, strong) NSString *title;
+//! Department to filter by. Can be mixed with other filters.
 @property (nonatomic, strong) NSString *department;
+//! Location to filter by. Can be mixed with other filters.
 @property (nonatomic, strong) NSString *location;
+//! Company to filter by. Can be mixed with other filters.
 @property (nonatomic, strong) NSString *company;
+//! Office to filter by. Can be mixed with other filters.
 @property (nonatomic, strong) NSString *office;
+//! Oldest hire date to filter by. Use the setter below. Can be mixed with other filters.
 @property (nonatomic, readonly) NSDate *hiredAfter;
-@property (nonatomic, readonly) NSDate *hiredBefore;
+@property (nonatomic, readonly) NSDate *hiredBefore;//! Newest hire date to filter by. Use the setter below. Can be mixed with other filters.
+//! Person IDs of the individual people to be returned. Can be mixed with other filters.
 @property (nonatomic, strong) NSArray *ids;
+//! Query string containing search terms (or null for no search criteria). Can be mixed with other filters.
 @property (nonatomic, strong) NSString *query;
 
+//! Helper method to simplify adding person ids to the ids array.
 - (void)addID:(NSString *)personID;
+//! Method to set the hire date range to filter by.
 - (void)setHireDateBetween:(NSDate *)after and:(NSDate *)before;
 
 @end

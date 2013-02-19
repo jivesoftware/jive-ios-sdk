@@ -20,12 +20,18 @@
 #import <UIKit/UIKit.h>
 #import "JiveRequestOptions.h"
 
+//! \class JiveReturnFieldsRequestOptions
+//! Part of many request options, such as:
+//! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getAnnouncement(String,%20String)
 @interface JiveReturnFieldsRequestOptions : NSObject<JiveRequestOptions>
 
-@property (nonatomic, strong) NSArray *fields; // Fields to be returned
+//! Fields to be returned
+@property (nonatomic, strong) NSArray *fields;
 
-- (NSString *)toQueryString;
-
+//! Helper method to add a field to the fields array.
 - (void)addField:(NSString *)newField;
+
+// Internal helper method.
+- (NSString *)toQueryString;
 
 @end

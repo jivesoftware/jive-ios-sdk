@@ -25,10 +25,13 @@ typedef enum _JiveAuthentication {
     JiveAuthenticationSSO
 } JiveAuthentication;
 
+//! \class JiveCredentials
 @interface JiveCredentials : NSObject
 
+//! Initialize the credentials object with a username and password.
 - (id) initWithUserName:(NSString*) username password:(NSString*) password;
 
+//! Apply the credentials to a request object.
 - (void) applyToRequest:(NSMutableURLRequest*) request;
 
 @end

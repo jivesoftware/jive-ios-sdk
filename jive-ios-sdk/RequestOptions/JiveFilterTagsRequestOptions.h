@@ -19,10 +19,13 @@
 
 #import "JiveSortedRequestOptions.h"
 
+//! \class JiveFilterTagsRequestOptions
 @interface JiveFilterTagsRequestOptions : JiveSortedRequestOptions
 
-@property (nonatomic, strong) NSArray *tags; // one or more tags, matching any tag will select a place.
+//! one or more tags, matching any tag will select a place.
+@property (nonatomic, strong) NSArray *tags;
 
+//! Helper method to simplify adding a single tag to the tags array.
 - (void)addTag:(NSString *)tag;
 
 // Internal method referenced by derived classes.

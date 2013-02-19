@@ -20,10 +20,12 @@
 #import <UIKit/UIKit.h>
 #import "JiveRequestOptions.h"
 
+//! \class JivePixelSizeRequestOptions
 @interface JivePixelSizeRequestOptions : NSObject<JiveRequestOptions>
 
-- (NSString *)toQueryString;
-
 @property (nonatomic) int size;
+
+// Internal helper method.
+- (NSString *)toQueryString;
 
 @end

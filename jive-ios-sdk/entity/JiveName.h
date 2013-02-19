@@ -20,15 +20,17 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
+//! \class JiveName
+//! https://developers.jivesoftware.com/api/v3/rest/NameEntity.html
 @interface JiveName : JiveObject
 
-// Last name of this person.
+//! Last name of this person.
 @property(nonatomic, copy) NSString* familyName;
 
-// Formatted full name of this person.
+//! Formatted full name of this person.
 @property(nonatomic, copy, readonly) NSString* formatted;
 
-// First name of this person.
+//! First name of this person.
 @property(nonatomic, copy) NSString* givenName;
 
 @end

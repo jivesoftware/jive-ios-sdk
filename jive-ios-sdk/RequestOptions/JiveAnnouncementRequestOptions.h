@@ -19,8 +19,11 @@
 
 #import "JivePagedRequestOptions.h"
 
+//! \class JiveAnnouncementRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getSystemAnnouncements(int,%20int,%20boolean,%20String)
 @interface JiveAnnouncementRequestOptions : JivePagedRequestOptions
 
-@property (nonatomic) BOOL activeOnly; // Flag indicating whether only active system announcements should be returned.
+//! Flag indicating whether only active system announcements should be returned.
+@property (nonatomic) BOOL activeOnly;
 
 @end

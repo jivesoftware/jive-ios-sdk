@@ -19,10 +19,12 @@
 
 #import "JiveRequestOptions.h"
 
+//! \class JiveImageURIRequestOptions
 @interface JiveImageURIRequestOptions : NSObject<JiveRequestOptions>
 
 @property (nonatomic, strong) NSURL *uri;
 
+// Internal helper method.
 - (NSString *)toQueryString;
 
 @end

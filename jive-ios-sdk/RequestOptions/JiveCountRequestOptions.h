@@ -19,8 +19,12 @@
 
 #import "JiveReturnFieldsRequestOptions.h"
 
+//! \class JiveCountRequestOptions
+//! Part of many request options, such as:
+//! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentContent(int,%20String)
 @interface JiveCountRequestOptions : JiveReturnFieldsRequestOptions
 
-@property (nonatomic) int count; // Maximum number of results to be returned
+//! Maximum number of results to be returned
+@property (nonatomic) int count;
 
 @end

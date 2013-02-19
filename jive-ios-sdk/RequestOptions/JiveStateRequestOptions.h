@@ -19,10 +19,14 @@
 
 #import "JivePagedRequestOptions.h"
 
+//! \class JiveStateRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMembersByGroup(String,%20List<String>,%20int,%20int,%20String)
 @interface JiveStateRequestOptions : JivePagedRequestOptions
 
+//! List of states used to filter the returned results (default is all states)
 @property (nonatomic, strong) NSArray *states;
 
+//! Helper method to simplify adding a state to the states array.
 - (void)addState:(NSString *)state;
 
 @end

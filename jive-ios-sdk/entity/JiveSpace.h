@@ -19,12 +19,14 @@
 
 #import "JivePlace.h"
 
+//! \class JiveSpace
+//! https://developers.jivesoftware.com/api/v3/rest/SpaceEntity.html
 @interface JiveSpace : JivePlace
 
-// Number of spaces that are direct children of this space.
+//! Number of spaces that are direct children of this space.
 @property(nonatomic, readonly, strong) NSNumber* childCount;
 
-// Tags associated with this object. String[]
+//! Tags associated with this object. String[]
 @property(nonatomic, strong) NSArray* tags;
 
 @end

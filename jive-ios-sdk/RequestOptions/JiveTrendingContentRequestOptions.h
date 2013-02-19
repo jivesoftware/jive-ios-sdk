@@ -19,10 +19,14 @@
 
 #import "JiveTrendingPeopleRequestOptions.h"
 
+//! \class JiveTrendingContentRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getTrendingContent(List<String>,%20int,%20String)
 @interface JiveTrendingContentRequestOptions : JiveTrendingPeopleRequestOptions
 
+//! one or more object types of desired contained content objects
 @property (nonatomic, strong) NSArray *types;
 
+//! Helper method to simplify adding a type to the types array.
 - (void)addType:(NSString *)newType;
 
 @end

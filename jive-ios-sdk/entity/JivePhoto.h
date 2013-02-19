@@ -20,12 +20,14 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
+//! \class JivePhoto
+//! https://developers.jivesoftware.com/api/v3/rest/PhotosEntity.html
 @interface JivePhoto : JiveObject
 
-// The URL value of this photo
+//! The URL value of this photo
 @property(nonatomic, copy) NSString* value;
 
-// Whether this is the primary photo, if doesn't exist then false
+//! Whether this is the primary photo, if doesn't exist then false
 @property(nonatomic, readonly) bool primary;
 
 @end

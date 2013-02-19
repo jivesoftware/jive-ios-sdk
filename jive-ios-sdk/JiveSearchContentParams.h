@@ -19,6 +19,7 @@
 
 #import "JiveSearchParams.h"
 
+//! \class JiveSearchContentParams
 @interface JiveSearchContentParams : JiveSearchParams
 
 // Select content objects last modified after the specified date/time.

@@ -20,15 +20,17 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
+//! \class JiveActionLink
+//! https://developers.jivesoftware.com/api/v3/rest/ActionLinkEntity.html
 @interface JiveActionLink : JiveObject
 
-// Hint that MAY be used by the presentation layer to allow interaction with the user (for example, the label text for a button).
+//! Hint that MAY be used by the presentation layer to allow interaction with the user (for example, the label text for a button).
 @property(nonatomic, copy) NSString* caption;
 
-// HTTP operation to perform against the actionable resource. Should be one of GET, PUT, POST, DELETE, or other standard HTTP verb. If not present, defaults to GET.
+//! HTTP operation to perform against the actionable resource. Should be one of GET, PUT, POST, DELETE, or other standard HTTP verb. If not present, defaults to GET.
 @property(nonatomic, copy) NSString* httpVerb;
 
-// URI representing the target web hook endpoint to be invoked with the specified HTTP verb.
+//! URI representing the target web hook endpoint to be invoked with the specified HTTP verb.
 @property(nonatomic, readonly, strong) NSURL *target;
 
 @end

@@ -19,8 +19,12 @@
 
 #import "JiveCountRequestOptions.h"
 
+//! \class JivePagedRequestOptions
+//! Part of many request options, such as:
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getColleagues(String,%20int,%20int,%20String)
 @interface JivePagedRequestOptions : JiveCountRequestOptions
 
-@property (nonatomic) int startIndex; // Zero-relative index of the first instance to be returned
+//! Zero-relative index of the first instance to be returned
+@property (nonatomic) int startIndex;
 
 @end

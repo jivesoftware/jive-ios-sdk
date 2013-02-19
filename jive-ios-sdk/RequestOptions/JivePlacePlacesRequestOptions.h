@@ -19,12 +19,18 @@
 
 #import "JiveFilterTagsRequestOptions.h"
 
+//! \class JivePlacePlacesRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlacePlaces(String,%20int,%20int,%20String,%20List<String>,%20String)
 @interface JivePlacePlacesRequestOptions : JiveFilterTagsRequestOptions
 
-@property (nonatomic, strong) NSArray *types; // Select entries of the specified type. One or more types can be specified.
-@property (nonatomic, strong) NSArray *search; // One or more search terms, separated by commas. You must escape any of the following special characters embedded in the search terms: comma (","), backslash ("\"), left parenthesis ("("), and right parenthesis (")") by preceding them with a backslash. Wildcards can be used, e.g. to search by substring use "*someSubstring*".
+//! Select entries of the specified type. One or more types can be specified.
+@property (nonatomic, strong) NSArray *types;
+//! One or more search terms, separated by commas. You must escape any of the following special characters embedded in the search terms: comma (","), backslash ("\"), left parenthesis ("("), and right parenthesis (")") by preceding them with a backslash. Wildcards can be used, e.g. to search by substring use "*someSubstring*".
+@property (nonatomic, strong) NSArray *search;
 
+//! Helper method for adding a type to the types array.
 - (void)addType:(NSString *)type;
-- (void)addSearchTerm:(NSString *)term; // Will escape ,\() for you.
+//! Will escape ,\() for you. Helper method for adding a search term to the search terms array.
+- (void)addSearchTerm:(NSString *)term;
 
 @end

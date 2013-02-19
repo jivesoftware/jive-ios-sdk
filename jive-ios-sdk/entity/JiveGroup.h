@@ -20,18 +20,20 @@
 #import "JivePlace.h"
 #import "JivePerson.h"
 
+//! \class JiveGroup
+//! https://developers.jivesoftware.com/api/v3/rest/GroupEntity.html
 @interface JiveGroup : JivePlace
 
-// Person that created this social group.
+//! Person that created this social group.
 @property(nonatomic, readonly, strong) JivePerson* creator;
 
-// Membership and visibility type of this group (OPEN, MEMBER_ONLY, PRIVATE, SECRET).
+//! Membership and visibility type of this group (OPEN, MEMBER_ONLY, PRIVATE, SECRET).
 @property(nonatomic, copy) NSString* groupType;
 
-// Number of people that are members of this group.
+//! Number of people that are members of this group.
 @property(nonatomic, readonly, strong) NSNumber* memberCount;
 
-// Tags associated with this object. String[]
+//! Tags associated with this object. String[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 @end

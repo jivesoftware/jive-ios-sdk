@@ -19,13 +19,20 @@
 
 #import "JiveDateLimitedRequestOptions.h"
 
+//! \class JiveInboxOptions
+//! https://developers.jivesoftware.com/api/v3/rest/InboxService.html#getActivity(String,%20String,%20int,%20List<String>,%20String)
 @interface JiveInboxOptions : JiveDateLimitedRequestOptions
 
-@property (nonatomic) BOOL unread; // Indicates if only unread entries should be returned.
-@property (nonatomic, strong) NSString *authorID; // Select entries authored by the specified person, identified by authorID. Mutually exclusive with authorURL.
-@property (nonatomic, strong) NSURL *authorURL; // Select entries authored by the specified person, identified by URL. Mutually exclusive with authorID.
-@property (nonatomic, strong) NSArray *types; // Select entries of the specified type. One or more types can be specified.
+//! Indicates if only unread entries should be returned.
+@property (nonatomic) BOOL unread;
+//! Select entries authored by the specified person, identified by authorID. Mutually exclusive with authorURL.
+@property (nonatomic, strong) NSString *authorID;
+//! Select entries authored by the specified person, identified by URL. Mutually exclusive with authorID.
+@property (nonatomic, strong) NSURL *authorURL;
+//! Select entries of the specified type. One or more types can be specified.
+@property (nonatomic, strong) NSArray *types;
 
+//! Helper method to simplify adding a type to the types array.
 - (void)addType:(NSString *)type;
 
 @end

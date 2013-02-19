@@ -19,9 +19,12 @@
 
 #import "JiveObject.h"
 
+//! \class JiveResourceEntry
 @interface JiveResourceEntry : JiveObject
 
-@property (nonatomic, readonly) NSURL *ref; // URL for this service.
-@property (nonatomic, readonly) NSArray *allowed; // Access types allowed by this service.
+//! URL for this service.
+@property (nonatomic, readonly) NSURL *ref;
+//! Access types allowed by this service.
+@property (nonatomic, readonly) NSArray *allowed;
 
 @end

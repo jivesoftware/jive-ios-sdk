@@ -19,6 +19,8 @@
 
 #import "JivePlace.h"
 
+//! \class JiveBlog
+//! https://developers.jivesoftware.com/api/v3/rest/BlogEntity.html
 @interface JiveBlog : JivePlace
 
 @end

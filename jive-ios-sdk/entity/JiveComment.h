@@ -19,12 +19,14 @@
 
 #import "JiveContent.h"
 
+//! \class JiveComment
+//! https://developers.jivesoftware.com/api/v3/rest/CommentEntity.html
 @interface JiveComment : JiveContent
 
-// Object type of the root content object that this comment is a direct or indirect reply to.
+//! Object type of the root content object that this comment is a direct or indirect reply to.
 @property(nonatomic, readonly, copy) NSString* rootType;
 
-// URI of the root content object that this comment is a direct or indirect reply to.
+//! URI of the root content object that this comment is a direct or indirect reply to.
 @property(nonatomic, readonly, copy) NSString* rootURI;
 
 

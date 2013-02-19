@@ -20,16 +20,21 @@
 #import <UIKit/UIKit.h>
 #import "JiveRequestOptions.h"
 
+//! \enum JiveImageSizeOption
 enum JiveImageSizeOption {
     JiveImageSizeOptionLargeImage,
     JiveImageSizeOptionMediumImage,
     JiveImageSizeOptionSmallImage
     };
 
+//! \class JiveDefinedSizeRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAvatar(String,%20String)
 @interface JiveDefinedSizeRequestOptions : NSObject<JiveRequestOptions>
 
-@property (nonatomic) enum JiveImageSizeOption size; // Requested size, default is JiveImageSizeOptionLargeImage
+//! Requested size, default is JiveImageSizeOptionLargeImage
+@property (nonatomic) enum JiveImageSizeOption size;
 
+// Internal helper method.
 - (NSString *)toQueryString;
 
 @end

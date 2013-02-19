@@ -19,9 +19,11 @@
 
 #import "JiveContent.h"
 
+//! \class JiveDirectMessage
+//! https://developers.jivesoftware.com/api/v3/rest/DirectMessageEntity.html
 @interface JiveDirectMessage : JiveContent
 
-// Flag indicating that this content object is potentially visible to external contributors.
+//! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 @end

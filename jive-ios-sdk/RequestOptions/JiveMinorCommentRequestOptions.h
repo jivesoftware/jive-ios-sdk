@@ -19,8 +19,11 @@
 
 #import "JiveReturnFieldsRequestOptions.h"
 
+//! \class JiveMinorCommentRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateContent(String,%20String,%20boolean,%20String)
 @interface JiveMinorCommentRequestOptions : JiveReturnFieldsRequestOptions
 
+//! Flag indicating whether this update is a minor edit (true) or not (false)
 @property (nonatomic) BOOL minor;
 
 @end

@@ -20,21 +20,23 @@
 #import "JivePlace.h"
 #import "JivePerson.h"
 
+//! \class JiveProject
+//! https://developers.jivesoftware.com/api/v3/rest/ProjectEntity.html
 @interface JiveProject : JivePlace
 
-// Person that created this social group.
+//! Person that created this social group.
 @property(nonatomic, readonly, strong) JivePerson* creator;
 
-// Date by which this project must be completed.
+//! Date by which this project must be completed.
 @property(nonatomic, strong) NSDate* dueDate;
 
-// Current status of this project with respect to its schedule. TODO - enumerate values
+//! Current status of this project with respect to its schedule. TODO - enumerate values
 @property(nonatomic, readonly, copy) NSString* projectStatus;
 
-// Date that this project was (or will be) started.
+//! Date that this project was (or will be) started.
 @property(nonatomic, strong) NSDate* startDate;
 
-// Tags associated with this object. String[]
+//! Tags associated with this object. String[]
 @property(nonatomic, strong) NSArray* tags;
 
 @end

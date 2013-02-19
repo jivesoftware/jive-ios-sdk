@@ -19,6 +19,7 @@
 
 #import "JiveReturnFieldsRequestOptions.h"
 
+//! \class JiveAutoCategorizeRequestOptions
 @interface JiveAutoCategorizeRequestOptions : JiveReturnFieldsRequestOptions
 
 @property (nonatomic) BOOL autoCategorize;

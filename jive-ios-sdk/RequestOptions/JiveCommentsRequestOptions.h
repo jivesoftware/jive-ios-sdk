@@ -19,10 +19,16 @@
 
 #import "JivePagedRequestOptions.h"
 
+//! \class JiveCommentsRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getComments(String,%20boolean,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
+//! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#getContentReplies(String,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
 @interface JiveCommentsRequestOptions : JivePagedRequestOptions
 
+//! optional URI for a comment to anchor at. Specifying a anchor will try to return the page containing the anchor. If the anchor could not be found then the first page of comments will be returned.
 @property (nonatomic, strong) NSURL *anchor;
+//! Flag indicating whether to exclude replies (and therefore return direct comments only)
 @property (nonatomic) BOOL excludeReplies;
+//! Flag indicating that comments should be returned in hierarchical order instead of chronological order
 @property (nonatomic) BOOL hierarchical;
 
 @end

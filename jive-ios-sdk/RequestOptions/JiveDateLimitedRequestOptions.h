@@ -19,9 +19,14 @@
 
 #import "JiveCountRequestOptions.h"
 
+//! \class JiveDateLimitedRequestOptions
+//! Part of many request options, such as:
+//! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getActivity(String,%20String,%20int,%20String)
 @interface JiveDateLimitedRequestOptions : JiveCountRequestOptions
 
-@property (nonatomic, strong) NSDate *after; // Date and time representing the minimum "last activity in a collection" timestamp for selecting activities (cannot specify both after and before)
-@property (nonatomic, strong) NSDate *before; // Date and time representing the maxium "last activity in a collection" timestamp for selecting activities (cannot specify both after and before)
+//! Date and time representing the minimum "last activity in a collection" timestamp for selecting activities (cannot specify both after and before)
+@property (nonatomic, strong) NSDate *after;
+//! Date and time representing the maxium "last activity in a collection" timestamp for selecting activities (cannot specify both after and before)
+@property (nonatomic, strong) NSDate *before;
 
 @end

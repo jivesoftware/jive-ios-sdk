@@ -19,8 +19,11 @@
 
 #import "JiveReturnFieldsRequestOptions.h"
 
+//! \class JiveAuthorCommentRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createComment(String,%20String,%20boolean,%20String)
 @interface JiveAuthorCommentRequestOptions : JiveReturnFieldsRequestOptions
 
+//! Flag indicating if new comment is an author comment or a regular comment (only valid for documents). By default a regular comment will be created.
 @property (nonatomic) BOOL author;
 
 @end

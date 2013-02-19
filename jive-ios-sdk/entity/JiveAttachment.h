@@ -19,27 +19,29 @@
 
 #import "JiveObject.h"
 
+//! \class JiveAttachment
+//! https://developers.jivesoftware.com/api/v3/rest/AttachmentEntity.html
 @interface JiveAttachment : JiveObject
 
-// The content type of this attachment.
+//! The content type of this attachment.
 @property(nonatomic, copy) NSString* contentType;
 
-// An indicator of whether an attachment is new and should be uploaded.
+//! An indicator of whether an attachment is new and should be uploaded.
 @property(nonatomic, strong) NSNumber *doUpload;
 
-// Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
+//! Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
 @property(nonatomic, readonly, copy) NSString* jiveId;
 
-// Filename of this attachment.
+//! Filename of this attachment.
 @property(nonatomic, copy) NSString* name;
 
-// Resource links (and related permissions for the requesting person) relevant to this object.
+//! Resource links (and related permissions for the requesting person) relevant to this object.
 @property(nonatomic, readonly, strong) NSDictionary* resources;
 
-// The size (in bytes) of this attachment.
+//! The size (in bytes) of this attachment.
 @property(nonatomic, readonly, strong) NSNumber* size;
 
-// The URL to retrieve the binary content of this attachment.
+//! The URL to retrieve the binary content of this attachment.
 @property(nonatomic, copy) NSURL* url;
 
 

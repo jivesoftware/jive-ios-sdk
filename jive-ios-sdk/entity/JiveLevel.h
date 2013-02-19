@@ -20,15 +20,17 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
+//! \class JiveLevel
+//! https://developers.jivesoftware.com/api/v3/rest/LevelEntity.html
 @interface JiveLevel : JiveObject
 
-// Description of the status level that this person has achieved.
+//! Description of the status level that this person has achieved.
 @property(nonatomic, readonly) NSString* description;
 
-// Name of the status level that this person has achieved.
+//! Name of the status level that this person has achieved.
 @property(nonatomic, readonly) NSString* name;
 
-// Number of status level points that this person has achieved.
+//! Number of status level points that this person has achieved.
 @property(nonatomic, readonly) NSNumber *points;
 
 @end

@@ -19,6 +19,7 @@
 
 #import "JiveObject.h"
 
+//! \class JiveSearchFilter
 @interface JiveSearchFilter : JiveObject
 
 @property(nonatomic, copy) NSString* name;

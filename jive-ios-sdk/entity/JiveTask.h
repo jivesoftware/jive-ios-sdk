@@ -19,24 +19,26 @@
 
 #import "JiveContent.h"
 
+//! \class JiveTask
+//! https://developers.jivesoftware.com/api/v3/rest/TaskEntity.html
 @interface JiveTask : JiveContent
 
-// Flag indicating that this task has been completed. This field is required during update operations.
+//! Flag indicating that this task has been completed. This field is required during update operations.
 @property(nonatomic, strong) NSNumber *completed;
 
-// The date that this task is scheduled to be completed.
+//! The date that this task is scheduled to be completed.
 @property(nonatomic, strong) NSDate* dueDate;
 
-// The parent task, if this is a sub-task.
+//! The parent task, if this is a sub-task.
 @property(nonatomic, copy) NSString* parentTask;
 
-// The sub-tasks of this task. String[]
+//! The sub-tasks of this task. String[]
 @property(nonatomic, strong) NSArray* subTasks;
 
-// Tags associated with this object.
+//! Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
 
-// Flag indicating that this content object is potentially visible to external contributors.
+//! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 

@@ -19,6 +19,7 @@
 
 #import <Foundation/Foundation.h>
 
+//! \class JiveSearchParams
 @interface JiveSearchParams : NSObject
 
 // content, people, places

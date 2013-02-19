@@ -19,8 +19,11 @@
 
 #import "JiveReturnFieldsRequestOptions.h"
 
+//! \class JiveWelcomeRequestOptions
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createPerson(PersonEntity,%20Boolean,%20String)
 @interface JiveWelcomeRequestOptions : JiveReturnFieldsRequestOptions
 
+//! Flag indicating that a welcome email should be sent to the newly created user (since 3.2)
 @property (nonatomic) BOOL welcome;
 
 @end

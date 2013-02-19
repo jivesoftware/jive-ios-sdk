@@ -19,6 +19,7 @@
 
 #import <UIKit/UIKit.h>
 
+//! \class JiveViewController
 @interface JiveViewController : UIViewController
 
 @end

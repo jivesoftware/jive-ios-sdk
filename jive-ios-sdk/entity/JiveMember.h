@@ -21,24 +21,26 @@
 #import "JiveGroup.h"
 #import "JivePerson.h"
 
+//! \class JiveMember
+//! https://developers.jivesoftware.com/api/v3/rest/MemberEntity.html
 @interface JiveMember : JiveObject
 
-// Group to which this member belongs.
+//! Group to which this member belongs.
 @property (nonatomic, readonly, strong) JiveGroup *group;
 
-// Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
+//! Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
 @property(nonatomic, readonly, strong) NSString* jiveId;
 
-// Jive person that is a member of the specified group.
+//! Jive person that is a member of the specified group.
 @property(nonatomic, readonly, strong) JivePerson *person;
 
-// Date and time when this content object was originally created.
+//! Date and time when this content object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-// Resource links (and related permissions for the requesting person) relevant to this object.
+//! Resource links (and related permissions for the requesting person) relevant to this object.
 @property(nonatomic, readonly, strong) NSDictionary* resources;
 
-// Current state of this membership.
+//! Current state of this membership.
 // * banned - Previously accepted member has been banned from further involvement.
 // * invited - Person has been invited but has not yet accepted the invitation.
 // * member - Current member with standard permissions.
@@ -46,10 +48,10 @@
 // * pending - Person has requested membership but has not yet been accepted.
 @property(nonatomic, strong) NSString* state;
 
-// The object type of this object.
+//! The object type of this object.
 @property(nonatomic, readonly, strong) NSString* type;
 
-// Date and time this content object was most recently updated.
+//! Date and time this content object was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
 @end
