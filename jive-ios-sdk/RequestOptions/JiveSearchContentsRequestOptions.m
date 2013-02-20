@@ -26,6 +26,7 @@
 - (NSMutableArray *)buildFilter {
     
     NSMutableArray *filter = [super buildFilter];
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     if (self.subjectOnly)
         [filter addObject:@"subjectonly"];
@@ -40,37 +41,23 @@
     
     if (self.places) {
         NSString *placesFilter = [self.places componentsJoinedByString:@","];
-
+        
         [filter addObject:[NSString stringWithFormat:@"place(%@)", placesFilter]];
     }
-    
-    return filter;
-}
-
-- (NSString *)toQueryString {
-    
-    NSString *queryString = [super toQueryString];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     if (self.after) {
         NSString *formattedAfter = [dateFormatter stringFromDate:self.after];
         
-        if (queryString)
-            queryString = [queryString stringByAppendingFormat:@"&after=%@", formattedAfter];
-        else
-            queryString = [NSString stringWithFormat:@"after=%@", formattedAfter];
+        [filter addObject:[NSString stringWithFormat:@"after(%@)", formattedAfter]];
     }
     
     if (self.before) {
         NSString *formattedBefore = [dateFormatter stringFromDate:self.before];
         
-        if (queryString)
-            queryString = [queryString stringByAppendingFormat:@"&before=%@", formattedBefore];
-        else
-            queryString = [NSString stringWithFormat:@"before=%@", formattedBefore];
+        [filter addObject:[NSString stringWithFormat:@"before(%@)", formattedBefore]];
     }
     
-    return queryString;
+    return filter;
 }
 
 - (void)addPlaceID:(NSString *)place {

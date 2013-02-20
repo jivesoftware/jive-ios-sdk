@@ -64,11 +64,11 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=after(1970-01-01T00:00:00.000+0000)", asString, @"Wrong string contents");
     
     self.contentsOptions.after = [NSDate dateWithTimeIntervalSince1970:1000];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"after=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=after(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
 }
 
 - (void)testAfterWithField {
@@ -78,15 +78,15 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"fields=name&after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=after(1970-01-01T00:00:00.000+0000)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=after(1970-01-01T00:00:00.000+0000)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&after=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&filter=after(1970-01-01T00:00:00.000+0000)", asString, @"Wrong string contents");
 }
 
 - (void)testBefore {
@@ -95,11 +95,11 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"before=1970-01-01T00:00:00.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=before(1970-01-01T00:00:00.000+0000)", asString, @"Wrong string contents");
     
     self.contentsOptions.before = [NSDate dateWithTimeIntervalSince1970:1000];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=before(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
 }
 
 - (void)testBeforeWithField {
@@ -109,19 +109,19 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"fields=name&before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=before(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
     
     [self.contentsOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=before(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
     
     self.contentsOptions.subjectOnly = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&filter=before(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
     
     self.contentsOptions.after = [NSDate dateWithTimeIntervalSince1970:0];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&after=1970-01-01T00:00:00.000+0000&before=1970-01-01T00:16:40.000+0000", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=subjectonly&filter=after(1970-01-01T00:00:00.000+0000)&filter=before(1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
 }
 
 - (void)testAuthorURL {
