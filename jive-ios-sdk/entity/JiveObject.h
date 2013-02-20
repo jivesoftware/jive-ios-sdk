@@ -22,25 +22,17 @@
 //! \class JiveObject
 @interface JiveObject : NSObject
 
-//! Internal method
 + (id) instanceFromJSON:(NSDictionary*) JSON;
-//! Internal method
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON;
 
-//! Internal property
 @property (readonly) BOOL extraFieldsDetected;
 
-//! Internal method
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
 
-//! Internal method
 - (NSDictionary *)toJSONDictionary;
-//! Internal method
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
 
-//! Internal method
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;
-//! Internal method
 + (Class) entityClass:(NSDictionary*) obj;
 
 @end

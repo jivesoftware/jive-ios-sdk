@@ -22,10 +22,10 @@
 //! \class JiveSearchParams
 @interface JiveSearchParams : NSObject
 
-// content, people, places
+//! content, people, places
 - (NSString *) facet;
 
-// convert params to query string to be used in search URL
+// Internal method. convert params to query string to be used in search URL
 - (NSString *) toQueryString;
 
 @end
