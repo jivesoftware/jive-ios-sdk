@@ -1,0 +1,47 @@
+/*
+ * Jive custom CSS for doxygen 1.8.3.1
+ *
+ * Based on jive-api.css from the REST API documentation.
+ *
+ * Copyright (C) 1999-2013 Jive Software. All rights reserved.
+ *
+ * This software is the proprietary information of Jive Software. Use is subject to license terms.
+ */
+
+/* Based on .j-header */
+#titlearea {
+    background: #000 url(bg-header-top.png);
+    padding: 0px 20px;
+    margin: 0;
+    position: relative;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.25);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+/* Based on .j-header .logo *
+#projectlogo {
+    padding: 8px 0 2px;
+}
+*/
+/* Based on #hd .siteTitle and .font-color-meta-light */
+#projectname {
+    color: #8b8b8b;
+    font-size: 15px;
+    position: absolute;
+    top: 17px;
+    left: 105px;
+}
+
+/* Based on #hd .siteTitle */
+#projectnumber {
+    color: #fff;
+    font-size: 15px;
+}
+
+/* Based on #search-form #search */
+#search-form {
+    position: absolute;
+    top: 17px;
+    right: 50px;
+}
