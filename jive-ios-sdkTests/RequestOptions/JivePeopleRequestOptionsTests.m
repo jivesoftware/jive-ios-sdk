@@ -213,7 +213,7 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"filter=hire-date(1970-01-01T00:00:00.000+0000,1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"filter=hire-date(1970-01-01T00:00:00.000%2B0000,1970-01-01T00:16:40.000%2B0000)", asString, @"Wrong string contents");
 
     [self.peopleOptions setHireDateBetween:[NSDate dateWithTimeIntervalSince1970:1001]
                                        and:[NSDate dateWithTimeIntervalSince1970:1000]];
@@ -235,17 +235,17 @@
     NSString *asString = [self.options toQueryString];
     
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=hire-date(1970-01-01T00:00:00.000+0000,1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=hire-date(1970-01-01T00:00:00.000%2B0000,1970-01-01T00:16:40.000%2B0000)", asString, @"Wrong string contents");
     
     [self.peopleOptions addTag:@"dm"];
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=hire-date(1970-01-01T00:00:00.000+0000,1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=hire-date(1970-01-01T00:00:00.000%2B0000,1970-01-01T00:16:40.000%2B0000)", asString, @"Wrong string contents");
     
     self.peopleOptions.office = @"PDX";
     asString = [self.options toQueryString];
     STAssertNotNil(asString, @"Invalid string returned");
-    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=office(PDX)&filter=hire-date(1970-01-01T00:00:00.000+0000,1970-01-01T00:16:40.000+0000)", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=tag(dm)&filter=office(PDX)&filter=hire-date(1970-01-01T00:00:00.000%2B0000,1970-01-01T00:16:40.000%2B0000)", asString, @"Wrong string contents");
 }
 
 - (void)testIDs {

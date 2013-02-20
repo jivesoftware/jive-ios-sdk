@@ -26,7 +26,6 @@
 - (NSMutableArray *)buildFilter {
     
     NSMutableArray *filter = [super buildFilter];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
 
     if (self.title)
         [filter addObject:[NSString stringWithFormat:@"title(%@)", [self.title jive_stringByEscapingForURLArgument]]];
@@ -43,10 +42,14 @@
     if (self.office)
         [filter addObject:[NSString stringWithFormat:@"office(%@)", [self.office jive_stringByEscapingForURLArgument]]];
     
-    if (self.hiredAfter && self.hiredBefore && [self.hiredAfter compare:self.hiredBefore] == NSOrderedAscending)
-        [filter addObject:[NSString stringWithFormat:@"hire-date(%@,%@)",
-                           [dateFormatter stringFromDate:self.hiredAfter],
-                           [dateFormatter stringFromDate:self.hiredBefore]]];
+    if (self.hiredAfter && self.hiredBefore && [self.hiredAfter compare:self.hiredBefore] == NSOrderedAscending) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+        NSString *hireDates = [NSString stringWithFormat:@"hire-date(%@,%@)",
+                               [dateFormatter stringFromDate:self.hiredAfter],
+                               [dateFormatter stringFromDate:self.hiredBefore]];
+        
+        [filter addObject:[hireDates stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"]];
+    }
     
     return filter;
 }
