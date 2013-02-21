@@ -31,7 +31,7 @@
     
     __block NSArray *returnedPlaces = nil;
     [self waitForTimeout:^(JiveTestCaseAsyncFinishBlock finishBlock) {
-        [jive places:placesRequestOptions
+        [jive1 places:placesRequestOptions
           onComplete:^(NSArray *places) {
               returnedPlaces = places;
               finishBlock();

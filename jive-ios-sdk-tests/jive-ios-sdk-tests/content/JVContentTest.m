@@ -34,7 +34,7 @@
     post.content.type = @"text/html";
     post.content.text = @"<body><p>This is a test of the emergency broadcast system.</p></body>";
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
-        [jive createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
+        [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
             STAssertEqualObjects([newPost class], [JivePost class], @"Wrong content created");
             testBlogPost = newPost;
             finishBlock();
@@ -49,7 +49,7 @@
     STAssertNotNil(testBlogPost.published, @"Unexpected person: %@", [testBlogPost toJSONDictionary]);
     
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive deleteContent:testBlogPost onComplete:^{
+        [jive1 deleteContent:testBlogPost onComplete:^{
             finishBlock2();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
@@ -61,7 +61,7 @@
     
     [searchOptions addSearchTerm:post.subject];
     [self waitForTimeout:^(dispatch_block_t finishBlock3) {
-        [jive searchContents:searchOptions onComplete:^(NSArray *results) {
+        [jive1 searchContents:searchOptions onComplete:^(NSArray *results) {
             STAssertEquals([results count], (NSUInteger)0, @"Post not deleted: %@", [[results objectAtIndex:0] toJSONDictionary]);
             finishBlock3();
         } onError:^(NSError *error) {

@@ -9,6 +9,25 @@
 /* Begin PBXBuildFile section */
 		0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */; };
 		23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23680DAD16CAF9DB007EAF2F /* JVUtilities.m */; };
+		2DB3AEB316D6A36800428AA4 /* CreateAndDeleteStreams.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB016D6A36800428AA4 /* CreateAndDeleteStreams.m */; };
+		2DB3AEB416D6A36800428AA4 /* StreamActivities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB116D6A36800428AA4 /* StreamActivities.m */; };
+		2DB3AEB516D6A36800428AA4 /* StreamAssociations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB216D6A36800428AA4 /* StreamAssociations.m */; };
+		2DB3AEBC16D6A37900428AA4 /* FrequentContentWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB616D6A37900428AA4 /* FrequentContentWithOptions.m */; };
+		2DB3AEBD16D6A37900428AA4 /* FrequentPeopleWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB716D6A37900428AA4 /* FrequentPeopleWithOptions.m */; };
+		2DB3AEBE16D6A37900428AA4 /* FrequentPlacesWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB816D6A37900428AA4 /* FrequentPlacesWithOptions.m */; };
+		2DB3AEBF16D6A37900428AA4 /* RecentContentWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB916D6A37900428AA4 /* RecentContentWithOptions.m */; };
+		2DB3AEC016D6A37900428AA4 /* RecentPeopleWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEBA16D6A37900428AA4 /* RecentPeopleWithOptions.m */; };
+		2DB3AEC116D6A37900428AA4 /* RecentPlacesWithOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEBB16D6A37900428AA4 /* RecentPlacesWithOptions.m */; };
+		2DB3AEC916D6A3EA00428AA4 /* CommentsForContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC216D6A3EA00428AA4 /* CommentsForContent.m */; };
+		2DB3AECA16D6A3EA00428AA4 /* ContentLike_Unlike.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC316D6A3EA00428AA4 /* ContentLike_Unlike.m */; };
+		2DB3AECB16D6A3EA00428AA4 /* ContentLikedBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC416D6A3EA00428AA4 /* ContentLikedBy.m */; };
+		2DB3AECC16D6A3EA00428AA4 /* ContentMarkAsRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC516D6A3EA00428AA4 /* ContentMarkAsRead.m */; };
+		2DB3AECD16D6A3EA00428AA4 /* CreateComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC616D6A3EA00428AA4 /* CreateComment.m */; };
+		2DB3AECE16D6A3EA00428AA4 /* CreateDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC716D6A3EA00428AA4 /* CreateDocument.m */; };
+		2DB3AECF16D6A3EA00428AA4 /* UpdateAndDeleteDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEC816D6A3EA00428AA4 /* UpdateAndDeleteDocument.m */; };
+		2DB3AED216D6A3F700428AA4 /* SearchContents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED116D6A3F700428AA4 /* SearchContents.m */; };
+		2DB3AED416D6A41300428AA4 /* SearchPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED316D6A41300428AA4 /* SearchPeople.m */; };
+		2DB3AED616D6A43000428AA4 /* SearchPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED516D6A43000428AA4 /* SearchPlace.m */; };
 		B81B0C1316A8B38E0013CB48 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
@@ -49,6 +68,25 @@
 		23680DAC16CAF9BA007EAF2F /* JVUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVUtilities.h; sourceTree = "<group>"; };
 		23680DAD16CAF9DB007EAF2F /* JVUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVUtilities.m; sourceTree = "<group>"; };
 		23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JiveBase64.h"; sourceTree = "<group>"; };
+		2DB3AEB016D6A36800428AA4 /* CreateAndDeleteStreams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAndDeleteStreams.m; sourceTree = "<group>"; };
+		2DB3AEB116D6A36800428AA4 /* StreamActivities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamActivities.m; sourceTree = "<group>"; };
+		2DB3AEB216D6A36800428AA4 /* StreamAssociations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamAssociations.m; sourceTree = "<group>"; };
+		2DB3AEB616D6A37900428AA4 /* FrequentContentWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentContentWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEB716D6A37900428AA4 /* FrequentPeopleWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentPeopleWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEB816D6A37900428AA4 /* FrequentPlacesWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentPlacesWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEB916D6A37900428AA4 /* RecentContentWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentContentWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEBA16D6A37900428AA4 /* RecentPeopleWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPeopleWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEBB16D6A37900428AA4 /* RecentPlacesWithOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPlacesWithOptions.m; sourceTree = "<group>"; };
+		2DB3AEC216D6A3EA00428AA4 /* CommentsForContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsForContent.m; sourceTree = "<group>"; };
+		2DB3AEC316D6A3EA00428AA4 /* ContentLike_Unlike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentLike_Unlike.m; sourceTree = "<group>"; };
+		2DB3AEC416D6A3EA00428AA4 /* ContentLikedBy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentLikedBy.m; sourceTree = "<group>"; };
+		2DB3AEC516D6A3EA00428AA4 /* ContentMarkAsRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentMarkAsRead.m; sourceTree = "<group>"; };
+		2DB3AEC616D6A3EA00428AA4 /* CreateComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateComment.m; sourceTree = "<group>"; };
+		2DB3AEC716D6A3EA00428AA4 /* CreateDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDocument.m; sourceTree = "<group>"; };
+		2DB3AEC816D6A3EA00428AA4 /* UpdateAndDeleteDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAndDeleteDocument.m; sourceTree = "<group>"; };
+		2DB3AED116D6A3F700428AA4 /* SearchContents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchContents.m; sourceTree = "<group>"; };
+		2DB3AED316D6A41300428AA4 /* SearchPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPeople.m; path = people/SearchPeople.m; sourceTree = "<group>"; };
+		2DB3AED516D6A43000428AA4 /* SearchPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPlace.m; sourceTree = "<group>"; };
 		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
 		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
@@ -86,6 +124,13 @@
 		0FC2FEC116AA146F00DDFF68 /* content */ = {
 			isa = PBXGroup;
 			children = (
+				2DB3AEC216D6A3EA00428AA4 /* CommentsForContent.m */,
+				2DB3AEC316D6A3EA00428AA4 /* ContentLike_Unlike.m */,
+				2DB3AEC416D6A3EA00428AA4 /* ContentLikedBy.m */,
+				2DB3AEC516D6A3EA00428AA4 /* ContentMarkAsRead.m */,
+				2DB3AEC616D6A3EA00428AA4 /* CreateComment.m */,
+				2DB3AEC716D6A3EA00428AA4 /* CreateDocument.m */,
+				2DB3AEC816D6A3EA00428AA4 /* UpdateAndDeleteDocument.m */,
 				0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */,
 			);
 			path = content;
@@ -106,6 +151,39 @@
 			children = (
 			);
 			path = inbox;
+			sourceTree = "<group>";
+		};
+		2DB3AEAB16D6A34D00428AA4 /* streams */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3AEB016D6A36800428AA4 /* CreateAndDeleteStreams.m */,
+				2DB3AEB116D6A36800428AA4 /* StreamActivities.m */,
+				2DB3AEB216D6A36800428AA4 /* StreamAssociations.m */,
+			);
+			name = streams;
+			sourceTree = "<group>";
+		};
+		2DB3AEAF16D6A35300428AA4 /* activities */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3AEB616D6A37900428AA4 /* FrequentContentWithOptions.m */,
+				2DB3AEB716D6A37900428AA4 /* FrequentPeopleWithOptions.m */,
+				2DB3AEB816D6A37900428AA4 /* FrequentPlacesWithOptions.m */,
+				2DB3AEB916D6A37900428AA4 /* RecentContentWithOptions.m */,
+				2DB3AEBA16D6A37900428AA4 /* RecentPeopleWithOptions.m */,
+				2DB3AEBB16D6A37900428AA4 /* RecentPlacesWithOptions.m */,
+			);
+			name = activities;
+			sourceTree = "<group>";
+		};
+		2DB3AED016D6A3EE00428AA4 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3AED516D6A43000428AA4 /* SearchPlace.m */,
+				2DB3AED316D6A41300428AA4 /* SearchPeople.m */,
+				2DB3AED116D6A3F700428AA4 /* SearchContents.m */,
+			);
+			name = search;
 			sourceTree = "<group>";
 		};
 		B81B0C1016A8B3320013CB48 /* people */ = {
@@ -167,6 +245,9 @@
 		B8A71F1316A89DFA00A7D2CE /* jive-ios-sdk-tests */ = {
 			isa = PBXGroup;
 			children = (
+				2DB3AED016D6A3EE00428AA4 /* search */,
+				2DB3AEAF16D6A35300428AA4 /* activities */,
+				2DB3AEAB16D6A34D00428AA4 /* streams */,
 				23680DB016CAFA87007EAF2F /* inbox */,
 				23680DA816CAF990007EAF2F /* Utilities */,
 				B8A71F1916A89DFA00A7D2CE /* JiveTestCase.h */,
@@ -321,6 +402,25 @@
 				B8B38AB016A8BC5000066EEF /* JVPlacesTest.m in Sources */,
 				0FC2FEC416AA148B00DDFF68 /* JVContentTest.m in Sources */,
 				23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */,
+				2DB3AEB316D6A36800428AA4 /* CreateAndDeleteStreams.m in Sources */,
+				2DB3AEB416D6A36800428AA4 /* StreamActivities.m in Sources */,
+				2DB3AEB516D6A36800428AA4 /* StreamAssociations.m in Sources */,
+				2DB3AEBC16D6A37900428AA4 /* FrequentContentWithOptions.m in Sources */,
+				2DB3AEBD16D6A37900428AA4 /* FrequentPeopleWithOptions.m in Sources */,
+				2DB3AEBE16D6A37900428AA4 /* FrequentPlacesWithOptions.m in Sources */,
+				2DB3AEBF16D6A37900428AA4 /* RecentContentWithOptions.m in Sources */,
+				2DB3AEC016D6A37900428AA4 /* RecentPeopleWithOptions.m in Sources */,
+				2DB3AEC116D6A37900428AA4 /* RecentPlacesWithOptions.m in Sources */,
+				2DB3AEC916D6A3EA00428AA4 /* CommentsForContent.m in Sources */,
+				2DB3AECA16D6A3EA00428AA4 /* ContentLike_Unlike.m in Sources */,
+				2DB3AECB16D6A3EA00428AA4 /* ContentLikedBy.m in Sources */,
+				2DB3AECC16D6A3EA00428AA4 /* ContentMarkAsRead.m in Sources */,
+				2DB3AECD16D6A3EA00428AA4 /* CreateComment.m in Sources */,
+				2DB3AECE16D6A3EA00428AA4 /* CreateDocument.m in Sources */,
+				2DB3AECF16D6A3EA00428AA4 /* UpdateAndDeleteDocument.m in Sources */,
+				2DB3AED216D6A3F700428AA4 /* SearchContents.m in Sources */,
+				2DB3AED416D6A41300428AA4 /* SearchPeople.m in Sources */,
+				2DB3AED616D6A43000428AA4 /* SearchPlace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

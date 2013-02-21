@@ -31,7 +31,7 @@
     
     __block NSArray *returnedPersons = nil;
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
-       [jive people:peopleRequestOptions
+       [jive1 people:peopleRequestOptions
          onComplete:^(NSArray *persons) {
              returnedPersons = persons;
              finishBlock();
@@ -53,7 +53,7 @@
 - (void) testCreateAndDestroyAStream {
     __block JivePerson *me = nil;
     [self waitForTimeout:^(dispatch_block_t finishMeBlock) {
-        [jive me:^(JivePerson *person) {
+        [jive1 me:^(JivePerson *person) {
             STAssertNotNil(person, @"Missing me");
             me = person;
             finishMeBlock();
@@ -68,7 +68,7 @@
     
     stream.name = @"Test stream 1456"; // Make sure this does not exceed the length limit for stream names.
     [self waitForTimeout:^(dispatch_block_t finishCreateBlock) {
-        [jive createStream:stream forPerson:me withOptions:nil onComplete:^(JiveStream *newPost) {
+        [jive1 createStream:stream forPerson:me withOptions:nil onComplete:^(JiveStream *newPost) {
             testStream = newPost;
             finishCreateBlock();
         } onError:^(NSError *error) {
@@ -82,7 +82,7 @@
     STAssertNotNil(testStream.published, @"Unexpected stream: %@", [testStream toJSONDictionary]);
     
     [self waitForTimeout:^(dispatch_block_t finishDeleteBlock) {
-        [jive deleteStream:testStream onComplete:^{
+        [jive1 deleteStream:testStream onComplete:^{
             finishDeleteBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);

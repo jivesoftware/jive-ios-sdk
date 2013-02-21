@@ -3,18 +3,7 @@
 //  jive-ios-sdk-tests
 //
 //  Created by Heath Borders on 1/17/13.
-//
-//    Copyright 2013 Jive Software Inc.
-//    Licensed under the Apache License, Version 2.0 (the "License");
-//    you may not use this file except in compliance with the License.
-//    You may obtain a copy of the License at
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-//    Unless required by applicable law or agreed to in writing, software
-//    distributed under the License is distributed on an "AS IS" BASIS,
-//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//    See the License for the specific language governing permissions and
-//    limitations under the License.
+//  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
 #import "JiveTestCase.h"
@@ -24,8 +13,18 @@ NSString * const JiveTestCaseNotAJiveObjectKey = @"JiveTestCaseNotAJiveObject";
 static NSTimeInterval JiveTestCaseAsyncTimeout = 30.0;
 static NSTimeInterval JIveTestCaseLoopInterval = .1;
 
-@interface JiveTestCase() <JiveAuthorizationDelegate>
+@interface JiveTestCaseAuthorizationDelegate : NSObject<JiveAuthorizationDelegate>
 
+- (id)initWithUsername:(NSString *)username
+              password:(NSString *)password;
+
+@end
+
+@interface JiveTestCase() {
+    JiveTestCaseAuthorizationDelegate *authorizationDelegate1;
+    JiveTestCaseAuthorizationDelegate *authorizationDelegate2;
+    JiveTestCaseAuthorizationDelegate *authorizationDelegate3;
+}
 @end
 
 @implementation JiveTestCase
@@ -35,12 +34,24 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 - (void)setUp {
     [super setUp];
     
-    jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
-                        authorizationDelegate:self];
+    authorizationDelegate1 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser1" password:@"test123"];
+    authorizationDelegate2 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser2" password:@"test123"];
+    authorizationDelegate3 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser3" password:@"test123"];
+    
+    jive1 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+                         authorizationDelegate:authorizationDelegate1];
+    
+    jive2 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+                         authorizationDelegate:authorizationDelegate2];
+    
+    jive3 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+                         authorizationDelegate:authorizationDelegate3];
 }
 
 - (void)tearDown {
-    jive = nil;
+    jive1 = nil;
+    jive2 = nil;
+    jive3 = nil;
     
     [super tearDown];
 }
@@ -127,3 +138,36 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 }
 
 @end
+
+
+
+@interface JiveTestCaseAuthorizationDelegate()
+
+@property (nonatomic) NSString *username;
+@property (nonatomic) NSString *password;
+
+@end
+
+@implementation JiveTestCaseAuthorizationDelegate
+
+- (id)initWithUsername:(NSString *)username
+              password:(NSString *)password {
+    self = [super init];
+    if (self) {
+        self.username = username;
+        self.password = password;
+    }
+    
+    return self;
+}
+
+#pragma mark - JiveAuthorizationDelegate
+
+- (JiveCredentials *) credentialsForJiveInstance:(NSURL*) url {
+    JiveCredentials *credentials = [[JiveCredentials alloc] initWithUserName:self.username
+                                                                    password:self.password];
+    return credentials;
+}
+
+@end
+
