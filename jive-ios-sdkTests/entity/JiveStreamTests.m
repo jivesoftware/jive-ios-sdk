@@ -62,7 +62,7 @@
     JivePerson *person = [[JivePerson alloc] init];
     
     person.location = @"Tower";
-    stream.name = @"William Sonoma";
+    stream.name = @"William";
     [stream setValue:@"Writing" forKey:@"subject"];
     [stream setValue:@"another non-type" forKey:@"type"];
     [stream setValue:@"8743" forKey:@"jiveId"];
@@ -74,7 +74,7 @@
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"name"], @"William%20Sonoma", @"Wrong name");
+    STAssertEqualObjects([JSON objectForKey:@"name"], stream.name, @"Wrong name");
     STAssertEqualObjects([JSON objectForKey:@"source"], @"custom", @"Wrong source");
 }
 

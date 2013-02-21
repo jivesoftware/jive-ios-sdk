@@ -28,6 +28,7 @@
 @property(nonatomic, readonly, strong) NSString* jiveId;
 
 //! Name of this custom stream. Will be a zero length string on custom streams with a source other than custom. Must be unique (per user) for streams with source custom.
+//! Not included in the REST documentation is the length limit. As of 2013-2-21 the limit is 18 characters.
 @property(nonatomic, copy) NSString* name;
 
 //! A Person describing the person that owns this custom stream.

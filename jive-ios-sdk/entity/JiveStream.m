@@ -19,7 +19,6 @@
 
 #import "JiveStream.h"
 #import "JiveResourceEntry.h"
-#import "JiveNSString+URLArguments.h"
 
 @implementation JiveStream
 
@@ -44,7 +43,7 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:[name jive_stringByEscapingForURLArgument] forKey:@"name"];
+    [dictionary setValue:name forKey:@"name"];
     [dictionary setValue:receiveEmails forKey:@"receiveEmails"];
     if (source)
         [dictionary setValue:source forKey:@"source"];

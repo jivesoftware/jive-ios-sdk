@@ -50,45 +50,45 @@
     STAssertEqualObjects(@"iOS-SDKTestUser1", person.name.givenName, @"Unexpected person: %@", [person toJSONDictionary]);
 }
 
-//- (void) testCreateAndDestroyAStream {
-//    __block JivePerson *me = nil;
-//    [self waitForTimeout:^(dispatch_block_t finishMeBlock) {
-//        [jive me:^(JivePerson *person) {
-//            STAssertNotNil(person, @"Missing me");
-//            me = person;
-//            finishMeBlock();
-//        } onError:^(NSError *error) {
-//            STFail([error localizedDescription]);
-//            finishMeBlock();
-//        }];
-//    }];
-//
-//    JiveStream *stream = [[JiveStream alloc] init];
-//    __block JiveStream *testStream = nil;
-//    
-//    stream.name = @"Test stream 123456";
-//    [self waitForTimeout:^(dispatch_block_t finishCreateBlock) {
-//        [jive createStream:stream forPerson:me withOptions:nil onComplete:^(JiveStream *newPost) {
-//            testStream = newPost;
-//            finishCreateBlock();
-//        } onError:^(NSError *error) {
-//            STFail([error localizedDescription]);
-//            finishCreateBlock();
-//        }];
-//    }];
-//    
-//    STAssertEqualObjects(testStream.name, stream.name, @"Unexpected stream: %@", [testStream toJSONDictionary]);
-//    STAssertEqualObjects(testStream.person.jiveId, me.jiveId, @"Unexpected stream: %@", [testStream toJSONDictionary]);
-//    STAssertNotNil(testStream.published, @"Unexpected stream: %@", [testStream toJSONDictionary]);
-//    
-//    [self waitForTimeout:^(dispatch_block_t finishDeleteBlock) {
-//        [jive deleteStream:testStream onComplete:^{
-//            finishDeleteBlock();
-//        } onError:^(NSError *error) {
-//            STFail([error localizedDescription]);
-//            finishDeleteBlock();
-//        }];
-//    }];
-//}
+- (void) testCreateAndDestroyAStream {
+    __block JivePerson *me = nil;
+    [self waitForTimeout:^(dispatch_block_t finishMeBlock) {
+        [jive me:^(JivePerson *person) {
+            STAssertNotNil(person, @"Missing me");
+            me = person;
+            finishMeBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishMeBlock();
+        }];
+    }];
+
+    JiveStream *stream = [[JiveStream alloc] init];
+    __block JiveStream *testStream = nil;
+    
+    stream.name = @"Test stream 1456"; // Make sure this does not exceed the length limit for stream names.
+    [self waitForTimeout:^(dispatch_block_t finishCreateBlock) {
+        [jive createStream:stream forPerson:me withOptions:nil onComplete:^(JiveStream *newPost) {
+            testStream = newPost;
+            finishCreateBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishCreateBlock();
+        }];
+    }];
+    
+    STAssertEqualObjects(testStream.name, stream.name, @"Unexpected stream: %@", [testStream toJSONDictionary]);
+    STAssertEqualObjects(testStream.person.jiveId, me.jiveId, @"Unexpected stream: %@", [testStream toJSONDictionary]);
+    STAssertNotNil(testStream.published, @"Unexpected stream: %@", [testStream toJSONDictionary]);
+    
+    [self waitForTimeout:^(dispatch_block_t finishDeleteBlock) {
+        [jive deleteStream:testStream onComplete:^{
+            finishDeleteBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishDeleteBlock();
+        }];
+    }];
+}
 
 @end
