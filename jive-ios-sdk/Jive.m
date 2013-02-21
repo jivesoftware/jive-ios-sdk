@@ -889,7 +889,16 @@
     [operation start];
 }
 
-
+- (NSOperation *) contentsOperationWithURL:(NSURL *)contentsURL onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentsURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:contentsURL];
+    NSOperation *operation = [self listOperationForClass:[JiveContent class]
+                                                 request:mutableURLRequest
+                                              onComplete:completeBlock
+                                                 onError:errorBlock];
+    return operation;
+}
 
 - (NSOperation *)contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     return [self contentsListOperation:@"contents" withOptions:options onComplete:complete onError:error];
