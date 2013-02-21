@@ -30,9 +30,9 @@
     }];
     
     
-#ifdef TABDEV395
+
         
-    NSString* streamName = [NSString stringWithFormat:@"Test Custom Stream From SDK- %d", (arc4random() % 1500000)];
+    NSString* streamName = [NSString stringWithFormat:@"CustStrm-%d", (arc4random() % 1500000)];
     
     JiveStream *stream = [[JiveStream alloc] init];
     __block JiveStream *testStream = nil;
@@ -65,7 +65,7 @@
         }];
     }];
     
-#endif
+
     
 }
 
