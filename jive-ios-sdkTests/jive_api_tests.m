@@ -3180,8 +3180,42 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [jive streamAssociationsOperation:source withOptions:options onComplete:^(NSArray *associations) {
             // Called 3rd
-            STAssertEquals([associations count], (NSUInteger)25, @"Wrong number of items parsed");
+            STAssertEquals([associations count], (NSUInteger)24, @"Wrong number of items parsed");
             STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JiveContent class]], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
+- (void) testStreamAssociationsOperationWithPeopleAndPlaces {
+    JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JiveAssociationsRequestOptions *options = [[JiveAssociationsRequestOptions alloc] init];
+    [options addType:@"dm"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations?filter=type(dm)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream_associations_alt" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation* operation = [jive streamAssociationsOperation:source withOptions:options onComplete:^(NSArray *associations) {
+            NSUInteger associationsCount = [associations count];
+            STAssertEquals(associationsCount, (NSUInteger)3, @"Wrong number of items parsed");
+            if (associationsCount >= 3) {
+                STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JivePerson class]], @"Wrong first item class");
+                STAssertTrue([[associations objectAtIndex:1] isKindOfClass:[JiveGroup class]], @"Wrong second item class");
+                STAssertTrue([[associations objectAtIndex:2] isKindOfClass:[JiveBlog class]], @"Wrong third item class");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -3211,7 +3245,7 @@
         JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream_alternate"];
         [jive streamAssociations:source withOptions:options onComplete:^(NSArray *associations) {
             // Called 3rd
-            STAssertEquals([associations count], (NSUInteger)25, @"Wrong number of items parsed");
+            STAssertEquals([associations count], (NSUInteger)24, @"Wrong number of items parsed");
             STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JiveContent class]], @"Wrong item class");
             
             // Check that delegates where actually called

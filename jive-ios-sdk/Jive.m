@@ -1492,10 +1492,15 @@
 }
 
 - (NSOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self contentsResourceOperation:[stream.resources objectForKey:@"associations"]
-                               withOptions:options
-                                onComplete:complete
-                                   onError:error];
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"associations"];
+    NSURLRequest *request = [self requestWithOptions:options
+                                         andTemplate:[resourceEntry.ref path],
+                             nil];
+    
+    return [self listOperationForClass:[JiveTypedObject class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) streamAssociations:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
