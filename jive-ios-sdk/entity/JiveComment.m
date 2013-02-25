@@ -18,17 +18,21 @@
 //
 
 #import "JiveComment.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveComment
 
 @synthesize rootType, rootURI;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"comment";
-    }
-    
-    return self;
+static NSString *commentType = @"comment";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:commentType];
+}
+
+- (NSString *)type {
+    return commentType;
 }
 
 - (NSDictionary *)toJSONDictionary {

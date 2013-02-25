@@ -36,7 +36,8 @@
 
 
 @implementation JiveContent
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, resources, status, subject, type, updated, viewCount;
+
+@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, resources, status, subject, updated, viewCount;
 
 + (Class) entityClass:(NSDictionary*) obj {
     
@@ -93,7 +94,7 @@
     [dictionary setValue:replyCount forKey:@"replyCount"];
     [dictionary setValue:status forKey:@"status"];
     [dictionary setValue:subject forKey:@"subject"];
-    [dictionary setValue:type forKey:@"type"];
+    [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:viewCount forKey:@"viewCount"];
     
     if (author)

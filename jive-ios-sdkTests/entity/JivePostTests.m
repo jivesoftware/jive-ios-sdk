@@ -30,6 +30,17 @@
     return (JivePost *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.post.type, @"post", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.post.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.post class], @"Post class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.post class], @"Post class not registered with JiveContent.");
+}
+
 - (void)testPostToJSON {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *category = @"category";

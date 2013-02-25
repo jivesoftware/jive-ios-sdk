@@ -17,14 +17,14 @@
 //    limitations under the License.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 #import "JivePerson.h"
 #import "JiveContentBody.h"
 #import "JiveSummary.h"
 
 //! \class JiveContent
 //! https://developers.jivesoftware.com/api/v3/rest/ContentEntity.html
-@interface JiveContent : JiveObject
+@interface JiveContent : JiveTypedObject
 
 //! Author of this content object.
 @property(nonatomic, readonly, strong) JivePerson* author;
@@ -77,9 +77,6 @@
 
 //! Subject of this content object.
 @property(nonatomic, copy) NSString* subject;
-
-//! The object type of this object. This field is required when creating new content.
-@property(nonatomic, copy) NSString* type;
 
 //! Date and time this content object was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;

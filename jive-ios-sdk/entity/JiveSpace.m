@@ -18,17 +18,21 @@
 //
 
 #import "JiveSpace.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveSpace
 
 @synthesize childCount, tags;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"space";
-    }
-    
-    return self;
+static NSString *spaceType = @"space";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:spaceType];
+}
+
+- (NSString *)type {
+    return spaceType;
 }
 
 - (NSDictionary *)toJSONDictionary {

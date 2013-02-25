@@ -19,17 +19,21 @@
 
 #import "JiveProject.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveProject
 
 @synthesize creator, dueDate, projectStatus, startDate, tags;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"project";
-    }
-    
-    return self;
+static NSString *projectType = @"project";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:projectType];
+}
+
+- (NSString *)type {
+    return projectType;
 }
 
 - (NSDictionary *)toJSONDictionary {

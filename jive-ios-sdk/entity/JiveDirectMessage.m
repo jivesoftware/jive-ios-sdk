@@ -18,17 +18,21 @@
 //
 
 #import "JiveDirectMessage.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveDirectMessage
 
 @synthesize visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"dm";
-    }
-    
-    return self;
+static NSString *dmType = @"dm";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:dmType];
+}
+
+- (NSString *)type {
+    return dmType;
 }
 
 - (NSDictionary *)toJSONDictionary {

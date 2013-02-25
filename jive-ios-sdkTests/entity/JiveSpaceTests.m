@@ -29,6 +29,17 @@
     return (JiveSpace *)self.place;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.space.type, @"space", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.space.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.space class], @"Space class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JivePlace entityClass:typeSpecifier], [self.space class], @"Space class not registered with JivePlace.");
+}
+
 - (void)testTaskToJSON {
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.space toJSONDictionary];

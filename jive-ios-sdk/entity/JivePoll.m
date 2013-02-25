@@ -18,17 +18,21 @@
 //
 
 #import "JivePoll.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JivePoll
 
 @synthesize categories, options, tags, visibility, visibleToExternalContributors, voteCount, votes;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"poll";
-    }
-    
-    return self;
+static NSString *pollType = @"poll";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:pollType];
+}
+
+- (NSString *)type {
+    return pollType;
 }
 
 - (NSDictionary *)toJSONDictionary {

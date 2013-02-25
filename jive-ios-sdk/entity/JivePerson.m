@@ -24,9 +24,17 @@
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
 #import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, updated;
+
+static NSString *personType = @"person";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:personType];
+}
 
 - (NSString *)type {
     return @"person";

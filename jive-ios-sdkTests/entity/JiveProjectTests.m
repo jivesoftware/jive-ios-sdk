@@ -29,6 +29,17 @@
     return (JiveProject *)self.place;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.project.type, @"project", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.project.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.project class], @"Project class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JivePlace entityClass:typeSpecifier], [self.project class], @"Project class not registered with JivePlace.");
+}
+
 - (void)testTaskToJSON {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";

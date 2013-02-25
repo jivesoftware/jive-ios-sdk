@@ -30,6 +30,17 @@
     return (JiveMessage *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.message.type, @"message", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.message.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.message class], @"Message class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.message class], @"Message class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *tag = @"wordy";

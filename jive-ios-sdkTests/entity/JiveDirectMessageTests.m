@@ -29,6 +29,17 @@
     return (JiveDirectMessage *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.dm.type, @"dm", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.dm.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.dm class], @"Dm class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.dm class], @"Dm class not registered with JiveContent.");
+}
+
 - (void)testPostToJSON {
     NSDictionary *JSON = [self.dm toJSONDictionary];
     

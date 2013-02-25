@@ -28,6 +28,24 @@
 
 @implementation JivePersonTests
 
+- (void)setUp {
+    self.typedObject = [[JivePerson alloc] init];
+}
+
+- (JivePerson *)person {
+    return (JivePerson *)self.typedObject;
+}
+
+- (void)testType {
+    STAssertEqualObjects(self.person.type, @"person", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.person.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.person class], @"Person class not registered with JiveTypedObject.");
+}
+
 - (void)testToJSON {
     JivePerson *person = [[JivePerson alloc] init];
     JiveAddress *address = [[JiveAddress alloc] init];

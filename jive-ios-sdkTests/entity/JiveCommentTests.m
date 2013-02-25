@@ -29,6 +29,17 @@
     return (JiveComment *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.comment.type, @"comment", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.comment.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.comment class], @"Comment class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.comment class], @"Comment class not registered with JiveContent.");
+}
+
 - (void)testPostToJSON {
     NSDictionary *JSON = [self.comment toJSONDictionary];
     

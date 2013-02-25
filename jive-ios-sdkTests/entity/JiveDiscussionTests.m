@@ -29,6 +29,17 @@
     return (JiveDiscussion *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.discussion.type, @"discussion", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.discussion.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.discussion class], @"Discussion class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.discussion class], @"Discussion class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     NSString *category = @"category";
     NSString *tag = @"wordy";

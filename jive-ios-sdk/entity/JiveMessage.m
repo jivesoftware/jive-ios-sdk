@@ -19,17 +19,21 @@
 
 #import "JiveMessage.h"
 #import "JiveAttachment.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveMessage
 
 @synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"message";
-    }
-    
-    return self;
+static NSString *messageType = @"message";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:messageType];
+}
+
+- (NSString *)type {
+    return messageType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

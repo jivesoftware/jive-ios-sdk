@@ -29,6 +29,17 @@
     return (JiveAnnouncement *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.announcement.type, @"announcement", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.announcement.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.announcement class], @"Announcement class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.announcement class], @"Announcement class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     id JSON = [self.announcement toJSONDictionary];
     

@@ -20,18 +20,22 @@
 #import "JivePost.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveAttachment.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JivePost
 
 @synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
 @synthesize visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"post";
-    }
-    
-    return self;
+static NSString *postType = @"post";
+
++ (void)initialize {
+    [super initialize];
+    [super registerClass:self forType:postType];
+}
+
+- (NSString *)type {
+    return postType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

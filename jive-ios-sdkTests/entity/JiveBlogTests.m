@@ -26,6 +26,17 @@
     self.place = [[JiveBlog alloc] init];
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.place.type, @"blog", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.place.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.place class], @"Blog class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JivePlace entityClass:typeSpecifier], [self.place class], @"Blog class not registered with JivePlace.");
+}
+
 - (void)testTaskToJSON {
     NSDictionary *JSON = [self.place toJSONDictionary];
     

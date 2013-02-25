@@ -31,7 +31,7 @@
 
 @synthesize contentTypes, description, displayName, followerCount, highlightBody, highlightSubject;
 @synthesize highlightTags, jiveId, likeCount, name, parent, parentContent, parentPlace, published;
-@synthesize resources, status, type, updated, viewCount, visibleToExternalContributors;
+@synthesize resources, status, updated, viewCount, visibleToExternalContributors;
 
 + (Class) entityClass:(NSDictionary*) obj {
     
