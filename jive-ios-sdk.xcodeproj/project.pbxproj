@@ -92,6 +92,10 @@
 		0F880F5916DBDC2400D40702 /* JiveTypedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F880F5716DBDC2400D40702 /* JiveTypedObject.h */; };
 		0F880F5A16DBDC2400D40702 /* JiveTypedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F880F5816DBDC2400D40702 /* JiveTypedObject.m */; };
 		0F880F6216DBE61A00D40702 /* JiveTypedObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F880F6116DBE61A00D40702 /* JiveTypedObjectTests.m */; };
+		0F880F6716DC454800D40702 /* JiveAssociationTargetList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F880F6516DC454800D40702 /* JiveAssociationTargetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F880F6816DC454800D40702 /* JiveAssociationTargetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F880F6616DC454800D40702 /* JiveAssociationTargetList.m */; };
+		0F880F6D16DC456200D40702 /* JiveAssociationTargetListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F880F6C16DC456200D40702 /* JiveAssociationTargetListTests.m */; };
+		0F880F6F16DC467B00D40702 /* JiveAssociationTargetList_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F880F6E16DC462200D40702 /* JiveAssociationTargetList_internal.h */; };
 		0F9CD1BB16D6F21100B512C2 /* stream_associations_alt.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F9CD1BA16D6F21100B512C2 /* stream_associations_alt.json */; };
 		0F9EB83F168B728800E9F09D /* JiveActivityObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EB83E168B728800E9F09D /* JiveActivityObjectTests.m */; };
 		0F9EB842168B7CAF00E9F09D /* JiveMediaLinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EB841168B7CAF00E9F09D /* JiveMediaLinkTests.m */; };
@@ -540,6 +544,11 @@
 		0F880F5D16DBDD7600D40702 /* JiveTypedObject_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveTypedObject_internal.h; sourceTree = "<group>"; };
 		0F880F6016DBE61A00D40702 /* JiveTypedObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveTypedObjectTests.h; sourceTree = "<group>"; };
 		0F880F6116DBE61A00D40702 /* JiveTypedObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveTypedObjectTests.m; sourceTree = "<group>"; };
+		0F880F6516DC454800D40702 /* JiveAssociationTargetList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAssociationTargetList.h; sourceTree = "<group>"; };
+		0F880F6616DC454800D40702 /* JiveAssociationTargetList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAssociationTargetList.m; sourceTree = "<group>"; };
+		0F880F6B16DC456200D40702 /* JiveAssociationTargetListTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAssociationTargetListTests.h; sourceTree = "<group>"; };
+		0F880F6C16DC456200D40702 /* JiveAssociationTargetListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAssociationTargetListTests.m; sourceTree = "<group>"; };
+		0F880F6E16DC462200D40702 /* JiveAssociationTargetList_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveAssociationTargetList_internal.h; sourceTree = "<group>"; };
 		0F9CD1BA16D6F21100B512C2 /* stream_associations_alt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stream_associations_alt.json; sourceTree = "<group>"; };
 		0F9EB83D168B728800E9F09D /* JiveActivityObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveActivityObjectTests.h; sourceTree = "<group>"; };
 		0F9EB83E168B728800E9F09D /* JiveActivityObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveActivityObjectTests.m; sourceTree = "<group>"; };
@@ -1053,6 +1062,8 @@
 				0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */,
 				0F9EB84F168CFA0D00E9F09D /* JiveAnnouncementTests.h */,
 				0F9EB850168CFA0D00E9F09D /* JiveAnnouncementTests.m */,
+				0F880F6B16DC456200D40702 /* JiveAssociationTargetListTests.h */,
+				0F880F6C16DC456200D40702 /* JiveAssociationTargetListTests.m */,
 				0F9EB855168D1B5600E9F09D /* JiveAttachmentTests.h */,
 				0F9EB856168D1B5600E9F09D /* JiveAttachmentTests.m */,
 				0F9EB891169202E000E9F09D /* JiveBlogTests.h */,
@@ -1154,6 +1165,9 @@
 				78185D65163ED6AC0081DF7A /* JiveAddress.m */,
 				7814D58016531790000D9BE9 /* JiveAnnouncement.h */,
 				7814D58116531790000D9BE9 /* JiveAnnouncement.m */,
+				0F880F6516DC454800D40702 /* JiveAssociationTargetList.h */,
+				0F880F6E16DC462200D40702 /* JiveAssociationTargetList_internal.h */,
+				0F880F6616DC454800D40702 /* JiveAssociationTargetList.m */,
 				7814D59016541FD2000D9BE9 /* JiveAttachment.h */,
 				7814D59116541FD2000D9BE9 /* JiveAttachment.m */,
 				783E15531655595B0094B6A7 /* JiveBlog.h */,
@@ -1613,6 +1627,8 @@
 				B8B38B5616AA10A300066EEF /* JiveNSString+URLArguments.h in Headers */,
 				B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */,
 				0F880F5916DBDC2400D40702 /* JiveTypedObject.h in Headers */,
+				0F880F6716DC454800D40702 /* JiveAssociationTargetList.h in Headers */,
+				0F880F6F16DC467B00D40702 /* JiveAssociationTargetList_internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1943,6 +1959,7 @@
 				B8B38B5716AA10A300066EEF /* JiveNSString+URLArguments.m in Sources */,
 				B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */,
 				0F880F5A16DBDC2400D40702 /* JiveTypedObject.m in Sources */,
+				0F880F6816DC454800D40702 /* JiveAssociationTargetList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2034,6 +2051,7 @@
 				0F9EBAA416A0838000E9F09D /* JiveInviteTests.m in Sources */,
 				0F9EBAB116A5BEBF00E9F09D /* JiveTargetListTests.m in Sources */,
 				0F880F6216DBE61A00D40702 /* JiveTypedObjectTests.m in Sources */,
+				0F880F6D16DC456200D40702 /* JiveAssociationTargetListTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
