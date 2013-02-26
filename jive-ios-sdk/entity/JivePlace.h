@@ -67,9 +67,6 @@
 //! Date and time when this content object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object.
-@property(nonatomic, readonly, strong) NSDictionary* resources;
-
 //! Published status of this content object.
 // * incomplete - Content object is in draft mode
 // * pending_approval - Content object is waiting for approval

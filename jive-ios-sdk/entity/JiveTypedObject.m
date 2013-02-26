@@ -7,8 +7,11 @@
 //
 
 #import "JiveTypedObject_internal.h"
+#import "JiveResourceEntry.h"
 
 @implementation JiveTypedObject
+
+@synthesize resources;
 
 static NSMutableDictionary *typedClasses;
 
@@ -30,6 +33,22 @@ static NSMutableDictionary *typedClasses;
     
     return [[typedClasses objectsForKeys:[NSArray arrayWithObject:type]
                           notFoundMarker:[self class]] objectAtIndex:0];
+}
+
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+    if ([@"resources" isEqualToString:property]) {
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
+        
+        for (NSString *key in JSON) {
+            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
+            
+            [dictionary setValue:entry forKey:key];
+        }
+        
+        return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
+    }
+    
+    return nil;
 }
 
 @end

@@ -23,11 +23,10 @@
 #import "JiveAddress.h"
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
-#import "JiveResourceEntry.h"
 #import "JiveTypedObject_internal.h"
 
 @implementation JivePerson
-@synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, updated;
+@synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
 static NSString *personType = @"person";
 
@@ -51,18 +50,6 @@ static NSString *personType = @"person";
                            nil];
     
     return [propertyClasses objectForKey:propertyName];
-}
-
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-    
-    for (NSString *key in JSON) {
-        JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-        
-        [dictionary setValue:entry forKey:key];
-    }
-    
-    return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
 }
 
 - (NSDictionary *)toJSONDictionary {

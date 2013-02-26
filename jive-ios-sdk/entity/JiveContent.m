@@ -32,12 +32,11 @@
 #import "JiveTask.h"
 #import "JiveUpdate.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
-#import "JiveResourceEntry.h"
 
 
 @implementation JiveContent
 
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, resources, status, subject, updated, viewCount;
+@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount;
 
 + (Class) entityClass:(NSDictionary*) obj {
     
@@ -62,22 +61,6 @@
     Class targetClass = [classDictionary objectForKey:type];
     
     return targetClass ? targetClass : [self class];
-}
-
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    if ([@"resources" isEqualToString:property]) {
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-        
-        for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-            
-            [dictionary setValue:entry forKey:key];
-        }
-        
-        return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
-    }
-    
-    return nil;
 }
 
 - (NSDictionary *)toJSONDictionary {
