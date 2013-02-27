@@ -1,0 +1,294 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "iOS-SDK-TestUser2",
+      "familyName" : "lastname2",
+      "formatted" : "iOS-SDK-TestUser2 lastname2"
+    },
+    "location" : "Portland",
+    "type" : "person",
+    "displayName" : "iOS-SDK-TestUser2 lastname2",
+    "tags" : [ "testing" ],
+    "published" : "2012-12-04T23:25:02.650+0000",
+    "followingCount" : 1,
+    "thumbnailUrl" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/avatar",
+    "jive" : {
+      "timeZone" : "America/Los_Angeles",
+      "level" : {
+        "name" : "Adventurer",
+        "points" : 143
+      },
+      "locale" : "en_US",
+      "username" : "ios-sdk-testuser2",
+      "enabled" : true,
+      "profile" : [ {
+        "value" : "engineer",
+        "jive_label" : "Title"
+      }, {
+        "value" : "ios",
+        "jive_label" : "Department"
+      }, {
+        "value" : "jive",
+        "jive_label" : "Company"
+      }, {
+        "value" : "12/03/2012",
+        "jive_label" : "Hire Date"
+      } ],
+      "external" : false,
+      "visible" : true,
+      "externalContributor" : false,
+      "federated" : false
+    },
+    "updated" : "2013-02-12T18:09:30.412+0000",
+    "emails" : [ {
+      "value" : "ios-sdk-testuser2@jivesoftware.com",
+      "type" : "work",
+      "jive_label" : "Email",
+      "primary" : true
+    } ],
+    "followerCount" : 1,
+    "resources" : {
+      "reports" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/@following",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/people/ios-sdk-testuser2",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/members/people/3494",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3494/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3494"
+  }, {
+    "type" : "group",
+    "memberCount" : 1,
+    "creator" : {
+      "name" : {
+        "givenName" : "iOS-SDKTestUser1",
+        "familyName" : "lastname1",
+        "formatted" : "iOS-SDKTestUser1 lastname1"
+      },
+      "type" : "person",
+      "displayName" : "iOS-SDKTestUser1 lastname1",
+      "jive" : {
+        "level" : {
+          "name" : "Scout",
+          "points" : 717
+        },
+        "username" : "ios-sdk-testuser1"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497",
+          "allowed" : [ "GET", "PUT" ]
+        },
+        "tasks" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/tasks",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "avatar" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/images",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "streams" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/streams",
+          "allowed" : [ "GET", "POST" ]
+        },
+        "html" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/people/ios-sdk-testuser1",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/members/people/3497",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "3497"
+    },
+    "groupType" : "OPEN",
+    "name" : "iOS-SDK-TestUser1_TestSocialGroup1",
+    "displayName" : "ios-sdk-testuser1-test-social-group1-displayname",
+    "description" : "iOS-SDK-TestUser1 Test Social Group1 Description",
+    "status" : "Active",
+    "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects" ],
+    "viewCount" : 15,
+    "published" : "2012-12-04T23:25:14.617+0000",
+    "updated" : "2013-02-20T22:26:59.768+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 1,
+    "resources" : {
+      "invites" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/invites/places/3340",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "contents" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Ftiedhouse-yeti1.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F3340)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340",
+        "allowed" : [ "DELETE", "GET", "PUT" ]
+      },
+      "places" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/places",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/avatar",
+        "allowed" : [ "DELETE", "GET", "POST" ]
+      },
+      "blog" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3341",
+        "allowed" : [ "DELETE", "GET", "PUT" ]
+      },
+      "announcements" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/announcements",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "categories" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/categories",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/groups/ios-sdk-testuser1-test-social-group1-displayname",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/members/places/3340",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "statics" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340/statics",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "1201"
+  }, {
+    "parent" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3340",
+    "type" : "blog",
+    "contentTypes" : [ "post" ],
+    "name" : "iOS-SDK-TestUser1_TestSocialGroup1",
+    "displayName" : "ios-sdk-testuser1-test-social-group1-displayname",
+    "description" : "iOS-SDK-TestUser1 Test Social Group1 Description",
+    "status" : "Active",
+    "viewCount" : 0,
+    "published" : "2012-12-04T23:25:14.635+0000",
+    "updated" : "2012-12-04T23:25:14.635+0000",
+    "visibleToExternalContributors" : false,
+    "followerCount" : 1,
+    "resources" : {
+      "contents" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/contents?filter=place(http%3A%2F%2Ftiedhouse-yeti1.eng.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F3341)&filter=type(post)",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3341",
+        "allowed" : [ "DELETE", "GET", "PUT" ]
+      },
+      "html" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/groups/ios-sdk-testuser1-test-social-group1-displayname/blog",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3341/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "statics" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3341/statics",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "activity" : {
+        "ref" : "http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places/3341/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "1219"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}
