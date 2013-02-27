@@ -8,7 +8,7 @@
 
 #import "JiveTypedObject.h"
 
-@interface JiveTypedObject (internal)
+@interface JiveTypedObject ()
 
 + (void)registerClass:(Class)clazz forType:(NSString *)type;
 

@@ -8,7 +8,7 @@
 
 #import "JiveAssociationTargetList.h"
 
-@interface JiveAssociationTargetList (internal)
+@interface JiveAssociationTargetList ()
 
 - (NSArray *)toJSONArray;
 
