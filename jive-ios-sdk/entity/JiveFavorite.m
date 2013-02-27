@@ -18,17 +18,21 @@
 //
 
 #import "JiveFavorite.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveFavorite
 
 @synthesize favoriteObject, private, tags, visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"favorite";
-    }
-    
-    return self;
+static NSString * const JiveFavoriteType = @"favorite";
+
++ (void)initialize {
+    if (self == [JiveFavorite class])
+        [super registerClass:self forType:JiveFavoriteType];
+}
+
+- (NSString *)type {
+    return JiveFavoriteType;
 }
 
 - (NSDictionary *)toJSONDictionary {

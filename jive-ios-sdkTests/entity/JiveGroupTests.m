@@ -30,6 +30,17 @@
     return (JiveGroup *)self.place;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.group.type, @"group", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.group.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.group class], @"Group class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JivePlace entityClass:typeSpecifier], [self.group class], @"Group class not registered with JivePlace.");
+}
+
 - (void)testTaskToJSON {
     JivePerson *creator = [[JivePerson alloc] init];
     NSString *tag = @"wordy";

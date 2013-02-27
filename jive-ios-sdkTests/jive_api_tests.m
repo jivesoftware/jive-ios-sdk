@@ -24,6 +24,7 @@
 
 #import "JiveCredentials.h"
 #import "JiveTargetList_internal.h"
+#import "JiveAssociationTargetList_internal.h"
 #import "JAPIRequestOperation.h"
 #import "MockJiveURLProtocol.h"
 
@@ -3180,8 +3181,42 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [jive streamAssociationsOperation:source withOptions:options onComplete:^(NSArray *associations) {
             // Called 3rd
-            STAssertEquals([associations count], (NSUInteger)25, @"Wrong number of items parsed");
+            STAssertEquals([associations count], (NSUInteger)24, @"Wrong number of items parsed");
             STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JiveContent class]], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
+- (void) testStreamAssociationsOperationWithPeopleAndPlaces {
+    JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JiveAssociationsRequestOptions *options = [[JiveAssociationsRequestOptions alloc] init];
+    [options addType:@"dm"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations?filter=type(dm)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream_associations_alt" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation* operation = [jive streamAssociationsOperation:source withOptions:options onComplete:^(NSArray *associations) {
+            NSUInteger associationsCount = [associations count];
+            STAssertEquals(associationsCount, (NSUInteger)3, @"Wrong number of items parsed");
+            if (associationsCount >= 3) {
+                STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JivePerson class]], @"Wrong first item class");
+                STAssertTrue([[associations objectAtIndex:1] isKindOfClass:[JiveGroup class]], @"Wrong second item class");
+                STAssertTrue([[associations objectAtIndex:2] isKindOfClass:[JiveBlog class]], @"Wrong third item class");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -3211,7 +3246,7 @@
         JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream_alternate"];
         [jive streamAssociations:source withOptions:options onComplete:^(NSArray *associations) {
             // Called 3rd
-            STAssertEquals([associations count], (NSUInteger)25, @"Wrong number of items parsed");
+            STAssertEquals([associations count], (NSUInteger)24, @"Wrong number of items parsed");
             STAssertTrue([[associations objectAtIndex:0] isKindOfClass:[JiveContent class]], @"Wrong item class");
             
             // Check that delegates where actually called
@@ -5043,6 +5078,153 @@
             STAssertTrue([[stream class] isSubclassOfClass:[JiveStream class]], @"Wrong item class");
             STAssertEqualObjects(stream.name, @"The Team", @"Wrong stream name");
             
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testDeleteStreamAssociationWithObjectOperation {
+    JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JivePerson *association = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations/person/3550" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteAssociationOperation:association fromStream:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        [operation start];
+    }];
+}
+
+- (void) testDeleteStreamAssociationWithObject {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10433/associations/person/5316" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"stream" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream_alternate"];
+        JivePerson *association = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        [jive deleteAssociation:association fromStream:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testCreateStreamAssociationsOperation {
+    JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JivePerson *association = [self entityForClass:[JivePerson class] fromJSONNamed:@"alt_person_response"];
+    JiveAssociationTargetList *targetList = [[JiveAssociationTargetList alloc] init];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
+    [targetList addAssociationTarget:association];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[targetList toJSONArray] options:0 error:nil];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createAssociationsOperation:targetList forStream:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
+        STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+        [operation start];
+    }];
+}
+
+- (void) testCreateStreamAssociationsOperationWithMultipleTargets {
+    JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JiveContent *association1 = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
+    JivePlace *association2 = [self entityForClass:[JivePlace class] fromJSONNamed:@"place_alternate"];
+    JiveAssociationTargetList *targetList = [[JiveAssociationTargetList alloc] init];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10872/associations" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
+    [targetList addAssociationTarget:association1];
+    [targetList addAssociationTarget:association2];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[targetList toJSONArray] options:0 error:nil];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createAssociationsOperation:targetList forStream:source onComplete:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
+        STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+        [operation start];
+    }];
+}
+
+- (void) testCreateStreamAssociations {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/streams/10433/associations" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"task" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveStream *source = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream_alternate"];
+        JivePerson *association = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        JiveAssociationTargetList *targetList = [[JiveAssociationTargetList alloc] init];
+        [targetList addAssociationTarget:association];
+        [jive createAssociations:targetList forStream:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];

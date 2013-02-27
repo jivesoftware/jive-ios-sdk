@@ -29,6 +29,17 @@
     return (JivePoll *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.poll.type, @"poll", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.poll.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.poll class], @"Poll class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.poll class], @"Poll class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     NSString *category = @"category";
     NSString *tag = @"wordy";

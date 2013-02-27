@@ -20,19 +20,22 @@
 #import "JiveDocument.h"
 #import "JiveAttachment.h"
 #import "JivePerson.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveDocument
 
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
 @synthesize tags, users, visibility, visibleToExternalContributors;
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.type = @"document";
-    }
-    
-    return self;
+static NSString * const JiveDocumentType = @"document";
+
++ (void)initialize {
+    if (self == [JiveDocument class])
+        [super registerClass:self forType:JiveDocumentType];
+}
+
+- (NSString *)type {
+    return JiveDocumentType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

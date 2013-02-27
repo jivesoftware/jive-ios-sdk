@@ -39,8 +39,8 @@
         id inst = [[self entityClass:obj] instanceFromJSON:obj];
         if(inst) {
             [instances addObject:inst];
-        } else {
-            return nil;
+//        } else {
+//            return nil;
         }
     }
     return [NSArray arrayWithArray:instances];

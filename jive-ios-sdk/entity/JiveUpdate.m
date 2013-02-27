@@ -18,17 +18,21 @@
 //
 
 #import "JiveUpdate.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveUpdate
 
 @synthesize latitude, longitude, tags, visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"update";
-    }
-    
-    return self;
+static NSString * const JiveUpdateType = @"update";
+
++ (void)initialize {
+    if (self == [JiveUpdate class])
+        [super registerClass:self forType:JiveUpdateType];
+}
+
+- (NSString *)type {
+    return JiveUpdateType;
 }
 
 - (NSDictionary *)toJSONDictionary {

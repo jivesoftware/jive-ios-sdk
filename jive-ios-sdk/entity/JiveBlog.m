@@ -18,15 +18,19 @@
 //
 
 #import "JiveBlog.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveBlog
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"blog";
-    }
-    
-    return self;
+static NSString * const JiveBlogType = @"blog";
+
++ (void)initialize {
+    if (self == [JiveBlog class])
+        [super registerClass:self forType:JiveBlogType];
+}
+
+- (NSString *)type {
+    return JiveBlogType;
 }
 
 @end

@@ -19,17 +19,21 @@
 
 #import "JiveTask.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveTask
 
 @synthesize completed, dueDate, parentTask, subTasks, tags, visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"task";
-    }
-    
-    return self;
+static NSString * const JiveTaskType = @"task";
+
++ (void)initialize {
+    if (self == [JiveTask class])
+        [super registerClass:self forType:JiveTaskType];
+}
+
+- (NSString *)type {
+    return JiveTaskType;
 }
 
 - (NSDictionary *)toJSONDictionary {

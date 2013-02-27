@@ -31,6 +31,17 @@
     return (JiveDocument *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.document.type, @"document", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.document.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.document class], @"Document class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.document class], @"Document class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     JivePerson *approver = [[JivePerson alloc] init];

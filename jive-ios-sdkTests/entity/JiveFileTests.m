@@ -30,6 +30,17 @@
     return (JiveFile *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.file.type, @"file", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.file.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.file class], @"File class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.file class], @"File class not registered with JiveContent.");
+}
+
 - (void)testAnnouncementToJSON {
     JivePerson *author = [[JivePerson alloc] init];
     NSString *category = @"category";

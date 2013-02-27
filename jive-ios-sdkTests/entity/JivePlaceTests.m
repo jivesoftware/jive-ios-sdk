@@ -25,12 +25,24 @@
 #import "JiveSummary.h"
 #import "JiveResourceEntry.h"
 
+@interface DummyPlace : JivePlace
+
+@end
+
+@implementation DummyPlace
+
+- (NSString *)type {
+    return @"dummy";
+}
+
+@end
+
 @implementation JivePlaceTests
 
 @synthesize place;
 
 - (void)setUp {
-    place = [[JivePlace alloc] init];
+    place = [[DummyPlace alloc] init];
 }
 
 - (void)tearDown {
@@ -81,15 +93,14 @@
 }
 
 - (void)testToJSON {
-    place.type = nil; // Remove derived class type specifier.
-
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
     NSString *contentType = @"First";
     NSDictionary *JSON = [place toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], place.type, @"Wrong type");
     
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
@@ -100,7 +111,6 @@
     [place setValue:@"Body" forKey:@"highlightBody"];
     [place setValue:@"Subject" forKey:@"highlightSubject"];
     [place setValue:@"Tags" forKey:@"highlightTags"];
-    place.type = @"place";
     [place setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:6] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:33] forKey:@"viewCount"];
@@ -173,7 +183,6 @@
     [place setValue:@"not Body" forKey:@"highlightBody"];
     [place setValue:@"not Subject" forKey:@"highlightSubject"];
     [place setValue:@"not Tags" forKey:@"highlightTags"];
-    place.type = @"place";
     [place setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:12] forKey:@"viewCount"];
@@ -222,14 +231,14 @@
     NSString *contentType1 = @"First";
     NSString *contentType2 = @"Last";
     
-    place.type = nil; // Remove derived class type specifier.
     [place setValue:[NSArray arrayWithObject:contentType1] forKey:@"contentTypes"];
     
     NSDictionary *JSON = [place toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], place.type, @"Wrong type");
+
     NSArray *addressJSON = [JSON objectForKey:@"contentTypes"];
     
     STAssertTrue([[addressJSON class] isSubclassOfClass:[NSArray class]], @"contentTypes array not converted");
@@ -241,8 +250,9 @@
     JSON = [place toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
-    
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:@"type"], place.type, @"Wrong type");
+
     addressJSON = [JSON objectForKey:@"contentTypes"];
     STAssertTrue([[addressJSON class] isSubclassOfClass:[NSArray class]], @"contentTypes array not converted");
     STAssertEquals([addressJSON count], (NSUInteger)2, @"Wrong number of elements in the contentTypes array");
@@ -269,7 +279,6 @@
     [place setValue:@"Body" forKey:@"highlightBody"];
     [place setValue:@"Subject" forKey:@"highlightSubject"];
     [place setValue:@"Tags" forKey:@"highlightTags"];
-    place.type = @"place";
     [place setValue:[NSNumber numberWithInt:4] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:6] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:33] forKey:@"viewCount"];
@@ -291,7 +300,7 @@
     
     JivePlace *newPlace = [JivePlace instanceFromJSON:JSON];
     
-    STAssertEquals([newPlace class], [JivePlace class], @"Wrong item class");
+    STAssertTrue([[newPlace class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.displayName, place.displayName, @"Wrong display name");
     STAssertEqualObjects(newPlace.followerCount, place.followerCount, @"Wrong follower count");
     STAssertEqualObjects(newPlace.likeCount, place.likeCount, @"Wrong like count");
@@ -304,7 +313,6 @@
     STAssertEqualObjects(newPlace.highlightBody, place.highlightBody, @"Wrong highlightBody");
     STAssertEqualObjects(newPlace.highlightSubject, place.highlightSubject, @"Wrong highlightSubject");
     STAssertEqualObjects(newPlace.highlightTags, place.highlightTags, @"Wrong highlightTags");
-    STAssertEqualObjects(newPlace.type, place.type, @"Wrong type");
     STAssertEqualObjects(newPlace.updated, place.updated, @"Wrong updated date");
     STAssertEqualObjects(newPlace.parent, place.parent, @"Wrong parent");
     STAssertEqualObjects(newPlace.parentContent.name, parentContent.name, @"Wrong parentContent name");
@@ -335,7 +343,6 @@
     [place setValue:@"not Body" forKey:@"highlightBody"];
     [place setValue:@"not Subject" forKey:@"highlightSubject"];
     [place setValue:@"not Tags" forKey:@"highlightTags"];
-    place.type = @"walaby";
     [place setValue:[NSNumber numberWithInt:6] forKey:@"followerCount"];
     [place setValue:[NSNumber numberWithInt:4] forKey:@"likeCount"];
     [place setValue:[NSNumber numberWithInt:12] forKey:@"viewCount"];
@@ -354,7 +361,7 @@
     
     JivePlace *newPlace = [JivePlace instanceFromJSON:JSON];
     
-    STAssertEquals([newPlace class], [JivePlace class], @"Wrong item class");
+    STAssertTrue([[newPlace class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.displayName, place.displayName, @"Wrong display name");
     STAssertEqualObjects(newPlace.followerCount, place.followerCount, @"Wrong follower count");
     STAssertEqualObjects(newPlace.likeCount, place.likeCount, @"Wrong like count");
@@ -367,7 +374,6 @@
     STAssertEqualObjects(newPlace.highlightBody, place.highlightBody, @"Wrong highlightBody");
     STAssertEqualObjects(newPlace.highlightSubject, place.highlightSubject, @"Wrong highlightSubject");
     STAssertEqualObjects(newPlace.highlightTags, place.highlightTags, @"Wrong highlightTags");
-    STAssertEqualObjects(newPlace.type, place.type, @"Wrong type");
     STAssertEqualObjects(newPlace.updated, place.updated, @"Wrong updated date");
     STAssertEqualObjects(newPlace.parent, place.parent, @"Wrong parent");
     STAssertEqualObjects(newPlace.parentContent.name, parentContent.name, @"Wrong parentContent name");

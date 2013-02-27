@@ -18,7 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 
 
 @class JivePersonJive;
@@ -27,7 +27,7 @@
 
 //! \class JivePerson
 //! https://developers.jivesoftware.com/api/v3/rest/PersonEntity.html
-@interface JivePerson : JiveObject
+@interface JivePerson : JiveTypedObject
 
 //! List of postal JiveAddresses belonging to this person, with standard types home,other,pobox,work and value type of address. JiveAddress[]
 //! Creation - optional
@@ -71,9 +71,6 @@
 //! Date and time when this person was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object. JiveResourceEntry[]
-@property(nonatomic, readonly, strong) NSDictionary* resources;
-
 //! Most recent status update for this person.
 //! Creation - optional
 @property(nonatomic, copy) NSString* status;
@@ -84,9 +81,6 @@
 
 //! URL of the thumbnail (avatar) image for this person.
 @property(nonatomic, readonly, strong) NSString* thumbnailUrl;
-
-//! The object type of this object ("person").
-@property(nonatomic, readonly) NSString* type;
 
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;

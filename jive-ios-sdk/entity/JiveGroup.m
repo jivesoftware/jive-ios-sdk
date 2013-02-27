@@ -18,17 +18,21 @@
 //
 
 #import "JiveGroup.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveGroup
 
 @synthesize creator, groupType, memberCount, tags;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"group";
-    }
-    
-    return self;
+static NSString * const JiveGroupType = @"group";
+
++ (void)initialize {
+    if (self == [JiveGroup class])
+        [super registerClass:self forType:JiveGroupType];
+}
+
+- (NSString *)type {
+    return JiveGroupType;
 }
 
 - (NSDictionary *)toJSONDictionary {

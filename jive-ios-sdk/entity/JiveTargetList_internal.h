@@ -19,7 +19,7 @@
 
 #import "JiveTargetList.h"
 
-@interface JiveTargetList (internal)
+@interface JiveTargetList ()
 
 - (NSArray *)toJSONArray:(BOOL)restricted;
 

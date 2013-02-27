@@ -31,12 +31,24 @@
 #import "JiveUpdate.h"
 #import "JiveResourceEntry.h"
 
+@interface DummyContent : JiveContent
+
+@end
+
+@implementation DummyContent
+
+- (NSString *)type {
+    return @"dummy";
+}
+
+@end
+
 @implementation JiveContentTests
 
 @synthesize content;
 
 - (void)setUp {
-    content = [[JiveContent alloc] init];
+    content = [[DummyContent alloc] init];
 }
 
 - (void)tearDown {
@@ -107,20 +119,18 @@
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
     
-    content.type = nil; // Clear derived class type
-    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
-    
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], content.type, @"Wrong type");
+
     author.location = @"location";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
     [parentPlace setValue:@"place" forKey:@"name"];
     content.parent = @"parent";
     content.subject = @"Subject";
-    content.type = @"not a real type";
     [content setValue:@"1234" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     content.content = contentBody;
@@ -187,20 +197,18 @@
     JiveSummary *parentContent = [[JiveSummary alloc] init];
     JiveSummary *parentPlace = [[JiveSummary alloc] init];
     
-    content.type = nil; // Clear derived class type
-    
     id JSON = [content toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
-    
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], content.type, @"Wrong type");
+
     author.location = @"Tower";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
     [parentPlace setValue:@"school" forKey:@"name"];
     content.parent = @"William";
     content.subject = @"Writing";
-    content.type = @"another non-type";
     [content setValue:@"8743" forKey:@"jiveId"];
     [content setValue:author forKey:@"author"];
     content.content = contentBody;
@@ -302,9 +310,8 @@
     
     JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
     
-    STAssertTrue([[newContent class] isSubclassOfClass:[content class]], @"Wrong item class");
+    STAssertTrue([[newContent class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
     STAssertEqualObjects(newContent.jiveId, content.jiveId, @"Wrong id");
-    STAssertEqualObjects(newContent.type, content.type, @"Wrong type");
     STAssertEqualObjects(newContent.parent, content.parent, @"Wrong parent");
     STAssertEqualObjects(newContent.subject, content.subject, @"Wrong subject");
     STAssertEqualObjects(newContent.followerCount, content.followerCount, @"Wrong followerCount");
@@ -366,9 +373,8 @@
     
     JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
     
-    STAssertTrue([[newContent class] isSubclassOfClass:[content class]], @"Wrong item class");
+    STAssertTrue([[newContent class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
     STAssertEqualObjects(newContent.jiveId, content.jiveId, @"Wrong id");
-    STAssertEqualObjects(newContent.type, content.type, @"Wrong type");
     STAssertEqualObjects(newContent.parent, content.parent, @"Wrong parent");
     STAssertEqualObjects(newContent.subject, content.subject, @"Wrong subject");
     STAssertEqualObjects(newContent.followerCount, content.followerCount, @"Wrong followerCount");

@@ -22,6 +22,7 @@
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
 #import "JiveTargetList_internal.h"
+#import "JiveAssociationTargetList_internal.h"
 #import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
@@ -1492,10 +1493,15 @@
 }
 
 - (NSOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self contentsResourceOperation:[stream.resources objectForKey:@"associations"]
-                               withOptions:options
-                                onComplete:complete
-                                   onError:error];
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"associations"];
+    NSURLRequest *request = [self requestWithOptions:options
+                                         andTemplate:[resourceEntry.ref path],
+                             nil];
+    
+    return [self listOperationForClass:[JiveTypedObject class]
+                               request:request
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) streamAssociations:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
@@ -1534,6 +1540,35 @@
 
 - (void) createStream:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error {
     [[self createStreamOperation:stream forPerson:person withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) deleteAssociationOperation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"associations"];
+    JiveResourceEntry *associationSelf = [association.resources objectForKey:@"self"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:@"%@/%@/%@", [resourceEntry.ref path], association.type, [associationSelf.ref lastPathComponent], nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) deleteAssociation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    [[self deleteAssociationOperation:association fromStream:stream onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) createAssociationsOperation:(JiveAssociationTargetList *)targets forStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    JiveResourceEntry *resourceEntry = [stream.resources objectForKey:@"associations"];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[resourceEntry.ref path], nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[targets toJSONArray] options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:error];
+}
+
+- (void) createAssociations:(JiveAssociationTargetList *)targets forStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    [[self createAssociationsOperation:targets forStream:stream onComplete:complete onError:error] start];
 }
 
 #pragma mark - Invites

@@ -19,18 +19,22 @@
 
 #import "JiveFile.h"
 #import "JivePerson.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveFile
 
 @synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility;
 @synthesize visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"file";
-    }
-    
-    return self;
+static NSString * const JiveFileType = @"file";
+
++ (void)initialize {
+    if (self == [JiveFile class])
+        [super registerClass:self forType:JiveFileType];
+}
+
+- (NSString *)type {
+    return JiveFileType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

@@ -19,18 +19,22 @@
 
 #import "JiveAnnouncement.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveAnnouncement
 
 @synthesize endDate, image, publishDate, sortKey, subjectURI, subjectURITargetType;
 @synthesize visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"announcement";
-    }
-    
-    return self;
+static NSString * const JiveAnnouncementType = @"announcement";
+
++ (void)initialize {
+    if (self == [JiveAnnouncement class])
+        [super registerClass:self forType:JiveAnnouncementType];
+}
+
+- (NSString *)type {
+    return JiveAnnouncementType;
 }
 
 - (NSDictionary *)toJSONDictionary {

@@ -29,6 +29,17 @@
     return (JiveUpdate *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.update.type, @"update", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.update.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.update class], @"Update class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.update class], @"Update class not registered with JiveContent.");
+}
+
 - (void)testTaskToJSON {
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.update toJSONDictionary];

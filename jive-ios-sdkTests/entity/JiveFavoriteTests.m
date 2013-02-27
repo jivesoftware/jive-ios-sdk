@@ -29,6 +29,17 @@
     return (JiveFavorite *)self.content;
 }
 
+- (void)testType {
+    STAssertEqualObjects(self.favorite.type, @"favorite", @"Wrong type.");
+}
+
+- (void)testClassRegistration {
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:self.favorite.type forKey:@"type"];
+    
+    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [self.favorite class], @"Favorite class not registered with JiveTypedObject.");
+    STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.favorite class], @"Favorite class not registered with JiveContent.");
+}
+
 - (void)testFavoriteToJSON {
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.favorite toJSONDictionary];

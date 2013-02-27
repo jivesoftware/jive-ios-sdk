@@ -25,13 +25,12 @@
 #import "JiveSpace.h"
 #import "JiveSummary.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
-#import "JiveResourceEntry.h"
 
 @implementation JivePlace
 
 @synthesize contentTypes, description, displayName, followerCount, highlightBody, highlightSubject;
 @synthesize highlightTags, jiveId, likeCount, name, parent, parentContent, parentPlace, published;
-@synthesize resources, status, type, updated, viewCount, visibleToExternalContributors;
+@synthesize status, updated, viewCount, visibleToExternalContributors;
 
 + (Class) entityClass:(NSDictionary*) obj {
     
@@ -53,18 +52,6 @@
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value {
     if ([property isEqualToString:@"visibleToExternalContributors"])
         visibleToExternalContributors = CFBooleanGetValue((__bridge CFBooleanRef)(value));
-}
-
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-    
-    for (NSString *key in JSON) {
-        JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-        
-        [dictionary setValue:entry forKey:key];
-    }
-    
-    return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
 }
 
 - (NSDictionary *)toJSONDictionary {

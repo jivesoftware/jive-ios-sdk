@@ -18,17 +18,21 @@
 //
 
 #import "JiveDiscussion.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveDiscussion
 
 @synthesize categories, question, tags, users, visibility, visibleToExternalContributors;
 
-- (id)init {
-    if ((self = [super init])) {
-        self.type = @"discussion";
-    }
-    
-    return self;
+static NSString * const JiveDiscussionType = @"discussion";
+
++ (void)initialize {
+    if (self == [JiveDiscussion class])
+        [super registerClass:self forType:JiveDiscussionType];
+}
+
+- (NSString *)type {
+    return JiveDiscussionType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
