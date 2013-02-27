@@ -49,6 +49,8 @@ const struct JivePersonAttributes JivePersonAttributes = {
     return [propertyClasses objectForKey:propertyName];
 }
 
+#pragma mark - JiveObject
+
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
     
@@ -81,6 +83,33 @@ const struct JivePersonAttributes JivePersonAttributes = {
         [dictionary setValue:[tags copy] forKey:@"tags"];
     
     return dictionary;
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)anObject {
+    if (anObject == self) {
+        return YES;
+    } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
+        return NO;
+    } else {
+        return [self isEqualToJivePerson:anObject];
+    }
+}
+
+- (BOOL)isEqualToJivePerson:(JivePerson *)jivePerson {
+    if (self == jivePerson) {
+        return YES;
+    }
+    if (![self.jiveId isEqualToString:jivePerson.jiveId]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (NSUInteger)hash {
+    NSUInteger hash = [self.jiveId hash];
+    return hash;
 }
 
 @end
