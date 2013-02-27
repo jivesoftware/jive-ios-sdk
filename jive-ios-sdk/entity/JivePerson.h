@@ -20,6 +20,10 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 
+extern const struct JivePersonAttributes {
+    __unsafe_unretained NSString *jiveId;
+} JivePersonAttributes;
+
 
 @class JivePersonJive;
 @class JiveName;

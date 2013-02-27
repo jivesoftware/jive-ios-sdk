@@ -25,6 +25,10 @@
 #import "JivePhoneNumber.h"
 #import "JiveResourceEntry.h"
 
+const struct JivePersonAttributes JivePersonAttributes = {
+	.jiveId = @"jiveId"
+};
+
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, resources, status, tags, thumbnailUrl, updated;
 
