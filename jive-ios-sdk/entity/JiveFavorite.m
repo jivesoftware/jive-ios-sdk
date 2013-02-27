@@ -24,15 +24,15 @@
 
 @synthesize favoriteObject, private, tags, visibleToExternalContributors;
 
-static NSString *favoriteType = @"favorite";
+static NSString * const JiveFavoriteType = @"favorite";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:favoriteType];
+    [super registerClass:self forType:JiveFavoriteType];
 }
 
 - (NSString *)type {
-    return favoriteType;
+    return JiveFavoriteType;
 }
 
 - (NSDictionary *)toJSONDictionary {

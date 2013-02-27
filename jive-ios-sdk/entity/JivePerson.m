@@ -28,11 +28,11 @@
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
-static NSString *personType = @"person";
+static NSString * const JivePersonType = @"person";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:personType];
+    [super registerClass:self forType:JivePersonType];
 }
 
 - (NSString *)type {

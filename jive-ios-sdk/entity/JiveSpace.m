@@ -24,15 +24,15 @@
 
 @synthesize childCount, tags;
 
-static NSString *spaceType = @"space";
+static NSString * const JiveSpaceType = @"space";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:spaceType];
+    [super registerClass:self forType:JiveSpaceType];
 }
 
 - (NSString *)type {
-    return spaceType;
+    return JiveSpaceType;
 }
 
 - (NSDictionary *)toJSONDictionary {

@@ -24,15 +24,15 @@
 
 @synthesize creator, groupType, memberCount, tags;
 
-static NSString *groupObjectType = @"group";
+static NSString * const JiveGroupType = @"group";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:groupObjectType];
+    [super registerClass:self forType:JiveGroupType];
 }
 
 - (NSString *)type {
-    return groupObjectType;
+    return JiveGroupType;
 }
 
 - (NSDictionary *)toJSONDictionary {

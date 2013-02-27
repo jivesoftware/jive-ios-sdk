@@ -24,15 +24,15 @@
 
 @synthesize categories, options, tags, visibility, visibleToExternalContributors, voteCount, votes;
 
-static NSString *pollType = @"poll";
+static NSString * const JivePollType = @"poll";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:pollType];
+    [super registerClass:self forType:JivePollType];
 }
 
 - (NSString *)type {
-    return pollType;
+    return JivePollType;
 }
 
 - (NSDictionary *)toJSONDictionary {

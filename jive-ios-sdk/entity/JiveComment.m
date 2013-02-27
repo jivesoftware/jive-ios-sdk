@@ -24,15 +24,15 @@
 
 @synthesize rootType, rootURI;
 
-static NSString *commentType = @"comment";
+static NSString * const JiveCommentType = @"comment";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:commentType];
+    [super registerClass:self forType:JiveCommentType];
 }
 
 - (NSString *)type {
-    return commentType;
+    return JiveCommentType;
 }
 
 - (NSDictionary *)toJSONDictionary {

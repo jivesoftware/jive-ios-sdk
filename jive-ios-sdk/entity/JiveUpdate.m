@@ -24,15 +24,15 @@
 
 @synthesize latitude, longitude, tags, visibleToExternalContributors;
 
-static NSString *updateType = @"update";
+static NSString * const JiveUpdateType = @"update";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:updateType];
+    [super registerClass:self forType:JiveUpdateType];
 }
 
 - (NSString *)type {
-    return updateType;
+    return JiveUpdateType;
 }
 
 - (NSDictionary *)toJSONDictionary {

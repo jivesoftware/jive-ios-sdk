@@ -25,15 +25,15 @@
 
 @synthesize creator, dueDate, projectStatus, startDate, tags;
 
-static NSString *projectType = @"project";
+static NSString * const JiveProjectType = @"project";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:projectType];
+    [super registerClass:self forType:JiveProjectType];
 }
 
 - (NSString *)type {
-    return projectType;
+    return JiveProjectType;
 }
 
 - (NSDictionary *)toJSONDictionary {

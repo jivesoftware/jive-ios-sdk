@@ -27,15 +27,15 @@
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
 @synthesize tags, users, visibility, visibleToExternalContributors;
 
-static NSString *documentType = @"document";
+static NSString * const JiveDocumentType = @"document";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:documentType];
+    [super registerClass:self forType:JiveDocumentType];
 }
 
 - (NSString *)type {
-    return documentType;
+    return JiveDocumentType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

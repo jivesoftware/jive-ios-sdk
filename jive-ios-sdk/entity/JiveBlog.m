@@ -22,15 +22,15 @@
 
 @implementation JiveBlog
 
-static NSString *blogType = @"blog";
+static NSString * const JiveBlogType = @"blog";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:blogType];
+    [super registerClass:self forType:JiveBlogType];
 }
 
 - (NSString *)type {
-    return blogType;
+    return JiveBlogType;
 }
 
 @end

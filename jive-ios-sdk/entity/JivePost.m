@@ -27,15 +27,15 @@
 @synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
 @synthesize visibleToExternalContributors;
 
-static NSString *postType = @"post";
+static NSString * const JivePostType = @"post";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:postType];
+    [super registerClass:self forType:JivePostType];
 }
 
 - (NSString *)type {
-    return postType;
+    return JivePostType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

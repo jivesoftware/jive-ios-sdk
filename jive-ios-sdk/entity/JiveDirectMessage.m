@@ -24,15 +24,15 @@
 
 @synthesize visibleToExternalContributors;
 
-static NSString *dmType = @"dm";
+static NSString * const JiveDmType = @"dm";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:dmType];
+    [super registerClass:self forType:JiveDmType];
 }
 
 - (NSString *)type {
-    return dmType;
+    return JiveDmType;
 }
 
 - (NSDictionary *)toJSONDictionary {

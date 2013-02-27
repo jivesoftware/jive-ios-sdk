@@ -25,15 +25,15 @@
 
 @synthesize completed, dueDate, parentTask, subTasks, tags, visibleToExternalContributors;
 
-static NSString *taskType = @"task";
+static NSString * const JiveTaskType = @"task";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:taskType];
+    [super registerClass:self forType:JiveTaskType];
 }
 
 - (NSString *)type {
-    return taskType;
+    return JiveTaskType;
 }
 
 - (NSDictionary *)toJSONDictionary {

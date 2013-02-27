@@ -26,15 +26,15 @@
 @synthesize endDate, image, publishDate, sortKey, subjectURI, subjectURITargetType;
 @synthesize visibleToExternalContributors;
 
-static NSString *announcementType = @"announcement";
+static NSString * const JiveAnnouncementType = @"announcement";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:announcementType];
+    [super registerClass:self forType:JiveAnnouncementType];
 }
 
 - (NSString *)type {
-    return announcementType;
+    return JiveAnnouncementType;
 }
 
 - (NSDictionary *)toJSONDictionary {

@@ -24,15 +24,15 @@
 
 @synthesize categories, question, tags, users, visibility, visibleToExternalContributors;
 
-static NSString *discussionType = @"discussion";
+static NSString * const JiveDiscussionType = @"discussion";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:discussionType];
+    [super registerClass:self forType:JiveDiscussionType];
 }
 
 - (NSString *)type {
-    return discussionType;
+    return JiveDiscussionType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

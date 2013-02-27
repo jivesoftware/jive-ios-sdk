@@ -26,15 +26,15 @@
 @synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility;
 @synthesize visibleToExternalContributors;
 
-static NSString *fileType = @"file";
+static NSString * const JiveFileType = @"file";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:fileType];
+    [super registerClass:self forType:JiveFileType];
 }
 
 - (NSString *)type {
-    return fileType;
+    return JiveFileType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {

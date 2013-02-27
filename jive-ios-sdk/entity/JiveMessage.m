@@ -25,15 +25,15 @@
 
 @synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors;
 
-static NSString *messageType = @"message";
+static NSString * const JiveMessageType = @"message";
 
 + (void)initialize {
     [super initialize];
-    [super registerClass:self forType:messageType];
+    [super registerClass:self forType:JiveMessageType];
 }
 
 - (NSString *)type {
-    return messageType;
+    return JiveMessageType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
