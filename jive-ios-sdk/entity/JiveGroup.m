@@ -27,8 +27,8 @@
 static NSString * const JiveGroupType = @"group";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveGroupType];
+    if (self == [JiveGroup class])
+        [super registerClass:self forType:JiveGroupType];
 }
 
 - (NSString *)type {

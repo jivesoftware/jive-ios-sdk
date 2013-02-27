@@ -28,8 +28,8 @@
 static NSString * const JiveTaskType = @"task";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveTaskType];
+    if (self == [JiveTask class])
+        [super registerClass:self forType:JiveTaskType];
 }
 
 - (NSString *)type {

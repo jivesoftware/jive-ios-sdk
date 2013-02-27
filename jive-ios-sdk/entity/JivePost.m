@@ -30,8 +30,8 @@
 static NSString * const JivePostType = @"post";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JivePostType];
+    if (self == [JivePost class])
+        [super registerClass:self forType:JivePostType];
 }
 
 - (NSString *)type {

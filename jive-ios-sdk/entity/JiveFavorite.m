@@ -27,8 +27,8 @@
 static NSString * const JiveFavoriteType = @"favorite";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveFavoriteType];
+    if (self == [JiveFavorite class])
+        [super registerClass:self forType:JiveFavoriteType];
 }
 
 - (NSString *)type {

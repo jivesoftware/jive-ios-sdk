@@ -27,8 +27,8 @@
 static NSString * const JiveSpaceType = @"space";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveSpaceType];
+    if (self == [JiveSpace class])
+        [super registerClass:self forType:JiveSpaceType];
 }
 
 - (NSString *)type {

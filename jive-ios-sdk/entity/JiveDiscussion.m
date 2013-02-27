@@ -27,8 +27,8 @@
 static NSString * const JiveDiscussionType = @"discussion";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveDiscussionType];
+    if (self == [JiveDiscussion class])
+        [super registerClass:self forType:JiveDiscussionType];
 }
 
 - (NSString *)type {

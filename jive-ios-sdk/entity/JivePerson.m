@@ -31,8 +31,8 @@
 static NSString * const JivePersonType = @"person";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JivePersonType];
+    if (self == [JivePerson class])
+        [super registerClass:self forType:JivePersonType];
 }
 
 - (NSString *)type {

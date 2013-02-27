@@ -27,8 +27,8 @@
 static NSString * const JiveUpdateType = @"update";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveUpdateType];
+    if (self == [JiveUpdate class])
+        [super registerClass:self forType:JiveUpdateType];
 }
 
 - (NSString *)type {

@@ -25,8 +25,8 @@
 static NSString * const JiveBlogType = @"blog";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveBlogType];
+    if (self == [JiveBlog class])
+        [super registerClass:self forType:JiveBlogType];
 }
 
 - (NSString *)type {

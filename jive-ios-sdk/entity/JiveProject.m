@@ -28,8 +28,8 @@
 static NSString * const JiveProjectType = @"project";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveProjectType];
+    if (self == [JiveProject class])
+        [super registerClass:self forType:JiveProjectType];
 }
 
 - (NSString *)type {

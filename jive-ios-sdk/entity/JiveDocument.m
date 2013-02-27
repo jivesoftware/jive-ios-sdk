@@ -30,8 +30,8 @@
 static NSString * const JiveDocumentType = @"document";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveDocumentType];
+    if (self == [JiveDocument class])
+        [super registerClass:self forType:JiveDocumentType];
 }
 
 - (NSString *)type {

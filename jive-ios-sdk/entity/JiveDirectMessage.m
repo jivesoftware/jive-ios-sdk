@@ -27,8 +27,8 @@
 static NSString * const JiveDmType = @"dm";
 
 + (void)initialize {
-    [super initialize];
-    [super registerClass:self forType:JiveDmType];
+    if (self == [JiveDirectMessage class])
+        [super registerClass:self forType:JiveDmType];
 }
 
 - (NSString *)type {
