@@ -1626,7 +1626,10 @@
     }];
     
     return op;
-    
+}
+
+- (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+    [[self uploadImageOperation:image onComplete:complete onError:errorBlock] start];
 }
 
 #pragma mark - private API
