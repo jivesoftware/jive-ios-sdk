@@ -1606,7 +1606,7 @@
 }
 
 #pragma mark - Images
-- (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(void (^)(NSError *))error {
+- (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     
     NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"/api/core/v3/images", nil];
     
@@ -1620,7 +1620,9 @@
         JiveImage *jiveImage = [[JiveImage class] instanceFromJSON:json];
         complete(jiveImage);
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        error(err);
+        if(errorBlock) {
+            errorBlock(err);
+        }
     }];
     
     return op;
