@@ -97,425 +97,425 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getActivity(String,%20String,%20int,%20String)
 - (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActionService.html#getActions(String,%20String,%20int,%20List<String>,%20String)
-- (void) actions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))complete onError:(void (^)(NSError *error))error;
+- (void) actions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentContent(int,%20String)
-- (void) frequentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) frequentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentPeople(int,%20String)
-- (void) frequentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) frequentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentPlaces(int,%20String)
-- (void) frequentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) frequentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentContent(int,%20String)
-- (void) recentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) recentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentPeople(int,%20String)
-- (void) recentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) recentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentPlaces(int,%20String)
-- (void) recentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) recentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getActivity(String,%20String,%20int,%20String)
 - (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getActivity(String,%20String,%20int,%20String)
 - (NSOperation *) activitiesOperationWithURL:(NSURL *)activitiesURL onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActionService.html#getActions(String,%20String,%20int,%20List<String>,%20String)
-- (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *activities))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentContent(int,%20String)
-- (NSOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentPeople(int,%20String)
-- (NSOperation *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getFrequentPlaces(int,%20String)
-- (NSOperation *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentContent(int,%20String)
-- (NSOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentPeople(int,%20String)
-- (NSOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityService.html#getRecentPlaces(int,%20String)
-- (NSOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Announcements
 
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getSystemAnnouncements(int,%20int,%20boolean,%20String)
-- (void) announcementsWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) announcementsWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getAnnouncement(String,%20String)
-- (void) announcementWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) announcementWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#deleteAnnouncement(String)
-- (void) deleteAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) deleteAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#markRead(String)
-- (void) markAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) markAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getSystemAnnouncements(int,%20int,%20boolean,%20String)
-- (NSOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#getAnnouncement(String,%20String)
-- (NSOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#deleteAnnouncement(String)
-- (NSOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementService.html#markRead(String)
-- (NSOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - People
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPeople(String,%20String,%20int,%20int,%20String,%20List<String>,%20String)
-- (void) people:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) people:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getRecommendedPeople(int,%20String)
-- (void) recommendedPeople:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) recommendedPeople:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTrendingPeople(List<String>,%20int,%20String)
-- (void) trending:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) trending:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createPerson(PersonEntity,%20Boolean,%20String)
-- (void) createPerson:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) createPerson:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createTask(String,%20String,%20String)
-- (void) createTask:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error;
+- (void) createTask:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
-- (void) person:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) person:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! Retrive the JivePerson object for the current user.
-- (void) me:(void(^)(JivePerson *)) complete onError:(void(^)(NSError* error)) error;
+- (void) me:(void(^)(JivePerson *)) complete onError:(JiveErrorBlock) error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPersonByEmail(String,%20String)
-- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) personByEmail:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPersonByUsername(String,%20String)
-- (void) personByUserName:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) personByUserName:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getManager(String,%20String)
-- (void) manager:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) manager:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReport(String,%20String,%20String)
-- (void) person:(NSString *)personId reports:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) person:(NSString *)personId reports:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deletePerson(String,%20UriInfo)
-- (void) deletePerson:(JivePerson *)person onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (void) deletePerson:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getAvatar(String)
-- (void) avatarForPerson:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(void (^)(NSError *error))error;
+- (void) avatarForPerson:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#updatePerson(String,%20PersonEntity)
-- (void) updatePerson:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (void) updatePerson:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createFollowing(String,%20String)
-- (void) person:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (void) person:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (void) activities:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) activities:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getColleagues(String,%20int,%20int,%20String)
-- (void) collegues:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
-- (void) followers:(JivePerson *)person onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) collegues:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
+- (void) followers:(JivePerson *)person onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowers(String,%20int,%20int,%20String)
-- (void) followers:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) followers:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReports(String,%20int,%20int,%20String)
-- (void) reports:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) reports:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowing(String,%20int,%20int,%20String)
-- (void) following:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) following:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowingIn(String,%20String)
-- (void) followingIn:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) followingIn:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getStreams(String,%20String)
-- (void) streams:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) streams:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTasks(String,%20String,%20int,%20int,%20String)
-- (void) tasks:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) tasks:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getBlog(String,%20String)
 - (void) blog:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPeople(String,%20String,%20int,%20int,%20String,%20List<String>,%20String)
-- (NSOperation *) peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getRecommendedPeople(int,%20String)
-- (NSOperation *) recommendedPeopleOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) recommendedPeopleOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTrendingPeople(List<String>,%20int,%20String)
-- (NSOperation *) trendingOperation:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) trendingOperation:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createPerson(PersonEntity,%20Boolean,%20String)
-- (NSOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createTask(String,%20String,%20String)
-- (NSOperation *) createTaskOperation:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createTaskOperation:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
-- (NSOperation *) personOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) personOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! Create an NSOperation to retrieve the JivePerson object for the current user.
-- (NSOperation *) meOperation:(void(^)(JivePerson *))complete onError:(void(^)(NSError* error))error;
+- (NSOperation *) meOperation:(void(^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPersonByEmail(String,%20String)
-- (NSOperation *) personByEmailOperation:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) personByEmailOperation:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPersonByUsername(String,%20String)
-- (NSOperation *) personByUserNameOperation:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) personByUserNameOperation:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getManager(String,%20String)
-- (NSOperation *) managerOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) managerOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReport(String,%20String,%20String)
-- (NSOperation *) person:(NSString *)personId reportsOperation:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) person:(NSString *)personId reportsOperation:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deletePerson(String,%20UriInfo)
-- (NSOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getAvatar(String)
 - (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#updatePerson(String,%20PersonEntity)
-- (NSOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createFollowing(String,%20String)
-- (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (NSOperation *) activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getColleagues(String,%20int,%20int,%20String)
-- (NSOperation *) colleguesOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
-- (NSOperation *) followersOperation:(JivePerson *)person onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) colleguesOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
+- (NSOperation *) followersOperation:(JivePerson *)person onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowers(String,%20int,%20int,%20String)
-- (NSOperation *) followersOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) followersOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReports(String,%20int,%20int,%20String)
-- (NSOperation *) reportsOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) reportsOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowing(String,%20int,%20int,%20String)
-- (NSOperation *) followingOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) followingOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowingIn(String,%20String)
-- (NSOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getStreams(String,%20String)
-- (NSOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTasks(String,%20String,%20int,%20int,%20String)
-- (NSOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getBlog(String,%20String)
-- (NSOperation *) blogOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) blogOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(JiveErrorBlock)error;
 
 
 #pragma mark - search
 
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchPeople(List<String>,%20String,%20int,%20int,%20String)
-- (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchPlaces(List<String>,%20boolean,%20String,%20int,%20int,%20String)
-- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchContents(List<String>,%20boolean,%20String,%20int,%20int,%20String)
-- (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchPeople(List<String>,%20String,%20int,%20int,%20String)
-- (NSOperation*) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(void (^)(NSError *))error;
+- (NSOperation*) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchPlaces(List<String>,%20boolean,%20String,%20int,%20int,%20String)
-- (NSOperation*) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(void (^)(NSError *))error;
+- (NSOperation*) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/SearchService.html#searchContents(List<String>,%20boolean,%20String,%20int,%20int,%20String)
-- (NSOperation*) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(void (^)(NSError *))error;
+- (NSOperation*) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(JiveErrorBlock)error;
 
 #pragma mark - Inbox
 
 - (void) inbox:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/InboxService.html#getActivity(String,%20String,%20int,%20List<String>,%20String)
 - (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
-- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
-- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(void(^)(NSError *))errorBlock;
+- (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
+- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Environment
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFilterableFields()
-- (void) filterableFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (void) filterableFields:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getSupportedFields()
-- (void) supportedFields:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (void) supportedFields:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getResources()
-- (void) resources:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (void) resources:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFilterableFields()
-- (NSOperation *) filterableFieldsOperation:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (NSOperation *) filterableFieldsOperation:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getSupportedFields()
-- (NSOperation *) supportedFieldsOperation:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (NSOperation *) supportedFieldsOperation:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getResources()
-- (NSOperation *) resourcesOperation:(void(^)(NSArray *))complete onError:(void(^)(NSError* error))error;
+- (NSOperation *) resourcesOperation:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 #pragma mark - Places
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaces(List<String>,%20String,%20int,%20int,%20String)
-- (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getRecommendedPlaces(int,%20String)
-- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getTrendingPlaces(int,%20String)
-- (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlacePlaces(String,%20int,%20int,%20String,%20List<String>,%20String)
-- (void) placePlaces:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) placePlaces:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#createPlace(String,%20String)
-- (void) createPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (void) createPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#createPlaceTask(String,%20String,%20String)
-- (void) createTask:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error;
+- (void) createTask:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlace(String,%20String)
-- (void) place:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (void) place:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (void) placeActivities:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) placeActivities:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceFollowingIn(String,%20String)
-- (void) placeFollowingIn:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) placeFollowingIn:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#updatePlace(String,%20String,%20String)
-- (void) updatePlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (void) updatePlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#getInvites(String,%20int,%20int,%20String,%20String,%20String)
-- (void) invites:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) invites:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#deletePlace(String)
-- (void) deletePlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) deletePlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#deletePlaceAvatar(String)
-- (void) deleteAvatarForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) deleteAvatarForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAnnouncements(String,%20int,%20int,%20boolean,%20String)
-- (void) announcementsForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) announcementsForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAvatar(String,%20String)
-- (void) avatarForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) avatarForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceTasks(String,%20String,%20int,%20int,%20String)
-- (void) tasksForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) tasksForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaces(List<String>,%20String,%20int,%20int,%20String)
-- (NSOperation *) placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getRecommendedPlaces(int,%20String)
-- (NSOperation *) recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getTrendingPlaces(int,%20String)
-- (NSOperation *) trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlacePlaces(String,%20int,%20int,%20String,%20List<String>,%20String)
-- (NSOperation *) placePlacesOperation:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) placePlacesOperation:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#createPlace(String,%20String)
-- (NSOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#createPlaceTask(String,%20String,%20String)
-- (NSOperation *) createTaskOperation:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createTaskOperation:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlace(String,%20String)
-- (NSOperation *) placeOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) placeOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (NSOperation *) placeActivitiesOperation:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) placeActivitiesOperation:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceFollowingIn(String,%20String)
-- (NSOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#updatePlace(String,%20String,%20String)
-- (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#getInvites(String,%20int,%20int,%20String,%20String,%20String)
-- (NSOperation *) invitesOperation:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) invitesOperation:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#deletePlace(String)
-- (NSOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#deletePlaceAvatar(String)
-- (NSOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAnnouncements(String,%20int,%20int,%20boolean,%20String)
-- (NSOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAvatar(String,%20String)
-- (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceTasks(String,%20String,%20int,%20int,%20String)
-- (NSOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Contents
 
-- (void) contentFromURL:(NSURL *)contentURL onComplete:(void (^)(JiveContent *content))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) contentFromURL:(NSURL *)contentURL onComplete:(void (^)(JiveContent *content))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContents(List<String>,%20String,%20int,%20int,%20String)
-- (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getPopularContent(String)
-- (void) popularContents:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) popularContents:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getRecommendedContent(int,%20String)
-- (void) recommendedContents:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) recommendedContents:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getTrendingContent(List<String>,%20int,%20String)
-- (void) trendingContents:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) trendingContents:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContent(String,%20String)
-- (void) createContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) createContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/DirectMessageService.html#createDirectMessage(String,%20String)
-- (void) createDirectMessage:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) createDirectMessage:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createComment(String,%20String,%20boolean,%20String)
-- (void) createComment:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) createComment:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#createMessage(String,%20String)
-- (void) createMessage:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) createMessage:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContent(String,%20String)
-- (void) content:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) content:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getComments(String,%20boolean,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
-- (void) commentsForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) commentsForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#getContentReplies(String,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
-- (void) messagesForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) messagesForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentLikes(String,%20int,%20int,%20String)
-- (void) contentLikedBy:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) contentLikedBy:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentFollowingIn(String,%20String)
-- (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#markRead(String)
-- (void) content:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (void) content:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContentLike(String)
-- (void) content:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (void) content:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#deleteContent(String)
-- (void) deleteContent:(JiveContent *)content onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (void) deleteContent:(JiveContent *)content onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateContent(String,%20String,%20boolean,%20String)
-- (void) updateContent:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (void) updateContent:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ActivityObjectEntity.html
-- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/CommentEntity.html
-- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContents(List<String>, String, int, int, String)
 - (NSOperation *) contentsOperationWithURL:(NSURL *)contentsURL onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContents(List<String>,%20String,%20int,%20int,%20String)
-- (NSOperation *) contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getPopularContent(String)
-- (NSOperation *) popularContentsOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) popularContentsOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getRecommendedContent(int,%20String)
-- (NSOperation *) recommendedContentsOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) recommendedContentsOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getTrendingContent(List<String>,%20int,%20String)
-- (NSOperation *) trendingContentsOperation:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) trendingContentsOperation:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContent(String,%20String)
-- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/DirectMessageService.html#createDirectMessage(String,%20String)
-- (NSOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createComment(String,%20String,%20boolean,%20String)
-- (NSOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#createMessage(String,%20String)
-- (NSOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContent(String,%20String)
-- (NSOperation *) contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getComments(String,%20boolean,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
-- (NSOperation *) commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#getContentReplies(String,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
-- (NSOperation *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentLikes(String,%20int,%20int,%20String)
-- (NSOperation *) contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentFollowingIn(String,%20String)
-- (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#markRead(String)
-- (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContentLike(String)
-- (NSOperation *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#deleteContent(String)
-- (NSOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateContent(String,%20String,%20boolean,%20String)
-- (NSOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 
 #pragma mark - Members
 
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#deleteMember(String)
-- (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMember(String,%20String)
-- (void) memberWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) memberWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMembersByGroup(String,%20List<String>,%20int,%20int,%20String)
-- (void) membersForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) membersForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMembersByPerson(String,%20List<String>,%20int,%20int,%20String)
-- (void) membersForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (void) membersForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#updateMember(String,%20String,%20String)
-- (void) updateMember:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))complete onError:(void (^)(NSError *error))error;
+- (void) updateMember:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#deleteMember(String)
-- (NSOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMember(String,%20String)
-- (NSOperation *) memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMembersByGroup(String,%20List<String>,%20int,%20int,%20String)
-- (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#getMembersByPerson(String,%20List<String>,%20int,%20int,%20String)
-- (NSOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(void (^)(NSError *error))errorBlock;
+- (NSOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MemberService.html#updateMember(String,%20String,%20String)
-- (NSOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))complete onError:(JiveErrorBlock)error;
 
 #pragma mark - Streams
 
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#deleteStream(String)
-- (void) deleteStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (void) deleteStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getConnectionsActivity(String,%20String,%20int,%20String)
-- (void) streamConnectionsActivities:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) streamConnectionsActivities:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getStream(String,%20String)
-- (void) stream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (void) stream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (void) streamActivities:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) streamActivities:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getAssociations(String,%20int,%20int,%20String,%20List<String>)
-- (void) streamAssociations:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (void) streamAssociations:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#updateStream(String,%20StreamEntity,%20String)
-- (void) updateStream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (void) updateStream:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createStream(String,%20String,%20StreamEntity)
-- (void) createStream:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (void) createStream:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#removeAssociation(String,%20String,%20String)
 - (void) deleteAssociation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#addAssociations(String,%20List<String>)
 - (void) createAssociations:(JiveAssociationTargetList *)targets forStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#deleteStream(String)
-- (NSOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(void (^)(NSError *error))error;
+- (NSOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getConnectionsActivity(String,%20String,%20int,%20String)
-- (NSOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getStream(String,%20String)
-- (NSOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getActivity(String,%20String,%20String,%20int,%20String)
-- (NSOperation *) streamActivitiesOperation:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) streamActivitiesOperation:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#getAssociations(String,%20int,%20int,%20String,%20List<String>)
-- (NSOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(void(^)(NSError*))error;
+- (NSOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#updateStream(String,%20StreamEntity,%20String)
-- (NSOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createStream(String,%20String,%20StreamEntity)
-- (NSOperation *) createStreamOperation:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createStreamOperation:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#removeAssociation(String,%20String,%20String)
 - (NSOperation *) deleteAssociationOperation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/StreamService.html#addAssociations(String,%20List<String>)
@@ -524,22 +524,22 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 #pragma mark - Invites
 
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#getInvite(String,%20String)
-- (void) invite:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error;
+- (void) invite:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#deleteInvite(String)
-- (void) deleteInvite:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (void) deleteInvite:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#updateInvite(String,%20String,%20String)
-- (void) updateInvite:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error;
+- (void) updateInvite:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#createInvites(String,%20String,%20String)
-- (void) createInviteTo:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (void) createInviteTo:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#getInvite(String,%20String)
-- (NSOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#deleteInvite(String)
-- (NSOperation *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#updateInvite(String,%20String,%20String)
-- (NSOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#createInvites(String,%20String,%20String)
-- (NSOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+- (NSOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 
 @end
 
