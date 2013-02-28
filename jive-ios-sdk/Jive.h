@@ -77,6 +77,7 @@
 #import "JiveWelcomeRequestOptions.h"
 #import "JiveAuthorCommentRequestOptions.h"
 #import "JiveAssociationTargetList.h"
+#import "JiveImage.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
@@ -540,6 +541,12 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (NSOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(void (^)(NSError *))error;
 //! https://developers.jivesoftware.com/api/v3/rest/InviteService.html#createInvites(String,%20String,%20String)
 - (NSOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error;
+
+#pragma mark - Images
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
 
 @end
 
