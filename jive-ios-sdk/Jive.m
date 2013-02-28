@@ -24,6 +24,7 @@
 #import "JiveTargetList_internal.h"
 #import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "NSData+JiveBase64.h"
 
 @interface JiveInvite (internal)
 
@@ -1604,6 +1605,28 @@
     [[self createInviteToOperation:place withMessage:message targets:targets andOptions:options onComplete:complete onError:error] start];
 }
 
+#pragma mark - Images
+- (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(void (^)(NSError *))error {
+    
+    NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"/api/core/v3/images", nil];
+    
+    [self maybeApplyCredentialsToMutableURLRequest:request
+                                            forURL:self.jiveInstanceURL];
+    
+    AFHTTPRequestOperation *op= [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
+        JiveImage *jiveImage = [[JiveImage class] instanceFromJSON:json];
+        complete(jiveImage);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
+        error(err);
+    }];
+    
+    return op;
+    
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
@@ -1646,6 +1669,39 @@
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    return request;
+}
+
+// This is a stop-gap until AFNetworking's multi-part support is fixed.
+- (NSMutableURLRequest *) requestWithImageAsPNGBody:(UIImage*) image options:(NSObject<JiveRequestOptions>*)options andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
+    
+    va_list args;
+    va_start(args, template);
+    NSMutableURLRequest *request = [self requestWithOptions:options template:template andArguments:args];
+    va_end(args);
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"0xJiveBoundary";
+    
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"image.png\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/png\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
+    
     return request;
 }
 
