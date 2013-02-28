@@ -20,6 +20,10 @@
 #import <Foundation/Foundation.h>
 #import "JiveTypedObject.h"
 
+extern const struct JivePersonAttributes {
+    __unsafe_unretained NSString *jiveId;
+} JivePersonAttributes;
+
 
 @class JivePersonJive;
 @class JiveName;
@@ -85,5 +89,7 @@
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
+// !Returns a Boolean value that indicates whether a given jive person is equal to the receiver based on the jiveId property
+- (BOOL)isEqualToJivePerson:(JivePerson *)jivePerson;
 
 @end

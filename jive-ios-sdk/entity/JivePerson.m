@@ -25,6 +25,10 @@
 #import "JivePhoneNumber.h"
 #import "JiveTypedObject_internal.h"
 
+const struct JivePersonAttributes JivePersonAttributes = {
+	.jiveId = @"jiveId"
+};
+
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
@@ -52,6 +56,8 @@ static NSString * const JivePersonType = @"person";
     return [propertyClasses objectForKey:propertyName];
 }
 
+#pragma mark - JiveObject
+
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
@@ -72,6 +78,33 @@ static NSString * const JivePersonType = @"person";
         [dictionary setValue:[tags copy] forKey:@"tags"];
     
     return dictionary;
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)anObject {
+    if (anObject == self) {
+        return YES;
+    } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
+        return NO;
+    } else {
+        return [self isEqualToJivePerson:anObject];
+    }
+}
+
+- (BOOL)isEqualToJivePerson:(JivePerson *)jivePerson {
+    if (self == jivePerson) {
+        return YES;
+    }
+    if (![self.jiveId isEqualToString:jivePerson.jiveId]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (NSUInteger)hash {
+    NSUInteger hash = [self.jiveId hash];
+    return hash;
 }
 
 @end
