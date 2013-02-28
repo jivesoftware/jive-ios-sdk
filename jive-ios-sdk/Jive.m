@@ -1702,7 +1702,7 @@
             
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
-                errorBlock(err);
+                errorBlock([[JiveError alloc] initWithNSError:err withJSON:JSON]);
             }
         }];
         
@@ -1734,7 +1734,7 @@
             
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
-                errorBlock(err);
+                errorBlock([[JiveError alloc] initWithNSError:err withJSON:JSON]);
             }
         }];
         
