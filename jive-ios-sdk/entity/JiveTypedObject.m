@@ -8,6 +8,7 @@
 
 #import "JiveTypedObject_internal.h"
 #import "JiveResourceEntry.h"
+#import "JiveObjcRuntime.h"
 
 @implementation JiveTypedObject
 
@@ -27,6 +28,13 @@ static NSMutableDictionary *typedClasses;
 }
 
 + (Class) entityClass:(NSDictionary*) obj {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *subclasses = JiveClassGetSubclasses(self);
+        // guarantees that +[Subclass initialize] is called
+        [subclasses makeObjectsPerformSelector:@selector(self)];
+    });
+    
     NSString* type = [obj objectForKey:@"type"];
     if (!type)
         return [self class];
