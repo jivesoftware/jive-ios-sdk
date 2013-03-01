@@ -19,6 +19,10 @@
 
 #import "JiveObject.h"
 
+extern struct JiveResourceAttributes {
+    __unsafe_unretained NSString *selfKey;
+} const JiveResourceAttributes;
+
 //! \class JiveResource
 //! https://developers.jivesoftware.com/api/v3/rest/ResourceEntity.html
 @interface JiveResource : JiveObject

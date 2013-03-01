@@ -19,6 +19,10 @@
 
 #import "JiveResource.h"
 
+struct JiveResourceAttributes const JiveResourceAttributes = {
+	.selfKey = @"self",
+};
+
 @implementation JiveResource
 
 @synthesize availability, description, example, hasBody, jsMethod, name, path, since, unpublished;

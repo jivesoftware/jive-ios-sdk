@@ -33,6 +33,9 @@
 #import "JiveUpdate.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JiveContentAttributes const JiveContentAttributes = {
+	.author = @"author"
+};
 
 @implementation JiveContent
 
