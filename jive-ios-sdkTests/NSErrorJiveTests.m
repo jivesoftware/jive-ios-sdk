@@ -1,24 +1,31 @@
 //
-//  JiveErrorTests.m
+//  NSErrorJiveTests.m
 //  jive-ios-sdk
 //
-//  Created by Orson Bushnell on 2/28/13.
+//  Created by Heath Borders on 2/28/13.
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveErrorTests.h"
+#import <SenTestingKit/SenTestingKit.h>
+#import "NSError+Jive.h"
 
-@implementation JiveErrorTests
+@interface NSErrorJiveTests : SenTestCase
+
+@end
+
+@implementation NSErrorJiveTests
 
 - (void)testNoJSON {
     NSError *nativeError = [[NSError alloc] initWithDomain:@"AFNetworkingErrorDomain"
                                                       code:404
                                                   userInfo:nil];
-    JiveError *jiveError = [[JiveError alloc] initWithNSError:nativeError withJSON:nil];
+    NSError *jiveError = [NSError jive_errorWithUnderlyingError:nativeError
+                                                       withJSON:nil];
     
-    STAssertEqualObjects((NSError *)jiveError, nativeError, @"Native error not duplicated");
+    STAssertEqualObjects(jiveError.domain, JiveErrorDomain, @"Not Jive Error Domain");
+    STAssertEquals(jiveError.code, nativeError.code, @"Native error code not duplicated");
     STAssertNil(jiveError.localizedRecoverySuggestion, @"Missing message found");
-    STAssertNil(jiveError.jiveStatus, @"Missing status found");
+    STAssertNil(jiveError.jive_HTTPStatusCode, @"Missing status found");
 }
 
 - (void)testBasicJSONError {
@@ -27,20 +34,21 @@
     NSString *description = [NSString stringWithFormat:@"Expected status code in (200-299), got %@", status];
     NSDictionary *JSONError = @{@"error": @{@"message":message, @"status":status}};
     NSDictionary *userInfo = @{@"NSLocalizedRecoverySuggestion":[NSString stringWithFormat:@"{\"error\":{\"message\":%@,\"status\":%@}}", message, status],
-                                @"NSLocalizedDescription":description};
+                               @"NSLocalizedDescription":description};
     NSError *nativeError = [[NSError alloc] initWithDomain:@"AFNetworkingErrorDomain"
                                                       code:404
                                                   userInfo:userInfo];
-    JiveError *jiveError = [[JiveError alloc] initWithNSError:nativeError withJSON:JSONError];
+    NSError *jiveError = [NSError jive_errorWithUnderlyingError:nativeError
+                                                       withJSON:JSONError];
     
-    STAssertEqualObjects(jiveError.domain, nativeError.domain, @"Native error not duplicated");
-    STAssertEquals(jiveError.code, nativeError.code, @"Native error not duplicated");
+    STAssertEqualObjects(jiveError.domain, JiveErrorDomain, @"Not Jive Error Domain");
+    STAssertEquals(jiveError.code, nativeError.code, @"Native error code not duplicated");
     STAssertEqualObjects(jiveError.localizedDescription, nativeError.localizedDescription, @"Native error not duplicated");
     STAssertEqualObjects(jiveError.localizedFailureReason, nativeError.localizedFailureReason, @"Native error not duplicated");
     STAssertEqualObjects(jiveError.localizedRecoveryOptions, nativeError.localizedRecoveryOptions, @"Native error not duplicated");
     STAssertEqualObjects(jiveError.helpAnchor, nativeError.helpAnchor, @"Native error not duplicated");
     STAssertEqualObjects(jiveError.localizedRecoverySuggestion, message, @"Wrong message found");
-    STAssertEqualObjects(jiveError.jiveStatus, status, @"Wrong status found");
+    STAssertEqualObjects(jiveError.jive_HTTPStatusCode, status, @"Wrong status found");
 }
 
 @end

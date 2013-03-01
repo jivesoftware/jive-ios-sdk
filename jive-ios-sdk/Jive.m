@@ -458,7 +458,7 @@
                 }
             } else {
                 if (heapErrorBlock) {
-                    heapErrorBlock([JiveError jive_errorWithMultipleErrors:errors]);
+                    heapErrorBlock([NSError jive_errorWithMultipleErrors:errors]);
                 }
             }
         }
@@ -1702,7 +1702,8 @@
             
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
-                errorBlock([[JiveError alloc] initWithNSError:err withJSON:JSON]);
+                errorBlock([NSError jive_errorWithUnderlyingError:err
+                                                         withJSON:JSON]);
             }
         }];
         
@@ -1734,7 +1735,8 @@
             
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
-                errorBlock([[JiveError alloc] initWithNSError:err withJSON:JSON]);
+                errorBlock([NSError jive_errorWithUnderlyingError:err
+                                                         withJSON:JSON]);
             }
         }];
         

@@ -77,9 +77,8 @@
 #import "JiveWelcomeRequestOptions.h"
 #import "JiveAuthorCommentRequestOptions.h"
 #import "JiveAssociationTargetList.h"
-#import "JiveError.h"
 
-typedef void (^JiveErrorBlock)(JiveError *error);
+typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
 
 @protocol JiveAuthorizationDelegate;
