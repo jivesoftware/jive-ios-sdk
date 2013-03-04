@@ -19,6 +19,10 @@
 
 #import "JiveResourceEntry.h"
 
+struct JiveResourceEntryAttributes const JiveResourceEntryAttributes = {
+	.ref = @"ref",
+};
+
 @implementation JiveResourceEntry
 
 @synthesize ref, allowed;

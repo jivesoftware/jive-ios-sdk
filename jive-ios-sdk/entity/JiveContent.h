@@ -22,6 +22,10 @@
 #import "JiveContentBody.h"
 #import "JiveSummary.h"
 
+extern struct JiveContentAttributes {
+    __unsafe_unretained NSString *author;
+} const JiveContentAttributes;
+
 //! \class JiveContent
 //! https://developers.jivesoftware.com/api/v3/rest/ContentEntity.html
 @interface JiveContent : JiveTypedObject
