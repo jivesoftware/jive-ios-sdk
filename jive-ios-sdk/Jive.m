@@ -1006,7 +1006,16 @@
     [operation start];
 }
 
-- (void) discussion:(JiveDiscussion *)discussion createReplyMessage:(JiveMessage *)replyMessage withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
+- (void) createReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
+    NSOperation *createReplyMessageOperation = [self operationToCreateReplyMessage:replyMessage
+                                                                     forDiscussion:discussion
+                                                                       withOptions:options
+                                                                     completeBlock:completeBlock
+                                                                        errorBlock:errorBlock];
+    [createReplyMessageOperation start];
+}
+
+- (NSOperation *) operationToCreateReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
     JiveResourceEntry *messagesResourceEntry = discussion.resources[@"messages"];
     NSOperation *createReplyMessageOperation = [self createContentOperation:replyMessage
                                                                 withOptions:options
@@ -1015,7 +1024,7 @@
         completeBlock((JiveMessage *)content);
     })
                                                                     onError:errorBlock];
-    [createReplyMessageOperation start];
+    return createReplyMessageOperation;
 }
 
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
