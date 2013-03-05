@@ -421,6 +421,8 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageEntity.html
 - (void) message:(JiveMessage *) message discussionWithCompleteBlock:(void(^)(JiveDiscussion *discussion))completeBlock errorBlock:(void(^)(NSError *error))errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#createContentMessage(String,%20String,%20String)
+- (void) discussion:(JiveDiscussion *)discussion createReplyMessage:(JiveMessage *)replyMessage withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContents(List<String>, String, int, int, String)
 - (NSOperation *) contentsOperationWithURL:(NSURL *)contentsURL onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock;

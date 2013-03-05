@@ -1006,6 +1006,18 @@
     [operation start];
 }
 
+- (void) discussion:(JiveDiscussion *)discussion createReplyMessage:(JiveMessage *)replyMessage withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
+    JiveResourceEntry *messagesResourceEntry = discussion.resources[@"messages"];
+    NSOperation *createReplyMessageOperation = [self createContentOperation:replyMessage
+                                                                withOptions:options
+                                                                andTemplate:[messagesResourceEntry.ref path]
+                                                                 onComplete:(^(JiveContent *content) {
+        completeBlock((JiveMessage *)content);
+    })
+                                                                    onError:errorBlock];
+    [createReplyMessageOperation start];
+}
+
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     return [self streamsResourceOperation:[content.resources objectForKey:@"followingIn"]
                               withOptions:options
