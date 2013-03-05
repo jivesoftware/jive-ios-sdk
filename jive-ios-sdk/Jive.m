@@ -993,6 +993,19 @@
     [operation start];
 }
 
+- (void) message:(JiveMessage *) message discussionWithCompleteBlock:(void(^)(JiveDiscussion *discussion))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    NSURL *discussionURL = [NSURL URLWithString:message.discussion];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:discussionURL];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:discussionURL];
+    
+    NSOperation *operation = [self entityOperationForClass:[JiveDiscussion class]
+                                                   request:mutableURLRequest
+                                                onComplete:completeBlock
+                                                   onError:errorBlock];
+    [operation start];
+}
+
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     return [self streamsResourceOperation:[content.resources objectForKey:@"followingIn"]
                               withOptions:options
