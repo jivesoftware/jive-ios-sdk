@@ -23,12 +23,21 @@ extern NSString * const JiveErrorDomain;
 
 extern NSInteger const JiveErrorCodeMultipleErrors;
 extern NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType;
+extern NSInteger const JiveErrorCodeNilUnderlyingError;
 
 extern NSString * const JiveErrorKeyMultipleErrors;
 extern NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType;
+extern NSString * const JiveErrorKeyJSON;
+extern NSString * const JiveErrorKeyHTTPStatusCode;
 
 @interface NSError (Jive)
 
+@property (nonatomic, readonly) NSArray *jive_multipleErrors;
+@property (nonatomic, readonly) NSString *jive_unsupportedActivityObjectObjectType;
+@property (nonatomic, readonly) id jive_JSON;
+@property (nonatomic, readonly) NSNumber *jive_HTTPStatusCode;
+
++ (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError withJSON:(id)JSON;
 + (instancetype) jive_errorWithMultipleErrors:(NSArray *)errors;
 + (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType;
 
