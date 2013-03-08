@@ -499,6 +499,20 @@
 
 #pragma mark - People
 
+- (void)personFromURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:personURL];
+    
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:personURL];
+    
+    NSOperation *operation = [self entityOperationForClass:[JivePerson class]
+                                                   request:mutableURLRequest
+                                                onComplete:completeBlock
+                                                   onError:errorBlock];
+    
+    [operation start];
+}
+
 - (NSOperation *)peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self getPeopleArray:@"people" withOptions:options onComplete:complete onError:error];
 }
