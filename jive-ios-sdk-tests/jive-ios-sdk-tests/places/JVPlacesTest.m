@@ -18,6 +18,7 @@
 //
 
 #import "JiveTestCase.h"
+#import "JVUtilities.h"
 
 @interface JVPlacesTest : JiveTestCase
 
@@ -47,16 +48,32 @@
         [returnedPlacesNames addObject:place.name];
     }
     
-    STAssertEqualObjects((@[
-                          @"iOS-SDK-TestSpace1",
-                          @"iOS-SDK-TestSpace1-TestProject1",
-                          @"iOS-SDK-TestSubSpace1",
-                          @"iOS-SDK-TestUser1_TestSocialGroup1",
-                          @"iOS-SDK-TestUser1_TestSocialGroup2_Open",
-                          @"iOS-SDK-TestUser1_TestSocialGroup3_Private",
-                          @"iOS-SDK-TestUser1_TestSocialGroup4_Secret",
-                          @"ios-spacetest",
-                          ]), returnedPlacesNames, @"Unexpected places: %@", [returnedPlaces arrayOfJiveObjectJSONDictionaries]);
+    
+    
+    NSString* recentPlacesAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places?filter=search(ios)";
+    
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:recentPlacesAPIURL];
+    NSArray* returnedtPlacesListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
+    
+    
+    //verify the number returned rows between API and SDK
+    STAssertEquals([returnedPlaces count], [returnedtPlacesListFromAPI count], @"The number returned rows of SDK and API are not matched.  SDK = %i and API = %i", [returnedPlaces count], [returnedtPlacesListFromAPI count]);
+    
+    NSUInteger i = 0;
+    
+    for (JivePlace* jivePlaceFromSDK in returnedPlaces) {
+        
+        id jivePlaceFromAPI = [returnedtPlacesListFromAPI objectAtIndex:i];
+        
+        NSString* aPlaceNameFromAPI = [JVUtilities get_Place_description:jivePlaceFromAPI];
+        
+        STAssertEqualObjects( [jivePlaceFromSDK description], aPlaceNameFromAPI , @"Expecting same results from SDK and v3 API for recent places for this user, sdk = '%@' , api = '%@' !",  [jivePlaceFromSDK description], aPlaceNameFromAPI);
+        
+        i++;
+        
+    }
+    
+
 }
 
 @end
