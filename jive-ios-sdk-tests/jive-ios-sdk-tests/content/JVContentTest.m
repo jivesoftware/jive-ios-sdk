@@ -29,7 +29,9 @@
     JivePost *post = [[JivePost alloc] init];
     __block JiveContent *testBlogPost = nil;
     
-    post.subject = @"Test blog 12345";
+//    post.subject = @"Test blog 12345";
+    NSString* docSubj = [NSString stringWithFormat:@"Test blog-%d", (arc4random() % 1500000)];
+    post.subject = docSubj;
     post.content = [[JiveContentBody alloc] init];
     post.content.type = @"text/html";
     post.content.text = @"<body><p>This is a test of the emergency broadcast system.</p></body>";
