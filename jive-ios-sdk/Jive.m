@@ -500,6 +500,14 @@
 #pragma mark - People
 
 - (void)personFromURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSOperation *operation = [self personOperationWithURL:personURL
+                                               onComplete:completeBlock
+                                                  onError:errorBlock];
+    
+    [operation start];
+}
+
+- (NSOperation *)personOperationWithURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:personURL];
     
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
@@ -509,8 +517,7 @@
                                                    request:mutableURLRequest
                                                 onComplete:completeBlock
                                                    onError:errorBlock];
-    
-    [operation start];
+    return operation;
 }
 
 - (NSOperation *)peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
