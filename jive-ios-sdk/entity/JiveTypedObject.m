@@ -10,6 +10,11 @@
 #import "JiveResourceEntry.h"
 #import "JiveObjcRuntime.h"
 
+struct JiveTypedObjectAttributes const JiveTypedObjectAttributes = {
+	.type = @"type",
+	.resources = @"resources"
+};
+
 @implementation JiveTypedObject
 
 @synthesize resources;

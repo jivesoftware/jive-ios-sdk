@@ -8,6 +8,11 @@
 
 #import "JiveObject.h"
 
+extern struct JiveTypedObjectAttributes {
+    __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *resources;
+} const JiveTypedObjectAttributes;
+
 //! \class JiveTypedObject
 //! An iOS specific class with no REST api equivalent.
 @interface JiveTypedObject : JiveObject
