@@ -27,7 +27,6 @@
 
 struct JivePersonAttributes const JivePersonAttributes = {
 	.jiveId = @"jiveId",
-	.resources = @"resources"
 };
 
 @implementation JivePerson
