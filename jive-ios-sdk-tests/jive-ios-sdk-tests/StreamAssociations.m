@@ -81,6 +81,8 @@ JiveAssociationsRequestOptions *streamAssociationOptions = [[JiveAssociationsReq
 [streamAssociationOptions addField:@"id"];
 [streamAssociationOptions addField:@"name"];
 [streamAssociationOptions addField:@"source"];
+    [streamAssociationOptions addField:@"displayName"];
+    
 
 __block NSArray *returnedAssociationsArray = nil;
 
@@ -98,20 +100,16 @@ __block NSArray *returnedAssociationsArray = nil;
         }];
 }];
     
-/*
- TODO: implement after bug fix for TABDEV-339
- 
-for (JiveContent* associationObj in returnedAssociationsArray) {
+
+for (JiveTypedObject* associationObj in returnedAssociationsArray) {
     
-    if ([associationObj isKindOfClass:[JiveContent class]])
+    if ([associationObj isKindOfClass:[JivePerson class]])
     {
-        NSLog(@"Jive Content Object in Stream Association");
-        JiveContent* p= ((JiveContent*)(associationObj));
-          NSLog(@"content descr=%@", p.description);
-        
+        JivePerson* p= ((JivePerson*)(associationObj));
+        NSLog(@"Person name=%@", p.displayName);
     }
     
 }
- */
+ 
 }
 @end
