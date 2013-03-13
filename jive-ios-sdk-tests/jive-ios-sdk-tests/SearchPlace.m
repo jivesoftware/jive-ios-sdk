@@ -38,8 +38,13 @@
     
     
     //get the jsons response from API
-    NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=search(ios)";
+   /* NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=search(ios)";
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+    */
+    
+    NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?filter=search(ios)"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
+    
     NSArray* returnedAPIPlace = [jsonResponseFromAPI objectForKey:@"list"];
     
     //verify the 1st of returned row from API and SDK;
@@ -93,8 +98,14 @@
     
     
     //get the jsons response from API
-    NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)";
+    /*NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)";
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+    */
+    
+    NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
+    
+    
     NSArray* returnedAPIPlace = [jsonResponseFromAPI objectForKey:@"list"];
     
     //verify the 1st of returned row from API and SDK;
@@ -152,8 +163,12 @@
     
     
     //get the jsons response from API
-    NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc";
+ /*   NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc";
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+  */
+    NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
+    
     NSArray* returnedAPIPlace = [jsonResponseFromAPI objectForKey:@"list"];
     
     //verify the 1st of returned row from API and SDK;

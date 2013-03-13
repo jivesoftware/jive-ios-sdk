@@ -49,10 +49,14 @@
     }
     
     
-    
-    NSString* recentPlacesAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places?filter=search(ios)";
-    
+    /*
+    NSString* recentPlacesAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/places?filter=search(ios)";    
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:recentPlacesAPIURL];
+    */
+    
+    NSString* recentPlacesAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/places?filter=search(ios)"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:recentPlacesAPIURL];
+    
     NSArray* returnedtPlacesListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
     
     

@@ -38,9 +38,14 @@ __block NSArray *recentPeopleList = nil;
 // Make API call
 // Get the recent people count for the user
 
+/*
 NSString* recentPeopleAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/recent/people?count=20";
-
 id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:recentPeopleAPIURL];
+*/
+   
+NSString* recentPeopleAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/activities/recent/people?count=20"];
+id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:recentPeopleAPIURL];
+    
 NSArray* returnedRecentPeopleListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
 NSUInteger returnedRecentPeopleCountFromAPI = [returnedRecentPeopleListFromAPI count];
 

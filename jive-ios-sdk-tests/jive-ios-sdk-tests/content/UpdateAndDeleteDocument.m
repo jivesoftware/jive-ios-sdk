@@ -48,7 +48,9 @@
     JiveResourceEntry* resourceEntryForNewDocAfterCreation = [testDoc.resources objectForKey:@"self"];
     NSString* contentURL1 = [resourceEntryForNewDocAfterCreation.ref absoluteString];
     
-    NSURL* authorURL = [[NSURL alloc] initWithString:@"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497"];
+   // NSURL* authorURL = [[NSURL alloc] initWithString:@"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", server,  @"/api/core/v3/people/3497"];
+    NSURL* authorURL = [[NSURL alloc] initWithString:urlStr];
     
     
     __block NSArray *contentsResults = nil;

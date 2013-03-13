@@ -34,18 +34,47 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 - (void)setUp {
     [super setUp];
     
-    authorizationDelegate1 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser1" password:@"test123"];
-    authorizationDelegate2 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser2" password:@"test123"];
-    authorizationDelegate3 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:@"ios-sdk-testuser3" password:@"test123"];
+    //read the instance info json file
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"instance_info" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:contentPath];
     
-    jive1 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+    NSError *error = nil;
+    id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    
+    NSLog(@"Error: %@ %@", [error localizedDescription], [error userInfo]);
+    
+    
+    if (error)
+    {
+        NSLog(@".... Error reading the file 'instance_info.json'");
+        exit(0);
+        
+    }
+    
+    server = [jsonObjects valueForKey:@"server"];
+    
+    userid1 = [jsonObjects valueForKey:@"userid1"];
+    pw1 = [jsonObjects valueForKey:@"pw1"];
+    userid2 = [jsonObjects valueForKey:@"userid2"];
+    pw2 = [jsonObjects valueForKey:@"pw2"];
+    userid3 = [jsonObjects valueForKey:@"userid1"];
+    pw3 = [jsonObjects valueForKey:@"pw3"];
+    
+    
+    authorizationDelegate1 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:userid1 password:pw1];
+    authorizationDelegate2 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:userid2 password:pw2];
+    authorizationDelegate3 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:userid3 password:pw3];
+    
+    jive1 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:server]
                          authorizationDelegate:authorizationDelegate1];
     
-    jive2 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+    jive2 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:server]
                          authorizationDelegate:authorizationDelegate2];
     
-    jive3 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"]
+    jive3 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:server]
                          authorizationDelegate:authorizationDelegate3];
+    
+
 }
 
 - (void)tearDown {
@@ -59,8 +88,8 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 #pragma mark - JiveAuthorizationDelegate
 
 - (JiveCredentials *) credentialsForJiveInstance:(NSURL*) url {
-    JiveCredentials *credentials = [[JiveCredentials alloc] initWithUserName:@"iOS-SDK-TestUser1"
-                                                                    password:@"test123"];
+    JiveCredentials *credentials = [[JiveCredentials alloc] initWithUserName:userid1
+                                                                    password:pw1];
     return credentials;
 }
 

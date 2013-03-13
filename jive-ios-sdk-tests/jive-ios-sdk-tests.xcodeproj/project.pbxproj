@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		215040D916DEA27200CD0AAE /* jive-software.png in Resources */ = {isa = PBXBuildFile; fileRef = 215040D816DEA27100CD0AAE /* jive-software.png */; };
 		23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23680DAD16CAF9DB007EAF2F /* JVUtilities.m */; };
+		2385546716EFED880045B0ED /* instance_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 2385546616EFED880045B0ED /* instance_info.json */; };
 		2D648AF216EFE38D00E97038 /* StreamAssociations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AEB216D6A36800428AA4 /* StreamAssociations.m */; };
 		2D648AFD16EFEAC300E97038 /* CreateImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21349A7C16DEA07A006A8BFD /* CreateImageTests.m */; };
 		2D648AFE16EFEAC300E97038 /* SearchPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED516D6A43000428AA4 /* SearchPlace.m */; };
@@ -73,6 +74,7 @@
 		23680DAC16CAF9BA007EAF2F /* JVUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVUtilities.h; sourceTree = "<group>"; };
 		23680DAD16CAF9DB007EAF2F /* JVUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVUtilities.m; sourceTree = "<group>"; };
 		23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JiveBase64.h"; sourceTree = "<group>"; };
+		2385546616EFED880045B0ED /* instance_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instance_info.json; sourceTree = "<group>"; };
 		2D99613F16E91A2C007A4A5B /* CreateAssociations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAssociations.m; sourceTree = "<group>"; };
 		2DB3AEB016D6A36800428AA4 /* CreateAndDeleteStreams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAndDeleteStreams.m; sourceTree = "<group>"; };
 		2DB3AEB116D6A36800428AA4 /* StreamActivities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamActivities.m; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				B81B0C1016A8B3320013CB48 /* people */,
 				B8B38AAA16A8BC3900066EEF /* places */,
 				B8A71F1416A89DFA00A7D2CE /* Supporting Files */,
+				2385546616EFED880045B0ED /* instance_info.json */,
 			);
 			path = "jive-ios-sdk-tests";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			files = (
 				B8A71F1816A89DFA00A7D2CE /* InfoPlist.strings in Resources */,
 				215040D916DEA27200CD0AAE /* jive-software.png in Resources */,
+				2385546716EFED880045B0ED /* instance_info.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

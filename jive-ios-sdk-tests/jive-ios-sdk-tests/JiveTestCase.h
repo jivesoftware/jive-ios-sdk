@@ -24,6 +24,14 @@ extern NSString * const JiveTestCaseNotAJiveObjectKey;
     Jive *jive1;
     Jive *jive2;
     Jive *jive3;
+    
+    NSString* server;
+    NSString* userid1;
+    NSString* pw1;
+    NSString* userid2;
+    NSString* pw2;
+    NSString* userid3;
+    NSString* pw3;
 }
 
 - (void)waitForTimeout:(JiveTestCaseAsyncBlock)asynchBlock;

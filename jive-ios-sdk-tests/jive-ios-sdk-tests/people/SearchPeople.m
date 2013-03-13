@@ -38,8 +38,13 @@
     
     
     //get the jsons response from API
-    NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/people?filter=search(ios)";
+   /* NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/people?filter=search(ios)";
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+    */
+    NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/people?filter=search(ios)"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
+    
+    
     NSArray* returnedAPIPersons = [jsonResponseFromAPI objectForKey:@"list"];
     
     //verify the number returned rows between API and SDK

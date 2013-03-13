@@ -38,9 +38,14 @@
     // Make API call
     // Get the frequent People count for the user
     
+    /*
     NSString* frequentPeopleAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/frequent/people?count=20";
-    
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:frequentPeopleAPIURL];
+    */
+    
+    NSString* frequentPeopleAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/activities/frequent/people?count=20"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:frequentPeopleAPIURL];
+    
     NSArray* returnedFrequentPeopleListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger returnedFrequentPeopleCountFromAPI = [returnedFrequentPeopleListFromAPI count];
     

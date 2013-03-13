@@ -38,9 +38,14 @@
     // Make API call
     // Get the recent content count for the user
     
-    NSString* recentContentAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/recent/content?count=20";
-    
+    /*
+    NSString* recentContentAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/recent/content?count=20";    
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:recentContentAPIURL];
+    */
+    
+    NSString* recentContentAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/activities/recent/content?count=20"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:recentContentAPIURL];
+    
     NSArray* returnedRecentContentListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger returnedRecentContentCountFromAPI = [returnedRecentContentListFromAPI count];
     

@@ -38,9 +38,13 @@
     // Make API call
     // Get the Frequent content count for the user
     
-    NSString* frequentContentAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/frequent/content?count=15";
-    
+   /* NSString* frequentContentAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/frequent/content?count=15";
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:frequentContentAPIURL];
+    */
+    
+    NSString* frequentContentAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/activities/frequent/content?count=15"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:frequentContentAPIURL];
+    
     NSArray* returnedFrequentContentListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger returnedFrequentContentCountFromAPI = [returnedFrequentContentListFromAPI count];
     

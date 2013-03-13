@@ -39,9 +39,14 @@
     // Make API call
     // Get the recent places count for the user
     
-    NSString* recentPlacesAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/recent/places?count=15";
-        
+    /*
+    NSString* recentPlacesAPIURL = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/activities/recent/places?count=15";        
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:recentPlacesAPIURL];
+    */
+    
+    NSString* recentPlacesAPIURL =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/activities/recent/places?count=15"];
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:recentPlacesAPIURL];
+    
     NSArray* returnedRecentPlacesListFromAPI = [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger returnedRecentPlacesCountFromAPI = [returnedRecentPlacesListFromAPI count];
     
