@@ -48,17 +48,30 @@
     JiveResourceEntry* resourceEntryForNewDocAfterCreation = [testDoc.resources objectForKey:@"self"];
     NSString* contentURL1 = [resourceEntryForNewDocAfterCreation.ref absoluteString];
     
-   // NSURL* authorURL = [[NSURL alloc] initWithString:@"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/people/3497"];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@", server,  @"/api/core/v3/people/3497"];
-    NSURL* authorURL = [[NSURL alloc] initWithString:urlStr];
+    NSString *myString = @"/api/core/v3/people/username/";
+    NSString *apiString = [myString stringByAppendingString:userid1];
     
+    NSLog(@"apiString=%@", apiString);
+    
+    NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, apiString];
+    NSLog(@"apiUrl=%@", apiUrl);
+    
+    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
+    
+    // NSArray* returnedAPIPersons = [jsonResponseFromAPI objectForKey:@"list"];
+    // id personAPI = [returnedAPIPersons objectAtIndex:0];
+    
+    NSString* authorStr = [JVUtilities get_Resource_self:jsonResponseFromAPI];
+    
+    NSURL* authorURL = [[NSURL alloc] initWithString:authorStr];
+    
+    NSLog(@"authorURL=%@", authorURL);
     
     __block NSArray *contentsResults = nil;
     
     JiveContentRequestOptions* jiveContentRequestOptions = [[JiveContentRequestOptions alloc] init];
     
     [jiveContentRequestOptions addAuthor:authorURL];
-    
     
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
         [jive1 contents:jiveContentRequestOptions onComplete:^(NSArray* results) {
