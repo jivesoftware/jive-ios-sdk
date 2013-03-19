@@ -19,11 +19,23 @@
 
 #import "JiveContent.h"
 
+extern struct JiveDirectMessageAttributes {
+    __unsafe_unretained NSString *participants;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JiveDirectMessageAttributes;
+
 //! \class JiveDirectMessage
 //! https://developers.jivesoftware.com/api/v3/rest/DirectMessageEntity.html
 @interface JiveDirectMessage : JiveContent
 
+//! The people to whom this direct message was sent.
+@property (nonatomic, readonly) NSArray *participants;
+
+//! Tags associated with this object.
+@property (nonatomic) NSArray *tags;
+
 //! Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
+@property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 @end

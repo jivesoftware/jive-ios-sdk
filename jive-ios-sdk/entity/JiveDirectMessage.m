@@ -20,6 +20,12 @@
 #import "JiveDirectMessage.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
+	.participants = @"participants",
+	.tags = @"tags",
+    .visibleToExternalContributors = @"visibleToExternalContributors"
+};
+
 @implementation JiveDirectMessage
 
 @synthesize visibleToExternalContributors;
@@ -38,7 +44,8 @@ static NSString * const JiveDmType = @"dm";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    if (self.tags.count > 0)
+        [dictionary setValue:self.tags forKey:JiveDirectMessageAttributes.tags];
     
     return dictionary;
 }

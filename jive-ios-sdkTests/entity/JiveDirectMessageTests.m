@@ -42,19 +42,27 @@
 
 - (void)testPostToJSON {
     NSDictionary *JSON = [self.dm toJSONDictionary];
+    NSString *tag1 = @"big";
+    NSString *tag2 = @"stuff";
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"dm", @"Wrong type");
     
-    self.dm.visibleToExternalContributors = [NSNumber numberWithBool:YES];
+    self.dm.tags = [NSArray arrayWithObjects:tag1, tag2, nil];
     
     JSON = [self.dm toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.dm.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.dm.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    
+    NSArray *categoriesJSON = [JSON objectForKey:@"tags"];
+    
+    STAssertTrue([[categoriesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([categoriesJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([categoriesJSON objectAtIndex:0], tag1, @"Wrong value");
+    STAssertEqualObjects([categoriesJSON objectAtIndex:1], tag2, @"Wrong value");
 }
 
 @end
