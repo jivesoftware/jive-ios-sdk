@@ -78,6 +78,7 @@
 #import "JiveAuthorCommentRequestOptions.h"
 #import "JiveAssociationTargetList.h"
 #import "JiveImage.h"
+#import "JiveVideo.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);

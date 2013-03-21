@@ -290,6 +290,9 @@
 		788C5C76164B117B003D7B94 /* JiveSearchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C75164B117B003D7B94 /* JiveSearchFilter.m */; };
 		788C5C7D164B12B4003D7B94 /* JiveSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 788C5C7C164B12B4003D7B94 /* JiveSearch.m */; };
 		78CCC63416517854006F7E72 /* JiveSearchContentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CCC63316517854006F7E72 /* JiveSearchContentParams.m */; };
+		8999E65316FA9BB00009677A /* JiveVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8999E65116FA9BAF0009677A /* JiveVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8999E65416FA9BB00009677A /* JiveVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65216FA9BB00009677A /* JiveVideo.m */; };
+		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
 		B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */; };
 		B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8657AED166FEDE900F946B5 /* NSError+Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657AEE166FEDE900F946B5 /* NSError+Jive.m */; };
@@ -867,6 +870,10 @@
 		788C5C7C164B12B4003D7B94 /* JiveSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearch.m; sourceTree = "<group>"; };
 		78CCC63216517854006F7E72 /* JiveSearchContentParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchContentParams.h; sourceTree = "<group>"; };
 		78CCC63316517854006F7E72 /* JiveSearchContentParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveSearchContentParams.m; sourceTree = "<group>"; };
+		8999E65116FA9BAF0009677A /* JiveVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVideo.h; sourceTree = "<group>"; };
+		8999E65216FA9BB00009677A /* JiveVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideo.m; sourceTree = "<group>"; };
+		8999E65A16FAA1140009677A /* JiveVideoTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVideoTests.h; sourceTree = "<group>"; };
+		8999E65B16FAA1140009677A /* JiveVideoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideoTests.m; sourceTree = "<group>"; };
 		B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAsyncTestCase.h; sourceTree = "<group>"; };
 		B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAsyncTestCase.m; sourceTree = "<group>"; };
 		B8657AED166FEDE900F946B5 /* NSError+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Jive.h"; sourceTree = "<group>"; };
@@ -1158,6 +1165,8 @@
 				0F880F6116DBE61A00D40702 /* JiveTypedObjectTests.m */,
 				0F9EB871168E732E00E9F09D /* JiveUpdateTests.h */,
 				0F9EB872168E732F00E9F09D /* JiveUpdateTests.m */,
+				8999E65A16FAA1140009677A /* JiveVideoTests.h */,
+				8999E65B16FAA1140009677A /* JiveVideoTests.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1272,6 +1281,8 @@
 				0F880F5816DBDC2400D40702 /* JiveTypedObject.m */,
 				7814D5B4165454B9000D9BE9 /* JiveUpdate.h */,
 				7814D5B5165454BA000D9BE9 /* JiveUpdate.m */,
+				8999E65116FA9BAF0009677A /* JiveVideo.h */,
+				8999E65216FA9BB00009677A /* JiveVideo.m */,
 				217FE0D9163852C500182AB5 /* readme.rtf */,
 				215040DC16DEA43900CD0AAE /* JiveImage.h */,
 				215040DD16DEA43900CD0AAE /* JiveImage.m */,
@@ -1538,6 +1549,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8999E65316FA9BB00009677A /* JiveVideo.h in Headers */,
 				B86B0B3A166D0105008E525E /* JiveDefinedSizeRequestOptions.h in Headers */,
 				B86B0B3C166D0105008E525E /* JiveInboxOptions.h in Headers */,
 				B86B0B45166D0105008E525E /* JiveCredentials.h in Headers */,
@@ -1979,6 +1991,7 @@
 				0F880F6816DC454800D40702 /* JiveAssociationTargetList.m in Sources */,
 				B8811CEF16DF0CD40099E39E /* JiveObjcRuntime.m in Sources */,
 				215040DF16DEA43A00CD0AAE /* JiveImage.m in Sources */,
+				8999E65416FA9BB00009677A /* JiveVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2072,6 +2085,7 @@
 				0F880F6216DBE61A00D40702 /* JiveTypedObjectTests.m in Sources */,
 				0F880F6D16DC456200D40702 /* JiveAssociationTargetListTests.m in Sources */,
 				B86E089B16E037980066F9AE /* NSErrorJiveTests.m in Sources */,
+				8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

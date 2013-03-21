@@ -31,6 +31,7 @@
 #import "JiveFavorite.h"
 #import "JiveTask.h"
 #import "JiveUpdate.h"
+#import "JiveVideo.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentAttributes const JiveContentAttributes = {
@@ -58,6 +59,7 @@ struct JiveContentAttributes const JiveContentAttributes = {
                            [JiveFavorite class], @"favorite",
                            [JiveTask class], @"task",
                            [JiveUpdate class], @"update",
+                           [JiveVideo class], @"video",
                            nil];
     
     NSString* type = [obj objectForKey:@"type"];
