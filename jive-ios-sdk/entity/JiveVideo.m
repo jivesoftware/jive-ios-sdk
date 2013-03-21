@@ -11,6 +11,8 @@
 
 @implementation JiveVideo
 
+@synthesize tags, visibleToExternalContributors;
+
 static NSString * const JiveVideoType = @"video";
 
 + (void)initialize {
@@ -25,9 +27,9 @@ static NSString * const JiveVideoType = @"video";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:self.visibleToExternalContributors forKey:@"visibleToExternalContributors"];
-    if (self.tags)
-        [dictionary setValue:self.tags forKey:@"tags"];
+    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    if (tags)
+        [dictionary setValue:tags forKey:@"tags"];
     
     return dictionary;
 }
