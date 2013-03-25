@@ -29,7 +29,7 @@
     STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.idea class], @"Idea class not registered with JiveContent.");
 }
 
-- (void)testTaskToJSON {
+- (void)testIdeaToJSON {
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.idea toJSONDictionary];
     
@@ -54,7 +54,7 @@
     STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
 }
 
-- (void)testTaskToJSON_alternate {
+- (void)testIdeaToJSON_alternate {
     NSString *tag = @"concise";
     
     [self.idea setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
@@ -73,7 +73,7 @@
     STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
 }
 
-- (void)testPostParsing {
+- (void)testIdeaParsing {
     NSString *tag = @"wordy";
     
     [self.idea setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
@@ -89,7 +89,7 @@
     STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
 }
 
-- (void)testPostParsingAlternate {
+- (void)testIdeaParsingAlternate {
     NSString *tag = @"concise";
     
     [self.idea setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];

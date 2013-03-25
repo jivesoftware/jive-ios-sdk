@@ -29,7 +29,7 @@
     STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.video class], @"Video class not registered with JiveContent.");
 }
 
-- (void)testTaskToJSON {
+- (void)testVideoToJSON {
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.video toJSONDictionary];
     
@@ -54,7 +54,7 @@
     STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
 }
 
-- (void)testTaskToJSON_alternate {
+- (void)testVideoToJSON_alternate {
     NSString *tag = @"concise";
     
     [self.video setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
@@ -73,7 +73,7 @@
     STAssertEqualObjects([tagsJSON objectAtIndex:0], tag, @"Wrong value");
 }
 
-- (void)testPostParsing {
+- (void)testVideoParsing {
     NSString *tag = @"wordy";
     
     [self.video setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
@@ -89,7 +89,7 @@
     STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
 }
 
-- (void)testPostParsingAlternate {
+- (void)testVideoParsingAlternate {
     NSString *tag = @"concise";
     
     [self.video setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
