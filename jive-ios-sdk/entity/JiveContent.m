@@ -33,6 +33,7 @@
 #import "JiveUpdate.h"
 #import "JiveVideo.h"
 #import "JiveIdea.h"
+#import "JiveEvent.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentAttributes const JiveContentAttributes = {
@@ -62,6 +63,7 @@ struct JiveContentAttributes const JiveContentAttributes = {
                            [JiveUpdate class], @"update",
                            [JiveVideo class], @"video",
                            [JiveIdea class], @"idea",
+                           [JiveEvent class], @"event",
                            nil];
     
     NSString* type = [obj objectForKey:@"type"];
