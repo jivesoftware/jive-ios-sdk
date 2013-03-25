@@ -24,7 +24,7 @@
 @interface JiveIdea : JiveContent
 
 //! Tags associated with this object.
-@property(nonatomic, readonly, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* tags;
 
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly, strong) NSNumber *visibleToExternalContributors;
