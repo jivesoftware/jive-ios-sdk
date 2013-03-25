@@ -28,7 +28,7 @@ struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 
 @implementation JiveDirectMessage
 
-@synthesize visibleToExternalContributors;
+@synthesize participants, tags, visibleToExternalContributors;
 
 static NSString * const JiveDmType = @"dm";
 
@@ -39,6 +39,18 @@ static NSString * const JiveDmType = @"dm";
 
 - (NSString *)type {
     return JiveDmType;
+}
+
+- (Class) arrayMappingFor:(NSString*) propertyName {
+    static NSDictionary *propertyClasses = nil;
+    
+    if (!propertyClasses)
+        propertyClasses = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [JivePerson class], @"participants",
+                           nil];
+    
+    NSLog(@"%@", propertyName);
+    return [propertyClasses objectForKey:propertyName];
 }
 
 - (NSDictionary *)toJSONDictionary {
