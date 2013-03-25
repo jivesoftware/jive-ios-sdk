@@ -14,6 +14,9 @@
  
 @implementation ContentLike_Unlike
 
+
+/*
+ 
 - (void) testContentLike_Unlike {
     
     JiveSearchContentsRequestOptions *searchOptions = [[JiveSearchContentsRequestOptions alloc] init];
@@ -100,5 +103,7 @@
     STAssertEquals(likeCountAfter, likeCountBefore + 1, @"Expecting same results from SDK and v3 API for likes count on this document!");
     
 }
+
+*/
 
 @end

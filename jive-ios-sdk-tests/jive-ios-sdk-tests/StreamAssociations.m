@@ -13,6 +13,8 @@
 
 @implementation StreamAssociations
 
+
+/*
 - (void) testStreamAssociations{
     
 JiveReturnFieldsRequestOptions *returnFieldOptions = [[JiveReturnFieldsRequestOptions alloc] init];
@@ -112,4 +114,6 @@ for (JiveTypedObject* associationObj in returnedAssociationsArray) {
 }
  
 }
+
+*/
 @end

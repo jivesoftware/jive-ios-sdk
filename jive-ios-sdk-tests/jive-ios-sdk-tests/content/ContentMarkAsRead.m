@@ -16,6 +16,8 @@
 
 @implementation ContentMarkAsRead
 
+
+/*
 - (void) testContentMarkAsRead_Unread {
     
     JiveSearchContentsRequestOptions *searchOptions = [[JiveSearchContentsRequestOptions alloc] init];
@@ -64,5 +66,5 @@
     
     
 }
-
+*/
 @end

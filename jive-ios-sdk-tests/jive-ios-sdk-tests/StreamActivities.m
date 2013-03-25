@@ -18,6 +18,7 @@
 
 @implementation StreamActivities
 
+/*
 - (void) testStreamActivities {
     
     JiveReturnFieldsRequestOptions *returnFieldOptions = [[JiveReturnFieldsRequestOptions alloc] init];
@@ -139,5 +140,7 @@
 
 
   }
+
+*/
 
 @end

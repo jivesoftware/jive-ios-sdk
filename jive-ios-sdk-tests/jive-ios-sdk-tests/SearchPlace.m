@@ -17,6 +17,7 @@
 
 @implementation SearchPlace
 
+/*
 -(void) test_SearchPlace_withIos
 {
     JiveSearchPlacesRequestOptions* options = [[JiveSearchPlacesRequestOptions alloc]init];
@@ -38,9 +39,9 @@
     
     
     //get the jsons response from API
-   /* NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=search(ios)";
-    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
-    */
+    // NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=search(ios)";
+    //id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+    
     
     NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?filter=search(ios)"];
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
@@ -98,9 +99,9 @@
     
     
     //get the jsons response from API
-    /*NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)";
-    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
-    */
+    //NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)";
+    //id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+    //
     
     NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?sort=updatedAsc&filter=search(ios,open)"];
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
@@ -163,9 +164,9 @@
     
     
     //get the jsons response from API
- /*   NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc";
-    id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
-  */
+    ///NSString* apiUrl = @"http://tiedhouse-yeti1.eng.jiveland.com/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc";
+    //id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser1" pw:@"test123" URL:apiUrl];
+  
     NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, @"/api/core/v3/search/places?filter=type(group,space)&filter=search(ios)&sort=relevanceDesc"];
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
     
@@ -196,4 +197,6 @@
     STAssertEqualObjects([[placeSDK parentPlace] jiveId], [JVUtilities get_Place_ParentPlace_id:placeAPI ], @"The 'jiveId of parent placee' of SDK and API are not matched.  SDK = %@ and API = %@", [[placeSDK parentPlace] jiveId], [JVUtilities get_Place_ParentPlace_id:placeAPI ] );
     
 }
+
+*/
 @end
