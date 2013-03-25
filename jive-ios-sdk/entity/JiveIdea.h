@@ -1,8 +1,8 @@
 //
-//  JiveVideo.h
+//  JiveIdea.h
 //  jive-ios-sdk
 //
-//  Created by Chris Gummer on 3/20/13.
+//  Created by Chris Gummer on 3/25/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,9 +19,9 @@
 
 #import "JiveContent.h"
 
-//! \class JiveVideo
-//! https://developers.jivesoftware.com/api/v3/rest/VideoEntity.html
-@interface JiveVideo : JiveContent
+//! \class JiveIdea
+//! https://developers.jivesoftware.com/api/v3/rest/IdeaEntity.html
+@interface JiveIdea : JiveContent
 
 //! Tags associated with this object.
 @property(nonatomic, strong) NSArray* tags;
