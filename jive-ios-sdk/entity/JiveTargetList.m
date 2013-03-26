@@ -36,10 +36,7 @@
 - (void)addPerson:(JivePerson *)person {
     JiveResourceEntry *resource = [person.resources objectForKey:@"self"];
     
-    if (!personURIs)
-        personURIs = [NSMutableArray arrayWithCapacity:1];
-
-    [personURIs addObject:[resource.ref absoluteString]];
+    [self addPersonURI:[resource.ref absoluteString]];
 }
 
 - (void)addEmailAddress:(NSString *)emailAddress {
@@ -54,6 +51,13 @@
         alternateIdentifiers = [NSMutableArray arrayWithCapacity:1];
     
     [alternateIdentifiers addObject:[userName jive_stringByEscapingForURLArgument]];
+}
+
+- (void)addPersonURI:(NSString *)uri {
+    if (!personURIs)
+        personURIs = [NSMutableArray arrayWithCapacity:1];
+    
+    [personURIs addObject:uri];
 }
 
 @end

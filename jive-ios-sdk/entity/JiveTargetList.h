@@ -33,5 +33,7 @@
 - (void)addEmailAddress:(NSString *)emailAddress;
 //! Method to add a person's user name to the target list. Not valid for direct messages.
 - (void)addUserName:(NSString *)userName;
+//! Method to add a person's URI to the target list.
+- (void)addPersonURI:(NSString *)uri;
 
 @end
