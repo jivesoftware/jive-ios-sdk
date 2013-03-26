@@ -1,8 +1,8 @@
 //
-//  JiveVideoTests.h
+//  JiveEventTests.h
 //  jive-ios-sdk
 //
-//  Created by Chris Gummer on 3/20/13.
+//  Created by Chris Gummer on 3/25/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,10 @@
 //
 
 #import "JiveContentTests.h"
-#import "JiveVideo.h"
+#import "JiveEvent.h"
 
-@interface JiveVideoTests : JiveContentTests
+@interface JiveEventTests : JiveContentTests
 
-@property (nonatomic, readonly) JiveVideo *video;
+@property (nonatomic, readonly) JiveEvent *event;
 
 @end

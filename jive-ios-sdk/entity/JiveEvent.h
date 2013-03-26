@@ -1,8 +1,8 @@
 //
-//  JiveVideoTests.h
+//  JiveEvent.h
 //  jive-ios-sdk
 //
-//  Created by Chris Gummer on 3/20/13.
+//  Created by Chris Gummer on 3/25/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +17,12 @@
 //    limitations under the License.
 //
 
-#import "JiveContentTests.h"
-#import "JiveVideo.h"
+#import "JiveContent.h"
 
-@interface JiveVideoTests : JiveContentTests
+//! \class JiveEvent
+@interface JiveEvent : JiveContent
 
-@property (nonatomic, readonly) JiveVideo *video;
+//! Flag indicating that this content object is potentially visible to external contributors.
+@property(nonatomic, readonly, strong) NSNumber *visibleToExternalContributors;
 
 @end

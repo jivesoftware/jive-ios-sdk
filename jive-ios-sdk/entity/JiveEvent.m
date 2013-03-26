@@ -1,5 +1,5 @@
 //
-//  JiveIdeaTests.h
+//  JiveEvent.m
 //  jive-ios-sdk
 //
 //  Created by Chris Gummer on 3/25/13.
@@ -17,11 +17,30 @@
 //    limitations under the License.
 //
 
-#import "JiveContentTests.h"
-#import "JiveIdea.h"
+#import "JiveEvent.h"
+#import "JiveTypedObject_internal.h"
 
-@interface JiveIdeaTests : JiveContentTests
+@implementation JiveEvent
 
-@property (nonatomic, readonly) JiveIdea *idea;
+@synthesize visibleToExternalContributors;
+
+static NSString * const JiveEventType = @"event";
+
++ (void)initialize {
+    if (self == [JiveEvent class])
+        [super registerClass:self forType:JiveEventType];
+}
+
+- (NSString *)type {
+    return JiveEventType;
+}
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
+    
+    [dictionary setValue:self.visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    
+    return dictionary;
+}
 
 @end
