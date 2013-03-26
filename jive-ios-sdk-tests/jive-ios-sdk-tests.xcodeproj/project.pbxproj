@@ -10,7 +10,6 @@
 		215040D916DEA27200CD0AAE /* jive-software.png in Resources */ = {isa = PBXBuildFile; fileRef = 215040D816DEA27100CD0AAE /* jive-software.png */; };
 		23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23680DAD16CAF9DB007EAF2F /* JVUtilities.m */; };
 		2385546716EFED880045B0ED /* instance_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 2385546616EFED880045B0ED /* instance_info.json */; };
-		2D648B3316F286A600E97038 /* jive-software.png in Sources */ = {isa = PBXBuildFile; fileRef = 215040D816DEA27100CD0AAE /* jive-software.png */; };
 		2D648B3416F286A600E97038 /* CreateImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21349A7C16DEA07A006A8BFD /* CreateImageTests.m */; };
 		2D648B3516F286A600E97038 /* SearchPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED516D6A43000428AA4 /* SearchPlace.m */; };
 		2D648B3616F286A600E97038 /* SearchPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3AED316D6A41300428AA4 /* SearchPeople.m */; };
@@ -434,7 +433,6 @@
 				2D648B3F16F286BC00E97038 /* StreamActivities.m in Sources */,
 				2D648B4016F286BC00E97038 /* StreamAssociations.m in Sources */,
 				2D648B4116F286BC00E97038 /* CreateAssociations.m in Sources */,
-				2D648B3316F286A600E97038 /* jive-software.png in Sources */,
 				2D648B3416F286A600E97038 /* CreateImageTests.m in Sources */,
 				2D648B3516F286A600E97038 /* SearchPlace.m in Sources */,
 				2D648B3616F286A600E97038 /* SearchPeople.m in Sources */,
