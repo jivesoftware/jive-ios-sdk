@@ -61,7 +61,7 @@ extern struct JiveContentAttributes {
 @property(nonatomic, readonly, strong) JiveSummary* parentContent;
 
 //! Summary information about the place that contains this object.
-@property(nonatomic, readonly, strong) JiveSummary* parentPlace;
+@property(nonatomic, strong) JiveSummary* parentPlace;
 
 //! Date and time when this content object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
