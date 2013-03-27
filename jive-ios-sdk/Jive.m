@@ -1229,6 +1229,27 @@
                                  onError:error];
 }
 
+- (void)placeFromURL:(NSURL *)placeURL onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSOperation *operation = [self placeOperationWithURL:placeURL
+                                              onComplete:completeBlock
+                                                 onError:errorBlock];
+    
+    [operation start];
+}
+
+- (NSOperation *)placeOperationWithURL:(NSURL *)placeURL onComplete:(void (^)(JivePlace *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:placeURL];
+    
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:placeURL];
+    
+    NSOperation *operation = [self entityOperationForClass:[JivePlace class]
+                                                   request:mutableURLRequest
+                                                onComplete:completeBlock
+                                                   onError:errorBlock];
+    return operation;
+}
+
 - (void) place:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     [[self placeOperation:place withOptions:options onComplete:complete onError:error] start];
 }

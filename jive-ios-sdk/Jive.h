@@ -322,6 +322,7 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#createPlaceTask(String,%20String,%20String)
 - (void) createTask:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error;
 
+- (void)placeFromURL:(NSURL *)placeURL onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlace(String,%20String)
 - (void) place:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getActivity(String,%20String,%20String,%20int,%20String)
