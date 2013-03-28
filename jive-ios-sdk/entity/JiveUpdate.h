@@ -19,6 +19,14 @@
 
 #import "JiveContent.h"
 
+extern struct JiveUpdateAttributes {
+    __unsafe_unretained NSString *latitude;
+    __unsafe_unretained NSString *longitude;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+    __unsafe_unretained NSString *visibility;
+} const JiveUpdateAttributes;
+
 //! \class JiveUpdate
 //! https://developers.jivesoftware.com/api/v3/rest/UpdateEntity.html
 @interface JiveUpdate : JiveContent
@@ -35,5 +43,9 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
+//! The visibility policy for new Status Updates. Not present for existing Status Updates. Valid values are:
+// * all - anyone with appropriate permissions can see the content. Default when visibility and parent are not specified.
+// * place - place permissions specify which users can see the content. Default when visibility is not specified but parent is specified.
+@property (nonatomic, strong) NSString *visibility;
 
 @end

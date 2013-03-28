@@ -20,9 +20,17 @@
 #import "JiveUpdate.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveUpdateAttributes const JiveUpdateAttributes = {
+	.latitude = @"latitude",
+	.longitude = @"longitude",
+	.tags = @"tags",
+	.visibleToExternalContributors = @"visibleToExternalContributors",
+	.visibility = @"visibility",
+};
+
 @implementation JiveUpdate
 
-@synthesize latitude, longitude, tags, visibleToExternalContributors;
+@synthesize latitude, longitude, tags, visibleToExternalContributors, visibility;
 
 static NSString * const JiveUpdateType = @"update";
 
@@ -38,11 +46,12 @@ static NSString * const JiveUpdateType = @"update";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:latitude forKey:@"latitude"];
-    [dictionary setValue:longitude forKey:@"longitude"];
-    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    [dictionary setValue:latitude forKey:JiveUpdateAttributes.latitude];
+    [dictionary setValue:longitude forKey:JiveUpdateAttributes.longitude];
+    [dictionary setValue:visibleToExternalContributors forKey:JiveUpdateAttributes.visibleToExternalContributors];
+    [dictionary setValue:visibility forKey:JiveUpdateAttributes.visibility];
     if (tags)
-        [dictionary setValue:tags forKey:@"tags"];
+        [dictionary setValue:tags forKey:JiveUpdateAttributes.tags];
     
     return dictionary;
 }

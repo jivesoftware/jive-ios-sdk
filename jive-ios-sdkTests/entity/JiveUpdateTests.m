@@ -48,21 +48,23 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"update", @"Wrong type");
     
-    [self.update setValue:[NSNumber numberWithDouble:1.234] forKey:@"latitude"];
-    [self.update setValue:[NSNumber numberWithDouble:-0.456] forKey:@"longitude"];
-    [self.update setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    [self.update setValue:[NSNumber numberWithDouble:1.234] forKey:JiveUpdateAttributes.latitude];
+    [self.update setValue:[NSNumber numberWithDouble:-0.456] forKey:JiveUpdateAttributes.longitude];
+    [self.update setValue:[NSArray arrayWithObject:tag] forKey:JiveUpdateAttributes.tags];
+    self.update.visibility = @"place";
     self.update.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     JSON = [self.update toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.update.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:@"latitude"], self.update.latitude, @"Wrong latitude");
-    STAssertEqualObjects([JSON objectForKey:@"longitude"], self.update.longitude, @"Wrong longitude");
-    STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.update.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.latitude], self.update.latitude, @"Wrong latitude");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.longitude], self.update.longitude, @"Wrong longitude");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.visibility], self.update.visibility, @"Wrong visibility");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.visibleToExternalContributors], self.update.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
     
-    NSArray *tagsJSON = [JSON objectForKey:@"tags"];
+    NSArray *tagsJSON = [JSON objectForKey:JiveUpdateAttributes.tags];
     
     STAssertTrue([[tagsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([tagsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
@@ -75,17 +77,18 @@
     [self.update setValue:[NSNumber numberWithDouble:-123.4] forKey:@"latitude"];
     [self.update setValue:[NSNumber numberWithDouble:22.6] forKey:@"longitude"];
     [self.update setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
+    self.update.visibility = @"all";
     
     NSDictionary *JSON = [self.update toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"type"], self.update.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:@"latitude"], self.update.latitude, @"Wrong latitude");
-    STAssertEqualObjects([JSON objectForKey:@"longitude"], self.update.longitude, @"Wrong longitude");
-    STAssertEqualObjects([JSON objectForKey:@"visibleToExternalContributors"], self.update.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.latitude], self.update.latitude, @"Wrong latitude");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.longitude], self.update.longitude, @"Wrong longitude");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.visibility], self.update.visibility, @"Wrong visibility");
+    STAssertEqualObjects([JSON objectForKey:JiveUpdateAttributes.visibleToExternalContributors], self.update.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
     
-    NSArray *tagsJSON = [JSON objectForKey:@"tags"];
+    NSArray *tagsJSON = [JSON objectForKey:JiveUpdateAttributes.tags];
     
     STAssertTrue([[tagsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([tagsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
