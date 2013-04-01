@@ -1716,6 +1716,22 @@
 }
 
 #pragma mark - Images
+
+- (NSOperation *)imagesOperationFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:imagesURL];
+
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:imagesURL];
+
+    NSOperation *operation = nil;
+    operation = [self listOperationForClass:[JiveImage class] request:mutableURLRequest onComplete:complete onError:error];
+    return operation;
+}
+
+- (void)imagesFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *images))completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self imagesOperationFromURL:imagesURL onComplete:completeBlock onError:errorBlock] start];
+}
+
 - (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     
     NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"/api/core/v3/images", nil];
