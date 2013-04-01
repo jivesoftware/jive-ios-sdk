@@ -23,7 +23,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -40,6 +40,10 @@
     
     if (parent)
         [dictionary setValue:[parent toJSONDictionary] forKey:@"parent"];
+    
+    if (outcomeTypeName) {
+        [dictionary setValue:outcomeTypeName forKey:@"outcomeTypeName"];
+    }
     
     return dictionary;
 }

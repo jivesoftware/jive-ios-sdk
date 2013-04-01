@@ -63,4 +63,6 @@
 
 @property(nonatomic) BOOL collectionRead;
 
+@property (nonatomic) NSString *outcomeTypeName;
+
 @end
