@@ -90,7 +90,7 @@
 - (void)testAnnouncementToJSON_alternate {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *tag = @"concise";
-    NSString *outcomeTypeName = @"helpful";
+    NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
     self.message.attachments = [NSArray arrayWithObject:attachment];
@@ -233,7 +233,7 @@
 - (void)testAnnouncementParsingAlternate {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *tag = @"concise";
-    NSString *outcomeTypeName = @"helpful";
+    NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
     self.message.attachments = [NSArray arrayWithObject:attachment];
