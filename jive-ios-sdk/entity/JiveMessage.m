@@ -23,7 +23,7 @@
 
 @implementation JiveMessage
 
-@synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors;
+@synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors, outcomeTypeNames;
 
 static NSString * const JiveMessageType = @"message";
 
@@ -52,6 +52,8 @@ static NSString * const JiveMessageType = @"message";
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
     [dictionary setValue:discussion forKey:@"discussion"];
     [self addArrayElements:attachments toJSONDictionary:dictionary forTag:@"attachments"];
+    if (outcomeTypeNames)
+        [dictionary setValue:outcomeTypeNames forKey:@"outcomeTypeNames"];
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];
     

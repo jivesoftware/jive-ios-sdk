@@ -41,5 +41,8 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
+//! Outcome Types associated with this object
+@property(nonatomic, readonly) NSArray *outcomeTypeNames;
+
 
 @end
