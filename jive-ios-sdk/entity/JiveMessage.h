@@ -42,7 +42,7 @@
 @property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 //! Outcome Types associated with this object
-@property(nonatomic, readonly) NSArray *outcomeTypeNames;
+@property(nonatomic, strong) NSArray *outcomeTypeNames;
 
 
 @end
