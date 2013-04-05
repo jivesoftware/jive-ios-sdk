@@ -303,7 +303,7 @@
 		B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */; };
 		B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2643170E2D1000257533 /* JiveOutcome.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B16C2646170E2D1100257533 /* JiveOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C2644170E2D1100257533 /* JiveOutcome.m */; };
-		B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2649170E2E0D00257533 /* JiveOutcomeType.h */; };
+		B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2649170E2E0D00257533 /* JiveOutcomeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B16C264C170E2E0F00257533 /* JiveOutcomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C264A170E2E0E00257533 /* JiveOutcomeType.m */; };
 		B1E22AD0170F570E0088919D /* outcomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B1E22ACF170F570E0088919D /* outcomes.json */; };
 		B1E22AD4170F57E90088919D /* outcome.json in Resources */ = {isa = PBXBuildFile; fileRef = B1E22AD3170F57E90088919D /* outcome.json */; };
