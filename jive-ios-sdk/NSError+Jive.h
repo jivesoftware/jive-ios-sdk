@@ -37,6 +37,7 @@ extern NSString * const JiveErrorKeyHTTPStatusCode;
 @property (nonatomic, readonly) id jive_JSON;
 @property (nonatomic, readonly) NSNumber *jive_HTTPStatusCode;
 
++ (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError;
 + (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError withJSON:(id)JSON;
 + (instancetype) jive_errorWithMultipleErrors:(NSArray *)errors;
 + (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType;

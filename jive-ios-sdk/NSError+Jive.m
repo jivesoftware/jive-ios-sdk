@@ -32,6 +32,11 @@ NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
 
 @implementation NSError (Jive)
 
++ (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError {
+    return [self jive_errorWithUnderlyingError:underlyingError
+                                      withJSON:nil];
+}
+
 + (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError withJSON:(id)JSON {
     NSInteger code;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:4];
@@ -71,11 +76,15 @@ NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
 }
 
 + (instancetype) jive_errorWithMultipleErrors:(NSArray *)errors {
-    return [[self class] errorWithDomain:JiveErrorDomain
-                                    code:JiveErrorCodeMultipleErrors
-                                userInfo:(@{
-                                          JiveErrorKeyMultipleErrors : errors,
-                                          })];
+    if ([errors count] > 1) {
+        return [self errorWithDomain:JiveErrorDomain
+                                code:JiveErrorCodeMultipleErrors
+                            userInfo:(@{
+                                      JiveErrorKeyMultipleErrors : errors,
+                                      })];
+    } else {
+        return [self jive_errorWithUnderlyingError:[errors lastObject]];
+    }
 }
 
 + (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType {
