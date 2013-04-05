@@ -1180,13 +1180,9 @@
 }
 
 - (NSOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
-    NSURL *contentURL = [[content.resources objectForKey:@"self"] ref];
-    NSMutableString *template = [[NSMutableString alloc] initWithString:contentURL.path];
-    [template appendString:@"/outcomes"];
-    
     NSMutableURLRequest *request = [self requestWithJSONBody:outcome
                                                      options:nil
-                                                 andTemplate:template, nil];
+                                                 andTemplate:@"%@%@", [[content.resources objectForKey:@"self"] ref].path, @"/outcomes", nil];
     
     [request setHTTPMethod:@"POST"];
     return [self entityOperationForClass:[JiveOutcome class]
