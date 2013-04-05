@@ -1761,7 +1761,7 @@
 #pragma mark - Outcomes
 - (NSOperation *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@/outcomes", content.jiveId, nil];
+                                         andTemplate:@"%@/outcomes", [[content.resources objectForKey:@"self"] ref].path, nil];
     NSOperation *operation = [self listOperationForClass:[JiveOutcome class]
                                                  request:request
                                               onComplete:complete
