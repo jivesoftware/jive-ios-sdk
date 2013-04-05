@@ -1195,6 +1195,20 @@
     [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:@"/api/core/v3/outcomes/%@", outcome.jiveId, nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request
+                                onComplete:complete
+                                   onError:error];
+}
+
+- (void) deleteOutcome:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    [[self deleteOutcomeOperation:outcome onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
