@@ -1179,6 +1179,26 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+    NSURL *contentURL = [[content.resources objectForKey:@"self"] ref];
+    NSMutableString *template = [[NSMutableString alloc] initWithString:contentURL.path];
+    [template appendString:@"/outcomes"];
+    
+    NSMutableURLRequest *request = [self requestWithJSONBody:outcome
+                                                     options:nil
+                                                 andTemplate:template, nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveOutcome class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createOutcome:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+    [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
