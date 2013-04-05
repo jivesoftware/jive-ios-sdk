@@ -301,7 +301,7 @@
 		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
 		B122A33B170E35D400FC8C40 /* JiveOutcomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */; };
 		B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */; };
-		B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2643170E2D1000257533 /* JiveOutcome.h */; };
+		B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2643170E2D1000257533 /* JiveOutcome.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B16C2646170E2D1100257533 /* JiveOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C2644170E2D1100257533 /* JiveOutcome.m */; };
 		B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2649170E2E0D00257533 /* JiveOutcomeType.h */; };
 		B16C264C170E2E0F00257533 /* JiveOutcomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C264A170E2E0E00257533 /* JiveOutcomeType.m */; };
