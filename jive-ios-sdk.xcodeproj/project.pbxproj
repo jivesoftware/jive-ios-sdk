@@ -301,6 +301,8 @@
 		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
 		B122A33B170E35D400FC8C40 /* JiveOutcomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */; };
 		B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */; };
+		B14BAD6A170F882E00B223D4 /* JiveOutcomeRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B14BAD68170F882E00B223D4 /* JiveOutcomeRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B14BAD6B170F882E00B223D4 /* JiveOutcomeRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = B14BAD69170F882E00B223D4 /* JiveOutcomeRequestOptions.m */; };
 		B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2643170E2D1000257533 /* JiveOutcome.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B16C2646170E2D1100257533 /* JiveOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C2644170E2D1100257533 /* JiveOutcome.m */; };
 		B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2649170E2E0D00257533 /* JiveOutcomeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -900,6 +902,8 @@
 		B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcomeTests.m; sourceTree = "<group>"; };
 		B122A340170F29E400FC8C40 /* JiveOutcomeTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeTypeTests.h; sourceTree = "<group>"; };
 		B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcomeTypeTests.m; sourceTree = "<group>"; };
+		B14BAD68170F882E00B223D4 /* JiveOutcomeRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeRequestOptions.h; sourceTree = "<group>"; };
+		B14BAD69170F882E00B223D4 /* JiveOutcomeRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcomeRequestOptions.m; sourceTree = "<group>"; };
 		B16C2643170E2D1000257533 /* JiveOutcome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcome.h; sourceTree = "<group>"; };
 		B16C2644170E2D1100257533 /* JiveOutcome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcome.m; sourceTree = "<group>"; };
 		B16C2649170E2E0D00257533 /* JiveOutcomeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeType.h; sourceTree = "<group>"; };
@@ -995,6 +999,8 @@
 				21AEB5111639F57B0055D45A /* JiveInboxOptions.m */,
 				0FCB65B91669798600617CE4 /* JiveMinorCommentRequestOptions.h */,
 				0FCB65BA1669798600617CE4 /* JiveMinorCommentRequestOptions.m */,
+				B14BAD68170F882E00B223D4 /* JiveOutcomeRequestOptions.h */,
+				B14BAD69170F882E00B223D4 /* JiveOutcomeRequestOptions.m */,
 				0F09136A166551E30036C4E8 /* JivePagedRequestOptions.h */,
 				0F09136B166551E30036C4E8 /* JivePagedRequestOptions.m */,
 				0F187E6C16692F2B001FCB51 /* JivePeopleRequestOptions.h */,
@@ -1712,6 +1718,7 @@
 				893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */,
 				B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */,
 				B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */,
+				B14BAD6A170F882E00B223D4 /* JiveOutcomeRequestOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2052,6 +2059,7 @@
 				893CE2DC1700F368002AA837 /* JiveEvent.m in Sources */,
 				B16C2646170E2D1100257533 /* JiveOutcome.m in Sources */,
 				B16C264C170E2E0F00257533 /* JiveOutcomeType.m in Sources */,
+				B14BAD6B170F882E00B223D4 /* JiveOutcomeRequestOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1179,36 +1179,6 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
-    NSMutableURLRequest *request = [self requestWithJSONBody:outcome
-                                                     options:nil
-                                                 andTemplate:@"%@%@", [[content.resources objectForKey:@"self"] ref].path, @"/outcomes", nil];
-    
-    [request setHTTPMethod:@"POST"];
-    return [self entityOperationForClass:[JiveOutcome class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
-}
-
-- (void) createOutcome:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
-    [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
-}
-
-- (NSOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
-    NSMutableURLRequest *request = [self requestWithOptions:nil
-                                                andTemplate:@"/api/core/v3/outcomes/%@", outcome.jiveId, nil];
-    
-    [request setHTTPMethod:@"DELETE"];
-    return [self emptyOperationWithRequest:request
-                                onComplete:complete
-                                   onError:error];
-}
-
-- (void) deleteOutcome:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
-    [[self deleteOutcomeOperation:outcome onComplete:complete onError:error] start];
-}
-
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1786,6 +1756,58 @@
 
 - (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     [[self uploadImageOperation:image onComplete:complete onError:errorBlock] start];
+}
+
+#pragma mark - Outcomes
+- (NSOperation *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:options
+                                         andTemplate:@"/api/core/v3/%@/outcomes", content.jiveId, nil];
+    NSOperation *operation = [self listOperationForClass:[JiveOutcome class]
+                                                 request:request
+                                              onComplete:complete
+                                                 onError:error];
+    return operation;
+}
+
+- (NSOperation *) outcomesOperation:(JiveContent *)content withOptions:(JiveOutcomeRequestOptions *)options onComplete:(void (^)(NSArray *outcomes))complete onError:(JiveErrorBlock) error {
+    return [self outcomesListOperation:content
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
+}
+
+- (void) outcomes:(JiveContent *)content withOptions:(JiveOutcomeRequestOptions *)options onComplete:(void (^)(NSArray *outcomes))complete onError:(JiveErrorBlock) error {
+    [[self outcomesOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:@"/api/core/v3/outcomes/%@", outcome.jiveId, nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request
+                                onComplete:complete
+                                   onError:error];
+}
+
+- (void) deleteOutcome:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    [[self deleteOutcomeOperation:outcome onComplete:complete onError:error] start];
+}
+
+- (NSOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+    NSMutableURLRequest *request = [self requestWithJSONBody:outcome
+                                                     options:nil
+                                                 andTemplate:@"%@%@", [[content.resources objectForKey:@"self"] ref].path, @"/outcomes", nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self entityOperationForClass:[JiveOutcome class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createOutcome:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+    [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
 #pragma mark - private API
