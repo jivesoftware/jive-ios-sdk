@@ -26,6 +26,7 @@
 #import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "NSData+JiveBase64.h"
+#import "NSURLRequest+Jive.h"
 
 @interface JiveInvite (internal)
 
@@ -84,7 +85,7 @@
 
 - (NSOperation *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@",
+                                         andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
     
@@ -151,7 +152,7 @@
 
 - (NSOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/people/%@",
+                                         andTemplate:@"api/core/v3/people/%@",
                              personId,
                              nil];
     NSOperation *operation = [self entityOperationForClass:[JivePerson class]
@@ -163,7 +164,7 @@
 
 - (NSOperation *) contentsListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@",
+                                         andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
     NSOperation *operation = [self listOperationForClass:[JiveContent class]
@@ -175,7 +176,7 @@
 
 - (NSOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@",
+                                         andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
     NSOperation *operation = [self listOperationForClass:[JivePlace class]
@@ -187,7 +188,7 @@
 
 - (NSOperation *) activityListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@",
+                                         andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
     
@@ -199,7 +200,7 @@
 
 - (NSOperation *) activityDateLimitedListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
-                                         andTemplate:@"/api/core/v3/%@",
+                                         andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
     
@@ -417,7 +418,7 @@
 
 - (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options
-                                                andTemplate:@"/api/core/v3/inbox", nil];
+                                                andTemplate:@"api/core/v3/inbox", nil];
     
     NSOperation *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
                                                             request:request
@@ -777,7 +778,7 @@
 - (NSOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:options
-                                                 andTemplate:@"/api/core/v3/people", nil];
+                                                 andTemplate:@"api/core/v3/people", nil];
     
     [request setHTTPMethod:@"POST"];
     return [self entityOperationForClass:[JivePerson class]
@@ -850,7 +851,7 @@
 
 - (NSOperation *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
-                                                andTemplate:@"/api/core/v3/people/@filterableFields", nil];
+                                                andTemplate:@"api/core/v3/people/@filterableFields", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -863,7 +864,7 @@
 
 - (NSOperation *)supportedFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
-                                                andTemplate:@"/api/core/v3/people/@supportedFields", nil];
+                                                andTemplate:@"api/core/v3/people/@supportedFields", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -876,7 +877,7 @@
 
 - (NSOperation *)resourcesOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
-                                                andTemplate:@"/api/core/v3/people/@resources", nil];
+                                                andTemplate:@"api/core/v3/people/@resources", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveResource instancesFromJSONList:JSON];
@@ -1126,7 +1127,7 @@
 - (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:content
                             withOptions:options
-                            andTemplate:@"/api/core/v3/contents"
+                            andTemplate:@"api/core/v3/contents"
                              onComplete:complete
                                 onError:error];
 }
@@ -1136,7 +1137,7 @@
 }
 
 - (NSOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
-    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"/api/core/v3/dms", nil];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/dms", nil];
     NSMutableDictionary *JSON = (NSMutableDictionary *)content.toJSONDictionary;
     [JSON setValue:[targets toJSONArray:YES] forKey:@"participants"];
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
@@ -1158,7 +1159,7 @@
 - (NSOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:comment
                             withOptions:options
-                            andTemplate:@"/api/core/v3/comments"
+                            andTemplate:@"api/core/v3/comments"
                              onComplete:complete
                                 onError:error];
 }
@@ -1170,7 +1171,7 @@
 - (NSOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:message
                             withOptions:options
-                            andTemplate:@"/api/core/v3/messages"
+                            andTemplate:@"api/core/v3/messages"
                              onComplete:complete
                                 onError:error];
 }
@@ -1418,7 +1419,7 @@
 - (NSOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:place
                                                      options:options
-                                                 andTemplate:@"/api/core/v3/places", nil];
+                                                 andTemplate:@"api/core/v3/places", nil];
     
     [request setHTTPMethod:@"POST"];
     return [self entityOperationForClass:[JivePlace class]
@@ -1819,13 +1820,15 @@
     NSMutableString* requestString = [[NSMutableString alloc] initWithFormat:template arguments:args];
     NSString *queryString = [options toQueryString];
     
-    if (queryString)
+    if (queryString) {
         [requestString appendFormat:@"?%@", queryString];
+    }
     
     NSURL* requestURL = [NSURL URLWithString:requestString
                                relativeToURL:_jiveInstance];
     
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithString:requestString
+                                                            relativeToURL:_jiveInstance];
     [self maybeApplyCredentialsToMutableURLRequest:request
                                             forURL:requestURL];
     
