@@ -26,7 +26,6 @@
 #import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "NSData+JiveBase64.h"
-#import "NSURLRequest+Jive.h"
 
 @interface JiveInvite (internal)
 
@@ -1735,7 +1734,7 @@
 
 - (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     
-    NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"/api/core/v3/images", nil];
+    NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"api/core/v3/images", nil];
     
     [self maybeApplyCredentialsToMutableURLRequest:request
                                             forURL:self.jiveInstanceURL];
@@ -1783,7 +1782,7 @@
 
 - (NSOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
-                                                andTemplate:@"/api/core/v3/outcomes/%@", outcome.jiveId, nil];
+                                                andTemplate:@"api/core/v3/outcomes/%@", outcome.jiveId, nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyOperationWithRequest:request
@@ -1827,8 +1826,7 @@
     NSURL* requestURL = [NSURL URLWithString:requestString
                                relativeToURL:_jiveInstance];
     
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithString:requestString
-                                                            relativeToURL:_jiveInstance];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
     [self maybeApplyCredentialsToMutableURLRequest:request
                                             forURL:requestURL];
     
