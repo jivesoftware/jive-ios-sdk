@@ -19,6 +19,7 @@
 
 #import "JiveEmailTests.h"
 #import "JiveEmail.h"
+#import "JiveObject_internal.h"
 
 @implementation JiveEmailTests
 

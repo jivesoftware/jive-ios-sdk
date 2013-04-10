@@ -7,6 +7,7 @@
 //
 
 #import "JiveTypedObject.h"
+#import "JiveObject_internal.h"
 
 @interface JiveTypedObject ()
 

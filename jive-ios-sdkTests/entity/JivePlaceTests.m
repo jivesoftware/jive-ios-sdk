@@ -24,6 +24,7 @@
 #import "JiveSpace.h"
 #import "JiveSummary.h"
 #import "JiveResourceEntry.h"
+#import "JiveObject_internal.h"
 
 @interface DummyPlace : JivePlace
 

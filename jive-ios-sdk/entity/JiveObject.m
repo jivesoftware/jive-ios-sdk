@@ -19,7 +19,7 @@
 
 #define JIVE_JSON_DEBUG 0
 
-#import "JiveObject.h"
+#import "JiveObject_internal.h"
 
 #import <objc/runtime.h>
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
