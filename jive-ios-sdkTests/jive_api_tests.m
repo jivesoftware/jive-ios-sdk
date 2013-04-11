@@ -87,7 +87,7 @@
     STAssertTrue([[configuredJiveInstance absoluteString] isEqualToString:[originalJiveInstance absoluteString]], @"Configured URL does not match original URL");
 }
 
-- (void) testInboxServiceCall {
+- (void) testInbox {
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -103,6 +103,27 @@
         } onError:^(NSError *error) {
             finishedBlock();
         }];
+    }];
+}
+
+- (void) testInboxOperation {
+    [self createJiveAPIObjectWithResponse:@"inbox_response"];
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        NSOperation *operation = [jive inboxOperation:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+            STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
+            STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            
+            finishedBlock();
+        } onError:^(NSError *error) {
+            finishedBlock();
+        }];
+        
+        [operation start];
     }];
 }
 

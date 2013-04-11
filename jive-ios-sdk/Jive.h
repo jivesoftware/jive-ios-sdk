@@ -288,11 +288,12 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 
 #pragma mark - Inbox
 
-- (void) inbox:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/InboxService.html#getActivity(String,%20String,%20int,%20List<String>,%20String)
 - (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
 - (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
+
+- (NSOperation *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Environment
 

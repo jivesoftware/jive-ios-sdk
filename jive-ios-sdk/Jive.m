@@ -411,11 +411,14 @@
 
 #pragma mark - Inbox
 
-- (void) inbox:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    [self inbox:nil onComplete:completeBlock onError:errorBlock];
+- (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSOperation *operation = [self inboxOperation:options
+                                       onComplete:completeBlock
+                                          onError:errorBlock];
+    [operation start];
 }
 
-- (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+- (NSOperation *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options
                                                 andTemplate:@"api/core/v3/inbox", nil];
     
@@ -423,7 +426,7 @@
                                                             request:request
                                                          onComplete:completeBlock
                                                             onError:errorBlock];
-    [operation start];
+    return operation;
 }
 
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
