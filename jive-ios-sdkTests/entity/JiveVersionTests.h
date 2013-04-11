@@ -9,6 +9,6 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "JiveVersion.h"
 
-@interface JiveVersionTest : SenTestCase
+@interface JiveVersionTests : SenTestCase
 
 @end

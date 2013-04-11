@@ -182,7 +182,7 @@
 		0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5C478167B985A00419683 /* JivePersonTests.m */; };
 		0FBC7E181715DA8D00A597E2 /* JiveVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBC7E161715DA8D00A597E2 /* JiveVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FBC7E191715DA8D00A597E2 /* JiveVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBC7E171715DA8D00A597E2 /* JiveVersion.m */; };
-		0FBC7E1E1715DADA00A597E2 /* JiveVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBC7E1D1715DADA00A597E2 /* JiveVersionTest.m */; };
+		0FBC7E1E1715DADA00A597E2 /* JiveVersionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBC7E1D1715DADA00A597E2 /* JiveVersionTests.m */; };
 		0FBC7E211716218200A597E2 /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FBC7E201716218200A597E2 /* version.json */; };
 		0FBC7E231716218C00A597E2 /* version_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FBC7E221716218C00A597E2 /* version_alternate.json */; };
 		0FBC7E2717171B7600A597E2 /* JiveVersionCoreURI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBC7E2517171B7500A597E2 /* JiveVersionCoreURI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -706,8 +706,8 @@
 		0FB5C478167B985A00419683 /* JivePersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePersonTests.m; sourceTree = "<group>"; };
 		0FBC7E161715DA8D00A597E2 /* JiveVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVersion.h; sourceTree = "<group>"; };
 		0FBC7E171715DA8D00A597E2 /* JiveVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVersion.m; sourceTree = "<group>"; };
-		0FBC7E1C1715DADA00A597E2 /* JiveVersionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVersionTest.h; sourceTree = "<group>"; };
-		0FBC7E1D1715DADA00A597E2 /* JiveVersionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVersionTest.m; sourceTree = "<group>"; };
+		0FBC7E1C1715DADA00A597E2 /* JiveVersionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVersionTests.h; sourceTree = "<group>"; };
+		0FBC7E1D1715DADA00A597E2 /* JiveVersionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVersionTests.m; sourceTree = "<group>"; };
 		0FBC7E1F171611D900A597E2 /* JiveObject_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveObject_internal.h; sourceTree = "<group>"; };
 		0FBC7E201716218200A597E2 /* version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 		0FBC7E221716218C00A597E2 /* version_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = version_alternate.json; sourceTree = "<group>"; };
@@ -1231,8 +1231,8 @@
 				0F9EB872168E732F00E9F09D /* JiveUpdateTests.m */,
 				8999E65A16FAA1140009677A /* JiveVideoTests.h */,
 				8999E65B16FAA1140009677A /* JiveVideoTests.m */,
-				0FBC7E1C1715DADA00A597E2 /* JiveVersionTest.h */,
-				0FBC7E1D1715DADA00A597E2 /* JiveVersionTest.m */,
+				0FBC7E1C1715DADA00A597E2 /* JiveVersionTests.h */,
+				0FBC7E1D1715DADA00A597E2 /* JiveVersionTests.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -2193,7 +2193,7 @@
 				893CE2E11700F41C002AA837 /* JiveEventTests.m in Sources */,
 				B122A33B170E35D400FC8C40 /* JiveOutcomeTests.m in Sources */,
 				B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */,
-				0FBC7E1E1715DADA00A597E2 /* JiveVersionTest.m in Sources */,
+				0FBC7E1E1715DADA00A597E2 /* JiveVersionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

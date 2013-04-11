@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveVersionTest.h"
+#import "JiveVersionTests.h"
 #import "JiveVersion.h"
 #import "JiveVersionCoreURI.h"
 
-@implementation JiveVersionTest
+@implementation JiveVersionTests
 
 - (void)testVersionParsing {
     NSNumber *apiVersion2 = @2;
