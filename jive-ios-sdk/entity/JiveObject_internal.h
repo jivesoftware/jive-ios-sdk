@@ -16,4 +16,6 @@
 
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;
 
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON;
+
 @end

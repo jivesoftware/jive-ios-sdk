@@ -5364,4 +5364,77 @@
     }];
 }
 
+- (void) testGetVersionOperationForInstance {
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version" ofType:@"json"];
+    
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
+                                                                                            onComplete:^(JiveVersion *version) {
+                                                                                                STAssertEqualObjects(version.major, @7, @"Wrong version found");
+                                                                                                STAssertEqualObjects(((JiveVersionCoreURI *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+                                                                                                [mockJiveURLResponseDelegate verify];
+                                                                                                finishedBlock();
+                                                                                            } onError:^(NSError *error) {
+                                                                                                STFail([error localizedDescription]);
+                                                                                                finishedBlock();
+                                                                                            }];
+        
+        [operation start];
+    }];
+}
+
+- (void) testGetVersionForInstance {
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_alternate" ofType:@"json"];
+    
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [Jive getVersionForInstance:url
+                         onComplete:^(JiveVersion *version) {
+                             STAssertEqualObjects(version.major, @6, @"Wrong version found");
+                             STAssertEqualObjects(((JiveVersionCoreURI *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+                             [mockJiveURLResponseDelegate verify];
+                             finishedBlock();
+                         } onError:^(NSError *error) {
+                             STFail([error localizedDescription]);
+                             finishedBlock();
+                         }];
+    }];
+}
+
+- (void) testGetVersionOperationForInstanceReturnsErrorIfNoV3API {
+    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_no_v3" ofType:@"json"];
+    
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
+                                                                                            onComplete:^(JiveVersion *version) {
+                                                                                                BOOL found = NO;
+                                                                                                for (JiveVersionCoreURI *coreURI in version.coreURI) {
+                                                                                                    if ([coreURI.version isEqualToNumber:@3]) {
+                                                                                                        STFail(@"v3 API found");
+                                                                                                        found = YES;
+                                                                                                    }
+                                                                                                }
+                                                                                                if (!found)
+                                                                                                    STFail(@"Valid response returned without v3 API");
+                                                                                                
+                                                                                                [mockJiveURLResponseDelegate verify];
+                                                                                                finishedBlock();
+                                                                                            } onError:^(NSError *error) {
+                                                                                                STAssertEquals(error.code, 403, @"Wrong error code reported");
+                                                                                                [mockJiveURLResponseDelegate verify];
+                                                                                                finishedBlock();
+                                                                                            }];
+        
+        [operation start];
+    }];
+}
+
 @end
