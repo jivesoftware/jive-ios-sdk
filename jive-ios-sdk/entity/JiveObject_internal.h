@@ -12,8 +12,6 @@
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
 
-- (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
-
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;
 
 - (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON;
