@@ -20,6 +20,7 @@
 #import "JiveOpenSocial.h"
 #import "JiveEmbedded.h"
 #import "JiveActionLink.h"
+#import "JiveObject_internal.h"
 
 @implementation JiveOpenSocial
 

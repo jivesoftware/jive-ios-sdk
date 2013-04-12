@@ -82,6 +82,8 @@
 #import "JiveOutcome.h"
 #import "JiveOutcomeType.h"
 #import "JiveOutcomeRequestOptions.h"
+#import "JiveVersion.h"
+#import "JiveVersionCoreURI.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
@@ -90,6 +92,11 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 
 //! \class Jive
 @interface Jive : NSObject
+
+//! Use this method, or the operation version, before creating a Jive instance to make sure you can make a Jive instance.
++ (void) getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! Use this method, or the non-operation version, before creating a Jive instance to make sure you can make a Jive instance.
++ (NSOperation *) getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 //! The init method to used when creating a Jive instance for a specific URL and credentials.
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate;

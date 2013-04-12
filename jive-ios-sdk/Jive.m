@@ -54,6 +54,37 @@
 
 @synthesize jiveInstance = _jiveInstance;
 
++ (NSOperation *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSURL* requestURL = [NSURL URLWithString:@"api/version"
+                               relativeToURL:jiveInstanceURL];
+    NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
+    JAPIRequestOperation *operation = [self operationWithRequest:request
+                                                      onComplete:^(JiveVersion *version) {
+                                                          if (version && completeBlock)
+                                                              completeBlock(version);
+                                                      } onError:errorBlock
+                                                 responseHandler:(^id(id JSON) {
+        JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+        for (JiveVersionCoreURI *coreURI in version.coreURI) {
+            if ([coreURI.version isEqualToNumber:@3]) {
+                return version;
+            }
+        }
+        
+        if (errorBlock)
+            errorBlock([NSError errorWithDomain:@"Unsupported core api version" code:403 userInfo:nil]);
+        
+        return nil;
+    })];
+    return operation;
+}
+
++ (void)getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[Jive getVersionOperationForInstance:jiveInstanceURL
+                               onComplete:completeBlock
+                                  onError:errorBlock] start];
+}
+
 + (void)initialize {
 	if([[NSData class] instanceMethodSignatureForSelector:@selector(jive_base64EncodedString)] == NULL)
 		[NSException raise:NSInternalInconsistencyException format:@"** Expected method not present; the method jive_base64EncodedString: is not implemented by NSData. If you see this exception it is likely that you are using the static library version of Jive and your project is not configured correctly to load categories from static libraries. Did you forget to add the -ObjC and -all_load linker flags?"];
@@ -855,7 +886,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@filterableFields", nil];
     
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
 }
@@ -868,7 +899,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@supportedFields", nil];
     
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
 }
@@ -881,7 +912,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@resources", nil];
     
-    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveResource instancesFromJSONList:JSON];
     }];
 }
@@ -1900,7 +1931,7 @@
     }
 }
 
-- (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(JiveErrorBlock) errorBlock responseHandler: (id(^)(id JSON)) handler {
++ (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(JiveErrorBlock) errorBlock responseHandler: (id(^)(id JSON)) handler {
     if (request) {
         JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             id entity = handler(JSON);
@@ -1955,7 +1986,7 @@
 }
 
 - (JAPIRequestOperation *)listOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
-    JAPIRequestOperation *operation = [self operationWithRequest:request
+    JAPIRequestOperation *operation = [Jive operationWithRequest:request
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
@@ -1965,7 +1996,7 @@
 }
 
 - (JAPIRequestOperation *)entityOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(id))completeBlock onError:(JiveErrorBlock)errorBlock {
-    JAPIRequestOperation *operation = [self operationWithRequest:request
+    JAPIRequestOperation *operation = [Jive operationWithRequest:request
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
@@ -1984,7 +2015,7 @@
     } else {
         nilObjectComplete = NULL;
     }
-    JAPIRequestOperation *operation = [self operationWithRequest:request
+    JAPIRequestOperation *operation = [Jive operationWithRequest:request
                                                       onComplete:nilObjectComplete
                                                          onError:error
                                                  responseHandler:(^id(id JSON) {

@@ -20,6 +20,7 @@
 #import "JiveObjectMetadata.h"
 #import "JiveField.h"
 #import "JiveResource.h"
+#import "JiveObject_internal.h"
 
 @implementation JiveObjectMetadata
 

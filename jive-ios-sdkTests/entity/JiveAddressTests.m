@@ -19,6 +19,7 @@
 
 #import "JiveAddressTests.h"
 #import "JiveAddress.h"
+#import "JiveObject_internal.h"
 
 @implementation JiveAddressTests
 

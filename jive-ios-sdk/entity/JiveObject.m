@@ -19,7 +19,7 @@
 
 #define JIVE_JSON_DEBUG 0
 
-#import "JiveObject.h"
+#import "JiveObject_internal.h"
 
 #import <objc/runtime.h>
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
@@ -66,27 +66,34 @@
     
 }
 
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON {
+    Class cls = [self lookupPropertyClass:key];
+    if(cls) {
+        id property = [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]];
+        [self setValue:property forKey:key];
+        return YES;
+    }
+    
+    Ivar ivar = [self lookupPropertyIvar:key];
+    
+    if (ivar) {
+        [self handlePrimitiveProperty:key fromJSON:[JSON objectForKey:key]];
+    } else {
+#if JIVE_JSON_DEBUG
+        NSLog(@"Extra field - %@", key);
+#endif
+        _extraFieldsDetected = YES;
+    }
+    
+    return NO;
+}
+
 - (BOOL) deserialize:(id) JSON {
     BOOL validResponse = NO;
     
     for(NSString* key in JSON) {
-        Class cls = [self lookupPropertyClass:key];
-        if(cls) {
-            id property = [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]];
-            [self setValue:property forKey:key];
+        if ([self deserializeKey:key fromJSON:JSON])
             validResponse = YES;
-        } else {
-            Ivar ivar = [self lookupPropertyIvar:key];
-            
-            if (ivar) {
-                [self handlePrimitiveProperty:key fromJSON:[JSON objectForKey:key]];
-            } else {
-#if JIVE_JSON_DEBUG
-                NSLog(@"Extra field - %@", key);
-#endif
-               _extraFieldsDetected = YES;
-            }
-        }
     }
     
     return validResponse;
