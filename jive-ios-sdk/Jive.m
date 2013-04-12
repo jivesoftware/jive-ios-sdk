@@ -54,18 +54,18 @@
 
 @synthesize jiveInstance = _jiveInstance;
 
-+ (NSOperation *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
++ (NSOperation *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
     JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:^(JiveVersion *version) {
+                                                      onComplete:^(JivePlatformVersion *version) {
                                                           if (version && completeBlock)
                                                               completeBlock(version);
                                                       } onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
-        JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
-        for (JiveVersionCoreURI *coreURI in version.coreURI) {
+        JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+        for (JiveCoreVersion *coreURI in version.coreURI) {
             if ([coreURI.version isEqualToNumber:@3]) {
                 return version;
             }
@@ -79,7 +79,7 @@
     return operation;
 }
 
-+ (void)getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JiveVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
++ (void)getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
     [[Jive getVersionOperationForInstance:jiveInstanceURL
                                onComplete:completeBlock
                                   onError:errorBlock] start];

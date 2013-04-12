@@ -1,5 +1,5 @@
 //
-//  JiveVersionCoreURI.h
+//  JiveCoreVersion.h
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 4/11/13.
@@ -8,14 +8,14 @@
 
 #import "JiveObject.h"
 
-extern struct JiveVersionCoreURIAttributes {
+extern struct JiveCoreVersionAttributes {
     __unsafe_unretained NSString *version;
     __unsafe_unretained NSString *revision;
     __unsafe_unretained NSString *uri;
     __unsafe_unretained NSString *documentation;
-} const JiveVersionCoreURIAttributes;
+} const JiveCoreVersionAttributes;
 
-@interface JiveVersionCoreURI : JiveObject
+@interface JiveCoreVersion : JiveObject
 
 @property (nonatomic, readonly) NSNumber *version;
 @property (nonatomic, readonly) NSNumber *revision;

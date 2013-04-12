@@ -5393,9 +5393,9 @@
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
-                                                                                            onComplete:^(JiveVersion *version) {
+                                                                                            onComplete:^(JivePlatformVersion *version) {
                                                                                                 STAssertEqualObjects(version.major, @7, @"Wrong version found");
-                                                                                                STAssertEqualObjects(((JiveVersionCoreURI *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+                                                                                                STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
                                                                                                 [mockJiveURLResponseDelegate verify];
                                                                                                 finishedBlock();
                                                                                             } onError:^(NSError *error) {
@@ -5415,9 +5415,9 @@
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [Jive getVersionForInstance:url
-                         onComplete:^(JiveVersion *version) {
+                         onComplete:^(JivePlatformVersion *version) {
                              STAssertEqualObjects(version.major, @6, @"Wrong version found");
-                             STAssertEqualObjects(((JiveVersionCoreURI *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+                             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
                              [mockJiveURLResponseDelegate verify];
                              finishedBlock();
                          } onError:^(NSError *error) {
@@ -5435,9 +5435,9 @@
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
-                                                                                            onComplete:^(JiveVersion *version) {
+                                                                                            onComplete:^(JivePlatformVersion *version) {
                                                                                                 BOOL found = NO;
-                                                                                                for (JiveVersionCoreURI *coreURI in version.coreURI) {
+                                                                                                for (JiveCoreVersion *coreURI in version.coreURI) {
                                                                                                     if ([coreURI.version isEqualToNumber:@3]) {
                                                                                                         STFail(@"v3 API found");
                                                                                                         found = YES;

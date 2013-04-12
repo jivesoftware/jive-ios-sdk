@@ -1,5 +1,5 @@
 //
-//  JiveVersionTest.h
+//  JivePlatformVersionTest.h
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 4/10/13.
@@ -7,8 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "JiveVersion.h"
 
-@interface JiveVersionTests : SenTestCase
+@interface JivePlatformVersionTests : SenTestCase
 
 @end

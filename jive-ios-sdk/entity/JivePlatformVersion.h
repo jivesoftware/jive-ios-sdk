@@ -8,7 +8,7 @@
 
 #import "JiveObject.h"
 
-extern struct JiveVersionAttributes {
+extern struct JivePlatformVersionAttributes {
     __unsafe_unretained NSString *major;
     __unsafe_unretained NSString *minor;
     __unsafe_unretained NSString *maintenance;
@@ -16,9 +16,9 @@ extern struct JiveVersionAttributes {
     __unsafe_unretained NSString *releaseID;
     __unsafe_unretained NSString *coreURI;
     __unsafe_unretained NSString *ssoEnabled;
-} const JiveVersionAttributes;
+} const JivePlatformVersionAttributes;
 
-@interface JiveVersion : JiveObject
+@interface JivePlatformVersion : JiveObject
 
 @property (nonatomic, readonly) NSNumber *major;
 @property (nonatomic, readonly) NSNumber *minor;

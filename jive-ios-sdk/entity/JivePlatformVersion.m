@@ -1,16 +1,16 @@
 //
-//  JiveVersion.m
+//  JivePlatformVersion.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 4/10/13.
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveVersion.h"
+#import "JivePlatformVersion.h"
 #import "JiveObject_internal.h"
-#import "JiveVersionCoreURI.h"
+#import "JiveCoreVersion.h"
 
-struct JiveVersionAttributes const JiveVersionAttributes = {
+struct JivePlatformVersionAttributes const JivePlatformVersionAttributes = {
 	.major = @"major",
 	.minor = @"minor",
 	.maintenance = @"maintenance",
@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, JiveVersionComponents) {
     JiveVersionComponentsBuild
 };
 
-@implementation JiveVersion
+@implementation JivePlatformVersion
 
 @synthesize ssoEnabled;
 
@@ -43,24 +43,24 @@ typedef NS_ENUM(NSInteger, JiveVersionComponents) {
     NSArray *components = [versionString componentsSeparatedByString:@" "];
     
     if ([components count] == 2)
-        [self setValue:components[JiveVersionStringReleaseID] forKey:JiveVersionAttributes.releaseID];
+        [self setValue:components[JiveVersionStringReleaseID] forKey:JivePlatformVersionAttributes.releaseID];
     
     components = [components[JiveVersionStringVersionComponents] componentsSeparatedByString:@"."];
     [self setValue:@([components[JiveVersionComponentsMajor] integerValue])
-            forKey:JiveVersionAttributes.major];
+            forKey:JivePlatformVersionAttributes.major];
     [self setValue:@([components[JiveVersionComponentsMinor] integerValue])
-            forKey:JiveVersionAttributes.minor];
+            forKey:JivePlatformVersionAttributes.minor];
     if ([components count] > JiveVersionComponentsMaintenance) {
         [self setValue:@([components[JiveVersionComponentsMaintenance] integerValue])
-                forKey:JiveVersionAttributes.maintenance];
+                forKey:JivePlatformVersionAttributes.maintenance];
         if ([components count] > JiveVersionComponentsBuild)
             [self setValue:@([components[JiveVersionComponentsBuild] integerValue])
-                    forKey:JiveVersionAttributes.build];
+                    forKey:JivePlatformVersionAttributes.build];
     }
 }
 
-+ (JiveVersion*) instanceFromJSON:(NSDictionary*) JSON {
-    JiveVersion *instance = [JiveVersion new];
++ (JivePlatformVersion*) instanceFromJSON:(NSDictionary*) JSON {
+    JivePlatformVersion *instance = [JivePlatformVersion new];
     NSInteger requiredElementsFound = 0;
     
     for (NSString *key in JSON) {
@@ -69,9 +69,9 @@ typedef NS_ENUM(NSInteger, JiveVersionComponents) {
             ++requiredElementsFound;
         }
         else if ([JiveCoreVersionsKey isEqualToString:key]) {
-            NSArray *coreURIs = [JiveVersionCoreURI instancesFromJSONList:JSON[key]];
+            NSArray *coreURIs = [JiveCoreVersion instancesFromJSONList:JSON[key]];
             
-            [instance setValue:coreURIs forKey:JiveVersionAttributes.coreURI];
+            [instance setValue:coreURIs forKey:JivePlatformVersionAttributes.coreURI];
             ++requiredElementsFound;
         }
         else

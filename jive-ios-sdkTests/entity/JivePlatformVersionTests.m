@@ -1,16 +1,16 @@
 //
-//  JiveVersionTest.m
+//  JivePlatformVersionTest.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 4/10/13.
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveVersionTests.h"
-#import "JiveVersion.h"
-#import "JiveVersionCoreURI.h"
+#import "JivePlatformVersionTests.h"
+#import "JivePlatformVersion.h"
+#import "JiveCoreVersion.h"
 
-@implementation JiveVersionTests
+@implementation JivePlatformVersionTests
 
 - (void)testVersionParsing {
     NSNumber *apiVersion2 = @2;
@@ -40,9 +40,9 @@
                             @"jiveCoreVersions" : versionsArray
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
@@ -51,16 +51,16 @@
     STAssertNil(version.ssoEnabled, @"Invalid ssoEnabled result");
     STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
     if (version.coreURI.count == 2) {
-        JiveVersionCoreURI *version2 = version.coreURI[0];
+        JiveCoreVersion *version2 = version.coreURI[0];
         
-        STAssertEquals([version2 class], [JiveVersionCoreURI class], @"Wrong sub-item class");
+        STAssertEquals([version2 class], [JiveCoreVersion class], @"Wrong sub-item class");
         STAssertEqualObjects(version2.version, apiVersion2, @"Wrong version number");
         STAssertEqualObjects(version2.revision, apiVersion2Revision, @"Wrong revision number");
         STAssertEqualObjects(version2.uri, coreVersion2URI, @"Wrong uri number");
         
-        JiveVersionCoreURI *version3 = version.coreURI[1];
+        JiveCoreVersion *version3 = version.coreURI[1];
         
-        STAssertEquals([version3 class], [JiveVersionCoreURI class], @"Wrong sub-item class");
+        STAssertEquals([version3 class], [JiveCoreVersion class], @"Wrong sub-item class");
         STAssertEqualObjects(version3.version, apiVersion3, @"Wrong version number");
         STAssertEqualObjects(version3.revision, apiVersion3Revision, @"Wrong revision number");
         STAssertEqualObjects(version3.uri, coreVersion3URI, @"Wrong uri number");
@@ -95,9 +95,9 @@
                             @"jiveCoreVersions" : versionsArray
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
@@ -105,16 +105,16 @@
     STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
     STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
     if (version.coreURI.count == 2) {
-        JiveVersionCoreURI *version2 = version.coreURI[0];
+        JiveCoreVersion *version2 = version.coreURI[0];
         
-        STAssertEquals([version2 class], [JiveVersionCoreURI class], @"Wrong sub-item class");
+        STAssertEquals([version2 class], [JiveCoreVersion class], @"Wrong sub-item class");
         STAssertEqualObjects(version2.version, apiVersion2, @"Wrong version number");
         STAssertEqualObjects(version2.revision, apiVersion2Revision, @"Wrong revision number");
         STAssertEqualObjects(version2.uri, coreVersion2URI, @"Wrong uri number");
         
-        JiveVersionCoreURI *version3 = version.coreURI[1];
+        JiveCoreVersion *version3 = version.coreURI[1];
         
-        STAssertEquals([version3 class], [JiveVersionCoreURI class], @"Wrong sub-item class");
+        STAssertEquals([version3 class], [JiveCoreVersion class], @"Wrong sub-item class");
         STAssertEqualObjects(version3.version, apiVersion3, @"Wrong version number");
         STAssertEqualObjects(version3.revision, apiVersion3Revision, @"Wrong revision number");
         STAssertEqualObjects(version3.uri, coreVersion3URI, @"Wrong uri number");
@@ -147,11 +147,11 @@
                                               major, minor, maintenance, build],
                             @"jiveCoreVersions" : versionsArray
                             };
-    JiveVersion *version;
+    JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JiveVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
@@ -186,11 +186,11 @@
                                               major, minor, maintenance, releaseID],
                             @"jiveCoreVersions" : versionsArray
                             };
-    JiveVersion *version;
+    JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JiveVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
@@ -224,11 +224,11 @@
                                               major, minor, releaseID],
                             @"jiveCoreVersions" : versionsArray
                             };
-    JiveVersion *version;
+    JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JiveVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertNil(version.maintenance, @"Wrong maintenance version");
@@ -265,7 +265,7 @@
                             @"versions" : versionsArray
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -290,7 +290,7 @@
     NSDictionary *JSON = @{ @"versions" : versionsArray
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -304,7 +304,7 @@
                                           major, minor, maintenance, build, releaseID],
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -328,9 +328,9 @@
                             @"jiveCoreVersions" : versionsArray
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
@@ -338,9 +338,9 @@
     STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
     STAssertEquals(version.coreURI.count, (NSUInteger)1, @"Wrong number of core URIs");
     if (version.coreURI.count == 1) {
-        JiveVersionCoreURI *version3 = version.coreURI[0];
+        JiveCoreVersion *version3 = version.coreURI[0];
         
-        STAssertEquals([version3 class], [JiveVersionCoreURI class], @"Wrong sub-item class");
+        STAssertEquals([version3 class], [JiveCoreVersion class], @"Wrong sub-item class");
         STAssertEqualObjects(version3.version, apiVersion3, @"Wrong version number");
         STAssertEqualObjects(version3.revision, apiVersion3Revision, @"Wrong revision number");
         STAssertEqualObjects(version3.uri, coreVersion3URI, @"Wrong uri number");
@@ -369,9 +369,9 @@
                             @"ssoEnabled" : ssoTypes
                             };
     
-    JiveVersion *version = [JiveVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
-    STAssertEquals([version class], [JiveVersion class], @"Wrong item class");
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
     STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
