@@ -56,4 +56,7 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
+//! The MIME type of this file.
+@property (nonatomic, copy) NSString *contentType;
+
 @end

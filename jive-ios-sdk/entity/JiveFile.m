@@ -23,7 +23,7 @@
 
 @implementation JiveFile
 
-@synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility;
+@synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility, contentType;
 @synthesize visibleToExternalContributors;
 
 static NSString * const JiveFileType = @"file";
@@ -68,6 +68,8 @@ static NSString * const JiveFileType = @"file";
     if (categories) {
         [dictionary setValue:categories forKey:@"categories"];
     }
+
+    [dictionary setValue:contentType forKey:@"contentType"];
     
     return dictionary;
 }
