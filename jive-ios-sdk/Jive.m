@@ -59,26 +59,34 @@
                                relativeToURL:jiveInstanceURL];
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
     JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:(^(JivePlatformVersion *version) {
-        if (version && completeBlock) {
-            completeBlock(version);
-        }
-    })
-                                                         onError:errorBlock
-                                                 responseHandler:(^id(id JSON) {
-        JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
-        for (JiveCoreVersion *coreURI in version.coreURI) {
-            if ([coreURI.version isEqualToNumber:@3]) {
-                return version;
+                                                          onJSON:(^(id JSON) {
+        JivePlatformVersion *platformVersion = [JivePlatformVersion instanceFromJSON:JSON];
+        if (platformVersion) {
+            BOOL foundValidCoreVersion = NO;
+            for (JiveCoreVersion *coreURI in platformVersion.coreURI) {
+                if ([coreURI.version isEqualToNumber:@3]) {
+                    foundValidCoreVersion = YES;
+                    break;
+                }
+            }
+            
+            if (foundValidCoreVersion) {
+                if (completeBlock) {
+                    completeBlock(platformVersion);
+                }
+            } else {
+                if (errorBlock) {
+                    errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:platformVersion]);
+                }
+            }
+        } else {
+            if (errorBlock) {
+                errorBlock([NSError jive_errorWithUnderlyingError:nil
+                                                             JSON:JSON]);
             }
         }
-        
-        if (errorBlock) {
-            errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:version]);
-        }
-        
-        return nil;
-    })];
+    })
+                                                         onError:errorBlock];
     return operation;
 }
 
@@ -1934,12 +1942,11 @@
     }
 }
 
-+ (JAPIRequestOperation*) operationWithRequest:(NSURLRequest*) request onComplete:(void(^)(id)) completeBlock onError:(JiveErrorBlock) errorBlock responseHandler: (id(^)(id JSON)) handler {
++ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
     if (request) {
         JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
-            id entity = handler(JSON);
-            if (completeBlock) {
-                completeBlock(entity);
+            if (JSONBlock) {
+                JSONBlock(JSON);
             }
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
@@ -1952,6 +1959,17 @@
     } else {
         return nil;
     }
+}
+
++ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
+    return [self operationWithRequest:request
+                               onJSON:(^(id JSON) {
+        if (completeBlock) {
+            id entity = handler(JSON);
+            completeBlock(entity);
+        }
+    })
+                              onError:errorBlock];
 }
 
 - (JAPIRequestOperation *)dateLimitedListOperationForClass:(Class)clazz

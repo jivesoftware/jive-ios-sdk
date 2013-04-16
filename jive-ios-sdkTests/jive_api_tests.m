@@ -5443,13 +5443,15 @@
                                                                                                         found = YES;
                                                                                                     }
                                                                                                 }
-                                                                                                if (!found)
+                                                                                                if (!found) {
                                                                                                     STFail(@"Valid response returned without v3 API");
+                                                                                                }
                                                                                                 
                                                                                                 [mockJiveURLResponseDelegate verify];
                                                                                                 finishedBlock();
                                                                                             } onError:^(NSError *error) {
-                                                                                                STAssertEquals(error.code, 403, @"Wrong error code reported");
+                                                                                                STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
+                                                                                                STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
                                                                                                 [mockJiveURLResponseDelegate verify];
                                                                                                 finishedBlock();
                                                                                             }];
