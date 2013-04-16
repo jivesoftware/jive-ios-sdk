@@ -57,6 +57,6 @@
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
 //! The MIME type of this file.
-@property (nonatomic, copy) NSString *contentType;
+@property (nonatomic, readonly, copy) NSString *contentType;
 
 @end
