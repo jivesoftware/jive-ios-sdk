@@ -24,11 +24,13 @@ NSString * const JiveErrorDomain = @"Jive";
 NSInteger const JiveErrorCodeMultipleErrors = 1;
 NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType = 2;
 NSInteger const JiveErrorCodeNilUnderlyingError = 3;
+NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion = 4;
 
 NSString * const JiveErrorKeyMultipleErrors = @"JiveMultipleErrors";
 NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType = @"JiveUnsupportedActivityObjectObjectType";
 NSString * const JiveErrorKeyJSON = @"JiveErrorJSON";
 NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
+NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersion";
 
 @implementation NSError (Jive)
 
@@ -88,11 +90,19 @@ NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
 }
 
 + (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType {
-    return [[self class] errorWithDomain:JiveErrorDomain
-                                    code:JiveErrorCodeUnsupportedActivityObjectObjectType
-                                userInfo:(@{
-                                          JiveErrorKeyUnsupportedActivityObjectObjectType : JiveErrorKeyUnsupportedActivityObjectObjectType,
-                                          })];
+    return [self errorWithDomain:JiveErrorDomain
+                            code:JiveErrorCodeUnsupportedActivityObjectObjectType
+                        userInfo:(@{
+                                  JiveErrorKeyUnsupportedActivityObjectObjectType : JiveErrorKeyUnsupportedActivityObjectObjectType,
+                                  })];
+}
+
++ (instancetype) jive_errorWithUnsupportedJivePlatformVersion:(JivePlatformVersion *)jivePlatformVersion {
+    return [self errorWithDomain:JiveErrorDomain
+                            code:JiveErrorCodeUnsupportedJivePlatformVersion
+                        userInfo:(@{
+                                  JiveErrorKeyJivePlatformVersion : jivePlatformVersion,
+                                  })];
 }
 
 - (NSArray *)jive_multipleErrors {

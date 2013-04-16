@@ -59,10 +59,12 @@
                                relativeToURL:jiveInstanceURL];
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
     JAPIRequestOperation *operation = [self operationWithRequest:request
-                                                      onComplete:^(JivePlatformVersion *version) {
-                                                          if (version && completeBlock)
-                                                              completeBlock(version);
-                                                      } onError:errorBlock
+                                                      onComplete:(^(JivePlatformVersion *version) {
+        if (version && completeBlock) {
+            completeBlock(version);
+        }
+    })
+                                                         onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
         JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
         for (JiveCoreVersion *coreURI in version.coreURI) {
@@ -71,8 +73,9 @@
             }
         }
         
-        if (errorBlock)
-            errorBlock([NSError errorWithDomain:@"Unsupported core api version" code:403 userInfo:nil]);
+        if (errorBlock) {
+            errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:version]);
+        }
         
         return nil;
     })];
@@ -1753,10 +1756,10 @@
 
 - (NSOperation *)imagesOperationFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:imagesURL];
-
+    
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:imagesURL];
-
+    
     NSOperation *operation = nil;
     operation = [self listOperationForClass:[JiveImage class] request:mutableURLRequest onComplete:complete onError:error];
     return operation;
