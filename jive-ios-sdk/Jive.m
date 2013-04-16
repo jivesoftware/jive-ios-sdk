@@ -1941,11 +1941,10 @@
             if (completeBlock) {
                 completeBlock(entity);
             }
-            
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
                 errorBlock([NSError jive_errorWithUnderlyingError:err
-                                                         withJSON:JSON]);
+                                                             JSON:JSON]);
             }
         }];
         
@@ -1978,7 +1977,7 @@
         } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
                 errorBlock([NSError jive_errorWithUnderlyingError:err
-                                                         withJSON:JSON]);
+                                                             JSON:JSON]);
             }
         }];
         

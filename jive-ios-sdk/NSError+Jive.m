@@ -25,6 +25,7 @@ NSInteger const JiveErrorCodeMultipleErrors = 1;
 NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType = 2;
 NSInteger const JiveErrorCodeNilUnderlyingError = 3;
 NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion = 4;
+NSInteger const JiveErrorCodeInvalidJSON = 5;
 
 NSString * const JiveErrorKeyMultipleErrors = @"JiveMultipleErrors";
 NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType = @"JiveUnsupportedActivityObjectObjectType";
@@ -36,16 +37,18 @@ NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersio
 
 + (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError {
     return [self jive_errorWithUnderlyingError:underlyingError
-                                      withJSON:nil];
+                                          JSON:nil];
 }
 
-+ (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError withJSON:(id)JSON {
++ (instancetype) jive_errorWithUnderlyingError:(NSError *)underlyingError JSON:(id)JSON {
     NSInteger code;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:4];
     if (underlyingError) {
         code = underlyingError.code;
         userInfo[NSUnderlyingErrorKey] = underlyingError;
         userInfo[NSLocalizedDescriptionKey] = [underlyingError localizedDescription];
+    } else if (JSON) {
+        code = JiveErrorCodeInvalidJSON;
     } else {
         code = JiveErrorCodeNilUnderlyingError;
     }

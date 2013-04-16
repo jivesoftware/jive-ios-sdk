@@ -20,7 +20,7 @@
                                                       code:404
                                                   userInfo:nil];
     NSError *jiveError = [NSError jive_errorWithUnderlyingError:nativeError
-                                                       withJSON:nil];
+                                                       JSON:nil];
     
     STAssertEqualObjects(jiveError.domain, JiveErrorDomain, @"Not Jive Error Domain");
     STAssertEquals(jiveError.code, nativeError.code, @"Native error code not duplicated");
@@ -39,7 +39,7 @@
                                                       code:404
                                                   userInfo:userInfo];
     NSError *jiveError = [NSError jive_errorWithUnderlyingError:nativeError
-                                                       withJSON:JSONError];
+                                                       JSON:JSONError];
     
     STAssertEqualObjects(jiveError.domain, JiveErrorDomain, @"Not Jive Error Domain");
     STAssertEquals(jiveError.code, nativeError.code, @"Native error code not duplicated");
