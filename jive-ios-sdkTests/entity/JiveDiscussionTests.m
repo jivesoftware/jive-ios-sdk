@@ -246,4 +246,25 @@
     }
 }
 
+- (void)testDiscussionWithOnlyAnswerAndHelpful {
+    NSString *answer = @"http://example.com/answer";
+    NSString *helpful1 = @"http://example.com/helpful/1";
+    NSString *helpful2 = @"http://example.com/helpful/2";
+    
+    id JSON = (@{
+               @"answer" : answer,
+               @"helpful" : (@[
+                             helpful1,
+                             helpful2,
+                             ]),
+               @"type" : @"discussion",
+               });
+    
+    JiveDiscussion *discussion = [JiveDiscussion instanceFromJSON:JSON];
+    
+    STAssertEqualObjects([discussion class], [JiveDiscussion class], nil);
+    STAssertEqualObjects(discussion.answer, answer, nil);
+    STAssertEqualObjects(discussion.helpful, (@[helpful1, helpful2]), nil);
+}
+
 @end

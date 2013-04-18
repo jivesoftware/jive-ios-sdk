@@ -22,7 +22,7 @@
 
 @implementation JiveDiscussion
 
-@synthesize categories, question, tags, users, visibility, visibleToExternalContributors;
+@synthesize answer, helpful, categories, question, tags, users, visibility, visibleToExternalContributors;
 
 static NSString * const JiveDiscussionType = @"discussion";
 
