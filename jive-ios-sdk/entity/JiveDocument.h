@@ -50,6 +50,9 @@
 //! Tags associated with this object. String[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
+//! The last person that updated this document. If not present, the last person to update this document was the person referenced in the author property.
+@property(nonatomic, readonly, strong) JivePerson* updater;
+
 //! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
 @property(nonatomic, readonly, strong) NSArray* users;
 
