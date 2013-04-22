@@ -5460,4 +5460,86 @@
     }];
 }
 
+- (void) testCreateDocumentWithAttachmentsOperation {
+    JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    JiveAttachment *simpleAttachment = [JiveAttachment new];
+    NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+    
+    [options addField:@"id"];
+    simpleAttachment.name = @"document.json";
+    simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                   ofType:@"json"]];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createDocumentOperation:source
+                                                                                withAttachments:attachments
+                                                                                        options:options
+                                                                                     onComplete:^(JiveContent *content) {
+            // Called 3rd
+            STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+            STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"multipart/form-data; boundary=Boundary+0xAbCdEfGbOuNdArY", @"Wrong content type");
+        [operation start];
+    }];
+}
+
+- (void) testCreateDocumentWithAttachments {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document_alternate"];
+        JiveAttachment *simpleAttachment = [JiveAttachment new];
+        NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+        
+        simpleAttachment.name = @"document.json";
+        simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                       ofType:@"json"]];
+        [jive createDocument:source
+             withAttachments:attachments
+                     options:options
+                  onComplete:^(JiveContent *content) {
+            // Called 3rd
+            STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+            STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
 @end
