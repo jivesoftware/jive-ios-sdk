@@ -1224,6 +1224,63 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    NSString *urlPath = @"api/core/v3/contents";
+    
+    if (options) {
+        urlPath = [NSString stringWithFormat:@"%@?%@", urlPath, options.toQueryString];
+    }
+    
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:_jiveInstance];
+    NSError * __block buildError = nil;
+    NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST"
+                                                                     path:urlPath
+                                                               parameters:nil
+                                                constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
+                                                    NSDictionary *JSONDictionary = document.toJSONDictionary;
+                                                    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary
+                                                                                                   options:0
+                                                                                                     error:nil];
+                                                    NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionary];
+                                                    
+                                                    [mutableHeaders setValue:@"form-data; name=\"Content\""
+                                                                      forKey:@"Content-Disposition"];
+                                                    [mutableHeaders setValue:@"application/json; charset=UTF-8"
+                                                                      forKey:@"Content-Type"];
+                                                    NSLog(@"%@\n%@\n%@", JSONDictionary, body, mutableHeaders);
+                                                    [formData appendPartWithHeaders:mutableHeaders
+                                                                               body:body];
+//                                                    [attachmentURLs enumerateObjectsUsingBlock:^(JiveAttachment *attachment, NSUInteger idx, BOOL *stop) {
+//                                                        NSLog(@"adding file: %@", attachment.url);
+//                                                        if (![formData appendPartWithFileURL:attachment.url
+//                                                                                        name:attachment.name
+//                                                                                       error:&buildError]) {
+//                                                            *stop = YES;
+//                                                        }
+//                                                    }];
+                                                }];
+    
+    if (buildError) {
+        if (error) {
+            error(buildError);
+        }
+        
+        return nil;
+    }
+    
+    NSLog(@"%@\n%@\n%@", request, request.allHTTPHeaderFields, request.HTTPBodyStream);
+    [self maybeApplyCredentialsToMutableURLRequest:request
+                                            forURL:request.URL];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) createDocument:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [[self createDocumentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
+}
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {

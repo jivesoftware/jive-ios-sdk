@@ -188,6 +188,8 @@
 		0FBC7E2717171B7600A597E2 /* JiveCoreVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBC7E2517171B7500A597E2 /* JiveCoreVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FBC7E2817171B7600A597E2 /* JiveCoreVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBC7E2617171B7500A597E2 /* JiveCoreVersion.m */; };
 		0FBC7E2A17171D7800A597E2 /* version_no_v3.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FBC7E2917171D7800A597E2 /* version_no_v3.json */; };
+		0FBD444D1721ACF9005E031B /* document.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD444C1721ACF9005E031B /* document.json */; };
+		0FBD44511721ADCE005E031B /* document_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD44501721ADCE005E031B /* document_alternate.json */; };
 		0FC2FE5516A8BE3300DDFF68 /* JiveSearchRequestOptions_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC2FE5416A8BE3300DDFF68 /* JiveSearchRequestOptions_internal.h */; };
 		0FCB65B41669702200617CE4 /* JiveTrendingContentRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCB65B21669702200617CE4 /* JiveTrendingContentRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCB65B51669702200617CE4 /* JiveTrendingContentRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB65B31669702200617CE4 /* JiveTrendingContentRequestOptions.m */; };
@@ -714,6 +716,8 @@
 		0FBC7E2517171B7500A597E2 /* JiveCoreVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCoreVersion.h; sourceTree = "<group>"; };
 		0FBC7E2617171B7500A597E2 /* JiveCoreVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveCoreVersion.m; sourceTree = "<group>"; };
 		0FBC7E2917171D7800A597E2 /* version_no_v3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = version_no_v3.json; sourceTree = "<group>"; };
+		0FBD444C1721ACF9005E031B /* document.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = document.json; sourceTree = "<group>"; };
+		0FBD44501721ADCE005E031B /* document_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = document_alternate.json; sourceTree = "<group>"; };
 		0FC2FE5416A8BE3300DDFF68 /* JiveSearchRequestOptions_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveSearchRequestOptions_internal.h; sourceTree = "<group>"; };
 		0FCB65B21669702200617CE4 /* JiveTrendingContentRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveTrendingContentRequestOptions.h; sourceTree = "<group>"; };
 		0FCB65B31669702200617CE4 /* JiveTrendingContentRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveTrendingContentRequestOptions.m; sourceTree = "<group>"; };
@@ -1509,6 +1513,7 @@
 				0F13CEF21677ADC500525E4E /* content_by_id.json */,
 				0F13CEF41677B7BB00525E4E /* content_comments.json */,
 				0F13CEF01676ACCF00525E4E /* contents.json */,
+				0FBD444C1721ACF9005E031B /* document.json */,
 				B8B19F0F16949CBC004B3DEC /* entities */,
 				0F13CEBD1672C6C200525E4E /* filterable_fields.json */,
 				0F13CEB9167292DC00525E4E /* followers_response.json */,
@@ -1601,6 +1606,7 @@
 				B1E22AD3170F57E90088919D /* outcome.json */,
 				0FBC7E221716218C00A597E2 /* version_alternate.json */,
 				0FBC7E2917171D7800A597E2 /* version_no_v3.json */,
+				0FBD44501721ADCE005E031B /* document_alternate.json */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -1917,6 +1923,8 @@
 				0FBC7E211716218200A597E2 /* version.json in Resources */,
 				0FBC7E231716218C00A597E2 /* version_alternate.json in Resources */,
 				0FBC7E2A17171D7800A597E2 /* version_no_v3.json in Resources */,
+				0FBD444D1721ACF9005E031B /* document.json in Resources */,
+				0FBD44511721ADCE005E031B /* document_alternate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
