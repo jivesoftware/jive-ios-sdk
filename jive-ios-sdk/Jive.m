@@ -1225,50 +1225,43 @@
 }
 
 - (NSOperation *) createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
-    NSString *urlPath = @"api/core/v3/contents";
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
     
-    if (options) {
-        urlPath = [NSString stringWithFormat:@"%@?%@", urlPath, options.toQueryString];
-    }
+    [request setHTTPMethod:@"POST"];
     
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:_jiveInstance];
-    NSError * __block buildError = nil;
-    NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST"
-                                                                     path:urlPath
-                                                               parameters:nil
-                                                constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
-                                                    NSDictionary *JSONDictionary = document.toJSONDictionary;
-                                                    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary
-                                                                                                   options:0
-                                                                                                     error:nil];
-                                                    NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionary];
-                                                    
-                                                    [mutableHeaders setValue:@"form-data; name=\"Content\""
-                                                                      forKey:@"Content-Disposition"];
-                                                    [mutableHeaders setValue:@"application/json; charset=UTF-8"
-                                                                      forKey:@"Content-Type"];
-                                                    NSLog(@"%@\n%@\n%@", JSONDictionary, body, mutableHeaders);
-                                                    [formData appendPartWithHeaders:mutableHeaders
-                                                                               body:body];
-//                                                    [attachmentURLs enumerateObjectsUsingBlock:^(JiveAttachment *attachment, NSUInteger idx, BOOL *stop) {
-//                                                        NSLog(@"adding file: %@", attachment.url);
-//                                                        if (![formData appendPartWithFileURL:attachment.url
-//                                                                                        name:attachment.name
-//                                                                                       error:&buildError]) {
-//                                                            *stop = YES;
-//                                                        }
-//                                                    }];
-                                                }];
+    NSString *boundary = @"0xJiveBoundary";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    NSMutableData *body = [NSMutableData data];
+    NSData *boundaryData = [[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *documentData = [NSJSONSerialization dataWithJSONObject:document.toJSONDictionary
+                                                           options:0
+                                                             error:nil];
+    NSString * const typeFormat = @"Content-Type: %@\r\n\r\n";
     
-    if (buildError) {
-        if (error) {
-            error(buildError);
-        }
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"content\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:documentData];
+    for (JiveAttachment *attachment in attachmentURLs) {
+        CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
+                                                                (__bridge CFStringRef)[attachment.url pathExtension],
+                                                                NULL);
+        NSString *formDataString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",
+                                    attachment.name, [attachment.url lastPathComponent]];
+        NSString *fileTypeDataString = [NSString stringWithFormat:typeFormat,
+                                        (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType)];
         
-        return nil;
+        CFRelease(UTI);
+        [body appendData:boundaryData];
+        [body appendData:[formDataString dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[fileTypeDataString dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[NSData dataWithContentsOfURL:attachment.url]];
     }
     
-    NSLog(@"%@\n%@\n%@", request, request.allHTTPHeaderFields, request.HTTPBodyStream);
+    [body appendData:boundaryData];
+    [request setHTTPBody:body];
     [self maybeApplyCredentialsToMutableURLRequest:request
                                             forURL:request.URL];
     return [self entityOperationForClass:[JiveContent class]
