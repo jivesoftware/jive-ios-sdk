@@ -65,4 +65,10 @@
 
 @property (nonatomic) NSString *outcomeTypeName;
 
+@property (nonatomic) NSNumber *question;
+
+@property (nonatomic) NSString *resolved;
+
+@property (nonatomic) NSURL *answer;
+
 @end

@@ -23,7 +23,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -43,6 +43,18 @@
     
     if (outcomeTypeName) {
         [dictionary setValue:outcomeTypeName forKey:@"outcomeTypeName"];
+    }
+    
+    if (question) {
+        [dictionary setValue:question forKey:@"question"];
+    }
+    
+    if (resolved) {
+        [dictionary setValue:resolved forKey:@"resolved"];
+    }
+    
+    if (answer) {
+        [dictionary setValue:answer forKey:@"answer"];
     }
     
     return dictionary;
