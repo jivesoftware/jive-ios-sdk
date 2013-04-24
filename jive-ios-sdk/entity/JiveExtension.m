@@ -44,17 +44,10 @@
     if (outcomeTypeName) {
         [dictionary setValue:outcomeTypeName forKey:@"outcomeTypeName"];
     }
-    
-    if (question) {
-        [dictionary setValue:question forKey:@"question"];
-    }
-    
-    if (resolved) {
-        [dictionary setValue:resolved forKey:@"resolved"];
-    }
-    
+    [dictionary setValue:question forKey:@"question"];
+    [dictionary setValue:resolved forKey:@"resolved"];
     if (answer) {
-        [dictionary setValue:answer forKey:@"answer"];
+        [dictionary setValue:[answer absoluteString] forKey:@"answer"];
     }
     
     return dictionary;

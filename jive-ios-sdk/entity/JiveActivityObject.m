@@ -23,7 +23,7 @@
 
 @implementation JiveActivityObject
 
-@synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url;
+@synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url, question, resolved, answer;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -46,6 +46,12 @@
     
     if (image)
         [dictionary setValue:[image toJSONDictionary] forKey:@"image"];
+    
+    [dictionary setValue:question forKey:@"question"];
+    [dictionary setValue:resolved forKey:@"resolved"];
+    if (answer) {
+        [dictionary setValue:[answer absoluteString] forKey:@"answer"];
+    }
     
     return dictionary;
 }

@@ -56,4 +56,13 @@
 //! URI identifying a resource that provides an HTML representation of the object.
 @property(nonatomic, readonly, strong) NSURL* url;
 
+//! Flag indicating that this discussion is marked as a question, if object is a discussion.
+@property (nonatomic) NSNumber *question;
+
+//! If the object field contains a discussion marked as a question, this field will contain the resolution state ("open", "resolved", or "assumed_resolved").
+@property (nonatomic) NSString *resolved;
+
+//! URI of the correct answer (if any), if this object is a discussion marked as a question.
+@property (nonatomic) NSURL *answer;
+
 @end
