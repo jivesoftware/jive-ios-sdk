@@ -31,7 +31,7 @@
     
     actionLink.caption = @"text";
     actionLink.httpVerb = @"1234";
-    [actionLink setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"target"];
+    actionLink.target = [NSURL URLWithString:@"http://dummy.com"];
     
     JSON = [actionLink toJSONDictionary];
     
@@ -51,7 +51,7 @@
     
     actionLink.caption = @"html";
     actionLink.httpVerb = @"6541";
-    [actionLink setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"target"];
+    actionLink.target = [NSURL URLWithString:@"http://super.com"];
     
     JSON = [actionLink toJSONDictionary];
     
