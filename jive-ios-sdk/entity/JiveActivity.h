@@ -30,7 +30,7 @@
 //! The person (or other object) that created this activity.
 @property (nonatomic, readonly, strong) JiveActivityObject *actor;
 
-//! Text (or possibly HTML) content describing this activity.
+//! Text (or possibly HTML) content describing this activity. Required for creation.
 @property (nonatomic, copy) NSString *content;
 
 //! The application used to generate this activity.
@@ -60,7 +60,7 @@
 //! The object representing the "context" or "target" of this activity.
 @property (nonatomic, strong) JiveActivityObject *target;
 
-//! The title of this activity.
+//! The title of this activity. Required for creation.
 @property (nonatomic, copy) NSString *title;
 
 //! The date and time at which this activity was most recently updated.
