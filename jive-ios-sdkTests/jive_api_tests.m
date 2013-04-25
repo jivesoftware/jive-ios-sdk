@@ -5497,7 +5497,7 @@
         }];
         
         STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"multipart/form-data; boundary=Boundary+0xAbCdEfGbOuNdArY", @"Wrong content type");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"multipart/form-data; boundary=0xJiveBoundary", @"Wrong content type");
         [operation start];
     }];
 }

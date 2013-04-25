@@ -1262,8 +1262,6 @@
     
     [body appendData:boundaryData];
     [request setHTTPBody:body];
-    [self maybeApplyCredentialsToMutableURLRequest:request
-                                            forURL:request.URL];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
