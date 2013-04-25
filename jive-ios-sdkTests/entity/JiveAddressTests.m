@@ -31,11 +31,9 @@
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     address.jive_label = @"Address";
-    address.value = @"12345";
+    address.value = @{@"Country": @"USA"};
     address.type = @"Home";
-    [address performSelector:@selector(handlePrimitiveProperty:fromJSON:)
-                 withObject:@"primary"
-                 withObject:(__bridge id)kCFBooleanTrue];
+    [address setValue:@YES forKey:@"primary"];
     
     JSON = [address toJSONDictionary];
     
@@ -44,12 +42,7 @@
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"jive_label"], address.jive_label, @"Wrong display name.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"value"], address.value, @"Wrong id.");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], address.type, @"Wrong type");
-    
-    NSNumber *primary = [(NSDictionary *)JSON objectForKey:@"primary"];
-    
-    STAssertNotNil(primary, @"Missing primary");
-    if (primary)
-        STAssertTrue([primary boolValue], @"Wrong primary");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"primary"], @YES, @"Wrong primary");
 }
 
 - (void)testToJSON_alternate {
@@ -60,7 +53,7 @@
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     address.jive_label = @"email";
-    address.value = @"87654";
+    address.value = @{@"postalCode": @"80215"};
     address.type = @"Work";
     
     JSON = [address toJSONDictionary];
@@ -77,11 +70,9 @@
     JiveAddress *baseAddress = [[JiveAddress alloc] init];
     
     baseAddress.jive_label = @"Address";
-    baseAddress.value = @"12345";
+    baseAddress.value = @{@"Country": @"USA"};
     baseAddress.type = @"Home";
-    [baseAddress performSelector:@selector(handlePrimitiveProperty:fromJSON:)
-                  withObject:@"primary"
-                  withObject:(__bridge id)kCFBooleanTrue];
+    [baseAddress setValue:@YES forKey:@"primary"];
     
     id JSON = [baseAddress toJSONDictionary];
     JiveAddress *address = [JiveAddress instanceFromJSON:JSON];
@@ -90,15 +81,16 @@
     STAssertEqualObjects(address.jive_label, baseAddress.jive_label, @"Wrong jive_label");
     STAssertEqualObjects(address.value, baseAddress.value, @"Wrong value");
     STAssertEqualObjects(address.type, baseAddress.type, @"Wrong type");
-    STAssertTrue(address.primary, @"Wrong primary");
+    STAssertEqualObjects(address.primary, @YES, @"Wrong primary");
 }
 
 - (void)testJSONParsingAlternate {
     JiveAddress *baseAddress = [[JiveAddress alloc] init];
     
     baseAddress.jive_label = @"email";
-    baseAddress.value = @"87654";
+    baseAddress.value = @{@"postalCode": @"80215"};
     baseAddress.type = @"Work";
+    [baseAddress setValue:@NO forKey:@"primary"];
     
     id JSON = [baseAddress toJSONDictionary];
     JiveAddress *address = [JiveAddress instanceFromJSON:JSON];
@@ -107,7 +99,7 @@
     STAssertEqualObjects(address.jive_label, baseAddress.jive_label, @"Wrong jive_label");
     STAssertEqualObjects(address.value, baseAddress.value, @"Wrong value");
     STAssertEqualObjects(address.type, baseAddress.type, @"Wrong type");
-    STAssertFalse(address.primary, @"Wrong primary");
+    STAssertEqualObjects(address.primary, @NO, @"Wrong primary");
 }
 
 @end

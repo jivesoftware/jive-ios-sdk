@@ -63,7 +63,7 @@
     STAssertEqualObjects([JSON objectForKey:@"type"], @"person", @"Wrong type");
     
     personJive.username = @"Philip";
-    address.value = @"address";
+    address.value = @{@"postalCode": @"80215"};
     name.familyName = @"family name";
     email.value = @"email@jive.com";
     phoneNumber.value = @"555-5555";
@@ -182,8 +182,8 @@
     JiveAddress *address1 = [[JiveAddress alloc] init];
     JiveAddress *address2 = [[JiveAddress alloc] init];
     
-    address1.value = @"Address 1";
-    address2.value = @"Address 2";
+    address1.value = @{@"postalCode": @"80215"};
+    address2.value = @{@"postalCode": @"80303"};
     [person setValue:[NSArray arrayWithObject:address1] forKey:@"addresses"];
     
     NSDictionary *JSON = [person toJSONDictionary];
@@ -349,7 +349,7 @@
     NSDictionary *resourceJSON = [NSDictionary dictionaryWithObject:photoURI forKey:@"ref"];
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
-    address.value = @"Address";
+    address.value = @{@"postalCode": @"80215"};
     personJive.username = @"Address 1";
     name.familyName = @"family name";
     phoneNumber.value = @"555-5555";
@@ -450,7 +450,7 @@
     NSDictionary *resourceJSON = [NSDictionary dictionaryWithObject:photoURI forKey:@"ref"];
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
-    address.value = @"house";
+    address.value = @{@"postalCode": @"80303"};
     personJive.username = @"name";
     name.familyName = @"Bushnell";
     phoneNumber.value = @"777-7777";
