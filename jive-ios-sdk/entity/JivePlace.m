@@ -26,6 +26,46 @@
 #import "JiveSummary.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JivePlaceAttributes const JivePlaceAttributes = {
+        .contentTypes = @"contentTypes",
+        .description = @"description",
+        .displayName = @"displayName",
+        .followerCount = @"followerCount",
+        .highlightBody = @"highlightBody",
+        .highlightSubject = @"highlightSubject",
+        .highlightTags = @"highlightTags",
+        .jiveId = @"jiveId",
+        .likeCount = @"likeCount",
+        .name = @"name",
+        .parent = @"parent",
+        .parentContent = @"parentContent",
+        .parentPlace = @"parentPlace",
+        .published = @"published",
+        .status = @"status",
+        .updated = @"updated",
+        .viewCount = @"viewCount",
+        .visibleToExternalContributors = @"visibleToExternalContributors"
+};
+
+struct JivePlaceResourceAttributes const JivePlaceResourceAttributes = {
+        .activity = @"activity",
+        .announcements = @"announcements",
+        .avatar = @"avatar",
+        .blog = @"blog",
+        .categories = @"categories",
+        .contents = @"contents",
+        .extprops = @"extprops",
+        .featuredContent = @"featuredContent",
+        .followingIn = @"followingIn",
+        .html = @"html",
+        .invites = @"invites",
+        .members = @"members",
+        .places = @"places",
+        .self = @"self",
+        .statics = @"statics",
+};
+
+
 @implementation JivePlace
 
 @synthesize contentTypes, description, displayName, followerCount, highlightBody, highlightSubject;

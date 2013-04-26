@@ -24,6 +24,21 @@
 
 extern struct JiveContentAttributes {
     __unsafe_unretained NSString *author;
+    __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *followerCount;
+    __unsafe_unretained NSString *highlightBody;
+    __unsafe_unretained NSString *highlightSubject;
+    __unsafe_unretained NSString *highlightTags;
+    __unsafe_unretained NSString *likeCount;
+    __unsafe_unretained NSString *parent;
+    __unsafe_unretained NSString *parentContent;
+    __unsafe_unretained NSString *parentPlace;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *replyCount;
+    __unsafe_unretained NSString *status;
+    __unsafe_unretained NSString *subject;
+    __unsafe_unretained NSString *updated;
+    __unsafe_unretained NSString *viewCount;
 } const JiveContentAttributes;
 
 //! \class JiveContent
