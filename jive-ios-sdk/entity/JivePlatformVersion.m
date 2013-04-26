@@ -17,7 +17,7 @@ struct JivePlatformVersionAttributes const JivePlatformVersionAttributes = {
 	.build = @"build",
 	.releaseID = @"releaseID",
 	.coreURI = @"coreURI",
-    .ssoEnabled = @"ssoEnabled",
+    .ssoEnabled = @"ssoEnabled"
 };
 
 static NSString * const JiveVersionKey = @"jiveVersion";

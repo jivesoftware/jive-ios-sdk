@@ -37,7 +37,22 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentAttributes const JiveContentAttributes = {
-	.author = @"author"
+        .author = @"author",
+        .content = @"content",
+        .followerCount = @"followerCount",
+        .highlightBody = @"highlightBody",
+        .highlightSubject = @"highlightSubject",
+        .highlightTags = @"highlightTags",
+        .likeCount = @"likeCount",
+        .parent = @"parent",
+        .parentContent = @"parentContent",
+        .parentPlace = @"parentPlace",
+        .published = @"published",
+        .replyCount = @"replyCount",
+        .status = @"status",
+        .subject = @"subject",
+        .updated = @"updated",
+        .viewCount = @"viewCount"
 };
 
 @implementation JiveContent

@@ -19,6 +19,45 @@
 
 #import "JiveTypedObject.h"
 
+extern struct JivePlaceAttributes {
+    __unsafe_unretained NSString *contentTypes;
+    __unsafe_unretained NSString *description;
+    __unsafe_unretained NSString *displayName;
+    __unsafe_unretained NSString *followerCount;
+    __unsafe_unretained NSString *highlightBody;
+    __unsafe_unretained NSString *highlightSubject;
+    __unsafe_unretained NSString *highlightTags;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *likeCount;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *parent;
+    __unsafe_unretained NSString *parentContent;
+    __unsafe_unretained NSString *parentPlace;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *status;
+    __unsafe_unretained NSString *updated;
+    __unsafe_unretained NSString *viewCount;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JivePlaceAttributes;
+
+extern struct JivePlaceResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *featuredContent;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *places;
+    __unsafe_unretained NSString *self;
+    __unsafe_unretained NSString *statics;
+} const JivePlaceResourceAttributes;
+
 @class JiveSummary;
 
 //! \class JivePlace

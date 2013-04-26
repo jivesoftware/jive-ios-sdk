@@ -1224,7 +1224,7 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (NSOperation *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
     
     [request setHTTPMethod:@"POST"];
@@ -1233,9 +1233,9 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     NSMutableData *body = [NSMutableData data];
     NSData *boundaryData = [[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *documentData = [NSJSONSerialization dataWithJSONObject:document.toJSONDictionary
-                                                           options:0
-                                                             error:nil];
+    NSData *contentData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
+                                                          options:0
+                                                            error:nil];
     NSString * const typeFormat = @"Content-Type: %@\r\n\r\n";
     
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
@@ -1243,7 +1243,7 @@
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"content\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:documentData];
+    [body appendData:contentData];
     for (JiveAttachment *attachment in attachmentURLs) {
         CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                                 (__bridge CFStringRef)[attachment.url pathExtension],
@@ -1268,8 +1268,8 @@
                                  onError:error];
 }
 
-- (void) createDocument:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
-    [[self createDocumentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
+- (void) createContent:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [[self createContentOperation:content withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
 }
 
 #pragma mark - Places
