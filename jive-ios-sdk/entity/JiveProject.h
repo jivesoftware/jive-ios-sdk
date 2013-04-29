@@ -20,6 +20,15 @@
 #import "JivePlace.h"
 #import "JivePerson.h"
 
+extern struct JiveProjectAttributes {
+    __unsafe_unretained NSString *creator;
+    __unsafe_unretained NSString *dueDate;
+    __unsafe_unretained NSString *locale;
+    __unsafe_unretained NSString *projectStatus;
+    __unsafe_unretained NSString *startDate;
+    __unsafe_unretained NSString *tags;
+} const JiveProjectAttributes;
+
 //! \class JiveProject
 //! https://developers.jivesoftware.com/api/v3/rest/ProjectEntity.html
 @interface JiveProject : JivePlace
@@ -29,6 +38,9 @@
 
 //! Date by which this project must be completed.
 @property(nonatomic, strong) NSDate* dueDate;
+
+//! Locale string of the space.
+@property (nonatomic, copy) NSString *locale;
 
 //! Current status of this project with respect to its schedule. TODO - enumerate values
 @property(nonatomic, readonly, copy) NSString* projectStatus;
