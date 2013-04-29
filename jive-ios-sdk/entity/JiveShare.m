@@ -21,11 +21,8 @@
 #import "JiveTypedObject_internal.h"
 
 struct JiveShareAttributes const JiveShareAttributes = {
-    .participants = @"participants",
     .sharedContent = @"sharedContent",
     .sharedPlace = @"sharedPlace",
-    .tags = @"tags",
-    .visibleToExternalContributors = @"visibleToExternalContributors",
 };
 
 @implementation JiveShare
@@ -43,21 +40,8 @@ static NSString * const JiveShareType = @"share";
     return JiveShareType;
 }
 
-- (Class) arrayMappingFor:(NSString*) propertyName {
-    if ([propertyName isEqualToString:JiveShareAttributes.participants]) {
-        return [JivePerson class];
-    }
-    
-    return nil;
-}
-
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
-    
-    [dictionary setValue:visibleToExternalContributors forKey:JiveShareAttributes.visibleToExternalContributors];
-    [self addArrayElements:participants toJSONDictionary:dictionary forTag:JiveShareAttributes.participants];
-    if (tags)
-        [dictionary setValue:tags forKey:JiveShareAttributes.tags];
     
     if (sharedContent)
         [dictionary setValue:sharedContent.toJSONDictionary forKey:JiveShareAttributes.sharedContent];
