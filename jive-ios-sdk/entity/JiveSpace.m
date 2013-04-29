@@ -20,9 +20,15 @@
 #import "JiveSpace.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveSpaceAttributes const JiveSpaceAttributes = {
+    .childCount = @"childCount",
+    .locale = @"locale",
+    .tags = @"tags",
+};
+
 @implementation JiveSpace
 
-@synthesize childCount, tags;
+@synthesize childCount, locale, tags;
 
 static NSString * const JiveSpaceType = @"space";
 
