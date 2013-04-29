@@ -1907,7 +1907,7 @@
 
 - (NSOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:nil
-                                         andTemplate:@"/metadata/properties/%@", propertyName, nil];
+                                         andTemplate:@"api/core/v3/metadata/properties/%@", propertyName, nil];
     NSOperation *operation = [self entityOperationForClass:[JiveProperty class]
                                                    request:request
                                                 onComplete:complete
