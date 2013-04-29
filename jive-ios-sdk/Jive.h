@@ -85,6 +85,7 @@
 #import "JivePlatformVersion.h"
 #import "JiveCoreVersion.h"
 #import "JiveAttachment.h"
+#import "JiveProperty.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
@@ -598,6 +599,11 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! No official documentation yet.
 - (void) createOutcome:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error;
 
+#pragma mark - Properties
+//! https://developers.jivesoftware.com/api/v3/rest/PropertiesMetadataService.html#getPropertyMetadata(String)
+- (NSOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PropertiesMetadataService.html#getPropertyMetadata(String)
+- (void) propertyWithName:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error;
 
 @end
 

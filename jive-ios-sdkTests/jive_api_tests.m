@@ -5542,4 +5542,55 @@
     }];
 }
 
+- (void) testPropertyWithNameOperation {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/metadata/properties/instance.url" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"property" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation* operation = [jive propertyWithNameOperation:@"instance.url" onComplete:^(JiveProperty *property) {
+            // Called 3rd
+            STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
+- (void) testPropertyWithName {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/metadata/properties/instance.title" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"property_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [jive propertyWithName:@"instance.title" onComplete:^(JiveProperty *property) {
+            // Called 3rd
+            STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
 @end

@@ -1,0 +1,6 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "description" : "Themed title of this Jive instance",
+    "name" : "instance.title",
+    "type" : "string"
+}

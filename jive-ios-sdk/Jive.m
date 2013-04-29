@@ -1903,6 +1903,23 @@
     [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
+#pragma mark - Properties
+
+- (NSOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"/metadata/properties/%@", propertyName, nil];
+    NSOperation *operation = [self entityOperationForClass:[JiveProperty class]
+                                                   request:request
+                                                onComplete:complete
+                                                   onError:error];
+    
+    return operation;
+}
+
+- (void) propertyWithName:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
