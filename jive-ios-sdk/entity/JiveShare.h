@@ -28,6 +28,8 @@ extern struct JiveShareAttributes {
     __unsafe_unretained NSString *visibleToExternalContributors;
 } const JiveShareAttributes;
 
+//! \class JiveShare
+//! https://developers.jivesoftware.com/api/v3/rest/ShareEntity.html
 @interface JiveShare : JiveContent
 
 //! The people with which a content object or place has been shared. JivePerson[]
