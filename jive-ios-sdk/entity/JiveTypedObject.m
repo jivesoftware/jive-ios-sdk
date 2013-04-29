@@ -59,6 +59,13 @@ static NSMutableDictionary *typedClasses;
                           notFoundMarker:[self class]] objectAtIndex:0];
 }
 
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON {
+    if ([JiveTypedObjectAttributes.type isEqualToString:key])
+        return NO; // Having a type does not make this a valid JSON response.
+    
+    return [super deserializeKey:key fromJSON:JSON];
+}
+
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
     if ([@"resources" isEqualToString:property]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
