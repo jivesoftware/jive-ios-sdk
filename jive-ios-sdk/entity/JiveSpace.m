@@ -45,6 +45,7 @@ static NSString * const JiveSpaceType = @"space";
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
     [dictionary setValue:childCount forKey:@"childCount"];
+    [dictionary setValue:locale forKey:JiveSpaceAttributes.locale];
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];
     
