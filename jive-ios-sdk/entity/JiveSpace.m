@@ -32,7 +32,7 @@ struct JiveSpaceAttributes const JiveSpaceAttributes = {
 
 static NSString * const JiveSpaceType = @"space";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveSpace class])
         [super registerClass:self forType:JiveSpaceType];
 }

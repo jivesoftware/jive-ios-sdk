@@ -34,7 +34,7 @@ struct JiveShareAttributes const JiveShareAttributes = {
 
 static NSString * const JiveShareType = @"share";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveShare class])
         [super registerClass:self forType:JiveShareType];
 }

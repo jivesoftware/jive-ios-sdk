@@ -34,7 +34,7 @@ struct JivePersonAttributes const JivePersonAttributes = {
 
 static NSString * const JivePersonType = @"person";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JivePerson class])
         [super registerClass:self forType:JivePersonType];
 }

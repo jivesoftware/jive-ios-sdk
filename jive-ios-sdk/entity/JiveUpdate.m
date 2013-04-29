@@ -34,7 +34,7 @@ struct JiveUpdateAttributes const JiveUpdateAttributes = {
 
 static NSString * const JiveUpdateType = @"update";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveUpdate class])
         [super registerClass:self forType:JiveUpdateType];
 }

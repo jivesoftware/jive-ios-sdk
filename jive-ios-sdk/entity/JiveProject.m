@@ -36,7 +36,7 @@ struct JiveProjectAttributes const JiveProjectAttributes = {
 
 static NSString * const JiveProjectType = @"project";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveProject class])
         [super registerClass:self forType:JiveProjectType];
 }

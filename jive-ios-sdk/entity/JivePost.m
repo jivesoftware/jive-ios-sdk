@@ -37,7 +37,7 @@ struct JivePostStatusValues const JivePostStatusValues = {
 
 static NSString * const JivePostType = @"post";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JivePost class])
         [super registerClass:self forType:JivePostType];
 }

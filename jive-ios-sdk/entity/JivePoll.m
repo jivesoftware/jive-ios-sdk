@@ -26,7 +26,7 @@
 
 static NSString * const JivePollType = @"poll";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JivePoll class])
         [super registerClass:self forType:JivePollType];
 }
