@@ -85,6 +85,7 @@
 #import "JivePlatformVersion.h"
 #import "JiveCoreVersion.h"
 #import "JiveAttachment.h"
+#import "JiveShare.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
