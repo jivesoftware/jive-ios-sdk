@@ -62,9 +62,22 @@ struct JivePlaceResourceAttributes const JivePlaceResourceAttributes = {
         .members = @"members",
         .places = @"places",
         .self = @"self",
-        .statics = @"statics",
+        .statics = @"statics"
 };
 
+struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
+        .documents = @"documents",
+        .discussions = @"discussions",
+        .files = @"files",
+        .polls = @"polls",
+        .projects = @"projects",
+        .tasks = @"tasks",
+        .blog = @"blog",
+        .updates = @"updates",
+        .events = @"events",
+        .videos = @"videos",
+        .ideas = @"ideas"
+};
 
 @implementation JivePlace
 

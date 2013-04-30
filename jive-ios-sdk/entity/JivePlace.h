@@ -58,6 +58,21 @@ extern struct JivePlaceResourceAttributes {
     __unsafe_unretained NSString *statics;
 } const JivePlaceResourceAttributes;
 
+extern struct JivePlaceContentTypeValues {
+    __unsafe_unretained NSString *documents;
+    __unsafe_unretained NSString *discussions;
+    __unsafe_unretained NSString *files;
+    __unsafe_unretained NSString *polls;
+    __unsafe_unretained NSString *projects;
+    __unsafe_unretained NSString *tasks;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *updates;
+    __unsafe_unretained NSString *events;
+    __unsafe_unretained NSString *videos;
+    __unsafe_unretained NSString *ideas;
+} const JivePlaceContentTypeValues;
+
+
 @class JiveSummary;
 
 //! \class JivePlace
