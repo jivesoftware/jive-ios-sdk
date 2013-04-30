@@ -258,7 +258,6 @@
 		2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */; };
 		2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFE16161F0700082926 /* JAPIRequestOperation.m */; };
 		21AD975316163A98009A977D /* my_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AD975216163A98009A977D /* my_response.json */; };
-		21AD9756161BAB4F009A977D /* JiveCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9755161BAB4F009A977D /* JiveCredentials.m */; };
 		21AD975A161BB4B2009A977D /* NSData+JiveBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9759161BB4B2009A977D /* NSData+JiveBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		21AD9767161CAD32009A977D /* MockJiveURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9766161CAD32009A977D /* MockJiveURLProtocol.m */; };
 		21AD976A161CB284009A977D /* jive_api_tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AD9769161CB284009A977D /* jive_api_tests.m */; };
@@ -303,7 +302,7 @@
 		893CE2CA1700DBF5002AA837 /* JiveIdea.h in Headers */ = {isa = PBXBuildFile; fileRef = 893CE2C81700DBF5002AA837 /* JiveIdea.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		893CE2CB1700DBF5002AA837 /* JiveIdea.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2C91700DBF5002AA837 /* JiveIdea.m */; };
 		893CE2D01700DF3C002AA837 /* JiveIdeaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2CF1700DF3C002AA837 /* JiveIdeaTests.m */; };
-		893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 893CE2D91700F368002AA837 /* JiveEvent.h */; };
+		893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 893CE2D91700F368002AA837 /* JiveEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		893CE2DC1700F368002AA837 /* JiveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2DA1700F368002AA837 /* JiveEvent.m */; };
 		893CE2E11700F41C002AA837 /* JiveEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2E01700F41C002AA837 /* JiveEventTests.m */; };
 		8999E65316FA9BB00009677A /* JiveVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8999E65116FA9BAF0009677A /* JiveVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -419,6 +418,8 @@
 		B8F4EA2C1670EEA500C59711 /* inbox_mark_response.json in Resources */ = {isa = PBXBuildFile; fileRef = B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */; };
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
+		B8F8241417304DE500E11536 /* JiveHTTPBasicAuthCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -828,7 +829,6 @@
 		2192BCFE16161F0700082926 /* JAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAPIRequestOperation.m; sourceTree = "<group>"; };
 		21AD975216163A98009A977D /* my_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_response.json; sourceTree = "<group>"; };
 		21AD9754161BAB4F009A977D /* JiveCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCredentials.h; sourceTree = "<group>"; };
-		21AD9755161BAB4F009A977D /* JiveCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveCredentials.m; sourceTree = "<group>"; };
 		21AD9757161BACD2009A977D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		21AD9758161BB4B2009A977D /* NSData+JiveBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JiveBase64.h"; sourceTree = "<group>"; };
 		21AD9759161BB4B2009A977D /* NSData+JiveBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JiveBase64.m"; sourceTree = "<group>"; };
@@ -972,6 +972,8 @@
 		B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+MockJiveURLResponseDelegate.m"; sourceTree = "<group>"; };
 		B8F4EA301670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCMockObject+JiveAuthorizationDelegate.h"; sourceTree = "<group>"; };
 		B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+JiveAuthorizationDelegate.m"; sourceTree = "<group>"; };
+		B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveHTTPBasicAuthCredentials.h; sourceTree = "<group>"; };
+		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1431,7 +1433,8 @@
 				B8A6BA6D1691F63B00996448 /* Jive.h */,
 				B8A6BA6E1691F63B00996448 /* Jive.m */,
 				21AD9754161BAB4F009A977D /* JiveCredentials.h */,
-				21AD9755161BAB4F009A977D /* JiveCredentials.m */,
+				B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */,
+				B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */,
 				788C5C7B164B12B4003D7B94 /* JiveSearch.h */,
 				788C5C7C164B12B4003D7B94 /* JiveSearch.m */,
 				78CCC63216517854006F7E72 /* JiveSearchContentParams.h */,
@@ -1764,9 +1767,10 @@
 				B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */,
 				0F880F5916DBDC2400D40702 /* JiveTypedObject.h in Headers */,
 				0F880F6716DC454800D40702 /* JiveAssociationTargetList.h in Headers */,
+				893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */,
+				B8F8241417304DE500E11536 /* JiveHTTPBasicAuthCredentials.h in Headers */,
 				0F880F6F16DC467B00D40702 /* JiveAssociationTargetList_internal.h in Headers */,
 				B8811CEE16DF0CD40099E39E /* JiveObjcRuntime.h in Headers */,
-				893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */,
 				B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */,
 				B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */,
 				B14BAD6A170F882E00B223D4 /* JiveOutcomeRequestOptions.h in Headers */,
@@ -2021,7 +2025,6 @@
 				2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */,
 				2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */,
 				2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */,
-				21AD9756161BAB4F009A977D /* JiveCredentials.m in Sources */,
 				21AD975A161BB4B2009A977D /* NSData+JiveBase64.m in Sources */,
 				217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */,
 				217FE0D71638528F00182AB5 /* JiveActivityObject.m in Sources */,
@@ -2124,6 +2127,7 @@
 				0FBC7E191715DA8D00A597E2 /* JivePlatformVersion.m in Sources */,
 				0FBC7E2817171B7600A597E2 /* JiveCoreVersion.m in Sources */,
 				B1C6D117172B0C3600A1380A /* JiveProperty.m in Sources */,
+				B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2002,7 +2002,7 @@
 - (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
                                            forURL:(NSURL *)URL {
     if(_delegate && [_delegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
-        JiveCredentials *credentials = [_delegate credentialsForJiveInstance:URL];
+        id<JiveCredentials> credentials = [_delegate credentialsForJiveInstance:URL];
         [credentials applyToRequest:mutableURLRequest];
     }
 }

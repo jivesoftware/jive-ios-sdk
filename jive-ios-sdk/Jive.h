@@ -609,9 +609,6 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 
 //! \class JiveAuthorizationDelegate
 @protocol JiveAuthorizationDelegate <NSObject>
-@required
 //! Method to retrive the JiveCredentials for the specified URL.
-- (JiveCredentials*) credentialsForJiveInstance:(NSURL*) url;
-@optional
-//- (void) didReveiveOAuthActivitionResponse:(
+- (id<JiveCredentials>)credentialsForJiveInstance:(NSURL *)url;
 @end

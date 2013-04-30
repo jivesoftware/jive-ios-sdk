@@ -39,7 +39,8 @@
     // Mock Auth Delegate
     id mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     
-    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:username password:password]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
+                                                                                        password:password]] credentialsForJiveInstance:[OCMArg any]];
     
     return mockAuthDelegate;
 }

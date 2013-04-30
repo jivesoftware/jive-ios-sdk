@@ -7,6 +7,7 @@
 //
 
 #import "JiveTestCase.h"
+#import <Jive/JiveHTTPBasicAuthCredentials.h>
 
 NSString * const JiveTestCaseNotAJiveObjectKey = @"JiveTestCaseNotAJiveObject";
 
@@ -87,9 +88,9 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 
 #pragma mark - JiveAuthorizationDelegate
 
-- (JiveCredentials *) credentialsForJiveInstance:(NSURL*) url {
-    JiveCredentials *credentials = [[JiveCredentials alloc] initWithUserName:userid1
-                                                                    password:pw1];
+- (id<JiveCredentials>) credentialsForJiveInstance:(NSURL*) url {
+    id<JiveCredentials>credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:userid1
+                                                                                   password:pw1];
     return credentials;
 }
 
@@ -192,9 +193,9 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 
 #pragma mark - JiveAuthorizationDelegate
 
-- (JiveCredentials *) credentialsForJiveInstance:(NSURL*) url {
-    JiveCredentials *credentials = [[JiveCredentials alloc] initWithUserName:self.username
-                                                                    password:self.password];
+- (id<JiveCredentials>)credentialsForJiveInstance:(NSURL*) url {
+    id<JiveCredentials> credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:self.username
+                                                                                    password:self.password];
     return credentials;
 }
 

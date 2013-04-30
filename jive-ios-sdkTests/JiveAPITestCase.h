@@ -23,7 +23,7 @@
 
 #import "JiveAsyncTestCase.h"
 #import "Jive.h"
-#import "JiveCredentials.h"
+#import "JiveHTTPBasicAuthCredentials.h"
 #import "MockJiveURLProtocol.h"
 #import "OCMockObject+JiveAuthorizationDelegate.h"
 
