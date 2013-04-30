@@ -152,7 +152,13 @@
         }
     }
     
-    id obj = [[clazz alloc] init];
+    id obj;
+    
+    if ([clazz isSubclassOfClass:[JiveObject class]]) {
+        obj = [[clazz entityClass:JSON] new];
+    } else {
+        obj = [clazz new];
+    }
 
     if([JSON isKindOfClass:[NSDictionary class]]) {
         
