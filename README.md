@@ -1,10 +1,9 @@
 # Jive iOS SDK 
 
-## Let's get started
+iOS SDK build on top of https://devcenter.apps.jivesoftware.com/api/rest/
 
-**Step 1. Install the jive-ios-sdk**
-
-.... TODO
+Make sure to update submodules after cloning:
+`git submodule update --init --recursive`
 
 # License 
 
