@@ -1541,7 +1541,7 @@
     [operation start];
 }
 
-- (void) membersForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (void) membersForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSOperation *operation = [self membersOperationForGroup:group
                                                     options:options
                                                  onComplete:completeBlock
@@ -1577,7 +1577,7 @@
     return operation;
 }
 
-- (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (NSOperation *) membersOperationForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     JiveResourceEntry *resourceEntry = [group.resources objectForKey:@"members"];
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self listOperationForClass:[JiveMember class]
