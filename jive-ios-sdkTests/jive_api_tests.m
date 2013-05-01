@@ -5480,7 +5480,7 @@
     [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createContentOperation:source
+        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createDocumentOperation:source
                                                                                 withAttachments:attachments
                                                                                         options:options
                                                                                      onComplete:^(JiveContent *content) {
@@ -5524,7 +5524,7 @@
         simpleAttachment.name = @"document.json";
         simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
                                                                                                        ofType:@"json"]];
-        [jive createContent:source
+        [jive createDocument:source
              withAttachments:attachments
                      options:options
                   onComplete:^(JiveContent *content) {
