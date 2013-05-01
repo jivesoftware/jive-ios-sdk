@@ -1272,6 +1272,23 @@
     [[self createContentOperation:content withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
 }
 
+- (void)createDocument:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [self createContent:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (void)createPost:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [self createContent:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (NSOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    return [self createContentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (NSOperation *)createPostOperation:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    return [self createContentOperation:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+
 #pragma mark - Places
 
 - (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
