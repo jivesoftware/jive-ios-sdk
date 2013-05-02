@@ -29,6 +29,6 @@
 @property (nonatomic, strong, readonly) NSString *type;
 
 //! The value of this property.
-@property (nonatomic, strong, readonly) NSObject *value;
+@property (nonatomic, strong, readonly) NSString *value;
 
 @end
