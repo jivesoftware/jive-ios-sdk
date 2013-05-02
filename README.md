@@ -1,6 +1,6 @@
 # Jive iOS SDK 
 
-Do you want to build native iOS Jive apps? Here is the SDK to help you.  
+Do you want to build native iOS Jive apps? Here is the SDK to help you!!!  
 This iOS SDK is build on top of REST API calls described [here] (https://devcenter.apps.jivesoftware.com/api/rest/)
 
 Make sure to update the submodules after cloning by executing:
