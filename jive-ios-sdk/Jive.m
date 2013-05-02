@@ -1340,11 +1340,25 @@
 }
 
 - (void)placeFromURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self placeOperationWithURL:placeURL
-                                             withOptions:options
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
-    
+    NSOperation *operation = nil;
+    if(placeURL.query == nil || [placeURL.query rangeOfString:@"filter="].location == NSNotFound) {
+        operation = [self placeOperationWithURL:placeURL
+                                    withOptions:options
+                                     onComplete:completeBlock
+                                        onError:errorBlock];
+    } else {
+        NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:placeURL];
+        [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                                forURL:placeURL];
+        operation = [self listOperationForClass:[JivePlace class] request:mutableURLRequest onComplete:^(NSArray *objects) {
+            JivePlace *place = nil;
+            if ([objects count]) {
+                place = objects[0];
+            }
+            completeBlock(place);
+        } onError:errorBlock];
+    }
+
     [operation start];
 }
 
