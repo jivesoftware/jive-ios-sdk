@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveContentTests.h"
+#import "JiveDirectMessageTests.h"
 #import "JiveShare.h"
 
-@interface JiveShareTests : JiveContentTests
+@interface JiveShareTests : JiveDirectMessageTests
 
 @property (nonatomic) JiveShare *share;
 

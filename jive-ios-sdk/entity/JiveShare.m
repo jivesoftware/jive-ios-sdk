@@ -27,7 +27,7 @@ struct JiveShareAttributes const JiveShareAttributes = {
 
 @implementation JiveShare
 
-@synthesize participants, sharedContent, sharedPlace, tags, visibleToExternalContributors;
+@synthesize sharedContent, sharedPlace;
 
 static NSString * const JiveShareType = @"share";
 
