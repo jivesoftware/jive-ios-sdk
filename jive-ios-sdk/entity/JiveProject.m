@@ -21,13 +21,22 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveProjectAttributes const JiveProjectAttributes = {
+    .creator = @"creator",
+    .dueDate = @"dueDate",
+    .locale = @"locale",
+    .projectStatus = @"projectStatus",
+    .startDate = @"startDate",
+    .tags = @"tags",
+};
+
 @implementation JiveProject
 
-@synthesize creator, dueDate, projectStatus, startDate, tags;
+@synthesize creator, dueDate, locale, projectStatus, startDate, tags;
 
 static NSString * const JiveProjectType = @"project";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveProject class])
         [super registerClass:self forType:JiveProjectType];
 }
@@ -41,6 +50,7 @@ static NSString * const JiveProjectType = @"project";
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:projectStatus forKey:@"projectStatus"];
+    [dictionary setValue:locale forKey:JiveProjectAttributes.locale];
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];
     

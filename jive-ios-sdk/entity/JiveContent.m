@@ -18,22 +18,8 @@
 //
 
 #import "JiveContent.h"
+#import "JiveTypedObject_internal.h"
 
-#import "JiveAnnouncement.h"
-#import "JiveMessage.h"
-#import "JiveDiscussion.h"
-#import "JiveDocument.h"
-#import "JiveFile.h"
-#import "JivePoll.h"
-#import "JivePost.h"
-#import "JiveComment.h"
-#import "JiveDirectMessage.h"
-#import "JiveFavorite.h"
-#import "JiveTask.h"
-#import "JiveUpdate.h"
-#import "JiveVideo.h"
-#import "JiveIdea.h"
-#import "JiveEvent.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentAttributes const JiveContentAttributes = {
@@ -59,32 +45,24 @@ struct JiveContentAttributes const JiveContentAttributes = {
 
 @synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount;
 
+static NSMutableDictionary *contentClasses;
+
++ (void)registerClass:(Class)clazz forType:(NSString *)type {
+    [super registerClass:clazz forType:type];
+    if (!contentClasses)
+        contentClasses = [NSMutableDictionary dictionary];
+    
+    [contentClasses setValue:clazz forKey:type];
+}
+
 + (Class) entityClass:(NSDictionary*) obj {
-    
-    static NSDictionary *classDictionary = nil;
-    
-    if (!classDictionary)
-        classDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[JiveAnnouncement class], @"announcement",
-                           [JiveMessage class], @"message",
-                           [JiveDiscussion class], @"discussion",
-                           [JiveDocument class], @"document",
-                           [JiveFile class], @"file",
-                           [JivePoll class], @"poll",
-                           [JivePost class], @"post",
-                           [JiveComment class], @"comment",
-                           [JiveDirectMessage class], @"dm",
-                           [JiveFavorite class], @"favorite",
-                           [JiveTask class], @"task",
-                           [JiveUpdate class], @"update",
-                           [JiveVideo class], @"video",
-                           [JiveIdea class], @"idea",
-                           [JiveEvent class], @"event",
-                           nil];
-    
     NSString* type = [obj objectForKey:@"type"];
-    Class targetClass = [classDictionary objectForKey:type];
     
-    return targetClass ? targetClass : [self class];
+    if (!type)
+        return [self class];
+    
+    return [[contentClasses objectsForKeys:[NSArray arrayWithObject:type]
+                            notFoundMarker:[self class]] objectAtIndex:0];
 }
 
 - (NSDictionary *)toJSONDictionary {

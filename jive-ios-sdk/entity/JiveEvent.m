@@ -26,7 +26,7 @@
 
 static NSString * const JiveEventType = @"event";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveEvent class])
         [super registerClass:self forType:JiveEventType];
 }

@@ -32,7 +32,7 @@ struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 
 static NSString * const JiveDmType = @"dm";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveDirectMessage class])
         [super registerClass:self forType:JiveDmType];
 }

@@ -19,12 +19,21 @@
 
 #import "JivePlace.h"
 
+extern struct JiveSpaceAttributes {
+    __unsafe_unretained NSString *childCount;
+    __unsafe_unretained NSString *locale;
+    __unsafe_unretained NSString *tags;
+} const JiveSpaceAttributes;
+
 //! \class JiveSpace
 //! https://developers.jivesoftware.com/api/v3/rest/SpaceEntity.html
 @interface JiveSpace : JivePlace
 
 //! Number of spaces that are direct children of this space.
 @property(nonatomic, readonly, strong) NSNumber* childCount;
+
+//! Locale string of the space.
+@property (nonatomic, copy) NSString *locale;
 
 //! Tags associated with this object. String[]
 @property(nonatomic, strong) NSArray* tags;

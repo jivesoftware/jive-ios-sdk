@@ -26,7 +26,7 @@
 
 static NSString * const JiveVideoType = @"video";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveVideo class])
         [super registerClass:self forType:JiveVideoType];
 }

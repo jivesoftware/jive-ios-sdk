@@ -1,8 +1,8 @@
 //
-//  JiveSpace.m
+//  JiveShare.m
 //  jive-ios-sdk
 //
-//  Created by Jacob Wright on 11/15/12.
+//  Created by Orson Bushnell on 4/26/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,37 +17,37 @@
 //    limitations under the License.
 //
 
-#import "JiveSpace.h"
+#import "JiveShare.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveSpaceAttributes const JiveSpaceAttributes = {
-    .childCount = @"childCount",
-    .locale = @"locale",
-    .tags = @"tags",
+struct JiveShareAttributes const JiveShareAttributes = {
+    .sharedContent = @"sharedContent",
+    .sharedPlace = @"sharedPlace",
 };
 
-@implementation JiveSpace
+@implementation JiveShare
 
-@synthesize childCount, locale, tags;
+@synthesize participants, sharedContent, sharedPlace, tags, visibleToExternalContributors;
 
-static NSString * const JiveSpaceType = @"space";
+static NSString * const JiveShareType = @"share";
 
 + (void)load {
-    if (self == [JiveSpace class])
-        [super registerClass:self forType:JiveSpaceType];
+    if (self == [JiveShare class])
+        [super registerClass:self forType:JiveShareType];
 }
 
 - (NSString *)type {
-    return JiveSpaceType;
+    return JiveShareType;
 }
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:childCount forKey:@"childCount"];
-    [dictionary setValue:locale forKey:JiveSpaceAttributes.locale];
-    if (tags)
-        [dictionary setValue:tags forKey:@"tags"];
+    if (sharedContent)
+        [dictionary setValue:sharedContent.toJSONDictionary forKey:JiveShareAttributes.sharedContent];
+    
+    if (sharedPlace)
+        [dictionary setValue:sharedPlace.toJSONDictionary forKey:JiveShareAttributes.sharedPlace];
     
     return dictionary;
 }

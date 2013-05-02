@@ -28,7 +28,7 @@
 
 static NSString * const JiveAnnouncementType = @"announcement";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveAnnouncement class])
         [super registerClass:self forType:JiveAnnouncementType];
 }

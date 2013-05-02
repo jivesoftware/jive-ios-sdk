@@ -144,14 +144,21 @@
 #if JIVE_JSON_DEBUG
             // should be an array of strings if not mapped to an entity
             if ([JSON count] > 0 && ![[JSON objectAtIndex:0] isKindOfClass:[NSString class]]) {
-                NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.", property);
+                NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.",
+                      propertyName);
             }
 #endif
             return JSON;
         }
     }
     
-    id obj = [[clazz alloc] init];
+    id obj;
+    
+    if ([clazz isSubclassOfClass:[JiveObject class]]) {
+        obj = [[clazz entityClass:JSON] new];
+    } else {
+        obj = [clazz new];
+    }
 
     if([JSON isKindOfClass:[NSDictionary class]]) {
         
@@ -171,7 +178,7 @@
                  obj = [self parseDictionaryForProperty:propertyName fromJSON:JSON];
              } else {
 #if JIVE_JSON_DEBUG
-                 NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", cls);
+                 NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", clazz);
 #endif
              }
         
