@@ -1,0 +1,7 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "description" : "Base URL of this Jive instance",
+    "name" : "instance.url",
+    "type" : "string",
+    "value" : "https://doritosoftware-banzai-656-2-enterprise.doritosoftware.com"
+}

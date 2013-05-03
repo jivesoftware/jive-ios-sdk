@@ -26,7 +26,7 @@
 
 static NSString * const JiveIdeaType = @"idea";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveIdea class])
         [super registerClass:self forType:JiveIdeaType];
 }

@@ -1224,7 +1224,7 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (NSOperation *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
     
     [request setHTTPMethod:@"POST"];
@@ -1233,9 +1233,9 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     NSMutableData *body = [NSMutableData data];
     NSData *boundaryData = [[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *documentData = [NSJSONSerialization dataWithJSONObject:document.toJSONDictionary
-                                                           options:0
-                                                             error:nil];
+    NSData *contentData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
+                                                          options:0
+                                                            error:nil];
     NSString * const typeFormat = @"Content-Type: %@\r\n\r\n";
     
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
@@ -1243,7 +1243,7 @@
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"content\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:documentData];
+    [body appendData:contentData];
     for (JiveAttachment *attachment in attachmentURLs) {
         CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                                 (__bridge CFStringRef)[attachment.url pathExtension],
@@ -1268,9 +1268,26 @@
                                  onError:error];
 }
 
-- (void) createDocument:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
-    [[self createDocumentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
+- (void) createContent:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [[self createContentOperation:content withAttachments:attachmentURLs options:options onComplete:complete onError:error] start];
 }
+
+- (void)createDocument:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [self createContent:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (void)createPost:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [self createContent:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (NSOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    return [self createContentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (NSOperation *)createPostOperation:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    return [self createContentOperation:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
 
 #pragma mark - Places
 
@@ -1323,11 +1340,25 @@
 }
 
 - (void)placeFromURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self placeOperationWithURL:placeURL
-                                             withOptions:options
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
-    
+    NSOperation *operation = nil;
+    if(placeURL.query == nil || [placeURL.query rangeOfString:@"filter="].location == NSNotFound) {
+        operation = [self placeOperationWithURL:placeURL
+                                    withOptions:options
+                                     onComplete:completeBlock
+                                        onError:errorBlock];
+    } else {
+        NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:placeURL];
+        [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                                forURL:placeURL];
+        operation = [self listOperationForClass:[JivePlace class] request:mutableURLRequest onComplete:^(NSArray *objects) {
+            JivePlace *place = nil;
+            if ([objects count]) {
+                place = objects[0];
+            }
+            completeBlock(place);
+        } onError:errorBlock];
+    }
+
     [operation start];
 }
 
@@ -1541,7 +1572,7 @@
     [operation start];
 }
 
-- (void) membersForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (void) membersForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSOperation *operation = [self membersOperationForGroup:group
                                                     options:options
                                                  onComplete:completeBlock
@@ -1577,7 +1608,7 @@
     return operation;
 }
 
-- (NSOperation *) membersOperationForGroup:(JiveGroup *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (NSOperation *) membersOperationForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     JiveResourceEntry *resourceEntry = [group.resources objectForKey:@"members"];
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[resourceEntry.ref path], nil];
     NSOperation *operation = [self listOperationForClass:[JiveMember class]
@@ -1903,6 +1934,23 @@
     [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
+#pragma mark - Properties
+
+- (NSOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"api/core/v3/metadata/properties/%@", propertyName, nil];
+    NSOperation *operation = [self entityOperationForClass:[JiveProperty class]
+                                                   request:request
+                                                onComplete:complete
+                                                   onError:error];
+    
+    return operation;
+}
+
+- (void) propertyWithName:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
@@ -1985,7 +2033,7 @@
 - (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
                                            forURL:(NSURL *)URL {
     if(_delegate && [_delegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
-        JiveCredentials *credentials = [_delegate credentialsForJiveInstance:URL];
+        id<JiveCredentials> credentials = [_delegate credentialsForJiveInstance:URL];
         [credentials applyToRequest:mutableURLRequest];
     }
 }

@@ -32,7 +32,7 @@ struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 
 static NSString * const JiveDmType = @"dm";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveDirectMessage class])
         [super registerClass:self forType:JiveDmType];
 }
@@ -49,13 +49,17 @@ static NSString * const JiveDmType = @"dm";
                            [JivePerson class], @"participants",
                            nil];
     
-    NSLog(@"%@", propertyName);
     return [propertyClasses objectForKey:propertyName];
 }
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
+    [dictionary setValue:visibleToExternalContributors
+                  forKey:JiveDirectMessageAttributes.visibleToExternalContributors];
+    [self addArrayElements:participants
+          toJSONDictionary:dictionary
+                    forTag:JiveDirectMessageAttributes.participants];
     if (self.tags.count > 0)
         [dictionary setValue:self.tags forKey:JiveDirectMessageAttributes.tags];
     

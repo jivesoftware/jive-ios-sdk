@@ -18,6 +18,7 @@
 //
 
 #import "OCMockObject+JiveAuthorizationDelegate.h"
+#import "JiveHTTPBasicAuthCredentials.h"
 
 @implementation OCMockObject (JiveAuthorizationDelegate)
 
@@ -30,8 +31,8 @@
                                                                 andPassword:(NSString *)password {
     id mockAuthorizationDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     
-    [[[mockAuthorizationDelegate stub] andReturn:[[JiveCredentials alloc] initWithUserName:username
-                                                                                    password:password]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthorizationDelegate stub] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
+                                                                                               password:password]] credentialsForJiveInstance:[OCMArg any]];
     
     return mockAuthorizationDelegate;
 }

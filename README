@@ -1,8 +1,0 @@
-Make sure to update submodules after cloning:
-git submodule update --init --recursive
-
-https://devcenter.apps.jivesoftware.com/api/rest/
-
-http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml
-
-https://github.com/jverkoey/iOS-Framework

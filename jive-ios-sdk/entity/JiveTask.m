@@ -27,7 +27,7 @@
 
 static NSString * const JiveTaskType = @"task";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveTask class])
         [super registerClass:self forType:JiveTaskType];
 }

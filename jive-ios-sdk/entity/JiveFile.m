@@ -28,7 +28,7 @@
 
 static NSString * const JiveFileType = @"file";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveFile class])
         [super registerClass:self forType:JiveFileType];
 }

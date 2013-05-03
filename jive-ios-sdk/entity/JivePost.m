@@ -22,6 +22,14 @@
 #import "JiveAttachment.h"
 #import "JiveTypedObject_internal.h"
 
+struct JivePostStatusValues const JivePostStatusValues = {
+        .incomplete = @"incomplete",
+        .pendingApproval = @"pending_approval",
+        .rejected = @"rejected",
+        .scheduled = @"scheduled",
+        .published = @"published"
+};
+
 @implementation JivePost
 
 @synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
@@ -29,7 +37,7 @@
 
 static NSString * const JivePostType = @"post";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JivePost class])
         [super registerClass:self forType:JivePostType];
 }

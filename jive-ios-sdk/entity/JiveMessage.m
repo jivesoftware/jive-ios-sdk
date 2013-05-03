@@ -27,7 +27,7 @@
 
 static NSString * const JiveMessageType = @"message";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveMessage class])
         [super registerClass:self forType:JiveMessageType];
 }

@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Jive.h"
-#import "JiveCredentials.h"
+#import "JiveHTTPBasicAuthCredentials.h"
 #import "JAPIRequestOperation.h"
 
 #undef RUN_LIVE
@@ -41,7 +41,7 @@
 // More examples here: http://svn.mulle-kybernetik.com/OCMock/trunk/Source/OCMockObjectTests.m
 
 - (void) testOCMockExample {
-  
+    
     id mockString = [OCMockObject mockForClass:[NSMutableString class]];
     
     NSUInteger expectedValue = 10;
@@ -65,9 +65,9 @@
     JAPIRequestOperation *operation = [[JAPIRequestOperation alloc] initWithRequest:request];
     
     id mock = [OCMockObject partialMockForObject:operation];
-   
+    
     [[[mock stub] andCall:@selector(hasAcceptableContentType) onObject:self] hasAcceptableContentType];
- 
+    
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [mock setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *HTTPRequestOperation, id responseObject) {
             // Test succeeds if we get here
@@ -79,19 +79,19 @@
         
         [(JAPIRequestOperation *)mock start];
     }];
-
+    
 }
 
-- (void) testJiveCredentialsBasicAuth {
+- (void) testJiveHTTPBasicAuthCredentials {
     
-    JiveCredentials *credentials = [[JiveCredentials alloc]
-                                    initWithUserName:@"rob" password:@"blahblah987654"];
+    JiveHTTPBasicAuthCredentials *HTTPBasicAuthCredentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"rob"
+                                                                                                           password:@"blahblah987654"];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.jivesoftware.com"]];
     
     STAssertTrue([[request allHTTPHeaderFields] count] == 0, @"NSMutableURLRequest should have 0 header count");
     
-    [credentials applyToRequest:request];
+    [HTTPBasicAuthCredentials applyToRequest:request];
     
     
     STAssertTrue([[request allHTTPHeaderFields] count] == 1, @"NSMutableURLRequest should have at least 1 header");
@@ -101,7 +101,7 @@
     STAssertNotNil(header, @"Authorization should not be nil");
     
     STAssertTrue([header isEqualToString:@"Basic cm9iOmJsYWhibGFoOTg3NjU0"],
-                  @"JiveCredentials failed to properly generate Basic Auth header");
+                 @"JiveCredentials failed to properly generate Basic Auth header");
     
 }
 
@@ -110,14 +110,15 @@
     NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     
     id mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
-   
-    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"rob.derstadt" password:@""]] credentialsForJiveInstance:[OCMArg any]];
     
-//     __block JiveCredentials* credentials = [[JiveCredentials alloc] initWithUserName:@"rob.derstadt" password:@""];
-//    
-//    [[[mockAuthDelegate expect] andDo:^(NSInvocation *invocation) {
-//        [invocation setReturnValue:&credentials];
-//    }] credentialsForJiveInstance: [OCMArg any]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"rob.derstadt"
+                                                                                        password:@""]] credentialsForJiveInstance:[OCMArg any]];
+    
+    //     __block JiveCredentials* credentials = [[JiveCredentials alloc] initWithUserName:@"rob.derstadt" password:@""];
+    //
+    //    [[[mockAuthDelegate expect] andDo:^(NSInvocation *invocation) {
+    //        [invocation setReturnValue:&credentials];
+    //    }] credentialsForJiveInstance: [OCMArg any]];
     
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     
@@ -131,7 +132,7 @@
     }];
     
     //[mockAuthDelegate verify]; // Check that delegate was actually called
-
+    
     
 }
 
@@ -139,7 +140,8 @@
     NSURL *url = [NSURL URLWithString:@"http://tiedhouse-yeti1.eng.jiveland.com"];
     id mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     
-    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"iOS-SDK-TestUser1" password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"iOS-SDK-TestUser1"
+                                                                                        password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
     
     Jive *jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     JivePost *post = [[JivePost alloc] init];
@@ -161,7 +163,8 @@
     }];
     
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
-    [[[mockAuthDelegate expect] andReturn:[[JiveCredentials alloc] initWithUserName:@"iOS-SDK-TestUser1" password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"iOS-SDK-TestUser1"
+                                                                                        password:@"test123"]] credentialsForJiveInstance:[OCMArg any]];
     jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
     [self waitForTimeout:^(void (^finishedBlock2)(void)) {
         [jive deleteContent:postToDelete onComplete:^{

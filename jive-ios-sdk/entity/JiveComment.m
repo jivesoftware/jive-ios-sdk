@@ -26,7 +26,7 @@
 
 static NSString * const JiveCommentType = @"comment";
 
-+ (void)initialize {
++ (void)load {
     if (self == [JiveComment class])
         [super registerClass:self forType:JiveCommentType];
 }

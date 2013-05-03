@@ -1,8 +1,8 @@
 //
-//  JiveCredentials.m
+//  JiveHTTPBasicAuthCredentials.m
 //  jive-ios-sdk
 //
-//  Created by Rob Derstadt on 10/2/12.
+//  Created by Heath Borders on 4/30/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,21 +17,21 @@
 //    limitations under the License.
 //
 
-#import "JiveCredentials.h"
+#import "JiveHTTPBasicAuthCredentials.h"
 #import "NSData+JiveBase64.h"
 
-@interface JiveCredentials() {
-@private
-    JiveAuthentication _authType;
-    __strong NSString* _header;
-}
+@interface JiveHTTPBasicAuthCredentials()
+
+@property (nonatomic) NSString *authorizationHeaderValue;
 
 @end
 
-@implementation JiveCredentials
+@implementation JiveHTTPBasicAuthCredentials
 
+#pragma mark - init/dealloc
 
-- (id) initWithUserName:(NSString*) username password:(NSString*) password {
+- (id)initWithUsername:(NSString *)username
+              password:(NSString *)password {
     
     if(!username || [username length] <= 0) {
         [NSException raise:@"JiveCredentials username may not be nil or empty." format:nil];
@@ -44,27 +44,17 @@
     if(self = [super init]) {
         NSData* data = [[NSString stringWithFormat:@"%@:%@", username, password]
                         dataUsingEncoding:NSUTF8StringEncoding];
-        _header = [NSString stringWithFormat:@"Basic %@", [data jive_base64EncodedString]];
+        self.authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",
+                                         [data jive_base64EncodedString]];
     }
     
     return self;
 }
 
-
-- (id) initWithActivationCode:(NSString*) code {
-   
-    
-    
-    return nil;
-}
+#pragma mark - JiveCredentials
 
 - (void) applyToRequest:(NSMutableURLRequest*) request {
-    
-    if(_authType == JiveAuthenticationBasic) {
-        [request setValue:_header forHTTPHeaderField:@"Authorization"];
-    } else {
-        
-    }
+    [request setValue:self.authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 }
 
 @end

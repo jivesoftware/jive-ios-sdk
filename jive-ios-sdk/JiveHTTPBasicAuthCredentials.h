@@ -1,8 +1,8 @@
 //
-//  JiveCredentials.h
+//  JiveHTTPBasicAuthCredentials.h
 //  jive-ios-sdk
 //
-//  Created by Rob Derstadt on 10/2/12.
+//  Created by Heath Borders on 4/30/13.
 //
 //    Copyright 2013 Jive Software Inc.
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +18,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JiveCredentials.h"
 
-//! \class JiveCredentials
-@protocol JiveCredentials<NSObject>
+//! \class JiveHTTPBasicAuthCredentials
+@interface JiveHTTPBasicAuthCredentials : NSObject<JiveCredentials>
 
-//! Apply the credentials to a request object.
-- (void) applyToRequest:(NSMutableURLRequest*) request;
+//! Initialize the credentials object with a username and password.
+- (id)initWithUsername:(NSString *)username
+              password:(NSString *)password;
 
 @end
