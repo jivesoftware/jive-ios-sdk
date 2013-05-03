@@ -27,4 +27,11 @@ struct JiveResourceEntryAttributes const JiveResourceEntryAttributes = {
 
 @synthesize ref, allowed;
 
+- (id)persistentJSON {
+    return @{
+             @"ref" : [ref absoluteString],
+             @"allowed" : allowed,
+             };
+}
+
 @end

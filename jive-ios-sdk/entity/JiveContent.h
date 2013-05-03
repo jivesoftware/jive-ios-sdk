@@ -100,4 +100,10 @@ extern struct JiveContentAttributes {
 //! Number of times this content object has been viewed.
 @property(nonatomic, readonly) NSNumber *viewCount;
 
+- (NSURL *)likes;
+- (BOOL)canLike;
+- (BOOL)canUnlike;
+
+- (NSURL *)html;
+
 @end

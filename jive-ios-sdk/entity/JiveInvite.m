@@ -28,7 +28,7 @@
 
 @implementation JiveInvite
 
-@synthesize body, email, jiveId, invitee, inviter, place, published, resources, revokeDate, revoker;
+@synthesize body, email, jiveId, invitee, inviter, place, published, revokeDate, revoker;
 @synthesize sentDate, state, updated;
 
 - (NSString *) type {

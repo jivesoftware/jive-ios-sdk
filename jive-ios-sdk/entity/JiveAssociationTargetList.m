@@ -12,12 +12,10 @@
 @implementation JiveAssociationTargetList
 
 - (void) addAssociationTarget:(JiveTypedObject *)target {
-    JiveResourceEntry *resource = [target.resources objectForKey:@"self"];
-    
     if (!targetURIs)
         targetURIs = [NSMutableArray arrayWithCapacity:1];
     
-    [targetURIs addObject:[resource.ref absoluteString]];
+    [targetURIs addObject:[target.selfRef absoluteString]];
 }
 
 - (NSArray *) toJSONArray {

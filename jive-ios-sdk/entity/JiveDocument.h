@@ -66,5 +66,6 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
+- (NSURL *)html;
 
 @end

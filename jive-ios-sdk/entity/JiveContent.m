@@ -22,6 +22,16 @@
 
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JiveContentResourceTags {
+    __unsafe_unretained NSString *likes;
+    __unsafe_unretained NSString *html;
+};
+
+struct JiveContentResourceTags const JiveContentResourceTags = {
+    .likes = @"likes",
+    .html = @"html"
+};
+
 struct JiveContentAttributes const JiveContentAttributes = {
         .author = @"author",
         .content = @"content",
@@ -101,6 +111,22 @@ static NSMutableDictionary *contentClasses;
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
     return dictionary;
+}
+
+- (NSURL *)likes {
+    return [self resourceForTag:JiveContentResourceTags.likes].ref;
+}
+
+- (BOOL)canLike {
+    return [self resourceHasPostForTag:JiveContentResourceTags.likes];
+}
+
+- (BOOL)canUnlike {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.likes];
+}
+
+- (NSURL *)html {
+    return [self resourceForTag:JiveContentResourceTags.html].ref;
 }
 
 @end

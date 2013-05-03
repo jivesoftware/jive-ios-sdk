@@ -18,6 +18,7 @@
 //
 
 #import "JivePlace.h"
+#import "JiveTypedObject_internal.h"
 
 #import "JiveBlog.h"
 #import "JiveGroup.h"
@@ -25,6 +26,24 @@
 #import "JiveSpace.h"
 #import "JiveSummary.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+
+struct JivePlaceResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *featuredContent;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *places;
+    __unsafe_unretained NSString *self;
+    __unsafe_unretained NSString *statics;
+};
 
 struct JivePlaceAttributes const JivePlaceAttributes = {
         .contentTypes = @"contentTypes",
@@ -143,6 +162,18 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
         [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"visibleToExternalContributors"];
     
     return dictionary;
+}
+
+- (NSURL *)html {
+    return [self resourceForTag:JivePlaceResourceAttributes.html].ref;
+}
+
+- (NSURL *)avatar {
+    return [self resourceForTag:JivePlaceResourceAttributes.avatar].ref;
+}
+
+- (NSURL *)blogURL {
+    return [self resourceForTag:JivePlaceResourceAttributes.blog].ref;
 }
 
 @end

@@ -77,4 +77,8 @@ static NSString * const JiveDocumentType = @"document";
     return dictionary;
 }
 
+- (NSURL *)html {
+    return [self resourceForTag:@"html"].ref;
+}
+
 @end

@@ -23,7 +23,7 @@
 
 @implementation JiveMember
 
-@synthesize group, jiveId, person, published, resources, state, updated;
+@synthesize group, jiveId, person, published, state, updated;
 
 - (NSString *)type {
     return @"member";

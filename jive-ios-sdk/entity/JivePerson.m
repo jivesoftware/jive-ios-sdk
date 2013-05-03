@@ -29,6 +29,16 @@ struct JivePersonAttributes const JivePersonAttributes = {
 	.jiveId = @"jiveId",
 };
 
+struct JivePersonResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *avatar;
+};
+
+struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
+    .activity = @"activity",
+    .avatar = @"avatar"
+};
+
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
@@ -78,6 +88,31 @@ static NSString * const JivePersonType = @"person";
         [dictionary setValue:[tags copy] forKey:@"tags"];
     
     return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *persistentJSONDictionary = (NSMutableDictionary *)[self toJSONDictionary];
+    NSMutableDictionary *resourcesJSONDictionary = [NSMutableDictionary dictionaryWithCapacity:[self.resources count]];
+    
+    for (NSString *resourceEntryKey in [self.resources keyEnumerator]) {
+        JiveResourceEntry *resourceEntry = self.resources[resourceEntryKey];
+        
+        resourcesJSONDictionary[resourceEntryKey] = resourceEntry.persistentJSON;
+    }
+    
+    if ([resourcesJSONDictionary count]) {
+        persistentJSONDictionary[@"resources"] = resourcesJSONDictionary;
+    }
+    
+    return persistentJSONDictionary;
+}
+
+- (NSURL *)avatar {
+    return [self resourceForTag:JivePersonResourceAttributes.avatar].ref;
+}
+
+- (NSURL *)activity {
+    return [self resourceForTag:JivePersonResourceAttributes.activity].ref;
 }
 
 @end

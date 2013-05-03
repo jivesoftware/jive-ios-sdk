@@ -20,6 +20,14 @@
 #import "JiveUpdate.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveUpdateResourceTags {
+    __unsafe_unretained NSString *images;
+};
+
+struct JiveUpdateResourceTags const JiveUpdateResourceTags = {
+    .images = @"images"
+};
+
 struct JiveUpdateAttributes const JiveUpdateAttributes = {
 	.latitude = @"latitude",
 	.longitude = @"longitude",
@@ -54,6 +62,10 @@ static NSString * const JiveUpdateType = @"update";
         [dictionary setValue:tags forKey:JiveUpdateAttributes.tags];
     
     return dictionary;
+}
+
+- (NSURL *)imagesURL {
+    return [self resourceForTag:JiveUpdateResourceTags.images].ref;
 }
 
 @end

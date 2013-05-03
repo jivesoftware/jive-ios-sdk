@@ -17,12 +17,12 @@
 //    limitations under the License.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 #import "JivePerson.h"
 
 //! \class JiveStream
 //! https://developers.jivesoftware.com/api/v3/rest/StreamEntity.html
-@interface JiveStream : JiveObject
+@interface JiveStream : JiveTypedObject
 
 //! Unique identifier of this custom stream.
 @property(nonatomic, readonly, strong) NSString* jiveId;
@@ -40,9 +40,6 @@
 //! Flag indicating whether the owner of this custom stream wants to receive email when new activity arrives.
 @property(nonatomic, strong) NSNumber *receiveEmails;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object.
-@property(nonatomic, readonly, strong) NSDictionary* resources;
-
 //! Source of this particular stream. Custom streams managed via this API MUST have a stream source of custom. Other values for non-custom streams are:
 // all - the standard "Activities" stream
 // communications - the standard "Communications" stream
@@ -52,10 +49,9 @@
 // watches - TODO definition
 @property(nonatomic, readonly, strong) NSString* source;
 
-//! The object type of this object ("stream").
-@property(nonatomic, readonly, strong) NSString* type;
-
 //! Date and time this custom stream configuration was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
+
+- (NSURL *)activity;
 
 @end

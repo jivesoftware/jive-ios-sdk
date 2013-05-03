@@ -40,24 +40,6 @@ extern struct JivePlaceAttributes {
     __unsafe_unretained NSString *visibleToExternalContributors;
 } const JivePlaceAttributes;
 
-extern struct JivePlaceResourceAttributes {
-    __unsafe_unretained NSString *activity;
-    __unsafe_unretained NSString *announcements;
-    __unsafe_unretained NSString *avatar;
-    __unsafe_unretained NSString *blog;
-    __unsafe_unretained NSString *categories;
-    __unsafe_unretained NSString *contents;
-    __unsafe_unretained NSString *extprops;
-    __unsafe_unretained NSString *featuredContent;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *html;
-    __unsafe_unretained NSString *invites;
-    __unsafe_unretained NSString *members;
-    __unsafe_unretained NSString *places;
-    __unsafe_unretained NSString *self;
-    __unsafe_unretained NSString *statics;
-} const JivePlaceResourceAttributes;
-
 extern struct JivePlaceContentTypeValues {
     __unsafe_unretained NSString *documents;
     __unsafe_unretained NSString *discussions;
@@ -136,5 +118,9 @@ extern struct JivePlaceContentTypeValues {
 
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic) bool visibleToExternalContributors;
+
+- (NSURL *)html;
+- (NSURL *)avatar;
+- (NSURL *)blogURL;
 
 @end

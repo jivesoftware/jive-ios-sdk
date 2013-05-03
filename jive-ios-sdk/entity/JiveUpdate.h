@@ -48,4 +48,6 @@ extern struct JiveUpdateAttributes {
 // * place - place permissions specify which users can see the content. Default when visibility is not specified but parent is specified.
 @property (nonatomic, strong) NSString *visibility;
 
+- (NSURL *)imagesURL;
+
 @end

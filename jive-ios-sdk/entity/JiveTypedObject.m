@@ -21,9 +21,31 @@
 #import "JiveResourceEntry.h"
 #import "JiveObjcRuntime.h"
 
+struct JiveTypedObjectResourceTags {
+    __unsafe_unretained NSString *self;
+};
+
+struct JiveTypedObjectResourceAllowed {
+    __unsafe_unretained NSString *get;
+    __unsafe_unretained NSString *put;
+    __unsafe_unretained NSString *post;
+    __unsafe_unretained NSString *delete;
+};
+
 struct JiveTypedObjectAttributes const JiveTypedObjectAttributes = {
 	.type = @"type",
 	.resources = @"resources"
+};
+
+struct JiveTypedObjectResourceTags const JiveTypedObjectResourceTags = {
+    .self = @"self"
+};
+
+struct JiveTypedObjectResourceAllowed const JiveTypedObjectResourceAllowed = {
+    .get = @"GET",
+    .put = @"PUT",
+    .post = @"POST",
+    .delete = @"DELETE"
 };
 
 @implementation JiveTypedObject
@@ -80,6 +102,34 @@ static NSMutableDictionary *typedClasses;
     }
     
     return nil;
+}
+
+- (JiveResourceEntry *)resourceForTag:(NSString *)tag {
+    return self.resources[tag];
+}
+
+- (BOOL)resourceHasDeleteForTag:(NSString *)tag {
+    return [[self resourceForTag:tag].allowed containsObject:JiveTypedObjectResourceAllowed.delete];
+}
+
+- (BOOL)resourceHasGetForTag:(NSString *)tag {
+    return [[self resourceForTag:tag].allowed containsObject:JiveTypedObjectResourceAllowed.get];
+}
+
+- (BOOL)resourceHasPutForTag:(NSString *)tag {
+    return [[self resourceForTag:tag].allowed containsObject:JiveTypedObjectResourceAllowed.put];
+}
+
+- (BOOL)resourceHasPostForTag:(NSString *)tag {
+    return [[self resourceForTag:tag].allowed containsObject:JiveTypedObjectResourceAllowed.post];
+}
+
+- (NSURL *)selfRef {
+    return [self resourceForTag:JiveTypedObjectResourceTags.self].ref;
+}
+
+- (BOOL)isUpdateable {
+    return [self resourceHasPutForTag:JiveTypedObjectResourceTags.self];
 }
 
 @end

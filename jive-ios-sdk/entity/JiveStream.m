@@ -18,11 +18,23 @@
 //
 
 #import "JiveStream.h"
-#import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
+
+struct JiveStreamResourceTags {
+    __unsafe_unretained NSString *activity;
+};
+
+struct JiveStreamResourceTags const JiveStreamResourceTags = {
+    .activity = @"activity"
+};
 
 @implementation JiveStream
 
-@synthesize jiveId, name, person, published, receiveEmails, resources, source, type, updated;
+@synthesize jiveId, name, person, published, receiveEmails, source, updated;
+
+- (NSString *)type {
+    return @"stream";
+}
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
     if ([@"resources" isEqualToString:property]) {
@@ -51,6 +63,10 @@
         [dictionary setValue:@"custom" forKey:@"source"];
     
     return dictionary;
+}
+
+- (NSURL *)activity {
+    return [self resourceForTag:JiveStreamResourceTags.activity].ref;
 }
 
 @end

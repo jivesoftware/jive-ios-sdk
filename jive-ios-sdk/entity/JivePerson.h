@@ -89,4 +89,9 @@ extern struct JivePersonAttributes {
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
+- (NSURL *)avatar;
+- (NSURL *)activity;
+
+- (id)persistentJSON;
+
 @end

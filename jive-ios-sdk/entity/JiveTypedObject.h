@@ -31,7 +31,7 @@ extern struct JiveTypedObjectAttributes {
 //! The object type of this object. This field is required when creating new content.
 @property(nonatomic, readonly) NSString* type;
 
-//! Resource links (and related permissions for the requesting object) relevant to this object.
-@property(nonatomic, readonly, strong) NSDictionary* resources;
+- (NSURL *)selfRef;
+- (BOOL)isUpdateable;
 
 @end

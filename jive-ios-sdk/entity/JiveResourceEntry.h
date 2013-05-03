@@ -31,4 +31,6 @@ extern struct JiveResourceEntryAttributes {
 //! Access types allowed by this service.
 @property (nonatomic, readonly) NSArray *allowed;
 
+- (id)persistentJSON;
+
 @end
