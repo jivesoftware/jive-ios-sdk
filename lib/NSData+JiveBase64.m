@@ -295,16 +295,16 @@ char *JiveNewBase64Encode(
 // base64EncodedString
 //
 // Creates an NSString object that contains the base 64 encoding of the
-// receiver's data. Lines are broken at 64 characters long.
+// receiver's data. If breakLines == YES then lines are broken at 64 characters long.
 //
 // returns an autoreleased NSString being the base 64 representation of the
 //	receiver.
 //
-- (NSString *)jive_base64EncodedString
+- (NSString *)jive_base64EncodedString:(BOOL)breakLines
 {
 	size_t outputLength;
 	char *outputBuffer =
-		JiveNewBase64Encode([self bytes], [self length], true, &outputLength);
+		JiveNewBase64Encode([self bytes], [self length], breakLines, &outputLength);
 	
     if (outputBuffer)
     {

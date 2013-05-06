@@ -97,7 +97,7 @@
 }
 
 + (void)initialize {
-	if([[NSData class] instanceMethodSignatureForSelector:@selector(jive_base64EncodedString)] == NULL)
+	if([[NSData class] instanceMethodSignatureForSelector:@selector(jive_base64EncodedString:)] == NULL)
 		[NSException raise:NSInternalInconsistencyException format:@"** Expected method not present; the method jive_base64EncodedString: is not implemented by NSData. If you see this exception it is likely that you are using the static library version of Jive and your project is not configured correctly to load categories from static libraries. Did you forget to add the -ObjC and -all_load linker flags?"];
 }
 

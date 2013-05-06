@@ -26,6 +26,7 @@
 #import "Jive.h"
 #import "JiveHTTPBasicAuthCredentials.h"
 #import "JAPIRequestOperation.h"
+#import "JiveMobileAnalyticsHeader.h"
 
 #undef RUN_LIVE
 
@@ -103,6 +104,28 @@
     STAssertTrue([header isEqualToString:@"Basic cm9iOmJsYWhibGFoOTg3NjU0"],
                  @"JiveCredentials failed to properly generate Basic Auth header");
     
+}
+
+- (void) testJiveMobileAnalyticsHeader {
+    JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"jive-ios-sdkTests"
+                                                                                             AppVersion:@"0.5b"
+                                                                                         connectionType:@"wifi"
+                                                                                         devicePlatform:@"iPad"
+                                                                                          deviceVersion:@"6.0.0"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.jivesoftware.com"]];
+    
+    STAssertTrue([[request allHTTPHeaderFields] count] == 0, @"NSMutableURLRequest should have 0 header count");
+    
+    [mobileAnalyticsHeader applyToRequest:request];
+    
+    STAssertTrue([[request allHTTPHeaderFields] count] == 1, @"NSMutableURLRequest should have at least 1 header");
+    
+    NSString *header = [[request allHTTPHeaderFields] objectForKey:@"X-Jive-Client"];
+    
+    STAssertNotNil(header, @"Mobile Analytics Header should not be nil");
+    
+    STAssertTrue([header isEqualToString:@"eyJBcHAtVmVyc2lvbiI6IjAuNWIiLCJBcHAtU3BlYyI6eyJkZXZpY2VQbGF0Zm9ybSI6ImlQYWQiLCJyZXF1ZXN0T3JpZ2luIjoiTmF0aXZlIiwiY29ubmVjdGlvblR5cGUiOiJ3aWZpIiwiZGV2aWNlVmVyc2lvbiI6IjYuMC4wIn0sIkFwcC1JRCI6ImppdmUtaW9zLXNka1Rlc3RzIn0="], @"JiveCredentials failed to properly generate Basic Auth header");
 }
 
 - (void) LIVE(testMeService) {
