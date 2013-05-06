@@ -108,7 +108,7 @@
 
 - (void) testJiveMobileAnalyticsHeader {
     JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"jive-ios-sdkTests"
-                                                                                             AppVersion:@"0.5b"
+                                                                                             appVersion:@"0.5b"
                                                                                          connectionType:@"wifi"
                                                                                          devicePlatform:@"iPad"
                                                                                           deviceVersion:@"6.0.0"];

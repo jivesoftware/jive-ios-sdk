@@ -22,7 +22,7 @@
 @interface JiveMobileAnalyticsHeader : NSObject
 
 - (id)initWithAppID:(NSString *)appID
-         AppVersion:(NSString *)appVersion
+         appVersion:(NSString *)appVersion
      connectionType:(NSString *)connectionType
      devicePlatform:(NSString *)devicePlatform
       deviceVersion:(NSString *)deviceVersion;
