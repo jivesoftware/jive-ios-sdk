@@ -87,6 +87,7 @@
 #import "JiveAttachment.h"
 #import "JiveProperty.h"
 #import "JiveShare.h"
+#import "JiveMobileAnalyticsHeader.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
@@ -616,4 +617,5 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 @protocol JiveAuthorizationDelegate <NSObject>
 //! Method to retrive the JiveCredentials for the specified URL.
 - (id<JiveCredentials>)credentialsForJiveInstance:(NSURL *)url;
+- (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url;
 @end
