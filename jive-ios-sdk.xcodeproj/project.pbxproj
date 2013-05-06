@@ -319,7 +319,7 @@
 		B16C2646170E2D1100257533 /* JiveOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C2644170E2D1100257533 /* JiveOutcome.m */; };
 		B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B16C2649170E2E0D00257533 /* JiveOutcomeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B16C264C170E2E0F00257533 /* JiveOutcomeType.m in Sources */ = {isa = PBXBuildFile; fileRef = B16C264A170E2E0E00257533 /* JiveOutcomeType.m */; };
-		B1B5917C17381378009B560E /* JiveMobileAnalyticsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = B1B5917A17381377009B560E /* JiveMobileAnalyticsHeader.h */; };
+		B1B5917C17381378009B560E /* JiveMobileAnalyticsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = B1B5917A17381377009B560E /* JiveMobileAnalyticsHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1B5917D17381378009B560E /* JiveMobileAnalyticsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B5917B17381377009B560E /* JiveMobileAnalyticsHeader.m */; };
 		B1C6D116172B0C3600A1380A /* JiveProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = B1C6D114172B0C3600A1380A /* JiveProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1C6D117172B0C3600A1380A /* JiveProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C6D115172B0C3600A1380A /* JiveProperty.m */; };
