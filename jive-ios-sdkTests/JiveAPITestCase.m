@@ -41,6 +41,8 @@
     
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
                                                                                         password:password]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
+                                                                                        password:password]] mobileAnalyticsHeaderForJiveInstance:[OCMArg any]];
     
     return mockAuthDelegate;
 }

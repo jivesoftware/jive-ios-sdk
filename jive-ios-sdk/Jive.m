@@ -2036,6 +2036,10 @@
         id<JiveCredentials> credentials = [_delegate credentialsForJiveInstance:URL];
         [credentials applyToRequest:mutableURLRequest];
     }
+    if(_delegate && [_delegate respondsToSelector:@selector(mobileAnalyticsHeaderForJiveInstance:)]) {
+        JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [_delegate mobileAnalyticsHeaderForJiveInstance:URL];
+        [mobileAnalyticsHeader applyToRequest:mutableURLRequest];
+    }
 }
 
 + (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {

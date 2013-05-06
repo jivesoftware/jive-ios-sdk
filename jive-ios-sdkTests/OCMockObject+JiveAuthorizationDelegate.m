@@ -33,6 +33,8 @@
     
     [[[mockAuthorizationDelegate stub] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
                                                                                                password:password]] credentialsForJiveInstance:[OCMArg any]];
+    [[[mockAuthorizationDelegate stub] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:username
+                                                                                               password:password]] mobileAnalyticsHeaderForJiveInstance:[OCMArg any]];
     
     return mockAuthorizationDelegate;
 }

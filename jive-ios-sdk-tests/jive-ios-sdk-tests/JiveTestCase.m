@@ -94,6 +94,16 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
     return credentials;
 }
 
+- (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url {
+    JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"jive-ios-sdkTests"
+                                                                                             appVersion:@"SDKTest"
+                                                                                         connectionType:@"Unknown"
+                                                                                         devicePlatform:@"Test Device"
+                                                                                          deviceVersion:@"Test Device"];
+    
+    return mobileAnalyticsHeader;
+}
+
 #pragma mark - public API
 
 - (void)waitForTimeout:(JiveTestCaseAsyncBlock)asynchBlock {
@@ -197,6 +207,16 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
     id<JiveCredentials> credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:self.username
                                                                                     password:self.password];
     return credentials;
+}
+
+- (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url {
+    JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"jive-ios-sdkTests"
+                                                                                             appVersion:@"SDKTest"
+                                                                                         connectionType:@"Unknown"
+                                                                                         devicePlatform:@"Test Device"
+                                                                                          deviceVersion:@"Test Device"];
+    
+    return mobileAnalyticsHeader;
 }
 
 @end
