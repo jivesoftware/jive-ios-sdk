@@ -19,6 +19,14 @@
 
 #import "JiveSummary.h"
 
+struct JiveSummaryAttributes const JiveSummaryAttributes = {
+    .html = @"html",
+    .jiveId = @"jiveId",
+    .name = @"name",
+    .type = @"type",
+    .uri = @"uri"
+};
+
 @implementation JiveSummary
 
 @synthesize html, jiveId, name, type, uri;
