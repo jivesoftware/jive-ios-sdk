@@ -1491,6 +1491,25 @@
     [[self placeFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
+- (NSOperation *) updatePlaceOperation:(JivePlace *)place followingInStreams:(NSArray *)followingInStreams withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSArray *targetURIs = [followingInStreams count] ? [followingInStreams valueForKeyPath:@"resources.self.ref.absoluteString"] : [NSArray array];
+
+
+    JiveResourceEntry *followingInResourceEntry = [place.resources objectForKey:@"followingIn"];
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[followingInResourceEntry.ref path], nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
+
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
+}
+
+//- (void) updatePlaceFollowingIn:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
+//    [[self updatePlaceFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
+//}
+
 - (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     JiveResourceEntry *selfResourceEntry = [place.resources objectForKey:@"self"];
     NSMutableURLRequest *request = [self requestWithJSONBody:place
