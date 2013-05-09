@@ -31,7 +31,7 @@ extern void *JiveNewBase64Decode(
 extern char *JiveNewBase64Encode(
 	const void *inputBuffer,
 	size_t length,
-	bool separateLines,
+	BOOL separateLines,
 	size_t *outputLength);
 
 @interface NSData (JiveBase64)

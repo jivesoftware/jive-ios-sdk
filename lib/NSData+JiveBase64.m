@@ -160,7 +160,7 @@ void *JiveNewBase64Decode(
 char *JiveNewBase64Encode(
 	const void *buffer,
 	size_t length,
-	bool separateLines,
+	BOOL separateLines,
 	size_t *outputLength)
 {
 	const unsigned char *inputBuffer = (const unsigned char *)buffer;
