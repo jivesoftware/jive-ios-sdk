@@ -3581,7 +3581,7 @@
     [self createJiveAPIObjectWithResponse:@"followingIn_streams" andAuthDelegate:mockAuthDelegate];
 
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [jive updatePlaceOperation:source followingInStreams:@[stream] withOptions:options onComplete:^(NSArray *streams) {
+        NSOperation* operation = [jive updateFollowingInOperation:@[stream] forPlace:source withOptions:options onComplete:^(NSArray *streams) {
             // Called 3rd
             STAssertEquals([streams count], (NSUInteger) 1, @"Wrong number of items parsed");
             STAssertTrue([[streams objectAtIndex:0] isKindOfClass:[JiveStream class]], @"Wrong item class");
