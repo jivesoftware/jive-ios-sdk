@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F842CAC179889F900B1B3EB /* JVJiveFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F842CAB179889F900B1B3EB /* JVJiveFactory.m */; };
-		0F9B5B7B1799997B003156D3 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A017998FD900F23287 /* libJive.a */; };
 		0F9B5B8017999CF1003156D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */; };
 		0F9B5B8117999CFB003156D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */; };
 		0F9B5B841799A7BC003156D3 /* JVPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B5B831799A7BC003156D3 /* JVPersonCell.m */; };
@@ -26,48 +25,11 @@
 		0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */; };
 		0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */; };
 		0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */; };
+		63B68B352457470EB54E3A27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CB551E0A44ABF819401D7 /* libPods.a */; };
+		89C10E3E17CD2AAC00628EC9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C10E3D17CD2AAC00628EC9 /* Security.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0F07389F17998FD900F23287 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2192BBF91614F33300082926;
-			remoteInfo = "jive-ios-sdk";
-		};
-		0F0738A117998FD900F23287 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2192BC0A1614F33300082926;
-			remoteInfo = "jive-ios-sdkTests";
-		};
-		0F0738A317998FD900F23287 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B89147291796FD36001596E2;
-			remoteInfo = "jive-ios-sdk-headers";
-		};
-		0F9B5B7617999965003156D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2192BBF81614F33300082926;
-			remoteInfo = "jive-ios-sdk";
-		};
-		0F9B5B7817999965003156D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B89146231796FD36001596E2;
-			remoteInfo = "jive-ios-sdk-headers";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		0F842CAA179889F900B1B3EB /* JVJiveFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVJiveFactory.h; sourceTree = "<group>"; };
 		0F842CAB179889F900B1B3EB /* JVJiveFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVJiveFactory.m; sourceTree = "<group>"; };
 		0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -96,6 +58,9 @@
 		0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVDetailViewController.m; sourceTree = "<group>"; };
 		0F9B86EE17985C1D005BBFE8 /* JVLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLoginViewController.h; sourceTree = "<group>"; };
 		0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLoginViewController.m; sourceTree = "<group>"; };
+		89C10E3D17CD2AAC00628EC9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		930CB551E0A44ABF819401D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35EC3520E0B498CBE108E1C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,35 +68,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F9B5B7B1799997B003156D3 /* libJive.a in Frameworks */,
+				89C10E3E17CD2AAC00628EC9 /* Security.framework in Frameworks */,
 				0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */,
 				0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */,
 				0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */,
 				0F9B5B8017999CF1003156D3 /* SystemConfiguration.framework in Frameworks */,
 				0F9B5B8117999CFB003156D3 /* MobileCoreServices.framework in Frameworks */,
+				63B68B352457470EB54E3A27 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F07389917998FD900F23287 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0F0738A017998FD900F23287 /* libJive.a */,
-				0F0738A217998FD900F23287 /* jive-ios-sdkTests.octest */,
-				0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0F9B86BA179854FE005BBFE8 = {
 			isa = PBXGroup;
 			children = (
-				0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */,
+				89C10E3D17CD2AAC00628EC9 /* Security.framework */,
 				0F9B86CC179854FE005BBFE8 /* Example */,
 				0F9B86C5179854FE005BBFE8 /* Frameworks */,
 				0F9B86C4179854FE005BBFE8 /* Products */,
+				B35EC3520E0B498CBE108E1C /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +108,7 @@
 				0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */,
 				0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */,
 				0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */,
+				930CB551E0A44ABF819401D7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,15 +157,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F9B86E9179854FE005BBFE8 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
+				5C27D42FB03043099F544FA3 /* Check Pods Manifest.lock */,
 				0F9B86BF179854FE005BBFE8 /* Sources */,
 				0F9B86C0179854FE005BBFE8 /* Frameworks */,
 				0F9B86C1179854FE005BBFE8 /* Resources */,
+				7FB80AFFFC5D4C42A48325BC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0F9B5B7717999965003156D3 /* PBXTargetDependency */,
-				0F9B5B7917999965003156D3 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -234,42 +192,12 @@
 			mainGroup = 0F9B86BA179854FE005BBFE8;
 			productRefGroup = 0F9B86C4179854FE005BBFE8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0F07389917998FD900F23287 /* Products */;
-					ProjectRef = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0F9B86C2179854FE005BBFE8 /* Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0F0738A017998FD900F23287 /* libJive.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJive.a;
-			remoteRef = 0F07389F17998FD900F23287 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F0738A217998FD900F23287 /* jive-ios-sdkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "jive-ios-sdkTests.octest";
-			remoteRef = 0F0738A117998FD900F23287 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjive-ios-sdk-headers.a";
-			remoteRef = 0F0738A317998FD900F23287 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0F9B86C1179854FE005BBFE8 /* Resources */ = {
@@ -285,6 +213,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5C27D42FB03043099F544FA3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		7FB80AFFFC5D4C42A48325BC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F9B86BF179854FE005BBFE8 /* Sources */ = {
@@ -303,19 +262,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0F9B5B7717999965003156D3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "jive-ios-sdk";
-			targetProxy = 0F9B5B7617999965003156D3 /* PBXContainerItemProxy */;
-		};
-		0F9B5B7917999965003156D3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "jive-ios-sdk-headers";
-			targetProxy = 0F9B5B7817999965003156D3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0F9B86CF179854FE005BBFE8 /* InfoPlist.strings */ = {
@@ -395,16 +341,14 @@
 		};
 		0F9B86EA179854FE005BBFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B35EC3520E0B498CBE108E1C /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphonesimulator\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
@@ -420,10 +364,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,16 +378,14 @@
 		};
 		0F9B86EB179854FE005BBFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B35EC3520E0B498CBE108E1C /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphonesimulator\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
@@ -462,10 +401,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
