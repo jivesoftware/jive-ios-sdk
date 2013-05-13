@@ -3667,6 +3667,41 @@
     }];
 }
 
+- (void) test_updateFollowingInOperation_forContent {
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_by_id"];
+    JiveStream *stream = [self entityForClass:[JiveStream class] fromJSONNamed:@"stream"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/followingIn?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents/372124/followingIn?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"followingIn_streams" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation* operation = [jive updateFollowingInOperation:@[stream] forContent:source withOptions:options onComplete:^(NSArray *streams) {
+            // Called 3rd
+            STAssertEquals([streams count], (NSUInteger) 1, @"Wrong number of items parsed");
+            STAssertTrue([[streams objectAtIndex:0] isKindOfClass:[JiveStream class]], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        }                                           onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
 - (void) testContentsFollowingIn {
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"name"];

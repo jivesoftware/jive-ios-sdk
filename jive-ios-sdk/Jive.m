@@ -1104,7 +1104,7 @@
 }
 
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self streamsResourceOperation:[content.resources objectForKey:@"followingIn"]
+    return [self streamsResourceOperation:[content.resources objectForKey:JiveContentResourceAttributes.followingIn]
                               withOptions:options
                                onComplete:complete
                                   onError:error];
@@ -1112,6 +1112,16 @@
 
 - (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     [[self contentFollowingInOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    JiveResourceEntry *followingInResourceEntry = [content.resources objectForKey:JiveContentResourceAttributes.followingIn];
+    NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[followingInResourceEntry.ref path], nil];
+    return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
+}
+
+- (void)updateFollowingIn:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self updateFollowingInOperation:followingInStreams forContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
 - (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {

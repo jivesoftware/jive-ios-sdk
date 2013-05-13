@@ -440,6 +440,8 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (void) contentLikedBy:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentFollowingIn(String,%20String)
 - (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#setContentFollowingIn(String,%20String,%20String)
+- (void)updateFollowingIn:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#markRead(String)
 - (void) content:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContentLike(String)
@@ -493,6 +495,8 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (NSOperation *) contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContentFollowingIn(String,%20String)
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#setContentFollowingIn(String,%20String,%20String)
+- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#markRead(String)
 - (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#createContentLike(String)
