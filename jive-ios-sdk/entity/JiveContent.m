@@ -41,6 +41,16 @@ struct JiveContentAttributes const JiveContentAttributes = {
         .viewCount = @"viewCount"
 };
 
+struct JiveContentResourceAttributes const JiveContentResourceAttributes = {
+    .childOutcomeTypes = @"childOutcomeTypes",
+    .extprops = @"extprops",
+    .followingIn = @"followingIn",
+    .html = @"html",
+    .outcomes = @"outcomes",
+    .outcomeTypes = @"outcomeTypes",
+    .self = @"self"
+};
+
 @implementation JiveContent
 
 @synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount;

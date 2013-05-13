@@ -41,6 +41,16 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *viewCount;
 } const JiveContentAttributes;
 
+extern struct JiveContentResourceAttributes {
+    __unsafe_unretained NSString *childOutcomeTypes;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *outcomes;
+    __unsafe_unretained NSString *outcomeTypes;
+    __unsafe_unretained NSString *self;
+} const JiveContentResourceAttributes;
+
 //! \class JiveContent
 //! https://developers.jivesoftware.com/api/v3/rest/ContentEntity.html
 @interface JiveContent : JiveTypedObject
