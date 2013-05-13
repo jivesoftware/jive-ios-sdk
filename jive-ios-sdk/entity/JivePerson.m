@@ -29,6 +29,25 @@ struct JivePersonAttributes const JivePersonAttributes = {
 	.jiveId = @"jiveId",
 };
 
+struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
+    .activity = @"activity",
+    .avatar = @"avatar",
+    .blog = @"blog",
+    .colleagues = @"colleagues",
+    .extprops = @"extprops",
+    .followers = @"followers",
+    .following = @"following",
+    .followingIn = @"followingIn",
+    .html = @"html",
+    .images = @"images",
+    .manager = @"manager",
+    .members = @"members",
+    .reports = @"reports",
+    .self = @"self",
+    .streams = @"streams",
+    .tasks = @"tasks"
+};
+
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
