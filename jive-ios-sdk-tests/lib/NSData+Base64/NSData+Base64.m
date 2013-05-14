@@ -21,18 +21,12 @@
 //     distribution.
 //
 
-#import "NSData+JiveBase64.h"
-
-// JIVE: Assume the source has correct sign conversion. Big assumption.
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wconversion"
-#pragma clang diagnostic ignored "-Wsign-compare"
-#pragma clang diagnostic ignored "-Wsign-conversion"
+#import "NSData+Base64.h"
 
 //
 // Mapping from 6 bit pattern to ASCII character.
 //
-static unsigned char jive_base64EncodeLookup[65] =
+static unsigned char base64EncodeLookup[65] =
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 //
@@ -43,7 +37,7 @@ static unsigned char jive_base64EncodeLookup[65] =
 //
 // Mapping from ASCII character to 6 bit pattern.
 //
-static unsigned char jive_base64DecodeLookup[256] =
+static unsigned char base64DecodeLookup[256] =
 {
     xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, 
     xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, 
@@ -82,7 +76,7 @@ static unsigned char jive_base64DecodeLookup[256] =
 // returns the decoded buffer. Must be free'd by caller. Length is given by
 //	outputLength.
 //
-void *JiveNewBase64Decode(
+void *NewBase64Decode(
 	const char *inputBuffer,
 	size_t length,
 	size_t *outputLength)
@@ -107,7 +101,7 @@ void *JiveNewBase64Decode(
 		size_t accumulateIndex = 0;
 		while (i < length)
 		{
-			unsigned char decode = jive_base64DecodeLookup[inputBuffer[i++]];
+			unsigned char decode = base64DecodeLookup[inputBuffer[i++]];
 			if (decode != xx)
 			{
 				accumulated[accumulateIndex] = decode;
@@ -157,10 +151,10 @@ void *JiveNewBase64Decode(
 // returns the encoded buffer. Must be free'd by caller. Length is given by
 //	outputLength.
 //
-char *JiveNewBase64Encode(
+char *NewBase64Encode(
 	const void *buffer,
 	size_t length,
-	BOOL separateLines,
+	bool separateLines,
 	size_t *outputLength)
 {
 	const unsigned char *inputBuffer = (const unsigned char *)buffer;
@@ -214,12 +208,12 @@ char *JiveNewBase64Encode(
 			//
 			// Inner loop: turn 48 bytes into 64 base64 characters
 			//
-			outputBuffer[j++] = jive_base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
-			outputBuffer[j++] = jive_base64EncodeLookup[((inputBuffer[i] & 0x03) << 4)
+			outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
+			outputBuffer[j++] = base64EncodeLookup[((inputBuffer[i] & 0x03) << 4)
 				| ((inputBuffer[i + 1] & 0xF0) >> 4)];
-			outputBuffer[j++] = jive_base64EncodeLookup[((inputBuffer[i + 1] & 0x0F) << 2)
+			outputBuffer[j++] = base64EncodeLookup[((inputBuffer[i + 1] & 0x0F) << 2)
 				| ((inputBuffer[i + 2] & 0xC0) >> 6)];
-			outputBuffer[j++] = jive_base64EncodeLookup[inputBuffer[i + 2] & 0x3F];
+			outputBuffer[j++] = base64EncodeLookup[inputBuffer[i + 2] & 0x3F];
 		}
 		
 		if (lineEnd == length)
@@ -240,10 +234,10 @@ char *JiveNewBase64Encode(
 		//
 		// Handle the single '=' case
 		//
-		outputBuffer[j++] = jive_base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
-		outputBuffer[j++] = jive_base64EncodeLookup[((inputBuffer[i] & 0x03) << 4)
+		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
+		outputBuffer[j++] = base64EncodeLookup[((inputBuffer[i] & 0x03) << 4)
 			| ((inputBuffer[i + 1] & 0xF0) >> 4)];
-		outputBuffer[j++] = jive_base64EncodeLookup[(inputBuffer[i + 1] & 0x0F) << 2];
+		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i + 1] & 0x0F) << 2];
 		outputBuffer[j++] =	'=';
 	}
 	else if (i < length)
@@ -251,8 +245,8 @@ char *JiveNewBase64Encode(
 		//
 		// Handle the double '=' case
 		//
-		outputBuffer[j++] = jive_base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
-		outputBuffer[j++] = jive_base64EncodeLookup[(inputBuffer[i] & 0x03) << 4];
+		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i] & 0xFC) >> 2];
+		outputBuffer[j++] = base64EncodeLookup[(inputBuffer[i] & 0x03) << 4];
 		outputBuffer[j++] = '=';
 		outputBuffer[j++] = '=';
 	}
@@ -268,7 +262,7 @@ char *JiveNewBase64Encode(
 	return outputBuffer;
 }
 
-@implementation NSData (JiveBase64)
+@implementation NSData (Base64)
 
 //
 // dataFromBase64String:
@@ -281,11 +275,11 @@ char *JiveNewBase64Encode(
 //
 // returns the autoreleased NSData representation of the base64 string
 //
-+ (NSData *)jive_dataFromBase64String:(NSString *)aString
++ (NSData *)dataFromBase64String:(NSString *)aString
 {
 	NSData *data = [aString dataUsingEncoding:NSASCIIStringEncoding];
 	size_t outputLength;
-	void *outputBuffer = JiveNewBase64Decode([data bytes], [data length], &outputLength);
+	void *outputBuffer = NewBase64Decode([data bytes], [data length], &outputLength);
 	NSData *result = [NSData dataWithBytes:outputBuffer length:outputLength];
 	free(outputBuffer);
 	return result;
@@ -295,30 +289,25 @@ char *JiveNewBase64Encode(
 // base64EncodedString
 //
 // Creates an NSString object that contains the base 64 encoding of the
-// receiver's data. If breakLines == YES then lines are broken at 64 characters long.
+// receiver's data. Lines are broken at 64 characters long.
 //
 // returns an autoreleased NSString being the base 64 representation of the
 //	receiver.
 //
-- (NSString *)jive_base64EncodedString:(BOOL)breakLines
+- (NSString *)base64EncodedString
 {
 	size_t outputLength;
 	char *outputBuffer =
-		JiveNewBase64Encode([self bytes], [self length], breakLines, &outputLength);
+		NewBase64Encode([self bytes], [self length], true, &outputLength);
 	
-    if (outputBuffer)
-    {
-        NSString *result =
-            [[[NSString alloc]
-                initWithBytes:outputBuffer
-                length:outputLength
-                encoding:NSASCIIStringEncoding]
-            autorelease];
-        free(outputBuffer);
-        return result;
-    } else {
-        return nil;
-    }
+	NSString *result =
+		[[[NSString alloc]
+			initWithBytes:outputBuffer
+			length:outputLength
+			encoding:NSASCIIStringEncoding]
+		autorelease];
+	free(outputBuffer);
+	return result;
 }
 
 @end

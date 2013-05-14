@@ -29,14 +29,23 @@ struct JivePersonAttributes const JivePersonAttributes = {
 	.jiveId = @"jiveId",
 };
 
-struct JivePersonResourceAttributes {
-    __unsafe_unretained NSString *activity;
-    __unsafe_unretained NSString *avatar;
-};
-
 struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
     .activity = @"activity",
-    .avatar = @"avatar"
+    .avatar = @"avatar",
+    .blog = @"blog",
+    .colleagues = @"colleagues",
+    .extprops = @"extprops",
+    .followers = @"followers",
+    .following = @"following",
+    .followingIn = @"followingIn",
+    .html = @"html",
+    .images = @"images",
+    .manager = @"manager",
+    .members = @"members",
+    .reports = @"reports",
+    .self = @"self",
+    .streams = @"streams",
+    .tasks = @"tasks"
 };
 
 @implementation JivePerson

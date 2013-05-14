@@ -45,7 +45,7 @@
         NSData* data = [[NSString stringWithFormat:@"%@:%@", username, password]
                         dataUsingEncoding:NSUTF8StringEncoding];
         self.authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",
-                                         [data jive_base64EncodedString]];
+                                         [data jive_base64EncodedString:NO]];
     }
     
     return self;

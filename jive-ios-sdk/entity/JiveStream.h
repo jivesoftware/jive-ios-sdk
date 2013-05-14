@@ -20,6 +20,16 @@
 #import "JiveTypedObject.h"
 #import "JivePerson.h"
 
+extern struct JiveStreamAttributes {
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *person;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *receiveEmails;
+    __unsafe_unretained NSString *resources;
+    __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *updated;
+} const JiveStreamAttributes;
+
 //! \class JiveStream
 //! https://developers.jivesoftware.com/api/v3/rest/StreamEntity.html
 @interface JiveStream : JiveTypedObject

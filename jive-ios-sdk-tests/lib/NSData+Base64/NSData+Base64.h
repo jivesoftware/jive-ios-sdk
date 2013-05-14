@@ -23,20 +23,20 @@
 
 #import <Foundation/Foundation.h>
 
-extern void *JiveNewBase64Decode(
+void *NewBase64Decode(
 	const char *inputBuffer,
 	size_t length,
 	size_t *outputLength);
 
-extern char *JiveNewBase64Encode(
+char *NewBase64Encode(
 	const void *inputBuffer,
 	size_t length,
 	bool separateLines,
 	size_t *outputLength);
 
-@interface NSData (JiveBase64)
+@interface NSData (Base64)
 
-+ (NSData *)jive_dataFromBase64String:(NSString *)aString;
-- (NSString *)jive_base64EncodedString;
++ (NSData *)dataFromBase64String:(NSString *)aString;
+- (NSString *)base64EncodedString;
 
 @end

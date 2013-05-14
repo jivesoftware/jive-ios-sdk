@@ -19,6 +19,14 @@
 
 #import "JiveObject.h"
 
+extern struct JiveSummaryAttributes {
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *uri;
+} const JiveSummaryAttributes;
+
 //! \class JiveSummary
 //! https://developers.jivesoftware.com/api/v3/rest/SummaryEntity.html
 @interface JiveSummary : JiveObject

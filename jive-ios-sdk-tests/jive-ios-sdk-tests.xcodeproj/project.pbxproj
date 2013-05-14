@@ -34,6 +34,7 @@
 		2D648B4916F286C400E97038 /* JVContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */; };
 		2D648B4A16F286C400E97038 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
 		2D648B4B16F286C400E97038 /* JVPlacesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */; };
+		B87710CE1739A081003E7940 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B87710CD1739A081003E7940 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Wno-sign-compare -Wno-conversion -w -Xanalyzer -analyzer-disable-checker"; }; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
 		B8A71F1216A89DFA00A7D2CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */; };
@@ -44,21 +45,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B84966AE16A8A40800C1CF05 /* PBXContainerItemProxy */ = {
+		B8F5EFA01739A5ED005F15AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2192BBF91614F33300082926;
 			remoteInfo = "jive-ios-sdk";
 		};
-		B84966B016A8A40800C1CF05 /* PBXContainerItemProxy */ = {
+		B8F5EFA21739A5ED005F15AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2192BC0A1614F33300082926;
 			remoteInfo = "jive-ios-sdkTests";
 		};
-		B84966B316A8A40F00C1CF05 /* PBXContainerItemProxy */ = {
+		B8F5EFA41739A5F7005F15AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
 			proxyType = 1;
@@ -73,7 +74,6 @@
 		215040D816DEA27100CD0AAE /* jive-software.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jive-software.png"; sourceTree = "<group>"; };
 		23680DAC16CAF9BA007EAF2F /* JVUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVUtilities.h; sourceTree = "<group>"; };
 		23680DAD16CAF9DB007EAF2F /* JVUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVUtilities.m; sourceTree = "<group>"; };
-		23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JiveBase64.h"; sourceTree = "<group>"; };
 		2385546616EFED880045B0ED /* instance_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instance_info.json; sourceTree = "<group>"; };
 		2D99613F16E91A2C007A4A5B /* CreateAssociations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAssociations.m; sourceTree = "<group>"; };
 		2DB3AEB016D6A36800428AA4 /* CreateAndDeleteStreams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAndDeleteStreams.m; sourceTree = "<group>"; };
@@ -97,7 +97,9 @@
 		2DB3AED516D6A43000428AA4 /* SearchPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPlace.m; sourceTree = "<group>"; };
 		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
-		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		B87710CC1739A081003E7940 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		B87710CD1739A081003E7940 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,7 +158,6 @@
 		23680DA816CAF990007EAF2F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				23680DAF16CAF9EA007EAF2F /* NSData+JiveBase64.h */,
 				23680DAD16CAF9DB007EAF2F /* JVUtilities.m */,
 				23680DAC16CAF9BA007EAF2F /* JVUtilities.h */,
 			);
@@ -212,21 +213,22 @@
 			path = people;
 			sourceTree = "<group>";
 		};
-		B84966A916A8A40800C1CF05 /* Products */ = {
+		B87710CB1739A081003E7940 /* NSData+Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				B84966AF16A8A40800C1CF05 /* libJive.a */,
-				B84966B116A8A40800C1CF05 /* jive-ios-sdkTests.octest */,
+				B87710CC1739A081003E7940 /* NSData+Base64.h */,
+				B87710CD1739A081003E7940 /* NSData+Base64.m */,
 			);
-			name = Products;
+			path = "NSData+Base64";
 			sourceTree = "<group>";
 		};
 		B87DD39916A8A38D009CACF5 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B87710CB1739A081003E7940 /* NSData+Base64 */,
 				B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */,
 			);
-			name = lib;
+			path = lib;
 			sourceTree = "<group>";
 		};
 		B8A71EAB16A89CCE00A7D2CE = {
@@ -299,6 +301,15 @@
 			path = places;
 			sourceTree = "<group>";
 		};
+		B8F5EF9B1739A5ED005F15AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8F5EFA11739A5ED005F15AA /* libJive.a */,
+				B8F5EFA31739A5ED005F15AA /* jive-ios-sdkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,7 +326,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B84966B416A8A40F00C1CF05 /* PBXTargetDependency */,
+				B8F5EFA51739A5F7005F15AA /* PBXTargetDependency */,
 			);
 			name = "jive-ios-sdk-tests";
 			productName = "jive-ios-sdk-tests";
@@ -344,7 +355,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B84966A916A8A40800C1CF05 /* Products */;
+					ProductGroup = B8F5EF9B1739A5ED005F15AA /* Products */;
 					ProjectRef = B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */;
 				},
 			);
@@ -356,18 +367,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B84966AF16A8A40800C1CF05 /* libJive.a */ = {
+		B8F5EFA11739A5ED005F15AA /* libJive.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libJive.a;
-			remoteRef = B84966AE16A8A40800C1CF05 /* PBXContainerItemProxy */;
+			remoteRef = B8F5EFA01739A5ED005F15AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B84966B116A8A40800C1CF05 /* jive-ios-sdkTests.octest */ = {
+		B8F5EFA31739A5ED005F15AA /* jive-ios-sdkTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "jive-ios-sdkTests.octest";
-			remoteRef = B84966B016A8A40800C1CF05 /* PBXContainerItemProxy */;
+			remoteRef = B8F5EFA21739A5ED005F15AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -445,16 +456,17 @@
 				2D648B3D16F286A600E97038 /* RecentPlacesWithOptions.m in Sources */,
 				B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */,
 				23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */,
+				B87710CE1739A081003E7940 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B84966B416A8A40F00C1CF05 /* PBXTargetDependency */ = {
+		B8F5EFA51739A5F7005F15AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Jive Framework";
-			targetProxy = B84966B316A8A40F00C1CF05 /* PBXContainerItemProxy */;
+			targetProxy = B8F5EFA41739A5F7005F15AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

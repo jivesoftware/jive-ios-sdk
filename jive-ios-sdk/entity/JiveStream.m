@@ -28,6 +28,16 @@ struct JiveStreamResourceTags const JiveStreamResourceTags = {
     .activity = @"activity"
 };
 
+struct JiveStreamAttributes const JiveStreamAttributes = {
+    .name = @"name",
+    .person = @"person",
+    .published = @"published",
+    .receiveEmails = @"receiveEmails",
+    .resources = @"resources",
+    .type = @"type",
+    .updated = @"updated"
+};
+
 @implementation JiveStream
 
 @synthesize jiveId, name, person, published, receiveEmails, source, updated;

@@ -31,12 +31,12 @@ extern void *JiveNewBase64Decode(
 extern char *JiveNewBase64Encode(
 	const void *inputBuffer,
 	size_t length,
-	bool separateLines,
+	BOOL separateLines,
 	size_t *outputLength);
 
 @interface NSData (JiveBase64)
 
 + (NSData *)jive_dataFromBase64String:(NSString *)aString;
-- (NSString *)jive_base64EncodedString;
+- (NSString *)jive_base64EncodedString:(BOOL)breakLines;
 
 @end
