@@ -757,7 +757,7 @@
 }
 
 - (NSOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self streamsResourceOperation:[person.resources objectForKey:@"followingIn"]
+    return [self streamsResourceOperation:[person.resources objectForKey:JivePersonResourceAttributes.followingIn]
                               withOptions:options
                                onComplete:complete
                                   onError:error];
@@ -765,6 +765,16 @@
 
 - (void) followingIn:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     [[self followingInOperation:person withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    JiveResourceEntry *followingInResourceEntry = [person.resources objectForKey:JivePersonResourceAttributes.followingIn];
+    NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[followingInResourceEntry.ref path], nil];
+    return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
+}
+
+- (void)updateFollowingIn:(NSArray *)followingInStreams forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self updateFollowingInOperation:followingInStreams forPerson:person withOptions:options onComplete:complete onError:error] start];
 }
 
 - (NSOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1094,7 +1104,7 @@
 }
 
 - (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
-    return [self streamsResourceOperation:[content.resources objectForKey:@"followingIn"]
+    return [self streamsResourceOperation:[content.resources objectForKey:JiveContentResourceAttributes.followingIn]
                               withOptions:options
                                onComplete:complete
                                   onError:error];
@@ -1102,6 +1112,16 @@
 
 - (void) contentFollowingIn:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     [[self contentFollowingInOperation:content withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    JiveResourceEntry *followingInResourceEntry = [content.resources objectForKey:JiveContentResourceAttributes.followingIn];
+    NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[followingInResourceEntry.ref path], nil];
+    return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
+}
+
+- (void)updateFollowingIn:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self updateFollowingInOperation:followingInStreams forContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
 - (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
@@ -1481,7 +1501,7 @@
 }
 
 - (NSOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self streamsResourceOperation:[place.resources objectForKey:@"followingIn"]
+    return [self streamsResourceOperation:[place.resources objectForKey:JivePlaceResourceAttributes.followingIn]
                               withOptions:options
                                onComplete:complete
                                   onError:error];
@@ -1489,6 +1509,18 @@
 
 - (void) placeFollowingIn:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     [[self placeFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
+}
+
+- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {    
+    
+    JiveResourceEntry *followingInResourceEntry = [place.resources objectForKey:JivePlaceResourceAttributes.followingIn];
+    NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[followingInResourceEntry.ref path], nil];
+
+    return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
+}
+
+- (void)updateFollowingIn:(NSArray *)followingInStreams forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self updateFollowingInOperation:followingInStreams forPlace:place withOptions:options onComplete:complete onError:error] start];
 }
 
 - (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
@@ -1952,6 +1984,20 @@
 }
 
 #pragma mark - private API
+
+- (NSMutableURLRequest *)followingInRequestWithStreams:(NSArray *)streams options:(NSObject<JiveRequestOptions>*)options template:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
+    NSString *targetURIKeyPath = [NSString stringWithFormat:@"%@.%@.%@.%@", NSStringFromSelector(@selector(resources)), JiveResourceAttributes.selfKey, NSStringFromSelector(@selector(ref)), NSStringFromSelector(@selector(absoluteString))];
+    NSArray *targetURIs = [streams count] ? [streams valueForKeyPath:targetURIKeyPath] : [NSArray array];
+    
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:template, nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    return request;
+}
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
     if (!template)

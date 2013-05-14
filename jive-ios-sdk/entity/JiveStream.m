@@ -20,6 +20,16 @@
 #import "JiveStream.h"
 #import "JiveResourceEntry.h"
 
+struct JiveStreamAttributes const JiveStreamAttributes = {
+    .name = @"name",
+    .person = @"person",
+    .published = @"published",
+    .receiveEmails = @"receiveEmails",
+    .resources = @"resources",
+    .type = @"type",
+    .updated = @"updated"
+};
+
 @implementation JiveStream
 
 @synthesize jiveId, name, person, published, receiveEmails, resources, source, type, updated;
