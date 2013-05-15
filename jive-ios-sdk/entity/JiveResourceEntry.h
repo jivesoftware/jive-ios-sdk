@@ -21,6 +21,7 @@
 
 extern struct JiveResourceEntryAttributes {
     __unsafe_unretained NSString *ref;
+    __unsafe_unretained NSString *allowed;
 } const JiveResourceEntryAttributes;
 
 //! \class JiveResourceEntry

@@ -21,6 +21,7 @@
 
 struct JiveResourceEntryAttributes const JiveResourceEntryAttributes = {
 	.ref = @"ref",
+	.allowed = @"allowed",
 };
 
 @implementation JiveResourceEntry
@@ -29,8 +30,8 @@ struct JiveResourceEntryAttributes const JiveResourceEntryAttributes = {
 
 - (id)persistentJSON {
     return @{
-             @"ref" : [ref absoluteString],
-             @"allowed" : allowed,
+             JiveResourceEntryAttributes.ref : [ref absoluteString],
+             JiveResourceEntryAttributes.allowed : allowed,
              };
 }
 
