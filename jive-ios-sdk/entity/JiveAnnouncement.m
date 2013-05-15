@@ -21,6 +21,24 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveAnnouncementAttributes {
+    __unsafe_unretained NSString *childOutcomeTypes;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *read;
+    __unsafe_unretained NSString *outcomes;
+    __unsafe_unretained NSString *outcomeTypes;
+} const JiveAnnouncementAttributes;
+
+struct JiveAnnouncementAttributes const JiveAnnouncementAttributes = {
+	.childOutcomeTypes = @"childOutcomeTypes",
+	.extprops = @"extprops",
+	.html = @"html",
+	.read = @"read",
+	.outcomes = @"outcomes",
+	.outcomeTypes = @"outcomeTypes"
+};
+
 @implementation JiveAnnouncement
 
 @synthesize endDate, image, publishDate, sortKey, subjectURI, subjectURITargetType;
@@ -54,6 +72,46 @@ static NSString * const JiveAnnouncementType = @"announcement";
         [dictionary setValue:[dateFormatter stringFromDate:publishDate] forKey:@"publishDate"];
     
     return dictionary;
+}
+
+- (NSURL *)childOutcomeTypesRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.childOutcomeTypes].ref;
+}
+
+- (NSURL *)extpropsRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.extprops].ref;
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPutForTag:JiveAnnouncementAttributes.extprops];
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.html].ref;
+}
+
+- (NSURL *)readRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.read].ref;
+}
+
+- (BOOL)canMarkAsRead {
+    return [self resourceHasPutForTag:JiveAnnouncementAttributes.read];
+}
+
+- (BOOL)canMarkAsUnread {
+    return [self resourceHasPutForTag:JiveAnnouncementAttributes.read];
+}
+
+- (NSURL *)outcomesRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.outcomes].ref;
+}
+
+- (BOOL)canSetOutcomes {
+    return [self resourceHasPutForTag:JiveAnnouncementAttributes.outcomes];
+}
+
+- (NSURL *)outcomeTypesRef {
+    return [self resourceForTag:JiveAnnouncementAttributes.outcomeTypes].ref;
 }
 
 @end
