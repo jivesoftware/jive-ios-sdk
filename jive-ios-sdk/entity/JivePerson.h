@@ -24,25 +24,6 @@ extern struct JivePersonAttributes {
     __unsafe_unretained NSString *jiveId;
 } const JivePersonAttributes;
 
-extern struct JivePersonResourceAttributes {
-    __unsafe_unretained NSString *activity;
-    __unsafe_unretained NSString *avatar;
-    __unsafe_unretained NSString *blog;
-    __unsafe_unretained NSString *colleagues;
-    __unsafe_unretained NSString *extprops;
-    __unsafe_unretained NSString *followers;
-    __unsafe_unretained NSString *following;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *html;
-    __unsafe_unretained NSString *images;
-    __unsafe_unretained NSString *manager;
-    __unsafe_unretained NSString *members;
-    __unsafe_unretained NSString *reports;
-    __unsafe_unretained NSString *self;
-    __unsafe_unretained NSString *streams;
-    __unsafe_unretained NSString *tasks;
-} const JivePersonResourceAttributes;
-
 @class JivePersonJive;
 @class JiveName;
 
@@ -109,7 +90,18 @@ extern struct JivePersonResourceAttributes {
 
 - (NSURL *)avatar;
 - (NSURL *)activity;
-
-- (id)persistentJSON;
+- (NSURL *)blog;
+- (NSURL *)colleagues;
+- (NSURL *)extprops;
+- (NSURL *)followers;
+- (NSURL *)following;
+- (NSURL *)followingIn;
+- (NSURL *)html;
+- (NSURL *)images;
+- (NSURL *)manager;
+- (NSURL *)members;
+- (NSURL *)reports;
+- (NSURL *)streams;
+- (NSURL *)tasks;
 
 @end

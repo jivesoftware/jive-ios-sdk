@@ -29,6 +29,24 @@ struct JivePersonAttributes const JivePersonAttributes = {
 	.jiveId = @"jiveId",
 };
 
+struct JivePersonResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *colleagues;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *followers;
+    __unsafe_unretained NSString *following;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *images;
+    __unsafe_unretained NSString *manager;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *reports;
+    __unsafe_unretained NSString *streams;
+    __unsafe_unretained NSString *tasks;
+} const JivePersonResourceAttributes;
+
 struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
     .activity = @"activity",
     .avatar = @"avatar",
@@ -43,7 +61,6 @@ struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
     .manager = @"manager",
     .members = @"members",
     .reports = @"reports",
-    .self = @"self",
     .streams = @"streams",
     .tasks = @"tasks"
 };
@@ -99,29 +116,64 @@ static NSString * const JivePersonType = @"person";
     return dictionary;
 }
 
-- (id)persistentJSON {
-    NSMutableDictionary *persistentJSONDictionary = (NSMutableDictionary *)[self toJSONDictionary];
-    NSMutableDictionary *resourcesJSONDictionary = [NSMutableDictionary dictionaryWithCapacity:[self.resources count]];
-    
-    for (NSString *resourceEntryKey in [self.resources keyEnumerator]) {
-        JiveResourceEntry *resourceEntry = self.resources[resourceEntryKey];
-        
-        resourcesJSONDictionary[resourceEntryKey] = resourceEntry.persistentJSON;
-    }
-    
-    if ([resourcesJSONDictionary count]) {
-        persistentJSONDictionary[@"resources"] = resourcesJSONDictionary;
-    }
-    
-    return persistentJSONDictionary;
-}
-
 - (NSURL *)avatar {
     return [self resourceForTag:JivePersonResourceAttributes.avatar].ref;
 }
 
 - (NSURL *)activity {
     return [self resourceForTag:JivePersonResourceAttributes.activity].ref;
+}
+
+- (NSURL *)blog {
+    return [self resourceForTag:JivePersonResourceAttributes.blog].ref;
+}
+
+- (NSURL *)colleagues {
+    return [self resourceForTag:JivePersonResourceAttributes.colleagues].ref;
+}
+
+- (NSURL *)extprops {
+    return [self resourceForTag:JivePersonResourceAttributes.extprops].ref;
+}
+
+- (NSURL *)followers {
+    return [self resourceForTag:JivePersonResourceAttributes.followers].ref;
+}
+
+- (NSURL *)following {
+    return [self resourceForTag:JivePersonResourceAttributes.following].ref;
+}
+
+- (NSURL *)followingIn {
+    return [self resourceForTag:JivePersonResourceAttributes.followingIn].ref;
+}
+
+- (NSURL *)html {
+    return [self resourceForTag:JivePersonResourceAttributes.html].ref;
+}
+
+- (NSURL *)images {
+    return [self resourceForTag:JivePersonResourceAttributes.images].ref;
+}
+
+- (NSURL *)manager {
+    return [self resourceForTag:JivePersonResourceAttributes.manager].ref;
+}
+
+- (NSURL *)members {
+    return [self resourceForTag:JivePersonResourceAttributes.members].ref;
+}
+
+- (NSURL *)reports {
+    return [self resourceForTag:JivePersonResourceAttributes.reports].ref;
+}
+
+- (NSURL *)streams {
+    return [self resourceForTag:JivePersonResourceAttributes.streams].ref;
+}
+
+- (NSURL *)tasks {
+    return [self resourceForTag:JivePersonResourceAttributes.tasks].ref;
 }
 
 @end
