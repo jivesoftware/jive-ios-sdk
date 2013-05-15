@@ -93,6 +93,8 @@ extern struct JivePersonAttributes {
 - (NSURL *)blog;
 - (NSURL *)colleagues;
 - (NSURL *)extprops;
+- (BOOL)canAddExtProps;
+- (BOOL)canDeleteExtProps;
 - (NSURL *)followers;
 - (NSURL *)following;
 - (NSURL *)followingIn;
@@ -102,6 +104,8 @@ extern struct JivePersonAttributes {
 - (NSURL *)members;
 - (NSURL *)reports;
 - (NSURL *)streams;
+- (BOOL)canCreateNewStream;
 - (NSURL *)tasks;
+- (BOOL)canCreateNewTask;
 
 @end

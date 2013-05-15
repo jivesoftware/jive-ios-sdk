@@ -136,6 +136,14 @@ static NSString * const JivePersonType = @"person";
     return [self resourceForTag:JivePersonResourceAttributes.extprops].ref;
 }
 
+- (BOOL)canDeleteExtProps {
+    return [self resourceHasDeleteForTag:JivePersonResourceAttributes.extprops];
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.extprops];
+}
+
 - (NSURL *)followers {
     return [self resourceForTag:JivePersonResourceAttributes.followers].ref;
 }
@@ -172,8 +180,16 @@ static NSString * const JivePersonType = @"person";
     return [self resourceForTag:JivePersonResourceAttributes.streams].ref;
 }
 
+- (BOOL)canCreateNewStream {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.streams];
+}
+
 - (NSURL *)tasks {
     return [self resourceForTag:JivePersonResourceAttributes.tasks].ref;
+}
+
+- (BOOL)canCreateNewTask {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.tasks];
 }
 
 @end
