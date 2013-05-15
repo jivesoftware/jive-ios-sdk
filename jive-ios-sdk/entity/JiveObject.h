@@ -32,4 +32,6 @@
 
 + (Class) entityClass:(NSDictionary*) obj;
 
+- (id)persistentJSON;
+
 @end

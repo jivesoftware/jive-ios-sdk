@@ -241,4 +241,8 @@
     }
 }
 
+- (id)persistentJSON {
+    return [self toJSONDictionary];
+}
+
 @end
