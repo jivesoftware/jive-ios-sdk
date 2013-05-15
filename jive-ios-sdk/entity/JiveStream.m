@@ -30,6 +30,15 @@ struct JiveStreamAttributes const JiveStreamAttributes = {
     .updated = @"updated"
 };
 
+struct JiveStreamSourceValues const JiveStreamSourceValues = {
+        .all = @"all",
+        .communications = @"communications",
+        .connections = @"connections",
+        .context = @"context",
+        .profile = @"profile",
+        .watches = @"watches"
+};
+
 @implementation JiveStream
 
 @synthesize jiveId, name, person, published, receiveEmails, resources, source, type, updated;
