@@ -22,10 +22,14 @@
 
 struct JiveStreamResourceTags {
     __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *associations;
+    __unsafe_unretained NSString *html;
 };
 
 struct JiveStreamResourceTags const JiveStreamResourceTags = {
-    .activity = @"activity"
+    .activity = @"activity",
+    .associations = @"associations",
+    .html = @"html"
 };
 
 struct JiveStreamAttributes const JiveStreamAttributes = {
@@ -75,8 +79,24 @@ struct JiveStreamAttributes const JiveStreamAttributes = {
     return dictionary;
 }
 
-- (NSURL *)activity {
+- (NSURL *)activityRef {
     return [self resourceForTag:JiveStreamResourceTags.activity].ref;
+}
+
+- (NSURL *)associationsRef {
+    return [self resourceForTag:JiveStreamResourceTags.associations].ref;
+}
+
+- (BOOL)canAddAssociation {
+    return [self resourceHasPostForTag:JiveStreamResourceTags.associations];
+}
+
+- (BOOL)canDeleteAssociation {
+    return [self resourceHasDeleteForTag:JiveStreamResourceTags.associations];
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JiveStreamResourceTags.html].ref;
 }
 
 @end

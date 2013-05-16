@@ -62,6 +62,10 @@ extern struct JiveStreamAttributes {
 //! Date and time this custom stream configuration was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
-- (NSURL *)activity;
+- (NSURL *)activityRef;
+- (NSURL *)associationsRef;
+- (BOOL)canAddAssociation;
+- (BOOL)canDeleteAssociation;
+- (NSURL *)htmlRef;
 
 @end
