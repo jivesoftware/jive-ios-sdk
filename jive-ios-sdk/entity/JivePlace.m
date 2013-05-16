@@ -29,57 +29,75 @@
 
 struct JivePlaceResourceAttributes {
     __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *checkPoints;
+    __unsafe_unretained NSString *childPlaces;
     __unsafe_unretained NSString *contents;
     __unsafe_unretained NSString *extprops;
     __unsafe_unretained NSString *featuredContent;
     __unsafe_unretained NSString *followingIn;
     __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
     __unsafe_unretained NSString *statics;
+    __unsafe_unretained NSString *tasks;
 };
 
 struct JivePlaceAttributes const JivePlaceAttributes = {
-        .contentTypes = @"contentTypes",
-        .description = @"description",
-        .displayName = @"displayName",
-        .followerCount = @"followerCount",
-        .highlightBody = @"highlightBody",
-        .highlightSubject = @"highlightSubject",
-        .highlightTags = @"highlightTags",
-        .jiveId = @"jiveId",
-        .likeCount = @"likeCount",
-        .name = @"name",
-        .parent = @"parent",
-        .parentContent = @"parentContent",
-        .parentPlace = @"parentPlace",
-        .published = @"published",
-        .status = @"status",
-        .updated = @"updated",
-        .viewCount = @"viewCount",
-        .visibleToExternalContributors = @"visibleToExternalContributors"
+    .contentTypes = @"contentTypes",
+    .description = @"description",
+    .displayName = @"displayName",
+    .followerCount = @"followerCount",
+    .highlightBody = @"highlightBody",
+    .highlightSubject = @"highlightSubject",
+    .highlightTags = @"highlightTags",
+    .jiveId = @"jiveId",
+    .likeCount = @"likeCount",
+    .name = @"name",
+    .parent = @"parent",
+    .parentContent = @"parentContent",
+    .parentPlace = @"parentPlace",
+    .published = @"published",
+    .status = @"status",
+    .updated = @"updated",
+    .viewCount = @"viewCount",
+    .visibleToExternalContributors = @"visibleToExternalContributors"
 };
 
 struct JivePlaceResourceAttributes const JivePlaceResourceAttributes = {
-        .activity = @"activity",
-        .contents = @"contents",
-        .extprops = @"extprops",
-        .featuredContent = @"featuredContent",
-        .followingIn = @"followingIn",
-        .html = @"html",
-        .statics = @"statics"
+    .activity = @"activity",
+    .contents = @"contents",
+    .extprops = @"extprops",
+    .featuredContent = @"featuredContent",
+    .followingIn = @"followingIn",
+    .html = @"html",
+    .statics = @"statics",
+    .announcements = @"announcements",
+    .avatar = @"avatar",
+    .blog = @"blog",
+    .categories = @"categories",
+    .invites = @"invites",
+    .members = @"members",
+    .childPlaces = @"places",
+    .checkPoints = @"checkpoints",
+    .tasks = @"tasks"
 };
 
 struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
-        .documents = @"documents",
-        .discussions = @"discussions",
-        .files = @"files",
-        .polls = @"polls",
-        .projects = @"projects",
-        .tasks = @"tasks",
-        .blog = @"blog",
-        .updates = @"updates",
-        .events = @"events",
-        .videos = @"videos",
-        .ideas = @"ideas"
+    .documents = @"documents",
+    .discussions = @"discussions",
+    .files = @"files",
+    .polls = @"polls",
+    .projects = @"projects",
+    .tasks = @"tasks",
+    .blog = @"blog",
+    .updates = @"updates",
+    .events = @"events",
+    .videos = @"videos",
+    .ideas = @"ideas"
 };
 
 @implementation JivePlace
@@ -91,14 +109,14 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
 + (Class) entityClass:(NSDictionary*) obj {
     
     static NSDictionary *classDictionary = nil;
-
+    
     if (!classDictionary)
         classDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[JiveBlog class], @"blog",
                            [JiveGroup class], @"group",
                            [JiveProject class], @"project",
                            [JiveSpace class], @"space",
                            nil];
-
+    
     NSString* type = [obj objectForKey:@"type"];
     Class targetClass = [classDictionary objectForKey:type];
     
@@ -189,71 +207,71 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
 }
 
 - (NSURL *)announcementsRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.announcements].ref;
 }
 
 - (BOOL)canCreateAnnouncement {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.announcements];
 }
 
 - (NSURL *)avatarRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.avatar].ref;
 }
 
 - (BOOL)canDeleteAvatar {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.avatar];
 }
 
 - (BOOL)canUpdateAvatar {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.avatar];
 }
 
 - (NSURL *)blogRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.blog].ref;
 }
 
 - (NSURL *)categoriesRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.categories].ref;
 }
 
 - (BOOL)canAddCategory {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.categories];
 }
 
 - (NSURL *)invitesRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.invites].ref;
 }
 
 - (BOOL)canCreateInvite {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.invites];
 }
 
 - (NSURL *)membersRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.members].ref;
 }
 
 - (BOOL)canCreateMember {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.members];
 }
 
 - (NSURL *)childPlacesRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.childPlaces].ref;
 }
 
 - (NSURL *)checkPointsRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.checkPoints].ref;
 }
 
 - (BOOL)canUpdateCheckPoints {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.checkPoints];
 }
 
 - (NSURL *)tasksRef {
-    return nil;
+    return [self resourceForTag:JivePlaceResourceAttributes.tasks].ref;
 }
 
 - (BOOL)canCreateTask {
-    return NO;
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.tasks];
 }
 
 @end

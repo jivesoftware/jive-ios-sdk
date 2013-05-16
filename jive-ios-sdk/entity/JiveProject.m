@@ -30,26 +30,6 @@ struct JiveProjectAttributes const JiveProjectAttributes = {
     .tags = @"tags",
 };
 
-struct JiveProjectResourceAttributes {
-    __unsafe_unretained NSString *announcements;
-    __unsafe_unretained NSString *avatar;
-    __unsafe_unretained NSString *blog;
-    __unsafe_unretained NSString *categories;
-    __unsafe_unretained NSString *checkPoints;
-    __unsafe_unretained NSString *childPlaces;
-    __unsafe_unretained NSString *tasks;
-} const JiveProjectResourceAttributes;
-
-struct JiveProjectResourceAttributes const JiveProjectResourceAttributes = {
-    .announcements = @"announcements",
-    .avatar = @"avatar",
-    .blog = @"blog",
-    .categories = @"categories",
-    .checkPoints = @"checkpoints",
-    .childPlaces = @"places",
-    .tasks = @"tasks"
-};
-
 @implementation JiveProject
 
 @synthesize creator, dueDate, locale, projectStatus, startDate, tags;
@@ -84,58 +64,6 @@ static NSString * const JiveProjectType = @"project";
         [dictionary setValue:[dateFormatter stringFromDate:startDate] forKey:@"startDate"];
     
     return dictionary;
-}
-
-- (NSURL *)announcementsRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.announcements].ref;
-}
-
-- (BOOL)canCreateAnnouncement {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.announcements];
-}
-
-- (NSURL *)avatarRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.avatar].ref;
-}
-
-- (BOOL)canDeleteAvatar {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.avatar];
-}
-
-- (BOOL)canUpdateAvatar {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.avatar];
-}
-
-- (NSURL *)blogRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.blog].ref;
-}
-
-- (NSURL *)categoriesRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.categories].ref;
-}
-
-- (BOOL)canAddCategory {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.categories];
-}
-
-- (NSURL *)checkPointsRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.checkPoints].ref;
-}
-
-- (BOOL)canUpdateCheckPoints {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.checkPoints];
-}
-
-- (NSURL *)childPlacesRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.childPlaces].ref;
-}
-
-- (NSURL *)tasksRef {
-    return [self resourceForTag:JiveProjectResourceAttributes.tasks].ref;
-}
-
-- (BOOL)canCreateTask {
-    return [self resourceHasPostForTag:JiveProjectResourceAttributes.tasks];
 }
 
 @end
