@@ -119,8 +119,35 @@ extern struct JivePlaceContentTypeValues {
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic) bool visibleToExternalContributors;
 
-- (NSURL *)html;
-- (NSURL *)avatar;
-- (NSURL *)blogURL;
+- (NSURL *)activityRef;
+- (NSURL *)contentsRef;
+- (NSURL *)extpropsRef;
+- (BOOL)canAddExtProps;
+- (BOOL)canDeleteExtProps;
+- (NSURL *)featuredContentRef;
+- (NSURL *)followingInRef;
+- (NSURL *)htmlRef;
+- (NSURL *)staticsRef;
+- (BOOL)canAddStatic;
+
+- (NSURL *)announcementsRef;
+- (BOOL)canCreateAnnouncement;
+- (NSURL *)avatarRef;
+- (BOOL)canDeleteAvatar;
+- (BOOL)canUpdateAvatar;
+- (NSURL *)blogRef;
+- (NSURL *)categoriesRef;
+- (BOOL)canAddCategory;
+- (NSURL *)invitesRef;
+- (BOOL)canCreateInvite;
+- (NSURL *)membersRef;
+- (BOOL)canCreateMember;
+- (NSURL *)childPlacesRef;
+
+- (NSURL *)checkPointsRef;
+- (BOOL)canUpdateCheckPoints;
+- (NSURL *)tasksRef;
+- (BOOL)canCreateTask;
+
 
 @end
