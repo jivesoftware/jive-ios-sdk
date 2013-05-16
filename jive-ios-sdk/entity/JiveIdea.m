@@ -20,18 +20,6 @@
 #import "JiveIdea.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveIdeaResourceTags {
-    __unsafe_unretained NSString *comments;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *votes;
-} const JiveIdeaResourceTags;
-
-struct JiveIdeaResourceTags const JiveIdeaResourceTags = {
-    .comments = @"comments",
-    .followingIn = @"followingIn",
-    .votes = @"votes"
-};
-
 @implementation JiveIdea
 
 @synthesize tags, visibleToExternalContributors;
@@ -55,26 +43,6 @@ static NSString * const JiveIdeaType = @"idea";
         [dictionary setValue:self.tags forKey:@"tags"];
     
     return dictionary;
-}
-
-- (NSURL *)commentsRef {
-    return [self resourceForTag:JiveIdeaResourceTags.comments].ref;
-}
-
-- (BOOL)canAddComments {
-    return [self resourceHasPostForTag:JiveIdeaResourceTags.comments];
-}
-
-- (NSURL *)followingInRef {
-    return [self resourceForTag:JiveIdeaResourceTags.followingIn].ref;
-}
-
-- (NSURL *)votesRef {
-    return [self resourceForTag:JiveIdeaResourceTags.votes].ref;
-}
-
-- (BOOL)canVote {
-    return [self resourceHasPostForTag:JiveIdeaResourceTags.votes];
 }
 
 @end

@@ -20,18 +20,6 @@
 #import "JiveUpdate.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveUpdateResourceTags {
-    __unsafe_unretained NSString *comments;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *images;
-};
-
-struct JiveUpdateResourceTags const JiveUpdateResourceTags = {
-    .comments = @"comments",
-    .followingIn = @"followingIn",
-    .images = @"images"
-};
-
 struct JiveUpdateAttributes const JiveUpdateAttributes = {
 	.latitude = @"latitude",
 	.longitude = @"longitude",
@@ -66,22 +54,6 @@ static NSString * const JiveUpdateType = @"update";
         [dictionary setValue:tags forKey:JiveUpdateAttributes.tags];
     
     return dictionary;
-}
-
-- (NSURL *)commentsRef {
-    return [self resourceForTag:JiveUpdateResourceTags.comments].ref;
-}
-
-- (BOOL)canAddComments {
-    return [self resourceHasPostForTag:JiveUpdateResourceTags.comments];
-}
-
-- (NSURL *)followingInRef {
-    return [self resourceForTag:JiveUpdateResourceTags.followingIn].ref;
-}
-
-- (NSURL *)imagesRef {
-    return [self resourceForTag:JiveUpdateResourceTags.images].ref;
 }
 
 @end

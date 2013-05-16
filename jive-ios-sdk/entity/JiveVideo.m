@@ -20,14 +20,6 @@
 #import "JiveVideo.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveVideoResourceTags {
-    __unsafe_unretained NSString *comments;
-} const JiveVideoResourceTags;
-
-struct JiveVideoResourceTags const JiveVideoResourceTags = {
-    .comments = @"comments"
-};
-
 @implementation JiveVideo
 
 @synthesize tags, visibleToExternalContributors;
@@ -51,14 +43,6 @@ static NSString * const JiveVideoType = @"video";
         [dictionary setValue:tags forKey:@"tags"];
     
     return dictionary;
-}
-
-- (NSURL *)commentsRef {
-    return [self resourceForTag:JiveVideoResourceTags.comments].ref;
-}
-
-- (BOOL)canAddComments {
-    return [self resourceHasPostForTag:JiveVideoResourceTags.comments];
 }
 
 @end

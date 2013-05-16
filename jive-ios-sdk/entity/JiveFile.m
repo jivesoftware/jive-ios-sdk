@@ -21,18 +21,6 @@
 #import "JivePerson.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveFileResourceTags {
-    __unsafe_unretained NSString *comments;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *versions;
-} const JiveFileResourceTags;
-
-struct JiveFileResourceTags const JiveFileResourceTags = {
-    .comments = @"comments",
-    .followingIn = @"followingIn",
-    .versions = @"versions"
-};
-
 @implementation JiveFile
 
 @synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility, contentType;
@@ -84,22 +72,6 @@ static NSString * const JiveFileType = @"file";
     [dictionary setValue:contentType forKey:@"contentType"];
     
     return dictionary;
-}
-
-- (NSURL *)commentsRef {
-    return [self resourceForTag:JiveFileResourceTags.comments].ref;
-}
-
-- (BOOL)canAddComments {
-    return [self resourceHasPostForTag:JiveFileResourceTags.comments];
-}
-
-- (NSURL *)followingInRef {
-    return [self resourceForTag:JiveFileResourceTags.followingIn].ref;
-}
-
-- (NSURL *)versionsRef {
-    return [self resourceForTag:JiveFileResourceTags.versions].ref;
 }
 
 @end

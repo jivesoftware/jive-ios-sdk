@@ -21,14 +21,6 @@
 #import "JiveAttachment.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveDiscussionResourceTags {
-    __unsafe_unretained NSString *messages;
-} const JiveDiscussionResourceTags;
-
-struct JiveDiscussionResourceTags const JiveDiscussionResourceTags = {
-    .messages = @"messages"
-};
-
 @implementation JiveMessage
 
 @synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors, outcomeTypeNames;
@@ -66,14 +58,6 @@ static NSString * const JiveMessageType = @"message";
         [dictionary setValue:tags forKey:@"tags"];
     
     return dictionary;
-}
-
-- (NSURL *)messagesRef {
-    return [self resourceForTag:JiveDiscussionResourceTags.messages].ref;
-}
-
-- (BOOL)canAddMessage {
-    return [self resourceHasPostForTag:JiveDiscussionResourceTags.messages];
 }
 
 @end

@@ -30,18 +30,6 @@ struct JivePostStatusValues const JivePostStatusValues = {
         .published = @"published"
 };
 
-struct JivePostResourceTags {
-    __unsafe_unretained NSString *attachments;
-    __unsafe_unretained NSString *comments;
-    __unsafe_unretained NSString *followingIn;
-} const JivePostResourceTags;
-
-struct JivePostResourceTags const JivePostResourceTags = {
-    .attachments = @"attachments",
-    .comments = @"comments",
-    .followingIn = @"followingIn"
-};
-
 @implementation JivePost
 
 @synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
@@ -84,22 +72,6 @@ static NSString * const JivePostType = @"post";
         [dictionary setValue:[dateFormatter stringFromDate:publishDate] forKey:@"publishDate"];
     
     return dictionary;
-}
-
-- (NSURL *)attachmentsRef {
-    return [self resourceForTag:JivePostResourceTags.attachments].ref;
-}
-
-- (NSURL *)commentsRef {
-    return [self resourceForTag:JivePostResourceTags.comments].ref;
-}
-
-- (BOOL)canAddComments {
-    return [self resourceHasPostForTag:JivePostResourceTags.comments];
-}
-
-- (NSURL *)followingInRef {
-    return [self resourceForTag:JivePostResourceTags.followingIn].ref;
 }
 
 @end

@@ -23,13 +23,20 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentResourceTags {
+    __unsafe_unretained NSString *attachments;
     __unsafe_unretained NSString *childOutcomeTypes;
+    __unsafe_unretained NSString *comments;
     __unsafe_unretained NSString *extProps;
+    __unsafe_unretained NSString *followingIn;
     __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *images;
     __unsafe_unretained NSString *likes;
+    __unsafe_unretained NSString *messages;
     __unsafe_unretained NSString *outcomes;
     __unsafe_unretained NSString *outcomeTypes;
     __unsafe_unretained NSString *read;
+    __unsafe_unretained NSString *versions;
+    __unsafe_unretained NSString *votes;
 } const JiveContentResourceTags;
 
 struct JiveContentResourceTags const JiveContentResourceTags = {
@@ -40,6 +47,13 @@ struct JiveContentResourceTags const JiveContentResourceTags = {
     .outcomes = @"outcomes",
     .outcomeTypes = @"outcomeTypes",
     .read = @"read",
+    .attachments = @"attachments",
+    .comments = @"comments",
+    .followingIn = @"followingIn",
+    .versions = @"versions",
+    .images = @"images",
+    .messages = @"messages",
+    .votes = @"votes"
 };
 
 struct JiveContentAttributes const JiveContentAttributes = {
@@ -179,36 +193,44 @@ static NSMutableDictionary *contentClasses;
     return [self resourceForTag:JiveContentResourceTags.childOutcomeTypes].ref;
 }
 
+- (NSURL *)attachmentsRef {
+    return [self resourceForTag:JiveContentResourceTags.attachments].ref;
+}
+
 - (NSURL *)commentsRef {
-    return nil;
+    return [self resourceForTag:JiveContentResourceTags.comments].ref;
 }
 
 - (BOOL)canAddComments {
-    return NO;
-}
-
-- (NSURL *)messagesRef {
-    return nil;
-}
-
-- (BOOL)canAddMessage {
-    return NO;
-}
-
-- (NSURL *)attachmentsRef {
-    return nil;
+    return [self resourceHasPostForTag:JiveContentResourceTags.comments];
 }
 
 - (NSURL *)followingInRef {
-    return nil;
-}
-
-- (NSURL *)imagesRef {
-    return nil;
+    return [self resourceForTag:JiveContentResourceTags.followingIn].ref;
 }
 
 - (NSURL *)versionsRef {
-    return nil;
+    return [self resourceForTag:JiveContentResourceTags.versions].ref;
+}
+
+- (NSURL *)messagesRef {
+    return [self resourceForTag:JiveContentResourceTags.messages].ref;
+}
+
+- (BOOL)canAddMessage {
+    return [self resourceHasPostForTag:JiveContentResourceTags.messages];
+}
+
+- (NSURL *)imagesRef {
+    return [self resourceForTag:JiveContentResourceTags.images].ref;
+}
+
+- (NSURL *)votesRef {
+    return [self resourceForTag:JiveContentResourceTags.votes].ref;
+}
+
+- (BOOL)canVote {
+    return [self resourceHasPostForTag:JiveContentResourceTags.votes];
 }
 
 @end

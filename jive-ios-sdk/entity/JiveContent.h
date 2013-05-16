@@ -124,4 +124,7 @@ extern struct JiveContentAttributes {
 - (BOOL)canAddMessage;
 - (NSURL *)versionsRef;
 
+- (NSURL *)votesRef;
+- (BOOL)canVote;
+
 @end

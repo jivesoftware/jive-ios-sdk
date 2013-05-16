@@ -44,15 +44,4 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
-- (NSURL *)childOutcomeTypesRef;
-- (NSURL *)extpropsRef;
-- (BOOL)canAddExtProps;
-- (NSURL *)htmlRef;
-- (NSURL *)readRef;
-- (BOOL)canMarkAsRead;
-- (BOOL)canMarkAsUnread;
-- (NSURL *)outcomesRef;
-- (BOOL)canSetOutcomes;
-- (NSURL *)outcomeTypesRef;
-
 @end

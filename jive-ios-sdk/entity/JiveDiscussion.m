@@ -20,16 +20,6 @@
 #import "JiveDiscussion.h"
 #import "JiveTypedObject_internal.h"
 
-struct JiveDiscussionResourceTags {
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *messages;
-} const JiveDiscussionResourceTags;
-
-struct JiveDiscussionResourceTags const JiveDiscussionResourceTags = {
-    .followingIn = @"followingIn",
-    .messages = @"messages"
-};
-
 @implementation JiveDiscussion
 
 @synthesize answer, helpful, categories, question, tags, users, visibility, visibleToExternalContributors;
@@ -71,18 +61,6 @@ static NSString * const JiveDiscussionType = @"discussion";
         [dictionary setValue:categories forKey:@"categories"];
     
     return dictionary;
-}
-
-- (NSURL *)followingInRef {
-    return [self resourceForTag:JiveDiscussionResourceTags.followingIn].ref;
-}
-
-- (NSURL *)messagesRef {
-    return [self resourceForTag:JiveDiscussionResourceTags.messages].ref;
-}
-
-- (BOOL)canAddMessage {
-    return [self resourceHasPostForTag:JiveDiscussionResourceTags.messages];
 }
 
 @end
