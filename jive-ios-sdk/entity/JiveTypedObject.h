@@ -21,7 +21,6 @@
 
 extern struct JiveTypedObjectAttributes {
     __unsafe_unretained NSString *type;
-    __unsafe_unretained NSString *resources;
 } const JiveTypedObjectAttributes;
 
 //! \class JiveTypedObject
@@ -32,6 +31,7 @@ extern struct JiveTypedObjectAttributes {
 @property(nonatomic, readonly) NSString* type;
 
 - (NSURL *)selfRef;
+- (BOOL)canDelete;
 - (BOOL)isUpdateable;
 
 @end

@@ -14,7 +14,6 @@
 
 + (void)registerClass:(Class)clazz forType:(NSString *)type;
 
-//! Resource links (and related permissions for the requesting object) relevant to this object.
 @property(nonatomic, readonly, strong) NSDictionary* resources;
 
 - (JiveResourceEntry *)resourceForTag:(NSString *)tag;

@@ -32,8 +32,15 @@ struct JiveTypedObjectResourceAllowed {
     __unsafe_unretained NSString *delete;
 };
 
+extern struct JiveTypedObjectAttributesHidden {
+    __unsafe_unretained NSString *resources;
+} const JiveTypedObjectAttributesHidden;
+
 struct JiveTypedObjectAttributes const JiveTypedObjectAttributes = {
 	.type = @"type",
+};
+
+struct JiveTypedObjectAttributesHidden const JiveTypedObjectAttributesHidden = {
 	.resources = @"resources"
 };
 
@@ -89,7 +96,7 @@ static NSMutableDictionary *typedClasses;
 }
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    if ([@"resources" isEqualToString:property]) {
+    if ([JiveTypedObjectAttributesHidden.resources isEqualToString:property]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
         
         for (NSString *key in JSON) {
@@ -102,6 +109,22 @@ static NSMutableDictionary *typedClasses;
     }
     
     return nil;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    
+    if (resources.count > 0) {
+        NSMutableDictionary *resourcesJSON = [NSMutableDictionary dictionaryWithCapacity:resources.count];
+        
+        for (NSString *key in resources.allKeys) {
+            resourcesJSON[key] = [[resources valueForKey:key] persistentJSON];
+        }
+    
+        dictionary[JiveTypedObjectAttributesHidden.resources] = resourcesJSON;
+    }
+    
+    return dictionary;
 }
 
 - (JiveResourceEntry *)resourceForTag:(NSString *)tag {
@@ -126,6 +149,10 @@ static NSMutableDictionary *typedClasses;
 
 - (NSURL *)selfRef {
     return [self resourceForTag:JiveTypedObjectResourceTags.self].ref;
+}
+
+- (BOOL)canDelete {
+    return [self resourceHasDeleteForTag:JiveTypedObjectResourceTags.self];
 }
 
 - (BOOL)isUpdateable {
