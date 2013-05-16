@@ -26,6 +26,7 @@
 #import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "NSData+JiveBase64.h"
+#import "NSString+Jive.h"
 
 @interface JiveInvite (internal)
 
@@ -1265,15 +1266,10 @@
     [body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:contentData];
     for (JiveAttachment *attachment in attachmentURLs) {
-        CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                                                                (__bridge CFStringRef)[attachment.url pathExtension],
-                                                                NULL);
         NSString *formDataString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",
                                     attachment.name, [attachment.url lastPathComponent]];
-        NSString *fileTypeDataString = [NSString stringWithFormat:typeFormat,
-                                        (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType)];
+        NSString *fileTypeDataString = [NSString stringWithFormat:typeFormat, [[attachment.url pathExtension] mimeTypeFromExtension]];
         
-        CFRelease(UTI);
         [body appendData:boundaryData];
         [body appendData:[formDataString dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[fileTypeDataString dataUsingEncoding:NSUTF8StringEncoding]];
