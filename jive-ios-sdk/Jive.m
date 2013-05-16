@@ -810,7 +810,7 @@
 }
 
 - (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
-    NSString *path = [[person.selfRef path] stringByAppendingPathComponent:target.jiveId];
+    NSString *path = [[person.following path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:path, nil];
     
     [request setHTTPMethod:@"PUT"];
