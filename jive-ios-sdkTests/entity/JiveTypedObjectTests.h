@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "JiveTypedObject.h"
+#import "JiveTypedObject_internal.h"
 
 @interface JiveTypedObjectTests : SenTestCase
 

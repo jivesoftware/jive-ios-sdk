@@ -22,7 +22,7 @@
 @implementation JivePollTests
 
 - (void)setUp {
-    self.content = [[JivePoll alloc] init];
+    self.typedObject = [[JivePoll alloc] init];
 }
 
 - (JivePoll *)poll {

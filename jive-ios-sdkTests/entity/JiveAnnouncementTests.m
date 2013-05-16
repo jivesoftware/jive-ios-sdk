@@ -22,7 +22,7 @@
 @implementation JiveAnnouncementTests
 
 - (void)setUp {
-    self.content = [[JiveAnnouncement alloc] init];
+    self.typedObject = [[JiveAnnouncement alloc] init];
 }
 
 - (JiveAnnouncement *)announcement {

@@ -7,7 +7,6 @@
 //
 
 #import "JiveTypedObjectTests.h"
-#import "JiveTypedObject_internal.h"
 
 @interface DummyTypedObject : JiveTypedObject
 

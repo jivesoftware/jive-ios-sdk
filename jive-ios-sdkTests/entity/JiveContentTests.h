@@ -17,11 +17,11 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveTypedObjectTests.h"
 #import "JiveContent.h"
 
-@interface JiveContentTests : SenTestCase
+@interface JiveContentTests : JiveTypedObjectTests
 
-@property (nonatomic, strong) JiveContent *content;
+@property (nonatomic, readonly) JiveContent *content;
 
 @end

@@ -11,7 +11,7 @@
 @implementation JiveShareTests
 
 - (void)setUp {
-    self.content = [[JiveShare alloc] init];
+    self.typedObject = [[JiveShare alloc] init];
 }
 
 - (JiveShare *)share {

@@ -22,7 +22,7 @@
 @implementation JiveDirectMessageTests
 
 - (void)setUp {
-    self.content = [[JiveDirectMessage alloc] init];
+    self.typedObject = [[JiveDirectMessage alloc] init];
 }
 
 - (JiveDirectMessage *)dm {

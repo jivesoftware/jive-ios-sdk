@@ -22,7 +22,7 @@
 @implementation JiveProjectTests
 
 - (void)setUp {
-    self.place = [[JiveProject alloc] init];
+    self.typedObject = [[JiveProject alloc] init];
 }
 
 - (JiveProject *)project {

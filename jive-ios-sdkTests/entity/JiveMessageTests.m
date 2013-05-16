@@ -23,7 +23,7 @@
 @implementation JiveMessageTests
 
 - (void)setUp {
-    self.content = [[JiveMessage alloc] init];
+    self.typedObject = [[JiveMessage alloc] init];
 }
 
 - (JiveMessage *)message {
