@@ -22,6 +22,20 @@
 #import "JivePerson.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveDocumentResourceTags {
+    __unsafe_unretained NSString *attachments;
+    __unsafe_unretained NSString *comments;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *versions;
+} const JiveDocumentResourceTags;
+
+struct JiveDocumentResourceTags const JiveDocumentResourceTags = {
+    .attachments = @"attachments",
+    .comments = @"comments",
+    .followingIn = @"followingIn",
+    .versions = @"versions"
+};
+
 @implementation JiveDocument
 
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
@@ -77,8 +91,24 @@ static NSString * const JiveDocumentType = @"document";
     return dictionary;
 }
 
-- (NSURL *)html {
-    return [self resourceForTag:@"html"].ref;
+- (NSURL *)attachmentsRef {
+    return [self resourceForTag:JiveDocumentResourceTags.attachments].ref;
+}
+
+- (NSURL *)commentsRef {
+    return [self resourceForTag:JiveDocumentResourceTags.comments].ref;
+}
+
+- (BOOL)canAddComments {
+    return [self resourceHasPostForTag:JiveDocumentResourceTags.comments];
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JiveDocumentResourceTags.followingIn].ref;
+}
+
+- (NSURL *)versionsRef {
+    return [self resourceForTag:JiveDocumentResourceTags.versions].ref;
 }
 
 @end

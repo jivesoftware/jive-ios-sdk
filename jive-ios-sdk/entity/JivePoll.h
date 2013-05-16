@@ -48,4 +48,7 @@
 //! The options voted by the user making the request. String[]
 @property(nonatomic, readonly, strong) NSArray* votes;
 
+- (NSURL *)votesRef;
+- (BOOL)canVote;
+
 @end

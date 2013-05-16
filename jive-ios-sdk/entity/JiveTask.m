@@ -21,6 +21,14 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveTaskResourceTags {
+    __unsafe_unretained NSString *followingIn;
+} const JiveTaskResourceTags;
+
+struct JiveTaskResourceTags const JiveTaskResourceTags = {
+    .followingIn = @"followingIn"
+};
+
 @implementation JiveTask
 
 @synthesize completed, dueDate, parentTask, subTasks, tags, visibleToExternalContributors;
@@ -53,6 +61,10 @@ static NSString * const JiveTaskType = @"task";
         [dictionary setValue:[dateFormatter stringFromDate:dueDate] forKey:@"dueDate"];
     
     return dictionary;
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JiveTaskResourceTags.followingIn].ref;
 }
 
 @end

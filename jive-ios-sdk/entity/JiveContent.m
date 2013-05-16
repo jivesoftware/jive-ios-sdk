@@ -23,13 +23,23 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveContentResourceTags {
-    __unsafe_unretained NSString *likes;
+    __unsafe_unretained NSString *childOutcomeTypes;
+    __unsafe_unretained NSString *extProps;
     __unsafe_unretained NSString *html;
-};
+    __unsafe_unretained NSString *likes;
+    __unsafe_unretained NSString *outcomes;
+    __unsafe_unretained NSString *outcomeTypes;
+    __unsafe_unretained NSString *read;
+} const JiveContentResourceTags;
 
 struct JiveContentResourceTags const JiveContentResourceTags = {
+    .childOutcomeTypes = @"childOutcomeTypes",
+    .extProps = @"extprops",
+    .html = @"html",
     .likes = @"likes",
-    .html = @"html"
+    .outcomes = @"outcomes",
+    .outcomeTypes = @"outcomeTypes",
+    .read = @"read",
 };
 
 struct JiveContentAttributes const JiveContentAttributes = {
@@ -49,16 +59,6 @@ struct JiveContentAttributes const JiveContentAttributes = {
         .subject = @"subject",
         .updated = @"updated",
         .viewCount = @"viewCount"
-};
-
-struct JiveContentResourceAttributes const JiveContentResourceAttributes = {
-    .childOutcomeTypes = @"childOutcomeTypes",
-    .extprops = @"extprops",
-    .followingIn = @"followingIn",
-    .html = @"html",
-    .outcomes = @"outcomes",
-    .outcomeTypes = @"outcomeTypes",
-    .self = @"self"
 };
 
 @implementation JiveContent
@@ -123,7 +123,7 @@ static NSMutableDictionary *contentClasses;
     return dictionary;
 }
 
-- (NSURL *)likes {
+- (NSURL *)likesRef {
     return [self resourceForTag:JiveContentResourceTags.likes].ref;
 }
 
@@ -135,8 +135,80 @@ static NSMutableDictionary *contentClasses;
     return [self resourceHasDeleteForTag:JiveContentResourceTags.likes];
 }
 
-- (NSURL *)html {
+- (NSURL *)htmlRef {
     return [self resourceForTag:JiveContentResourceTags.html].ref;
+}
+
+- (NSURL *)extPropsRef {
+    return [self resourceForTag:JiveContentResourceTags.extProps].ref;
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPostForTag:JiveContentResourceTags.extProps];
+}
+
+- (BOOL)canDeleteExtProps {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.extProps];
+}
+
+- (NSURL *)readRef {
+    return [self resourceForTag:JiveContentResourceTags.read].ref;
+}
+
+- (BOOL)canMarkAsRead {
+    return [self resourceHasPostForTag:JiveContentResourceTags.read];
+}
+
+- (BOOL)canMarkAsUnread {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.read];
+}
+
+- (NSURL *)outcomesRef {
+    return [self resourceForTag:JiveContentResourceTags.outcomes].ref;
+}
+
+- (BOOL)canAddOutcomes {
+    return [self resourceHasPostForTag:JiveContentResourceTags.outcomes];
+}
+
+- (NSURL *)outcomeTypesRef {
+    return [self resourceForTag:JiveContentResourceTags.outcomeTypes].ref;
+}
+
+- (NSURL *)childOutcomeTypesRef {
+    return [self resourceForTag:JiveContentResourceTags.childOutcomeTypes].ref;
+}
+
+- (NSURL *)commentsRef {
+    return nil;
+}
+
+- (BOOL)canAddComments {
+    return NO;
+}
+
+- (NSURL *)messagesRef {
+    return nil;
+}
+
+- (BOOL)canAddMessage {
+    return NO;
+}
+
+- (NSURL *)attachmentsRef {
+    return nil;
+}
+
+- (NSURL *)followingInRef {
+    return nil;
+}
+
+- (NSURL *)imagesRef {
+    return nil;
+}
+
+- (NSURL *)versionsRef {
+    return nil;
 }
 
 @end

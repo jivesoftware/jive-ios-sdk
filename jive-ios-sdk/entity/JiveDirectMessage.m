@@ -20,6 +20,18 @@
 #import "JiveDirectMessage.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveUpdateResourceTags {
+    __unsafe_unretained NSString *comments;
+    __unsafe_unretained NSString *images;
+    __unsafe_unretained NSString *messages;
+};
+
+struct JiveUpdateResourceTags const JiveUpdateResourceTags = {
+    .comments = @"comments",
+    .images = @"images",
+    .messages = @"messages"
+};
+
 struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 	.participants = @"participants",
 	.tags = @"tags",
@@ -64,6 +76,22 @@ static NSString * const JiveDmType = @"dm";
         [dictionary setValue:self.tags forKey:JiveDirectMessageAttributes.tags];
     
     return dictionary;
+}
+
+- (NSURL *)commentsRef {
+    return [self resourceForTag:JiveUpdateResourceTags.comments].ref;
+}
+
+- (BOOL)canAddComments {
+    return [self resourceHasPostForTag:JiveUpdateResourceTags.comments];
+}
+
+- (NSURL *)imagesRef {
+    return [self resourceForTag:JiveUpdateResourceTags.images].ref;
+}
+
+- (NSURL *)messagesRef {
+    return [self resourceForTag:JiveUpdateResourceTags.messages].ref;
 }
 
 @end

@@ -21,10 +21,14 @@
 #import "JiveTypedObject_internal.h"
 
 struct JiveUpdateResourceTags {
+    __unsafe_unretained NSString *comments;
+    __unsafe_unretained NSString *followingIn;
     __unsafe_unretained NSString *images;
 };
 
 struct JiveUpdateResourceTags const JiveUpdateResourceTags = {
+    .comments = @"comments",
+    .followingIn = @"followingIn",
     .images = @"images"
 };
 
@@ -64,7 +68,19 @@ static NSString * const JiveUpdateType = @"update";
     return dictionary;
 }
 
-- (NSURL *)imagesURL {
+- (NSURL *)commentsRef {
+    return [self resourceForTag:JiveUpdateResourceTags.comments].ref;
+}
+
+- (BOOL)canAddComments {
+    return [self resourceHasPostForTag:JiveUpdateResourceTags.comments];
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JiveUpdateResourceTags.followingIn].ref;
+}
+
+- (NSURL *)imagesRef {
     return [self resourceForTag:JiveUpdateResourceTags.images].ref;
 }
 

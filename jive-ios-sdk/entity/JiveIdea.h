@@ -29,4 +29,7 @@
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly, strong) NSNumber *visibleToExternalContributors;
 
+- (NSURL *)votesRef;
+- (BOOL)canVote;
+
 @end

@@ -20,6 +20,18 @@
 #import "JivePoll.h"
 #import "JiveTypedObject_internal.h"
 
+struct JivePollResourceTags {
+    __unsafe_unretained NSString *comments;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *votes;
+} const JivePollResourceTags;
+
+struct JivePollResourceTags const JivePollResourceTags = {
+    .comments = @"comments",
+    .followingIn = @"followingIn",
+    .votes = @"votes"
+};
+
 @implementation JivePoll
 
 @synthesize categories, options, tags, visibility, visibleToExternalContributors, voteCount, votes;
@@ -54,6 +66,22 @@ static NSString * const JivePollType = @"poll";
         [dictionary setValue:votes forKey:@"votes"];
     
     return dictionary;
+}
+
+- (NSURL *)commentsRef {
+    return [self resourceForTag:JivePollResourceTags.comments].ref;
+}
+
+- (BOOL)canAddComments {
+    return [self resourceHasPostForTag:JivePollResourceTags.comments];
+}
+
+- (NSURL *)votesRef {
+    return [self resourceForTag:JivePollResourceTags.votes].ref;
+}
+
+- (BOOL)canVote {
+    return [self resourceHasPostForTag:JivePollResourceTags.votes];
 }
 
 @end
