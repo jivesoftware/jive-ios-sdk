@@ -72,6 +72,8 @@
 		0F187EAB16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187EA916695F3D001FCB51 /* JiveAuthorCommentRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F187EAC16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */; };
 		0F187EAF16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */; };
+		0F5A5DCD17457E82005F3BF7 /* NSString+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */; };
+		0F5A5DCE17457E82005F3BF7 /* NSString+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */; };
 		0F5F1A13167F9C7100BA616E /* JiveAddressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */; };
 		0F5F1A16167FB81100BA616E /* JiveNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A15167FB81000BA616E /* JiveNameTests.m */; };
 		0F5F1A19167FBE1B00BA616E /* JiveEmailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A18167FBE1B00BA616E /* JiveEmailTests.m */; };
@@ -557,6 +559,8 @@
 		0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAuthorCommentRequestOptions.m; sourceTree = "<group>"; };
 		0F187EAD16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAuthorCommentRequestOptionsTests.h; sourceTree = "<group>"; };
 		0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAuthorCommentRequestOptionsTests.m; sourceTree = "<group>"; };
+		0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Jive.h"; sourceTree = "<group>"; };
+		0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Jive.m"; sourceTree = "<group>"; };
 		0F5F1A11167F9C7100BA616E /* JiveAddressTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAddressTests.h; sourceTree = "<group>"; };
 		0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAddressTests.m; sourceTree = "<group>"; };
 		0F5F1A14167FB81000BA616E /* JiveNameTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveNameTests.h; sourceTree = "<group>"; };
@@ -1464,6 +1468,8 @@
 				B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */,
 				B8657AED166FEDE900F946B5 /* NSError+Jive.h */,
 				B8657AEE166FEDE900F946B5 /* NSError+Jive.m */,
+				0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */,
+				0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */,
 				0F0913651665391D0036C4E8 /* RequestOptions */,
 				2192BBFF1614F33300082926 /* Supporting Files */,
 			);
@@ -1796,6 +1802,7 @@
 				B1C6D116172B0C3600A1380A /* JiveProperty.h in Headers */,
 				0F85BEFD172B3B090005E31E /* JiveShare.h in Headers */,
 				B1B5917C17381378009B560E /* JiveMobileAnalyticsHeader.h in Headers */,
+				0F5A5DCD17457E82005F3BF7 /* NSString+Jive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2149,6 +2156,7 @@
 				B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */,
 				0F85BEFE172B3B090005E31E /* JiveShare.m in Sources */,
 				B1B5917D17381378009B560E /* JiveMobileAnalyticsHeader.m in Sources */,
+				0F5A5DCE17457E82005F3BF7 /* NSString+Jive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
