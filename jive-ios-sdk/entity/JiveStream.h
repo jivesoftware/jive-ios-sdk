@@ -30,6 +30,15 @@ extern struct JiveStreamAttributes {
     __unsafe_unretained NSString *updated;
 } const JiveStreamAttributes;
 
+extern struct JiveStreamSourceValues {
+    __unsafe_unretained NSString *all;
+    __unsafe_unretained NSString *communications;
+    __unsafe_unretained NSString *connections;
+    __unsafe_unretained NSString *context;
+    __unsafe_unretained NSString *profile;
+    __unsafe_unretained NSString *watches;
+} const JiveStreamSourceValues;
+
 //! \class JiveStream
 //! https://developers.jivesoftware.com/api/v3/rest/StreamEntity.html
 @interface JiveStream : JiveTypedObject
