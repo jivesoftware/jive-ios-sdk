@@ -116,23 +116,23 @@ static NSString * const JivePersonType = @"person";
     return dictionary;
 }
 
-- (NSURL *)avatar {
+- (NSURL *)avatarRef {
     return [self resourceForTag:JivePersonResourceAttributes.avatar].ref;
 }
 
-- (NSURL *)activity {
+- (NSURL *)activityRef {
     return [self resourceForTag:JivePersonResourceAttributes.activity].ref;
 }
 
-- (NSURL *)blog {
+- (NSURL *)blogRef {
     return [self resourceForTag:JivePersonResourceAttributes.blog].ref;
 }
 
-- (NSURL *)colleagues {
+- (NSURL *)colleaguesRef {
     return [self resourceForTag:JivePersonResourceAttributes.colleagues].ref;
 }
 
-- (NSURL *)extprops {
+- (NSURL *)extPropsRef {
     return [self resourceForTag:JivePersonResourceAttributes.extprops].ref;
 }
 
@@ -144,39 +144,39 @@ static NSString * const JivePersonType = @"person";
     return [self resourceHasPostForTag:JivePersonResourceAttributes.extprops];
 }
 
-- (NSURL *)followers {
+- (NSURL *)followersRef {
     return [self resourceForTag:JivePersonResourceAttributes.followers].ref;
 }
 
-- (NSURL *)following {
+- (NSURL *)followingRef {
     return [self resourceForTag:JivePersonResourceAttributes.following].ref;
 }
 
-- (NSURL *)followingIn {
+- (NSURL *)followingInRef {
     return [self resourceForTag:JivePersonResourceAttributes.followingIn].ref;
 }
 
-- (NSURL *)html {
+- (NSURL *)htmlRef {
     return [self resourceForTag:JivePersonResourceAttributes.html].ref;
 }
 
-- (NSURL *)images {
+- (NSURL *)imagesRef {
     return [self resourceForTag:JivePersonResourceAttributes.images].ref;
 }
 
-- (NSURL *)manager {
+- (NSURL *)managerRef {
     return [self resourceForTag:JivePersonResourceAttributes.manager].ref;
 }
 
-- (NSURL *)members {
+- (NSURL *)membersRef {
     return [self resourceForTag:JivePersonResourceAttributes.members].ref;
 }
 
-- (NSURL *)reports {
+- (NSURL *)reportsRef {
     return [self resourceForTag:JivePersonResourceAttributes.reports].ref;
 }
 
-- (NSURL *)streams {
+- (NSURL *)streamsRef {
     return [self resourceForTag:JivePersonResourceAttributes.streams].ref;
 }
 
@@ -184,7 +184,7 @@ static NSString * const JivePersonType = @"person";
     return [self resourceHasPostForTag:JivePersonResourceAttributes.streams];
 }
 
-- (NSURL *)tasks {
+- (NSURL *)tasksRef {
     return [self resourceForTag:JivePersonResourceAttributes.tasks].ref;
 }
 

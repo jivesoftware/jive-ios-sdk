@@ -88,24 +88,24 @@ extern struct JivePersonAttributes {
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
-- (NSURL *)avatar;
-- (NSURL *)activity;
-- (NSURL *)blog;
-- (NSURL *)colleagues;
-- (NSURL *)extprops;
+- (NSURL *)avatarRef;
+- (NSURL *)activityRef;
+- (NSURL *)blogRef;
+- (NSURL *)colleaguesRef;
+- (NSURL *)extPropsRef;
 - (BOOL)canAddExtProps;
 - (BOOL)canDeleteExtProps;
-- (NSURL *)followers;
-- (NSURL *)following;
-- (NSURL *)followingIn;
-- (NSURL *)html;
-- (NSURL *)images;
-- (NSURL *)manager;
-- (NSURL *)members;
-- (NSURL *)reports;
-- (NSURL *)streams;
+- (NSURL *)followersRef;
+- (NSURL *)followingRef;
+- (NSURL *)followingInRef;
+- (NSURL *)htmlRef;
+- (NSURL *)imagesRef;
+- (NSURL *)managerRef;
+- (NSURL *)membersRef;
+- (NSURL *)reportsRef;
+- (NSURL *)streamsRef;
 - (BOOL)canCreateNewStream;
-- (NSURL *)tasks;
+- (NSURL *)tasksRef;
 - (BOOL)canCreateNewTask;
 
 @end
