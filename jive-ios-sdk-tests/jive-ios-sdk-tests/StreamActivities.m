@@ -85,7 +85,7 @@
         }
     }
     
-    JiveResourceEntry *resourceEntry = [testCustomStream.resources objectForKey:@"self"];
+    JiveResourceEntry *resourceEntry = testCustomStream.selfRef;
     NSString* streamURL = [resourceEntry.ref absoluteString];
     
     #ifdef SHOW_TEST_LOGS
