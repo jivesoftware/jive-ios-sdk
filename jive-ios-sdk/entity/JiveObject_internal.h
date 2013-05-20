@@ -16,4 +16,6 @@
 
 - (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON;
 
+- (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
+
 @end
