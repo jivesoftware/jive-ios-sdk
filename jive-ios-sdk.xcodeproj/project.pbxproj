@@ -79,7 +79,7 @@
 		0F5F1A19167FBE1B00BA616E /* JiveEmailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A18167FBE1B00BA616E /* JiveEmailTests.m */; };
 		0F5F1A1C167FBF0100BA616E /* JivePhoneNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A1B167FBF0100BA616E /* JivePhoneNumberTests.m */; };
 		0F5F1A1F167FC50800BA616E /* JivePersonJiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A1E167FC50800BA616E /* JivePersonJiveTests.m */; };
-		0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5F1A201680DFFF00BA616E /* JiveResourceEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F5F1A221680E00000BA616E /* JiveResourceEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5F1A201680DFFF00BA616E /* JiveResourceEntry.h */; settings = {ATTRIBUTES = (); }; };
 		0F5F1A231680E00000BA616E /* JiveResourceEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A211680DFFF00BA616E /* JiveResourceEntry.m */; };
 		0F5F1A261680E01B00BA616E /* JiveResourceEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A251680E01B00BA616E /* JiveResourceEntryTests.m */; };
 		0F6E3169168269E500E5F7CC /* recommended_places.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E3168168269E500E5F7CC /* recommended_places.json */; };

@@ -24,14 +24,12 @@ extern struct JiveResourceEntryAttributes {
     __unsafe_unretained NSString *allowed;
 } const JiveResourceEntryAttributes;
 
-//! \class JiveResourceEntry
+// This class is an internal class that should not be documented outside of the code.
 @interface JiveResourceEntry : JiveObject
 
-//! URL for this service.
+// URL for this service.
 @property (nonatomic, readonly) NSURL *ref;
-//! Access types allowed by this service.
+// Access types allowed by this service.
 @property (nonatomic, readonly) NSArray *allowed;
-
-- (id)persistentJSON;
 
 @end
