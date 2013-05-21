@@ -150,8 +150,6 @@
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
     STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
-    STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 - (void)testContentParsingAlternate {
@@ -190,8 +188,6 @@
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
     STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
-    STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 @end

@@ -17,13 +17,13 @@
 //    limitations under the License.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 #import "JivePerson.h"
 #import "JivePlace.h"
 
 //! \class JiveStatic
 //! https://developers.jivesoftware.com/api/v3/rest/StaticEntity.html
-@interface JiveStatic : JiveObject
+@interface JiveStatic : JiveTypedObject
 
 //! Person that most recently uploaded this static resource.
 @property(nonatomic, readonly, strong) JivePerson* author;
@@ -43,13 +43,9 @@
 //! Date and time this object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object.
-@property(nonatomic, readonly, strong) NSDictionary* resources;
-
-//! The object type of this object ("static").
-@property(nonatomic, readonly, copy) NSString* type;
-
 //! Date and time this object was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
+
+- (NSURL *)htmlRef;
 
 @end
