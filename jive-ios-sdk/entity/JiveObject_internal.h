@@ -10,6 +10,8 @@
 
 @interface JiveObject ()
 
++ (Class) entityClass:(NSDictionary*) obj;
+
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
 
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;

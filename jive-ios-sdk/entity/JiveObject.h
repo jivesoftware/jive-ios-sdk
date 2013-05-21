@@ -28,9 +28,6 @@
 @property (readonly) BOOL extraFieldsDetected;
 
 - (NSDictionary *)toJSONDictionary;
-
-+ (Class) entityClass:(NSDictionary*) obj;
-
 - (id)persistentJSON;
 
 @end
