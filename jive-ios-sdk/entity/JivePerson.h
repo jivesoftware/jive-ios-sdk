@@ -21,7 +21,22 @@
 #import "JiveTypedObject.h"
 
 extern struct JivePersonAttributes {
+    __unsafe_unretained NSString *addresses;
+    __unsafe_unretained NSString *displayName;
+    __unsafe_unretained NSString *emails;
+    __unsafe_unretained NSString *followerCount;
+    __unsafe_unretained NSString *followingCount;
     __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *location;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *phoneNumbers;
+    __unsafe_unretained NSString *photos;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *status;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *thumbnailUrl;
+    __unsafe_unretained NSString *updated;
 } const JivePersonAttributes;
 
 @class JivePersonJive;

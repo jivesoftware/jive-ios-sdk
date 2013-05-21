@@ -26,7 +26,22 @@
 #import "JiveTypedObject_internal.h"
 
 struct JivePersonAttributes const JivePersonAttributes = {
+	.addresses = @"addresses",
+	.displayName = @"displayName",
+	.emails = @"emails",
+	.followerCount = @"followerCount",
+	.followingCount = @"followingCount",
 	.jiveId = @"jiveId",
+	.jive = @"jive",
+	.location = @"location",
+	.name = @"name",
+	.phoneNumbers = @"phoneNumbers",
+	.photos = @"photos",
+	.published = @"published",
+	.status = @"status",
+	.tags = @"tags",
+	.thumbnailUrl = @"thumbnailUrl",
+	.updated = @"updated"
 };
 
 struct JivePersonResourceAttributes {
@@ -76,7 +91,7 @@ static NSString * const JivePersonType = @"person";
 }
 
 - (NSString *)type {
-    return @"person";
+    return JivePersonType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
@@ -84,9 +99,9 @@ static NSString * const JivePersonType = @"person";
     
     if (!propertyClasses)
         propertyClasses = [NSDictionary dictionaryWithObjectsAndKeys:
-                           [JiveAddress class], @"addresses",
-                           [JiveEmail class], @"emails",
-                           [JivePhoneNumber class], @"phoneNumbers",
+                           [JiveAddress class], JivePersonAttributes.addresses,
+                           [JiveEmail class], JivePersonAttributes.emails,
+                           [JivePhoneNumber class], JivePersonAttributes.phoneNumbers,
                            nil];
     
     return [propertyClasses objectForKey:propertyName];
@@ -99,19 +114,28 @@ static NSString * const JivePersonType = @"person";
     
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:self.jiveId forKey:@"id"];
-    [dictionary setValue:self.location forKey:@"location"];
-    [dictionary setValue:self.status forKey:@"status"];
-    [self addArrayElements:addresses toJSONDictionary:dictionary forTag:@"addresses"];
-    [self addArrayElements:emails toJSONDictionary:dictionary forTag:@"emails"];
-    [self addArrayElements:phoneNumbers toJSONDictionary:dictionary forTag:@"phoneNumbers"];
+    [dictionary setValue:self.location forKey:JivePersonAttributes.location];
+    [dictionary setValue:self.status forKey:JivePersonAttributes.status];
+    [self addArrayElements:addresses toJSONDictionary:dictionary forTag:JivePersonAttributes.addresses];
+    [self addArrayElements:emails toJSONDictionary:dictionary forTag:JivePersonAttributes.emails];
+    [self addArrayElements:phoneNumbers toJSONDictionary:dictionary
+                    forTag:JivePersonAttributes.phoneNumbers];
     if (jive)
-        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
+        [dictionary setValue:[jive toJSONDictionary] forKey:JivePersonAttributes.jive];
     
     if (name)
-        [dictionary setValue:[name toJSONDictionary] forKey:@"name"];
+        [dictionary setValue:[name toJSONDictionary] forKey:JivePersonAttributes.name];
     
     if (tags)
-        [dictionary setValue:[tags copy] forKey:@"tags"];
+        [dictionary setValue:[tags copy] forKey:JivePersonAttributes.tags];
+    
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    
+    [dictionary setValue:displayName forKey:JivePersonAttributes.displayName];
     
     return dictionary;
 }
