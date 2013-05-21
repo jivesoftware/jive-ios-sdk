@@ -15,11 +15,20 @@ extern struct JiveCoreVersionAttributes {
     __unsafe_unretained NSString *documentation;
 } const JiveCoreVersionAttributes;
 
+//! \class JiveCoreVersion
+//! REST api version information
 @interface JiveCoreVersion : JiveObject
 
+//! REST api major version. This SDK works with version 3.
 @property (nonatomic, readonly) NSNumber *version;
+
+//! REST api minor version. This SDK may check this value for feature availablity.
 @property (nonatomic, readonly) NSNumber *revision;
+
+//! Relative path for all REST api calls.
 @property (nonatomic, readonly) NSString *uri;
+
+//! REST api documentation.
 @property (nonatomic, readonly) NSURL *documentation;
 
 @end
