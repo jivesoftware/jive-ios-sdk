@@ -8,6 +8,8 @@
 
 #import "JiveObject.h"
 
+//! \class JiveProperty
+//! https://developers.jivesoftware.com/api/v3/rest/PropertyEntity.html
 @interface JiveProperty : JiveObject
 
 //! Comments regarding when this property will be present.
