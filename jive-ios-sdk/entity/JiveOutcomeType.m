@@ -8,6 +8,13 @@
 
 #import "JiveOutcomeType.h"
 
+struct JiveOutcomeTypeAttributes const JiveOutcomeTypeAttributes = {
+	.fields = @"fields",
+	.jiveId = @"jiveId",
+	.name = @"name",
+	.resources = @"resources"
+};
+
 @implementation JiveOutcomeType
 
 @synthesize fields, jiveId, name, resources;
@@ -17,10 +24,17 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:[fields copy] forKey:@"fields"];
     [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:name forKey:@"name"];
-    [dictionary setValue:[resources copy] forKey:@"resources"];
+    
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    
+    [dictionary setValue:[fields copy] forKey:JiveOutcomeTypeAttributes.fields];
+    [dictionary setValue:name forKey:JiveOutcomeTypeAttributes.name];
+    [dictionary setValue:[resources copy] forKey:JiveOutcomeTypeAttributes.resources];
     
     return dictionary;
 }
