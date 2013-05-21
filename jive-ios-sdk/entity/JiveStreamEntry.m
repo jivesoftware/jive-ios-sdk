@@ -20,68 +20,44 @@
 #import "JiveStreamEntry.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
+
+struct JiveStreamEntryAttributes const JiveStreamEntryAttributes = {
+    .tags = @"tags",
+    .verb = @"verb",
+    .visibleToExternalContributors = @"visibleToExternalContributors",
+};
 
 @implementation JiveStreamEntry
 
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId;
-@synthesize likeCount, parent, parentContent, parentPlace, published, replyCount, resources, status;
-@synthesize subject, tags, type, updated, verb, viewCount, visibleToExternalContributors;
+@synthesize tags, verb, visibleToExternalContributors;
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    if ([@"resources" isEqualToString:property]) {
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-        
-        for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-            
-            [dictionary setValue:entry forKey:key];
-        }
-        
-        return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
-    }
-    
-    return nil;
+static NSString * const JiveStreamEntryType = @"entry";
+
++ (void)load {
+    if (self == [JiveStreamEntry class])
+        [super registerClass:self forType:JiveStreamEntryType];
+}
+
+- (NSString *)type {
+    return JiveStreamEntryType;
 }
 
 - (NSDictionary *)toJSONDictionary {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:followerCount forKey:@"followerCount"];
-    [dictionary setValue:highlightBody forKey:@"highlightBody"];
-    [dictionary setValue:highlightSubject forKey:@"highlightSubject"];
-    [dictionary setValue:highlightTags forKey:@"highlightTags"];
-    [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:likeCount forKey:@"likeCount"];
-    [dictionary setValue:parent forKey:@"parent"];
-    [dictionary setValue:replyCount forKey:@"replyCount"];
-    [dictionary setValue:status forKey:@"status"];
-    [dictionary setValue:subject forKey:@"subject"];
-    [dictionary setValue:type forKey:@"type"];
-    [dictionary setValue:verb forKey:@"verb"];
-    [dictionary setValue:viewCount forKey:@"viewCount"];
-    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
     if (tags)
-        [dictionary setValue:tags forKey:@"tags"];
+        [dictionary setValue:tags forKey:JiveStreamEntryAttributes.tags];
     
-    if (author)
-        [dictionary setValue:[author toJSONDictionary] forKey:@"author"];
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
     
-    if (content)
-        [dictionary setValue:[content toJSONDictionary] forKey:@"content"];
-    
-    if (parentContent)
-        [dictionary setValue:[parentContent toJSONDictionary] forKey:@"parentContent"];
-    
-    if (parentPlace)
-        [dictionary setValue:[parentPlace toJSONDictionary] forKey:@"parentPlace"];
-    
-    if (published)
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
-    
-    if (updated)
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
-    
+    [dictionary setValue:verb forKey:JiveStreamEntryAttributes.verb];
+    [dictionary setValue:visibleToExternalContributors
+                  forKey:JiveStreamEntryAttributes.visibleToExternalContributors];
     return dictionary;
 }
 
