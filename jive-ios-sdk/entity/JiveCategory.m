@@ -19,29 +19,21 @@
 
 #import "JiveCategory.h"
 #import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveCategory
 
-@synthesize description, followerCount, jiveId, likeCount, name, place, published, resources, tags, updated;
+@synthesize description, followerCount, jiveId, likeCount, name, place, published, tags, updated;
 
-- (NSString *)type {
-    return @"category";
+static NSString * const JiveCategoryType = @"category";
+
++ (void)load {
+    if (self == [JiveCategory class])
+        [super registerClass:self forType:JiveCategoryType];
 }
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    if ([@"resources" isEqualToString:property]) {
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-        
-        for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-            
-            [dictionary setValue:entry forKey:key];
-        }
-        
-        return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
-    }
-    
-    return nil;
+- (NSString *)type {
+    return JiveCategoryType;
 }
 
 - (NSDictionary *)toJSONDictionary {

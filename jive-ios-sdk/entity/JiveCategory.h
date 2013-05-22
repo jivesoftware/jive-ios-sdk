@@ -17,11 +17,11 @@
 //    limitations under the License.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 
 //! \class JiveCategory
 //! https://developers.jivesoftware.com/api/v3/rest/CategoryEntity.html
-@interface JiveCategory : JiveObject
+@interface JiveCategory : JiveTypedObject
 
 //! Description of the category.
 @property(nonatomic, copy) NSString* description;
@@ -44,14 +44,8 @@
 //! Date and time this object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object.
-@property(nonatomic, readonly, strong) NSDictionary* resources;
-
 //! Tags associated with this object.
 @property(nonatomic, readonly, strong) NSArray* tags;
-
-//! The object type of this object ("category").
-@property(readonly) NSString* type;
 
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
