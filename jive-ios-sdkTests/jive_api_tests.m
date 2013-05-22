@@ -2880,7 +2880,7 @@
 - (void) testMemberWithMember {
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
-                                                                           password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+                                                                                        password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
         BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/members/36391" isEqualToString:[value absoluteString]];
         return same;
     }]];
@@ -2924,7 +2924,7 @@
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deletePersonOperation:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive deletePersonOperation:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -3349,7 +3349,7 @@
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteStreamOperation:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive deleteStreamOperation:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -3612,15 +3612,15 @@
         BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places/95191/followingIn?fields=id" isEqualToString:[value absoluteString]];
         return same;
     }]];
-
+    
     [self createJiveAPIObjectWithResponse:@"followingIn_streams" andAuthDelegate:mockAuthDelegate];
-
+    
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [jive updateFollowingInOperation:@[stream] forPlace:source withOptions:options onComplete:^(NSArray *streams) {
             // Called 3rd
             STAssertEquals([streams count], (NSUInteger) 1, @"Wrong number of items parsed");
             STAssertTrue([[streams objectAtIndex:0] isKindOfClass:[JiveStream class]], @"Wrong item class");
-
+            
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -3863,7 +3863,7 @@
     source.receiveEmails = [NSNumber numberWithBool:YES];
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updateStreamOperation:source withOptions:options onComplete:^(JiveStream *stream) {
+        AFURLConnectionOperation *operation = [jive updateStreamOperation:source withOptions:options onComplete:^(JiveStream *stream) {
             // Called 3rd
             STAssertTrue([[stream class] isSubclassOfClass:[JiveStream class]], @"Wrong item class");
             
@@ -3939,7 +3939,7 @@
     source.state = @"owner";
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updateMemberOperation:source withOptions:options onComplete:^(JiveMember *member) {
+        AFURLConnectionOperation *operation = [jive updateMemberOperation:source withOptions:options onComplete:^(JiveMember *member) {
             // Called 3rd
             STAssertTrue([[member class] isSubclassOfClass:[JiveMember class]], @"Wrong item class");
             STAssertEqualObjects(@"member", member.state, @"New object not created");
@@ -4012,7 +4012,7 @@
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive contentOperation:source markAsRead:YES onComplete:^() {
+        AFURLConnectionOperation *operation = [jive contentOperation:source markAsRead:YES onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4070,7 +4070,7 @@
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive contentOperation:source markAsRead:NO onComplete:^() {
+        AFURLConnectionOperation *operation = [jive contentOperation:source markAsRead:NO onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4128,7 +4128,7 @@
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive contentOperation:source likes:YES onComplete:^() {
+        AFURLConnectionOperation *operation = [jive contentOperation:source likes:YES onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4186,7 +4186,7 @@
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive contentOperation:source likes:NO onComplete:^() {
+        AFURLConnectionOperation *operation = [jive contentOperation:source likes:NO onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4244,7 +4244,7 @@
     [self createJiveAPIObjectWithResponse:@"content_by_id" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteContentOperation:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive deleteContentOperation:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4306,7 +4306,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updateContentOperation:source withOptions:options onComplete:^(JiveContent *content) {
+        AFURLConnectionOperation *operation = [jive updateContentOperation:source withOptions:options onComplete:^(JiveContent *content) {
             // Called 3rd
             STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
             STAssertEqualObjects(content.subject, @"Battle Week is upon us... LET'S GO ZAGS!!!", @"New object not created");
@@ -4383,7 +4383,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updatePlaceOperation:source withOptions:options onComplete:^(JivePlace *place) {
+        AFURLConnectionOperation *operation = [jive updatePlaceOperation:source withOptions:options onComplete:^(JivePlace *place) {
             // Called 3rd
             STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
             STAssertEqualObjects(place.displayName, @"honda", @"New object not created");
@@ -4459,7 +4459,7 @@
     NSDictionary *JSON = [source toJSONDictionary];
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updatePersonOperation:source onComplete:^(JivePerson *person) {
+        AFURLConnectionOperation *operation = [jive updatePersonOperation:source onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertTrue([[person class] isSubclassOfClass:[JivePerson class]], @"Wrong item class");
             STAssertEqualObjects(person.location, @"home on the range", @"New object not created");
@@ -4530,7 +4530,7 @@
     [self createJiveAPIObjectWithResponse:@"person_response" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive personOperation:source follow:target onComplete:^() {
+        AFURLConnectionOperation *operation = [jive personOperation:source follow:target onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -4958,7 +4958,7 @@
     [self createJiveAPIObjectWithResponse:@"invite_alternate" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteInviteOperation:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive deleteInviteOperation:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -5020,7 +5020,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive updateInviteOperation:source withState:JiveInviteRevoked andOptions:options onComplete:^(JiveInvite *invite) {
+        AFURLConnectionOperation *operation = [jive updateInviteOperation:source withState:JiveInviteRevoked andOptions:options onComplete:^(JiveInvite *invite) {
             // Called 3rd
             STAssertTrue([[invite class] isSubclassOfClass:[JiveInvite class]], @"Wrong item class");
             STAssertEqualObjects(invite.invitee.displayName, @"Jennifer Klafin", @"Wrong invite returned.");
@@ -5095,7 +5095,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createContentOperation:source withOptions:options onComplete:^(JiveContent *content) {
+        AFURLConnectionOperation *operation = [jive createContentOperation:source withOptions:options onComplete:^(JiveContent *content) {
             // Called 3rd
             STAssertEquals([content class], [JiveUpdate class], @"Wrong item class");
             STAssertEqualObjects(content.subject, @"Battle Week is upon us... LET'S GO ZAGS!!!", @"New object not created");
@@ -5180,7 +5180,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createDirectMessageOperation:source withTargets:targets andOptions:options onComplete:^(JiveContent *content) {
+        AFURLConnectionOperation *operation = [jive createDirectMessageOperation:source withTargets:targets andOptions:options onComplete:^(JiveContent *content) {
             // Called 3rd
             STAssertEquals([content class], [JiveDirectMessage class], @"Wrong item class");
             STAssertEqualObjects(content.subject, @"Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....", @"New object not created");
@@ -5268,7 +5268,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createInviteToOperation:source withMessage:message targets:targets andOptions:options onComplete:^(NSArray *invites) {
+        AFURLConnectionOperation *operation = [jive createInviteToOperation:source withMessage:message targets:targets andOptions:options onComplete:^(NSArray *invites) {
             // Called 3rd
             STAssertEquals([invites count], (NSUInteger)2, @"Wrong number of items parsed");
             STAssertEquals([[invites objectAtIndex:0] class], [JiveInvite class], @"Wrong item class");
@@ -5357,7 +5357,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createPersonOperation:source withOptions:options onComplete:^(JivePerson *person) {
+        AFURLConnectionOperation *operation = [jive createPersonOperation:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
             STAssertEqualObjects(person.location, @"home on the range", @"New object not created");
@@ -5435,7 +5435,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createTaskOperation:testTask forPerson:source withOptions:options onComplete:^(JiveTask *task) {
+        AFURLConnectionOperation *operation = [jive createTaskOperation:testTask forPerson:source withOptions:options onComplete:^(JiveTask *task) {
             // Called 3rd
             STAssertEquals([task class], [JiveTask class], @"Wrong item class");
             STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
@@ -5516,7 +5516,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createTaskOperation:testTask forPlace:source withOptions:options onComplete:^(JiveTask *task) {
+        AFURLConnectionOperation *operation = [jive createTaskOperation:testTask forPlace:source withOptions:options onComplete:^(JiveTask *task) {
             // Called 3rd
             STAssertEquals([task class], [JiveTask class], @"Wrong item class");
             STAssertEqualObjects(task.subject, @"Sample task for iOS SDK reference", @"New object not created");
@@ -5597,7 +5597,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createPlaceOperation:source withOptions:options onComplete:^(JivePlace *place) {
+        AFURLConnectionOperation *operation = [jive createPlaceOperation:source withOptions:options onComplete:^(JivePlace *place) {
             // Called 3rd
             STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
             STAssertEqualObjects(place.displayName, @"honda", @"New object not created");
@@ -5676,7 +5676,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createCommentOperation:source withOptions:options onComplete:^(JiveContent *comment) {
+        AFURLConnectionOperation *operation = [jive createCommentOperation:source withOptions:options onComplete:^(JiveContent *comment) {
             // Called 3rd
             STAssertTrue([[comment class] isSubclassOfClass:[JiveComment class]], @"Wrong item class");
             STAssertEqualObjects(comment.content.text,
@@ -5754,7 +5754,7 @@
         JiveOutcome *source = [self entityForClass:[JiveOutcome class] fromJSONNamed:@"outcome"];
         JiveContent *content = [self entityForClass:[JiveContent class] fromJSONNamed:@"content_alternate"];
         
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createOutcomeOperation:source forContent:content onComplete:^(JiveOutcome *outcome) {
+        AFURLConnectionOperation *operation = [jive createOutcomeOperation:source forContent:content onComplete:^(JiveOutcome *outcome) {
             STAssertTrue([[source class] isSubclassOfClass:[JiveOutcome class]], @"Wrong item class");
             
             STAssertTrue([outcome.jiveId isEqualToString:@"22871"], @"JiveId wrong in outcome.");
@@ -5833,7 +5833,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createMessageOperation:source withOptions:options onComplete:^(JiveContent *comment) {
+        AFURLConnectionOperation *operation = [jive createMessageOperation:source withOptions:options onComplete:^(JiveContent *comment) {
             // Called 3rd
             STAssertTrue([[comment class] isSubclassOfClass:[JiveMessage class]], @"Wrong item class");
             STAssertEqualObjects(comment.content.text,
@@ -5915,7 +5915,7 @@
     source.receiveEmails = [NSNumber numberWithBool:YES];
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createStreamOperation:source forPerson:person withOptions:options onComplete:^(JiveStream *stream) {
+        AFURLConnectionOperation *operation = [jive createStreamOperation:source forPerson:person withOptions:options onComplete:^(JiveStream *stream) {
             // Called 3rd
             STAssertTrue([[stream class] isSubclassOfClass:[JiveStream class]], @"Wrong item class");
             STAssertEqualObjects(stream.name, @"Test stream", @"Wrong stream name");
@@ -5990,7 +5990,7 @@
     [self createJiveAPIObjectWithResponse:@"stream" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive deleteAssociationOperation:association fromStream:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive deleteAssociationOperation:association fromStream:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -6053,7 +6053,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[targetList toJSONArray] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createAssociationsOperation:targetList forStream:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive createAssociationsOperation:targetList forStream:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -6092,7 +6092,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[targetList toJSONArray] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createAssociationsOperation:targetList forStream:source onComplete:^() {
+        AFURLConnectionOperation *operation = [jive createAssociationsOperation:targetList forStream:source onComplete:^() {
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
@@ -6148,16 +6148,16 @@
     mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
-                                                                                            onComplete:^(JivePlatformVersion *version) {
-                                                                                                STAssertEqualObjects(version.major, @7, @"Wrong version found");
-                                                                                                STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
-                                                                                                [mockJiveURLResponseDelegate verify];
-                                                                                                finishedBlock();
-                                                                                            } onError:^(NSError *error) {
-                                                                                                STFail([error localizedDescription]);
-                                                                                                finishedBlock();
-                                                                                            }];
+        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
+                                                                        onComplete:^(JivePlatformVersion *version) {
+                                                                            STAssertEqualObjects(version.major, @7, @"Wrong version found");
+                                                                            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+                                                                            [mockJiveURLResponseDelegate verify];
+                                                                            finishedBlock();
+                                                                        } onError:^(NSError *error) {
+                                                                            STFail([error localizedDescription]);
+                                                                            finishedBlock();
+                                                                        }];
         
         [operation start];
     }];
@@ -6190,27 +6190,27 @@
     mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[Jive getVersionOperationForInstance:url
-                                                                                            onComplete:^(JivePlatformVersion *version) {
-                                                                                                BOOL found = NO;
-                                                                                                for (JiveCoreVersion *coreURI in version.coreURI) {
-                                                                                                    if ([coreURI.version isEqualToNumber:@3]) {
-                                                                                                        STFail(@"v3 API found");
-                                                                                                        found = YES;
-                                                                                                    }
-                                                                                                }
-                                                                                                if (!found) {
-                                                                                                    STFail(@"Valid response returned without v3 API");
-                                                                                                }
-                                                                                                
-                                                                                                [mockJiveURLResponseDelegate verify];
-                                                                                                finishedBlock();
-                                                                                            } onError:^(NSError *error) {
-                                                                                                STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
-                                                                                                STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
-                                                                                                [mockJiveURLResponseDelegate verify];
-                                                                                                finishedBlock();
-                                                                                            }];
+        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
+                                                                        onComplete:^(JivePlatformVersion *version) {
+                                                                            BOOL found = NO;
+                                                                            for (JiveCoreVersion *coreURI in version.coreURI) {
+                                                                                if ([coreURI.version isEqualToNumber:@3]) {
+                                                                                    STFail(@"v3 API found");
+                                                                                    found = YES;
+                                                                                }
+                                                                            }
+                                                                            if (!found) {
+                                                                                STFail(@"Valid response returned without v3 API");
+                                                                            }
+                                                                            
+                                                                            [mockJiveURLResponseDelegate verify];
+                                                                            finishedBlock();
+                                                                        } onError:^(NSError *error) {
+                                                                            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
+                                                                            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
+                                                                            [mockJiveURLResponseDelegate verify];
+                                                                            finishedBlock();
+                                                                        }];
         
         [operation start];
     }];
@@ -6239,22 +6239,22 @@
     [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JAPIRequestOperation *operation = (JAPIRequestOperation *)[jive createDocumentOperation:source
-                                                                                withAttachments:attachments
-                                                                                        options:options
-                                                                                     onComplete:^(JiveContent *content) {
-            // Called 3rd
-            STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
-            STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
+        AFURLConnectionOperation *operation = [jive createDocumentOperation:source
+                                                            withAttachments:attachments
+                                                                    options:options
+                                                                 onComplete:^(JiveContent *content) {
+                                                                     // Called 3rd
+                                                                     STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                                                     STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                                                                     
+                                                                     // Check that delegates where actually called
+                                                                     [mockAuthDelegate verify];
+                                                                     [mockJiveURLResponseDelegate verify];
+                                                                     finishedBlock();
+                                                                 } onError:^(NSError *error) {
+                                                                     STFail([error localizedDescription]);
+                                                                     finishedBlock();
+                                                                 }];
         
         STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"multipart/form-data; boundary=0xJiveBoundary", @"Wrong content type");
@@ -6291,18 +6291,18 @@
              withAttachments:attachments
                      options:options
                   onComplete:^(JiveContent *content) {
-            // Called 3rd
-            STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
-            STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
+                      // Called 3rd
+                      STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                      STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                      
+                      // Check that delegates where actually called
+                      [mockAuthDelegate verify];
+                      [mockJiveURLResponseDelegate verify];
+                      finishedBlock();
+                  } onError:^(NSError *error) {
+                      STFail([error localizedDescription]);
+                      finishedBlock();
+                  }];
     }];
 }
 
