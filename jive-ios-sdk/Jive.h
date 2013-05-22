@@ -88,6 +88,8 @@
 #import "JiveProperty.h"
 #import "JiveShare.h"
 #import "JiveMobileAnalyticsHeader.h"
+#import "AFJSONRequestOperation.h"
+#import "AFImageRequestOperation.h"
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
