@@ -8,6 +8,8 @@
 
 #import "JiveObject.h"
 
+//! \class JiveImage
+//! https://developers.jivesoftware.com/api/v3/rest/ImageEntity.html
 @interface JiveImage : JiveObject
 
 //! Type of image
