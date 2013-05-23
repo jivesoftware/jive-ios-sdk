@@ -478,6 +478,8 @@
     for (JiveInboxEntry *inboxEntry in inboxEntries) {
         if (inboxEntry.jive.update) {
             [inboxEntryUpdates addObject:inboxEntry.jive.update];
+        } else if (inboxEntry.jive.updateCollection) { // Acclaim uses updateCollection instead of update.
+            [inboxEntryUpdates addObject:inboxEntry.jive.updateCollection];
         }
     }
     
