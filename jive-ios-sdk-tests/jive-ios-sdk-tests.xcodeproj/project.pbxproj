@@ -34,6 +34,8 @@
 		2D648B4916F286C400E97038 /* JVContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */; };
 		2D648B4A16F286C400E97038 /* JVPeopleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */; };
 		2D648B4B16F286C400E97038 /* JVPlacesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */; };
+		B82D563717500834005EF0DA /* install-jive-truststore.bash in Resources */ = {isa = PBXBuildFile; fileRef = B82D563517500834005EF0DA /* install-jive-truststore.bash */; };
+		B82D563817500834005EF0DA /* jive-TrustStore.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B82D563617500834005EF0DA /* jive-TrustStore.sqlite3 */; };
 		B87710CE1739A081003E7940 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B87710CD1739A081003E7940 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Wno-sign-compare -Wno-conversion -w -Xanalyzer -analyzer-disable-checker"; }; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
@@ -97,6 +99,8 @@
 		2DB3AED516D6A43000428AA4 /* SearchPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPlace.m; sourceTree = "<group>"; };
 		B81B0BFC16A8AD730013CB48 /* cleanup-jive-framework-build.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "cleanup-jive-framework-build.bash"; sourceTree = "<group>"; };
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
+		B82D563517500834005EF0DA /* install-jive-truststore.bash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-jive-truststore.bash"; sourceTree = "<group>"; };
+		B82D563617500834005EF0DA /* jive-TrustStore.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "jive-TrustStore.sqlite3"; sourceTree = "<group>"; };
 		B87710CC1739A081003E7940 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		B87710CD1739A081003E7940 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		B8A71F1416A89DFA00A7D2CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B82D563517500834005EF0DA /* install-jive-truststore.bash */,
+				B82D563617500834005EF0DA /* jive-TrustStore.sqlite3 */,
 				B8A71F1516A89DFA00A7D2CE /* jive-ios-sdk-tests-Info.plist */,
 				B8A71F1616A89DFA00A7D2CE /* InfoPlist.strings */,
 				B8A71F1C16A89DFA00A7D2CE /* jive-ios-sdk-tests-Prefix.pch */,
@@ -317,6 +323,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8A71F1D16A89DFA00A7D2CE /* Build configuration list for PBXNativeTarget "jive-ios-sdk-tests" */;
 			buildPhases = (
+				B82D563B1750084E005EF0DA /* ShellScript */,
 				B84966B716A8AAFF00C1CF05 /* ShellScript */,
 				B8A71F0A16A89DFA00A7D2CE /* Sources */,
 				B8A71F0B16A89DFA00A7D2CE /* Frameworks */,
@@ -391,12 +398,28 @@
 				B8A71F1816A89DFA00A7D2CE /* InfoPlist.strings in Resources */,
 				215040D916DEA27200CD0AAE /* jive-software.png in Resources */,
 				2385546716EFED880045B0ED /* instance_info.json in Resources */,
+				B82D563717500834005EF0DA /* install-jive-truststore.bash in Resources */,
+				B82D563817500834005EF0DA /* jive-TrustStore.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B82D563B1750084E005EF0DA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PROJECT_DIR\"/\"$TARGET_NAME\"/install-jive-truststore.bash";
+			showEnvVarsInLog = 0;
+		};
 		B84966B716A8AAFF00C1CF05 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
