@@ -25,7 +25,7 @@
 
 @synthesize answer, attachments, discussion, helpful, tags, visibleToExternalContributors, outcomeTypeNames;
 
-static NSString * const JiveMessageType = @"message";
+NSString * const JiveMessageType = @"message";
 
 + (void)load {
     if (self == [JiveMessage class])

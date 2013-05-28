@@ -32,7 +32,7 @@ struct JiveUpdateAttributes const JiveUpdateAttributes = {
 
 @synthesize latitude, longitude, tags, visibleToExternalContributors, visibility;
 
-static NSString * const JiveUpdateType = @"update";
+NSString * const JiveUpdateType = @"update";
 
 + (void)load {
     if (self == [JiveUpdate class])

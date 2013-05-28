@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveMessageType;
+
 //! \class JiveMessage
 //! https://developers.jivesoftware.com/api/v3/rest/MessageEntity.html
 @interface JiveMessage : JiveContent

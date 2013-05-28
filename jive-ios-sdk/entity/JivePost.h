@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JivePostType;
+
 extern struct JivePostStatusValues {
     __unsafe_unretained NSString *incomplete; // Post is in draft mode
     __unsafe_unretained NSString *pendingApproval; // Post is waiting for approval

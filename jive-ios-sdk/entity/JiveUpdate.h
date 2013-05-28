@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveUpdateType;
+
 extern struct JiveUpdateAttributes {
     __unsafe_unretained NSString *latitude;
     __unsafe_unretained NSString *longitude;
