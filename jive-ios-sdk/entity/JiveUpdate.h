@@ -51,6 +51,7 @@ extern struct JiveUpdateAttributes {
 // * place - place permissions specify which users can see the content. Default when visibility is not specified but parent is specified.
 @property (nonatomic, strong) NSString *visibility;
 
+//! If this update is a repost, the repost field contains the original update. Otherwise, this field will not be present.
 @property(nonatomic, strong, readonly) JiveUpdate *repost;
 
 @end
