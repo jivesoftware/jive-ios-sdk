@@ -26,11 +26,12 @@ struct JiveUpdateAttributes const JiveUpdateAttributes = {
 	.tags = @"tags",
 	.visibleToExternalContributors = @"visibleToExternalContributors",
 	.visibility = @"visibility",
+    .repost = @"repost",
 };
 
 @implementation JiveUpdate
 
-@synthesize latitude, longitude, tags, visibleToExternalContributors, visibility;
+@synthesize latitude, longitude, tags, visibleToExternalContributors, visibility, repost;
 
 NSString * const JiveUpdateType = @"update";
 
@@ -52,7 +53,8 @@ NSString * const JiveUpdateType = @"update";
     [dictionary setValue:visibility forKey:JiveUpdateAttributes.visibility];
     if (tags)
         [dictionary setValue:tags forKey:JiveUpdateAttributes.tags];
-    
+    if (repost)
+        [dictionary setValue:[repost toJSONDictionary] forKey:JiveUpdateAttributes.repost];
     return dictionary;
 }
 
