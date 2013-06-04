@@ -31,7 +31,7 @@ extern struct JiveResourceAttributes {
 @property(atomic, readonly, copy) NSString* availability;
 
 //! Description of this resource.
-@property(atomic, readonly, copy) NSString* description;
+@property(atomic, readonly, copy) NSString* jiveDescription;
 
 //! A usage example for this resource and verb combination.
 @property(atomic, readonly, copy) NSString* example;

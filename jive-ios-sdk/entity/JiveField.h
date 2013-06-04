@@ -30,7 +30,7 @@
 @property(atomic, readonly, copy) NSString* availability;
 
 //! Description of this field (for profile fields, this information is localized).
-@property(atomic, readonly, copy) NSString* description;
+@property(atomic, readonly, copy) NSString* jiveDescription;
 
 //! Display name of this field (for profile fields, this information is localized).
 @property(atomic, readonly, copy) NSString* displayName;

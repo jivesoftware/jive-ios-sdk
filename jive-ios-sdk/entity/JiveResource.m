@@ -25,7 +25,7 @@ struct JiveResourceAttributes const JiveResourceAttributes = {
 
 @implementation JiveResource
 
-@synthesize availability, description, example, hasBody, jsMethod, name, path, since, unpublished;
+@synthesize availability, jiveDescription, example, hasBody, jsMethod, name, path, since, unpublished;
 @synthesize verb;
 
 - (NSDictionary *)toJSONDictionary {

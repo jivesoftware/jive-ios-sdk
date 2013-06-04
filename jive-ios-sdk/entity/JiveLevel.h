@@ -25,7 +25,7 @@
 @interface JiveLevel : JiveObject
 
 //! Description of the status level that this person has achieved.
-@property(nonatomic, readonly) NSString* description;
+@property(nonatomic, readonly) NSString* jiveDescription;
 
 //! Name of the status level that this person has achieved.
 @property(nonatomic, readonly) NSString* name;

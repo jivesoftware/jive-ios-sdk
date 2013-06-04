@@ -29,7 +29,7 @@
 @property(nonatomic, readonly, strong) JivePerson* author;
 
 //! Description of this static resource.
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *jiveDescription;
 
 //! Filename of this static resource (must be unique within static resources for a particular place).
 @property(nonatomic, copy) NSString* filename;

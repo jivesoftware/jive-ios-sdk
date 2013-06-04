@@ -24,7 +24,7 @@
     
     [property setValue:availability forKey:@"availability"];
     [property setValue:defaultValue forKey:@"defaultValue"];
-    [property setValue:description forKey:@"description"];
+    [property setValue:description forKey:@"jiveDescription"];
     [property setValue:name forKey:@"name"];
     [property setValue:since forKey:@"since"];
     [property setValue:type forKey:@"type"];
@@ -56,7 +56,7 @@
     
     [property setValue:availability forKey:@"availability"];
     [property setValue:defaultValue forKey:@"defaultValue"];
-    [property setValue:description forKey:@"description"];
+    [property setValue:description forKey:@"jiveDescription"];
     [property setValue:name forKey:@"name"];
     [property setValue:since forKey:@"since"];
     [property setValue:type forKey:@"type"];

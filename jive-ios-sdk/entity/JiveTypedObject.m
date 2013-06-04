@@ -22,7 +22,7 @@
 #import "JiveObjcRuntime.h"
 
 struct JiveTypedObjectResourceTags {
-    __unsafe_unretained NSString *self;
+    __unsafe_unretained NSString *selfResourceTag;
 };
 
 struct JiveTypedObjectResourceAllowed {
@@ -45,7 +45,7 @@ struct JiveTypedObjectAttributesHidden const JiveTypedObjectAttributesHidden = {
 };
 
 struct JiveTypedObjectResourceTags const JiveTypedObjectResourceTags = {
-    .self = @"self"
+    .selfResourceTag = @"self"
 };
 
 struct JiveTypedObjectResourceAllowed const JiveTypedObjectResourceAllowed = {
@@ -148,15 +148,15 @@ static NSMutableDictionary *typedClasses;
 }
 
 - (NSURL *)selfRef {
-    return [self resourceForTag:JiveTypedObjectResourceTags.self].ref;
+    return [self resourceForTag:JiveTypedObjectResourceTags.selfResourceTag].ref;
 }
 
 - (BOOL)canDelete {
-    return [self resourceHasDeleteForTag:JiveTypedObjectResourceTags.self];
+    return [self resourceHasDeleteForTag:JiveTypedObjectResourceTags.selfResourceTag];
 }
 
 - (BOOL)isUpdateable {
-    return [self resourceHasPutForTag:JiveTypedObjectResourceTags.self];
+    return [self resourceHasPutForTag:JiveTypedObjectResourceTags.selfResourceTag];
 }
 
 @end

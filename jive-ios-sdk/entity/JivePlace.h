@@ -21,7 +21,7 @@
 
 extern struct JivePlaceAttributes {
     __unsafe_unretained NSString *contentTypes;
-    __unsafe_unretained NSString *description;
+    __unsafe_unretained NSString *descriptionAttribute;
     __unsafe_unretained NSString *displayName;
     __unsafe_unretained NSString *followerCount;
     __unsafe_unretained NSString *highlightBody;
@@ -65,7 +65,7 @@ extern struct JivePlaceContentTypeValues {
 @property(nonatomic, readonly, strong) NSArray* contentTypes;
 
 //! Human readable description of this place.
-@property(nonatomic, copy) NSString* description;
+@property(nonatomic, copy) NSString* jiveDescription;
 
 //! Display name of this place. It must be unique among places of the same type in this Jive instance. This value is used to compose the URL for the HTML presentation of this place in the Jive user interface.
 @property(nonatomic, copy) NSString* displayName;

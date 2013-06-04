@@ -23,7 +23,7 @@
 
 @implementation JiveStatic
 
-@synthesize author, description, filename, jiveId, place, published, updated;
+@synthesize author, jiveDescription, filename, jiveId, place, published, updated;
 
 static NSString * const JiveStaticType = @"static";
 
@@ -40,7 +40,7 @@ static NSString * const JiveStaticType = @"static";
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
-    [dictionary setValue:description forKey:@"description"];
+    [dictionary setValue:jiveDescription forKey:@"description"];
     [dictionary setValue:filename forKey:@"filename"];
     [dictionary setValue:jiveId forKey:@"id"];
     [dictionary setValue:self.type forKey:@"type"];

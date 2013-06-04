@@ -47,7 +47,7 @@
     [objectMetadata setValue:[NSArray arrayWithObject:field] forKey:@"fields"];
     [objectMetadata setValue:[NSArray arrayWithObject:resourceLink] forKey:@"resourceLinks"];
     [objectMetadata setValue:@"availability" forKey:@"availability"];
-    [objectMetadata setValue:@"description" forKey:@"description"];
+    [objectMetadata setValue:@"description" forKey:@"jiveDescription"];
     [objectMetadata setValue:@"example" forKey:@"example"];
     [objectMetadata setValue:@"name" forKey:@"name"];
     [objectMetadata setValue:@"plural" forKey:@"plural"];
@@ -59,7 +59,7 @@
     STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"associatable"], objectMetadata.associatable, @"Wrong associatable.");
     STAssertEqualObjects([JSON objectForKey:@"availability"], objectMetadata.availability, @"Wrong availability.");
-    STAssertEqualObjects([JSON objectForKey:@"description"], objectMetadata.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], objectMetadata.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"example"], objectMetadata.example, @"Wrong example");
     STAssertEqualObjects([JSON objectForKey:@"name"], objectMetadata.name, @"Wrong name");
     STAssertEqualObjects([JSON objectForKey:@"plural"], objectMetadata.plural, @"Wrong plural");
@@ -80,7 +80,7 @@
 
 - (void)testToJSON_alternate {
     [objectMetadata setValue:@"wrong" forKey:@"availability"];
-    [objectMetadata setValue:@"title" forKey:@"description"];
+    [objectMetadata setValue:@"title" forKey:@"jiveDescription"];
     [objectMetadata setValue:@"big" forKey:@"example"];
     [objectMetadata setValue:@"Whippersnapper" forKey:@"name"];
     [objectMetadata setValue:@"singular" forKey:@"plural"];
@@ -92,7 +92,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"availability"], objectMetadata.availability, @"Wrong availability.");
-    STAssertEqualObjects([JSON objectForKey:@"description"], objectMetadata.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], objectMetadata.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"example"], objectMetadata.example, @"Wrong example");
     STAssertEqualObjects([JSON objectForKey:@"name"], objectMetadata.name, @"Wrong name");
     STAssertEqualObjects([JSON objectForKey:@"plural"], objectMetadata.plural, @"Wrong plural");
@@ -218,7 +218,7 @@
     STAssertEqualObjects([object2 objectForKey:@"name"], resourceLink2.name, @"Wrong resourceLink 2 name");
 }
 
-- (void)testPersonParsing {
+- (void)testParsing {
     JiveField *field = [[JiveField alloc] init];
     JiveResource *resourceLink = [[JiveResource alloc] init];
     
@@ -228,7 +228,7 @@
     [objectMetadata setValue:[NSArray arrayWithObject:field] forKey:@"fields"];
     [objectMetadata setValue:[NSArray arrayWithObject:resourceLink] forKey:@"resourceLinks"];
     [objectMetadata setValue:@"availability" forKey:@"availability"];
-    [objectMetadata setValue:@"description" forKey:@"description"];
+    [objectMetadata setValue:@"description" forKey:@"jiveDescription"];
     [objectMetadata setValue:@"example" forKey:@"example"];
     [objectMetadata setValue:@"name" forKey:@"name"];
     [objectMetadata setValue:@"plural" forKey:@"plural"];
@@ -239,7 +239,7 @@
     
     STAssertEquals([metadata class], [JiveObjectMetadata class], @"Wrong item class");
     STAssertEqualObjects(metadata.availability, objectMetadata.availability, @"Wrong availability");
-    STAssertEqualObjects(metadata.description, objectMetadata.description, @"Wrong description");
+    STAssertEqualObjects(metadata.jiveDescription, objectMetadata.jiveDescription, @"Wrong description");
     STAssertEqualObjects(metadata.example, objectMetadata.example, @"Wrong example");
     STAssertEqualObjects(metadata.name, objectMetadata.name, @"Wrong name");
     STAssertEqualObjects(metadata.plural, objectMetadata.plural, @"Wrong plural");
@@ -265,7 +265,7 @@
     }
 }
 
-- (void)testPersonParsingAlternate {
+- (void)testParsingAlternate {
     JiveField *field = [[JiveField alloc] init];
     JiveResource *resourceLink = [[JiveResource alloc] init];
     
@@ -274,7 +274,7 @@
     [objectMetadata setValue:[NSArray arrayWithObject:field] forKey:@"fields"];
     [objectMetadata setValue:[NSArray arrayWithObject:resourceLink] forKey:@"resourceLinks"];
     [objectMetadata setValue:@"wrong" forKey:@"availability"];
-    [objectMetadata setValue:@"title" forKey:@"description"];
+    [objectMetadata setValue:@"title" forKey:@"jiveDescription"];
     [objectMetadata setValue:@"big" forKey:@"example"];
     [objectMetadata setValue:@"Whippersnapper" forKey:@"name"];
     [objectMetadata setValue:@"singular" forKey:@"plural"];
@@ -288,7 +288,7 @@
     
     STAssertEquals([metadata class], [JiveObjectMetadata class], @"Wrong item class");
     STAssertEqualObjects(metadata.availability, objectMetadata.availability, @"Wrong availability");
-    STAssertEqualObjects(metadata.description, objectMetadata.description, @"Wrong description");
+    STAssertEqualObjects(metadata.jiveDescription, objectMetadata.jiveDescription, @"Wrong description");
     STAssertEqualObjects(metadata.example, objectMetadata.example, @"Wrong example");
     STAssertEqualObjects(metadata.name, objectMetadata.name, @"Wrong name");
     STAssertEqualObjects(metadata.plural, objectMetadata.plural, @"Wrong plural");
