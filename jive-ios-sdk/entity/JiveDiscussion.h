@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveDiscussionType;
+
 //! \class JiveDiscussion
 //! https://developers.jivesoftware.com/api/v3/rest/DiscussionEntity.html
 @interface JiveDiscussion : JiveContent

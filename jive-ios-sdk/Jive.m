@@ -56,7 +56,7 @@
 
 @synthesize jiveInstance = _jiveInstance;
 
-+ (NSOperation *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
++ (AFJSONRequestOperation *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
@@ -126,7 +126,7 @@
 
 #pragma mark - helper methods
 
-- (NSOperation *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
                              callName,
@@ -138,7 +138,7 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *) peopleResourceOperation:(NSURL *)url withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) peopleResourceOperation:(NSURL *)url withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[url path],
                              nil];
@@ -149,7 +149,7 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *)personResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)personResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[url path],
                              nil];
@@ -160,7 +160,7 @@
                                  onError:errorBlock];
 }
 
-- (NSOperation *)activitiesResourceOperation:(NSURL *)url withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)activitiesResourceOperation:(NSURL *)url withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[url path],
                              nil];
@@ -171,7 +171,7 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *)streamsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)streamsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[url path],
                              nil];
@@ -182,7 +182,7 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *)contentsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)contentsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[url path],
                              nil];
@@ -193,43 +193,43 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/people/%@",
                              personId,
                              nil];
-    NSOperation *operation = [self entityOperationForClass:[JivePerson class]
-                                                   request:request
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JivePerson class]
+                                                              request:request
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) contentsListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) contentsListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
-    NSOperation *operation = [self listOperationForClass:[JiveContent class]
-                                                 request:request
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveContent class]
+                                                            request:request
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
                              callName,
                              nil];
-    NSOperation *operation = [self listOperationForClass:[JivePlace class]
-                                                 request:request
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JivePlace class]
+                                                            request:request
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) activityListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) activityListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
                              callName,
@@ -241,7 +241,7 @@
                                onError:errorBlock];
 }
 
-- (NSOperation *) activityDateLimitedListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) activityDateLimitedListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
                              callName,
@@ -253,7 +253,7 @@
                                           onError:errorBlock];
 }
 
-- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options andTemplate:(NSString *)template onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options andTemplate:(NSString *)template onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:content
                                                      options:options
                                                  andTemplate:template, nil];
@@ -270,9 +270,9 @@
 
 // Activities
 - (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self activitiesOperationWithOptions:options
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
+    AFJSONRequestOperation *operation = [self activitiesOperationWithOptions:options
+                                                                  onComplete:completeBlock
+                                                                     onError:errorBlock];
     [operation start];
 }
 
@@ -281,99 +281,99 @@
 }
 
 - (void) frequentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self frequentContentOperationWithOptions:options
-                                                            onComplete:completeBlock
-                                                               onError:errorBlock];
+    AFJSONRequestOperation *operation = [self frequentContentOperationWithOptions:options
+                                                                       onComplete:completeBlock
+                                                                          onError:errorBlock];
     [operation start];
 }
 
 - (void) frequentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self frequentPeopleOperationWithOptions:options
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
+    AFJSONRequestOperation *operation = [self frequentPeopleOperationWithOptions:options
+                                                                      onComplete:completeBlock
+                                                                         onError:errorBlock];
     [operation start];
 }
 
 - (void) frequentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self frequentPlacesOperationWithOptions:options
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
+    AFJSONRequestOperation *operation = [self frequentPlacesOperationWithOptions:options
+                                                                      onComplete:completeBlock
+                                                                         onError:errorBlock];
     [operation start];
 }
 
 - (void) recentContentWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self recentContentOperationWithOptions:options
-                                                          onComplete:completeBlock
-                                                             onError:errorBlock];
+    AFJSONRequestOperation *operation = [self recentContentOperationWithOptions:options
+                                                                     onComplete:completeBlock
+                                                                        onError:errorBlock];
     [operation start];
 }
 
 - (void) recentPeopleWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self recentPeopleOperationWithOptions:options
-                                                         onComplete:completeBlock
-                                                            onError:errorBlock];
+    AFJSONRequestOperation *operation = [self recentPeopleOperationWithOptions:options
+                                                                    onComplete:completeBlock
+                                                                       onError:errorBlock];
     [operation start];
 }
 
 - (void) recentPlacesWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self recentPlacesOperationWithOptions:options
-                                                         onComplete:completeBlock
-                                                            onError:errorBlock];
+    AFJSONRequestOperation *operation = [self recentPlacesOperationWithOptions:options
+                                                                    onComplete:completeBlock
+                                                                       onError:errorBlock];
     [operation start];
 }
 
-- (NSOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self activityDateLimitedListOperation:@"activities"
                                       withOptions:options
                                        onComplete:completeBlock
                                           onError:errorBlock];
 }
 
-- (NSOperation *) activitiesOperationWithURL:(NSURL *)activitiesURL onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) activitiesOperationWithURL:(NSURL *)activitiesURL onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:activitiesURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:activitiesURL];
-    NSOperation *operation = [self dateLimitedListOperationForClass:[JiveActivity class]
-                                                            request:mutableURLRequest
-                                                         onComplete:completeBlock
-                                                            onError:errorBlock];
+    AFJSONRequestOperation *operation = [self dateLimitedListOperationForClass:[JiveActivity class]
+                                                                       request:mutableURLRequest
+                                                                    onComplete:completeBlock
+                                                                       onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) actionsOperation:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self activityListOperation:@"actions" withOptions:options onComplete:complete onError:error];
 }
 
-- (NSOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (JiveErrorBlock)errorBlock {
     return [self contentsListOperation:@"activities/frequent/content"
                            withOptions:options
                             onComplete:completeBlock
                                onError:errorBlock];
 }
 
-- (NSOperation *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self getPeopleArray:@"activities/frequent/people" withOptions:options onComplete:completeBlock onError:errorBlock];
 }
 
-- (NSOperation *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self placeListOperation:@"activities/frequent/places"
                         withOptions:options
                          onComplete:completeBlock
                             onError:errorBlock];
 }
 
-- (NSOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self contentsListOperation:@"activities/recent/content"
                            withOptions:options
                             onComplete:completeBlock
                                onError:errorBlock];
 }
 
-- (NSOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self getPeopleArray:@"activities/recent/people" withOptions:options onComplete:completeBlock onError:errorBlock];
 }
 
-- (NSOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self placeListOperation:@"activities/recent/places"
                         withOptions:options
                          onComplete:completeBlock
@@ -383,90 +383,90 @@
 #pragma mark - Announcements
 
 - (void) announcementsWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self announcementsOperationWithOptions:options
-                                                          onComplete:completeBlock
-                                                             onError:errorBlock];
+    AFJSONRequestOperation *operation = [self announcementsOperationWithOptions:options
+                                                                     onComplete:completeBlock
+                                                                        onError:errorBlock];
     [operation start];
 }
 
 - (void) announcementWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self announcementOperationWithAnnouncement:announcement
-                                                                 options:options
-                                                              onComplete:completeBlock
-                                                                 onError:errorBlock];
+    AFJSONRequestOperation *operation = [self announcementOperationWithAnnouncement:announcement
+                                                                            options:options
+                                                                         onComplete:completeBlock
+                                                                            onError:errorBlock];
     [operation start];
 }
 
 - (void) deleteAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self deleteAnnouncementOperationWithAnnouncement:announcement
-                                                                    onComplete:completeBlock
-                                                                       onError:errorBlock];
+    AFJSONRequestOperation *operation = [self deleteAnnouncementOperationWithAnnouncement:announcement
+                                                                               onComplete:completeBlock
+                                                                                  onError:errorBlock];
     [operation start];
 }
 
 - (void) markAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self markAnnouncementOperationWithAnnouncement:announcement
-                                                                      asRead:read
-                                                                  onComplete:completeBlock
-                                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self markAnnouncementOperationWithAnnouncement:announcement
+                                                                                 asRead:read
+                                                                             onComplete:completeBlock
+                                                                                onError:errorBlock];
     [operation start];
 }
 
-- (NSOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) announcementsOperationWithOptions:(JiveAnnouncementRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self contentsListOperation:@"announcements"
                            withOptions:options
                             onComplete:completeBlock
                                onError:errorBlock];
 }
 
-- (NSOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) announcementOperationWithAnnouncement:(JiveAnnouncement *)announcement options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveAnnouncement *announcement))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[announcement.selfRef path], nil];
-    NSOperation *operation = [self entityOperationForClass:[JiveAnnouncement class]
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveAnnouncement class]
                                                    request:request
                                                 onComplete:completeBlock
                                                    onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[announcement.selfRef path], nil];
     [request setHTTPMethod:@"DELETE"];
-    NSOperation *operation = [self emptyOperationWithRequest:request
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[announcement.readRef path], nil];
     if (read) {
         [request setHTTPMethod:@"POST"];
     } else {
         [request setHTTPMethod:@"DELETE"];
     }
-    NSOperation *operation = [self emptyOperationWithRequest:request
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return operation;
 }
 
 #pragma mark - Inbox
 
 - (void) inbox:(JiveInboxOptions*) options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self inboxOperation:options
-                                       onComplete:completeBlock
-                                          onError:errorBlock];
+    AFJSONRequestOperation *operation = [self inboxOperation:options
+                                                  onComplete:completeBlock
+                                                     onError:errorBlock];
     [operation start];
 }
 
-- (NSOperation *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options
                                                 andTemplate:@"api/core/v3/inbox", nil];
     
-    NSOperation *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
-                                                            request:request
-                                                         onComplete:completeBlock
-                                                            onError:errorBlock];
+    AFJSONRequestOperation *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
+                                                                       request:request
+                                                                    onComplete:completeBlock
+                                                                       onError:errorBlock];
     return operation;
 }
 
@@ -476,6 +476,8 @@
     for (JiveInboxEntry *inboxEntry in inboxEntries) {
         if (inboxEntry.jive.update) {
             [inboxEntryUpdates addObject:inboxEntry.jive.update];
+        } else if (inboxEntry.jive.updateCollection) { // Acclaim uses updateCollection instead of update.
+            [inboxEntryUpdates addObject:inboxEntry.jive.updateCollection];
         }
     }
     
@@ -516,13 +518,13 @@
         [markRequest setHTTPMethod:HTTPMethod];
         [self maybeApplyCredentialsToMutableURLRequest:markRequest
                                                 forURL:updateURL];
-        NSOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
-                                                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                   markOperationCompleteBlock(request, nil);
-                                                                               }
-                                                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                   markOperationCompleteBlock(request, error);
-                                                                               }];
+        AFJSONRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
+                                                                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                              markOperationCompleteBlock(request, nil);
+                                                                                          }
+                                                                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                              markOperationCompleteBlock(request, error);
+                                                                                          }];
         [operations addObject:operation];
     }
     
@@ -544,27 +546,27 @@
 #pragma mark - People
 
 - (void)personFromURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self personOperationWithURL:personURL
-                                               onComplete:completeBlock
-                                                  onError:errorBlock];
+    AFJSONRequestOperation *operation = [self personOperationWithURL:personURL
+                                                          onComplete:completeBlock
+                                                             onError:errorBlock];
     
     [operation start];
 }
 
-- (NSOperation *)personOperationWithURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)personOperationWithURL:(NSURL *)personURL onComplete:(void (^)(JivePerson *person))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:personURL];
     
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:personURL];
     
-    NSOperation *operation = [self entityOperationForClass:[JivePerson class]
-                                                   request:mutableURLRequest
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JivePerson class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *)peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self getPeopleArray:@"people" withOptions:options onComplete:complete onError:error];
 }
 
@@ -572,7 +574,7 @@
     [[self peopleOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)recommendedPeopleOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)recommendedPeopleOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self getPeopleArray:@"people/recommended" withOptions:options onComplete:complete onError:error];
 }
 
@@ -580,7 +582,7 @@
     [[self recommendedPeopleOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)trendingOperation:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)trendingOperation:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self getPeopleArray:@"people/trending" withOptions:options onComplete:complete onError:error];
 }
 
@@ -588,7 +590,7 @@
     [[self trendingOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)personOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)personOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personResourceOperation:person.selfRef
                              withOptions:options
                               onComplete:complete
@@ -599,7 +601,7 @@
     [[self personOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)meOperation:(void(^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)meOperation:(void(^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personByOperation:@"@me" withOptions:nil onComplete:complete onError:error];
 }
 
@@ -607,7 +609,7 @@
     [[self meOperation:complete onError:error] start];
 }
 
-- (NSOperation *)personByEmailOperation:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)personByEmailOperation:(NSString *)email withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personByOperation:[NSString stringWithFormat:@"email/%@", email] withOptions:options onComplete:complete onError:error];
 }
 
@@ -615,7 +617,7 @@
     [[self personByEmailOperation:email withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)personByUserNameOperation:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)personByUserNameOperation:(NSString *)userName withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personByOperation:[NSString stringWithFormat:@"username/%@", userName] withOptions:options onComplete:complete onError:error];
 }
 
@@ -623,7 +625,7 @@
     [[self personByUserNameOperation:userName withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)managerOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)managerOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personResourceOperation:person.managerRef
                              withOptions:options
                               onComplete:complete
@@ -634,7 +636,7 @@
     [[self managerOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)person:(NSString *)personId reportsOperation:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)person:(NSString *)personId reportsOperation:(NSString *)reportsPersonId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     return [self personByOperation:[NSString stringWithFormat:@"%@/@reports/%@", personId, reportsPersonId] withOptions:options onComplete:complete onError:error];
 }
 
@@ -642,7 +644,7 @@
     [[self person:personId reportsOperation:reportsPersonId withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[person.selfRef path], nil];
     
     [request setHTTPMethod:@"DELETE"];
@@ -653,7 +655,7 @@
     [[self deletePersonOperation:person onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)activitiesOperation:(JivePerson *)person withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self activitiesResourceOperation:person.activityRef
                                  withOptions:options
                                   onComplete:complete
@@ -664,7 +666,7 @@
     [[self activitiesOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) colleguesOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) colleguesOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self peopleResourceOperation:person.colleaguesRef
                              withOptions:options
                               onComplete:complete
@@ -675,14 +677,14 @@
     [[self colleguesOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) followersOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) followersOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self peopleResourceOperation:person.followersRef
                              withOptions:options
                               onComplete:complete
                                  onError:error];
 }
 
-- (NSOperation *) followersOperation:(JivePerson *)person onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) followersOperation:(JivePerson *)person onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self followersOperation:person withOptions:nil onComplete:complete onError:error];
 }
 
@@ -694,7 +696,7 @@
     [self followers:person withOptions:nil onComplete:complete onError:error];
 }
 
-- (NSOperation *)reportsOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)reportsOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self peopleResourceOperation:person.reportsRef
                              withOptions:options
                               onComplete:complete
@@ -705,7 +707,7 @@
     [[self reportsOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)followingOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)followingOperation:(JivePerson *)person withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self peopleResourceOperation:person.followingRef
                              withOptions:options
                               onComplete:complete
@@ -716,7 +718,7 @@
     [[self followingOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)blogOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)blogOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveBlog *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[person.blogRef path], nil];
     
     return [self entityOperationForClass:[JiveBlog class]
@@ -729,7 +731,7 @@
     [[self blogOperation:person withOptions:options onComplete:complete onError:errorBlock] start];
 }
 
-- (NSOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
+- (AFImageRequestOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:nil andTemplate:[person.avatarRef path], nil];
     void (^heapCompleteBlock)(UIImage *) = [complete copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
@@ -752,7 +754,7 @@
     [[self avatarForPersonOperation:person onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) followingInOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self streamsResourceOperation:person.followingInRef
                               withOptions:options
                                onComplete:complete
@@ -763,7 +765,7 @@
     [[self followingInOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[person.followingInRef path], nil];
     return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
 }
@@ -772,7 +774,7 @@
     [[self updateFollowingInOperation:followingInStreams forPerson:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) streamsOperation:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self streamsResourceOperation:person.streamsRef
                               withOptions:options
                                onComplete:complete
@@ -783,7 +785,7 @@
     [[self streamsOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) tasksOperation:(JivePerson *)person withOptions:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsResourceOperation:person.tasksRef
                                withOptions:options
                                 onComplete:complete
@@ -794,7 +796,7 @@
     [[self tasksOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:nil
                                                  andTemplate:[person.selfRef path], nil];
@@ -810,7 +812,7 @@
     [[self updatePersonOperation:person onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) personOperation:(JivePerson *)person follow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSString *path = [[person.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:path, nil];
     
@@ -822,7 +824,7 @@
     [[self personOperation:person follow:target onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:options
                                                  andTemplate:@"api/core/v3/people", nil];
@@ -838,7 +840,7 @@
     [[self createPersonOperation:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createTaskOperation:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createTaskOperation:(JiveTask *)task forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:task
                                                      options:options
                                                  andTemplate:[person.tasksRef path], nil];
@@ -856,17 +858,17 @@
 
 #pragma mark - Search
 
-- (NSOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(JiveErrorBlock)error {
     return [self getPeopleArray:@"search/people" withOptions:options onComplete:complete onError:error];
 }
 
 - (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^)(NSArray *people))complete onError:(JiveErrorBlock)error {
-    NSOperation *operation = [self searchPeopleRequestOperation:options onComplete:complete onError:error];
+    AFJSONRequestOperation *operation = [self searchPeopleRequestOperation:options onComplete:complete onError:error];
     
     [operation start];
 }
 
-- (NSOperation *) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(JiveErrorBlock)error {
     return [self placeListOperation:@"search/places"
                         withOptions:options
                          onComplete:complete
@@ -874,12 +876,12 @@
 }
 
 - (void) searchPlaces:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(JiveErrorBlock)error {
-    NSOperation * operation = [self searchPlacesRequestOperation:options onComplete:complete onError:error];
+    AFJSONRequestOperation * operation = [self searchPlacesRequestOperation:options onComplete:complete onError:error];
     
     [operation start];
 }
 
-- (NSOperation *) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(JiveErrorBlock)error {
     return [self contentsListOperation:@"search/contents"
                            withOptions:options
                             onComplete:complete
@@ -888,14 +890,14 @@
 
 - (void) searchContents:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(JiveErrorBlock)error {
     
-    NSOperation *operation = [self searchContentsRequestOperation:options onComplete:complete onError:error];
+    AFJSONRequestOperation *operation = [self searchContentsRequestOperation:options onComplete:complete onError:error];
     
     [operation start];
 }
 
 #pragma mark - Environment
 
-- (NSOperation *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@filterableFields", nil];
     
@@ -908,7 +910,7 @@
     [[self filterableFieldsOperation:complete onError:error] start];
 }
 
-- (NSOperation *)supportedFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)supportedFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@supportedFields", nil];
     
@@ -921,7 +923,7 @@
     [[self supportedFieldsOperation:complete onError:error] start];
 }
 
-- (NSOperation *)resourcesOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)resourcesOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@resources", nil];
     
@@ -943,7 +945,7 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    NSOperation *operation = nil;
+    AFJSONRequestOperation *operation = nil;
     if(contentURL.query == nil || [contentURL.query rangeOfString:@"filter="].location == NSNotFound) {
         operation = [self entityOperationForClass:[JiveContent class]
                                           request:mutableURLRequest
@@ -959,18 +961,18 @@
     [operation start];
 }
 
-- (NSOperation *) contentsOperationWithURL:(NSURL *)contentsURL onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) contentsOperationWithURL:(NSURL *)contentsURL onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentsURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentsURL];
-    NSOperation *operation = [self listOperationForClass:[JiveContent class]
-                                                 request:mutableURLRequest
-                                              onComplete:completeBlock
-                                                 onError:errorBlock];
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveContent class]
+                                                            request:mutableURLRequest
+                                                         onComplete:completeBlock
+                                                            onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *)contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsListOperation:@"contents" withOptions:options onComplete:complete onError:error];
 }
 
@@ -978,7 +980,7 @@
     [[self contentsOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)popularContentsOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)popularContentsOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsListOperation:@"contents/popular" withOptions:options onComplete:complete onError:error];
 }
 
@@ -986,7 +988,7 @@
     [[self popularContentsOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)recommendedContentsOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)recommendedContentsOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsListOperation:@"contents/recommended" withOptions:options onComplete:complete onError:error];
 }
 
@@ -994,7 +996,7 @@
     [[self recommendedContentsOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)trendingContentsOperation:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)trendingContentsOperation:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsListOperation:@"contents/trending" withOptions:options onComplete:complete onError:error];
 }
 
@@ -1002,7 +1004,7 @@
     [[self trendingContentsOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[content.selfRef path], nil];
     
     return [self entityOperationForClass:[JiveContent class]
@@ -1015,7 +1017,7 @@
     [[self contentOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)commentsOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsResourceOperation:content.commentsRef
                                withOptions:options
                                 onComplete:complete
@@ -1026,7 +1028,7 @@
     [[self commentsOperationForContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)contentLikedByOperation:(JiveContent *)content withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self peopleResourceOperation:content.likesRef withOptions:options onComplete:complete onError:error];
 }
 
@@ -1040,10 +1042,10 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    NSOperation *operation = [self entityOperationForClass:[JiveContent class]
-                                                   request:mutableURLRequest
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     [operation start];
 }
 
@@ -1053,10 +1055,10 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:rootContentURL];
     
-    NSOperation *operation = [self entityOperationForClass:[JiveContent class]
-                                                   request:mutableURLRequest
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     [operation start];
 }
 
@@ -1066,34 +1068,34 @@
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:discussionURL];
     
-    NSOperation *operation = [self entityOperationForClass:[JiveDiscussion class]
-                                                   request:mutableURLRequest
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveDiscussion class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     [operation start];
 }
 
 - (void) createReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
-    NSOperation *createReplyMessageOperation = [self operationToCreateReplyMessage:replyMessage
-                                                                     forDiscussion:discussion
-                                                                       withOptions:options
-                                                                     completeBlock:completeBlock
-                                                                        errorBlock:errorBlock];
+    AFJSONRequestOperation *createReplyMessageOperation = [self operationToCreateReplyMessage:replyMessage
+                                                                                forDiscussion:discussion
+                                                                                  withOptions:options
+                                                                                completeBlock:completeBlock
+                                                                                   errorBlock:errorBlock];
     [createReplyMessageOperation start];
 }
 
-- (NSOperation *) operationToCreateReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
-    NSOperation *createReplyMessageOperation = [self createContentOperation:replyMessage
+- (AFJSONRequestOperation *) operationToCreateReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
+    AFJSONRequestOperation *createReplyMessageOperation = [self createContentOperation:replyMessage
                                                                 withOptions:options
                                                                 andTemplate:[discussion.messagesRef path]
                                                                  onComplete:(^(JiveContent *content) {
         completeBlock((JiveMessage *)content);
     })
-                                                                    onError:errorBlock];
+                                                                               onError:errorBlock];
     return createReplyMessageOperation;
 }
 
-- (NSOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
+- (AFJSONRequestOperation *) contentFollowingInOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(void (^)(NSError *))error {
     return [self streamsResourceOperation:content.followingInRef
                               withOptions:options
                                onComplete:complete
@@ -1104,7 +1106,7 @@
     [[self contentFollowingInOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forContent:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[content.followingInRef path], nil];
     return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
 }
@@ -1113,7 +1115,7 @@
     [[self updateFollowingInOperation:followingInStreams forContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[content.readRef path], nil];
     
     [request setHTTPMethod:read ? @"POST" : @"DELETE"];
@@ -1124,7 +1126,7 @@
     [[self contentOperation:content markAsRead:read onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[content.likesRef path], nil];
     
     [request setHTTPMethod:read ? @"POST" : @"DELETE"];
@@ -1135,7 +1137,7 @@
     [[self contentOperation:content likes:read onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[content.selfRef path], nil];
     
     [request setHTTPMethod:@"DELETE"];
@@ -1146,7 +1148,7 @@
     [[self deleteContentOperation:content onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updateContentOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:content
                                                      options:options
                                                  andTemplate:[content.selfRef path], nil];
@@ -1162,7 +1164,7 @@
     [[self updateContentOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self contentsResourceOperation:content.messagesRef
                                withOptions:options
                                 onComplete:complete
@@ -1173,7 +1175,7 @@
     [[self messagesOperationForContent:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:content
                             withOptions:options
                             andTemplate:@"api/core/v3/contents"
@@ -1185,7 +1187,7 @@
     [[self createContentOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/dms", nil];
     NSMutableDictionary *JSON = (NSMutableDictionary *)content.toJSONDictionary;
     [JSON setValue:[targets toJSONArray:YES] forKey:@"participants"];
@@ -1205,7 +1207,7 @@
     [[self createDirectMessageOperation:content withTargets:targets andOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:comment
                             withOptions:options
                             andTemplate:@"api/core/v3/comments"
@@ -1217,7 +1219,7 @@
     [[self createCommentOperation:comment withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:message
                             withOptions:options
                             andTemplate:@"api/core/v3/messages"
@@ -1229,7 +1231,7 @@
     [[self createMessageOperation:message withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
     
     [request setHTTPMethod:@"POST"];
@@ -1280,18 +1282,18 @@
     [self createContent:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
 
-- (NSOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
 
-- (NSOperation *)createPostOperation:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)createPostOperation:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
 
 
 #pragma mark - Places
 
-- (NSOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self placeListOperation:@"places" withOptions:options onComplete:complete onError:error];
 }
 
@@ -1299,7 +1301,7 @@
     [[self placesOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self placeListOperation:@"places/recommended" withOptions:options onComplete:complete onError:error];
 }
 
@@ -1307,7 +1309,7 @@
     [[self recommendedPlacesOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self placeListOperation:@"places/trending" withOptions:options onComplete:complete onError:error];
 }
 
@@ -1315,7 +1317,7 @@
     [[self trendingPlacesOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)placePlacesOperation:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)placePlacesOperation:(JivePlace *)place withOptions:(JivePlacePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[place.childPlacesRef path], nil];
     
     return [self listOperationForClass:[JivePlace class]
@@ -1328,7 +1330,7 @@
     [[self placePlacesOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)placeOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)placeOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[place.selfRef path], nil];
     
     return [self entityOperationForClass:[JivePlace class]
@@ -1338,7 +1340,7 @@
 }
 
 - (void)placeFromURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = nil;
+    AFJSONRequestOperation *operation = nil;
     if(placeURL.query == nil || [placeURL.query rangeOfString:@"filter="].location == NSNotFound) {
         operation = [self placeOperationWithURL:placeURL
                                     withOptions:options
@@ -1356,17 +1358,17 @@
             completeBlock(place);
         } onError:errorBlock];
     }
-
+    
     [operation start];
 }
 
-- (NSOperation *)placeOperationWithURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)placeOperationWithURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *person))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[placeURL absoluteString], nil];
     
-    NSOperation *operation = [self entityOperationForClass:[JivePlace class]
-                                                   request:mutableURLRequest
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JivePlace class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
     
     return operation;
 }
@@ -1375,7 +1377,7 @@
     [[self placeOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)placeActivitiesOperation:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)placeActivitiesOperation:(JivePlace *)place withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self activitiesResourceOperation:place.activityRef
                                  withOptions:options
                                   onComplete:complete
@@ -1387,69 +1389,68 @@
 }
 
 - (void) deletePlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self deletePlaceOperationWithPlace:place
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    AFJSONRequestOperation *operation = [self deletePlaceOperationWithPlace:place
+                                                                 onComplete:completeBlock
+                                                                    onError:errorBlock];
     [operation start];
 }
 
 - (void) deleteAvatarForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self deleteAvatarOperationForPlace:place
-                                                      onComplete:completeBlock
-                                                         onError:errorBlock];
+    AFJSONRequestOperation *operation = [self deleteAvatarOperationForPlace:place
+                                                                 onComplete:completeBlock
+                                                                    onError:errorBlock];
     [operation start];
 }
 
 - (void) announcementsForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self announcementsOperationForPlace:place
-                                                          options:options
-                                                       onComplete:completeBlock
-                                                          onError:errorBlock];
+    AFJSONRequestOperation *operation = [self announcementsOperationForPlace:place
+                                                                     options:options
+                                                                  onComplete:completeBlock
+                                                                     onError:errorBlock];
     [operation start];
 }
 
 - (void) avatarForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self avatarOperationForPlace:place
-                                                   options:options
-                                                onComplete:completeBlock
-                                                   onError:errorBlock];
-    [operation start];
+    [[self avatarOperationForPlace:place
+                           options:options
+                        onComplete:completeBlock
+                           onError:errorBlock] start];
 }
 
 - (void) tasksForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self tasksOperationForPlace:place
-                                                  options:options
-                                               onComplete:completeBlock
-                                                  onError:errorBlock];
+    AFJSONRequestOperation *operation = [self tasksOperationForPlace:place
+                                                             options:options
+                                                          onComplete:completeBlock
+                                                             onError:errorBlock];
     [operation start];
 }
 
-- (NSOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[place.selfRef path], nil];
     [request setHTTPMethod:@"DELETE"];
-    NSOperation *operation = [self emptyOperationWithRequest:request
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[place.avatarRef path], nil];
     [request setHTTPMethod:@"DELETE"];
-    NSOperation *operation = [self emptyOperationWithRequest:request
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self contentsResourceOperation:place.announcementsRef
                                withOptions:options
                                 onComplete:completeBlock
                                    onError:errorBlock];
 }
 
-- (NSOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFImageRequestOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[place.avatarRef path], nil];
     void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
@@ -1468,14 +1469,14 @@
     return operation;
 }
 
-- (NSOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock {
     return [self contentsResourceOperation:place.tasksRef
                                withOptions:options
                                 onComplete:completeBlock
                                    onError:errorBlock];
 }
 
-- (NSOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) placeFollowingInOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self streamsResourceOperation:place.followingInRef
                               withOptions:options
                                onComplete:complete
@@ -1486,7 +1487,7 @@
     [[self placeFollowingInOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {    
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self followingInRequestWithStreams:followingInStreams options:options template:[place.followingInRef path], nil];
 
     return [self listOperationForClass:[JiveStream class] request:request onComplete:complete onError:error];
@@ -1496,7 +1497,7 @@
     [[self updateFollowingInOperation:followingInStreams forPlace:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updatePlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:place
                                                      options:options
                                                  andTemplate:[place.selfRef path], nil];
@@ -1512,7 +1513,7 @@
     [[self updatePlaceOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) invitesOperation:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) invitesOperation:(JivePlace *)place withOptions:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[place.invitesRef path], nil];
     
     return [self listOperationForClass:[JiveInvite class]
@@ -1525,7 +1526,7 @@
     [[self invitesOperation:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createTaskOperation:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createTaskOperation:(JiveTask *)task forPlace:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveTask *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:task
                                                      options:options
                                                  andTemplate:[place.tasksRef path], nil];
@@ -1541,7 +1542,7 @@
     [[self createTaskOperation:task forPlace:place withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:place
                                                      options:options
                                                  andTemplate:@"api/core/v3/places", nil];
@@ -1560,73 +1561,73 @@
 #pragma mark - Members
 
 - (void) deleteMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self deleteMemberOperationWithMember:member
-                                                        onComplete:completeBlock
-                                                           onError:errorBlock];
+    AFJSONRequestOperation *operation = [self deleteMemberOperationWithMember:member
+                                                                   onComplete:completeBlock
+                                                                      onError:errorBlock];
     [operation start];
 }
 
 - (void) memberWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self memberOperationWithMember:member
-                                                     options:options
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self memberOperationWithMember:member
+                                                                options:options
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     [operation start];
 }
 
 - (void) membersForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self membersOperationForGroup:group
-                                                    options:options
-                                                 onComplete:completeBlock
-                                                    onError:errorBlock];
+    AFJSONRequestOperation *operation = [self membersOperationForGroup:group
+                                                               options:options
+                                                            onComplete:completeBlock
+                                                               onError:errorBlock];
     [operation start];
 }
 
 - (void) membersForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSOperation *operation = [self membersOperationForPerson:person
-                                                     options:options
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self membersOperationForPerson:person
+                                                                options:options
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return [operation start];
 }
 
-- (NSOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[member.selfRef path], nil];
     [request setHTTPMethod:@"DELETE"];
-    NSOperation *operation = [self emptyOperationWithRequest:request
-                                                  onComplete:completeBlock
-                                                     onError:errorBlock];
+    AFJSONRequestOperation *operation = [self emptyOperationWithRequest:request
+                                                             onComplete:completeBlock
+                                                                onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *)memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *)memberOperationWithMember:(JiveMember *)member options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *member))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[member.selfRef path], nil];
-    NSOperation *operation = [self entityOperationForClass:[JiveMember class]
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveMember class]
                                                    request:request
                                                 onComplete:completeBlock
                                                    onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) membersOperationForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) membersOperationForGroup:(JivePlace *)group options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[group.membersRef path], nil];
-    NSOperation *operation = [self listOperationForClass:[JiveMember class]
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveMember class]
                                                  request:request
                                               onComplete:completeBlock
                                                  onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation *) membersOperationForPerson:(JivePerson *)person options:(JiveStateRequestOptions *)options onComplete:(void (^)(NSArray *members))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[person.membersRef path], nil];
-    NSOperation *operation = [self listOperationForClass:[JiveMember class]
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveMember class]
                                                  request:request
                                               onComplete:completeBlock
                                                  onError:errorBlock];
     return operation;
 }
 
-- (NSOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updateMemberOperation:(JiveMember *)member withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveMember *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:member
                                                      options:options
                                                  andTemplate:[member.selfRef path], nil];
@@ -1644,7 +1645,7 @@
 
 #pragma mark - Streams
 
-- (NSOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) streamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[stream.selfRef path], nil];
     
     return [self entityOperationForClass:[JiveStream class]
@@ -1657,7 +1658,7 @@
     [[self streamOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) streamActivitiesOperation:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) streamActivitiesOperation:(JiveStream *)stream withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self activitiesResourceOperation:stream.activityRef
                                  withOptions:options
                                   onComplete:complete
@@ -1668,7 +1669,7 @@
     [[self streamActivitiesOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     return [self activityListOperation:@"streams/connections/activities" withOptions:options onComplete:complete onError:error];
 }
 
@@ -1676,7 +1677,7 @@
     [[self streamConnectionsActivitiesOperation:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[stream.selfRef path], nil];
     
     [request setHTTPMethod:@"DELETE"];
@@ -1687,7 +1688,7 @@
     [[self deleteStreamOperation:stream onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:[stream.associationsRef path],
                              nil];
@@ -1702,7 +1703,7 @@
     [[self streamAssociationsOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updateStreamOperation:(JiveStream *)stream withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:stream
                                                      options:options
                                                  andTemplate:[stream.selfRef path], nil];
@@ -1718,7 +1719,7 @@
     [[self updateStreamOperation:stream withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createStreamOperation:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createStreamOperation:(JiveStream *)stream forPerson:(JivePerson *)person withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveStream *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:stream
                                                      options:options
                                                  andTemplate:[person.streamsRef path], nil];
@@ -1734,7 +1735,7 @@
     [[self createStreamOperation:stream forPerson:person withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deleteAssociationOperation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deleteAssociationOperation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"%@/%@/%@", [stream.associationsRef path], association.type, [association.selfRef lastPathComponent], nil];
     
@@ -1746,7 +1747,7 @@
     [[self deleteAssociationOperation:association fromStream:stream onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createAssociationsOperation:(JiveAssociationTargetList *)targets forStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createAssociationsOperation:(JiveAssociationTargetList *)targets forStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[stream.associationsRef path], nil];
     NSData *body = [NSJSONSerialization dataWithJSONObject:[targets toJSONArray] options:0 error:nil];
     
@@ -1763,7 +1764,7 @@
 
 #pragma mark - Invites
 
-- (NSOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) inviteOperation:(JiveInvite *)invite withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[invite.selfRef path], nil];
     
     return [self entityOperationForClass:[JiveInvite class]
@@ -1776,7 +1777,7 @@
     [[self inviteOperation:invite withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:[invite.selfRef path], nil];
     
     [request setHTTPMethod:@"DELETE"];
@@ -1787,7 +1788,7 @@
     [[self deleteInviteOperation:invite onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) updateInviteOperation:(JiveInvite *)invite withState:(enum JiveInviteState)state andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveInvite *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[invite.selfRef path], nil];
     NSDictionary *JSON = @{@"id" : invite.jiveId, @"state" : [JiveInvite jsonForState:state]};
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
@@ -1806,7 +1807,7 @@
     [[self updateInviteOperation:invite withState:state andOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createInviteToOperation:(JivePlace *)place withMessage:(NSString *)message targets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:[place.invitesRef path], nil];
     NSDictionary *JSON = @{@"body" : message, @"invitees" : [targets toJSONArray:NO]};
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
@@ -1827,14 +1828,16 @@
 
 #pragma mark - Images
 
-- (NSOperation *)imagesOperationFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *)imagesOperationFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:imagesURL];
     
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:imagesURL];
     
-    NSOperation *operation = nil;
-    operation = [self listOperationForClass:[JiveImage class] request:mutableURLRequest onComplete:complete onError:error];
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveImage class]
+                                                            request:mutableURLRequest
+                                                         onComplete:complete
+                                                            onError:error];
     return operation;
 }
 
@@ -1842,7 +1845,7 @@
     [[self imagesOperationFromURL:imagesURL onComplete:completeBlock onError:errorBlock] start];
 }
 
-- (NSOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+- (AFHTTPRequestOperation*) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     
     NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"api/core/v3/images", nil];
     
@@ -1869,17 +1872,17 @@
 }
 
 #pragma mark - Outcomes
-- (NSOperation *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"%@/outcomes", content.selfRef.path, nil];
-    NSOperation *operation = [self listOperationForClass:[JiveOutcome class]
+    AFJSONRequestOperation *operation = [self listOperationForClass:[JiveOutcome class]
                                                  request:request
                                               onComplete:complete
                                                  onError:error];
     return operation;
 }
 
-- (NSOperation *) outcomesOperation:(JiveContent *)content withOptions:(JiveOutcomeRequestOptions *)options onComplete:(void (^)(NSArray *outcomes))complete onError:(JiveErrorBlock) error {
+- (AFJSONRequestOperation *) outcomesOperation:(JiveContent *)content withOptions:(JiveOutcomeRequestOptions *)options onComplete:(void (^)(NSArray *outcomes))complete onError:(JiveErrorBlock) error {
     return [self outcomesListOperation:content
                            withOptions:options
                             onComplete:complete
@@ -1890,7 +1893,7 @@
     [[self outcomesOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/outcomes/%@", outcome.jiveId, nil];
     
@@ -1904,7 +1907,7 @@
     [[self deleteOutcomeOperation:outcome onComplete:complete onError:error] start];
 }
 
-- (NSOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:outcome
                                                      options:nil
                                                  andTemplate:@"%@%@", content.selfRef.path, @"/outcomes", nil];
@@ -1922,13 +1925,13 @@
 
 #pragma mark - Properties
 
-- (NSOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/v3/metadata/properties/%@", propertyName, nil];
-    NSOperation *operation = [self entityOperationForClass:[JiveProperty class]
-                                                   request:request
-                                                onComplete:complete
-                                                   onError:error];
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveProperty class]
+                                                              request:request
+                                                           onComplete:complete
+                                                              onError:error];
     
     return operation;
 }

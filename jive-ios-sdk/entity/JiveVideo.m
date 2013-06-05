@@ -24,7 +24,7 @@
 
 @synthesize tags, visibleToExternalContributors;
 
-static NSString * const JiveVideoType = @"video";
+NSString * const JiveVideoType = @"video";
 
 + (void)load {
     if (self == [JiveVideo class])

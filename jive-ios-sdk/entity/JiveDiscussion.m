@@ -24,7 +24,7 @@
 
 @synthesize answer, helpful, categories, question, tags, users, visibility, visibleToExternalContributors;
 
-static NSString * const JiveDiscussionType = @"discussion";
+NSString * const JiveDiscussionType = @"discussion";
 
 + (void)load {
     if (self == [JiveDiscussion class])

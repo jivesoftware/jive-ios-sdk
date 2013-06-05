@@ -19,12 +19,15 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveUpdateType;
+
 extern struct JiveUpdateAttributes {
     __unsafe_unretained NSString *latitude;
     __unsafe_unretained NSString *longitude;
     __unsafe_unretained NSString *tags;
     __unsafe_unretained NSString *visibleToExternalContributors;
     __unsafe_unretained NSString *visibility;
+    __unsafe_unretained NSString *repost;
 } const JiveUpdateAttributes;
 
 //! \class JiveUpdate
@@ -47,5 +50,8 @@ extern struct JiveUpdateAttributes {
 // * all - anyone with appropriate permissions can see the content. Default when visibility and parent are not specified.
 // * place - place permissions specify which users can see the content. Default when visibility is not specified but parent is specified.
 @property (nonatomic, strong) NSString *visibility;
+
+//! If this update is a repost, the repost field contains the original update. Otherwise, this field will not be present.
+@property(nonatomic, strong, readonly) JiveUpdate *repost;
 
 @end

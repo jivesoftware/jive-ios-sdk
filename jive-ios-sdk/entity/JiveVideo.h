@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveVideoType;
+
 //! \class JiveVideo
 //! https://developers.jivesoftware.com/api/v3/rest/VideoEntity.html
 @interface JiveVideo : JiveContent

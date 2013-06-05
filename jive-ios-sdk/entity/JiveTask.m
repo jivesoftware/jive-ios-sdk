@@ -25,7 +25,7 @@
 
 @synthesize completed, dueDate, parentTask, subTasks, tags, visibleToExternalContributors;
 
-static NSString * const JiveTaskType = @"task";
+NSString * const JiveTaskType = @"task";
 
 + (void)load {
     if (self == [JiveTask class])

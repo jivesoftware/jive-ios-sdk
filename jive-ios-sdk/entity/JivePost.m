@@ -35,7 +35,7 @@ struct JivePostStatusValues const JivePostStatusValues = {
 @synthesize attachments, categories, permalink, publishDate, restrictComments, tags;
 @synthesize visibleToExternalContributors;
 
-static NSString * const JivePostType = @"post";
+NSString * const JivePostType = @"post";
 
 + (void)load {
     if (self == [JivePost class])

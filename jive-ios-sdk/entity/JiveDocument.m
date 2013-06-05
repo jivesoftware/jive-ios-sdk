@@ -27,7 +27,7 @@
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
 @synthesize tags, updater, users, visibility, visibleToExternalContributors;
 
-static NSString * const JiveDocumentType = @"document";
+NSString * const JiveDocumentType = @"document";
 
 + (void)load {
     if (self == [JiveDocument class])

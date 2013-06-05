@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveTaskType;
+
 //! \class JiveTask
 //! https://developers.jivesoftware.com/api/v3/rest/TaskEntity.html
 @interface JiveTask : JiveContent

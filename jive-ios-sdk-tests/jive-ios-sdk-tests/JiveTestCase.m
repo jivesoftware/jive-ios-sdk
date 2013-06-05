@@ -28,7 +28,20 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 }
 @end
 
+@interface NSURLRequest (ENGSERV_2025_HACK)
+
++ (void)setAllowsAnyHTTPSCertificate:(BOOL)allowsAnyHTTPSCertificate forHost:(NSString *)host;
+
+@end
+
 @implementation JiveTestCase
+
++ (void)initialize {
+    if (self == [JiveTestCase class]) {
+        [NSURLRequest setAllowsAnyHTTPSCertificate:YES
+                                           forHost:@"doritosoftware-ipad-1-essential-plus.doritosoftware.com"];
+    }
+}
 
 #pragma mark - SenTestCase
 

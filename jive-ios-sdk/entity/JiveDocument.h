@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveDocumentType;
+
 //! \class JiveDocument
 //! https://developers.jivesoftware.com/api/v3/rest/DocumentEntity.html
 @interface JiveDocument : JiveContent
