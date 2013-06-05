@@ -24,6 +24,9 @@
 #import "JiveEmail.h"
 #import "JivePhoneNumber.h"
 #import "JiveTypedObject_internal.h"
+#import "AFJSONRequestOperation.h"
+#import "Jive_internal.h"
+#import "JAPIRequestOperation.h"
 
 struct JivePersonAttributes const JivePersonAttributes = {
 	.addresses = @"addresses",
@@ -140,6 +143,8 @@ static NSString * const JivePersonType = @"person";
     return dictionary;
 }
 
+#pragma mark - Resource methods
+
 - (NSURL *)avatarRef {
     return [self resourceForTag:JivePersonResourceAttributes.avatar].ref;
 }
@@ -214,6 +219,249 @@ static NSString * const JivePersonType = @"person";
 
 - (BOOL)canCreateNewTask {
     return [self resourceHasPostForTag:JivePersonResourceAttributes.tasks];
+}
+
+#pragma mark - Instance methods
+
+- (void) createWithOptions:(JiveWelcomeRequestOptions *)options
+                onComplete:(JivePersonCompleteBlock)completeBlock
+                   onError:(JiveErrorBlock)errorBlock {
+    [[self createOperationWithOptions:options
+                           onComplete:completeBlock
+                              onError:errorBlock] start];
+}
+
+- (void) refreshWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JivePersonCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self refreshOperationWithOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
+}
+
+- (void) managerWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JivePersonCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self managerOperationWithOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
+}
+
+- (void) deleteOnComplete:(JiveCompletedBlock)completeBlock
+                  onError:(JiveErrorBlock)errorBlock {
+    [[self deleteOperationOnComplete:completeBlock
+                             onError:errorBlock] start];
+}
+
+- (void) avatarOnComplete:(JiveImageCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)errorBlock {
+    [[self avatarOperationOnComplete:completeBlock
+                             onError:errorBlock] start];
+}
+
+- (void) updateOnComplete:(JivePersonCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)errorBlock {
+    [[self updateOperationOnComplete:completeBlock
+                             onError:errorBlock] start];
+}
+
+- (void) follow:(JivePerson *)target
+     onComplete:(JiveCompletedBlock)completeBlock
+        onError:(JiveErrorBlock)errorBlock {
+    [[self followOperation:target
+                onComplete:completeBlock
+                   onError:errorBlock] start];
+}
+
+- (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options
+                    onComplete:(JiveArrayCompleteBlock)completeBlock
+                       onError:(JiveErrorBlock)errorBlock {
+    [[self activitiesOperationWithOptions:options
+                               onComplete:completeBlock
+                                  onError:errorBlock] start];
+}
+
+- (void) colleguesWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock {
+    [[self colleguesOperationWithOptions:options
+                              onComplete:completeBlock
+                                 onError:errorBlock] start];
+}
+
+- (void) followersWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock {
+    [[self followersOperationWithOptions:options
+                              onComplete:completeBlock
+                                 onError:errorBlock] start];
+}
+
+- (void) reportsWithOptions:(JivePagedRequestOptions *)options
+                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self reportsOperationWithOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
+}
+
+- (void) followingWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock {
+    [[self followingOperationWithOptions:options
+                              onComplete:completeBlock
+                                 onError:errorBlock] start];
+}
+
+- (void) followingInWithOptions:(JiveReturnFieldsRequestOptions *)options
+                     onComplete:(JiveArrayCompleteBlock)completeBlock
+                        onError:(JiveErrorBlock)errorBlock {
+    [[self followingInOperationWithOptions:options
+                                onComplete:completeBlock
+                                   onError:errorBlock] start];
+}
+
+- (void) updateFollowingIn:(NSArray *)followingInStreams
+               withOptions:(JiveReturnFieldsRequestOptions *)options
+                onComplete:(JiveArrayCompleteBlock)completeBlock
+                   onError:(JiveErrorBlock)errorBlock {
+    [[self updateFollowingInOperation:followingInStreams
+                          withOptions:options
+                           onComplete:completeBlock
+                              onError:errorBlock] start];
+}
+
+- (void) streamsWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self streamsOperationWithOptions:options
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
+}
+
+- (void) tasksWithOptions:(JiveSortedRequestOptions *)options
+               onComplete:(JiveArrayCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)errorBlock {
+    [[self tasksOperationWithOptions:options
+                          onComplete:completeBlock
+                             onError:errorBlock] start];
+}
+
+- (void) blogWithOptions:(JiveReturnFieldsRequestOptions *)options
+              onComplete:(JiveBlogCompleteBlock)completeBlock
+                 onError:(JiveErrorBlock)errorBlock {
+    [[self blogOperationWithOptions:options
+                         onComplete:completeBlock
+                            onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation *) createOperationWithOptions:(JiveWelcomeRequestOptions *)options
+                                             onComplete:(JivePersonCompleteBlock)completeBlock
+                                                onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JivePersonCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                      andTemplate:[self.selfRef path], nil];
+    
+    return [Jive operationWithRequest:request
+                           onComplete:completeBlock
+                              onError:errorBlock
+                      responseHandler:^id(id JSON) {
+                          [self deserialize:JSON];
+                          return self;
+                      }];
+}
+
+- (AFJSONRequestOperation *) managerOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JivePersonCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) deleteOperationOnComplete:(JiveCompletedBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFImageRequestOperation *) avatarOperationOnComplete:(JiveImageCompleteBlock)completeBlock
+                                                onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) updateOperationOnComplete:(JivePersonCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) followOperation:(JivePerson *)target
+                                  onComplete:(JiveCompletedBlock)completeBlock
+                                     onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options
+                                                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                    onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) colleguesOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) followersOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) reportsOperationWithOptions:(JivePagedRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) followingOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) followingInOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                                  onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                     onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams
+                                           withOptions:(JiveReturnFieldsRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) streamsOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) tasksOperationWithOptions:(JiveSortedRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    return nil;
+}
+
+- (AFJSONRequestOperation *) blogOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                           onComplete:(JiveBlogCompleteBlock)completeBlock
+                                              onError:(JiveErrorBlock)errorBlock {
+    return nil;
 }
 
 @end

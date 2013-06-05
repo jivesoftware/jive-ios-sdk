@@ -19,6 +19,9 @@
 
 #import <Foundation/Foundation.h>
 #import "JiveTypedObject.h"
+#import "JiveResponseBlocks.h"
+
+@class Jive;
 
 extern struct JivePersonAttributes {
     __unsafe_unretained NSString *addresses;
@@ -38,9 +41,6 @@ extern struct JivePersonAttributes {
     __unsafe_unretained NSString *thumbnailUrl;
     __unsafe_unretained NSString *updated;
 } const JivePersonAttributes;
-
-@class JivePersonJive;
-@class JiveName;
 
 
 //! \class JivePerson
@@ -103,6 +103,146 @@ extern struct JivePersonAttributes {
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createPerson(PersonEntity,%20Boolean,%20String)
+- (void) createWithOptions:(JiveWelcomeRequestOptions *)options
+                onComplete:(JivePersonCompleteBlock)completeBlock
+                   onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
+- (void) refreshWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JivePersonCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getManager(String,%20String)
+- (void) managerWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JivePersonCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deletePerson(String,%20UriInfo)
+- (void) deleteOnComplete:(JiveCompletedBlock)completeBlock
+                  onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getAvatar(String)
+- (void) avatarOnComplete:(JiveImageCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#updatePerson(String,%20PersonEntity)
+- (void) updateOnComplete:(JivePersonCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createFollowing(String,%20String)
+- (void) follow:(JivePerson *)target
+     onComplete:(JiveCompletedBlock)completeBlock
+        onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getActivity(String,%20String,%20String,%20int,%20String)
+- (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options
+                    onComplete:(JiveArrayCompleteBlock)completeBlock
+                       onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getColleagues(String,%20int,%20int,%20String)
+- (void) colleguesWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowers(String,%20int,%20int,%20String)
+- (void) followersWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReports(String,%20int,%20int,%20String)
+- (void) reportsWithOptions:(JivePagedRequestOptions *)options
+                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowing(String,%20int,%20int,%20String)
+- (void) followingWithOptions:(JivePagedRequestOptions *)options
+                   onComplete:(JiveArrayCompleteBlock)completeBlock
+                      onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowingIn(String,%20String)
+- (void) followingInWithOptions:(JiveReturnFieldsRequestOptions *)options
+                     onComplete:(JiveArrayCompleteBlock)completeBlock
+                        onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#setFollowingIn(String,%20String,%20String)
+- (void) updateFollowingIn:(NSArray *)followingInStreams
+               withOptions:(JiveReturnFieldsRequestOptions *)options
+                onComplete:(JiveArrayCompleteBlock)completeBlock
+                   onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getStreams(String,%20String)
+- (void) streamsWithOptions:(JiveReturnFieldsRequestOptions *)options
+                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTasks(String,%20String,%20int,%20int,%20String)
+- (void) tasksWithOptions:(JiveSortedRequestOptions *)options
+               onComplete:(JiveArrayCompleteBlock)completeBlock
+                  onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getBlog(String,%20String)
+- (void) blogWithOptions:(JiveReturnFieldsRequestOptions *)options
+              onComplete:(JiveBlogCompleteBlock)completeBlock
+                 onError:(JiveErrorBlock)errorBlock;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createPerson(PersonEntity,%20Boolean,%20String)
+- (AFJSONRequestOperation *) createOperationWithOptions:(JiveWelcomeRequestOptions *)options
+                                             onComplete:(JivePersonCompleteBlock)completeBlock
+                                                onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
+- (AFJSONRequestOperation *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JivePersonCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getManager(String,%20String)
+- (AFJSONRequestOperation *) managerOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JivePersonCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deletePerson(String,%20UriInfo)
+- (AFJSONRequestOperation *) deleteOperationOnComplete:(JiveCompletedBlock)completeBlock
+                                               onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getAvatar(String)
+- (AFImageRequestOperation *) avatarOperationOnComplete:(JiveImageCompleteBlock)completeBlock
+                                                onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#updatePerson(String,%20PersonEntity)
+- (AFJSONRequestOperation *) updateOperationOnComplete:(JivePersonCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createFollowing(String,%20String)
+- (AFJSONRequestOperation *) followOperation:(JivePerson *)target
+                                  onComplete:(JiveCompletedBlock)completeBlock
+                                     onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getActivity(String,%20String,%20String,%20int,%20String)
+- (AFJSONRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options
+                                                 onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                    onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getColleagues(String,%20int,%20int,%20String)
+- (AFJSONRequestOperation *) colleguesOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowers(String,%20int,%20int,%20String)
+- (AFJSONRequestOperation *) followersOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getReports(String,%20int,%20int,%20String)
+- (AFJSONRequestOperation *) reportsOperationWithOptions:(JivePagedRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowing(String,%20int,%20int,%20String)
+- (AFJSONRequestOperation *) followingOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFollowingIn(String,%20String)
+- (AFJSONRequestOperation *) followingInOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                                  onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                     onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#setFollowingIn(String,%20String,%20String)
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams
+                                           withOptions:(JiveReturnFieldsRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getStreams(String,%20String)
+- (AFJSONRequestOperation *) streamsOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTasks(String,%20String,%20int,%20int,%20String)
+- (AFJSONRequestOperation *) tasksOperationWithOptions:(JiveSortedRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getBlog(String,%20String)
+- (AFJSONRequestOperation *) blogOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                           onComplete:(JiveBlogCompleteBlock)completeBlock
+                                              onError:(JiveErrorBlock)error;
+
 - (NSURL *)avatarRef;
 - (NSURL *)activityRef;
 - (NSURL *)blogRef;
@@ -122,5 +262,7 @@ extern struct JivePersonAttributes {
 - (BOOL)canCreateNewStream;
 - (NSURL *)tasksRef;
 - (BOOL)canCreateNewTask;
+
+@property (strong, nonatomic) Jive *jiveInstance;
 
 @end

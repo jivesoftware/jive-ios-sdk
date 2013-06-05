@@ -72,6 +72,7 @@
 		0F187EAB16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F187EA916695F3D001FCB51 /* JiveAuthorCommentRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F187EAC16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */; };
 		0F187EAF16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */; };
+		0F3215C4175FCF7700165166 /* JiveResponseBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F3215C1175FCEE800165166 /* JiveResponseBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F5A5DCD17457E82005F3BF7 /* NSString+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */; };
 		0F5A5DCE17457E82005F3BF7 /* NSString+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */; };
 		0F5F1A13167F9C7100BA616E /* JiveAddressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */; };
@@ -551,6 +552,8 @@
 		0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAuthorCommentRequestOptions.m; sourceTree = "<group>"; };
 		0F187EAD16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAuthorCommentRequestOptionsTests.h; sourceTree = "<group>"; };
 		0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAuthorCommentRequestOptionsTests.m; sourceTree = "<group>"; };
+		0F3215C1175FCEE800165166 /* JiveResponseBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveResponseBlocks.h; sourceTree = "<group>"; };
+		0F3215C5175FE3F000165166 /* Jive_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Jive_internal.h; sourceTree = "<group>"; };
 		0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Jive.h"; sourceTree = "<group>"; };
 		0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Jive.m"; sourceTree = "<group>"; };
 		0F5F1A11167F9C7100BA616E /* JiveAddressTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAddressTests.h; sourceTree = "<group>"; };
@@ -1431,7 +1434,9 @@
 				217FE0D11638520F00182AB5 /* entity */,
 				2192BCFD16161F0700082926 /* JAPIRequestOperation.h */,
 				2192BCFE16161F0700082926 /* JAPIRequestOperation.m */,
+				0F3215C1175FCEE800165166 /* JiveResponseBlocks.h */,
 				B8A6BA6D1691F63B00996448 /* Jive.h */,
+				0F3215C5175FE3F000165166 /* Jive_internal.h */,
 				B8A6BA6E1691F63B00996448 /* Jive.m */,
 				21AD9754161BAB4F009A977D /* JiveCredentials.h */,
 				B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */,
@@ -1773,6 +1778,7 @@
 				0F85BEFD172B3B090005E31E /* JiveShare.h in Headers */,
 				B1B5917C17381378009B560E /* JiveMobileAnalyticsHeader.h in Headers */,
 				0F5A5DCD17457E82005F3BF7 /* NSString+Jive.h in Headers */,
+				0F3215C4175FCF7700165166 /* JiveResponseBlocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
