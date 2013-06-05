@@ -55,7 +55,7 @@
     
     itemJSON = [JSON objectForKey:JiveShareAttributes.sharedPlace];
     STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([itemJSON objectForKey:JivePlaceAttributes.descriptionAttribute], sharedPlace.jiveDescription, @"Wrong description");
+    STAssertEqualObjects([itemJSON objectForKey:@"description"], sharedPlace.jiveDescription, @"Wrong description");
 }
 
 - (void)testShareToJSON_alternate {
@@ -79,7 +79,7 @@
     
     itemJSON = [JSON objectForKey:JiveShareAttributes.sharedPlace];
     STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([itemJSON objectForKey:JivePlaceAttributes.descriptionAttribute], sharedPlace.jiveDescription, @"Wrong description");
+    STAssertEqualObjects([itemJSON objectForKey:@"description"], sharedPlace.jiveDescription, @"Wrong description");
 }
 
 - (void)testShareParsing {

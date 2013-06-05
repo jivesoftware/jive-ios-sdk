@@ -21,7 +21,7 @@
 
 extern struct JivePlaceAttributes {
     __unsafe_unretained NSString *contentTypes;
-    __unsafe_unretained NSString *descriptionAttribute;
+    __unsafe_unretained NSString *jiveDescription;
     __unsafe_unretained NSString *displayName;
     __unsafe_unretained NSString *followerCount;
     __unsafe_unretained NSString *highlightBody;

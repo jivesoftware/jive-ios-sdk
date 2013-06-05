@@ -48,7 +48,7 @@ struct JivePlaceResourceAttributes {
 
 struct JivePlaceAttributes const JivePlaceAttributes = {
     .contentTypes = @"contentTypes",
-    .descriptionAttribute = @"description",
+    .jiveDescription = @"jiveDescription",
     .displayName = @"displayName",
     .followerCount = @"followerCount",
     .highlightBody = @"highlightBody",
