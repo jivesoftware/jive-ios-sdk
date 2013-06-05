@@ -37,7 +37,7 @@
 @property(nonatomic, readonly, copy) NSNumber *content;
 
 //! Description of this object type.
-@property(nonatomic, readonly, copy) NSString* description;
+@property(nonatomic, readonly, copy) NSString* jiveDescription;
 
 //! A usage example for this object type.
 @property(nonatomic, readonly, copy) NSString* example;

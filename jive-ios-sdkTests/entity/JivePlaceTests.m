@@ -106,7 +106,7 @@
     [parentPlace setValue:@"place" forKey:@"name"];
     self.place.displayName = @"testName";
     [self.place setValue:@"1234" forKey:@"jiveId"];
-    self.place.description = @"USA";
+    self.place.jiveDescription = @"USA";
     [self.place setValue:@"Status update" forKey:@"status"];
     [self.place setValue:@"Body" forKey:@"highlightBody"];
     [self.place setValue:@"Subject" forKey:@"highlightSubject"];
@@ -132,7 +132,7 @@
     STAssertEqualObjects([JSON objectForKey:@"name"], self.place.name, @"Wrong name.");
     STAssertEqualObjects([JSON objectForKey:@"displayName"], self.place.displayName, @"Wrong display name.");
     STAssertEqualObjects([JSON objectForKey:@"id"], self.place.jiveId, @"Wrong id.");
-    STAssertEqualObjects([JSON objectForKey:@"description"], self.place.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], self.place.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"status"], self.place.status, @"Wrong status update");
     STAssertEqualObjects([JSON objectForKey:@"highlightBody"], self.place.highlightBody, @"Wrong thumbnail url");
     STAssertEqualObjects([JSON objectForKey:@"highlightSubject"], self.place.highlightSubject, @"Wrong thumbnail url");
@@ -178,7 +178,7 @@
     [parentPlace setValue:@"not place" forKey:@"name"];
     self.place.displayName = @"Alternate";
     [self.place setValue:@"87654" forKey:@"jiveId"];
-    self.place.description = @"Foxtrot";
+    self.place.jiveDescription = @"Foxtrot";
     [self.place setValue:@"Working for the man" forKey:@"status"];
     [self.place setValue:@"not Body" forKey:@"highlightBody"];
     [self.place setValue:@"not Subject" forKey:@"highlightSubject"];
@@ -200,7 +200,7 @@
     STAssertEqualObjects([JSON objectForKey:@"name"], self.place.name, @"Wrong name.");
     STAssertEqualObjects([JSON objectForKey:@"displayName"], self.place.displayName, @"Wrong display name.");
     STAssertEqualObjects([JSON objectForKey:@"id"], self.place.jiveId, @"Wrong id.");
-    STAssertEqualObjects([JSON objectForKey:@"description"], self.place.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], self.place.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"status"], self.place.status, @"Wrong status update");
     STAssertEqualObjects([JSON objectForKey:@"highlightBody"], self.place.highlightBody, @"Wrong thumbnail url");
     STAssertEqualObjects([JSON objectForKey:@"highlightSubject"], self.place.highlightSubject, @"Wrong thumbnail url");
@@ -274,7 +274,7 @@
     [parentPlace setValue:@"place" forKey:@"name"];
     self.place.displayName = @"testName";
     [self.place setValue:@"1234" forKey:@"jiveId"];
-    self.place.description = @"USA";
+    self.place.jiveDescription = @"USA";
     [self.place setValue:@"Working for the man" forKey:@"status"];
     [self.place setValue:@"Body" forKey:@"highlightBody"];
     [self.place setValue:@"Subject" forKey:@"highlightSubject"];
@@ -306,7 +306,7 @@
     STAssertEqualObjects(newPlace.likeCount, self.place.likeCount, @"Wrong like count");
     STAssertEqualObjects(newPlace.viewCount, self.place.viewCount, @"Wrong viewCount");
     STAssertEqualObjects(newPlace.jiveId, self.place.jiveId, @"Wrong id");
-    STAssertEqualObjects(newPlace.description, self.place.description, @"Wrong description");
+    STAssertEqualObjects(newPlace.jiveDescription, self.place.jiveDescription, @"Wrong description");
     STAssertEqualObjects(newPlace.name, self.place.name, @"Wrong name");
     STAssertEqualObjects(newPlace.published, self.place.published, @"Wrong published date");
     STAssertEqualObjects(newPlace.status, self.place.status, @"Wrong status");
@@ -338,7 +338,7 @@
     [parentPlace setValue:@"not place" forKey:@"name"];
     self.place.displayName = @"display name";
     [self.place setValue:@"87654" forKey:@"jiveId"];
-    self.place.description = @"New Mexico";
+    self.place.jiveDescription = @"New Mexico";
     [self.place setValue:@"No status" forKey:@"status"];
     [self.place setValue:@"not Body" forKey:@"highlightBody"];
     [self.place setValue:@"not Subject" forKey:@"highlightSubject"];
@@ -367,7 +367,7 @@
     STAssertEqualObjects(newPlace.likeCount, self.place.likeCount, @"Wrong like count");
     STAssertEqualObjects(newPlace.viewCount, self.place.viewCount, @"Wrong viewCount");
     STAssertEqualObjects(newPlace.jiveId, self.place.jiveId, @"Wrong id");
-    STAssertEqualObjects(newPlace.description, self.place.description, @"Wrong description");
+    STAssertEqualObjects(newPlace.jiveDescription, self.place.jiveDescription, @"Wrong description");
     STAssertEqualObjects(newPlace.name, self.place.name, @"Wrong name");
     STAssertEqualObjects(newPlace.published, self.place.published, @"Wrong published date");
     STAssertEqualObjects(newPlace.status, self.place.status, @"Wrong status");

@@ -38,7 +38,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"share", @"Wrong type");
     
-    sharedPlace.description = @"Going places";
+    sharedPlace.jiveDescription = @"Going places";
     sharedContent.subject = @"What to do when you get there.";
     [self.share setValue:sharedContent forKey:JiveShareAttributes.sharedContent];
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
@@ -55,14 +55,14 @@
     
     itemJSON = [JSON objectForKey:JiveShareAttributes.sharedPlace];
     STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([itemJSON objectForKey:JivePlaceAttributes.description], sharedPlace.description, @"Wrong description");
+    STAssertEqualObjects([itemJSON objectForKey:@"description"], sharedPlace.jiveDescription, @"Wrong description");
 }
 
 - (void)testShareToJSON_alternate {
     JivePlace *sharedPlace = [JivePlace new];
     JiveContent *sharedContent = [JiveContent new];
     
-    sharedPlace.description = @"Rock solid";
+    sharedPlace.jiveDescription = @"Rock solid";
     sharedContent.subject = @"What to do in Denver when you're dead.";
     [self.share setValue:sharedContent forKey:JiveShareAttributes.sharedContent];
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
@@ -79,7 +79,7 @@
     
     itemJSON = [JSON objectForKey:JiveShareAttributes.sharedPlace];
     STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([itemJSON objectForKey:JivePlaceAttributes.description], sharedPlace.description, @"Wrong description");
+    STAssertEqualObjects([itemJSON objectForKey:@"description"], sharedPlace.jiveDescription, @"Wrong description");
 }
 
 - (void)testShareParsing {
@@ -88,7 +88,7 @@
     JiveContent *sharedContent = [JiveContent new];
     
     participant.status = @"Doing fine";
-    sharedPlace.description = @"Going places";
+    sharedPlace.jiveDescription = @"Going places";
     sharedContent.subject = @"What to do when you get there.";
     [self.share setValue:sharedContent forKey:JiveShareAttributes.sharedContent];
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
@@ -99,7 +99,7 @@
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
     STAssertEqualObjects(newContent.sharedContent.subject, self.share.sharedContent.subject, @"Wrong shared content");
-    STAssertEqualObjects(newContent.sharedPlace.description, self.share.sharedPlace.description, @"Wrong shared place");
+    STAssertEqualObjects(newContent.sharedPlace.jiveDescription, self.share.sharedPlace.jiveDescription, @"Wrong shared place");
 }
 
 - (void)testShareParsingAlternate {
@@ -108,7 +108,7 @@
     JiveContent *sharedContent = [JiveContent new];
     
     participant.status = @"Twisting and Turning";
-    sharedPlace.description = @"Rock solid";
+    sharedPlace.jiveDescription = @"Rock solid";
     sharedContent.subject = @"What to do in Denver when you're dead.";
     [self.share setValue:sharedContent forKey:JiveShareAttributes.sharedContent];
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
@@ -119,7 +119,7 @@
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
     STAssertEqualObjects(newContent.sharedContent.subject, self.share.sharedContent.subject, @"Wrong shared content");
-    STAssertEqualObjects(newContent.sharedPlace.description, self.share.sharedPlace.description, @"Wrong shared place");
+    STAssertEqualObjects(newContent.sharedPlace.jiveDescription, self.share.sharedPlace.jiveDescription, @"Wrong shared place");
 }
 
 @end

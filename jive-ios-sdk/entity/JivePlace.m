@@ -48,7 +48,7 @@ struct JivePlaceResourceAttributes {
 
 struct JivePlaceAttributes const JivePlaceAttributes = {
     .contentTypes = @"contentTypes",
-    .description = @"description",
+    .jiveDescription = @"jiveDescription",
     .displayName = @"displayName",
     .followerCount = @"followerCount",
     .highlightBody = @"highlightBody",
@@ -102,7 +102,7 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
 
 @implementation JivePlace
 
-@synthesize contentTypes, description, displayName, followerCount, highlightBody, highlightSubject;
+@synthesize contentTypes, jiveDescription, displayName, followerCount, highlightBody, highlightSubject;
 @synthesize highlightTags, jiveId, likeCount, name, parent, parentContent, parentPlace, published;
 @synthesize status, updated, viewCount, visibleToExternalContributors;
 
@@ -138,7 +138,7 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:self.followerCount forKey:@"followerCount"];
     [dictionary setValue:self.name forKey:@"name"];
-    [dictionary setValue:self.description forKey:@"description"];
+    [dictionary setValue:self.jiveDescription forKey:@"description"];
     [dictionary setValue:self.highlightBody forKey:@"highlightBody"];
     [dictionary setValue:self.highlightSubject forKey:@"highlightSubject"];
     [dictionary setValue:self.highlightTags forKey:@"highlightTags"];

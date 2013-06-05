@@ -21,7 +21,7 @@
 
 @implementation JiveField
 
-@synthesize array, availability, description, displayName, editable, name, required, since, type;
+@synthesize array, availability, jiveDescription, displayName, editable, name, required, since, type;
 @synthesize unpublished;
 
 - (NSDictionary *)toJSONDictionary {

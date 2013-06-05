@@ -100,10 +100,11 @@
 }
 
 - (void) setValue:(id)value forUndefinedKey:(NSString *)key {
-    
-    // Convert id property to jiveId for all Jive entities
+    // prepend "jive" to Objective-C keywords and basic properties/methods
     if([key isEqualToString:@"id"]) {
         [self setValue:value forKey:@"jiveId"];
+    } else if ([key isEqualToString:@"description"]) {
+        [self setValue:value forKey:@"jiveDescription"];
     }
 }
 
@@ -198,8 +199,13 @@
         return nil;
     
     Ivar ivar = [self lookupPropertyIvar:propertyName];
-    if (!ivar && [propertyName isEqual:@"id"])
-        ivar = class_getInstanceVariable([self class], "jiveId");
+    if (!ivar) {
+        if ([propertyName isEqualToString:@"id"]) {
+            ivar = class_getInstanceVariable([self class], "jiveId");
+        } else if ([propertyName isEqualToString:@"description"]) {
+            ivar = class_getInstanceVariable([self class], "jiveDescription");
+        }
+    }
 
     return [self lookupClassTypeFromIvar:ivar];
 }

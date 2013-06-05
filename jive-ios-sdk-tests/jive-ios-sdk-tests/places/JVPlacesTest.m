@@ -71,7 +71,7 @@
         
         NSString* aPlaceNameFromAPI = [JVUtilities get_Place_description:jivePlaceFromAPI];
         
-        STAssertEqualObjects( [jivePlaceFromSDK description], aPlaceNameFromAPI , @"Expecting same results from SDK and v3 API for recent places for this user, sdk = '%@' , api = '%@' !",  [jivePlaceFromSDK description], aPlaceNameFromAPI);
+        STAssertEqualObjects( jivePlaceFromSDK.jiveDescription, aPlaceNameFromAPI , @"Expecting same results from SDK and v3 API for recent places for this user, sdk = '%@' , api = '%@' !",  jivePlaceFromSDK.jiveDescription, aPlaceNameFromAPI);
         
         i++;
         

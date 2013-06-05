@@ -23,7 +23,7 @@
 
 @implementation JiveCategory
 
-@synthesize description, followerCount, jiveId, likeCount, name, place, published, tags, updated;
+@synthesize jiveDescription, followerCount, jiveId, likeCount, name, place, published, tags, updated;
 
 static NSString * const JiveCategoryType = @"category";
 
@@ -39,7 +39,7 @@ static NSString * const JiveCategoryType = @"category";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:description forKey:@"description"];
+    [dictionary setValue:jiveDescription forKey:@"description"];
     [dictionary setValue:name forKey:@"name"];
     [dictionary setValue:self.type forKey:@"type"];
     

@@ -24,7 +24,7 @@
 @interface JiveCategory : JiveTypedObject
 
 //! Description of the category.
-@property(nonatomic, copy) NSString* description;
+@property(nonatomic, copy) NSString* jiveDescription;
 
 //! Number of people following this object. Availability: Will be present only for object types that support being followed.
 @property(nonatomic, readonly, strong) NSNumber *followerCount;

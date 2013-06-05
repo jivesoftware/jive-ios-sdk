@@ -49,7 +49,7 @@
     STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([JSON objectForKey:@"type"], @"category", @"Wrong type");
     
-    [category setValue:description forKey:@"description"];
+    [category setValue:description forKey:@"jiveDescription"];
     [category setValue:followerCount forKey:@"followerCount"];
     [category setValue:jiveId forKey:@"jiveId"];
     [category setValue:likeCount forKey:@"likeCount"];
@@ -80,7 +80,7 @@
     NSString *tag = @"Gigantic";
     NSDate *updated = [NSDate dateWithTimeIntervalSince1970:0];
     
-    [category setValue:description forKey:@"description"];
+    [category setValue:description forKey:@"jiveDescription"];
     [category setValue:followerCount forKey:@"followerCount"];
     [category setValue:jiveId forKey:@"jiveId"];
     [category setValue:likeCount forKey:@"likeCount"];
@@ -131,7 +131,7 @@
     category = [JiveCategory instanceFromJSON:JSON];
     
     STAssertEquals([category class], [JiveCategory class], @"Wrong item class");
-    STAssertEqualObjects(category.description, description, @"Wrong description");
+    STAssertEqualObjects(category.jiveDescription, description, @"Wrong description");
     STAssertEqualObjects(category.followerCount, followerCount, @"Wrong follower count");
     STAssertEqualObjects(category.jiveId, jiveId, @"Wrong id");
     STAssertEqualObjects(category.likeCount, likeCount, @"Wrong likeCount");
@@ -178,7 +178,7 @@
     category = [JiveCategory instanceFromJSON:JSON];
     
     STAssertEquals([category class], [JiveCategory class], @"Wrong item class");
-    STAssertEqualObjects(category.description, description, @"Wrong description");
+    STAssertEqualObjects(category.jiveDescription, description, @"Wrong description");
     STAssertEqualObjects(category.followerCount, followerCount, @"Wrong follower count");
     STAssertEqualObjects(category.jiveId, jiveId, @"Wrong id");
     STAssertEqualObjects(category.likeCount, likeCount, @"Wrong likeCount");

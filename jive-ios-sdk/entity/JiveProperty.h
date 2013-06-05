@@ -19,7 +19,7 @@
 @property (nonatomic, strong, readonly) NSString *defaultValue;
 
 //! Description of this property.
-@property (nonatomic, strong, readonly) NSString *description;
+@property (nonatomic, strong, readonly) NSString *jiveDescription;
 
 //! Name of this property.
 @property (nonatomic, strong, readonly) NSString *name;
