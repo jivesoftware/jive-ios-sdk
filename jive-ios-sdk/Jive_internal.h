@@ -19,5 +19,9 @@
                                     onComplete:(void(^)(id))completeBlock
                                        onError:(JiveErrorBlock)errorBlock
                                responseHandler:(id(^)(id JSON)) handler;
+- (JAPIRequestOperation *)listOperationForClass:(Class)clazz
+                                        request:(NSURLRequest *)request
+                                     onComplete:(JiveArrayCompleteBlock)completeBlock
+                                        onError:(JiveErrorBlock)errorBlock;
 
 @end

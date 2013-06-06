@@ -347,32 +347,6 @@ static NSString * const JivePersonType = @"person";
                             onError:errorBlock] start];
 }
 
-- (JAPIRequestOperation *)updateSelfWithRequest:(NSURLRequest *)request
-                                     onComplete:(JivePersonCompleteBlock)completeBlock
-                                        onError:(JiveErrorBlock)errorBlock
-{
-    return [Jive operationWithRequest:request
-                           onComplete:completeBlock
-                              onError:errorBlock
-                      responseHandler:^id(id JSON) {
-                          [self deserialize:JSON];
-                          return self;
-                      }];
-}
-
-- (JAPIRequestOperation *)entityOperationForClass:(Class)clazz
-                                          request:(NSURLRequest *)request
-                                       onComplete:(void (^)(id))completeBlock
-                                          onError:(JiveErrorBlock)errorBlock
-{
-    return [Jive operationWithRequest:request
-                           onComplete:completeBlock
-                              onError:errorBlock
-                      responseHandler:^id(id JSON) {
-                          return [clazz instanceFromJSON:JSON];
-                      }];
-}
-
 - (AFJSONRequestOperation *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                               onComplete:(JivePersonCompleteBlock)completeBlock
                                                  onError:(JiveErrorBlock)errorBlock {
@@ -403,17 +377,11 @@ static NSString * const JivePersonType = @"person";
                                                onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil
                                                              andTemplate:[self.selfRef path], nil];
-    void (^nilObjectComplete)(id) = !completeBlock ? nil : ^(id nilObject) {
-        completeBlock();
-    };
     
     [request setHTTPMethod:@"DELETE"];
-    return [Jive operationWithRequest:request
-                           onComplete:nilObjectComplete
-                              onError:errorBlock
-                      responseHandler:^id(id JSON) {
-                          return nil;
-                      }];
+    return [self emptyResponseOperationWithRequest:request
+                                        onComplete:completeBlock
+                                           onError:errorBlock];
 }
 
 - (AFImageRequestOperation *) avatarOperationOnComplete:(JiveImageCompleteBlock)completeBlock
@@ -439,20 +407,151 @@ static NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation *) followOperation:(JivePerson *)target
                                   onComplete:(JiveCompletedBlock)completeBlock
                                      onError:(JiveErrorBlock)errorBlock {
-    return nil;
+    NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
+    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil andTemplate:path, nil];
+    
+    [request setHTTPMethod:@"PUT"];
+    return [self emptyResponseOperationWithRequest:request
+                                        onComplete:completeBlock
+                                           onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options
                                                  onComplete:(JiveArrayCompleteBlock)completeBlock
                                                     onError:(JiveErrorBlock)errorBlock {
-    return nil;
+    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                      andTemplate:[self.activityRef path], nil];
+    
+    return [self.jiveInstance listOperationForClass:[JiveActivity class]
+                                            request:request
+                                         onComplete:completeBlock
+                                            onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) colleguesOperationWithOptions:(JivePagedRequestOptions *)options
                                                 onComplete:(JiveArrayCompleteBlock)completeBlock
                                                    onError:(JiveErrorBlock)errorBlock {
+    return [self peopleListOperation:self.colleaguesRef
+                         withOptions:options
+                          onComplete:completeBlock
+                             onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) followersOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    return [self peopleListOperation:self.followersRef
+                         withOptions:options
+                          onComplete:completeBlock
+                             onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) reportsOperationWithOptions:(JivePagedRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self peopleListOperation:self.reportsRef
+                         withOptions:options
+                          onComplete:completeBlock
+                             onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) followingOperationWithOptions:(JivePagedRequestOptions *)options
+                                                onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    return [self peopleListOperation:self.followingRef
+                         withOptions:options
+                          onComplete:completeBlock
+                             onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) followingInOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                                  onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                     onError:(JiveErrorBlock)errorBlock {
+    return [self streamsListOperation:self.followingInRef
+                          withOptions:options
+                           onComplete:completeBlock
+                              onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams
+                                           withOptions:(JiveReturnFieldsRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    NSString *targetURIKeyPath = [NSString stringWithFormat:@"%@.%@.%@.%@",
+                                  NSStringFromSelector(@selector(resources)),
+                                  JiveResourceAttributes.selfKey,
+                                  NSStringFromSelector(@selector(ref)),
+                                  NSStringFromSelector(@selector(absoluteString))];
+    NSArray *targetURIs = [followingInStreams count] ? [followingInStreams valueForKeyPath:targetURIKeyPath] : [NSArray array];
     NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
-                                                             andTemplate:[self.colleaguesRef path], nil];
+                                                             andTemplate:[self.followingInRef path], nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", request.HTTPBody.length]
+   forHTTPHeaderField:@"Content-Length"];
+    return [self.jiveInstance listOperationForClass:[JiveStream class]
+                                            request:request
+                                         onComplete:completeBlock
+                                            onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) streamsOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                              onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self streamsListOperation:self.streamsRef
+                          withOptions:options
+                           onComplete:completeBlock
+                              onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) tasksOperationWithOptions:(JiveSortedRequestOptions *)options
+                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                               onError:(JiveErrorBlock)errorBlock {
+    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                      andTemplate:[self.tasksRef path], nil];
+    
+    return [self.jiveInstance listOperationForClass:[JiveContent class]
+                                            request:request
+                                         onComplete:completeBlock
+                                            onError:errorBlock];
+}
+
+- (AFJSONRequestOperation *) blogOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
+                                           onComplete:(JiveBlogCompleteBlock)completeBlock
+                                              onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                             andTemplate:[self.blogRef path], nil];
+    
+    return [self entityOperationForClass:[JiveBlog class]
+                                 request:request
+                              onComplete:completeBlock
+                                 onError:errorBlock];
+}
+
+#pragma mark - helper methods
+
+- (JAPIRequestOperation *)updateSelfWithRequest:(NSURLRequest *)request
+                                     onComplete:(JivePersonCompleteBlock)completeBlock
+                                        onError:(JiveErrorBlock)errorBlock
+{
+    return [Jive operationWithRequest:request
+                           onComplete:completeBlock
+                              onError:errorBlock
+                      responseHandler:^id(id JSON) {
+                          [self deserialize:JSON];
+                          return self;
+                      }];
+}
+
+- (AFJSONRequestOperation *) peopleListOperation:(NSURL *)url
+                                     withOptions:(JivePagedRequestOptions *)options
+                                      onComplete:(JiveArrayCompleteBlock)completeBlock
+                                         onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                             andTemplate:[url path], nil];
     
     return [Jive operationWithRequest:request
                            onComplete:completeBlock
@@ -468,59 +567,45 @@ static NSString * const JivePersonType = @"person";
     })];
 }
 
-- (AFJSONRequestOperation *) followersOperationWithOptions:(JivePagedRequestOptions *)options
-                                                onComplete:(JiveArrayCompleteBlock)completeBlock
-                                                   onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) reportsOperationWithOptions:(JivePagedRequestOptions *)options
-                                              onComplete:(JiveArrayCompleteBlock)completeBlock
-                                                 onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) followingOperationWithOptions:(JivePagedRequestOptions *)options
-                                                onComplete:(JiveArrayCompleteBlock)completeBlock
-                                                   onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) followingInOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
-                                                  onComplete:(JiveArrayCompleteBlock)completeBlock
-                                                     onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *)updateFollowingInOperation:(NSArray *)followingInStreams
-                                           withOptions:(JiveReturnFieldsRequestOptions *)options
-                                            onComplete:(JiveArrayCompleteBlock)completeBlock
-                                               onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) streamsOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
-                                              onComplete:(JiveArrayCompleteBlock)completeBlock
-                                                 onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) tasksOperationWithOptions:(JiveSortedRequestOptions *)options
-                                            onComplete:(JiveArrayCompleteBlock)completeBlock
-                                               onError:(JiveErrorBlock)errorBlock {
-    return nil;
-}
-
-- (AFJSONRequestOperation *) blogOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
-                                           onComplete:(JiveBlogCompleteBlock)completeBlock
-                                              onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
-                                                             andTemplate:[self.blogRef path], nil];
+- (AFJSONRequestOperation *) streamsListOperation:(NSURL *)url
+                                     withOptions:(JiveReturnFieldsRequestOptions *)options
+                                      onComplete:(JiveArrayCompleteBlock)completeBlock
+                                         onError:(JiveErrorBlock)errorBlock {
+    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+                                                      andTemplate:[url path], nil];
     
-    return [self entityOperationForClass:[JiveBlog class]
-                                 request:request
-                              onComplete:completeBlock
-                                 onError:errorBlock];
+    return [self.jiveInstance listOperationForClass:[JiveStream class]
+                                            request:request
+                                         onComplete:completeBlock
+                                            onError:errorBlock];
+}
+
+- (JAPIRequestOperation *)entityOperationForClass:(Class)clazz
+                                          request:(NSURLRequest *)request
+                                       onComplete:(void (^)(id))completeBlock
+                                          onError:(JiveErrorBlock)errorBlock
+{
+    return [Jive operationWithRequest:request
+                           onComplete:completeBlock
+                              onError:errorBlock
+                      responseHandler:^id(id JSON) {
+                          return [clazz instanceFromJSON:JSON];
+                      }];
+}
+
+- (AFJSONRequestOperation *) emptyResponseOperationWithRequest:(NSURLRequest *)request
+                                                    onComplete:(JiveCompletedBlock)completeBlock
+                                                       onError:(JiveErrorBlock)errorBlock {
+    void (^nilObjectComplete)(id) = !completeBlock ? nil : ^(id nilObject) {
+        completeBlock();
+    };
+    
+    return [Jive operationWithRequest:request
+                           onComplete:nilObjectComplete
+                              onError:errorBlock
+                      responseHandler:^id(id JSON) {
+                          return nil;
+                      }];
 }
 
 @end
