@@ -81,6 +81,7 @@
     
     // Create the Jive API object, using mock auth delegate
     jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:authDelegate];
+    self.person.jiveInstance = jive;
 }
 
 - (void)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
@@ -674,7 +675,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550?fields=id"];
-    self.person.jiveInstance = jive;
     
     STAssertEqualObjects(self.person.jiveId, @"3550", @"PRECONDITION: Wrong jiveId");
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
@@ -705,7 +705,6 @@
     
     [self createJiveAPIObjectWithResponse:@"alt_person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316?fields=name,id"];
-    self.person.jiveInstance = jive;
     
     STAssertEqualObjects(self.person.jiveId, @"5316", @"PRECONDITION: Wrong jiveId");
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -730,7 +729,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [self.person deleteOperationOnComplete:^() {
@@ -753,7 +751,6 @@
     
     [self createJiveAPIObjectWithResponse:@"alt_person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [self.person deleteOnComplete:^() {
@@ -773,7 +770,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550"];
-    self.person.jiveInstance = jive;
     self.person.location = @"alternate";
     
     NSDictionary *JSON = [self.person toJSONDictionary];
@@ -806,7 +802,6 @@
     
     [self createJiveAPIObjectWithResponse:@"alt_person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [self.person updateOnComplete:^(JivePerson *person) {
@@ -833,7 +828,6 @@
     
     [self createJiveAPIObjectWithResponse:@"blog"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/blog?fields=id"];
-    self.person.jiveInstance = jive;
 
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [self.person blogOperationWithOptions:options
@@ -862,7 +856,6 @@
     
     [self createJiveAPIObjectWithResponse:@"blog"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/blog?fields=name,id"];
-    self.person.jiveInstance = jive;
 
     // Make the call
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -889,7 +882,6 @@
     
     [self createJiveAPIObjectWithResponse:@"person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@manager?fields=id"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [self.person managerOperationWithOptions:options
@@ -921,7 +913,6 @@
     
     [self createJiveAPIObjectWithResponse:@"alt_person_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/@manager?fields=name,id"];
-    self.person.jiveInstance = jive;
 
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [self.person managerWithOptions:options
@@ -949,7 +940,6 @@
     
     [self createJiveAPIObjectWithResponse:@"collegues_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues?startIndex=5"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSOperation* operation = [self.person colleguesOperationWithOptions:options
@@ -982,7 +972,6 @@
     
     [self createJiveAPIObjectWithResponse:@"collegues_response"
                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues?startIndex=10"];
-    self.person.jiveInstance = jive;
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         [self.person colleguesWithOptions:options
