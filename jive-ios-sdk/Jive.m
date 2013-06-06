@@ -1298,12 +1298,21 @@
     [self createContent:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
 
+- (void)createUpdate:(JiveUpdate *)update withAttachments:(NSArray *)attachments options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    [self createContent:update withAttachments:attachments options:options onComplete:complete onError:error];
+}
+
+
 - (AFJSONRequestOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
 
 - (AFJSONRequestOperation *)createPostOperation:(JivePost *)post withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:post withAttachments:attachmentURLs options:options onComplete:complete onError:error];
+}
+
+- (AFJSONRequestOperation *)createUpdateOperation:(JiveUpdate *)update withAttachments:(NSArray *)attachments options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
+    return [self createContentOperation:update withAttachments:attachments options:options onComplete:complete onError:error];
 }
 
 
