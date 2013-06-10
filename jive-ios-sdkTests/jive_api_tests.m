@@ -427,6 +427,7 @@
         NSOperation* operation = [jive meOperation:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -457,6 +458,7 @@
         [jive me:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -490,6 +492,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -525,6 +530,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -556,6 +564,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -589,6 +600,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -622,6 +636,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -656,6 +673,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -694,6 +714,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -732,6 +755,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -764,6 +790,9 @@
         NSOperation* operation = [jive searchPeopleRequestOperation:options onComplete:^(NSArray *people) {
             STAssertEquals([people count], (NSUInteger)13, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -798,6 +827,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)13, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -963,6 +995,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -997,6 +1032,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1029,6 +1067,7 @@
         NSOperation* operation = [jive personOperation:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1064,6 +1103,7 @@
         [jive person:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1225,6 +1265,7 @@
         NSOperation* operation = [jive personByEmailOperation:@"email_test" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1259,6 +1300,7 @@
         [jive personByEmail:@"test_email" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1290,6 +1332,7 @@
         NSOperation* operation = [jive personByUserNameOperation:@"Name" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1324,6 +1367,7 @@
         [jive personByUserName:@"UserName" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1355,7 +1399,9 @@
         NSOperation* operation = [jive recommendedPeopleOperation:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)1, @"Wrong number of items parsed");
-            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            JivePerson *person = [people objectAtIndex:0];
+            STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1389,7 +1435,9 @@
         [jive recommendedPeople:options onComplete:^(NSArray *people) {
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)1, @"Wrong number of items parsed");
-            STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            JivePerson *person = [people objectAtIndex:0];
+            STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1483,6 +1531,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)25, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1517,6 +1568,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)25, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1684,6 +1738,7 @@
         NSOperation* operation = [jive managerOperation:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1719,6 +1774,7 @@
         [jive manager:source withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1752,6 +1808,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1787,6 +1846,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1820,6 +1882,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1855,6 +1920,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1886,6 +1954,7 @@
         NSOperation* operation = [jive person:@"8192" reportsOperation:@"1876" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -1921,6 +1990,7 @@
         [jive person:@"2918" reports:@"5630" withOptions:options onComplete:^(JivePerson *person) {
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -2358,6 +2428,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -2394,6 +2467,9 @@
             // Called 3rd
             STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
             STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
+            for (JivePerson *person in people) {
+                STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+            }
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -5361,6 +5437,7 @@
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
             STAssertEqualObjects(person.location, @"home on the range", @"New object not created");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -5402,6 +5479,7 @@
             // Called 3rd
             STAssertEquals([person class], [JivePerson class], @"Wrong item class");
             STAssertEqualObjects(person.location, @"Portland", @"New object not created");
+            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

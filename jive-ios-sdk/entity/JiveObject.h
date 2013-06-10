@@ -19,11 +19,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class Jive;
+
 //! \class JiveObject
 @interface JiveObject : NSObject
 
 + (id) instanceFromJSON:(NSDictionary*) JSON;
++ (id) instanceFromJSON:(NSDictionary*) JSON withJive:(Jive *)jive;
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON;
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive;
 
 @property (readonly) BOOL extraFieldsDetected;
 

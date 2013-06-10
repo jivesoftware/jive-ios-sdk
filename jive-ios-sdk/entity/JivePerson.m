@@ -93,6 +93,13 @@ static NSString * const JivePersonType = @"person";
         [super registerClass:self forType:JivePersonType];
 }
 
++ (id)instanceFromJSON:(NSDictionary *)JSON withJive:(Jive *)jive {
+    JivePerson *newPerson = [JivePerson instanceFromJSON:JSON];
+    
+    newPerson.jiveInstance = jive;
+    return newPerson;
+}
+
 - (NSString *)type {
     return JivePersonType;
 }

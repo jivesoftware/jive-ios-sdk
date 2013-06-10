@@ -33,6 +33,23 @@
     return [entity deserialize:JSON] ? entity : nil;
 }
 
++ (id) instanceFromJSON:(NSDictionary*) JSON withJive:(Jive *)jive {
+    return [self instanceFromJSON:JSON];
+}
+
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive {
+    NSMutableArray *instances = [[NSMutableArray alloc] init];
+    for(id obj in JSON) {
+        id inst = [[self entityClass:obj] instanceFromJSON:obj withJive:jive];
+        if(inst) {
+            [instances addObject:inst];
+            //        } else {
+            //            return nil;
+        }
+    }
+    return [NSArray arrayWithArray:instances];
+}
+
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON {
     NSMutableArray *instances = [[NSMutableArray alloc] init];
     for(id obj in JSON) {

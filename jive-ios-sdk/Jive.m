@@ -2121,7 +2121,7 @@
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
-        return [clazz instancesFromJSONList:[JSON objectForKey:@"list"]];
+        return [clazz instancesFromJSONList:[JSON objectForKey:@"list"] withJive:self];
     })];
     return operation;
 }
@@ -2131,7 +2131,7 @@
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
-        return [clazz instanceFromJSON:JSON];
+        return [clazz instanceFromJSON:JSON withJive:self];
     })];
     return operation;
 }
