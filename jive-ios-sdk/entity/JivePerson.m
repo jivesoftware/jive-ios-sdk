@@ -347,13 +347,26 @@ static NSString * const JivePersonType = @"person";
                             onError:errorBlock] start];
 }
 
+- (void) createTask:(JiveTask *)task
+        withOptions:(JiveReturnFieldsRequestOptions *)options
+         onComplete:(JiveTaskCompleteBlock)completeBlock
+            onError:(JiveErrorBlock)errorBlock {
+    [[self createTaskOperation:task
+                   withOptions:options
+                    onComplete:completeBlock
+                       onError:errorBlock] start];
+}
+
 - (AFJSONRequestOperation *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                               onComplete:(JivePersonCompleteBlock)completeBlock
                                                  onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self.jiveInstance requestWithOptions:options
                                                       andTemplate:[self.selfRef path], nil];
     
-    return [self updateSelfWithRequest:request onComplete:completeBlock onError:errorBlock];
+    return [self updateJiveTypedObject:self
+                      withRequest:request
+                       onComplete:completeBlock
+                          onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) managerOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
@@ -386,7 +399,23 @@ static NSString * const JivePersonType = @"person";
 
 - (AFImageRequestOperation *) avatarOperationOnComplete:(JiveImageCompleteBlock)completeBlock
                                                 onError:(JiveErrorBlock)errorBlock {
-    return nil;
+    NSMutableURLRequest *mutableURLRequest = [self.jiveInstance requestWithOptions:nil
+                                                                       andTemplate:[self.avatarRef path], nil];
+    void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
+    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
+    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:mutableURLRequest
+                                                                              imageProcessingBlock:NULL
+                                                                                           success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        if (heapCompleteBlock) {
+            heapCompleteBlock(image);
+        }
+    })
+                                                                                           failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        if (heapErrorBlock) {
+            heapErrorBlock(error);
+        }
+    })];
+    return operation;
 }
 
 - (AFJSONRequestOperation *) updateOperationOnComplete:(JivePersonCompleteBlock)completeBlock
@@ -401,7 +430,10 @@ static NSString * const JivePersonType = @"person";
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPMethod:@"PUT"];
-    return [self updateSelfWithRequest:request onComplete:completeBlock onError:errorBlock];
+    return [self updateJiveTypedObject:self
+                      withRequest:request
+                       onComplete:completeBlock
+                          onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) followOperation:(JivePerson *)target
@@ -531,18 +563,39 @@ static NSString * const JivePersonType = @"person";
                                  onError:errorBlock];
 }
 
+- (AFJSONRequestOperation *) createTaskOperation:(JiveTask *)task
+                                     withOptions:(JiveReturnFieldsRequestOptions *)options
+                                      onComplete:(JiveTaskCompleteBlock)completeBlock
+                                         onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self.jiveInstance requestWithJSONBody:task
+                                                                  options:options
+                                                              andTemplate:[self.tasksRef path], nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self updateJiveTypedObject:task
+                      withRequest:request
+                       onComplete:completeBlock
+                          onError:errorBlock];
+}
+
 #pragma mark - helper methods
 
-- (JAPIRequestOperation *)updateSelfWithRequest:(NSURLRequest *)request
-                                     onComplete:(JivePersonCompleteBlock)completeBlock
-                                        onError:(JiveErrorBlock)errorBlock
+- (JAPIRequestOperation *)updateJiveTypedObject:(JiveTypedObject *)target
+                               withRequest:(NSURLRequest *)request
+                                onComplete:(void (^)(id))completeBlock
+                                   onError:(JiveErrorBlock)errorBlock
 {
     return [Jive operationWithRequest:request
                            onComplete:completeBlock
                               onError:errorBlock
                       responseHandler:^id(id JSON) {
-                          [self deserialize:JSON];
-                          return self;
+                          if (![target.type isEqualToString:JSON[JiveTypedObjectAttributes.type]])
+                              @throw [NSException exceptionWithName:@"Wrong class"
+                                                             reason:@"The server returned a response with the wrong type"
+                                                           userInfo:nil];
+                          
+                          [target deserialize:JSON];
+                          return target;
                       }];
 }
 

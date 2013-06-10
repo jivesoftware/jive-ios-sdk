@@ -2068,8 +2068,16 @@
     return [self operationWithRequest:request
                                onJSON:(^(id JSON) {
         if (completeBlock) {
-            id entity = handler(JSON);
-            completeBlock(entity);
+            @try {
+                id entity = handler(JSON);
+                completeBlock(entity);
+            }
+            @catch (NSException *exception) {
+                if (errorBlock) {
+                    NSError *error = [NSError errorWithDomain:@"An unknown server error occured" code:500 userInfo:nil];
+                    errorBlock(error);
+                }
+            }
         }
     })
                               onError:errorBlock];

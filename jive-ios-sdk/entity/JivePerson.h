@@ -172,6 +172,12 @@ extern struct JivePersonAttributes {
                 onComplete:(JiveArrayCompleteBlock)completeBlock //! JiveStream[]
                    onError:(JiveErrorBlock)error;
 
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createTask(String,%20String,%20String)
+- (void) createTask:(JiveTask *)task
+        withOptions:(JiveReturnFieldsRequestOptions *)options
+         onComplete:(JiveTaskCompleteBlock)completeBlock
+            onError:(JiveErrorBlock)errorBlock;
+
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
 - (AFJSONRequestOperation *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                               onComplete:(JivePersonCompleteBlock)completeBlock
@@ -238,6 +244,12 @@ extern struct JivePersonAttributes {
                                            withOptions:(JiveReturnFieldsRequestOptions *)options
                                             onComplete:(JiveArrayCompleteBlock)completeBlock
                                                onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createTask(String,%20String,%20String)
+- (AFJSONRequestOperation *) createTaskOperation:(JiveTask *)task
+                                     withOptions:(JiveReturnFieldsRequestOptions *)options
+                                      onComplete:(JiveTaskCompleteBlock)completeBlock
+                                         onError:(JiveErrorBlock)errorBlock;
 
 - (NSURL *)avatarRef;
 - (NSURL *)activityRef;

@@ -19,12 +19,15 @@
 @class JiveReturnFieldsRequestOptions;
 @class JiveDateLimitedRequestOptions;
 @class JiveSortedRequestOptions;
+@class JiveTask;
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveArrayCompleteBlock)(NSArray *objects);
+typedef void (^JiveObjectCompleteBlock)(JiveObject *object);
 typedef void (^JivePersonCompleteBlock)(JivePerson *person);
 typedef void (^JiveBlogCompleteBlock)(JiveBlog *blogPlace);
 typedef void (^JiveImageCompleteBlock)(UIImage *avatarImage);
+typedef void (^JiveTaskCompleteBlock)(JiveTask *task);
 typedef void (^JiveCompletedBlock)(void);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
 

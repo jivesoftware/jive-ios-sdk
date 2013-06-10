@@ -14,6 +14,9 @@
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options
                                  andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource
+                                      options:(NSObject<JiveRequestOptions>*)options
+                                  andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
 
 + (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request
                                     onComplete:(void(^)(id))completeBlock
