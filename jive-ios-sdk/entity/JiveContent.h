@@ -41,16 +41,6 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *viewCount;
 } const JiveContentAttributes;
 
-extern struct JiveContentResourceAttributes {
-    __unsafe_unretained NSString *childOutcomeTypes;
-    __unsafe_unretained NSString *extprops;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *html;
-    __unsafe_unretained NSString *outcomes;
-    __unsafe_unretained NSString *outcomeTypes;
-    __unsafe_unretained NSString *self;
-} const JiveContentResourceAttributes;
-
 //! \class JiveContent
 //! https://developers.jivesoftware.com/api/v3/rest/ContentEntity.html
 @interface JiveContent : JiveTypedObject
@@ -109,5 +99,32 @@ extern struct JiveContentResourceAttributes {
 
 //! Number of times this content object has been viewed.
 @property(nonatomic, readonly) NSNumber *viewCount;
+
+- (NSURL *)childOutcomeTypesRef;
+- (NSURL *)extPropsRef;
+- (BOOL)canAddExtProps;
+- (BOOL)canDeleteExtProps;
+- (NSURL *)htmlRef;
+- (NSURL *)likesRef;
+- (BOOL)canLike;
+- (BOOL)canUnlike;
+- (NSURL *)outcomesRef;
+- (BOOL)canAddOutcomes;
+- (NSURL *)outcomeTypesRef;
+- (NSURL *)readRef;
+- (BOOL)canMarkAsRead;
+- (BOOL)canMarkAsUnread;
+
+- (NSURL *)attachmentsRef;
+- (NSURL *)commentsRef;
+- (BOOL)canAddComments;
+- (NSURL *)followingInRef;
+- (NSURL *)imagesRef;
+- (NSURL *)messagesRef;
+- (BOOL)canAddMessage;
+- (NSURL *)versionsRef;
+
+- (NSURL *)votesRef;
+- (BOOL)canVote;
 
 @end

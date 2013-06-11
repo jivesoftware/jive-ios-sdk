@@ -7,10 +7,22 @@
 //
 
 #import "JiveImage.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveImage
 
-@synthesize type, jiveId, size, contentType, ref;
+@synthesize jiveId, size, contentType, ref;
+
+static NSString * const JiveImageType = @"image";
+
++ (void)load {
+    if (self == [JiveImage class])
+        [super registerClass:self forType:JiveImageType];
+}
+
+- (NSString *)type {
+    return JiveImageType;
+}
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];    

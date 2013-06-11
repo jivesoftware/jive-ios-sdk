@@ -21,27 +21,23 @@
 #import "JiveTypedObject.h"
 
 extern struct JivePersonAttributes {
+    __unsafe_unretained NSString *addresses;
+    __unsafe_unretained NSString *displayName;
+    __unsafe_unretained NSString *emails;
+    __unsafe_unretained NSString *followerCount;
+    __unsafe_unretained NSString *followingCount;
     __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *location;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *phoneNumbers;
+    __unsafe_unretained NSString *photos;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *status;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *thumbnailUrl;
+    __unsafe_unretained NSString *updated;
 } const JivePersonAttributes;
-
-extern struct JivePersonResourceAttributes {
-    __unsafe_unretained NSString *activity;
-    __unsafe_unretained NSString *avatar;
-    __unsafe_unretained NSString *blog;
-    __unsafe_unretained NSString *colleagues;
-    __unsafe_unretained NSString *extprops;
-    __unsafe_unretained NSString *followers;
-    __unsafe_unretained NSString *following;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *html;
-    __unsafe_unretained NSString *images;
-    __unsafe_unretained NSString *manager;
-    __unsafe_unretained NSString *members;
-    __unsafe_unretained NSString *reports;
-    __unsafe_unretained NSString *self;
-    __unsafe_unretained NSString *streams;
-    __unsafe_unretained NSString *tasks;
-} const JivePersonResourceAttributes;
 
 @class JivePersonJive;
 @class JiveName;
@@ -106,5 +102,25 @@ extern struct JivePersonResourceAttributes {
 
 //! Date and time this person was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
+
+- (NSURL *)avatarRef;
+- (NSURL *)activityRef;
+- (NSURL *)blogRef;
+- (NSURL *)colleaguesRef;
+- (NSURL *)extPropsRef;
+- (BOOL)canAddExtProps;
+- (BOOL)canDeleteExtProps;
+- (NSURL *)followersRef;
+- (NSURL *)followingRef;
+- (NSURL *)followingInRef;
+- (NSURL *)htmlRef;
+- (NSURL *)imagesRef;
+- (NSURL *)managerRef;
+- (NSURL *)membersRef;
+- (NSURL *)reportsRef;
+- (NSURL *)streamsRef;
+- (BOOL)canCreateNewStream;
+- (NSURL *)tasksRef;
+- (BOOL)canCreateNewTask;
 
 @end

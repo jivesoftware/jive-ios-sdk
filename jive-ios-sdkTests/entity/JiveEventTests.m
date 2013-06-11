@@ -23,7 +23,7 @@
 @implementation JiveEventTests
 
 - (void)setUp {
-    self.content = [[JiveEvent alloc] init];
+    self.typedObject = [[JiveEvent alloc] init];
 }
 
 - (JiveEvent *)event {

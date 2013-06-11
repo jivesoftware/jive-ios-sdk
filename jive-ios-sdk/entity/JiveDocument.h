@@ -68,5 +68,4 @@ extern NSString * const JiveDocumentType;
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, strong) NSNumber *visibleToExternalContributors;
 
-
 @end

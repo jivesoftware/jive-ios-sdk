@@ -17,7 +17,7 @@
 //    limitations under the License.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 #import "JivePerson.h"
 #import "JivePlace.h"
 
@@ -37,7 +37,7 @@ enum JiveInviteState {
 
 //! \class JiveInvite
 //! https://developers.jivesoftware.com/api/v3/rest/InviteEntity.html
-@interface JiveInvite : JiveObject
+@interface JiveInvite : JiveTypedObject
 
 //! The (HTML) body content of this invitation.
 @property (nonatomic, readonly, strong) NSString *body;
@@ -60,9 +60,6 @@ enum JiveInviteState {
 //! The date and time at which this invite was created.
 @property (nonatomic, readonly, strong) NSDate* published;
 
-//! Resource links (and related permissions for the requesting person) relevant to this object.
-@property (nonatomic, readonly, strong) NSDictionary* resources;
-
 //! The date and time at which this invitation was revoked (if any).
 @property (nonatomic, readonly, strong) NSDate *revokeDate;
 
@@ -74,9 +71,6 @@ enum JiveInviteState {
 
 //! The current state of this invitation.
 @property (nonatomic, readonly) enum JiveInviteState state;
-
-//! The object type of this object ("invite")
-@property (nonatomic, readonly) NSString *type;
 
 //! The date and time at which this invite was last updated.
 @property (nonatomic, readonly, strong) NSDate* updated;

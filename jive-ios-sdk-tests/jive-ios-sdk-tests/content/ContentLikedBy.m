@@ -43,8 +43,7 @@
     }
        
     
-    JiveResourceEntry *resourceEntry = [testContent.resources objectForKey:@"self"];
-    NSString* contentURL = [resourceEntry.ref absoluteString];
+    NSString* contentURL = [testContent.selfRef absoluteString];
     
     
     // Make API call

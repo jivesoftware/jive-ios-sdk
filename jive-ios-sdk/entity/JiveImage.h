@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveObject.h"
+#import "JiveTypedObject.h"
 
-@interface JiveImage : JiveObject
-
-//! Type of image
-@property(nonatomic, readonly, strong) NSString* type;
+//! \class JiveImage
+//! https://developers.jivesoftware.com/api/v3/rest/ImageEntity.html
+@interface JiveImage : JiveTypedObject
 
 //! Unique identifier of this image
 @property(nonatomic, readonly, strong) NSString* jiveId;

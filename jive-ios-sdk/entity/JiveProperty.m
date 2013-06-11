@@ -10,7 +10,7 @@
 
 @implementation JiveProperty
 
-@synthesize availability, defaultValue, description, name, since, type, value;
+@synthesize availability, defaultValue, jiveDescription, name, since, type, value;
 
 #pragma mark - JiveObject
 
@@ -19,7 +19,7 @@
     
     [dictionary setValue:availability forKey:@"availability"];
     [dictionary setValue:defaultValue forKey:@"defaultValue"];
-    [dictionary setValue:description forKey:@"description"];
+    [dictionary setValue:jiveDescription forKey:@"description"];
     [dictionary setValue:name forKey:@"name"];
     [dictionary setValue:since forKey:@"since"];
     [dictionary setValue:type forKey:@"type"];

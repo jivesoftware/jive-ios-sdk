@@ -44,7 +44,7 @@
     
     author.location = @"location";
     place.displayName = @"place";
-    jiveStatic.description = @"description";
+    jiveStatic.jiveDescription = @"description";
     jiveStatic.filename = @"filename";
     [jiveStatic setValue:@"1234" forKey:@"jiveId"];
     [jiveStatic setValue:author forKey:@"author"];
@@ -58,7 +58,7 @@
     STAssertEquals([JSON count], (NSUInteger)8, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"id"], jiveStatic.jiveId, @"Wrong id");
     STAssertEqualObjects([JSON objectForKey:@"type"], jiveStatic.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:@"description"], jiveStatic.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], jiveStatic.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"filename"], jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects([JSON objectForKey:@"published"], @"1970-01-01T00:00:00.000+0000", @"Wrong published");
     STAssertEqualObjects([JSON objectForKey:@"updated"], @"1970-01-01T00:16:40.123+0000", @"Wrong updated");
@@ -82,7 +82,7 @@
     
     author.location = @"Tower";
     place.displayName = @"Home";
-    jiveStatic.description = @"nothing";
+    jiveStatic.jiveDescription = @"nothing";
     jiveStatic.filename = @"bad ju ju";
     [jiveStatic setValue:@"8743" forKey:@"jiveId"];
     [jiveStatic setValue:author forKey:@"author"];
@@ -96,7 +96,7 @@
     STAssertEquals([JSON count], (NSUInteger)8, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"id"], jiveStatic.jiveId, @"Wrong id.");
     STAssertEqualObjects([JSON objectForKey:@"type"], jiveStatic.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:@"description"], jiveStatic.description, @"Wrong description");
+    STAssertEqualObjects([JSON objectForKey:@"description"], jiveStatic.jiveDescription, @"Wrong description");
     STAssertEqualObjects([JSON objectForKey:@"filename"], jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects([JSON objectForKey:@"published"], @"1970-01-01T00:16:40.123+0000", @"Wrong published");
     STAssertEqualObjects([JSON objectForKey:@"updated"], @"1970-01-01T00:00:00.000+0000", @"Wrong updated");
@@ -126,7 +126,7 @@
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
     author.location = @"location";
     place.displayName = @"place";
-    jiveStatic.description = @"description";
+    jiveStatic.jiveDescription = @"description";
     jiveStatic.filename = @"filename";
     [jiveStatic setValue:@"1234" forKey:@"jiveId"];
     [jiveStatic setValue:author forKey:@"author"];
@@ -144,14 +144,12 @@
     STAssertTrue([[newStatic class] isSubclassOfClass:[jiveStatic class]], @"Wrong item class");
     STAssertEqualObjects(newStatic.jiveId, jiveStatic.jiveId, @"Wrong id");
     STAssertEqualObjects(newStatic.type, jiveStatic.type, @"Wrong type");
-    STAssertEqualObjects(newStatic.description, jiveStatic.description, @"Wrong description");
+    STAssertEqualObjects(newStatic.jiveDescription, jiveStatic.jiveDescription, @"Wrong description");
     STAssertEqualObjects(newStatic.filename, jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects(newStatic.published, jiveStatic.published, @"Wrong published");
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
     STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
-    STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 - (void)testContentParsingAlternate {
@@ -166,7 +164,7 @@
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
     author.location = @"Tower";
     place.displayName = @"Home";
-    jiveStatic.description = @"nothing";
+    jiveStatic.jiveDescription = @"nothing";
     jiveStatic.filename = @"bad ju ju";
     [jiveStatic setValue:@"8743" forKey:@"jiveId"];
     [jiveStatic setValue:author forKey:@"author"];
@@ -184,14 +182,12 @@
     STAssertTrue([[newStatic class] isSubclassOfClass:[jiveStatic class]], @"Wrong item class");
     STAssertEqualObjects(newStatic.jiveId, jiveStatic.jiveId, @"Wrong id");
     STAssertEqualObjects(newStatic.type, jiveStatic.type, @"Wrong type");
-    STAssertEqualObjects(newStatic.description, jiveStatic.description, @"Wrong description");
+    STAssertEqualObjects(newStatic.jiveDescription, jiveStatic.jiveDescription, @"Wrong description");
     STAssertEqualObjects(newStatic.filename, jiveStatic.filename, @"Wrong filename");
     STAssertEqualObjects(newStatic.published, jiveStatic.published, @"Wrong published");
     STAssertEqualObjects(newStatic.updated, jiveStatic.updated, @"Wrong updated");
     STAssertEqualObjects(newStatic.author.location, jiveStatic.author.location, @"Wrong author.location");
     STAssertEqualObjects(newStatic.place.displayName, jiveStatic.place.displayName, @"Wrong place.displayName");
-    STAssertEquals([newStatic.resources count], [jiveStatic.resources count], @"Wrong number of resource objects");
-    STAssertEqualObjects([(JiveResourceEntry *)[newStatic.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 @end

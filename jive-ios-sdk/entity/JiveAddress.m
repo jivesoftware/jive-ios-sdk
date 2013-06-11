@@ -23,9 +23,8 @@
 
 @synthesize jive_label, value, type, primary;
 
-- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)propertyValue {
-    if ([property isEqualToString:@"primary"])
-        primary = CFBooleanGetValue((__bridge CFBooleanRef)(propertyValue));
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+    return JSON;
 }
 
 - (NSDictionary *)toJSONDictionary {
@@ -34,9 +33,7 @@
     [dictionary setValue:self.jive_label forKey:@"jive_label"];
     [dictionary setValue:self.value forKey:@"value"];
     [dictionary setValue:self.type forKey:@"type"];
-    
-    if (primary)
-        [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"primary"];
+    [dictionary setValue:self.primary forKey:@"primary"];
     
     return dictionary;
 }

@@ -26,8 +26,41 @@
 #import "JiveTypedObject_internal.h"
 
 struct JivePersonAttributes const JivePersonAttributes = {
+	.addresses = @"addresses",
+	.displayName = @"displayName",
+	.emails = @"emails",
+	.followerCount = @"followerCount",
+	.followingCount = @"followingCount",
 	.jiveId = @"jiveId",
+	.jive = @"jive",
+	.location = @"location",
+	.name = @"name",
+	.phoneNumbers = @"phoneNumbers",
+	.photos = @"photos",
+	.published = @"published",
+	.status = @"status",
+	.tags = @"tags",
+	.thumbnailUrl = @"thumbnailUrl",
+	.updated = @"updated"
 };
+
+struct JivePersonResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *colleagues;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *followers;
+    __unsafe_unretained NSString *following;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *images;
+    __unsafe_unretained NSString *manager;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *reports;
+    __unsafe_unretained NSString *streams;
+    __unsafe_unretained NSString *tasks;
+} const JivePersonResourceAttributes;
 
 struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
     .activity = @"activity",
@@ -43,7 +76,6 @@ struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
     .manager = @"manager",
     .members = @"members",
     .reports = @"reports",
-    .self = @"self",
     .streams = @"streams",
     .tasks = @"tasks"
 };
@@ -59,7 +91,7 @@ static NSString * const JivePersonType = @"person";
 }
 
 - (NSString *)type {
-    return @"person";
+    return JivePersonType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
@@ -67,9 +99,9 @@ static NSString * const JivePersonType = @"person";
     
     if (!propertyClasses)
         propertyClasses = [NSDictionary dictionaryWithObjectsAndKeys:
-                           [JiveAddress class], @"addresses",
-                           [JiveEmail class], @"emails",
-                           [JivePhoneNumber class], @"phoneNumbers",
+                           [JiveAddress class], JivePersonAttributes.addresses,
+                           [JiveEmail class], JivePersonAttributes.emails,
+                           [JivePhoneNumber class], JivePersonAttributes.phoneNumbers,
                            nil];
     
     return [propertyClasses objectForKey:propertyName];
@@ -82,21 +114,106 @@ static NSString * const JivePersonType = @"person";
     
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:self.jiveId forKey:@"id"];
-    [dictionary setValue:self.location forKey:@"location"];
-    [dictionary setValue:self.status forKey:@"status"];
-    [self addArrayElements:addresses toJSONDictionary:dictionary forTag:@"addresses"];
-    [self addArrayElements:emails toJSONDictionary:dictionary forTag:@"emails"];
-    [self addArrayElements:phoneNumbers toJSONDictionary:dictionary forTag:@"phoneNumbers"];
+    [dictionary setValue:self.location forKey:JivePersonAttributes.location];
+    [dictionary setValue:self.status forKey:JivePersonAttributes.status];
+    [self addArrayElements:addresses toJSONDictionary:dictionary forTag:JivePersonAttributes.addresses];
+    [self addArrayElements:emails toJSONDictionary:dictionary forTag:JivePersonAttributes.emails];
+    [self addArrayElements:phoneNumbers toJSONDictionary:dictionary
+                    forTag:JivePersonAttributes.phoneNumbers];
     if (jive)
-        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
+        [dictionary setValue:[jive toJSONDictionary] forKey:JivePersonAttributes.jive];
     
     if (name)
-        [dictionary setValue:[name toJSONDictionary] forKey:@"name"];
+        [dictionary setValue:[name toJSONDictionary] forKey:JivePersonAttributes.name];
     
     if (tags)
-        [dictionary setValue:[tags copy] forKey:@"tags"];
+        [dictionary setValue:[tags copy] forKey:JivePersonAttributes.tags];
     
     return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    
+    [dictionary setValue:displayName forKey:JivePersonAttributes.displayName];
+    
+    return dictionary;
+}
+
+- (NSURL *)avatarRef {
+    return [self resourceForTag:JivePersonResourceAttributes.avatar].ref;
+}
+
+- (NSURL *)activityRef {
+    return [self resourceForTag:JivePersonResourceAttributes.activity].ref;
+}
+
+- (NSURL *)blogRef {
+    return [self resourceForTag:JivePersonResourceAttributes.blog].ref;
+}
+
+- (NSURL *)colleaguesRef {
+    return [self resourceForTag:JivePersonResourceAttributes.colleagues].ref;
+}
+
+- (NSURL *)extPropsRef {
+    return [self resourceForTag:JivePersonResourceAttributes.extprops].ref;
+}
+
+- (BOOL)canDeleteExtProps {
+    return [self resourceHasDeleteForTag:JivePersonResourceAttributes.extprops];
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.extprops];
+}
+
+- (NSURL *)followersRef {
+    return [self resourceForTag:JivePersonResourceAttributes.followers].ref;
+}
+
+- (NSURL *)followingRef {
+    return [self resourceForTag:JivePersonResourceAttributes.following].ref;
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JivePersonResourceAttributes.followingIn].ref;
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JivePersonResourceAttributes.html].ref;
+}
+
+- (NSURL *)imagesRef {
+    return [self resourceForTag:JivePersonResourceAttributes.images].ref;
+}
+
+- (NSURL *)managerRef {
+    return [self resourceForTag:JivePersonResourceAttributes.manager].ref;
+}
+
+- (NSURL *)membersRef {
+    return [self resourceForTag:JivePersonResourceAttributes.members].ref;
+}
+
+- (NSURL *)reportsRef {
+    return [self resourceForTag:JivePersonResourceAttributes.reports].ref;
+}
+
+- (NSURL *)streamsRef {
+    return [self resourceForTag:JivePersonResourceAttributes.streams].ref;
+}
+
+- (BOOL)canCreateNewStream {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.streams];
+}
+
+- (NSURL *)tasksRef {
+    return [self resourceForTag:JivePersonResourceAttributes.tasks].ref;
+}
+
+- (BOOL)canCreateNewTask {
+    return [self resourceHasPostForTag:JivePersonResourceAttributes.tasks];
 }
 
 @end

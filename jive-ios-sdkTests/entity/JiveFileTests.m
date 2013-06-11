@@ -23,7 +23,7 @@
 @implementation JiveFileTests
 
 - (void)setUp {
-    self.content = [[JiveFile alloc] init];
+    self.typedObject = [[JiveFile alloc] init];
 }
 
 - (JiveFile *)file {

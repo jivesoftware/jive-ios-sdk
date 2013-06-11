@@ -18,6 +18,7 @@
 //
 
 #import "JivePlace.h"
+#import "JiveTypedObject_internal.h"
 
 #import "JiveBlog.h"
 #import "JiveGroup.h"
@@ -26,76 +27,96 @@
 #import "JiveSummary.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JivePlaceResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *checkPoints;
+    __unsafe_unretained NSString *childPlaces;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *featuredContent;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *statics;
+    __unsafe_unretained NSString *tasks;
+};
+
 struct JivePlaceAttributes const JivePlaceAttributes = {
-        .contentTypes = @"contentTypes",
-        .description = @"description",
-        .displayName = @"displayName",
-        .followerCount = @"followerCount",
-        .highlightBody = @"highlightBody",
-        .highlightSubject = @"highlightSubject",
-        .highlightTags = @"highlightTags",
-        .jiveId = @"jiveId",
-        .likeCount = @"likeCount",
-        .name = @"name",
-        .parent = @"parent",
-        .parentContent = @"parentContent",
-        .parentPlace = @"parentPlace",
-        .published = @"published",
-        .status = @"status",
-        .updated = @"updated",
-        .viewCount = @"viewCount",
-        .visibleToExternalContributors = @"visibleToExternalContributors"
+    .contentTypes = @"contentTypes",
+    .jiveDescription = @"jiveDescription",
+    .displayName = @"displayName",
+    .followerCount = @"followerCount",
+    .highlightBody = @"highlightBody",
+    .highlightSubject = @"highlightSubject",
+    .highlightTags = @"highlightTags",
+    .jiveId = @"jiveId",
+    .likeCount = @"likeCount",
+    .name = @"name",
+    .parent = @"parent",
+    .parentContent = @"parentContent",
+    .parentPlace = @"parentPlace",
+    .published = @"published",
+    .status = @"status",
+    .updated = @"updated",
+    .viewCount = @"viewCount",
+    .visibleToExternalContributors = @"visibleToExternalContributors"
 };
 
 struct JivePlaceResourceAttributes const JivePlaceResourceAttributes = {
-        .activity = @"activity",
-        .announcements = @"announcements",
-        .avatar = @"avatar",
-        .blog = @"blog",
-        .categories = @"categories",
-        .contents = @"contents",
-        .extprops = @"extprops",
-        .featuredContent = @"featuredContent",
-        .followingIn = @"followingIn",
-        .html = @"html",
-        .invites = @"invites",
-        .members = @"members",
-        .places = @"places",
-        .self = @"self",
-        .statics = @"statics"
+    .activity = @"activity",
+    .contents = @"contents",
+    .extprops = @"extprops",
+    .featuredContent = @"featuredContent",
+    .followingIn = @"followingIn",
+    .html = @"html",
+    .statics = @"statics",
+    .announcements = @"announcements",
+    .avatar = @"avatar",
+    .blog = @"blog",
+    .categories = @"categories",
+    .invites = @"invites",
+    .members = @"members",
+    .childPlaces = @"places",
+    .checkPoints = @"checkpoints",
+    .tasks = @"tasks"
 };
 
 struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
-        .documents = @"documents",
-        .discussions = @"discussions",
-        .files = @"files",
-        .polls = @"polls",
-        .projects = @"projects",
-        .tasks = @"tasks",
-        .blog = @"blog",
-        .updates = @"updates",
-        .events = @"events",
-        .videos = @"videos",
-        .ideas = @"ideas"
+    .documents = @"documents",
+    .discussions = @"discussions",
+    .files = @"files",
+    .polls = @"polls",
+    .projects = @"projects",
+    .tasks = @"tasks",
+    .blog = @"blog",
+    .updates = @"updates",
+    .events = @"events",
+    .videos = @"videos",
+    .ideas = @"ideas"
 };
 
 @implementation JivePlace
 
-@synthesize contentTypes, description, displayName, followerCount, highlightBody, highlightSubject;
+@synthesize contentTypes, jiveDescription, displayName, followerCount, highlightBody, highlightSubject;
 @synthesize highlightTags, jiveId, likeCount, name, parent, parentContent, parentPlace, published;
 @synthesize status, updated, viewCount, visibleToExternalContributors;
 
 + (Class) entityClass:(NSDictionary*) obj {
     
     static NSDictionary *classDictionary = nil;
-
+    
     if (!classDictionary)
         classDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[JiveBlog class], @"blog",
                            [JiveGroup class], @"group",
                            [JiveProject class], @"project",
                            [JiveSpace class], @"space",
                            nil];
-
+    
     NSString* type = [obj objectForKey:@"type"];
     Class targetClass = [classDictionary objectForKey:type];
     
@@ -117,7 +138,7 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:self.followerCount forKey:@"followerCount"];
     [dictionary setValue:self.name forKey:@"name"];
-    [dictionary setValue:self.description forKey:@"description"];
+    [dictionary setValue:self.jiveDescription forKey:@"description"];
     [dictionary setValue:self.highlightBody forKey:@"highlightBody"];
     [dictionary setValue:self.highlightSubject forKey:@"highlightSubject"];
     [dictionary setValue:self.highlightTags forKey:@"highlightTags"];
@@ -143,6 +164,114 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
         [dictionary setValue:(__bridge id)kCFBooleanTrue forKey:@"visibleToExternalContributors"];
     
     return dictionary;
+}
+
+- (NSURL *)activityRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.activity].ref;
+}
+
+- (NSURL *)contentsRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.contents].ref;
+}
+
+- (NSURL *)extpropsRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.extprops].ref;
+}
+
+- (BOOL)canDeleteExtProps {
+    return [self resourceHasDeleteForTag:JivePlaceResourceAttributes.extprops];
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.extprops];
+}
+
+- (NSURL *)featuredContentRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.featuredContent].ref;
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.followingIn].ref;
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.html].ref;
+}
+
+- (NSURL *)staticsRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.statics].ref;
+}
+
+- (BOOL)canAddStatic {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.statics];
+}
+
+- (NSURL *)announcementsRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.announcements].ref;
+}
+
+- (BOOL)canCreateAnnouncement {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.announcements];
+}
+
+- (NSURL *)avatarRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.avatar].ref;
+}
+
+- (BOOL)canDeleteAvatar {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.avatar];
+}
+
+- (BOOL)canUpdateAvatar {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.avatar];
+}
+
+- (NSURL *)blogRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.blog].ref;
+}
+
+- (NSURL *)categoriesRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.categories].ref;
+}
+
+- (BOOL)canAddCategory {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.categories];
+}
+
+- (NSURL *)invitesRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.invites].ref;
+}
+
+- (BOOL)canCreateInvite {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.invites];
+}
+
+- (NSURL *)membersRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.members].ref;
+}
+
+- (BOOL)canCreateMember {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.members];
+}
+
+- (NSURL *)childPlacesRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.childPlaces].ref;
+}
+
+- (NSURL *)checkPointsRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.checkPoints].ref;
+}
+
+- (BOOL)canUpdateCheckPoints {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.checkPoints];
+}
+
+- (NSURL *)tasksRef {
+    return [self resourceForTag:JivePlaceResourceAttributes.tasks].ref;
+}
+
+- (BOOL)canCreateTask {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.tasks];
 }
 
 @end

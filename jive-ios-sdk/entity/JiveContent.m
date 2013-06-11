@@ -22,6 +22,40 @@
 
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JiveContentResourceTags {
+    __unsafe_unretained NSString *attachments;
+    __unsafe_unretained NSString *childOutcomeTypes;
+    __unsafe_unretained NSString *comments;
+    __unsafe_unretained NSString *extProps;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *images;
+    __unsafe_unretained NSString *likes;
+    __unsafe_unretained NSString *messages;
+    __unsafe_unretained NSString *outcomes;
+    __unsafe_unretained NSString *outcomeTypes;
+    __unsafe_unretained NSString *read;
+    __unsafe_unretained NSString *versions;
+    __unsafe_unretained NSString *votes;
+} const JiveContentResourceTags;
+
+struct JiveContentResourceTags const JiveContentResourceTags = {
+    .childOutcomeTypes = @"childOutcomeTypes",
+    .extProps = @"extprops",
+    .html = @"html",
+    .likes = @"likes",
+    .outcomes = @"outcomes",
+    .outcomeTypes = @"outcomeTypes",
+    .read = @"read",
+    .attachments = @"attachments",
+    .comments = @"comments",
+    .followingIn = @"followingIn",
+    .versions = @"versions",
+    .images = @"images",
+    .messages = @"messages",
+    .votes = @"votes"
+};
+
 struct JiveContentAttributes const JiveContentAttributes = {
         .author = @"author",
         .content = @"content",
@@ -39,16 +73,6 @@ struct JiveContentAttributes const JiveContentAttributes = {
         .subject = @"subject",
         .updated = @"updated",
         .viewCount = @"viewCount"
-};
-
-struct JiveContentResourceAttributes const JiveContentResourceAttributes = {
-    .childOutcomeTypes = @"childOutcomeTypes",
-    .extprops = @"extprops",
-    .followingIn = @"followingIn",
-    .html = @"html",
-    .outcomes = @"outcomes",
-    .outcomeTypes = @"outcomeTypes",
-    .self = @"self"
 };
 
 @implementation JiveContent
@@ -111,6 +135,102 @@ static NSMutableDictionary *contentClasses;
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
     return dictionary;
+}
+
+- (NSURL *)likesRef {
+    return [self resourceForTag:JiveContentResourceTags.likes].ref;
+}
+
+- (BOOL)canLike {
+    return [self resourceHasPostForTag:JiveContentResourceTags.likes];
+}
+
+- (BOOL)canUnlike {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.likes];
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JiveContentResourceTags.html].ref;
+}
+
+- (NSURL *)extPropsRef {
+    return [self resourceForTag:JiveContentResourceTags.extProps].ref;
+}
+
+- (BOOL)canAddExtProps {
+    return [self resourceHasPostForTag:JiveContentResourceTags.extProps];
+}
+
+- (BOOL)canDeleteExtProps {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.extProps];
+}
+
+- (NSURL *)readRef {
+    return [self resourceForTag:JiveContentResourceTags.read].ref;
+}
+
+- (BOOL)canMarkAsRead {
+    return [self resourceHasPostForTag:JiveContentResourceTags.read];
+}
+
+- (BOOL)canMarkAsUnread {
+    return [self resourceHasDeleteForTag:JiveContentResourceTags.read];
+}
+
+- (NSURL *)outcomesRef {
+    return [self resourceForTag:JiveContentResourceTags.outcomes].ref;
+}
+
+- (BOOL)canAddOutcomes {
+    return [self resourceHasPostForTag:JiveContentResourceTags.outcomes];
+}
+
+- (NSURL *)outcomeTypesRef {
+    return [self resourceForTag:JiveContentResourceTags.outcomeTypes].ref;
+}
+
+- (NSURL *)childOutcomeTypesRef {
+    return [self resourceForTag:JiveContentResourceTags.childOutcomeTypes].ref;
+}
+
+- (NSURL *)attachmentsRef {
+    return [self resourceForTag:JiveContentResourceTags.attachments].ref;
+}
+
+- (NSURL *)commentsRef {
+    return [self resourceForTag:JiveContentResourceTags.comments].ref;
+}
+
+- (BOOL)canAddComments {
+    return [self resourceHasPostForTag:JiveContentResourceTags.comments];
+}
+
+- (NSURL *)followingInRef {
+    return [self resourceForTag:JiveContentResourceTags.followingIn].ref;
+}
+
+- (NSURL *)versionsRef {
+    return [self resourceForTag:JiveContentResourceTags.versions].ref;
+}
+
+- (NSURL *)messagesRef {
+    return [self resourceForTag:JiveContentResourceTags.messages].ref;
+}
+
+- (BOOL)canAddMessage {
+    return [self resourceHasPostForTag:JiveContentResourceTags.messages];
+}
+
+- (NSURL *)imagesRef {
+    return [self resourceForTag:JiveContentResourceTags.images].ref;
+}
+
+- (NSURL *)votesRef {
+    return [self resourceForTag:JiveContentResourceTags.votes].ref;
+}
+
+- (BOOL)canVote {
+    return [self resourceHasPostForTag:JiveContentResourceTags.votes];
 }
 
 @end

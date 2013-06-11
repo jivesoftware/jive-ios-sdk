@@ -17,11 +17,11 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveTypedObjectTests.h"
 #import "JiveStream.h"
 
-@interface JiveStreamTests : SenTestCase
+@interface JiveStreamTests : JiveTypedObjectTests
 
-@property (nonatomic, strong) JiveStream *stream;
+@property (nonatomic, readonly) JiveStream *stream;
 
 @end

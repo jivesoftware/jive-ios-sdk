@@ -31,6 +31,6 @@
 @property(nonatomic, copy) NSString* httpVerb;
 
 //! URI representing the target web hook endpoint to be invoked with the specified HTTP verb.
-@property(nonatomic, readonly, strong) NSURL *target;
+@property(nonatomic, copy) NSURL *target;
 
 @end

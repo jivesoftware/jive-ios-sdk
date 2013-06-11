@@ -45,8 +45,7 @@
     STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected person: %@", [testDoc toJSONDictionary]);
     
     
-    JiveResourceEntry* resourceEntryForNewDocAfterCreation = [testDoc.resources objectForKey:@"self"];
-    NSString* contentURL1 = [resourceEntryForNewDocAfterCreation.ref absoluteString];
+    NSString* contentURL1 = [testDoc.selfRef absoluteString];
     
     NSString *myString = @"/api/core/v3/people/username/";
     NSString *apiString = [myString stringByAppendingString:userid1];
@@ -187,8 +186,7 @@
     
     
     if (found) {
-      JiveResourceEntry *resourceEntryForUpdatedDocAfterSearch = [docFromSearchAfterUpdating.resources objectForKey:@"self"];
-      contentURL2 = [resourceEntryForUpdatedDocAfterSearch.ref absoluteString];
+      contentURL2 = [docFromSearchAfterUpdating.selfRef absoluteString];
     }
     
     if (found)

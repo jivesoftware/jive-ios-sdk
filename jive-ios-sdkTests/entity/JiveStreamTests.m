@@ -22,59 +22,57 @@
 
 @implementation JiveStreamTests
 
-@synthesize stream;
-
-- (void)setUp {
-    stream = [[JiveStream alloc] init];
+- (JiveStream *)stream {
+    return (JiveStream *)self.typedObject;
 }
 
-- (void)tearDown {
-    stream = nil;
+- (void)setUp {
+    self.typedObject = [[JiveStream alloc] init];
 }
 
 - (void)testToJSON {
     JivePerson *person = [[JivePerson alloc] init];
-    NSDictionary *JSON = [stream toJSONDictionary];
+    NSDictionary *JSON = [self.stream toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     person.location = @"location";
-    stream.name = @"name";
-    stream.receiveEmails = [NSNumber numberWithBool:YES];
-    [stream setValue:@"source" forKey:@"source"];
-    [stream setValue:@"not a real type" forKey:@"type"];
-    [stream setValue:@"1234" forKey:@"jiveId"];
-    [stream setValue:person forKey:@"person"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
+    self.stream.name = @"name";
+    self.stream.receiveEmails = [NSNumber numberWithBool:YES];
+    [self.stream setValue:@"source" forKey:@"source"];
+    [self.stream setValue:@"not a real type" forKey:@"type"];
+    [self.stream setValue:@"1234" forKey:@"jiveId"];
+    [self.stream setValue:person forKey:@"person"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
     
-    JSON = [stream toJSONDictionary];
+    JSON = [self.stream toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"name"], stream.name, @"Wrong name");
-    STAssertEqualObjects([JSON objectForKey:@"receiveEmails"], stream.receiveEmails, @"Wrong receiveEmails");
-    STAssertEqualObjects([JSON objectForKey:@"source"], stream.source, @"Wrong source");
+    STAssertEqualObjects([JSON objectForKey:@"name"], self.stream.name, @"Wrong name");
+    STAssertEqualObjects([JSON objectForKey:@"receiveEmails"], self.stream.receiveEmails, @"Wrong receiveEmails");
+    STAssertEqualObjects([JSON objectForKey:@"source"], self.stream.source, @"Wrong source");
 }
 
 - (void)testToJSON_alternate {
     JivePerson *person = [[JivePerson alloc] init];
     
     person.location = @"Tower";
-    stream.name = @"William";
-    [stream setValue:@"Writing" forKey:@"subject"];
-    [stream setValue:@"another non-type" forKey:@"type"];
-    [stream setValue:@"8743" forKey:@"jiveId"];
-    [stream setValue:person forKey:@"author"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
+    self.stream.name = @"William";
+    [self.stream setValue:@"Writing" forKey:@"subject"];
+    [self.stream setValue:@"another non-type" forKey:@"type"];
+    [self.stream setValue:@"8743" forKey:@"jiveId"];
+    [self.stream setValue:person forKey:@"author"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
     
-    NSDictionary *JSON = [stream toJSONDictionary];
+    NSDictionary *JSON = [self.stream toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"name"], stream.name, @"Wrong name");
+    STAssertEqualObjects([JSON objectForKey:@"name"], self.stream.name, @"Wrong name");
     STAssertEqualObjects([JSON objectForKey:@"source"], @"custom", @"Wrong source");
 }
 
@@ -88,20 +86,20 @@
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
     person.location = @"location";
-    stream.name = @"name";
-    stream.receiveEmails = [NSNumber numberWithBool:YES];
-    [stream setValue:@"source" forKey:@"source"];
-    [stream setValue:@"not a real type" forKey:@"type"];
-    [stream setValue:@"1234" forKey:@"jiveId"];
-    [stream setValue:person forKey:@"person"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
-    [stream setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    self.stream.name = @"name";
+    self.stream.receiveEmails = [NSNumber numberWithBool:YES];
+    [self.stream setValue:@"source" forKey:@"source"];
+    [self.stream setValue:@"not a real type" forKey:@"type"];
+    [self.stream setValue:@"1234" forKey:@"jiveId"];
+    [self.stream setValue:person forKey:@"person"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
+    [self.stream setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    NSMutableDictionary *JSON = (NSMutableDictionary *)[stream toJSONDictionary];
+    NSMutableDictionary *JSON = (NSMutableDictionary *)[self.stream toJSONDictionary];
     
-    [JSON setValue:stream.type forKey:@"type"];
-    [JSON setValue:stream.jiveId forKey:@"id"];
+    [JSON setValue:self.stream.type forKey:@"type"];
+    [JSON setValue:self.stream.jiveId forKey:@"id"];
     [JSON setValue:[person toJSONDictionary] forKey:@"person"];
     [JSON setValue:@"1970-01-01T00:00:00.000+0000" forKey:@"published"];
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"updated"];
@@ -109,16 +107,16 @@
     
     JiveStream *newStream = [JiveStream instanceFromJSON:JSON];
     
-    STAssertTrue([[newStream class] isSubclassOfClass:[stream class]], @"Wrong item class");
-    STAssertEqualObjects(newStream.jiveId, stream.jiveId, @"Wrong id");
-    STAssertEqualObjects(newStream.type, stream.type, @"Wrong type");
-    STAssertEqualObjects(newStream.name, stream.name, @"Wrong name");
-    STAssertEqualObjects(newStream.receiveEmails, stream.receiveEmails, @"Wrong receiveEmails");
-    STAssertEqualObjects(newStream.source, stream.source, @"Wrong source");
-    STAssertEqualObjects(newStream.person.location, stream.person.location, @"Wrong person");
-    STAssertEqualObjects(newStream.published, stream.published, @"Wrong published");
-    STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
-    STAssertEquals([newStream.resources count], [stream.resources count], @"Wrong number of resource objects");
+    STAssertTrue([[newStream class] isSubclassOfClass:[self.stream class]], @"Wrong item class");
+    STAssertEqualObjects(newStream.jiveId, self.stream.jiveId, @"Wrong id");
+    STAssertEqualObjects(newStream.type, self.stream.type, @"Wrong type");
+    STAssertEqualObjects(newStream.name, self.stream.name, @"Wrong name");
+    STAssertEqualObjects(newStream.receiveEmails, self.stream.receiveEmails, @"Wrong receiveEmails");
+    STAssertEqualObjects(newStream.source, self.stream.source, @"Wrong source");
+    STAssertEqualObjects(newStream.person.location, self.stream.person.location, @"Wrong person");
+    STAssertEqualObjects(newStream.published, self.stream.published, @"Wrong published");
+    STAssertEqualObjects(newStream.updated, self.stream.updated, @"Wrong updated");
+    STAssertEquals([newStream.resources count], [self.stream.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newStream.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
@@ -132,19 +130,19 @@
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
     person.location = @"Tower";
-    stream.name = @"William";
-    [stream setValue:@"Writing" forKey:@"subject"];
-    [stream setValue:@"another non-type" forKey:@"type"];
-    [stream setValue:@"8743" forKey:@"jiveId"];
-    [stream setValue:person forKey:@"person"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
-    [stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
-    [stream setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    self.stream.name = @"William";
+    [self.stream setValue:@"Writing" forKey:@"subject"];
+    [self.stream setValue:@"another non-type" forKey:@"type"];
+    [self.stream setValue:@"8743" forKey:@"jiveId"];
+    [self.stream setValue:person forKey:@"person"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
+    [self.stream setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
+    [self.stream setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    NSMutableDictionary *JSON = (NSMutableDictionary *)[stream toJSONDictionary];
+    NSMutableDictionary *JSON = (NSMutableDictionary *)[self.stream toJSONDictionary];
     
-    [JSON setValue:stream.type forKey:@"type"];
-    [JSON setValue:stream.jiveId forKey:@"id"];
+    [JSON setValue:self.stream.type forKey:@"type"];
+    [JSON setValue:self.stream.jiveId forKey:@"id"];
     [JSON setValue:[person toJSONDictionary] forKey:@"person"];
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"published"];
     [JSON setValue:@"1970-01-01T00:00:00.000+0000" forKey:@"updated"];
@@ -152,16 +150,16 @@
     
     JiveStream *newStream = [JiveStream instanceFromJSON:JSON];
     
-    STAssertTrue([[newStream class] isSubclassOfClass:[stream class]], @"Wrong item class");
-    STAssertEqualObjects(newStream.jiveId, stream.jiveId, @"Wrong id");
-    STAssertEqualObjects(newStream.type, stream.type, @"Wrong type");
-    STAssertEqualObjects(newStream.name, stream.name, @"Wrong name");
-    STAssertEqualObjects(newStream.receiveEmails, stream.receiveEmails, @"Wrong receiveEmails");
+    STAssertTrue([[newStream class] isSubclassOfClass:[self.stream class]], @"Wrong item class");
+    STAssertEqualObjects(newStream.jiveId, self.stream.jiveId, @"Wrong id");
+    STAssertEqualObjects(newStream.type, self.stream.type, @"Wrong type");
+    STAssertEqualObjects(newStream.name, self.stream.name, @"Wrong name");
+    STAssertEqualObjects(newStream.receiveEmails, self.stream.receiveEmails, @"Wrong receiveEmails");
     STAssertEqualObjects(newStream.source, @"custom", @"Wrong source");
-    STAssertEqualObjects(newStream.person.location, stream.person.location, @"Wrong person");
-    STAssertEqualObjects(newStream.published, stream.published, @"Wrong published");
-    STAssertEqualObjects(newStream.updated, stream.updated, @"Wrong updated");
-    STAssertEquals([newStream.resources count], [stream.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects(newStream.person.location, self.stream.person.location, @"Wrong person");
+    STAssertEqualObjects(newStream.published, self.stream.published, @"Wrong published");
+    STAssertEqualObjects(newStream.updated, self.stream.updated, @"Wrong updated");
+    STAssertEquals([newStream.resources count], [self.stream.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newStream.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 

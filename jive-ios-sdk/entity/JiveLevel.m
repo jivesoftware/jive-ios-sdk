@@ -21,12 +21,12 @@
 
 @implementation JiveLevel
 
-@synthesize description, name, points;
+@synthesize jiveDescription, name, points;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:self.description forKey:@"description"];
+    [dictionary setValue:self.jiveDescription forKey:@"description"];
     [dictionary setValue:self.name forKey:@"name"];
     [dictionary setValue:self.points forKey:@"points"];
     

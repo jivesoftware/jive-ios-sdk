@@ -18,7 +18,19 @@
 //
 
 #import "JiveStream.h"
-#import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
+
+struct JiveStreamResourceTags {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *associations;
+    __unsafe_unretained NSString *html;
+};
+
+struct JiveStreamResourceTags const JiveStreamResourceTags = {
+    .activity = @"activity",
+    .associations = @"associations",
+    .html = @"html"
+};
 
 struct JiveStreamAttributes const JiveStreamAttributes = {
     .name = @"name",
@@ -41,7 +53,11 @@ struct JiveStreamSourceValues const JiveStreamSourceValues = {
 
 @implementation JiveStream
 
-@synthesize jiveId, name, person, published, receiveEmails, resources, source, type, updated;
+@synthesize jiveId, name, person, published, receiveEmails, source, updated;
+
+- (NSString *)type {
+    return @"stream";
+}
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
     if ([@"resources" isEqualToString:property]) {
@@ -70,6 +86,26 @@ struct JiveStreamSourceValues const JiveStreamSourceValues = {
         [dictionary setValue:@"custom" forKey:@"source"];
     
     return dictionary;
+}
+
+- (NSURL *)activityRef {
+    return [self resourceForTag:JiveStreamResourceTags.activity].ref;
+}
+
+- (NSURL *)associationsRef {
+    return [self resourceForTag:JiveStreamResourceTags.associations].ref;
+}
+
+- (BOOL)canAddAssociation {
+    return [self resourceHasPostForTag:JiveStreamResourceTags.associations];
+}
+
+- (BOOL)canDeleteAssociation {
+    return [self resourceHasDeleteForTag:JiveStreamResourceTags.associations];
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:JiveStreamResourceTags.html].ref;
 }
 
 @end

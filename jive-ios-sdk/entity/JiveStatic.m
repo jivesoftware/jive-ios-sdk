@@ -19,41 +19,28 @@
 
 #import "JiveStatic.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
-#import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveStatic
 
-@synthesize author, description, filename, jiveId, place, published, resources, updated;
+@synthesize author, jiveDescription, filename, jiveId, place, published, updated;
 
-- (id)init {
-    if ((self = [super init])) {
-        _type = @"static";
-    }
-    
-    return self;
+static NSString * const JiveStaticType = @"static";
+
++ (void)load {
+    if (self == [JiveStatic class])
+        [super registerClass:self forType:JiveStaticType];
 }
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
-    if ([@"resources" isEqualToString:property]) {
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-        
-        for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
-            
-            [dictionary setValue:entry forKey:key];
-        }
-        
-        return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
-    }
-    
-    return nil;
+- (NSString *)type {
+    return JiveStaticType;
 }
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
-    [dictionary setValue:description forKey:@"description"];
+    [dictionary setValue:jiveDescription forKey:@"description"];
     [dictionary setValue:filename forKey:@"filename"];
     [dictionary setValue:jiveId forKey:@"id"];
     [dictionary setValue:self.type forKey:@"type"];
@@ -71,6 +58,10 @@
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
     return dictionary;
+}
+
+- (NSURL *)htmlRef {
+    return [self resourceForTag:@"html"].ref;
 }
 
 @end

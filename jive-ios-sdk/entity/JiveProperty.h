@@ -8,6 +8,8 @@
 
 #import "JiveObject.h"
 
+//! \class JiveProperty
+//! https://developers.jivesoftware.com/api/v3/rest/PropertyEntity.html
 @interface JiveProperty : JiveObject
 
 //! Comments regarding when this property will be present.
@@ -17,7 +19,7 @@
 @property (nonatomic, strong, readonly) NSString *defaultValue;
 
 //! Description of this property.
-@property (nonatomic, strong, readonly) NSString *description;
+@property (nonatomic, strong, readonly) NSString *jiveDescription;
 
 //! Name of this property.
 @property (nonatomic, strong, readonly) NSString *name;

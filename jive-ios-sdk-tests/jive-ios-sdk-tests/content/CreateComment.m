@@ -55,8 +55,7 @@
     STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected person: %@", [testDoc toJSONDictionary]);
     
     
-    JiveResourceEntry *resourceEntry = [testDoc.resources objectForKey:@"self"];
-    NSString* contentURL = [resourceEntry.ref absoluteString];
+    NSString* contentURL = [testDoc.selfRef absoluteString];
     
     comment.parent = contentURL;
     
@@ -132,8 +131,7 @@
     STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected person: %@", [testDoc toJSONDictionary]);
     
     
-    JiveResourceEntry *resourceEntry = [testDoc.resources objectForKey:@"self"];
-    NSString* contentURL = [resourceEntry.ref absoluteString];
+    NSString* contentURL = [testDoc.selfRef absoluteString];
     
     comment.parent = contentURL;
     

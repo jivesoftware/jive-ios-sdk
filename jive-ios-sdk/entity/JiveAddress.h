@@ -28,12 +28,12 @@
 @property(nonatomic, copy) NSString* jive_label;
 
 //! A valid postal address. This is a JSON object where one or more of the following String fields must be specified: streetAddress, locality, region, postalCode or country.
-@property(nonatomic, copy) NSString* value;
+@property(nonatomic, copy) NSDictionary* value;
 
-//! Possible values are home, other or work.
+//! Possible values are home, other or work. This field is optional when creating an address.
 @property(nonatomic, copy) NSString* type;
 
 //! True if this is the primary postal address.
-@property(nonatomic, readonly) bool primary;
+@property(nonatomic, readonly) NSNumber *primary;
 
 @end

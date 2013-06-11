@@ -8,9 +8,18 @@
 
 #import "JiveTypedObject.h"
 #import "JiveObject_internal.h"
+#import "JiveResourceEntry.h"
 
 @interface JiveTypedObject ()
 
 + (void)registerClass:(Class)clazz forType:(NSString *)type;
+
+@property(nonatomic, readonly, strong) NSDictionary* resources;
+
+- (JiveResourceEntry *)resourceForTag:(NSString *)tag;
+- (BOOL)resourceHasPutForTag:(NSString *)tag;
+- (BOOL)resourceHasPostForTag:(NSString *)tag;
+- (BOOL)resourceHasGetForTag:(NSString *)tag;
+- (BOOL)resourceHasDeleteForTag:(NSString *)tag;
 
 @end

@@ -24,7 +24,7 @@
 @implementation JiveDocumentTests
 
 - (void)setUp {
-    self.content = [[JiveDocument alloc] init];
+    self.typedObject = [[JiveDocument alloc] init];
 }
 
 - (JiveDocument *)document {

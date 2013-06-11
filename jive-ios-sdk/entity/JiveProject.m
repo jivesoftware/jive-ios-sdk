@@ -18,8 +18,8 @@
 //
 
 #import "JiveProject.h"
-#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveTypedObject_internal.h"
+#import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
 struct JiveProjectAttributes const JiveProjectAttributes = {
     .creator = @"creator",

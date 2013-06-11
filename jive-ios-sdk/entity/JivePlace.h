@@ -21,7 +21,7 @@
 
 extern struct JivePlaceAttributes {
     __unsafe_unretained NSString *contentTypes;
-    __unsafe_unretained NSString *description;
+    __unsafe_unretained NSString *jiveDescription;
     __unsafe_unretained NSString *displayName;
     __unsafe_unretained NSString *followerCount;
     __unsafe_unretained NSString *highlightBody;
@@ -39,24 +39,6 @@ extern struct JivePlaceAttributes {
     __unsafe_unretained NSString *viewCount;
     __unsafe_unretained NSString *visibleToExternalContributors;
 } const JivePlaceAttributes;
-
-extern struct JivePlaceResourceAttributes {
-    __unsafe_unretained NSString *activity;
-    __unsafe_unretained NSString *announcements;
-    __unsafe_unretained NSString *avatar;
-    __unsafe_unretained NSString *blog;
-    __unsafe_unretained NSString *categories;
-    __unsafe_unretained NSString *contents;
-    __unsafe_unretained NSString *extprops;
-    __unsafe_unretained NSString *featuredContent;
-    __unsafe_unretained NSString *followingIn;
-    __unsafe_unretained NSString *html;
-    __unsafe_unretained NSString *invites;
-    __unsafe_unretained NSString *members;
-    __unsafe_unretained NSString *places;
-    __unsafe_unretained NSString *self;
-    __unsafe_unretained NSString *statics;
-} const JivePlaceResourceAttributes;
 
 extern struct JivePlaceContentTypeValues {
     __unsafe_unretained NSString *documents;
@@ -83,7 +65,7 @@ extern struct JivePlaceContentTypeValues {
 @property(nonatomic, readonly, strong) NSArray* contentTypes;
 
 //! Human readable description of this place.
-@property(nonatomic, copy) NSString* description;
+@property(nonatomic, copy) NSString* jiveDescription;
 
 //! Display name of this place. It must be unique among places of the same type in this Jive instance. This value is used to compose the URL for the HTML presentation of this place in the Jive user interface.
 @property(nonatomic, copy) NSString* displayName;
@@ -136,5 +118,36 @@ extern struct JivePlaceContentTypeValues {
 
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic) bool visibleToExternalContributors;
+
+- (NSURL *)activityRef;
+- (NSURL *)contentsRef;
+- (NSURL *)extpropsRef;
+- (BOOL)canAddExtProps;
+- (BOOL)canDeleteExtProps;
+- (NSURL *)featuredContentRef;
+- (NSURL *)followingInRef;
+- (NSURL *)htmlRef;
+- (NSURL *)staticsRef;
+- (BOOL)canAddStatic;
+
+- (NSURL *)announcementsRef;
+- (BOOL)canCreateAnnouncement;
+- (NSURL *)avatarRef;
+- (BOOL)canDeleteAvatar;
+- (BOOL)canUpdateAvatar;
+- (NSURL *)blogRef;
+- (NSURL *)categoriesRef;
+- (BOOL)canAddCategory;
+- (NSURL *)invitesRef;
+- (BOOL)canCreateInvite;
+- (NSURL *)membersRef;
+- (BOOL)canCreateMember;
+- (NSURL *)childPlacesRef;
+
+- (NSURL *)checkPointsRef;
+- (BOOL)canUpdateCheckPoints;
+- (NSURL *)tasksRef;
+- (BOOL)canCreateTask;
+
 
 @end

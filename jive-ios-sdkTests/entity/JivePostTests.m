@@ -23,7 +23,7 @@
 @implementation JivePostTests
 
 - (void)setUp {
-    self.content = [[JivePost alloc] init];
+    self.typedObject = [[JivePost alloc] init];
 }
 
 - (JivePost *)post {

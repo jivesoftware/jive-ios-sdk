@@ -34,9 +34,7 @@
 }
 
 - (void)addPerson:(JivePerson *)person {
-    JiveResourceEntry *resource = [person.resources objectForKey:@"self"];
-    
-    [self addPersonURI:[resource.ref absoluteString]];
+    [self addPersonURI:[person.selfRef absoluteString]];
 }
 
 - (void)addEmailAddress:(NSString *)emailAddress {

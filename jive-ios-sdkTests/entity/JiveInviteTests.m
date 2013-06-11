@@ -19,17 +19,16 @@
 
 #import "JiveInviteTests.h"
 #import "JiveResourceEntry.h"
+#import "JiveTypedObject_internal.h"
 
 @implementation JiveInviteTests
 
-@synthesize invite;
-
-- (void)setUp {
-    invite = [[JiveInvite alloc] init];
+- (JiveInvite *)invite {
+    return (JiveInvite *)self.typedObject;
 }
 
-- (void)tearDown {
-    invite = nil;
+- (void)setUp {
+    self.typedObject = [[JiveInvite alloc] init];
 }
 
 - (void)testContentParsing {
@@ -48,24 +47,24 @@
     inviter.location = @"inviter";
     revoker.location = @"revoker";
     place.displayName = @"place";
-    [invite setValue:@"body" forKey:@"body"];
-    [invite setValue:@"email" forKey:@"email"];
-    [invite setValue:@"1234" forKey:@"jiveId"];
-    [invite setValue:invitee forKey:@"invitee"];
-    [invite setValue:inviter forKey:@"inviter"];
-    [invite setValue:place forKey:@"place"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [invite setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:0.123] forKey:@"revokeDate"];
-    [invite setValue:revoker forKey:@"revoker"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:1000] forKey:@"sentDate"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
+    [self.invite setValue:@"body" forKey:@"body"];
+    [self.invite setValue:@"email" forKey:@"email"];
+    [self.invite setValue:@"1234" forKey:@"jiveId"];
+    [self.invite setValue:invitee forKey:@"invitee"];
+    [self.invite setValue:inviter forKey:@"inviter"];
+    [self.invite setValue:place forKey:@"place"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
+    [self.invite setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:0.123] forKey:@"revokeDate"];
+    [self.invite setValue:revoker forKey:@"revoker"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:1000] forKey:@"sentDate"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
     
     NSMutableDictionary *JSON = [NSMutableDictionary dictionaryWithCapacity:14];
     
-    [JSON setValue:invite.body forKey:@"body"];
-    [JSON setValue:invite.email forKey:@"email"];
-    [JSON setValue:invite.jiveId forKey:@"id"];
+    [JSON setValue:self.invite.body forKey:@"body"];
+    [JSON setValue:self.invite.email forKey:@"email"];
+    [JSON setValue:self.invite.jiveId forKey:@"id"];
     [JSON setValue:[invitee toJSONDictionary] forKey:@"invitee"];
     [JSON setValue:[inviter toJSONDictionary] forKey:@"inviter"];
     [JSON setValue:[place toJSONDictionary] forKey:@"place"];
@@ -80,21 +79,21 @@
     
     JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
     
-    STAssertTrue([[newInvite class] isSubclassOfClass:[invite class]], @"Wrong item class");
-    STAssertEqualObjects(newInvite.body, invite.body, @"Wrong body");
-    STAssertEqualObjects(newInvite.email, invite.email, @"Wrong email");
-    STAssertEqualObjects(newInvite.jiveId, invite.jiveId, @"Wrong id");
+    STAssertTrue([[newInvite class] isSubclassOfClass:[self.invite class]], @"Wrong item class");
+    STAssertEqualObjects(newInvite.body, self.invite.body, @"Wrong body");
+    STAssertEqualObjects(newInvite.email, self.invite.email, @"Wrong email");
+    STAssertEqualObjects(newInvite.jiveId, self.invite.jiveId, @"Wrong id");
     STAssertEqualObjects(newInvite.invitee.location, invitee.location, @"Wrong invitee");
     STAssertEqualObjects(newInvite.inviter.location, inviter.location, @"Wrong inviter");
     STAssertEqualObjects(newInvite.place.displayName, place.displayName, @"Wrong place");
-    STAssertEqualObjects(newInvite.published, invite.published, @"Wrong published");
-    STAssertEqualObjects(newInvite.revokeDate, invite.revokeDate, @"Wrong revokeDate");
+    STAssertEqualObjects(newInvite.published, self.invite.published, @"Wrong published");
+    STAssertEqualObjects(newInvite.revokeDate, self.invite.revokeDate, @"Wrong revokeDate");
     STAssertEqualObjects(newInvite.revoker.location, revoker.location, @"Wrong revoker");
-    STAssertEqualObjects(newInvite.sentDate, invite.sentDate, @"Wrong sentDate");
+    STAssertEqualObjects(newInvite.sentDate, self.invite.sentDate, @"Wrong sentDate");
     STAssertEquals(newInvite.state, JiveInviteProcessing, @"Wrong state");
     STAssertEqualObjects(newInvite.type, @"invite", @"Wrong type");
-    STAssertEqualObjects(newInvite.updated, invite.updated, @"Wrong updated");
-    STAssertEquals([newInvite.resources count], [invite.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects(newInvite.updated, self.invite.updated, @"Wrong updated");
+    STAssertEquals([newInvite.resources count], [self.invite.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newInvite.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
@@ -114,24 +113,24 @@
     inviter.location = @"San Andreas";
     revoker.location = @"Denver";
     place.displayName = @"Restaurant";
-    [invite setValue:@"Nothing to see here" forKey:@"body"];
-    [invite setValue:@"orson.bushnell@jivesoftware.com" forKey:@"email"];
-    [invite setValue:@"5678" forKey:@"jiveId"];
-    [invite setValue:invitee forKey:@"invitee"];
-    [invite setValue:inviter forKey:@"inviter"];
-    [invite setValue:place forKey:@"place"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:0.123] forKey:@"published"];
-    [invite setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:1000] forKey:@"revokeDate"];
-    [invite setValue:revoker forKey:@"revoker"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"sentDate"];
-    [invite setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
+    [self.invite setValue:@"Nothing to see here" forKey:@"body"];
+    [self.invite setValue:@"orson.bushnell@jivesoftware.com" forKey:@"email"];
+    [self.invite setValue:@"5678" forKey:@"jiveId"];
+    [self.invite setValue:invitee forKey:@"invitee"];
+    [self.invite setValue:inviter forKey:@"inviter"];
+    [self.invite setValue:place forKey:@"place"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:0.123] forKey:@"published"];
+    [self.invite setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:1000] forKey:@"revokeDate"];
+    [self.invite setValue:revoker forKey:@"revoker"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"sentDate"];
+    [self.invite setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
     
     NSMutableDictionary *JSON = [NSMutableDictionary dictionaryWithCapacity:14];
     
-    [JSON setValue:invite.body forKey:@"body"];
-    [JSON setValue:invite.email forKey:@"email"];
-    [JSON setValue:invite.jiveId forKey:@"id"];
+    [JSON setValue:self.invite.body forKey:@"body"];
+    [JSON setValue:self.invite.email forKey:@"email"];
+    [JSON setValue:self.invite.jiveId forKey:@"id"];
     [JSON setValue:[invitee toJSONDictionary] forKey:@"invitee"];
     [JSON setValue:[inviter toJSONDictionary] forKey:@"inviter"];
     [JSON setValue:[place toJSONDictionary] forKey:@"place"];
@@ -146,21 +145,21 @@
     
     JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
     
-    STAssertTrue([[newInvite class] isSubclassOfClass:[invite class]], @"Wrong item class");
-    STAssertEqualObjects(newInvite.body, invite.body, @"Wrong body");
-    STAssertEqualObjects(newInvite.email, invite.email, @"Wrong email");
-    STAssertEqualObjects(newInvite.jiveId, invite.jiveId, @"Wrong id");
+    STAssertTrue([[newInvite class] isSubclassOfClass:[self.invite class]], @"Wrong item class");
+    STAssertEqualObjects(newInvite.body, self.invite.body, @"Wrong body");
+    STAssertEqualObjects(newInvite.email, self.invite.email, @"Wrong email");
+    STAssertEqualObjects(newInvite.jiveId, self.invite.jiveId, @"Wrong id");
     STAssertEqualObjects(newInvite.invitee.location, invitee.location, @"Wrong invitee");
     STAssertEqualObjects(newInvite.inviter.location, inviter.location, @"Wrong inviter");
     STAssertEqualObjects(newInvite.place.displayName, place.displayName, @"Wrong place");
-    STAssertEqualObjects(newInvite.published, invite.published, @"Wrong published");
-    STAssertEqualObjects(newInvite.revokeDate, invite.revokeDate, @"Wrong revokeDate");
+    STAssertEqualObjects(newInvite.published, self.invite.published, @"Wrong published");
+    STAssertEqualObjects(newInvite.revokeDate, self.invite.revokeDate, @"Wrong revokeDate");
     STAssertEqualObjects(newInvite.revoker.location, revoker.location, @"Wrong revoker");
-    STAssertEqualObjects(newInvite.sentDate, invite.sentDate, @"Wrong sentDate");
+    STAssertEqualObjects(newInvite.sentDate, self.invite.sentDate, @"Wrong sentDate");
     STAssertEquals(newInvite.state, JiveInviteFulfilled, @"Wrong state");
     STAssertEqualObjects(newInvite.type, @"invite", @"Wrong type");
-    STAssertEqualObjects(newInvite.updated, invite.updated, @"Wrong updated");
-    STAssertEquals([newInvite.resources count], [invite.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects(newInvite.updated, self.invite.updated, @"Wrong updated");
+    STAssertEquals([newInvite.resources count], [self.invite.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newInvite.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 

@@ -24,7 +24,7 @@
 
 @implementation JiveObjectMetadata
 
-@synthesize associatable, availability, commentable, content, description, example, fields, name;
+@synthesize associatable, availability, commentable, content, jiveDescription, example, fields, name;
 @synthesize place, plural, resourceLinks, since;
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
@@ -46,7 +46,7 @@
     [dictionary setValue:availability forKey:@"availability"];
     [dictionary setValue:commentable forKey:@"commentable"];
     [dictionary setValue:content forKey:@"content"];
-    [dictionary setValue:description forKey:@"description"];
+    [dictionary setValue:jiveDescription forKey:@"description"];
     [dictionary setValue:example forKey:@"example"];
     [dictionary setValue:name forKey:@"name"];
     [dictionary setValue:place forKey:@"place"];

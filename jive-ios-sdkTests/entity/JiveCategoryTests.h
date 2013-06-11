@@ -17,10 +17,10 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveTypedObjectTests.h"
 #import "JiveCategory.h"
 
-@interface JiveCategoryTests : SenTestCase
+@interface JiveCategoryTests : JiveTypedObjectTests
 
 @property (nonatomic, strong) JiveCategory *category;
 

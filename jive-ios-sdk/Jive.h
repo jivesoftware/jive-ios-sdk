@@ -22,7 +22,6 @@
 // no forward declarations here since this is the framework header.
 #import "JiveCredentials.h"
 #import "JiveInboxOptions.h"
-#import "JiveSearchParams.h"
 #import "JivePagedRequestOptions.h"
 #import "JiveSearchPeopleRequestOptions.h"
 #import "JiveSearchPlacesRequestOptions.h"
@@ -66,7 +65,6 @@
 #import "JiveMember.h"
 #import "JiveStream.h"
 #import "JiveAssociationsRequestOptions.h"
-#import "JiveSearchContentParams.h"
 #import "JiveContent.h"
 #import "JivePerson.h"
 #import "JivePlace.h"

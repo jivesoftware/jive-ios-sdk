@@ -22,7 +22,7 @@
 @implementation JiveVideoTests
 
 - (void)setUp {
-    self.content = [[JiveVideo alloc] init];
+    self.typedObject = [[JiveVideo alloc] init];
 }
 
 - (JiveVideo *)video {
