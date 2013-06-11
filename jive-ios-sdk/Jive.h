@@ -61,7 +61,6 @@
 #import "JiveContentRequestOptions.h"
 #import "JiveContent.h"
 #import "JiveCommentsRequestOptions.h"
-#import "JiveResourceEntry.h"
 #import "JiveMember.h"
 #import "JiveStream.h"
 #import "JiveAssociationsRequestOptions.h"
