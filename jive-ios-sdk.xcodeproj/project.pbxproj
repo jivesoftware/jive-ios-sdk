@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F0257FE176A2AD300180597 /* share.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F0257FD176A2AD300180597 /* share.json */; };
+		0F025802176A2C5E00180597 /* share_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F025801176A2C5E00180597 /* share_alternate.json */; };
 		0F0913631665380C0036C4E8 /* JiveCountRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0913621665380C0036C4E8 /* JiveCountRequestOptions.m */; };
 		0F09136916653D6C0036C4E8 /* JiveCountRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F09136816653D6C0036C4E8 /* JiveCountRequestOptionsTests.m */; };
 		0F09136C166551E30036C4E8 /* JivePagedRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F09136B166551E30036C4E8 /* JivePagedRequestOptions.m */; };
@@ -479,6 +481,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F0257FD176A2AD300180597 /* share.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = share.json; sourceTree = "<group>"; };
+		0F025801176A2C5E00180597 /* share_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = share_alternate.json; sourceTree = "<group>"; };
 		0F0913611665380C0036C4E8 /* JiveCountRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCountRequestOptions.h; sourceTree = "<group>"; };
 		0F0913621665380C0036C4E8 /* JiveCountRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveCountRequestOptions.m; sourceTree = "<group>"; };
 		0F09136716653D6C0036C4E8 /* JiveCountRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCountRequestOptionsTests.h; sourceTree = "<group>"; };
@@ -1548,6 +1552,7 @@
 				0FCB66651670FA4800617CE4 /* search_contents_response.json */,
 				0FCB665C166FB18C00617CE4 /* search_people_response.json */,
 				0FCB6663166FDAF200617CE4 /* search_places_response.json */,
+				0F0257FD176A2AD300180597 /* share.json */,
 				0F13CEBF1672D09000525E4E /* supported_fields.json */,
 				0F13CEC516740DF400525E4E /* trending_people.json */,
 				0F9EB9AD16977A6800E9F09D /* avatar.png */,
@@ -1617,6 +1622,7 @@
 				0F9EBAA916A0C0E600E9F09D /* invite_alternate.json */,
 				0F9EBAB616A60F5D00E9F09D /* direct_message_alternate.json */,
 				0F9EBAC616A7376B00E9F09D /* comment_alternate.json */,
+				0F025801176A2C5E00180597 /* share_alternate.json */,
 				0F9CD1BA16D6F21100B512C2 /* stream_associations_alt.json */,
 				B1E22AD3170F57E90088919D /* outcome.json */,
 				0FBC7E221716218C00A597E2 /* version_alternate.json */,
@@ -1945,6 +1951,8 @@
 				0FBD44511721ADCE005E031B /* document_alternate.json in Resources */,
 				B1C6D124172B1FEC00A1380A /* property.json in Resources */,
 				B1C6D126172B1FFF00A1380A /* property_alternate.json in Resources */,
+				0F0257FE176A2AD300180597 /* share.json in Resources */,
+				0F025802176A2C5E00180597 /* share_alternate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

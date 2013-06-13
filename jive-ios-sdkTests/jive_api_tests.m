@@ -6365,4 +6365,104 @@
     }];
 }
 
+- (void) testCreateShareOperation {
+    JiveContentBody *source = [JiveContentBody new];
+    JiveTargetList *targets = [JiveTargetList new];
+    JiveDocument *document = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"share" andAuthDelegate:mockAuthDelegate];
+    source.text = @"Testing a direct message";
+    [targets addUserName:@"Orson Bushnell"];
+    [targets addPerson:person];
+    
+    NSMutableDictionary *JSONDictionary = [NSMutableDictionary dictionaryWithCapacity:3];
+    
+    [JSONDictionary setValue:[targets toJSONArray:YES] forKey:@"participants"];
+    [JSONDictionary setValue:[document.selfRef absoluteString] forKey:@"shared"];
+    [JSONDictionary setValue:[source toJSONDictionary] forKey:@"content"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive createShareOperation:source
+                                                              forContent:document
+                                                             withTargets:targets
+                                                              andOptions:options
+                                                              onComplete:^(JiveContent *content) {
+                                                                  STAssertEquals([content class], [JiveShare class], @"Wrong item class");
+                                                                  STAssertEqualObjects(content.subject, @"Testing share creation.", @"New object not created");
+                                                                  
+                                                                  // Check that delegates where actually called
+                                                                  [mockAuthDelegate verify];
+                                                                  [mockJiveURLResponseDelegate verify];
+                                                                  finishedBlock();
+                                                              } onError:^(NSError *error) {
+                                                                  STFail([error localizedDescription]);
+                                                                  finishedBlock();
+                                                              }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
+        STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+        [operation start];
+    }];
+}
+
+- (void) testCreateShare {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"share_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContentBody *source = [JiveContentBody new];
+        JiveTargetList *targets = [JiveTargetList new];
+        JiveDocument *document = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+        JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        source.text = @"Testing a direct message";
+        [targets addPerson:person];
+        [jive createShare:source
+               forContent:document
+              withTargets:targets
+               andOptions:options
+               onComplete:^(JiveContent *content) {
+                   STAssertEquals([content class], [JiveShare class], @"Wrong item class");
+                   STAssertEqualObjects(content.subject,
+                                        @"Folks, Be sure to link to a blog on your hack, even if it's just a placeholder. Likes on blogs is...",
+                                        @"New object not created");
+                   
+                   // Check that delegates where actually called
+                   [mockAuthDelegate verify];
+                   [mockJiveURLResponseDelegate verify];
+                   finishedBlock();
+               } onError:^(NSError *error) {
+                   STFail([error localizedDescription]);
+                   finishedBlock();
+               }];
+    }];
+}
+
 @end

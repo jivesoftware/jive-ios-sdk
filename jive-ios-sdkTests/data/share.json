@@ -1,0 +1,343 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "id" : "190795",
+  "resources" : {
+    "read" : {
+      "allowed" : [ "POST", "DELETE" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/190795/read"
+    },
+    "self" : {
+      "allowed" : [ "DELETE", "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/190795"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/inbox/share/190795"
+    },
+    "comments" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/190795/comments"
+    }
+  },
+  "followerCount" : 0,
+  "published" : "2013-06-13T16:19:46.142+0000",
+  "tags" : [ ],
+  "updated" : "2013-06-13T16:19:46.142+0000",
+  "parentPlace" : {
+    "id" : "5316",
+    "html" : "https://hopback.eng.jiveland.com/people/orson.bushnell",
+    "name" : "Orson Bushnell",
+    "type" : "person",
+    "uri" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316"
+  },
+  "author" : {
+    "id" : "5316",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@manager"
+      },
+      "self" : {
+        "allowed" : [ "PUT", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316"
+      },
+      "tasks" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/tasks"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/365723"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@colleagues"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/extprops"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@following"
+      },
+      "images" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/images"
+      },
+      "streams" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/streams"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/orson.bushnell"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5316"
+      }
+    },
+    "displayName" : "Orson Bushnell",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "orson.bushnell@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "orson.bushnell"
+    },
+    "name" : {
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell",
+      "givenName" : "Orson"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "<body><!-- [DocumentBodyStart:e70da8fd-7aa8-479e-a484-e1d26d1fa450] --><div class=\"jive-rendered-content\"><span>Testing share creation.</span></div><!-- [DocumentBodyEnd:e70da8fd-7aa8-479e-a484-e1d26d1fa450] --></body>",
+    "editable" : false,
+    "type" : "text/html"
+  },
+  "parent" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316",
+  "replyCount" : 0,
+  "status" : "published",
+  "subject" : "Testing share creation.",
+  "viewCount" : 0,
+  "visibleToExternalContributors" : false,
+  "participants" : [ {
+    "id" : "3550",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/135623"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/rob.derstadt"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3550/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3550"
+      }
+    },
+    "displayName" : "Rob Derstadt",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "rob.derstadt@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "rob.derstadt"
+    },
+    "name" : {
+      "familyName" : "Derstadt",
+      "formatted" : "Rob Derstadt",
+      "givenName" : "Rob"
+    },
+    "type" : "person"
+  } ],
+  "sharedContent" : {
+    "id" : "137424",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/outcomeTypes"
+      },
+      "extprops" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/extprops"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/outcomes"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/likes"
+      },
+      "read" : {
+        "allowed" : [ "POST", "DELETE" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/read"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/thread/137424"
+      },
+      "childOutcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/childOutcomeTypes"
+      },
+      "attachments" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/attachments/contents/494294"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/494294/followingIn"
+      },
+      "messages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/contents/494294"
+      }
+    },
+    "published" : "2013-06-10T21:59:49.796+0000",
+    "updated" : "2013-06-10T21:59:49.796+0000",
+    "author" : {
+      "id" : "5189",
+      "resources" : {
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/@reports"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/@manager"
+        },
+        "self" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/avatar"
+        },
+        "blog" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/345227"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/@colleagues"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/@following"
+        },
+        "images" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/images"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/people/volkan.ozcelik"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5189/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5189"
+        }
+      },
+      "displayName" : "Volkan Ozcelik",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "volkan.ozcelik@jivesoftware.com"
+      } ],
+      "jive" : {
+        "username" : "volkan.ozcelik"
+      },
+      "name" : {
+        "familyName" : "Ozcelik",
+        "formatted" : "Volkan Ozcelik",
+        "givenName" : "Volkan"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:356343e4-9e0f-436c-810f-21a5f3bef8b3] --><div class=\"jive-rendered-content\"><p>asdfasdfa</p></div><!-- [DocumentBodyEnd:356343e4-9e0f-436c-810f-21a5f3bef8b3] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "subject" : "new discussion. with bazillion comments.",
+    "visibleToExternalContributors" : false,
+    "type" : "discussion"
+  },
+  "sharedPlace" : {
+    "id" : "2272",
+    "description" : "Volkan Ozcelik",
+    "name" : "Volkan Ozcelik",
+    "parent" : "https://hopback.eng.jiveland.com/api/core/v3/places/58738",
+    "visibleToExternalContributors" : false,
+    "type" : "user"
+  },
+  "type" : "share"
+}

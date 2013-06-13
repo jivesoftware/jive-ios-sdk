@@ -1286,7 +1286,6 @@
     [self createContent:update withAttachments:attachments options:options onComplete:complete onError:error];
 }
 
-
 - (AFJSONRequestOperation *)createDocumentOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:document withAttachments:attachmentURLs options:options onComplete:complete onError:error];
 }
@@ -1297,6 +1296,43 @@
 
 - (AFJSONRequestOperation *)createUpdateOperation:(JiveUpdate *)update withAttachments:(NSArray *)attachments options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:update withAttachments:attachments options:options onComplete:complete onError:error];
+}
+
+- (void) createShare:(JiveContentBody *)shareMessage
+          forContent:(JiveContent *)content
+         withTargets:(JiveTargetList *)targets
+          andOptions:(JiveReturnFieldsRequestOptions *)options
+          onComplete:(void (^)(JiveShare *))completeBlock
+             onError:(JiveErrorBlock)errorBlock {
+    [[self createShareOperation:shareMessage
+                     forContent:content
+                    withTargets:targets
+                     andOptions:options
+                     onComplete:completeBlock
+                        onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation *) createShareOperation:(JiveContentBody *)shareMessage
+                                       forContent:(JiveContent *)content
+                                      withTargets:(JiveTargetList *)targets
+                                       andOptions:(JiveReturnFieldsRequestOptions *)options
+                                       onComplete:(void (^)(JiveShare *))completeBlock
+                                          onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/shares", nil];
+    NSDictionary *JSON = @{JiveDirectMessageAttributes.participants: [targets toJSONArray:YES],
+                           JiveContentAttributes.content: [shareMessage toJSONDictionary],
+                           @"shared": [content.selfRef absoluteString]
+                           };
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:request
+                              onComplete:completeBlock
+                                 onError:errorBlock];
 }
 
 
