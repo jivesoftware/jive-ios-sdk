@@ -431,6 +431,13 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (void) createComment:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#createMessage(String,%20String)
 - (void) createMessage:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ShareService.html#createShare(String,%20String)
+- (void) createShare:(JiveContentBody *)shareMessage
+          forContent:(JiveContent *)content
+         withTargets:(JiveTargetList *)targets
+          andOptions:(JiveReturnFieldsRequestOptions *)options
+          onComplete:(void (^)(JiveShare *))completeBlock
+             onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContent(String,%20String)
 - (void) content:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getComments(String,%20boolean,%20boolean,%20boolean,%20int,%20int,%20String,%20String)
@@ -488,6 +495,13 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 - (AFJSONRequestOperation *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/MessageService.html#createMessage(String,%20String)
 - (AFJSONRequestOperation *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ShareService.html#createShare(String,%20String)
+- (AFJSONRequestOperation *) createShareOperation:(JiveContentBody *)shareMessage
+                                       forContent:(JiveContent *)content
+                                      withTargets:(JiveTargetList *)targets
+                                       andOptions:(JiveReturnFieldsRequestOptions *)options
+                                       onComplete:(void (^)(JiveShare *))completeBlock
+                                          onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getContent(String,%20String)
 - (AFJSONRequestOperation *) contentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#getComments(String,%20boolean,%20boolean,%20boolean,%20int,%20int,%20String,%20String)

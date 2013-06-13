@@ -1,0 +1,1597 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "id" : "189260",
+  "resources" : {
+    "read" : {
+      "allowed" : [ "POST", "DELETE" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/189260/read"
+    },
+    "self" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/189260"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/inbox/share/189260"
+    },
+    "comments" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/shares/189260/comments"
+    }
+  },
+  "followerCount" : 0,
+  "published" : "2013-05-10T23:36:01.421+0000",
+  "tags" : [ ],
+  "updated" : "2013-05-10T23:36:01.421+0000",
+  "parentPlace" : {
+    "id" : "3351",
+    "html" : "https://hopback.eng.jiveland.com/people/jared.sm",
+    "name" : "Jared Smith-Mickelson",
+    "type" : "person",
+    "uri" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351"
+  },
+  "author" : {
+    "id" : "3351",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/93293"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/jared.sm"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3351"
+      }
+    },
+    "displayName" : "Jared Smith-Mickelson",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "jared.sm@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "jared.sm"
+    },
+    "name" : {
+      "familyName" : "Smith-Mickelson",
+      "formatted" : "Jared Smith-Mickelson",
+      "givenName" : "Jared"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "<body><!-- [DocumentBodyStart:f5ce6cab-51ab-4b39-8352-1d70ead661ba] --><div class=\"jive-rendered-content\"><span>Folks, Be sure to link to a blog on your hack, even if it's just a placeholder. Likes on blogs is how we determine the popular vote for best hacks! -jared</span></div><!-- [DocumentBodyEnd:f5ce6cab-51ab-4b39-8352-1d70ead661ba] --></body>",
+    "editable" : false,
+    "type" : "text/html"
+  },
+  "parent" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351",
+  "replyCount" : 0,
+  "status" : "published",
+  "subject" : "Folks, Be sure to link to a blog on your hack, even if it's just a placeholder. Likes on blogs is...",
+  "viewCount" : 9,
+  "visibleToExternalContributors" : false,
+  "participants" : [ {
+    "id" : "5316",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@manager"
+      },
+      "self" : {
+        "allowed" : [ "PUT", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316"
+      },
+      "tasks" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/tasks"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/365723"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@colleagues"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/extprops"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/@following"
+      },
+      "images" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/images"
+      },
+      "streams" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/streams"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/orson.bushnell"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5316/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5316"
+      }
+    },
+    "displayName" : "Orson Bushnell",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "orson.bushnell@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "orson.bushnell"
+    },
+    "name" : {
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell",
+      "givenName" : "Orson"
+    },
+    "type" : "person"
+  }, {
+    "id" : "2167",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/91208"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/aron.racho"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/2167/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/2167"
+      }
+    },
+    "displayName" : "Aron Racho",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "aron.racho@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "aron.racho"
+    },
+    "name" : {
+      "familyName" : "Racho",
+      "formatted" : "Aron Racho",
+      "givenName" : "Aron"
+    },
+    "type" : "person"
+  }, {
+    "id" : "3974",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/lev.waisberg"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3974"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3974/activities"
+      }
+    },
+    "displayName" : "Lev Waisberg",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "lev.waisberg@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "lev.waisberg"
+    },
+    "name" : {
+      "familyName" : "Waisberg",
+      "formatted" : "Lev Waisberg",
+      "givenName" : "Lev"
+    },
+    "type" : "person"
+  }, {
+    "id" : "4572",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/163780"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/nitzan.harel"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4572/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/4572"
+      }
+    },
+    "displayName" : "Nitzan Harel",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "nitzan.harel@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "nitzan.harel"
+    },
+    "name" : {
+      "familyName" : "Harel",
+      "formatted" : "Nitzan Harel",
+      "givenName" : "Nitzan"
+    },
+    "type" : "person"
+  }, {
+    "id" : "4642",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/kfir.peled"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/4642"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/4642/activities"
+      }
+    },
+    "displayName" : "Kfir Peled",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "kfir.peled@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "kfir.peled"
+    },
+    "name" : {
+      "familyName" : "Peled",
+      "formatted" : "Kfir Peled",
+      "givenName" : "Kfir"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5731",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/492585"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/sverrir.berg"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5731/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5731"
+      }
+    },
+    "displayName" : "Sverrir Berg",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "sverrir.berg@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "sverrir.berg"
+    },
+    "name" : {
+      "familyName" : "Berg",
+      "formatted" : "Sverrir Berg",
+      "givenName" : "Sverrir"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5728",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/490293"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/jon.edvald"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5728/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5728"
+      }
+    },
+    "displayName" : "Jon Edvald",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "jon.edvald@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "jon.edvald"
+    },
+    "name" : {
+      "familyName" : "Edvald",
+      "formatted" : "Jon Edvald",
+      "givenName" : "Jon"
+    },
+    "type" : "person"
+  }, {
+    "id" : "3976",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/offir.talmor"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3976"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3976/activities"
+      }
+    },
+    "displayName" : "Offir Talmor",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "offir.talmor@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "offir.talmor"
+    },
+    "name" : {
+      "familyName" : "Talmor",
+      "formatted" : "Offir Talmor",
+      "givenName" : "Offir"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5732",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/Maggi"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5732"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5732/activities"
+      }
+    },
+    "displayName" : "Magnus Sveinbjornsson",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "maggi@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "Maggi"
+    },
+    "name" : {
+      "familyName" : "Sveinbjornsson",
+      "formatted" : "Magnus Sveinbjornsson",
+      "givenName" : "Magnus"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5723",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/ilan.twig"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5723"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5723/activities"
+      }
+    },
+    "displayName" : "Ilan Twig",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "ilan.twig@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "ilan.twig"
+    },
+    "name" : {
+      "familyName" : "Twig",
+      "formatted" : "Ilan Twig",
+      "givenName" : "Ilan"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5568",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/492294"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/taylor.case"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5568/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5568"
+      }
+    },
+    "displayName" : "Taylor Case",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "taylor.case@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "taylor.case"
+    },
+    "name" : {
+      "familyName" : "Case",
+      "formatted" : "Taylor Case",
+      "givenName" : "Taylor"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5726",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/tomas.jonasson"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5726"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5726/activities"
+      }
+    },
+    "displayName" : "Tomas Jonasson",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "tomas.jonasson@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "tomas.jonasson"
+    },
+    "name" : {
+      "familyName" : "Jonasson",
+      "formatted" : "Tomas Jonasson",
+      "givenName" : "Tomas"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5151",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/349422"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/john.ellenich"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5151/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5151"
+      }
+    },
+    "displayName" : "John Ellenich",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "john.ellenich@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "john.ellenich"
+    },
+    "name" : {
+      "familyName" : "Ellenich",
+      "formatted" : "John Ellenich",
+      "givenName" : "John"
+    },
+    "type" : "person"
+  }, {
+    "id" : "3071",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/93076"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/murali.ponnuraj"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3071/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3071"
+      }
+    },
+    "displayName" : "Murali Ponnuraj",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "murali.ponnuraj@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "murali.ponnuraj"
+    },
+    "name" : {
+      "familyName" : "Ponnuraj",
+      "formatted" : "Murali Ponnuraj",
+      "givenName" : "Murali"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5727",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/steinn.steinsen"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5727"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5727/activities"
+      }
+    },
+    "displayName" : "Steinn Steinsen",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "steinn.steinsen@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "steinn.steinsen"
+    },
+    "name" : {
+      "familyName" : "Steinsen",
+      "formatted" : "Steinn Steinsen",
+      "givenName" : "Steinn"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5717",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/487657"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/gunnar"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5717/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5717"
+      }
+    },
+    "displayName" : "Gunnar Holmsteinn",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "gunnar@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "gunnar"
+    },
+    "name" : {
+      "familyName" : "Holmsteinn",
+      "formatted" : "Gunnar Holmsteinn",
+      "givenName" : "Gunnar"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5718",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/rick.vidrio"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5718"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5718/activities"
+      }
+    },
+    "displayName" : "Rick Vidrio",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "rick.vidrio@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "rick.vidrio"
+    },
+    "name" : {
+      "familyName" : "Vidrio",
+      "formatted" : "Rick Vidrio",
+      "givenName" : "Rick"
+    },
+    "type" : "person"
+  }, {
+    "id" : "5719",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/@reports"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/@following"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/@followers"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/@manager"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/images"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/gummi"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/followingIn"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/@colleagues"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/avatar"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5719"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5719/activities"
+      }
+    },
+    "displayName" : "Gummi Gunnlaugsson",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "gummi@jivesoftware.com"
+    } ],
+    "jive" : {
+      "username" : "gummi"
+    },
+    "name" : {
+      "familyName" : "Gunnlaugsson",
+      "formatted" : "Gummi Gunnlaugsson",
+      "givenName" : "Gummi"
+    },
+    "type" : "person"
+  } ],
+  "sharedContent" : {
+    "id" : "120116",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/outcomeTypes"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/extprops"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/outcomes"
+      },
+      "versions" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/versions/468106"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/likes"
+      },
+      "read" : {
+        "allowed" : [ "POST", "DELETE" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/read"
+      },
+      "self" : {
+        "allowed" : [ "PUT", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/docs/DOC-120116"
+      },
+      "childOutcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/childOutcomeTypes"
+      },
+      "attachments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/attachments/contents/468106"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/followingIn"
+      },
+      "comments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/contents/468106/comments"
+      }
+    },
+    "published" : "2013-04-04T23:44:35.788+0000",
+    "updated" : "2013-05-13T17:54:49.069+0000",
+    "author" : {
+      "id" : "3351",
+      "resources" : {
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@reports"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@manager"
+        },
+        "self" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/avatar"
+        },
+        "blog" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/93293"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@colleagues"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/@following"
+        },
+        "images" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/images"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/people/jared.sm"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/3351/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/3351"
+        }
+      },
+      "displayName" : "Jared Smith-Mickelson",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "jared.sm@jivesoftware.com"
+      } ],
+      "jive" : {
+        "username" : "jared.sm"
+      },
+      "name" : {
+        "familyName" : "Smith-Mickelson",
+        "formatted" : "Jared Smith-Mickelson",
+        "givenName" : "Jared"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:d13a69d4-df3e-4111-a1c0-745516b45a85] --><div class=\"jive-rendered-content\"><p><a class=\"jive-link-wiki-small\" data-containerId=\"3043\" data-containerType=\"700\" data-objectId=\"120116\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-120116\">This document</a> is the canonical list of hackday demos to be presented Monday 2013-05-13 8:30-10AM PDT.&nbsp; Presenters will have have three minutes to demonstrate their hacks.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><h3>RECORDING</h3><ul><li><a class=\"jive-link-external-small\" href=\"https://jive.webex.com/jive/ldr.php?AT=pb&amp;SP=MC&amp;rID=75209757&amp;rKey=cf8b84f5298250be\" rel=\"nofollow\">Streaming recording</a></li><li><a class=\"jive-link-external-small\" href=\"https://jive.webex.com/jive/lsr.php?AT=dw&amp;SP=MC&amp;rID=75209757&amp;rKey=d997f2bb11866a20\" rel=\"nofollow\">Download recording from WebEx</a></li><li><a class=\"jive-link-external-small\" href=\"http://files.pdx.jiveland.com/hackday%20demos/2013Q2.arf\" rel=\"nofollow\">Download recording from Jive's intranet</a></li></ul><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p>If you're fairly confident you'll have a demo to present, please add your name to this list.&nbsp; If, at any point, you wish to excuse yourself, simply remove your entry.</p><p>On demo day, use the <a class=\"jive-link-external-small\" href=\"http://scriptbox1/timer/\" rel=\"nofollow\">demo timer</a> to keep track of your time.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><table border=\"1\" class=\"jiveBorder\" jive-data-cell=\"{&quot;color&quot;:&quot;#575757&quot;,&quot;textAlign&quot;:&quot;left&quot;,&quot;padding&quot;:&quot;NaN&quot;,&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;fontFamily&quot;:&quot;arial,helvetica,sans-serif&quot;,&quot;verticalAlign&quot;:&quot;baseline&quot;}\" jive-data-header=\"{&quot;color&quot;:&quot;#FFFFFF&quot;,&quot;backgroundColor&quot;:&quot;#6690BC&quot;,&quot;textAlign&quot;:&quot;center&quot;,&quot;padding&quot;:&quot;2&quot;}\" style=\"border: 1px solid #000000; width: 100%;\"><thead><tr><th style=\"border:1px solid black;border: 1px solid #000000;padding: 2px;color: #ffffff;background-color: #6690bc;text-align: center;\"><strong>Hack Name</strong></th><th style=\"border:1px solid black;border: 1px solid #000000;padding: 2px;color: #ffffff;background-color: #6690bc;text-align: center;\"><p><strong>Blog Entry About Your Hack</strong></p><p><strong>(required prior to demo - for comments and \"Like\" voting)</strong></p></th><th style=\"border:1px solid black;border: 1px solid #000000;padding: 2px;color: #ffffff;background-color: #6690bc;text-align: center;\"><p><strong>Lead Presenter</strong></p><p><strong>(for WebEx ball-passing)</strong></p></th><th style=\"border:1px solid black;border: 1px solid #000000;padding: 2px;color: #ffffff;background-color: #6690bc;text-align: center;\"><strong>Teammate(s)</strong></th></tr></thead><tbody><tr><td style=\"border:1px solid black;border: 1px solid #000000;\"><em>My Awesome Hack</em></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><em>A link to a blog about My Awesome Hack</em></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><em>@mention of presenter</em></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><em>@mentions of all teammates</em></td></tr><tr><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\">MailAnywhere</td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30965\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/13/mailanywhere--2013q2-hackday\">MailAnywhere - 2013Q2 Hackday</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3978\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/shali.shaltiel\">Shali Shaltiel</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4434\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/amir.leshem\">Amir Leshem</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3978\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/shali.shaltiel\">Shali Shaltiel</a></p></td></tr><tr><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\">Jive V3 API on the Node Jive-SDK + Google Drive</td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"4050\" data-containerType=\"37\" data-objectId=\"30961\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/aron.racho/blog/2013/05/12/jive-core-v3-in-the-nodejs-jive-sdk--and-the-google-drive-tile\">Jive Core V3 in the NodeJS Jive SDK -- and the Google Drive Tile</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2167\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aron.racho\">Aron Racho</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2167\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aron.racho\">Aron Racho</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3286\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/matt.whelan\">Matt Whelan</a></p></td></tr><tr><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\">The JCA Virtual Library</td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"14591\" data-containerType=\"37\" data-objectId=\"30788\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/ed.venaglia/blog/2013/05/02/the-jca-virtual-library--hackday-q2-2013\">The JCA Virtual Library</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3210\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/ed.venaglia\">Ed Venaglia</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3210\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/ed.venaglia\">Ed Venaglia</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2167\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aron.racho\">Aron Racho</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3145\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/chris.bowling\">Chris Bowling</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2050\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/john\">John Lascurettes</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3214\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jestin.woods\">Jestin Woods</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4572\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/nitzan.harel\">Nitzan Harel</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Hoppy - A Natural Language Search Interface</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-wiki-small\" data-containerId=\"4940\" data-containerType=\"700\" data-objectId=\"125959\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-125959\">Hoppy - A Natural Language Search Interface</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5717\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/gunnar\">Gunnar Holmsteinn</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5719\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/gummi\">Gummi Gunnlaugsson</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5718\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/rick.vidrio\">Rick Vidrio</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5728\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jon.edvald\">Jon Edvald</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5732\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/Maggi\">Magnus Sveinbjornsson</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5727\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/steinn.steinsen\">Steinn Steinsen</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5726\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/tomas.jonasson\">Tomas Jonasson</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5731\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/sverrir.berg\">Sverrir Berg</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">The Envoy Network Appliance</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"26711\" data-containerType=\"37\" data-objectId=\"30867\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/todd.howitt/blog/2013/05/07/mission-impossible-making-the-case-for-haskell-at-jive\">Mission Impossible: Making the Case for Haskell at Jive</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\">No presentation -- see blog post.</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5607\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/todd.howitt\">Todd Howitt</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2819\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jesse.hallett\">Jesse Hallett</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">In your face!</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30966\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/13/in-your-face\">In your face!</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3974\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/lev.waisberg\">Lev Waisberg</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\">-</td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">@Anywhere</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30958\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/12/anywhere\">@Anywhere</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3976\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/offir.talmor\">Offir Talmor</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3976\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/offir.talmor\">Offir Talmor</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4642\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/kfir.peled\">Kfir Peled</a></p></td></tr><tr><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\">Jive Server On The FLY!</td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"27585\" data-containerType=\"37\" data-objectId=\"30971\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/yoav.weiss/blog/2013/05/13/hack-day-2013q2--jive-server-on-the-fly\">Hack day 2013Q2 - Jive server on the fly!</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4489\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/yoav.weiss\">Yoav Weiss</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4252\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/daniel.kazak\">Daniel Kazak</a> <a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4489\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/yoav.weiss\">Yoav Weiss</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Histograms in logging-common.logger</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"24136\" data-containerType=\"37\" data-objectId=\"30915\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/jive-metrics/blog/2013/05/09/adding-histogram-functionality-to-servicecommonlogger-hackday-2013q2\">Adding Histogram Functionality to service.common.logger (Hackday 2013Q2)</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><span style=\"color: #ff6600;\">Presentation not necessary -- </span><br/><span style=\"color: #ff6600;\">blog post says it all</span></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3990\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/roger.opperman\">Roger Opperman</a></p></td><td style=\"border:1px solid black;border: 1px solid #000000;\">Ping me if interested</td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">One for all the Timurs</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30931\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/10/one-for-all-the-timurs\">One for all the Timurs</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2135\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/dolan.halbrook\">Dolan Halbrook</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">A Friendlier JCA</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-wiki-small\" data-containerId=\"2228\" data-containerType=\"2020\" data-objectId=\"125759\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-125759\">Hackday: A Friendlier JCA Just For You!</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5097\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/nick.clark\">Nick Clark</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Android Jive Notifications for Pebble</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30939\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/10/jive-for-android-pebble-notifications\">Jive for Android Pebble Notifications</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5327\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/heath.borders\">Heath Borders</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">iOS Address Book Syncing (in the native Jive app)</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"27586\" data-containerType=\"37\" data-objectId=\"30975\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/taylor.case/blog/2013/05/13/ios-address-book-syncing-hackday-q2-2013\">iOS Address Book Syncing (Hackday Q2 2013)</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5568\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/taylor.case\">Taylor Case</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Jive-with-me!</td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5726\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/tomas.jonasson\">Tomas Jonasson</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Here's a Method that Will Show How Much Do Your Unit Tests CYA (cover your AMD codebase).</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"25459\" data-containerType=\"37\" data-objectId=\"30933\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/volkan.ozcelik/blog/2013/05/10/what-you-didnt-know-about-the-javascript-lunch-learn-i-did-on-532013-hackday-2013-q2\">Here's a Method that Will Show How Much Do Your Unit Tests CYA</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5189\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/volkan.ozcelik\">Volkan Ozcelik</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Stream at once</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"27580\" data-containerType=\"37\" data-objectId=\"30967\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/emilio.lopez/blog/2013/05/13/stream-at-once\">Stream at Once</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5733\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/emilio.lopez\">Emilio Lopez</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5716\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/yuval.twig\">Yuval Twig</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5724\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/albert.baranchuk\">Albert Baranchuk</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3071\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/murali.ponnuraj\">Murali Ponnuraj</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Jiveversary Notifications</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30950\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/10/jiveversary-notifications--my-2013q2-hack\">Jiveversary Notifications - My 2013Q2 Hack</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3351\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jared.sm\">Jared Smith-Mickelson</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Document Conversion and Viewing 3.0</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30952\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/10/doc-conversion-30\">Doc conversion 3.0.</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2942\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/mikhail.khodorovskiy\">Mikhail Khodorovskiy</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3945\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/ghislain.seguin\">Ghislain Seguin</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2903\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/brian.ledbetter\">Brian Ledbetter</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">CocoaPods for Jive</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"26486\" data-containerType=\"37\" data-objectId=\"30949\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/chris.gummer/blog/2013/05/10/cocoapods-for-jive\">CocoaPods for Jive</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5551\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/chris.gummer\">Chris Gummer</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Salesforce Dealroom implemented in node.js framework</td><td style=\"border:1px solid black;border: 1px solid #000000;\">To Do...</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4723\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/charles.capps\">Charles Capps</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4723\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/charles.capps\">Charles Capps</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2167\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aron.racho\">Aron Racho</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">JCA groovy scripting</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30972\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/13/groovy-in-jca\">Groovy in JCA</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5105\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/alex.burkoff\">Alex Burkoff</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">JQL - Jive Query Langugage for Core API V3 Batch Requests</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"16157\" data-containerType=\"37\" data-objectId=\"30947\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/aaron.malenfant/blog/2013/05/11/hackday--jql--jive-query-language-for-core-api-v3-batch-requests\">Hackday - JQL - Jive Query Language for Core API V3 Batch Requests</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3465\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aaron.malenfant\">Aaron Malenfant</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3508\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/dmitry.apresian\">Dmitry Apresian</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3465\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/aaron.malenfant\">Aaron Malenfant</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Javascript Unit Testing and Code Coverage</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30977\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/13/javascript-code-coverage-for-hackday\">Javascript Code Coverage for HackDay</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4228\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/lynn.jepsen\">Lynn Jepsen</a> (as Manoj)</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5230\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/inyang.umoh\">Inyang Umoh</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Active Inbox</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"26068\" data-containerType=\"37\" data-objectId=\"30957\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/moshe.bixenshpaner/blog/2013/05/12/active-inbox\">Active Inbox</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5433\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/moshe.bixenshpaner\">Moshe Bixenshpaner</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5433\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/moshe.bixenshpaner\">Moshe Bixenshpaner</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Remind for action</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"27587\" data-containerType=\"37\" data-objectId=\"30979\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/yuval.varkel/blog/2013/05/13/remind-for-action\">Remind for action</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5484\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/yuval.varkel\">Yuval Varkel</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5484\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/yuval.varkel\">Yuval Varkel</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Jive Anywhere module for Sharepoint</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-wiki-small\" data-containerId=\"3043\" data-containerType=\"700\" data-objectId=\"125996\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-125996\">Jive Anywhere module for Sharepoint</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4677\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/dov.amir\">Dov Amir</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4675\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/moshe.peretz\">Moshe Peretz</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Sentiment Analysis</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"22952\" data-containerType=\"37\" data-objectId=\"30954\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/sundar.vedula/blog/2013/05/12/hackday-2013q2-sentiment-analysis\">Hackday 2013Q2: Sentiment analysis</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4488\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/sundar.vedula\">Sundar Vedula</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4488\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/sundar.vedula\">Sundar Vedula</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Using Gatling to Load Test the Core</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"12626\" data-containerType=\"37\" data-objectId=\"30960\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/gigi.jackson/blog/2013/05/12/using-gatling-for-load-testing-the-core\">Using Gatling for load testing the core</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2907\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/gigi.jackson\">Gigi Jackson</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2907\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/gigi.jackson\">Gigi Jackson</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Parallelizing post-maintenance Netapp availability check</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-wiki-small\" data-containerId=\"2049\" data-containerType=\"14\" data-objectId=\"125951\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-125951\">Mega-Validate -- Hackday 2013Q2</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4651\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/kyle.murphy\">Kyle Murphy</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\">Banzai 411</td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"14561\" data-containerType=\"37\" data-objectId=\"30962\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/chris.cowell-shah/blog/2013/05/12/hack-day-banzai-411\">Hack day: Banzai 411</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3208\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/chris.cowell-shah\">Chris Cowell-Shah</a></td><td colspan=\"1\" style=\"border:1px solid black;border: 1px solid #000000;\"><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4614\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jeff.paramchuk\">Jeff Paramchuk</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4458\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/chieko.higashi\">Chieko Higashi</a></p><p><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2050\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/john\">John Lascurettes</a></p></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Inbox folders and activity de-dupe</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30963\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/12/bringing-the-magic-back-to-streams-inbox-folders-and-activity-de-dupe\">Bringing the magic back to streams (Inbox folders and activity de-dupe)</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3765\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/kevin.karpenske\">Kevin Karpenske</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">SMS group status external stream integration</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30970\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/13/sms-group-status-external-stream-integration\">SMS Group Status External Stream Integration</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2197\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/nebiyu.yohannes\">Nebiyu Yohannes</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Producteev and Zapier</td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2002\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/matt\">Matt Tucker</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Teamie: Standup Helper</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"12794\" data-containerType=\"37\" data-objectId=\"30974\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/matthew.finlayson/blog/2013/05/13/teamie-a-standup-helper-with-a-terrible-name\">Teamie: A standup helper with a terrible name</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"2926\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/matthew.finlayson\">Matthew Finlayson</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Interest Check, the structured outcome</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"5628\" data-containerType=\"37\" data-objectId=\"30982\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/blogs/long/2013/05/13/interest-check-the-structured-outcome\">Interest Check, the Structured Outcome</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-wiki-small\" data-containerId=\"1453\" data-containerType=\"700\" data-objectId=\"74727\" data-objectType=\"102\" href=\"https://hopback.eng.jiveland.com/docs/DOC-74727\">Long TonCat</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Cloudalytics Builds Visibility</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"18682\" data-containerType=\"37\" data-objectId=\"30978\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/chris.thiel/blog/2013/05/13/providing-visibility-into-our-builds-orhow-i-try-to-get-these-dev-punks-to-pay-attention\">Providing visibility into our builds or...how I try to get these dev punks to pay attention</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><p><span style=\"color: #ff6600;\">Presentation not necessary -- </span></p><p><span style=\"color: #ff6600;\">blog post says it all</span></p><p><span style=\"color: #ff6600;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"3212\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/chris.thiel\">Chris Thiel</a><br/></span></p></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Tile Anywhere, Tiles Everywhere!</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"20979\" data-containerType=\"37\" data-objectId=\"30955\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/groups/hackday/blog/2013/05/11/tile-anywhere-tiles-everywhere\">Tile Anywhere, Tiles Everywhere!</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4572\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/nitzan.harel\">Nitzan Harel</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\"></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">Jive Gamification Server</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"26744\" data-containerType=\"37\" data-objectId=\"30890\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/people/jack.wright/blog/2013/05/08/my-hack-day-project-implement-a-gamification-server\">My Hack Day Project: Implement a gamification server</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\">No presentation, See blog post for update</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"5524\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/jack.wright\">Jack Wright</a></td></tr><tr><td style=\"border:1px solid black;border: 1px solid #000000;\">View as PDF: Now with size and orientation</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jive-link-blog-small\" data-containerId=\"24855\" data-containerType=\"37\" data-objectId=\"30946\" data-objectType=\"38\" href=\"https://hopback.eng.jiveland.com/blogs/matt.spera/2013/05/10/view-as-pdf\">View as PDF: Now improved with size &amp; orientation (2013Q2 Hackday)</a></td><td style=\"border:1px solid black;border: 1px solid #000000;\">No presentation; see blog post</td><td style=\"border:1px solid black;border: 1px solid #000000;\"><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"4702\" data-objectType=\"3\" href=\"https://hopback.eng.jiveland.com/people/matthew.spera\">Matt Spera</a></td></tr></tbody></table><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><p><a _action_id=\"com.jivesoftware.aron_template\" _appuuid=\"caf8df3d-f26f-41dd-ada6-0b6a3a375046\" _context=\"{&quot;id&quot;:&quot;0052832858603f274346&quot;}\" _jive_macro_name=\"appEmbeddedView\" _previewimage=\"http://jared.net/ba/logo.png\" _view=\"embedded.view\" class=\"jive_macro jive-link-app-preview jive_macro_appEmbeddedView\" data-orig-content=\"&lt;img alt=&quot;View Tracker&quot; class=&quot;jiveImage&quot; src=&quot;http://jared.net/ba/view.cgi?0052832858603f274346&quot; style=&quot;display: block; width: 144px; height: 21px; float: right;&quot; data-mce-src=&quot;http://jared.net/ba/view.cgi?0052832858603f274346&quot; data-mce-style=&quot;display: block; width: 144px; height: 21px; float: right;&quot;&gt;\"><img alt=\"View Tracker\" class=\"jiveImage\" src=\"http://jared.net/ba/view.cgi?0052832858603f274346\" style=\"display: block; width: 144px; height: 21px; float: right;\"/></a></p></div><!-- [DocumentBodyEnd:d13a69d4-df3e-4111-a1c0-745516b45a85] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "parent" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440",
+    "subject" : "List of 2013Q2 Hackday Demos",
+    "visibleToExternalContributors" : false,
+    "type" : "document"
+  },
+  "sharedPlace" : {
+    "id" : "3043",
+    "resources" : {
+      "templateInstance" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/jivelinks/v1/templates/definitions/1000/prototype?placeURI=https://hopback.eng.jiveland.com/api/core/v3/places/132440"
+      },
+      "invites" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/invites/places/132440"
+      },
+      "contents" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/contents"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440"
+      },
+      "places" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/places"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132441"
+      },
+      "featuredContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/contents/featured"
+      },
+      "extprops" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/extprops"
+      },
+      "announcements" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/announcements"
+      },
+      "categories" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/categories"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/groups/hackday"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/132440/activities"
+      },
+      "members" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/places/132440"
+      }
+    },
+    "description" : "Quarterly hackdays.",
+    "name" : "Hackday",
+    "visibleToExternalContributors" : false,
+    "type" : "group"
+  },
+  "type" : "share"
+}
