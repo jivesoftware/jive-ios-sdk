@@ -19,6 +19,15 @@
 
 #import "JiveContent.h"
 
+extern struct JiveVideoAttributes {
+    __unsafe_unretained NSString *externalID;
+    __unsafe_unretained NSString *playerBaseURL;
+    __unsafe_unretained NSString *width;
+    __unsafe_unretained NSString *height;
+    __unsafe_unretained NSString *authtoken;
+} const JiveVideoAttributes;
+
+
 extern NSString * const JiveVideoType;
 
 //! \class JiveVideo
@@ -30,5 +39,20 @@ extern NSString * const JiveVideoType;
 
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly, strong) NSNumber *visibleToExternalContributors;
+
+//! Video provider's ID
+@property(nonatomic, strong, readonly) NSString* externalID;
+
+//! URL of video service
+@property(nonatomic, strong, readonly) NSURL* playerBaseURL;
+
+//! Video height
+@property(nonatomic, readonly) NSNumber* height;
+
+//! Video width
+@property(nonatomic, readonly) NSNumber* width;
+
+//! Video provider's authentication token, required for playing video
+@property(nonatomic, strong, readonly) NSString* authtoken;
 
 @end

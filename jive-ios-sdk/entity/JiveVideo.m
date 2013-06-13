@@ -20,9 +20,17 @@
 #import "JiveVideo.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveVideoAttributes const JiveVideoAttributes = {
+    .authtoken = @"authtoken",
+    .externalID = @"externalID",
+    .playerBaseURL = @"playerBaseURL",
+    .width = @"width",
+    .height = @"height",
+};
+
 @implementation JiveVideo
 
-@synthesize tags, visibleToExternalContributors;
+@synthesize tags, visibleToExternalContributors, externalID, playerBaseURL, width, height, authtoken;
 
 NSString * const JiveVideoType = @"video";
 
@@ -39,8 +47,24 @@ NSString * const JiveVideoType = @"video";
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];
+    
+    if(authtoken)
+        [dictionary setValue:authtoken forKey:JiveVideoAttributes.authtoken];
+    
+    if(width)
+        [dictionary setValue:width forKey:JiveVideoAttributes.width];
+    
+    if(height)
+        [dictionary setValue:height forKey:JiveVideoAttributes.height];
+    
+    if(externalID)
+        [dictionary setValue:externalID forKey:JiveVideoAttributes.externalID];
+    
+    if(playerBaseURL)
+        [dictionary setValue:playerBaseURL forKey:JiveVideoAttributes.playerBaseURL];
     
     return dictionary;
 }
