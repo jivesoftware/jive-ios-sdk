@@ -72,7 +72,9 @@ struct JiveContentAttributes const JiveContentAttributes = {
         .status = @"status",
         .subject = @"subject",
         .updated = @"updated",
-        .viewCount = @"viewCount"
+        .viewCount = @"viewCount",
+        .question = @"question",
+        .resolved = @"resolved"
 };
 
 @implementation JiveContent

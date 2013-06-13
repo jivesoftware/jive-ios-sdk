@@ -39,6 +39,8 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *subject;
     __unsafe_unretained NSString *updated;
     __unsafe_unretained NSString *viewCount;
+    __unsafe_unretained NSString *question;
+    __unsafe_unretained NSString *resolved;
 } const JiveContentAttributes;
 
 //! \class JiveContent
