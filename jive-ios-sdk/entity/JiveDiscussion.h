@@ -28,6 +28,9 @@ extern NSString * const JiveDiscussionType;
 //! URI of the correct answer (if any) to this discussion, if it is a question.
 @property (nonatomic, strong) NSString *answer;
 
+//! List of attachments to this message (if any). Attachment[]
+@property(nonatomic, strong) NSArray* attachments;
+
 //! NSString URIs of messages that have been marked "helpful", if this discussion is a question.
 @property (nonatomic, strong) NSArray *helpful;
 

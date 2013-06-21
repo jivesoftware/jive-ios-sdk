@@ -19,10 +19,11 @@
 
 #import "JiveDiscussion.h"
 #import "JiveTypedObject_internal.h"
+#import "JiveAttachment.h"
 
 @implementation JiveDiscussion
 
-@synthesize answer, helpful, categories, question, tags, users, visibility, visibleToExternalContributors;
+@synthesize answer, attachments, helpful, categories, question, tags, users, visibility, visibleToExternalContributors;
 
 NSString * const JiveDiscussionType = @"discussion";
 
@@ -36,6 +37,9 @@ NSString * const JiveDiscussionType = @"discussion";
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
+    if ([propertyName isEqualToString:@"attachments"]) {
+        return [JiveAttachment class];
+    }
     if ([propertyName isEqualToString:@"users"]) {
         return [JivePerson class];
     }
@@ -49,6 +53,7 @@ NSString * const JiveDiscussionType = @"discussion";
     [dictionary setValue:question forKey:@"question"];
     [dictionary setValue:visibility forKey:@"visibility"];
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    [self addArrayElements:attachments toJSONDictionary:dictionary forTag:@"attachments"];
     if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
         [dictionary setValue:users forKey:@"users"];
     else
