@@ -92,9 +92,12 @@ typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
 
 @protocol JiveAuthorizationDelegate;
+@protocol JiveOperationRetrier;
 
 //! \class Jive
 @interface Jive : NSObject
+
+@property (nonatomic, weak) id<JiveOperationRetrier> defaultOperationRetrier;
 
 //! Use this method, or the operation version, before creating a Jive instance to make sure you can make a Jive instance.
 + (void) getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;

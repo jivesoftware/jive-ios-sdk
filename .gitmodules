@@ -4,3 +4,6 @@
 [submodule "lib/OCMock"]
 	path = lib/OCMock
 	url = git://github.com/erikdoe/ocmock.git
+[submodule "lib/OHHTTPStubs"]
+	path = lib/OHHTTPStubs
+	url = git://github.com/hborders/OHHTTPStubs.git

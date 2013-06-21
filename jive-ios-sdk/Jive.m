@@ -18,7 +18,7 @@
 //
 
 #import "Jive.h"
-#import "JAPIRequestOperation.h"
+#import "JiveRetryingJAPIRequestOperation.h"
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
 #import "JiveTargetList_internal.h"
@@ -88,7 +88,8 @@
             }
         }
     })
-                                                         onError:errorBlock];
+                                                         onError:errorBlock
+                                                         retrier:nil];
     return operation;
 }
 
@@ -518,14 +519,15 @@
         [markRequest setHTTPMethod:HTTPMethod];
         [self maybeApplyCredentialsToMutableURLRequest:markRequest
                                                 forURL:updateURL];
-        AFJSONRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:markRequest
-                                                                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                              markOperationCompleteBlock(request, nil);
-                                                                                          }
-                                                                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                              markOperationCompleteBlock(request, error);
-                                                                                          }];
+        JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:markRequest
+                                                                                                      success:(^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            markOperationCompleteBlock(request, nil);
+        })
+                                                                                                      failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            markOperationCompleteBlock(request, error);
+        })];
         [operations addObject:operation];
+        operation.retrier = self.defaultOperationRetrier;
     }
     
     if ([operations count] == 0) {
@@ -901,7 +903,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@filterableFields", nil];
     
-    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
 }
@@ -914,7 +916,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@supportedFields", nil];
     
-    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
 }
@@ -927,7 +929,7 @@
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/v3/people/@resources", nil];
     
-    return [Jive operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
+    return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [JiveResource instancesFromJSONList:JSON];
     }];
 }
@@ -2106,18 +2108,28 @@
     }
 }
 
-+ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
+- (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
+    return [[self class] operationWithRequest:request
+                                       onJSON:JSONBlock
+                                      onError:errorBlock
+                                      retrier:self.defaultOperationRetrier];
+}
+
++ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock retrier:(id<JiveOperationRetrier>)retrier {
     if (request) {
-        JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
+        JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
+                                                                                                                success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             if (JSONBlock) {
                 JSONBlock(JSON);
             }
-        } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        })
+                                                                                                                failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
                 errorBlock([NSError jive_errorWithUnderlyingError:err
                                                              JSON:JSON]);
             }
-        }];
+        })];
+        operation.retrier = retrier;
         
         return operation;
     } else {
@@ -2125,7 +2137,7 @@
     }
 }
 
-+ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
+- (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
     return [self operationWithRequest:request
                                onJSON:(^(id JSON) {
         if (completeBlock) {
@@ -2142,7 +2154,8 @@
                                                    onError:(JiveErrorBlock)errorBlock {
     
     if (request) {
-        JAPIRequestOperation *operation = [JAPIRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
+        JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
+                                                                                                                success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             id entity = [clazz instancesFromJSONList:JSON[@"list"]];
             
             NSDictionary *links = JSON[@"links"];
@@ -2155,13 +2168,14 @@
             if (completeBlock) {
                 completeBlock(entity, earliestDate, latestDate);
             }
-            
-        } failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
+        })
+                                                                                                                failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
                 errorBlock([NSError jive_errorWithUnderlyingError:err
                                                              JSON:JSON]);
             }
-        }];
+        })];
+        operation.retrier = self.defaultOperationRetrier;
         
         return operation;
     } else {
@@ -2170,7 +2184,7 @@
 }
 
 - (JAPIRequestOperation *)listOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
-    JAPIRequestOperation *operation = [Jive operationWithRequest:request
+    JAPIRequestOperation *operation = [self operationWithRequest:request
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
@@ -2180,7 +2194,7 @@
 }
 
 - (JAPIRequestOperation *)entityOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(id))completeBlock onError:(JiveErrorBlock)errorBlock {
-    JAPIRequestOperation *operation = [Jive operationWithRequest:request
+    JAPIRequestOperation *operation = [self operationWithRequest:request
                                                       onComplete:completeBlock
                                                          onError:errorBlock
                                                  responseHandler:(^id(id JSON) {
@@ -2199,7 +2213,7 @@
     } else {
         nilObjectComplete = NULL;
     }
-    JAPIRequestOperation *operation = [Jive operationWithRequest:request
+    JAPIRequestOperation *operation = [self operationWithRequest:request
                                                       onComplete:nilObjectComplete
                                                          onError:error
                                                  responseHandler:(^id(id JSON) {
