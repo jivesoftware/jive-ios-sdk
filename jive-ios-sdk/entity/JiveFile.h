@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveFileType;
+
 //! \class JiveFile
 //! https://developers.jivesoftware.com/api/v3/rest/FileEntity.html
 @interface JiveFile : JiveContent

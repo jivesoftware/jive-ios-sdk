@@ -26,7 +26,7 @@
 @synthesize authors, authorship, binaryURL, categories, size, tags, users, visibility, contentType;
 @synthesize visibleToExternalContributors;
 
-static NSString * const JiveFileType = @"file";
+NSString * const JiveFileType = @"file";
 
 + (void)load {
     if (self == [JiveFile class])

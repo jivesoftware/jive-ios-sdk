@@ -6465,4 +6465,38 @@
     }];
 }
 
+- (void) testObjectsOperation {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/metadata/objects/" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/metadata/objects/" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"objects_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        NSOperation *operation = [jive objectsOperationOnComplete:^(NSDictionary *objects) {
+            NSUInteger expectedNumberOfObjects = 72;
+            STAssertEquals([objects count], expectedNumberOfObjects, @"Wrong number of objects, should be %@", @(expectedNumberOfObjects));
+            STAssertEqualObjects(objects[@"person"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/person", nil);
+            STAssertEqualObjects(objects[@"user"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/user", nil);
+            STAssertEqualObjects(objects[@"profileImage"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/profileImage", nil);
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();            
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
 @end

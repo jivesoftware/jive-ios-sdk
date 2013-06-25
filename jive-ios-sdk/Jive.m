@@ -1985,6 +1985,22 @@
     [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
 }
 
+#pragma mark - Objects
+
+- (AFJSONRequestOperation *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"api/core/v3/metadata/objects/", nil];
+    AFJSONRequestOperation *operation = [[self class] operationWithRequest:request
+                                                                    onJSON:complete
+                                                                   onError:error];
+    
+    return operation;
+}
+
+- (void) objectsOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
+    [[self objectsOperationOnComplete:complete onError:error] start];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *)followingInRequestWithStreams:(NSArray *)streams options:(NSObject<JiveRequestOptions>*)options template:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
