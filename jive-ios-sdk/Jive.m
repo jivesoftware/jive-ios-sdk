@@ -1991,12 +1991,12 @@
 
 #pragma mark - Objects
 
-- (AFJSONRequestOperation *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation<JiveRetryingOperation> *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/v3/metadata/objects/", nil];
-    AFJSONRequestOperation *operation = [[self class] operationWithRequest:request
-                                                                    onJSON:complete
-                                                                   onError:error];
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
+                                                                                   onJSON:complete
+                                                                                  onError:error];
     
     return operation;
 }
