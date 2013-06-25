@@ -416,6 +416,7 @@
 		B8D2434C1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */; };
 		B8D24398177A1DEA00BE8A6D /* JiveRetryingHTTPRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */; };
 		B8D24399177A1DEA00BE8A6D /* JiveRetryingJAPIRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */; };
+		B8D243C9177A304F00BE8A6D /* JiveRetryingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D243421775657500BE8A6D /* JiveRetryingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8D2510C16B9735800412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
 		B8D2511016B9735F00412DA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */; };
 		B8D2511116B9744900412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
@@ -1857,6 +1858,7 @@
 				B8F8241417304DE500E11536 /* JiveHTTPBasicAuthCredentials.h in Headers */,
 				0F880F6F16DC467B00D40702 /* JiveAssociationTargetList_internal.h in Headers */,
 				B8B0DA99177384F50060F62E /* JiveOperationRetrier.h in Headers */,
+				B8D243C9177A304F00BE8A6D /* JiveRetryingOperation.h in Headers */,
 				B8811CEE16DF0CD40099E39E /* JiveObjcRuntime.h in Headers */,
 				B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */,
 				B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */,
