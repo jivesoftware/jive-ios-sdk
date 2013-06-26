@@ -312,6 +312,10 @@
 		8999E65316FA9BB00009677A /* JiveVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8999E65116FA9BAF0009677A /* JiveVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8999E65416FA9BB00009677A /* JiveVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65216FA9BB00009677A /* JiveVideo.m */; };
 		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
+		89FBB4FD177B9FBF0039543E /* JiveKVOAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */; };
+		89FBB4FE177B9FBF0039543E /* JiveKVOAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */; };
+		89FBB504177BA4A50039543E /* JiveRetryingOperationKVOAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 89FBB502177BA4A50039543E /* JiveRetryingOperationKVOAdapter.h */; };
+		89FBB505177BA4A50039543E /* JiveRetryingOperationKVOAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB503177BA4A50039543E /* JiveRetryingOperationKVOAdapter.m */; };
 		B122A33B170E35D400FC8C40 /* JiveOutcomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */; };
 		B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */; };
 		B14BAD6A170F882E00B223D4 /* JiveOutcomeRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B14BAD68170F882E00B223D4 /* JiveOutcomeRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -969,6 +973,10 @@
 		8999E65216FA9BB00009677A /* JiveVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideo.m; sourceTree = "<group>"; };
 		8999E65A16FAA1140009677A /* JiveVideoTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVideoTests.h; sourceTree = "<group>"; };
 		8999E65B16FAA1140009677A /* JiveVideoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideoTests.m; sourceTree = "<group>"; };
+		89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveKVOAdapter.h; sourceTree = "<group>"; };
+		89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveKVOAdapter.m; sourceTree = "<group>"; };
+		89FBB502177BA4A50039543E /* JiveRetryingOperationKVOAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingOperationKVOAdapter.h; sourceTree = "<group>"; };
+		89FBB503177BA4A50039543E /* JiveRetryingOperationKVOAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingOperationKVOAdapter.m; sourceTree = "<group>"; };
 		B122A339170E35D400FC8C40 /* JiveOutcomeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeTests.h; sourceTree = "<group>"; };
 		B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcomeTests.m; sourceTree = "<group>"; };
 		B122A340170F29E400FC8C40 /* JiveOutcomeTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeTypeTests.h; sourceTree = "<group>"; };
@@ -1534,6 +1542,10 @@
 				B8657AEE166FEDE900F946B5 /* NSError+Jive.m */,
 				0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */,
 				0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */,
+				89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */,
+				89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */,
+				89FBB502177BA4A50039543E /* JiveRetryingOperationKVOAdapter.h */,
+				89FBB503177BA4A50039543E /* JiveRetryingOperationKVOAdapter.m */,
 				0F0913651665391D0036C4E8 /* RequestOptions */,
 				2192BBFF1614F33300082926 /* Supporting Files */,
 			);
@@ -1891,6 +1903,8 @@
 				B8D2433C17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h in Headers */,
 				B8D2434B1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h in Headers */,
 				B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */,
+				89FBB4FD177B9FBF0039543E /* JiveKVOAdapter.h in Headers */,
+				89FBB504177BA4A50039543E /* JiveRetryingOperationKVOAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2270,6 +2284,8 @@
 				B8D2434C1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m in Sources */,
 				B8D2440C177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m in Sources */,
 				B8D24413177B334500BE8A6D /* JiveRetryingImageRequestOperation.m in Sources */,
+				89FBB4FE177B9FBF0039543E /* JiveKVOAdapter.m in Sources */,
+				89FBB505177BA4A50039543E /* JiveRetryingOperationKVOAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

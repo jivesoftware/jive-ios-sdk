@@ -30,6 +30,31 @@
 
 #pragma mark - tests
 
+- (void)testCancellation {
+    // don't define a request handler - we don't want the operation to finish as we want to explicitly cancel it
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    JiveRetryingJAPIRequestOperation __block *testObject;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        testObject = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]]
+                                                                               success:(^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            finishedBlock();
+        })
+                                                                               failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            finishedBlock();
+        })];
+        
+        [operationQueue addOperation:testObject];
+        STAssertEquals((NSUInteger)1, [operationQueue operationCount], nil);
+        STAssertFalse([testObject isFinished], nil);
+        STAssertFalse([testObject isCancelled], nil);
+        [operationQueue cancelAllOperations];
+    }];
+    STAssertEquals((NSUInteger)0, [operationQueue operationCount], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertTrue([testObject isFinished], nil);
+    STAssertTrue([testObject isCancelled], nil);
+}
+
 - (void)testResponseJSONSuccess {
     id expectedJSON = (@{
                        @"foo" : @"bar",
@@ -42,8 +67,9 @@
                               })];
     
     id __block actualJSON = nil;
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    JiveRetryingJAPIRequestOperation __block *testObject;
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JiveRetryingJAPIRequestOperation *testObject;
         testObject = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]]
                                                                                success:(^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             actualJSON = JSON;
@@ -52,9 +78,15 @@
                                                                                failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             finishedBlock();
         })];
-        [testObject start];
+        
+        [operationQueue addOperation:testObject];
+        STAssertEquals((NSUInteger)1, [operationQueue operationCount], nil);
+        STAssertFalse([testObject isCancelled], nil);
     }];
-    
+    STAssertEquals((NSUInteger)0, [operationQueue operationCount], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertTrue([testObject isFinished], nil);
+    STAssertFalse([testObject isCancelled], nil);
     STAssertEqualObjects(expectedJSON, actualJSON, nil);
 }
 

@@ -9,6 +9,7 @@
 #import "JiveRetryingJAPIRequestOperation.h"
 #import "JiveRetryingInnerJAPIRequestOperation.h"
 #import "JiveRetryingURLConnectionOperation+JiveProtected.h"
+#import "JiveRetryingOperationKVOAdapter.h"
 
 @interface AFJSONRequestOperation ()
 
@@ -19,6 +20,7 @@
 @interface JiveRetryingJAPIRequestOperation ()
 
 @property (atomic, readwrite) JiveRetryingInnerJAPIRequestOperation *innerOperation;
+@property (nonatomic) JiveRetryingOperationKVOAdapter *KVOAdapter;
 
 @end
 
@@ -162,6 +164,7 @@
     if (self) {
         self.innerOperation = [[JiveRetryingInnerJAPIRequestOperation alloc] initWithRequest:urlRequest
                                                                               outerOperation:self];
+        self.KVOAdapter = [[JiveRetryingOperationKVOAdapter alloc] initWithSourceObject:self.innerOperation targetObject:self];
     }
     
     return self;
