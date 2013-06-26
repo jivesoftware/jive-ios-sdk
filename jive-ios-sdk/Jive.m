@@ -29,6 +29,7 @@
 #import "JiveTypedObject_internal.h"
 #import "NSString+Jive.h"
 #import "JiveRetryingHTTPRequestOperation.h"
+#import "JiveRetryingImageRequestOperation.h"
 
 @interface JiveInvite (internal)
 
@@ -734,23 +735,23 @@
     [[self blogOperation:person withOptions:options onComplete:complete onError:errorBlock] start];
 }
 
-- (AFImageRequestOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:nil andTemplate:[person.avatarRef path], nil];
     void (^heapCompleteBlock)(UIImage *) = [complete copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
-    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:mutableURLRequest
-                                                                              imageProcessingBlock:NULL
-                                                                                           success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    AFImageRequestOperation<JiveRetryingOperation> *avatarOperation = [[JiveRetryingImageRequestOperation alloc] initWithRequest:mutableURLRequest];
+    [avatarOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
         if (heapCompleteBlock) {
+            UIImage *image = responseObject; // AFImageRequestOperation guarantees that this will be a UIImage.
             heapCompleteBlock(image);
         }
     })
-                                                                                           failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                     failure:(^(AFHTTPRequestOperation *operation, NSError *error) {
         if (heapErrorBlock) {
             heapErrorBlock(error);
         }
     })];
-    return operation;
+    return avatarOperation;
 }
 
 - (void) avatarForPerson:(JivePerson *)person onComplete:(void (^)(UIImage *))complete onError:(JiveErrorBlock)error {
@@ -1498,23 +1499,23 @@
                                    onError:errorBlock];
 }
 
-- (AFImageRequestOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[place.avatarRef path], nil];
     void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
     void (^heapErrorBlock)(NSError *) = [errorBlock copy];
-    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:mutableURLRequest
-                                                                              imageProcessingBlock:NULL
-                                                                                           success:(^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    AFImageRequestOperation<JiveRetryingOperation> *avatarOperation = [[JiveRetryingImageRequestOperation alloc] initWithRequest:mutableURLRequest];
+    [avatarOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
         if (heapCompleteBlock) {
+            UIImage *image = responseObject; // AFImageRequestOperation guarantees that this is a UIImage.
             heapCompleteBlock(image);
         }
     })
-                                                                                           failure:(^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                           failure:(^(AFHTTPRequestOperation *operation, NSError *error) {
         if (heapErrorBlock) {
             heapErrorBlock(error);
         }
     })];
-    return operation;
+    return avatarOperation;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock {

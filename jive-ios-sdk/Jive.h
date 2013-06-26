@@ -258,7 +258,7 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deletePerson(String,%20UriInfo)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getAvatar(String)
-- (AFImageRequestOperation *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock;
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#updatePerson(String,%20PersonEntity)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) updatePersonOperation:(JivePerson *)person onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createFollowing(String,%20String)
@@ -405,7 +405,7 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAnnouncements(String,%20int,%20int,%20boolean,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) announcementsOperationForPlace:(JivePlace *)place options:(JivePagedRequestOptions *)options onComplete:(void (^)(NSArray *announcements))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceAvatar(String,%20String)
-- (AFImageRequestOperation *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock;
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/PlaceService.html#getPlaceTasks(String,%20String,%20int,%20int,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock;
 

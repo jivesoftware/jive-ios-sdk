@@ -417,6 +417,11 @@
 		B8D24398177A1DEA00BE8A6D /* JiveRetryingHTTPRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */; };
 		B8D24399177A1DEA00BE8A6D /* JiveRetryingJAPIRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */; };
 		B8D243C9177A304F00BE8A6D /* JiveRetryingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D243421775657500BE8A6D /* JiveRetryingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */; };
+		B8D2440C177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */; };
+		B8D24412177B334500BE8A6D /* JiveRetryingImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D24413177B334500BE8A6D /* JiveRetryingImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */; };
+		B8D24416177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */; };
 		B8D2510C16B9735800412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
 		B8D2511016B9735F00412DA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */; };
 		B8D2511116B9744900412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
@@ -1023,6 +1028,11 @@
 		B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerJAPIRequestOperation.h; sourceTree = "<group>"; };
 		B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerJAPIRequestOperation.m; sourceTree = "<group>"; };
 		B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingJAPIRequestOperationTests.m; sourceTree = "<group>"; };
+		B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerImageRequestOperation.h; sourceTree = "<group>"; };
+		B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerImageRequestOperation.m; sourceTree = "<group>"; };
+		B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingImageRequestOperation.h; sourceTree = "<group>"; };
+		B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingImageRequestOperation.m; sourceTree = "<group>"; };
+		B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingImageRequestOperationTests.m; sourceTree = "<group>"; };
 		B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B8DC02971666840C00BCC61D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1504,8 +1514,12 @@
 				B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */,
 				B8B0DAA1177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h */,
 				B8B0DAA2177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m */,
+				B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */,
+				B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */,
 				B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */,
 				B8D2433B17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m */,
+				B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */,
+				B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */,
 				B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */,
 				B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */,
 				B8B0DAA617739BF00060F62E /* JiveRetryingJAPIRequestOperation.h */,
@@ -1661,6 +1675,7 @@
 				2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */,
 				B8D2433F1775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.h */,
 				B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */,
+				B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */,
 				B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */,
 				B8D2433E17755E6E00BE8A6D /* JiveRetryingURLConnectionOperationTests.h */,
 				B843FF4417749A9100213861 /* JiveRetryingURLConnectionOperationTests.m */,
@@ -1750,6 +1765,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D24412177B334500BE8A6D /* JiveRetryingImageRequestOperation.h in Headers */,
 				8999E65316FA9BB00009677A /* JiveVideo.h in Headers */,
 				B86B0B3A166D0105008E525E /* JiveDefinedSizeRequestOptions.h in Headers */,
 				B86B0B3C166D0105008E525E /* JiveInboxOptions.h in Headers */,
@@ -1874,6 +1890,7 @@
 				B8B0DAAD17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h in Headers */,
 				B8D2433C17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h in Headers */,
 				B8D2434B1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h in Headers */,
+				B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2251,6 +2268,8 @@
 				B8B0DAAE17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m in Sources */,
 				B8D2433D17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m in Sources */,
 				B8D2434C1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m in Sources */,
+				B8D2440C177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m in Sources */,
+				B8D24413177B334500BE8A6D /* JiveRetryingImageRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2355,6 +2374,7 @@
 				B843FF4517749A9100213861 /* JiveRetryingURLConnectionOperationTests.m in Sources */,
 				B8D24398177A1DEA00BE8A6D /* JiveRetryingHTTPRequestOperationTests.m in Sources */,
 				B8D24399177A1DEA00BE8A6D /* JiveRetryingJAPIRequestOperationTests.m in Sources */,
+				B8D24416177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
