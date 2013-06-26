@@ -73,8 +73,9 @@
 
 - (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    [self.outerOperation setCompletionBlockWithSuccess:success
-                                               failure:failure];
+    AFHTTPRequestOperation *outerOperation = (AFHTTPRequestOperation *)self.outerOperation;
+    [outerOperation setCompletionBlockWithSuccess:success
+                                          failure:failure];
 }
 
 #pragma mark - JiveRetryingURLConnectionOperation
@@ -85,20 +86,6 @@
 
 + (Class)operationClass {
     return [JiveClassDelegatingAFHTTPRequestOperation class];
-}
-
-#pragma mark - public API
-
-+ (NSIndexSet *)JiveAFAcceptableStatusCodes {
-    return nil;
-}
-
-+ (NSSet *)JiveAFAcceptableContentTypes {
-    return nil;
-}
-
-+ (BOOL)JiveAFCanProcessRequest:(NSURLRequest *)urlRequest {
-    return NO;
 }
 
 @end

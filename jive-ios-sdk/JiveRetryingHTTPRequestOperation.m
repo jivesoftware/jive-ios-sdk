@@ -156,7 +156,6 @@
     if (self) {
         self.innerOperation = [[JiveRetryingInnerHTTPRequestOperation alloc] initWithRequest:urlRequest
                                                                               outerOperation:self];
-        self.innerOperation.outerOperation = self;
     }
     
     return self;

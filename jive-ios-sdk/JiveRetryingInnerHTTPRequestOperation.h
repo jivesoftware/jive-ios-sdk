@@ -31,12 +31,4 @@
 
 - (AFHTTPRequestOperation *)operation;
 
-#pragma mark - public API
-
-@property (atomic, weak) AFHTTPRequestOperation *outerOperation;
-
-+ (NSIndexSet *)JiveAFAcceptableStatusCodes;
-+ (NSSet *)JiveAFAcceptableContentTypes;
-+ (BOOL)JiveAFCanProcessRequest:(NSURLRequest *)urlRequest;
-
 @end
