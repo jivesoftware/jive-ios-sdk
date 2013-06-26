@@ -312,18 +312,4 @@
     self.innerOperation.retryCallbackQueue = retryCallbackQueue;
 }
 
-#pragma mark - JiveAFHTTPRequestOperationClassMethodDelegator
-
-+ (NSIndexSet *)superclassAcceptableStatusCodes {
-    return [[self superclass] acceptableStatusCodes];
-}
-
-+ (NSSet *)superclassAcceptableContentTypes {
-    return [[self superclass] acceptableContentTypes];
-}
-
-+ (BOOL)superclassCanProcessRequest:(NSURLRequest *)urlRequest {
-    return [[self superclass] canProcessRequest:urlRequest];
-}
-
 @end
