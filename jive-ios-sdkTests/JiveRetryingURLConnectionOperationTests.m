@@ -8,6 +8,13 @@
 
 #import "JiveRetryingURLConnectionOperationTests.h"
 #import "JiveRetryingURLConnectionOperation.h"
+#import "JiveKVOTracker.h"
+
+@interface JiveRetryingURLConnectionOperationTestsTestOperation : NSOperation
+
+- (void)finish;
+
+@end
 
 @implementation JiveRetryingURLConnectionOperationTests {
     AFURLConnectionOperation<JiveRetryingOperation> *testObject;
@@ -67,6 +74,7 @@
     
     STAssertTrue(completionBlockCalled, nil);
     STAssertNil(testObject.retrier, nil);
+    STAssertTrue([testObject isFinished], nil);
 }
 
 - (void)testFailureCallsCompletionBlockWhenThereIsNoRetrierAndHasOperationError {
@@ -88,6 +96,7 @@
     }];
     
     STAssertTrue(completionBlockCalled, nil);
+    STAssertTrue([testObject isFinished], nil);
     STAssertEqualObjects([testObject.error domain], [testError domain], nil);
     STAssertEquals([testObject.error code], [testError code], nil);
 }
@@ -118,6 +127,7 @@
     }];
     
     STAssertTrue(completionBlockCalled, nil);
+    STAssertTrue([testObject isFinished], nil);
     STAssertEqualObjects([testObject.error domain], [retryError domain], nil);
     STAssertEquals([testObject.error code], [retryError code], nil);
     STAssertEqualObjects(testRetrier.retryingOperations, (@[
@@ -165,6 +175,7 @@
     }];
     
     STAssertTrue(completionBlockCalled, nil);
+    STAssertTrue([testObject isFinished], nil);
     STAssertNil(testObject.error, nil);
     STAssertEqualObjects(testRetrier.retryingOperations, (@[
                                                           testObject,
@@ -218,6 +229,7 @@
     }];
     
     STAssertTrue(completionBlockCalled, nil);
+    STAssertTrue([testObject isFinished], nil);
     STAssertEqualObjects([testObject.error domain], [secondRetryError domain], nil);
     STAssertEquals([testObject.error code], [secondRetryError code], nil);
     STAssertEqualObjects(testRetrier.retryingOperations, (@[
@@ -401,6 +413,345 @@
     }
 }
 
+- (void)testOperationLifecycleCancellation {
+    [OHHTTPStubs shouldStubRequestsPassingTest:(^BOOL(NSURLRequest *request) {
+        return [[[request URL] absoluteString] isEqualToString:@"http://example.com"];
+    })
+                              withStubResponse:(^OHHTTPStubsResponse *(NSURLRequest *request) {
+        return [self successCallbackOHHTTPStubsResponseWithResponder:^(dispatch_block_t respondBlock) {
+            // don't capture the respondBlock - we don't want the operation to finish as we want to explicitly cancel it
+        }];
+    })];
+    
+    NSOperationQueue *operationQueue = [NSOperationQueue new];
+    
+    JiveKVOTracker * __block isExecutingKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                       keySelector:@selector(isExecuting)
+                                                                           options:NSKeyValueObservingOptionNew
+                                                                       changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            finishedBlock();
+        })
+                                                                         inContext:NULL];
+        
+        
+        [operationQueue addOperation:testObject];
+    }];
+    
+    [isExecutingKVOTracker stopObserving];
+    
+    STAssertEqualObjects((@[
+                          testObject,
+                          ]), [operationQueue operations], nil);
+    STAssertFalse([testObject isFinished], nil);
+    STAssertFalse([testObject isCancelled], nil);
+    
+    JiveKVOTracker * __block isFinishedKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        isFinishedKVOTracker = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                     keySelector:@selector(isFinished)
+                                                                         options:NSKeyValueObservingOptionNew
+                                                                     changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            finishedBlock();
+        })
+                                                                       inContext:NULL];
+        [operationQueue cancelAllOperations];
+    }];
+    
+    [isFinishedKVOTracker stopObserving];
+    
+    STAssertEqualObjects((@[
+                          ]), [operationQueue operations], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertTrue([testObject isFinished], nil);
+    STAssertTrue([testObject isCancelled], nil);
+}
+
+- (void)testOperationLifecyclePrecancel {
+    [OHHTTPStubs shouldStubRequestsPassingTest:(^BOOL(NSURLRequest *request) {
+        return [[[request URL] absoluteString] isEqualToString:@"http://example.com"];
+    })
+                              withStubResponse:(^OHHTTPStubsResponse *(NSURLRequest *request) {
+        return [self successCallbackOHHTTPStubsResponseWithResponder:^(dispatch_block_t respondBlock) {
+            // don't capture the respondBlock - we don't want the operation to finish as we want to explicitly cancel it
+        }];
+    })];
+    
+    NSOperationQueue *operationQueue = [NSOperationQueue new];
+    
+    BOOL __block didExecute = NO;
+    JiveKVOTracker *isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                   keySelector:@selector(isExecuting)
+                                                                       options:NSKeyValueObservingOptionNew
+                                                                   changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+        didExecute = YES;
+    })
+                                                                     inContext:NULL];
+    
+    [testObject cancel];
+    
+    STAssertFalse([testObject isFinished], nil);
+    
+    JiveKVOTracker * __block isFinishedKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        isFinishedKVOTracker = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                     keySelector:@selector(isFinished)
+                                                                         options:NSKeyValueObservingOptionNew
+                                                                     changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            finishedBlock();
+        })
+                                                                       inContext:NULL];
+        [operationQueue addOperation:testObject];
+    }];
+    
+    [isFinishedKVOTracker stopObserving];
+    
+    // give isExecuting some time to try to erroneously change
+    [self delay];
+    [isExecutingKVOTracker stopObserving];
+    
+    STAssertEqualObjects((@[
+                          ]), [operationQueue operations], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertTrue([testObject isFinished], nil);
+    STAssertTrue([testObject isCancelled], nil);
+}
+
+- (void)testOperationLifecycleNormal {
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    
+    dispatch_block_t __block respondBlock = NULL;
+    JiveKVOTracker * __block isExecutingKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        dispatch_block_t maybeFinishedBlock = ^{
+            if ([testObject isExecuting] &&
+                (respondBlock != NULL)) {
+                finishedBlock();
+            }
+        };
+        isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                       keySelector:@selector(isExecuting)
+                                                                           options:NSKeyValueObservingOptionNew
+                                                                       changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            maybeFinishedBlock();
+        })
+                                                                         inContext:NULL];
+        [OHHTTPStubs shouldStubRequestsPassingTest:(^BOOL(NSURLRequest *request) {
+            return [[[request URL] absoluteString] isEqualToString:@"http://example.com"];
+        })
+                                  withStubResponse:(^OHHTTPStubsResponse *(NSURLRequest *request) {
+            return [self successCallbackOHHTTPStubsResponseWithResponder:^(dispatch_block_t respondBlock_) {
+                respondBlock = respondBlock_;
+                maybeFinishedBlock();
+            }];
+        })];
+        
+        [operationQueue addOperation:testObject];
+    }];
+    
+    [isExecutingKVOTracker stopObserving];
+    
+    if (respondBlock) {
+        STAssertEqualObjects((@[
+                              testObject,
+                              ]), [operationQueue operations], nil);
+        STAssertTrue([testObject isExecuting], nil);
+        STAssertFalse([testObject isFinished], nil);
+        STAssertFalse([testObject isCancelled], nil);
+        
+        
+        JiveKVOTracker * __block isFinishedKVOTracker;
+        [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+            isFinishedKVOTracker = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                         keySelector:@selector(isFinished)
+                                                                             options:NSKeyValueObservingOptionNew
+                                                                         changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+                finishedBlock();
+            })
+                                                                           inContext:NULL];
+            respondBlock();
+        }];
+        
+        [isFinishedKVOTracker stopObserving];
+        
+        STAssertEqualObjects((@[
+                              ]), [operationQueue operations], nil);
+        STAssertFalse([testObject isExecuting], nil);
+        STAssertTrue([testObject isFinished], nil);
+        STAssertFalse([testObject isCancelled], nil);
+    } else {
+        STFail(nil);
+    }
+}
+
+- (void)testOperationLifecyclePredependent {
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    [OHHTTPStubs shouldStubRequestsPassingTest:(^BOOL(NSURLRequest *request) {
+        return [[[request URL] absoluteString] isEqualToString:@"http://example.com"];
+    })
+                              withStubResponse:(^OHHTTPStubsResponse *(NSURLRequest *request) {
+        return [self successCallbackOHHTTPStubsResponseWithResponder:^(dispatch_block_t respondBlock_) {
+            // don't capture the respondBlock - we don't want the operation to finish as we want to explicitly cancel it
+        }];
+    })];
+    
+    JiveRetryingURLConnectionOperationTestsTestOperation *testDependentOperation = [JiveRetryingURLConnectionOperationTestsTestOperation new];
+    [testObject addDependency:testDependentOperation];
+    
+    JiveKVOTracker * __block isExecutingKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testDependentOperation
+                                                                       keySelector:@selector(isExecuting)
+                                                                           options:NSKeyValueObservingOptionNew
+                                                                       changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            finishedBlock();
+        })
+                                                                         inContext:NULL];
+        
+        [operationQueue addOperations:(@[
+                                       testDependentOperation,
+                                       testObject,
+                                       ])
+                    waitUntilFinished:NO];
+    }];
+    
+    [isExecutingKVOTracker stopObserving];
+    
+    STAssertEqualObjects((@[
+                          testDependentOperation,
+                          testObject,
+                          ]), [operationQueue operations], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertFalse([testObject isFinished], nil);
+    STAssertFalse([testObject isCancelled], nil);
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                       keySelector:@selector(isExecuting)
+                                                                           options:NSKeyValueObservingOptionNew
+                                                                       changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            finishedBlock();
+        })
+                                                                         inContext:NULL];
+        
+        [testDependentOperation finish];
+    }];
+    
+    STAssertEqualObjects((@[
+                          testObject,
+                          ]), [operationQueue operations], nil);
+    STAssertTrue([testObject isExecuting], nil);
+    STAssertFalse([testObject isFinished], nil);
+    STAssertFalse([testObject isCancelled], nil);
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [testObject setCompletionBlock:^{
+            finishedBlock();
+        }];
+        
+        [testObject cancel];
+    }];
+    
+    STAssertEqualObjects((@[
+                          ]), [operationQueue operations], nil);
+    STAssertFalse([testObject isExecuting], nil);
+    STAssertTrue([testObject isFinished], nil);
+    STAssertTrue([testObject isCancelled], nil);
+}
+
+- (void)testOperationLifecyclePostdependent {
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    
+    JiveRetryingURLConnectionOperationTestsTestOperation *testDependentOperation = [JiveRetryingURLConnectionOperationTestsTestOperation new];
+    [testDependentOperation addDependency:testObject];
+    
+    dispatch_block_t __block respondBlock = NULL;
+    JiveKVOTracker * __block isExecutingKVOTracker;
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        dispatch_block_t maybeFinishedBlock = ^{
+            if ([testObject isExecuting] &&
+                (respondBlock != NULL)) {
+                finishedBlock();
+            }
+        };
+        isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                       keySelector:@selector(isExecuting)
+                                                                           options:NSKeyValueObservingOptionNew
+                                                                       changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+            maybeFinishedBlock();
+        })
+                                                                         inContext:NULL];
+        [OHHTTPStubs shouldStubRequestsPassingTest:(^BOOL(NSURLRequest *request) {
+            return [[[request URL] absoluteString] isEqualToString:@"http://example.com"];
+        })
+                                  withStubResponse:(^OHHTTPStubsResponse *(NSURLRequest *request) {
+            return [self successCallbackOHHTTPStubsResponseWithResponder:^(dispatch_block_t respondBlock_) {
+                respondBlock = respondBlock_;
+                maybeFinishedBlock();
+            }];
+        })];
+        
+        [operationQueue addOperations:(@[
+                                       testObject,
+                                       testDependentOperation,
+                                       ])
+                    waitUntilFinished:NO];
+    }];
+    
+    [isExecutingKVOTracker stopObserving];
+    
+    if (respondBlock) {
+        STAssertEqualObjects((@[
+                              testObject,
+                              testDependentOperation,
+                              ]), [operationQueue operations], nil);
+        STAssertTrue([testObject isExecuting], nil);
+        STAssertFalse([testObject isFinished], nil);
+        STAssertFalse([testObject isCancelled], nil);
+        STAssertFalse([testDependentOperation isExecuting], nil);
+        STAssertFalse([testDependentOperation isFinished], nil);
+        STAssertFalse([testDependentOperation isCancelled], nil);
+        
+        
+        [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+            isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+                                                                           keySelector:@selector(isExecuting)
+                                                                               options:NSKeyValueObservingOptionNew
+                                                                           changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
+                finishedBlock();
+            })
+                                                                             inContext:NULL];
+            
+            respondBlock();
+        }];
+        [isExecutingKVOTracker stopObserving];
+        
+        STAssertEqualObjects((@[
+                              testDependentOperation,
+                              ]), [operationQueue operations], nil);
+        STAssertFalse([testObject isExecuting], nil);
+        STAssertTrue([testObject isFinished], nil);
+        STAssertFalse([testObject isCancelled], nil);
+        STAssertTrue([testDependentOperation isExecuting], nil);
+        STAssertFalse([testDependentOperation isFinished], nil);
+        STAssertFalse([testDependentOperation isCancelled], nil);
+        
+        [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+            [testDependentOperation setCompletionBlock:^{
+                finishedBlock();
+            }];
+            
+            [testDependentOperation finish];
+        }];
+        
+        STAssertEqualObjects((@[
+                              ]), [operationQueue operations], nil);
+    } else {
+        STFail(nil);
+    }
+}
+
 @end
 
 @interface JiveRetryingURLConnectionOperationTestsRetrier()
@@ -448,6 +799,89 @@
     } else {
         failBlock(originalError);
     }
+}
+
+@end
+
+@interface JiveRetryingURLConnectionOperationTestsTestOperation ()
+
+@property (atomic) NSObject *stateMonitor;
+
+@end
+
+@implementation JiveRetryingURLConnectionOperationTestsTestOperation {
+    BOOL _isExecuting;
+    BOOL _isFinished;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.stateMonitor = [NSObject new];
+    }
+    return self;
+}
+
+#pragma mark - NSOperation
+
+- (BOOL)isExecuting {
+    BOOL isExecuting;
+    @synchronized(self.stateMonitor) {
+        isExecuting = _isExecuting;
+    }
+    
+    return isExecuting;
+}
+
+- (BOOL)isFinished {
+    BOOL isFinished;
+    @synchronized(self.stateMonitor) {
+        isFinished = _isFinished;
+    }
+    return isFinished;
+}
+
+- (BOOL)isConcurrent {
+    return YES;
+}
+
+- (void)start {
+    if ([self isReady]) {
+        if ([self isCancelled]) {
+            [self finish];
+        } else {
+            [self willChangeValueForKey:@"isExecuting"];
+            @synchronized(self.stateMonitor) {
+                _isExecuting = YES;
+            }
+            [self didChangeValueForKey:@"isExecuting"];
+        }
+    }
+}
+
+- (void)cancel {
+    [super cancel];
+    [self finish];
+}
+
+#pragma mark - public API
+
+- (void)finish {
+    BOOL wasExecuting = [self isExecuting];
+    if (wasExecuting) {
+        [self willChangeValueForKey:@"isExecuting"];
+    }
+    [self willChangeValueForKey:@"isFinished"];
+    @synchronized(self.stateMonitor) {
+        if (wasExecuting) {
+            _isExecuting = NO;
+        }
+        _isFinished = YES;
+    }
+    if (wasExecuting) {
+        [self didChangeValueForKey:@"isExecuting"];
+    }
+    [self didChangeValueForKey:@"isFinished"];
 }
 
 @end

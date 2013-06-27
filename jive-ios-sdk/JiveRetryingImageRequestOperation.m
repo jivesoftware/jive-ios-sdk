@@ -13,6 +13,7 @@
 @interface JiveRetryingImageRequestOperation ()
 
 @property (atomic, readwrite) JiveRetryingInnerImageRequestOperation *innerOperation;
+@property (nonatomic) JiveKVOAdapter *KVOAdapter;
 
 @end
 
@@ -155,7 +156,9 @@
     self = [super initWithRequest:urlRequest];
     if (self) {
         self.innerOperation = [[JiveRetryingInnerImageRequestOperation alloc] initWithRequest:urlRequest
-                                                                              outerOperation:self];
+                                                                               outerOperation:self];
+        self.KVOAdapter = [JiveKVOAdapter retryingOperationKVOAdapterWithSourceObject:self.innerOperation
+                                                                         targetObject:self];
     }
     
     return self;

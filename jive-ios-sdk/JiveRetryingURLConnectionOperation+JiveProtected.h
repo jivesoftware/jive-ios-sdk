@@ -7,6 +7,7 @@
 //
 
 #import "JiveRetryingURLConnectionOperation.h"
+#import "JiveKVOAdapter.h"
 
 @interface JiveRetryingURLConnectionOperation ()
 
@@ -17,5 +18,12 @@
 
 - (id)initWithRequest:(NSURLRequest *)urlRequest
        outerOperation:(AFURLConnectionOperation *)outerOperation;
+
+@end
+
+@interface JiveKVOAdapter (JiveRetryingURLConnectionOperation)
+
++ (instancetype)retryingOperationKVOAdapterWithSourceObject:(id)sourceObject
+                                               targetObject:(id)targetObject;
 
 @end

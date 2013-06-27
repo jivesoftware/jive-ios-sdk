@@ -42,8 +42,8 @@
                               })];
     
     id __block actualJSON = nil;
+    JiveRetryingJAPIRequestOperation __block *testObject;
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        JiveRetryingJAPIRequestOperation *testObject;
         testObject = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]]
                                                                                success:(^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             actualJSON = JSON;
@@ -54,7 +54,6 @@
         })];
         [testObject start];
     }];
-    
     STAssertEqualObjects(expectedJSON, actualJSON, nil);
 }
 

@@ -19,6 +19,7 @@
 @interface JiveRetryingJAPIRequestOperation ()
 
 @property (atomic, readwrite) JiveRetryingInnerJAPIRequestOperation *innerOperation;
+@property (nonatomic) JiveKVOAdapter *KVOAdapter;
 
 @end
 
@@ -162,6 +163,8 @@
     if (self) {
         self.innerOperation = [[JiveRetryingInnerJAPIRequestOperation alloc] initWithRequest:urlRequest
                                                                               outerOperation:self];
+        self.KVOAdapter = [JiveKVOAdapter retryingOperationKVOAdapterWithSourceObject:self.innerOperation
+                                                                         targetObject:self];
     }
     
     return self;
