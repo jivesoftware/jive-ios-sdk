@@ -20,7 +20,7 @@
 #import "JiveAsyncTestCase.h"
 #import "JAPIRequestOperation.h"
 
-static NSTimeInterval const JiveAsyncTestCaseTimeout = 5000;
+static NSTimeInterval const JiveAsyncTestCaseTimeout = 5;
 static NSTimeInterval const JiveAsyncTestCaseDelayInterval = 1;
 
 @implementation JiveAsyncTestCase

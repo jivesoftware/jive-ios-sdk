@@ -403,3 +403,18 @@
 }
 
 @end
+
+@implementation JiveKVOAdapter (JiveRetryingURLConnectionOperation)
+
++ (instancetype)retryingOperationKVOAdapterWithSourceObject:(id)sourceObject
+                                               targetObject:(id)targetObject {
+    return [[self alloc] initWithSourceObject:sourceObject
+                                 targetObject:targetObject
+                            keyPathsToObserve:(@[
+                                               NSStringFromSelector(@selector(isCancelled)),
+                                               NSStringFromSelector(@selector(isExecuting)),
+                                               NSStringFromSelector(@selector(isFinished)),
+                                               ])];
+}
+
+@end
