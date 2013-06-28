@@ -751,6 +751,7 @@
             heapErrorBlock(error);
         }
     })];
+    avatarOperation.retrier = self.defaultOperationRetrier;
     return avatarOperation;
 }
 
@@ -1515,6 +1516,7 @@
             heapErrorBlock(error);
         }
     })];
+    avatarOperation.retrier = self.defaultOperationRetrier;
     return avatarOperation;
 }
 
