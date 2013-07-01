@@ -83,7 +83,7 @@ struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
 @implementation JivePerson
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
-static NSString * const JivePersonType = @"person";
+NSString * const JivePersonType = @"person";
 
 + (void)load {
     if (self == [JivePerson class])
