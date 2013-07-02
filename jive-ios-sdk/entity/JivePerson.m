@@ -371,9 +371,9 @@ static NSString * const JivePersonType = @"person";
                                                       andTemplate:[self.selfRef path], nil];
     
     return [self updateJiveTypedObject:self
-                      withRequest:request
-                       onComplete:completeBlock
-                          onError:errorBlock];
+                           withRequest:request
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) managerOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
@@ -438,9 +438,9 @@ static NSString * const JivePersonType = @"person";
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPMethod:@"PUT"];
     return [self updateJiveTypedObject:self
-                      withRequest:request
-                       onComplete:completeBlock
-                          onError:errorBlock];
+                           withRequest:request
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (AFJSONRequestOperation *) followOperation:(JivePerson *)target
@@ -580,17 +580,17 @@ static NSString * const JivePersonType = @"person";
     
     [request setHTTPMethod:@"POST"];
     return [self updateJiveTypedObject:task
-                      withRequest:request
-                       onComplete:completeBlock
-                          onError:errorBlock];
+                           withRequest:request
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 #pragma mark - helper methods
 
 - (JAPIRequestOperation *)updateJiveTypedObject:(JiveTypedObject *)target
-                               withRequest:(NSURLRequest *)request
-                                onComplete:(void (^)(id))completeBlock
-                                   onError:(JiveErrorBlock)errorBlock
+                                    withRequest:(NSURLRequest *)request
+                                     onComplete:(void (^)(id))completeBlock
+                                        onError:(JiveErrorBlock)errorBlock
 {
     return [Jive operationWithRequest:request
                            onComplete:completeBlock
@@ -628,9 +628,9 @@ static NSString * const JivePersonType = @"person";
 }
 
 - (AFJSONRequestOperation *) streamsListOperation:(NSURL *)url
-                                     withOptions:(JiveReturnFieldsRequestOptions *)options
-                                      onComplete:(JiveArrayCompleteBlock)completeBlock
-                                         onError:(JiveErrorBlock)errorBlock {
+                                      withOptions:(JiveReturnFieldsRequestOptions *)options
+                                       onComplete:(JiveArrayCompleteBlock)completeBlock
+                                          onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self.jiveInstance requestWithOptions:options
                                                       andTemplate:[url path], nil];
     
