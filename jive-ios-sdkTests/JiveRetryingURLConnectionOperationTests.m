@@ -715,7 +715,7 @@
         
         
         [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-            isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testObject
+            isExecutingKVOTracker  = [[JiveKVOTracker alloc] initWithObservationTarget:testDependentOperation
                                                                            keySelector:@selector(isExecuting)
                                                                                options:NSKeyValueObservingOptionNew
                                                                            changeBlock:(^(id context, NSString *keyPath, id observationTarget, NSDictionary *change, JiveKVOTracker *strongWeakKVOTracker) {
