@@ -100,16 +100,18 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 
 @property (nonatomic, weak) id<JiveOperationRetrier> defaultOperationRetrier;
 
-//! Use this method, or the operation version, before creating a Jive instance to make sure you can make a Jive instance.
-+ (void) getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
-//! Use this method, or the non-operation version, before creating a Jive instance to make sure you can make a Jive instance.
-+ (AFJSONRequestOperation<JiveRetryingOperation> *) getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
-
 //! The init method to used when creating a Jive instance for a specific URL and credentials.
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate;
 
 //! The URL used to init this jive instance.
 - (NSURL*) jiveInstanceURL;
+
+#pragma mark - Version
+
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning This is the only method pair that doesn't use JiveAuthorizationDelegate
+- (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning This is the only method pair that doesn't use JiveAuthorizationDelegate
+- (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Activities
 
@@ -657,4 +659,8 @@ typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *ea
 //! Method to retrive the JiveCredentials for the specified URL.
 - (id<JiveCredentials>)credentialsForJiveInstance:(NSURL *)url;
 - (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url;
+
+//! Allow connections to untrusted hosts. Only calls delegate when the NSURLAuthenticationChallenge authenticationMethod is NSURLAuthenticationMethodServerTrust.
+@optional
+- (void)receivedServerTrustAuthenticationChallenge:(NSURLAuthenticationChallenge *)authenticationChallenge;
 @end

@@ -2655,7 +2655,6 @@
 				DSTROOT = /tmp/jive_ios_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = _AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES_;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

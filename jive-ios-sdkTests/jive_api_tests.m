@@ -49,19 +49,19 @@
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
     
     // This can be anything. The mock objects will return local data
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    testURL = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     
     // Reponse file containing data from JIVE My request
     NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:resourceName ofType:@"json"];
     
     // Mock response delegate
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:testURL returningContentsOfFile:contentPath];
     
     // Set the response mock delegate for this request
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     
     // Create the Jive API object, using mock auth delegate
-    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:authDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:testURL authorizationDelegate:authDelegate];
     return jive;
 }
 
@@ -6141,76 +6141,70 @@
     }];
 }
 
-- (void) testGetVersionOperationForInstance {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version" ofType:@"json"];
+- (void) testVersionOperationForInstance {
+    [self createJiveAPIObjectWithResponse:@"version"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
-                                                                        onComplete:^(JivePlatformVersion *version) {
-                                                                            STAssertEqualObjects(version.major, @7, @"Wrong version found");
-                                                                            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        } onError:^(NSError *error) {
-                                                                            STFail([error localizedDescription]);
-                                                                            finishedBlock();
-                                                                        }];
+        AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @7, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
         
         [operation start];
     }];
 }
 
-- (void) testGetVersionForInstance {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_alternate" ofType:@"json"];
+- (void) testVersionForInstance {
+    [self createJiveAPIObjectWithResponse:@"version_alternate"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        [Jive getVersionForInstance:url
-                         onComplete:^(JivePlatformVersion *version) {
-                             STAssertEqualObjects(version.major, @6, @"Wrong version found");
-                             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
-                             [mockJiveURLResponseDelegate verify];
-                             finishedBlock();
-                         } onError:^(NSError *error) {
-                             STFail([error localizedDescription]);
-                             finishedBlock();
-                         }];
+        [jive versionForInstance:testURL
+                      onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @6, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                         onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
     }];
 }
 
-- (void) testGetVersionOperationForInstanceReturnsErrorIfNoV3API {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_no_v3" ofType:@"json"];
+- (void) testVersionOperationForInstanceReturnsErrorIfNoV3API {
+    [self createJiveAPIObjectWithResponse:@"version_no_v3"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
-                                                                        onComplete:^(JivePlatformVersion *version) {
-                                                                            BOOL found = NO;
-                                                                            for (JiveCoreVersion *coreURI in version.coreURI) {
-                                                                                if ([coreURI.version isEqualToNumber:@3]) {
-                                                                                    STFail(@"v3 API found");
-                                                                                    found = YES;
-                                                                                }
-                                                                            }
-                                                                            if (!found) {
-                                                                                STFail(@"Valid response returned without v3 API");
-                                                                            }
-                                                                            
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        } onError:^(NSError *error) {
-                                                                            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
-                                                                            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        }];
+        AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            BOOL found = NO;
+            for (JiveCoreVersion *coreURI in version.coreURI) {
+                if ([coreURI.version isEqualToNumber:@3]) {
+                    STFail(@"v3 API found");
+                    found = YES;
+                }
+            }
+            if (!found) {
+                STFail(@"Valid response returned without v3 API");
+            }
+            
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
+            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })];
         
         [operation start];
     }];

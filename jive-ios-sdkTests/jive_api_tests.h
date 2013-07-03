@@ -26,6 +26,7 @@
     id mockJiveURLResponseDelegate2;
     id mockAuthDelegate;
     Jive *jive;
+    NSURL *testURL;
 }
 
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate;

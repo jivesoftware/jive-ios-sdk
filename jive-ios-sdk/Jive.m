@@ -58,7 +58,7 @@
 
 @synthesize jiveInstance = _jiveInstance;
 
-+ (AFJSONRequestOperation<JiveRetryingOperation> *)getVersionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
@@ -90,15 +90,14 @@
             }
         }
     })
-                                                                                onError:errorBlock
-                                                                                retrier:nil];
+                                                                                onError:errorBlock];
     return operation;
 }
 
-+ (void)getVersionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *))completeBlock onError:(JiveErrorBlock)errorBlock {
-    [[Jive getVersionOperationForInstance:jiveInstanceURL
-                               onComplete:completeBlock
-                                  onError:errorBlock] start];
+- (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self versionOperationForInstance:jiveInstanceURL
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
 }
 
 + (void)initialize {
@@ -109,13 +108,8 @@
 
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL
       authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate {
-    
-    
-    if(!jiveInstanceURL) {
-        [NSException raise:@"Jive jiveInstanceURL may not be nil." format:nil];
-    }
-    
-    if(self = [super init]) {
+    self = [super init];
+    if(self) {
         _jiveInstance = jiveInstanceURL;
         _delegate = delegate;
     }
@@ -529,7 +523,7 @@
             markOperationCompleteBlock(request, error);
         })];
         [operations addObject:operation];
-        operation.retrier = self.defaultOperationRetrier;
+        [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:operation];
     }
     
     if ([operations count] == 0) {
@@ -751,7 +745,7 @@
             heapErrorBlock(error);
         }
     })];
-    avatarOperation.retrier = self.defaultOperationRetrier;
+    [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:avatarOperation];
     return avatarOperation;
 }
 
@@ -1516,7 +1510,7 @@
             heapErrorBlock(error);
         }
     })];
-    avatarOperation.retrier = self.defaultOperationRetrier;
+    [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:avatarOperation];
     return avatarOperation;
 }
 
@@ -1900,23 +1894,28 @@
     
     NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"api/core/v3/images", nil];
     
-    [self maybeApplyCredentialsToMutableURLRequest:request
-                                            forURL:self.jiveInstanceURL];
-    
-    AFHTTPRequestOperation<JiveRetryingOperation> *op = [[JiveRetryingHTTPRequestOperation alloc] initWithRequest:request];
-    op.retrier = self.defaultOperationRetrier;
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
-        JiveImage *jiveImage = [[JiveImage class] instanceFromJSON:json];
-        complete(jiveImage);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        if(errorBlock) {
-            errorBlock(err);
-        }
-    }];
-    
-    return op;
+    if (request) {
+        [self maybeApplyCredentialsToMutableURLRequest:request
+                                                forURL:self.jiveInstanceURL];
+        
+        AFHTTPRequestOperation<JiveRetryingOperation> *uploadImageOperation = [[JiveRetryingHTTPRequestOperation alloc] initWithRequest:request];
+        [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:uploadImageOperation];
+        
+        [uploadImageOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
+            JiveImage *jiveImage = [[JiveImage class] instanceFromJSON:json];
+            complete(jiveImage);
+        })
+                                                    failure:(^(AFHTTPRequestOperation *operation, NSError *err) {
+            if(errorBlock) {
+                errorBlock(err);
+            }
+        })];
+        
+        return uploadImageOperation;
+    } else {
+        return nil;
+    }
 }
 
 - (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
@@ -2025,7 +2024,7 @@
 }
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options template:(NSString*)template andArguments:(va_list)args {
-    if (!template)
+    if (!template || !self.jiveInstanceURL)
         return nil;
     
     NSMutableString* requestString = [[NSMutableString alloc] initWithFormat:template arguments:args];
@@ -2036,7 +2035,7 @@
     }
     
     NSURL* requestURL = [NSURL URLWithString:requestString
-                               relativeToURL:_jiveInstance];
+                               relativeToURL:self.jiveInstanceURL];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
     [self maybeApplyCredentialsToMutableURLRequest:request
@@ -2114,13 +2113,6 @@
 }
 
 - (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
-    return [[self class] operationWithRequest:request
-                                       onJSON:JSONBlock
-                                      onError:errorBlock
-                                      retrier:self.defaultOperationRetrier];
-}
-
-+ (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock retrier:(id<JiveOperationRetrier>)retrier {
     if (request) {
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
@@ -2134,7 +2126,8 @@
                                                              JSON:JSON]);
             }
         })];
-        operation.retrier = retrier;
+        
+        [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:operation];
         
         return operation;
     } else {
@@ -2180,7 +2173,7 @@
                                                              JSON:JSON]);
             }
         })];
-        operation.retrier = self.defaultOperationRetrier;
+        [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:operation];
         
         return operation;
     } else {
@@ -2225,6 +2218,29 @@
         return nil;
     })];
     return operation;
+}
+
+- (void)setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:(AFURLConnectionOperation<JiveRetryingOperation> *)retryingURLConnectionOperation {
+    [retryingURLConnectionOperation setAuthenticationAgainstProtectionSpaceBlock:^BOOL(NSURLConnection *connection, NSURLProtectionSpace *protectionSpace) {
+        if ([_delegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
+            if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+                return YES;
+            } else {
+                return NO;
+            }
+        } else {
+            return NO;
+        }
+    }];
+    [retryingURLConnectionOperation setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
+        __typeof__(_delegate) strongDelegate = _delegate;
+        if ([strongDelegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
+            [strongDelegate receivedServerTrustAuthenticationChallenge:challenge];
+        } else {
+            [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+        }
+    }];
+    retryingURLConnectionOperation.retrier = self.defaultOperationRetrier;
 }
 
 @end
