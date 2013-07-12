@@ -12,6 +12,7 @@
 @class JivePersonJive;
 @class JiveName;
 @class AFJSONRequestOperation;
+@class AFImageRequestOperation;
 @class JiveBlog;
 @class JivePerson;
 @class JiveWelcomeRequestOptions;

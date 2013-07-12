@@ -18,13 +18,17 @@
                                       options:(NSObject<JiveRequestOptions>*)options
                                   andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
 
-+ (JAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request
-                                    onComplete:(void(^)(id))completeBlock
-                                       onError:(JiveErrorBlock)errorBlock
-                               responseHandler:(id(^)(id JSON)) handler;
-- (JAPIRequestOperation *)listOperationForClass:(Class)clazz
-                                        request:(NSURLRequest *)request
-                                     onComplete:(JiveArrayCompleteBlock)completeBlock
-                                        onError:(JiveErrorBlock)errorBlock;
+- (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request
+                                                           onComplete:(void(^)(id))completeBlock
+                                                              onError:(JiveErrorBlock)errorBlock
+                                                      responseHandler:(id(^)(id JSON)) handler;
+- (JAPIRequestOperation<JiveRetryingOperation> *)listOperationForClass:(Class)clazz
+                                                               request:(NSURLRequest *)request
+                                                            onComplete:(JiveArrayCompleteBlock)completeBlock
+                                                               onError:(JiveErrorBlock)errorBlock;
+- (AFImageRequestOperation<JiveRetryingOperation> *) imageOperationForPath:(NSString *)path
+                                                                   options:(JiveDefinedSizeRequestOptions *)options
+                                                                onComplete:(JiveImageCompleteBlock)completeBlock
+                                                                   onError:(JiveErrorBlock)errorBlock;
 
 @end

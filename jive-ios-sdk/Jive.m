@@ -262,6 +262,28 @@
                                  onError:error];
 }
 
+- (AFImageRequestOperation<JiveRetryingOperation> *) imageOperationForPath:(NSString *)path
+                                                                   options:(JiveDefinedSizeRequestOptions *)options
+                                                                onComplete:(JiveImageCompleteBlock)completeBlock
+                                                                   onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:path, nil];
+    void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
+    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
+    AFImageRequestOperation<JiveRetryingOperation> *avatarOperation = [[JiveRetryingImageRequestOperation alloc] initWithRequest:mutableURLRequest];
+    [avatarOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id image) {
+        if (heapCompleteBlock) {
+            heapCompleteBlock(image); // AFImageRequestOperation guarantees that this is a UIImage.
+        }
+    })
+                                           failure:(^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (heapErrorBlock) {
+            heapErrorBlock(error);
+        }
+    })];
+    [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:avatarOperation];
+    return avatarOperation;
+}
+
 #pragma mark - public API
 #pragma mark - generic
 
@@ -729,24 +751,11 @@
     [[self blogOperation:person withOptions:options onComplete:complete onError:errorBlock] start];
 }
 
-- (AFImageRequestOperation<JiveRetryingOperation> *) avatarForPersonOperation:(JivePerson *)person onComplete:(void (^)(UIImage *avatarImage))complete onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:nil andTemplate:[person.avatarRef path], nil];
-    void (^heapCompleteBlock)(UIImage *) = [complete copy];
-    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
-    AFImageRequestOperation<JiveRetryingOperation> *avatarOperation = [[JiveRetryingImageRequestOperation alloc] initWithRequest:mutableURLRequest];
-    [avatarOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (heapCompleteBlock) {
-            UIImage *image = responseObject; // AFImageRequestOperation guarantees that this will be a UIImage.
-            heapCompleteBlock(image);
-        }
-    })
-                                     failure:(^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (heapErrorBlock) {
-            heapErrorBlock(error);
-        }
-    })];
-    [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:avatarOperation];
-    return avatarOperation;
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarForPersonOperation:(JivePerson *)person onComplete:(JiveImageCompleteBlock)complete onError:(JiveErrorBlock)errorBlock {
+    return [self imageOperationForPath:[person.avatarRef path]
+                               options:nil
+                            onComplete:complete
+                               onError:errorBlock];
 }
 
 - (void) avatarForPerson:(JivePerson *)person onComplete:(void (^)(UIImage *))complete onError:(JiveErrorBlock)error {
@@ -1494,24 +1503,11 @@
                                    onError:errorBlock];
 }
 
-- (AFImageRequestOperation<JiveRetryingOperation> *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(void (^)(UIImage *avatarImage))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[place.avatarRef path], nil];
-    void (^heapCompleteBlock)(UIImage *) = [completeBlock copy];
-    void (^heapErrorBlock)(NSError *) = [errorBlock copy];
-    AFImageRequestOperation<JiveRetryingOperation> *avatarOperation = [[JiveRetryingImageRequestOperation alloc] initWithRequest:mutableURLRequest];
-    [avatarOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (heapCompleteBlock) {
-            UIImage *image = responseObject; // AFImageRequestOperation guarantees that this is a UIImage.
-            heapCompleteBlock(image);
-        }
-    })
-                                           failure:(^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (heapErrorBlock) {
-            heapErrorBlock(error);
-        }
-    })];
-    [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:avatarOperation];
-    return avatarOperation;
+- (AFImageRequestOperation<JiveRetryingOperation> *) avatarOperationForPlace:(JivePlace *)place options:(JiveDefinedSizeRequestOptions *)options onComplete:(JiveImageCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    return [self imageOperationForPath:[place.avatarRef path]
+                               options:options
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) tasksOperationForPlace:(JivePlace *)place options:(JiveSortedRequestOptions *)options onComplete:(void (^)(NSArray *tasks))completeBlock onError:(JiveErrorBlock)errorBlock {
