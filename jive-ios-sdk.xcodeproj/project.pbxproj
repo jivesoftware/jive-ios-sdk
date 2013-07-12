@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F0257FE176A2AD300180597 /* share.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F0257FD176A2AD300180597 /* share.json */; };
+		0F025802176A2C5E00180597 /* share_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F025801176A2C5E00180597 /* share_alternate.json */; };
 		0F0913631665380C0036C4E8 /* JiveCountRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0913621665380C0036C4E8 /* JiveCountRequestOptions.m */; };
 		0F09136916653D6C0036C4E8 /* JiveCountRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F09136816653D6C0036C4E8 /* JiveCountRequestOptionsTests.m */; };
 		0F09136C166551E30036C4E8 /* JivePagedRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F09136B166551E30036C4E8 /* JivePagedRequestOptions.m */; };
@@ -307,9 +309,12 @@
 		893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 893CE2D91700F368002AA837 /* JiveEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		893CE2DC1700F368002AA837 /* JiveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2DA1700F368002AA837 /* JiveEvent.m */; };
 		893CE2E11700F41C002AA837 /* JiveEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2E01700F41C002AA837 /* JiveEventTests.m */; };
+		893E862B1779D8BD006D154C /* objects_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 893E862A1779D8BD006D154C /* objects_response.json */; };
 		8999E65316FA9BB00009677A /* JiveVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8999E65116FA9BAF0009677A /* JiveVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8999E65416FA9BB00009677A /* JiveVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65216FA9BB00009677A /* JiveVideo.m */; };
 		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
+		89FBB4FD177B9FBF0039543E /* JiveKVOAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */; };
+		89FBB4FE177B9FBF0039543E /* JiveKVOAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */; };
 		B122A33B170E35D400FC8C40 /* JiveOutcomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */; };
 		B122A342170F29E500FC8C40 /* JiveOutcomeTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B122A341170F29E400FC8C40 /* JiveOutcomeTypeTests.m */; };
 		B14BAD6A170F882E00B223D4 /* JiveOutcomeRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B14BAD68170F882E00B223D4 /* JiveOutcomeRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -327,6 +332,8 @@
 		B1C6D126172B1FFF00A1380A /* property_alternate.json in Resources */ = {isa = PBXBuildFile; fileRef = B1C6D125172B1FFF00A1380A /* property_alternate.json */; };
 		B1E22AD0170F570E0088919D /* outcomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B1E22ACF170F570E0088919D /* outcomes.json */; };
 		B1E22AD4170F57E90088919D /* outcome.json in Resources */ = {isa = PBXBuildFile; fileRef = B1E22AD3170F57E90088919D /* outcome.json */; };
+		B843FF4217749A5600213861 /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B843FF3D17749A3A00213861 /* libOHHTTPStubs.a */; };
+		B843FF4517749A9100213861 /* JiveRetryingURLConnectionOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B843FF4417749A9100213861 /* JiveRetryingURLConnectionOperationTests.m */; };
 		B863D08E167149C700E9BF29 /* JiveAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */; };
 		B8657AEF166FEDE900F946B5 /* NSError+Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8657AED166FEDE900F946B5 /* NSError+Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8657AF0166FEDE900F946B5 /* NSError+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657AEE166FEDE900F946B5 /* NSError+Jive.m */; };
@@ -390,6 +397,13 @@
 		B8A6BA6B1691F62D00996448 /* JiveProject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA691691F62D00996448 /* JiveProject.m */; };
 		B8A6BA6F1691F63B00996448 /* Jive.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A6BA6D1691F63B00996448 /* Jive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8A6BA701691F63B00996448 /* Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A6BA6E1691F63B00996448 /* Jive.m */; };
+		B8B0DA99177384F50060F62E /* JiveOperationRetrier.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8B0DAA3177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DAA1177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h */; };
+		B8B0DAA4177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0DAA2177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m */; };
+		B8B0DAA817739BF00060F62E /* JiveRetryingJAPIRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DAA617739BF00060F62E /* JiveRetryingJAPIRequestOperation.h */; };
+		B8B0DAA917739BF00060F62E /* JiveRetryingJAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0DAA717739BF00060F62E /* JiveRetryingJAPIRequestOperation.m */; };
+		B8B0DAAD17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DAAB17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h */; };
+		B8B0DAAE17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0DAAC17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m */; };
 		B8B19F0C16949AA0004B3DEC /* member_member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F0B16949AA0004B3DEC /* member_member.json */; };
 		B8B19F1116949F45004B3DEC /* member.json in Resources */ = {isa = PBXBuildFile; fileRef = B8B19F1016949F45004B3DEC /* member.json */; };
 		B8B38B5016AA100300066EEF /* JiveNSDictionary+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */; };
@@ -399,6 +413,19 @@
 		B8B38B6016AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */; };
 		B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */; };
 		B8B38B8916AA205800066EEF /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B38B4916AA0F0300066EEF /* libOCMock.a */; };
+		B8B7F7A8177C7A1A00351383 /* JiveKVOTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B7F7A7177C7A1A00351383 /* JiveKVOTracker.m */; };
+		B8D2433C17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */; };
+		B8D2433D17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2433B17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m */; };
+		B8D2434B1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */; };
+		B8D2434C1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */; };
+		B8D24398177A1DEA00BE8A6D /* JiveRetryingHTTPRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */; };
+		B8D24399177A1DEA00BE8A6D /* JiveRetryingJAPIRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */; };
+		B8D243C9177A304F00BE8A6D /* JiveRetryingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D243421775657500BE8A6D /* JiveRetryingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */; };
+		B8D2440C177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */; };
+		B8D24412177B334500BE8A6D /* JiveRetryingImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D24413177B334500BE8A6D /* JiveRetryingImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */; };
+		B8D24416177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */; };
 		B8D2510C16B9735800412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
 		B8D2511016B9735F00412DA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */; };
 		B8D2511116B9744900412DA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */; };
@@ -429,6 +456,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2192BBF81614F33300082926;
 			remoteInfo = "jive-ios-sdk";
+		};
+		B843FF3C17749A3A00213861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09793579161B6251006DB5D5;
+			remoteInfo = OHHTTPStubs;
+		};
+		B843FF3E17749A3A00213861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 098368CE168FC7920082B1A4;
+			remoteInfo = UnitTests;
+		};
+		B843FF4017749A4700213861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 09793578161B6251006DB5D5;
+			remoteInfo = OHHTTPStubs;
 		};
 		B84966B516A8A64500C1CF05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -480,6 +528,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F0257FD176A2AD300180597 /* share.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = share.json; sourceTree = "<group>"; };
+		0F025801176A2C5E00180597 /* share_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = share_alternate.json; sourceTree = "<group>"; };
 		0F0913611665380C0036C4E8 /* JiveCountRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCountRequestOptions.h; sourceTree = "<group>"; };
 		0F0913621665380C0036C4E8 /* JiveCountRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveCountRequestOptions.m; sourceTree = "<group>"; };
 		0F09136716653D6C0036C4E8 /* JiveCountRequestOptionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveCountRequestOptionsTests.h; sourceTree = "<group>"; };
@@ -920,10 +970,13 @@
 		893CE2DA1700F368002AA837 /* JiveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveEvent.m; sourceTree = "<group>"; };
 		893CE2DF1700F41C002AA837 /* JiveEventTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveEventTests.h; sourceTree = "<group>"; };
 		893CE2E01700F41C002AA837 /* JiveEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveEventTests.m; sourceTree = "<group>"; };
+		893E862A1779D8BD006D154C /* objects_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = objects_response.json; sourceTree = "<group>"; };
 		8999E65116FA9BAF0009677A /* JiveVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVideo.h; sourceTree = "<group>"; };
 		8999E65216FA9BB00009677A /* JiveVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideo.m; sourceTree = "<group>"; };
 		8999E65A16FAA1140009677A /* JiveVideoTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveVideoTests.h; sourceTree = "<group>"; };
 		8999E65B16FAA1140009677A /* JiveVideoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveVideoTests.m; sourceTree = "<group>"; };
+		89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveKVOAdapter.h; sourceTree = "<group>"; };
+		89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveKVOAdapter.m; sourceTree = "<group>"; };
 		B122A339170E35D400FC8C40 /* JiveOutcomeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeTests.h; sourceTree = "<group>"; };
 		B122A33A170E35D400FC8C40 /* JiveOutcomeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOutcomeTests.m; sourceTree = "<group>"; };
 		B122A340170F29E400FC8C40 /* JiveOutcomeTypeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOutcomeTypeTests.h; sourceTree = "<group>"; };
@@ -944,6 +997,8 @@
 		B1C6D125172B1FFF00A1380A /* property_alternate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = property_alternate.json; sourceTree = "<group>"; };
 		B1E22ACF170F570E0088919D /* outcomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = outcomes.json; sourceTree = "<group>"; };
 		B1E22AD3170F57E90088919D /* outcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = outcome.json; sourceTree = "<group>"; };
+		B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj; sourceTree = "<group>"; };
+		B843FF4417749A9100213861 /* JiveRetryingURLConnectionOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingURLConnectionOperationTests.m; sourceTree = "<group>"; };
 		B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAsyncTestCase.h; sourceTree = "<group>"; };
 		B863D08D167149C600E9BF29 /* JiveAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAsyncTestCase.m; sourceTree = "<group>"; };
 		B8657AED166FEDE900F946B5 /* NSError+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Jive.h"; sourceTree = "<group>"; };
@@ -956,6 +1011,13 @@
 		B8A6BA691691F62D00996448 /* JiveProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveProject.m; sourceTree = "<group>"; };
 		B8A6BA6D1691F63B00996448 /* Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jive.h; sourceTree = "<group>"; };
 		B8A6BA6E1691F63B00996448 /* Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jive.m; sourceTree = "<group>"; };
+		B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOperationRetrier.h; sourceTree = "<group>"; };
+		B8B0DAA1177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingHTTPRequestOperation.h; sourceTree = "<group>"; };
+		B8B0DAA2177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingHTTPRequestOperation.m; sourceTree = "<group>"; };
+		B8B0DAA617739BF00060F62E /* JiveRetryingJAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingJAPIRequestOperation.h; sourceTree = "<group>"; };
+		B8B0DAA717739BF00060F62E /* JiveRetryingJAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingJAPIRequestOperation.m; sourceTree = "<group>"; };
+		B8B0DAAB17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingURLConnectionOperation.h; sourceTree = "<group>"; };
+		B8B0DAAC17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingURLConnectionOperation.m; sourceTree = "<group>"; };
 		B8B19F0B16949AA0004B3DEC /* member_member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member_member.json; sourceTree = "<group>"; };
 		B8B19F1016949F45004B3DEC /* member.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = member.json; sourceTree = "<group>"; };
 		B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "JiveNSDictionary+URLArguments.h"; path = "Foundation/JiveNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
@@ -964,6 +1026,23 @@
 		B8B38B5516AA10A300066EEF /* JiveNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JiveNSString+URLArguments.m"; path = "Foundation/JiveNSString+URLArguments.m"; sourceTree = "<group>"; };
 		B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+JiveISO8601DateFormatter.h"; sourceTree = "<group>"; };
 		B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+JiveISO8601DateFormatter.m"; sourceTree = "<group>"; };
+		B8B7F7A6177C7A1A00351383 /* JiveKVOTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveKVOTracker.h; sourceTree = "<group>"; };
+		B8B7F7A7177C7A1A00351383 /* JiveKVOTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveKVOTracker.m; sourceTree = "<group>"; };
+		B8D243351774F28A00BE8A6D /* JiveRetryingURLConnectionOperation+JiveProtected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JiveRetryingURLConnectionOperation+JiveProtected.h"; sourceTree = "<group>"; };
+		B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerHTTPRequestOperation.h; sourceTree = "<group>"; };
+		B8D2433B17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerHTTPRequestOperation.m; sourceTree = "<group>"; };
+		B8D2433E17755E6E00BE8A6D /* JiveRetryingURLConnectionOperationTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveRetryingURLConnectionOperationTests.h; sourceTree = "<group>"; };
+		B8D2433F1775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingHTTPRequestOperationTests.h; sourceTree = "<group>"; };
+		B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingHTTPRequestOperationTests.m; sourceTree = "<group>"; };
+		B8D243421775657500BE8A6D /* JiveRetryingOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveRetryingOperation.h; sourceTree = "<group>"; };
+		B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerJAPIRequestOperation.h; sourceTree = "<group>"; };
+		B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerJAPIRequestOperation.m; sourceTree = "<group>"; };
+		B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingJAPIRequestOperationTests.m; sourceTree = "<group>"; };
+		B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerImageRequestOperation.h; sourceTree = "<group>"; };
+		B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerImageRequestOperation.m; sourceTree = "<group>"; };
+		B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingImageRequestOperation.h; sourceTree = "<group>"; };
+		B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingImageRequestOperation.m; sourceTree = "<group>"; };
+		B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingImageRequestOperationTests.m; sourceTree = "<group>"; };
 		B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B8DC02971666840C00BCC61D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -992,6 +1071,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B843FF4217749A5600213861 /* libOHHTTPStubs.a in Frameworks */,
 				B8D2511216B9744D00412DA5 /* MobileCoreServices.framework in Frameworks */,
 				B8D2511116B9744900412DA5 /* SystemConfiguration.framework in Frameworks */,
 				B8B38B8916AA205800066EEF /* libOCMock.a in Frameworks */,
@@ -1443,12 +1523,31 @@
 				B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */,
 				B1B5917A17381377009B560E /* JiveMobileAnalyticsHeader.h */,
 				B1B5917B17381377009B560E /* JiveMobileAnalyticsHeader.m */,
+				B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */,
+				B8B0DAA1177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h */,
+				B8B0DAA2177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m */,
+				B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */,
+				B8D24411177B334500BE8A6D /* JiveRetryingImageRequestOperation.m */,
+				B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */,
+				B8D2433B17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m */,
+				B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */,
+				B8D2440A177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m */,
+				B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */,
+				B8D2434A1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m */,
+				B8B0DAA617739BF00060F62E /* JiveRetryingJAPIRequestOperation.h */,
+				B8B0DAA717739BF00060F62E /* JiveRetryingJAPIRequestOperation.m */,
+				B8D243421775657500BE8A6D /* JiveRetryingOperation.h */,
+				B8D243351774F28A00BE8A6D /* JiveRetryingURLConnectionOperation+JiveProtected.h */,
+				B8B0DAAB17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h */,
+				B8B0DAAC17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m */,
 				B8B38B5E16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.h */,
 				B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */,
 				B8657AED166FEDE900F946B5 /* NSError+Jive.h */,
 				B8657AEE166FEDE900F946B5 /* NSError+Jive.m */,
 				0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */,
 				0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */,
+				89FBB4FB177B9FBE0039543E /* JiveKVOAdapter.h */,
+				89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */,
 				0F0913651665391D0036C4E8 /* RequestOptions */,
 				2192BBFF1614F33300082926 /* Supporting Files */,
 			);
@@ -1487,6 +1586,7 @@
 		2192BC681614FF4E00082926 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */,
 				2192BC7B1614FF8200082926 /* AFNetworking */,
 				B8B38B3B16AA0EB200066EEF /* google-toolbox-for-mac */,
 				B8811CEC16DF0CD40099E39E /* JiveObjcRuntime.h */,
@@ -1565,7 +1665,13 @@
 				0FCB66651670FA4800617CE4 /* search_contents_response.json */,
 				0FCB665C166FB18C00617CE4 /* search_people_response.json */,
 				0FCB6663166FDAF200617CE4 /* search_places_response.json */,
+				0F0257FD176A2AD300180597 /* share.json */,
+				0F13CEBF1672D09000525E4E /* supported_fields.json */,
+				0F13CEC516740DF400525E4E /* trending_people.json */,
+				0F9EB9AD16977A6800E9F09D /* avatar.png */,
+				0F9EB9AF16979AF400E9F09D /* followingIn_streams.json */,
 				0F9EB9B11697A30100E9F09D /* stream.json */,
+				893E862A1779D8BD006D154C /* objects_response.json */,
 				0F9EB9B51697A7C100E9F09D /* stream_activities.json */,
 				0F9EB9EA169BAC9100E9F09D /* stream_associations.json */,
 				0F13CEBF1672D09000525E4E /* supported_fields.json */,
@@ -1585,6 +1691,12 @@
 				217FE0F5163864D000182AB5 /* jive_entity_tests.m */,
 				2192BC191614F33300082926 /* jive_ios_sdkTests.h */,
 				2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */,
+				B8D2433F1775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.h */,
+				B8D243401775637500BE8A6D /* JiveRetryingHTTPRequestOperationTests.m */,
+				B8D24415177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m */,
+				B8D2434E1778992100BE8A6D /* JiveRetryingJAPIRequestOperationTests.m */,
+				B8D2433E17755E6E00BE8A6D /* JiveRetryingURLConnectionOperationTests.h */,
+				B843FF4417749A9100213861 /* JiveRetryingURLConnectionOperationTests.m */,
 				B86E089A16E037980066F9AE /* NSErrorJiveTests.m */,
 				0F091366166539730036C4E8 /* RequestOptions */,
 			);
@@ -1594,6 +1706,8 @@
 		21AD976F161CBC96009A977D /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				B8B7F7A6177C7A1A00351383 /* JiveKVOTracker.h */,
+				B8B7F7A7177C7A1A00351383 /* JiveKVOTracker.m */,
 				21AD976B161CBA90009A977D /* JiveAPITestCase.h */,
 				21AD976C161CBA90009A977D /* JiveAPITestCase.m */,
 				B863D08C167149C600E9BF29 /* JiveAsyncTestCase.h */,
@@ -1606,6 +1720,15 @@
 				B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */,
 			);
 			name = classes;
+			sourceTree = "<group>";
+		};
+		B843FF3617749A3900213861 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B843FF3D17749A3A00213861 /* libOHHTTPStubs.a */,
+				B843FF3F17749A3A00213861 /* UnitTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B8B19F0F16949CBC004B3DEC /* entities */ = {
@@ -1626,6 +1749,12 @@
 				B1C6D123172B1FEC00A1380A /* property.json */,
 				B1C6D125172B1FFF00A1380A /* property_alternate.json */,
 				0F9EB9B31697A30F00E9F09D /* stream_alternate.json */,
+				B876DAFD1699CA1100C6F673 /* content.json */,
+				0F9EBA9A169F8A4600E9F09D /* message_alternate.json */,
+				0F9EBAA916A0C0E600E9F09D /* invite_alternate.json */,
+				0F9EBAB616A60F5D00E9F09D /* direct_message_alternate.json */,
+				0F9EBAC616A7376B00E9F09D /* comment_alternate.json */,
+				0F025801176A2C5E00180597 /* share_alternate.json */,
 				0F9CD1BA16D6F21100B512C2 /* stream_associations_alt.json */,
 				0FBC7E221716218C00A597E2 /* version_alternate.json */,
 				0FBC7E2917171D7800A597E2 /* version_no_v3.json */,
@@ -1661,6 +1790,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D24412177B334500BE8A6D /* JiveRetryingImageRequestOperation.h in Headers */,
 				8999E65316FA9BB00009677A /* JiveVideo.h in Headers */,
 				B86B0B3A166D0105008E525E /* JiveDefinedSizeRequestOptions.h in Headers */,
 				B86B0B3C166D0105008E525E /* JiveInboxOptions.h in Headers */,
@@ -1768,6 +1898,8 @@
 				893CE2DB1700F368002AA837 /* JiveEvent.h in Headers */,
 				B8F8241417304DE500E11536 /* JiveHTTPBasicAuthCredentials.h in Headers */,
 				0F880F6F16DC467B00D40702 /* JiveAssociationTargetList_internal.h in Headers */,
+				B8B0DA99177384F50060F62E /* JiveOperationRetrier.h in Headers */,
+				B8D243C9177A304F00BE8A6D /* JiveRetryingOperation.h in Headers */,
 				B8811CEE16DF0CD40099E39E /* JiveObjcRuntime.h in Headers */,
 				B16C2645170E2D1100257533 /* JiveOutcome.h in Headers */,
 				B16C264B170E2E0F00257533 /* JiveOutcomeType.h in Headers */,
@@ -1779,6 +1911,13 @@
 				B1B5917C17381378009B560E /* JiveMobileAnalyticsHeader.h in Headers */,
 				0F5A5DCD17457E82005F3BF7 /* NSString+Jive.h in Headers */,
 				0F3215C4175FCF7700165166 /* JiveResponseBlocks.h in Headers */,
+				B8B0DAA3177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h in Headers */,
+				B8B0DAA817739BF00060F62E /* JiveRetryingJAPIRequestOperation.h in Headers */,
+				B8B0DAAD17739E4D0060F62E /* JiveRetryingURLConnectionOperation.h in Headers */,
+				B8D2433C17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h in Headers */,
+				B8D2434B1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h in Headers */,
+				B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */,
+				89FBB4FD177B9FBF0039543E /* JiveKVOAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1817,6 +1956,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B843FF4117749A4700213861 /* PBXTargetDependency */,
 				B8B38B8416AA205300066EEF /* PBXTargetDependency */,
 				2192BC111614F33300082926 /* PBXTargetDependency */,
 			);
@@ -1849,6 +1989,10 @@
 					ProductGroup = B8B38B3F16AA0F0300066EEF /* Products */;
 					ProjectRef = 2192BC98161502D300082926 /* OCMock.xcodeproj */;
 				},
+				{
+					ProductGroup = B843FF3617749A3900213861 /* Products */;
+					ProjectRef = B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1860,6 +2004,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		B843FF3D17749A3A00213861 /* libOHHTTPStubs.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOHHTTPStubs.a;
+			remoteRef = B843FF3C17749A3A00213861 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B843FF3F17749A3A00213861 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = B843FF3E17749A3A00213861 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B8B38B4516AA0F0300066EEF /* OCMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1951,6 +2109,9 @@
 				0FBD44511721ADCE005E031B /* document_alternate.json in Resources */,
 				B1C6D124172B1FEC00A1380A /* property.json in Resources */,
 				B1C6D126172B1FFF00A1380A /* property_alternate.json in Resources */,
+				0F0257FE176A2AD300180597 /* share.json in Resources */,
+				0F025802176A2C5E00180597 /* share_alternate.json in Resources */,
+				893E862B1779D8BD006D154C /* objects_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2129,6 +2290,14 @@
 				0F85BEFE172B3B090005E31E /* JiveShare.m in Sources */,
 				B1B5917D17381378009B560E /* JiveMobileAnalyticsHeader.m in Sources */,
 				0F5A5DCE17457E82005F3BF7 /* NSString+Jive.m in Sources */,
+				B8B0DAA4177393EC0060F62E /* JiveRetryingHTTPRequestOperation.m in Sources */,
+				B8B0DAA917739BF00060F62E /* JiveRetryingJAPIRequestOperation.m in Sources */,
+				B8B0DAAE17739E4D0060F62E /* JiveRetryingURLConnectionOperation.m in Sources */,
+				B8D2433D17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m in Sources */,
+				B8D2434C1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.m in Sources */,
+				B8D2440C177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.m in Sources */,
+				B8D24413177B334500BE8A6D /* JiveRetryingImageRequestOperation.m in Sources */,
+				89FBB4FE177B9FBF0039543E /* JiveKVOAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2230,6 +2399,11 @@
 				0FBC7E1E1715DADA00A597E2 /* JivePlatformVersionTests.m in Sources */,
 				B1C6D11C172B0E5600A1380A /* JivePropertyTests.m in Sources */,
 				0F85BF03172B414F0005E31E /* JiveShareTests.m in Sources */,
+				B843FF4517749A9100213861 /* JiveRetryingURLConnectionOperationTests.m in Sources */,
+				B8D24398177A1DEA00BE8A6D /* JiveRetryingHTTPRequestOperationTests.m in Sources */,
+				B8D24399177A1DEA00BE8A6D /* JiveRetryingJAPIRequestOperationTests.m in Sources */,
+				B8D24416177B36A100BE8A6D /* JiveRetryingImageRequestOperationTests.m in Sources */,
+				B8B7F7A8177C7A1A00351383 /* JiveKVOTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2240,6 +2414,11 @@
 			isa = PBXTargetDependency;
 			target = 2192BBF81614F33300082926 /* jive-ios-sdk */;
 			targetProxy = 2192BC101614F33300082926 /* PBXContainerItemProxy */;
+		};
+		B843FF4117749A4700213861 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OHHTTPStubs;
+			targetProxy = B843FF4017749A4700213861 /* PBXContainerItemProxy */;
 		};
 		B84966B616A8A64500C1CF05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2442,6 +2621,93 @@
 			};
 			name = Release;
 		};
+		B86C382617690D4600DDE7EF /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
+			};
+			name = Develop;
+		};
+		B86C382717690D4600DDE7EF /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/jive_ios_sdk.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = Jive;
+				PUBLIC_HEADERS_FOLDER_PATH = JiveHeaders;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Develop;
+		};
+		B86C382817690D4600DDE7EF /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
+				HEADER_SEARCH_PATHS = lib/OCMock/Source;
+				INFOPLIST_FILE = "jive-ios-sdkTests/jive-ios-sdkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Develop;
+		};
+		B86C382917690D4600DDE7EF /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Develop;
+		};
 		B896A57016EE75F600611BDE /* Enterprise */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2538,6 +2804,7 @@
 				21860616164C3B0B004AF2E2 /* Debug */,
 				21860617164C3B0B004AF2E2 /* Release */,
 				B896A57316EE75F600611BDE /* Enterprise */,
+				B86C382917690D4600DDE7EF /* Develop */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2548,6 +2815,7 @@
 				2192BC1C1614F33300082926 /* Debug */,
 				2192BC1D1614F33300082926 /* Release */,
 				B896A57016EE75F600611BDE /* Enterprise */,
+				B86C382617690D4600DDE7EF /* Develop */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2558,6 +2826,7 @@
 				2192BC1F1614F33300082926 /* Debug */,
 				2192BC201614F33300082926 /* Release */,
 				B896A57116EE75F600611BDE /* Enterprise */,
+				B86C382717690D4600DDE7EF /* Develop */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2568,6 +2837,7 @@
 				2192BC221614F33300082926 /* Debug */,
 				2192BC231614F33300082926 /* Release */,
 				B896A57216EE75F600611BDE /* Enterprise */,
+				B86C382817690D4600DDE7EF /* Develop */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

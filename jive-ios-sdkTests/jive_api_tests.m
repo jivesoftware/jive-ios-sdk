@@ -49,19 +49,19 @@
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
     
     // This can be anything. The mock objects will return local data
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    testURL = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     
     // Reponse file containing data from JIVE My request
     NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:resourceName ofType:@"json"];
     
     // Mock response delegate
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
+    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:testURL returningContentsOfFile:contentPath];
     
     // Set the response mock delegate for this request
     [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     
     // Create the Jive API object, using mock auth delegate
-    jive = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:authDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:testURL authorizationDelegate:authDelegate];
     return jive;
 }
 
@@ -6219,76 +6219,70 @@
     }];
 }
 
-- (void) testGetVersionOperationForInstance {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version" ofType:@"json"];
+- (void) testVersionOperationForInstance {
+    [self createJiveAPIObjectWithResponse:@"version"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
-                                                                        onComplete:^(JivePlatformVersion *version) {
-                                                                            STAssertEqualObjects(version.major, @7, @"Wrong version found");
-                                                                            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        } onError:^(NSError *error) {
-                                                                            STFail([error localizedDescription]);
-                                                                            finishedBlock();
-                                                                        }];
+        AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @7, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
         
         [operation start];
     }];
 }
 
-- (void) testGetVersionForInstance {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_alternate" ofType:@"json"];
+- (void) testVersionForInstance {
+    [self createJiveAPIObjectWithResponse:@"version_alternate"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        [Jive getVersionForInstance:url
-                         onComplete:^(JivePlatformVersion *version) {
-                             STAssertEqualObjects(version.major, @6, @"Wrong version found");
-                             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
-                             [mockJiveURLResponseDelegate verify];
-                             finishedBlock();
-                         } onError:^(NSError *error) {
-                             STFail([error localizedDescription]);
-                             finishedBlock();
-                         }];
+        [jive versionForInstance:testURL
+                      onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @6, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                         onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
     }];
 }
 
-- (void) testGetVersionOperationForInstanceReturnsErrorIfNoV3API {
-    NSURL* url = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
-    NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"version_no_v3" ofType:@"json"];
+- (void) testVersionOperationForInstanceReturnsErrorIfNoV3API {
+    [self createJiveAPIObjectWithResponse:@"version_no_v3"];
     
-    mockJiveURLResponseDelegate = [self mockJiveURLDelegate:url returningContentsOfFile:contentPath];
-    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [Jive getVersionOperationForInstance:url
-                                                                        onComplete:^(JivePlatformVersion *version) {
-                                                                            BOOL found = NO;
-                                                                            for (JiveCoreVersion *coreURI in version.coreURI) {
-                                                                                if ([coreURI.version isEqualToNumber:@3]) {
-                                                                                    STFail(@"v3 API found");
-                                                                                    found = YES;
-                                                                                }
-                                                                            }
-                                                                            if (!found) {
-                                                                                STFail(@"Valid response returned without v3 API");
-                                                                            }
-                                                                            
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        } onError:^(NSError *error) {
-                                                                            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
-                                                                            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
-                                                                            [mockJiveURLResponseDelegate verify];
-                                                                            finishedBlock();
-                                                                        }];
+        AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            BOOL found = NO;
+            for (JiveCoreVersion *coreURI in version.coreURI) {
+                if ([coreURI.version isEqualToNumber:@3]) {
+                    STFail(@"v3 API found");
+                    found = YES;
+                }
+            }
+            if (!found) {
+                STFail(@"Valid response returned without v3 API");
+            }
+            
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
+            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })];
         
         [operation start];
     }];
@@ -6440,6 +6434,140 @@
             STFail([error localizedDescription]);
             finishedBlock();
         }];
+    }];
+}
+
+- (void) testCreateShareOperation {
+    JiveContentBody *source = [JiveContentBody new];
+    JiveTargetList *targets = [JiveTargetList new];
+    JiveDocument *document = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"share" andAuthDelegate:mockAuthDelegate];
+    source.text = @"Testing a direct message";
+    [targets addUserName:@"Orson Bushnell"];
+    [targets addPerson:person];
+    
+    NSMutableDictionary *JSONDictionary = [NSMutableDictionary dictionaryWithCapacity:3];
+    
+    [JSONDictionary setValue:[targets toJSONArray:YES] forKey:@"participants"];
+    [JSONDictionary setValue:[document.selfRef absoluteString] forKey:@"shared"];
+    [JSONDictionary setValue:[source toJSONDictionary] forKey:@"content"];
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:JSONDictionary options:0 error:nil];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive createShareOperation:source
+                                                              forContent:document
+                                                             withTargets:targets
+                                                              andOptions:options
+                                                              onComplete:^(JiveContent *content) {
+                                                                  STAssertEquals([content class], [JiveShare class], @"Wrong item class");
+                                                                  STAssertEqualObjects(content.subject, @"Testing share creation.", @"New object not created");
+                                                                  
+                                                                  // Check that delegates where actually called
+                                                                  [mockAuthDelegate verify];
+                                                                  [mockJiveURLResponseDelegate verify];
+                                                                  finishedBlock();
+                                                              } onError:^(NSError *error) {
+                                                                  STFail([error localizedDescription]);
+                                                                  finishedBlock();
+                                                              }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
+        STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+        [operation start];
+    }];
+}
+
+- (void) testCreateShare {
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/shares?fields=name,id" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"share_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContentBody *source = [JiveContentBody new];
+        JiveTargetList *targets = [JiveTargetList new];
+        JiveDocument *document = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+        JivePerson *person = [self entityForClass:[JivePerson class] fromJSONNamed:@"person_response"];
+        source.text = @"Testing a direct message";
+        [targets addPerson:person];
+        [jive createShare:source
+               forContent:document
+              withTargets:targets
+               andOptions:options
+               onComplete:^(JiveContent *content) {
+                   STAssertEquals([content class], [JiveShare class], @"Wrong item class");
+                   STAssertEqualObjects(content.subject,
+                                        @"Folks, Be sure to link to a blog on your hack, even if it's just a placeholder. Likes on blogs is...",
+                                        @"New object not created");
+                   
+                   // Check that delegates where actually called
+                   [mockAuthDelegate verify];
+                   [mockJiveURLResponseDelegate verify];
+                   finishedBlock();
+               } onError:^(NSError *error) {
+                   STFail([error localizedDescription]);
+                   finishedBlock();
+               }];
+    }];
+}
+
+- (void) testObjectsOperation {
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/metadata/objects/" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/metadata/objects/" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"objects_response" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        NSOperation *operation = [jive objectsOperationOnComplete:^(NSDictionary *objects) {
+            NSUInteger expectedNumberOfObjects = 72;
+            STAssertEquals([objects count], expectedNumberOfObjects, @"Wrong number of objects, should be %@", @(expectedNumberOfObjects));
+            STAssertEqualObjects(objects[@"person"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/person", nil);
+            STAssertEqualObjects(objects[@"user"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/user", nil);
+            STAssertEqualObjects(objects[@"profileImage"], @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/profileImage", nil);
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();            
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
     }];
 }
 

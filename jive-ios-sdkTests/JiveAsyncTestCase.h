@@ -18,9 +18,30 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <OHHTTPStubs/OHHTTPStubs.h>
 
 @interface JiveAsyncTestCase : SenTestCase
 
 - (void)waitForTimeout:(void (^)(dispatch_block_t finishedBlock))asynchBlock;
+- (void)delay;
+
+@end
+
+@interface OHHTTPStubsResponse (JiveAsyncTestCase)
+
++ (instancetype)responseWithJSON:(id)JSON;
++ (instancetype)responseWithJSON:(id)JSON
+                       responder:(OHHTTPStubsResponder)responder;
++ (instancetype)responseWithJSONFile:(NSString *)fileName;
++ (instancetype)responseWithJSONFile:(NSString *)fileName
+                           responder:(OHHTTPStubsResponder)responder;
++ (instancetype)responseWithHTML:(NSString *)HTML;
++ (instancetype)responseWithHTML:(NSString *)HTML
+                       responder:(OHHTTPStubsResponder)responder;
++ (instancetype)responseThatRedirectsToLocation:(NSURL *)locationURL;
++ (instancetype)responseThatRedirectsToLocation:(NSURL *)locationURL
+                                      responder:(OHHTTPStubsResponder)responder;
++ (instancetype)responseWithError:(NSError *)error
+                        responder:(OHHTTPStubsResponder)responder;
 
 @end

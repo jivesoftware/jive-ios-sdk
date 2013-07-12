@@ -20,9 +20,23 @@
 #import "JiveVideo.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveVideoAttributes const JiveVideoAttributes = {
+    .categories = @"categories",
+    .tags = @"tags",
+    .users = @"users",
+    .visibility = @"visibility",
+    .visibleToExternalContributors = @"visibleToExternalContributors",
+    .authtoken = @"authtoken",
+    .externalID = @"externalID",
+    .playerBaseURL = @"playerBaseURL",
+    .width = @"width",
+    .height = @"height",
+};
+
 @implementation JiveVideo
 
-@synthesize tags, visibleToExternalContributors;
+@synthesize tags, visibleToExternalContributors, externalID, playerBaseURL, width, height, authtoken;
+@synthesize categories, users, visibility;
 
 NSString * const JiveVideoType = @"video";
 
@@ -38,9 +52,23 @@ NSString * const JiveVideoType = @"video";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    [dictionary setValue:visibleToExternalContributors forKey:JiveVideoAttributes.visibleToExternalContributors];
+    [dictionary setValue:visibility forKey:JiveVideoAttributes.visibility];
+    [dictionary setValue:externalID forKey:JiveVideoAttributes.externalID];
+    [dictionary setValue:authtoken forKey:JiveVideoAttributes.authtoken];
+    [dictionary setValue:width forKey:JiveVideoAttributes.width];
+    [dictionary setValue:height forKey:JiveVideoAttributes.height];
+    [dictionary setValue:[playerBaseURL absoluteString] forKey:JiveVideoAttributes.playerBaseURL];
+    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
+        [dictionary setValue:users forKey:JiveVideoAttributes.users];
+    else
+        [self addArrayElements:users toJSONDictionary:dictionary forTag:JiveVideoAttributes.users];
+    
+    if (categories)
+        [dictionary setValue:categories forKey:JiveVideoAttributes.categories];
+    
     if (tags)
-        [dictionary setValue:tags forKey:@"tags"];
+        [dictionary setValue:tags forKey:JiveVideoAttributes.tags];
     
     return dictionary;
 }
