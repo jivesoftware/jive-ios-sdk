@@ -390,7 +390,6 @@
 		B89146FF1796FD36001596E2 /* JiveActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBA8F169E314300E9F09D /* JiveActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89147001796FD36001596E2 /* JiveInvite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBA9E16A082E200E9F09D /* JiveInvite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89147011796FD36001596E2 /* JiveIdea.h in Headers */ = {isa = PBXBuildFile; fileRef = 893CE2C81700DBF5002AA837 /* JiveIdea.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B89147021796FD36001596E2 /* JiveImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 215040DC16DEA43900CD0AAE /* JiveImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89147031796FD36001596E2 /* JiveTargetList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBAAB16A5BDFD00E9F09D /* JiveTargetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89147041796FD36001596E2 /* JiveTargetList_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9EBAB216A5DDD000E9F09D /* JiveTargetList_internal.h */; };
 		B89147051796FD36001596E2 /* JiveSearchRequestOptions_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC2FE5416A8BE3300DDFF68 /* JiveSearchRequestOptions_internal.h */; };
@@ -1891,7 +1890,6 @@
 				B89146FF1796FD36001596E2 /* JiveActivity.h in Headers */,
 				B89147001796FD36001596E2 /* JiveInvite.h in Headers */,
 				B89147011796FD36001596E2 /* JiveIdea.h in Headers */,
-				B89147021796FD36001596E2 /* JiveImage.h in Headers */,
 				B89147031796FD36001596E2 /* JiveTargetList.h in Headers */,
 				B89147041796FD36001596E2 /* JiveTargetList_internal.h in Headers */,
 				B89147061796FD36001596E2 /* JiveNSDictionary+URLArguments.h in Headers */,
