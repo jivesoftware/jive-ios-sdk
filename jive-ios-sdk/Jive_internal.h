@@ -17,7 +17,7 @@
 //    limitations under the License.
 //
 
-#import <Jive/Jive.h>
+#import "Jive.h"
 
 @class JAPIRequestOperation;
 
