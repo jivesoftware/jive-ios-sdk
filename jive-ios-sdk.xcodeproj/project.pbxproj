@@ -999,7 +999,7 @@
 		B876DAFD1699CA1100C6F673 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		B8811CEC16DF0CD40099E39E /* JiveObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveObjcRuntime.h; sourceTree = "<group>"; };
 		B8811CED16DF0CD40099E39E /* JiveObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveObjcRuntime.m; sourceTree = "<group>"; };
-		B89147291796FD36001596E2 /* lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = lib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B89147291796FD36001596E2 /* libjive-ios-sdk-headers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjive-ios-sdk-headers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A6BA681691F62D00996448 /* JiveProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveProject.h; sourceTree = "<group>"; };
 		B8A6BA691691F62D00996448 /* JiveProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveProject.m; sourceTree = "<group>"; };
 		B8A6BA6D1691F63B00996448 /* Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jive.h; sourceTree = "<group>"; };
@@ -1484,7 +1484,7 @@
 			children = (
 				2192BBF91614F33300082926 /* libJive.a */,
 				2192BC0A1614F33300082926 /* jive-ios-sdkTests.octest */,
-				B89147291796FD36001596E2 /* lib.a */,
+				B89147291796FD36001596E2 /* libjive-ios-sdk-headers.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1957,7 +1957,7 @@
 			);
 			name = "jive-ios-sdk-headers";
 			productName = "jive-ios-sdk";
-			productReference = B89147291796FD36001596E2 /* lib.a */;
+			productReference = B89147291796FD36001596E2 /* libjive-ios-sdk-headers.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -2705,6 +2705,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_NAME = "jive-ios-sdk-headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 			};
@@ -2719,6 +2720,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_NAME = "jive-ios-sdk-headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 			};
@@ -2734,6 +2736,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_NAME = "jive-ios-sdk-headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 			};
@@ -2749,6 +2752,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_NAME = "jive-ios-sdk-headers";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 			};
