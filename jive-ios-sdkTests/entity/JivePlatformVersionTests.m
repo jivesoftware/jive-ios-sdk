@@ -45,14 +45,14 @@
     NSNumber *minor = @0;
     NSNumber *maintenance = @0;
     NSNumber *build = @0;
-    NSString *sdkVersion =
-#include "JiveiOSSDKVersion.h"
-    ;
+    NSString *sdkVersion = [JivePlatformVersion new].sdk;
     NSString *releaseID = @"7c2";
     NSDictionary *JSON = @{ @"jiveVersion" : [NSString stringWithFormat:@"%@.%@.%@.%@ %@",
                                               major, minor, maintenance, build, releaseID],
                             @"jiveCoreVersions" : versionsArray
                             };
+    
+    STAssertNotNil(sdkVersion, @"PRECONDITION: Invalid sdk version");
     
     JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
