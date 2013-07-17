@@ -1932,6 +1932,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2192BC1E1614F33300082926 /* Build configuration list for PBXNativeTarget "jive-ios-sdk" */;
 			buildPhases = (
+				0F9B866B179729CC005BBFE8 /* ShellScript */,
 				2192BBF51614F33300082926 /* Sources */,
 				2192BBF61614F33300082926 /* Frameworks */,
 				B8DC02DE1666A63800BCC61D /* Headers */,
@@ -2122,6 +2123,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F9B866B179729CC005BBFE8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "git describe\nbuild=`git describe | awk '{split($0,a,\"-\"); print a[1] \".\" a[2]}'`\n\nif [[ \"${build}\" == \"\" ]]; then\necho \"No build number from git\"\nexit 2\nfi\n\necho \"@\\\"${build}\\\"\" > jive-ios-sdk/JiveiOSSDKVersion.h\n";
+		};
 		2186061C164C3B24004AF2E2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
