@@ -2149,7 +2149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "git describe\nbuild=`git describe | awk '{split($0,a,\"-\"); print a[1] \".\" a[2]}'`\n\nif [[ \"${build}\" == \"\" ]]; then\necho \"No build number from git\"\nexit 2\nfi\n\necho \"@\\\"${build}\\\"\" > jive-ios-sdk/JiveiOSSDKVersion.h\n";
+			shellScript = "build=`git describe`\n\nif [[ \"${build}\" == \"\" ]]; then\necho \"No build number from git\"\nexit 2\nfi\n\necho \"@\\\"${build}\\\"\" > jive-ios-sdk/JiveiOSSDKVersion.h\n";
 		};
 		2186061C164C3B24004AF2E2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
