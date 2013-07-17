@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import <Jive/Jive.h>
+#import "Jive.h"
 #import "AFHTTPRequestOperation.h"
 #import "JiveRetryingOperation.h"
 
