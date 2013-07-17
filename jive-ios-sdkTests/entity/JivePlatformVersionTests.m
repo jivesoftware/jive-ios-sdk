@@ -45,6 +45,9 @@
     NSNumber *minor = @0;
     NSNumber *maintenance = @0;
     NSNumber *build = @0;
+    NSString *sdkVersion =
+#include "JiveiOSSDKVersion.h"
+    ;
     NSString *releaseID = @"7c2";
     NSDictionary *JSON = @{ @"jiveVersion" : [NSString stringWithFormat:@"%@.%@.%@.%@ %@",
                                               major, minor, maintenance, build, releaseID],
@@ -60,6 +63,7 @@
     STAssertEqualObjects(version.build, build, @"Wrong build version");
     STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
     STAssertNil(version.ssoEnabled, @"Invalid ssoEnabled result");
+    STAssertEqualObjects(version.sdk, sdkVersion, @"Invalid sdk version number");
     STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
     if (version.coreURI.count == 2) {
         JiveCoreVersion *version2 = version.coreURI[0];

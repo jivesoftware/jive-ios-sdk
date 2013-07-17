@@ -27,6 +27,7 @@ extern struct JivePlatformVersionAttributes {
     __unsafe_unretained NSString *releaseID;
     __unsafe_unretained NSString *coreURI;
     __unsafe_unretained NSString *ssoEnabled;
+    __unsafe_unretained NSString *sdk;
 } const JivePlatformVersionAttributes;
 
 //! \class JivePlatformVersion
@@ -53,5 +54,8 @@ extern struct JivePlatformVersionAttributes {
 
 //! SSO types available for authorization. Simple authorization is not available if this is populated. NSString[]
 @property (nonatomic, readonly) NSArray *ssoEnabled;
+
+//! Jive iOS SDK version number
+@property (nonatomic, readonly) NSString *sdk;
 
 @end

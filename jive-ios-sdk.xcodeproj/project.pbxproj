@@ -235,6 +235,7 @@
 		0FCB666A1670FCDB00617CE4 /* JiveInboxEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */; };
 		0FCB66701671061A00617CE4 /* JiveContentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB666F1671061A00617CE4 /* JiveContentTests.m */; };
 		0FCB66731671065D00617CE4 /* JivePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66721671065C00617CE4 /* JivePlaceTests.m */; };
+		0FF31063179702FE0052C2B9 /* JiveiOSSDKVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF31062179702FE0052C2B9 /* JiveiOSSDKVersion.h */; };
 		215040DE16DEA43A00CD0AAE /* JiveImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 215040DC16DEA43900CD0AAE /* JiveImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		215040DF16DEA43A00CD0AAE /* JiveImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 215040DD16DEA43900CD0AAE /* JiveImage.m */; };
 		217FE0D41638524E00182AB5 /* JiveInboxEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FE0D31638524E00182AB5 /* JiveInboxEntry.m */; };
@@ -832,6 +833,7 @@
 		0FCB666F1671061A00617CE4 /* JiveContentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveContentTests.m; sourceTree = "<group>"; };
 		0FCB66711671065C00617CE4 /* JivePlaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePlaceTests.h; sourceTree = "<group>"; };
 		0FCB66721671065C00617CE4 /* JivePlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePlaceTests.m; sourceTree = "<group>"; };
+		0FF31062179702FE0052C2B9 /* JiveiOSSDKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveiOSSDKVersion.h; sourceTree = "<group>"; };
 		215040DC16DEA43900CD0AAE /* JiveImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveImage.h; sourceTree = "<group>"; };
 		215040DD16DEA43900CD0AAE /* JiveImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveImage.m; sourceTree = "<group>"; };
 		217FE0D21638524E00182AB5 /* JiveInboxEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInboxEntry.h; sourceTree = "<group>"; };
@@ -1558,6 +1560,7 @@
 			isa = PBXGroup;
 			children = (
 				2192BC001614F33300082926 /* jive-ios-sdk-Prefix.pch */,
+				0FF31062179702FE0052C2B9 /* JiveiOSSDKVersion.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1918,6 +1921,7 @@
 				B8D2434B1778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h in Headers */,
 				B8D2440B177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h in Headers */,
 				89FBB4FD177B9FBF0039543E /* JiveKVOAdapter.h in Headers */,
+				0FF31063179702FE0052C2B9 /* JiveiOSSDKVersion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
