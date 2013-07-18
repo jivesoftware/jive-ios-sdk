@@ -65,7 +65,6 @@
 		0F9B86BA179854FE005BBFE8 = {
 			isa = PBXGroup;
 			children = (
-				0F9B86EC17985576005BBFE8 /* libJive.a */,
 				0F9B86CC179854FE005BBFE8 /* Example */,
 				0F9B86C5179854FE005BBFE8 /* Frameworks */,
 				0F9B86C4179854FE005BBFE8 /* Products */,
@@ -83,6 +82,7 @@
 		0F9B86C5179854FE005BBFE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F9B86EC17985576005BBFE8 /* libJive.a */,
 				0F9B86C6179854FE005BBFE8 /* UIKit.framework */,
 				0F9B86C8179854FE005BBFE8 /* Foundation.framework */,
 				0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */,
@@ -323,6 +323,7 @@
 				0F9B86EB179854FE005BBFE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
