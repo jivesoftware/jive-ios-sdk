@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class JivePerson;
+
 @interface JVMasterViewController : UITableViewController
+
+@property (nonatomic) JivePerson *me;
 
 @end

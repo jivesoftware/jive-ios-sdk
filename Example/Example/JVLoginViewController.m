@@ -7,8 +7,9 @@
 //
 
 #import "JVLoginViewController.h"
-#import "JVAppDelegate.h"
+#import "JVJiveFactory.h"
 #import <Jive/Jive.h>
+#import "JVMasterViewController.h"
 
 @interface JVLoginViewController ()
 
@@ -36,9 +37,31 @@
         [self.password resignFirstResponder];
         self.userName.enabled = NO;
         self.password.enabled = NO;
+        [JVJiveFactory loginWithName:self.userName.text
+                            password:self.password.text
+                            complete:^(JivePerson *person) {
+                                [self handleLogin:person];
+                            } error:^(NSError *error) {
+                                [self handleLoginError];
+                            }];
     }
     
     return NO;
+}
+
+#pragma mark - Private
+
+- (void)handleLogin:(JivePerson *)person {
+    [self performSegueWithIdentifier:@"Login" sender:self];
+    ((JVMasterViewController *)self.navigationController.presentingViewController).me = person;
+}
+
+- (void)handleLoginError {
+    [self.activityIndicator stopAnimating];
+    self.userName.enabled = YES;
+    self.password.enabled = YES;
+    self.password.text = nil;
+    [self.password becomeFirstResponder];
 }
 
 @end
