@@ -19,6 +19,8 @@
 		0F9B86E0179854FE005BBFE8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B86DE179854FE005BBFE8 /* MainStoryboard.storyboard */; };
 		0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */; };
 		0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */; };
+		0F9B86ED17985576005BBFE8 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86EC17985576005BBFE8 /* libJive.a */; };
+		0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVMasterViewController.m; sourceTree = "<group>"; };
 		0F9B86E4179854FE005BBFE8 /* JVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JVDetailViewController.h; sourceTree = "<group>"; };
 		0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVDetailViewController.m; sourceTree = "<group>"; };
+		0F9B86EC17985576005BBFE8 /* libJive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJive.a; path = "../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos/libJive.a"; sourceTree = "<group>"; };
+		0F9B86EE17985C1D005BBFE8 /* JVLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLoginViewController.h; sourceTree = "<group>"; };
+		0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9B86ED17985576005BBFE8 /* libJive.a in Frameworks */,
 				0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */,
 				0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */,
 				0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */,
@@ -59,6 +65,7 @@
 		0F9B86BA179854FE005BBFE8 = {
 			isa = PBXGroup;
 			children = (
+				0F9B86EC17985576005BBFE8 /* libJive.a */,
 				0F9B86CC179854FE005BBFE8 /* Example */,
 				0F9B86C5179854FE005BBFE8 /* Frameworks */,
 				0F9B86C4179854FE005BBFE8 /* Products */,
@@ -93,6 +100,8 @@
 				0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */,
 				0F9B86E4179854FE005BBFE8 /* JVDetailViewController.h */,
 				0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */,
+				0F9B86EE17985C1D005BBFE8 /* JVLoginViewController.h */,
+				0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */,
 				0F9B86CD179854FE005BBFE8 /* Supporting Files */,
 			);
 			path = Example;
@@ -183,6 +192,7 @@
 				0F9B86D7179854FE005BBFE8 /* JVAppDelegate.m in Sources */,
 				0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */,
 				0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */,
+				0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +280,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -281,6 +295,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
