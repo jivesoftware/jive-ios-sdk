@@ -42,7 +42,8 @@
                             complete:^(JivePerson *person) {
                                 [self handleLogin:person];
                             } error:^(NSError *error) {
-                                [self handleLoginError];
+                                [self resetLoginView];
+                                [self.password becomeFirstResponder];
                             }];
     }
     
@@ -54,14 +55,14 @@
 - (void)handleLogin:(JivePerson *)person {
     [self performSegueWithIdentifier:@"Login" sender:self];
     ((JVMasterViewController *)self.navigationController.presentingViewController).me = person;
+    [self resetLoginView];
 }
 
-- (void)handleLoginError {
+- (void)resetLoginView {
     [self.activityIndicator stopAnimating];
     self.userName.enabled = YES;
     self.password.enabled = YES;
     self.password.text = nil;
-    [self.password becomeFirstResponder];
 }
 
 @end
