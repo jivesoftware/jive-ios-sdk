@@ -12,6 +12,7 @@
 		0F9B5B8017999CF1003156D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */; };
 		0F9B5B8117999CFB003156D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */; };
 		0F9B5B841799A7BC003156D3 /* JVPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B5B831799A7BC003156D3 /* JVPersonCell.m */; };
+		0F9B5B871799B2C1003156D3 /* JVBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B5B861799B2C1003156D3 /* JVBlogViewController.m */; };
 		0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C6179854FE005BBFE8 /* UIKit.framework */; };
 		0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C8179854FE005BBFE8 /* Foundation.framework */; };
 		0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */; };
@@ -73,6 +74,8 @@
 		0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0F9B5B821799A7BC003156D3 /* JVPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVPersonCell.h; sourceTree = "<group>"; };
 		0F9B5B831799A7BC003156D3 /* JVPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPersonCell.m; sourceTree = "<group>"; };
+		0F9B5B851799B2C1003156D3 /* JVBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVBlogViewController.h; sourceTree = "<group>"; };
+		0F9B5B861799B2C1003156D3 /* JVBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVBlogViewController.m; sourceTree = "<group>"; };
 		0F9B86C3179854FE005BBFE8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9B86C6179854FE005BBFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0F9B86C8179854FE005BBFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -168,6 +171,8 @@
 				0F842CAB179889F900B1B3EB /* JVJiveFactory.m */,
 				0F9B5B821799A7BC003156D3 /* JVPersonCell.h */,
 				0F9B5B831799A7BC003156D3 /* JVPersonCell.m */,
+				0F9B5B851799B2C1003156D3 /* JVBlogViewController.h */,
+				0F9B5B861799B2C1003156D3 /* JVBlogViewController.m */,
 				0F9B86CD179854FE005BBFE8 /* Supporting Files */,
 			);
 			path = Example;
@@ -293,6 +298,7 @@
 				0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */,
 				0F842CAC179889F900B1B3EB /* JVJiveFactory.m in Sources */,
 				0F9B5B841799A7BC003156D3 /* JVPersonCell.m in Sources */,
+				0F9B5B871799B2C1003156D3 /* JVBlogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

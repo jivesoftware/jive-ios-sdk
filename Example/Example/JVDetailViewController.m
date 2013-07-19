@@ -7,9 +7,16 @@
 //
 
 #import "JVDetailViewController.h"
+#import "JVBlogViewController.h"
+#import <Jive/Jive.h>
+#import "JVJiveFactory.h"
 
 @interface JVDetailViewController ()
-- (void)configureView;
+
+@property (strong, nonatomic) JVBlogViewController *tableViewController;
+@property (strong, nonatomic) JiveBlog *blog;
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
+
 @end
 
 @implementation JVDetailViewController
@@ -19,33 +26,35 @@
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
+        JivePerson *person = newDetailItem;
         _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
+        self.title = person.displayName;
+        [person blogWithOptions:nil
+                     onComplete:^(JiveBlog *blog) {
+                         self.blog = blog;
+                     } onError:nil];
     }
 }
 
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+- (void)setBlog:(JiveBlog *)blog {
+    NSOperation *operation = [[JVJiveFactory jiveInstance] contentsOperationWithURL:blog.contentsRef
+                                                                         onComplete:^(NSArray *contents) {
+                                                                             [self.activityIndicator stopAnimating];
+                                                                             self.tableViewController.contents = contents;
+                                                                         } onError:nil];
+    
+    _blog = blog;
+    self.title = blog.name;
+    [self.operationQueue addOperation:operation];
+    [self.activityIndicator startAnimating];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.operationQueue = [NSOperationQueue new];
+    self.tableViewController = [JVBlogViewController new];
+    self.tableViewController.tableView = self.tableView;
 }
 
 @end
