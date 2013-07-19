@@ -375,7 +375,7 @@
 		B865526C179884B300AAF1AD /* JiveMobileAnalyticsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = B1B5917A17381377009B560E /* JiveMobileAnalyticsHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B865526D179884B300AAF1AD /* JiveOperationRetrier.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B865526E179884B300AAF1AD /* JiveRetryingHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B0DAA1177393EC0060F62E /* JiveRetryingHTTPRequestOperation.h */; settings = {ATTRIBUTES = (); }; };
-		B865526F179884B300AAF1AD /* JiveRetryingImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */; settings = {ATTRIBUTES = (); }; };
+		B865526F179884B300AAF1AD /* JiveRetryingImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24410177B334400BE8A6D /* JiveRetryingImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8655270179884B300AAF1AD /* JiveRetryingInnerHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */; settings = {ATTRIBUTES = (); }; };
 		B8655271179884B300AAF1AD /* JiveRetryingInnerImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D24409177B32E900BE8A6D /* JiveRetryingInnerImageRequestOperation.h */; settings = {ATTRIBUTES = (); }; };
 		B8655272179884B300AAF1AD /* JiveRetryingInnerJAPIRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D243491778943F00BE8A6D /* JiveRetryingInnerJAPIRequestOperation.h */; settings = {ATTRIBUTES = (); }; };
@@ -1928,6 +1928,7 @@
 				B8655298179884B300AAF1AD /* JiveTrendingContentRequestOptions.h in Headers */,
 				B8655299179884B300AAF1AD /* JiveTrendingPeopleRequestOptions.h in Headers */,
 				B865529A179884B300AAF1AD /* JiveWelcomeRequestOptions.h in Headers */,
+				B865526F179884B300AAF1AD /* JiveRetryingImageRequestOperation.h in Headers */,
 				B8655220179884B300AAF1AD /* JiveNSString+URLArguments.h in Headers */,
 				B8655221179884B300AAF1AD /* JiveNSDictionary+URLArguments.h in Headers */,
 				B8655222179884B300AAF1AD /* JiveObjcRuntime.h in Headers */,
@@ -1936,7 +1937,6 @@
 				B8655260179884B300AAF1AD /* JiveTypedObject_internal.h in Headers */,
 				B8655266179884B300AAF1AD /* JAPIRequestOperation.h in Headers */,
 				B865526E179884B300AAF1AD /* JiveRetryingHTTPRequestOperation.h in Headers */,
-				B865526F179884B300AAF1AD /* JiveRetryingImageRequestOperation.h in Headers */,
 				B8655270179884B300AAF1AD /* JiveRetryingInnerHTTPRequestOperation.h in Headers */,
 				B8655271179884B300AAF1AD /* JiveRetryingInnerImageRequestOperation.h in Headers */,
 				B8655272179884B300AAF1AD /* JiveRetryingInnerJAPIRequestOperation.h in Headers */,
