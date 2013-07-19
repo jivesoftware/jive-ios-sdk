@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0738A71799900700F23287 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A017998FD900F23287 /* libJive.a */; };
+		0F0738A81799903400F23287 /* libjive-ios-sdk-headers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */; };
 		0F842CAC179889F900B1B3EB /* JVJiveFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F842CAB179889F900B1B3EB /* JVJiveFactory.m */; };
 		0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C6179854FE005BBFE8 /* UIKit.framework */; };
 		0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C8179854FE005BBFE8 /* Foundation.framework */; };
@@ -20,11 +22,49 @@
 		0F9B86E0179854FE005BBFE8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B86DE179854FE005BBFE8 /* MainStoryboard.storyboard */; };
 		0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */; };
 		0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */; };
-		0F9B86ED17985576005BBFE8 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86EC17985576005BBFE8 /* libJive.a */; };
 		0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0F07389F17998FD900F23287 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2192BBF91614F33300082926;
+			remoteInfo = "jive-ios-sdk";
+		};
+		0F0738A117998FD900F23287 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2192BC0A1614F33300082926;
+			remoteInfo = "jive-ios-sdkTests";
+		};
+		0F0738A317998FD900F23287 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B89147291796FD36001596E2;
+			remoteInfo = "jive-ios-sdk-headers";
+		};
+		0F0738A517998FED00F23287 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2192BBF81614F33300082926;
+			remoteInfo = "jive-ios-sdk";
+		};
+		0F0738AB179994DF00F23287 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B89146231796FD36001596E2;
+			remoteInfo = "jive-ios-sdk-headers";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		0F842CAA179889F900B1B3EB /* JVJiveFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVJiveFactory.h; sourceTree = "<group>"; };
 		0F842CAB179889F900B1B3EB /* JVJiveFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVJiveFactory.m; sourceTree = "<group>"; };
 		0F9B86C3179854FE005BBFE8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +85,6 @@
 		0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVMasterViewController.m; sourceTree = "<group>"; };
 		0F9B86E4179854FE005BBFE8 /* JVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JVDetailViewController.h; sourceTree = "<group>"; };
 		0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVDetailViewController.m; sourceTree = "<group>"; };
-		0F9B86EC17985576005BBFE8 /* libJive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJive.a; path = "../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos/libJive.a"; sourceTree = "<group>"; };
 		0F9B86EE17985C1D005BBFE8 /* JVLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLoginViewController.h; sourceTree = "<group>"; };
 		0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,7 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F9B86ED17985576005BBFE8 /* libJive.a in Frameworks */,
+				0F0738A71799900700F23287 /* libJive.a in Frameworks */,
+				0F0738A81799903400F23287 /* libjive-ios-sdk-headers.a in Frameworks */,
 				0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */,
 				0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */,
 				0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */,
@@ -65,9 +105,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F07389917998FD900F23287 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F0738A017998FD900F23287 /* libJive.a */,
+				0F0738A217998FD900F23287 /* jive-ios-sdkTests.octest */,
+				0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0F9B86BA179854FE005BBFE8 = {
 			isa = PBXGroup;
 			children = (
+				0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */,
 				0F9B86CC179854FE005BBFE8 /* Example */,
 				0F9B86C5179854FE005BBFE8 /* Frameworks */,
 				0F9B86C4179854FE005BBFE8 /* Products */,
@@ -85,7 +136,6 @@
 		0F9B86C5179854FE005BBFE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0F9B86EC17985576005BBFE8 /* libJive.a */,
 				0F9B86C6179854FE005BBFE8 /* UIKit.framework */,
 				0F9B86C8179854FE005BBFE8 /* Foundation.framework */,
 				0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */,
@@ -140,6 +190,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F0738AC179994DF00F23287 /* PBXTargetDependency */,
+				0F0738A617998FED00F23287 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -166,12 +218,42 @@
 			mainGroup = 0F9B86BA179854FE005BBFE8;
 			productRefGroup = 0F9B86C4179854FE005BBFE8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0F07389917998FD900F23287 /* Products */;
+					ProjectRef = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0F9B86C2179854FE005BBFE8 /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0F0738A017998FD900F23287 /* libJive.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJive.a;
+			remoteRef = 0F07389F17998FD900F23287 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0738A217998FD900F23287 /* jive-ios-sdkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "jive-ios-sdkTests.octest";
+			remoteRef = 0F0738A117998FD900F23287 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjive-ios-sdk-headers.a";
+			remoteRef = 0F0738A317998FD900F23287 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0F9B86C1179854FE005BBFE8 /* Resources */ = {
@@ -203,6 +285,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F0738A617998FED00F23287 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "jive-ios-sdk";
+			targetProxy = 0F0738A517998FED00F23287 /* PBXContainerItemProxy */;
+		};
+		0F0738AC179994DF00F23287 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "jive-ios-sdk-headers";
+			targetProxy = 0F0738AB179994DF00F23287 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0F9B86CF179854FE005BBFE8 /* InfoPlist.strings */ = {
@@ -283,18 +378,37 @@
 		0F9B86EA179854FE005BBFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SEPARATE_STRIP = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -302,18 +416,37 @@
 		0F9B86EB179854FE005BBFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphoneos\"",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SEPARATE_STRIP = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
