@@ -9,6 +9,7 @@
 #import "JVMasterViewController.h"
 #import "JVDetailViewController.h"
 #import <Jive/Jive.h>
+#import "JVPersonCell.h"
 
 @interface JVMasterViewController () {
     NSMutableArray *_objects;
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     if (self.me) {
         _objects = [@[self.me] mutableCopy];
-        [self.me followersWithOptions:nil
+        [self.me followingWithOptions:nil
                            onComplete:^(NSArray *objects) {
                                [self addFollowers:objects];
                            } onError:nil];
@@ -30,7 +31,6 @@
 }
 
 - (void)addFollowers:(NSArray *)objects {
-    _objects = [@[self.me] mutableCopy];
     [_objects addObjectsFromArray:objects];
     [self.tableView reloadData];
 }
@@ -47,12 +47,14 @@
     return _objects.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    JVPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                         forIndexPath:indexPath];
+    JivePerson *object = _objects[indexPath.row];
+    
+    cell.person = object;
     return cell;
 }
 
