@@ -13,6 +13,8 @@
 
 @interface JVLoginViewController ()
 
+@property (nonatomic) JivePerson *me;
+
 @end
 
 @implementation JVLoginViewController
@@ -23,6 +25,10 @@
     self.password.text = nil;
     [self.userName becomeFirstResponder];
     [super viewDidAppear:animated];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [segue.destinationViewController setMe:self.me];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -53,8 +59,8 @@
 #pragma mark - Private
 
 - (void)handleLogin:(JivePerson *)person {
+    self.me = person;
     [self performSegueWithIdentifier:@"Login" sender:self];
-    ((JVMasterViewController *)self.navigationController.presentingViewController).me = person;
     [self resetLoginView];
 }
 
