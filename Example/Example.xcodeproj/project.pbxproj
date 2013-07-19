@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0738A71799900700F23287 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A017998FD900F23287 /* libJive.a */; };
-		0F0738A81799903400F23287 /* libjive-ios-sdk-headers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A417998FD900F23287 /* libjive-ios-sdk-headers.a */; };
 		0F842CAC179889F900B1B3EB /* JVJiveFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F842CAB179889F900B1B3EB /* JVJiveFactory.m */; };
+		0F9B5B7B1799997B003156D3 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0738A017998FD900F23287 /* libJive.a */; };
+		0F9B5B8017999CF1003156D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */; };
+		0F9B5B8117999CFB003156D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */; };
 		0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C6179854FE005BBFE8 /* UIKit.framework */; };
 		0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86C8179854FE005BBFE8 /* Foundation.framework */; };
 		0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */; };
@@ -47,14 +48,14 @@
 			remoteGlobalIDString = B89147291796FD36001596E2;
 			remoteInfo = "jive-ios-sdk-headers";
 		};
-		0F0738A517998FED00F23287 /* PBXContainerItemProxy */ = {
+		0F9B5B7617999965003156D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 2192BBF81614F33300082926;
 			remoteInfo = "jive-ios-sdk";
 		};
-		0F0738AB179994DF00F23287 /* PBXContainerItemProxy */ = {
+		0F9B5B7817999965003156D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */;
 			proxyType = 1;
@@ -67,6 +68,8 @@
 		0F07389817998FD900F23287 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		0F842CAA179889F900B1B3EB /* JVJiveFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVJiveFactory.h; sourceTree = "<group>"; };
 		0F842CAB179889F900B1B3EB /* JVJiveFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVJiveFactory.m; sourceTree = "<group>"; };
+		0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0F9B86C3179854FE005BBFE8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9B86C6179854FE005BBFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0F9B86C8179854FE005BBFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,11 +97,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F0738A71799900700F23287 /* libJive.a in Frameworks */,
-				0F0738A81799903400F23287 /* libjive-ios-sdk-headers.a in Frameworks */,
+				0F9B5B7B1799997B003156D3 /* libJive.a in Frameworks */,
 				0F9B86C7179854FE005BBFE8 /* UIKit.framework in Frameworks */,
 				0F9B86C9179854FE005BBFE8 /* Foundation.framework in Frameworks */,
 				0F9B86CB179854FE005BBFE8 /* CoreGraphics.framework in Frameworks */,
+				0F9B5B8017999CF1003156D3 /* SystemConfiguration.framework in Frameworks */,
+				0F9B5B8117999CFB003156D3 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +143,8 @@
 				0F9B86C6179854FE005BBFE8 /* UIKit.framework */,
 				0F9B86C8179854FE005BBFE8 /* Foundation.framework */,
 				0F9B86CA179854FE005BBFE8 /* CoreGraphics.framework */,
+				0F9B5B7C17999AF7003156D3 /* SystemConfiguration.framework */,
+				0F9B5B7E17999BAE003156D3 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,8 +196,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				0F0738AC179994DF00F23287 /* PBXTargetDependency */,
-				0F0738A617998FED00F23287 /* PBXTargetDependency */,
+				0F9B5B7717999965003156D3 /* PBXTargetDependency */,
+				0F9B5B7917999965003156D3 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -287,15 +293,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0F0738A617998FED00F23287 /* PBXTargetDependency */ = {
+		0F9B5B7717999965003156D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "jive-ios-sdk";
-			targetProxy = 0F0738A517998FED00F23287 /* PBXContainerItemProxy */;
+			targetProxy = 0F9B5B7617999965003156D3 /* PBXContainerItemProxy */;
 		};
-		0F0738AC179994DF00F23287 /* PBXTargetDependency */ = {
+		0F9B5B7917999965003156D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "jive-ios-sdk-headers";
-			targetProxy = 0F0738AB179994DF00F23287 /* PBXContainerItemProxy */;
+			targetProxy = 0F9B5B7817999965003156D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -383,6 +389,10 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphonesimulator\"",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
@@ -421,6 +431,10 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/jive-ios-sdk-bbzblkosbufefkcfddotbbqjzqan/Build/Products/Debug-iphonesimulator\"",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
