@@ -55,15 +55,14 @@ static JVJiveFactory *instance;
              password:(NSString *)password
              complete:(JivePersonCompleteBlock)completeBlock
                 error:(JiveErrorBlock)errorBlock {
-    JivePersonCompleteBlock completeBlockCopy = [completeBlock copy];
     JiveErrorBlock errorBlockCopy = [errorBlock copy];
     
     self.userName = userName;
     self.password = password;
     self.jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://community.jivesoftware.com"]
-                                 authorizationDelegate:instance];
+                             authorizationDelegate:self];
     self.credentials = nil;
-    [self.jive me:completeBlockCopy
+    [self.jive me:completeBlock
           onError:^(NSError *error) {
               [self handleLoginError:error withErrorBlock:errorBlockCopy];
           }];
