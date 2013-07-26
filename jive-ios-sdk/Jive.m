@@ -1272,6 +1272,7 @@
     
     [body appendData:boundaryData];
     [request setHTTPBody:body];
+    [request setTimeoutInterval:body.length * 60 / 1000000];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
