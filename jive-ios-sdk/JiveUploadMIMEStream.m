@@ -10,15 +10,6 @@
 #import "JiveAttachment.h"
 #import "NSString+Jive.h"
 
-struct JiveUploadMIMEStreamElements {
-    __unsafe_unretained NSString *boundary;
-    __unsafe_unretained NSString *JSONType;
-    __unsafe_unretained NSString *boundaryFormat;
-    __unsafe_unretained NSString *contentTypeFormat;
-    __unsafe_unretained NSString *dispositionFormat;
-    __unsafe_unretained NSString *fileDispositionFormat;
-} const JiveUploadMIMEStreamElements;
-
 struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
     .boundary = @"0xJiveBoundary",
     .JSONType = @"application/json; charset=UTF-8",

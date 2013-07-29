@@ -30,6 +30,7 @@
 #import "NSString+Jive.h"
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
+#import "JiveUploadMIMEStream.h"
 
 @interface JiveInvite (internal)
 
@@ -1241,38 +1242,24 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
+    JiveUploadMIMEStream *mimeStream = [JiveUploadMIMEStream new];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",
+                             JiveUploadMIMEStreamElements.boundary];
+    NSTimeInterval uploadLength = 500000; // Start with a 500 KB buffer
     
-    [request setHTTPMethod:@"POST"];
-    
-    NSString *boundary = @"0xJiveBoundary";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-    NSMutableData *body = [NSMutableData data];
-    NSData *boundaryData = [[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *contentData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
-                                                          options:0
-                                                            error:nil];
-    NSString * const typeFormat = @"Content-Type: %@\r\n\r\n";
-    
-    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name=\"content\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:contentData];
     for (JiveAttachment *attachment in attachmentURLs) {
-        NSString *formDataString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",
-                                    attachment.name, [attachment.url lastPathComponent]];
-        NSString *fileTypeDataString = [NSString stringWithFormat:typeFormat, [[attachment.url pathExtension] mimeTypeFromExtension]];
-        
-        [body appendData:boundaryData];
-        [body appendData:[formDataString dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[fileTypeDataString dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[NSData dataWithContentsOfURL:attachment.url]];
+        uploadLength += attachment.size.doubleValue;
     }
     
-    [body appendData:boundaryData];
-    [request setHTTPBody:body];
-    [request setTimeoutInterval:body.length * 60 / 1000000];
+    mimeStream.JSONBody = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
+                                                          options:0
+                                                            error:nil];
+    mimeStream.attachments = attachmentURLs;
+    
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBodyStream:mimeStream];
+    [request setTimeoutInterval:uploadLength * 60 / 1000000]; // 1 minute per MB assuming a slow connection
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete

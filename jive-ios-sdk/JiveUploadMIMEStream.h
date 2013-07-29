@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+struct JiveUploadMIMEStreamElements {
+    __unsafe_unretained NSString *boundary;
+    __unsafe_unretained NSString *JSONType;
+    __unsafe_unretained NSString *boundaryFormat;
+    __unsafe_unretained NSString *contentTypeFormat;
+    __unsafe_unretained NSString *dispositionFormat;
+    __unsafe_unretained NSString *fileDispositionFormat;
+} const JiveUploadMIMEStreamElements;
+
 @interface JiveUploadMIMEStream : NSInputStream
 
 @property (weak, nonatomic) id<NSStreamDelegate> delegate;
