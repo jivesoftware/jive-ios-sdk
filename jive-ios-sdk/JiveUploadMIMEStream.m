@@ -28,12 +28,15 @@ struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
     .fileDispositionFormat = @"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n"
 };
 
-@interface JiveUploadMIMEStream ()
+@interface JiveUploadMIMEStream () <NSStreamDelegate>
 
 @property (nonatomic) NSInputStream *currentStream;
 @property (nonatomic) NSInputStream *boundaryStream;
 @property (nonatomic) NSInputStream *headerStream;
 @property (nonatomic) NSInteger fileIndex;
+@property (nonatomic) BOOL reading;
+@property (weak, nonatomic) NSRunLoop *currentRunLoop;
+@property (nonatomic) NSString *runLoopMode;
 
 @end
 
@@ -50,6 +53,18 @@ struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
     return _boundaryStream;
 }
 
+- (void)setCurrentStream:(NSInputStream *)currentStream {
+    if (currentStream != _currentStream) {
+        _currentStream.delegate = nil;
+        [_currentStream close];
+        [_currentStream removeFromRunLoop:self.currentRunLoop forMode:self.runLoopMode];
+        _currentStream = currentStream;
+        _currentStream.delegate = self;
+        [_currentStream scheduleInRunLoop:self.currentRunLoop forMode:self.runLoopMode];
+        [_currentStream open];
+    }
+}
+
 - (void)open {
     NSMutableData *contentData = [NSMutableData new];
     
@@ -58,13 +73,24 @@ struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
     [contentData appendData:[[NSString stringWithFormat:JiveUploadMIMEStreamElements.contentTypeFormat,
                               JiveUploadMIMEStreamElements.JSONType] dataUsingEncoding:NSUTF8StringEncoding]];
     [contentData appendData:self.JSONBody];
-    self.currentStream = [[NSInputStream alloc] initWithData:contentData];
-    [self.currentStream open];
     self.fileIndex = -1;
+    self.reading = NO;
+    self.currentStream = [[NSInputStream alloc] initWithData:contentData];
+}
+
+- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode {
+    [self.currentStream removeFromRunLoop:self.currentRunLoop forMode:self.runLoopMode];
+    self.currentRunLoop = aRunLoop;
+    self.runLoopMode = mode;
+    [self.currentStream scheduleInRunLoop:aRunLoop forMode:mode];
+}
+
+- (void)removeFromRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode {
+    [self.currentStream removeFromRunLoop:aRunLoop forMode:mode];
+    self.currentRunLoop = nil;
 }
 
 - (void)close {
-    [self.currentStream close];
     self.currentStream = nil;
 }
 
@@ -73,48 +99,11 @@ struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
 }
 
 - (NSInteger)read:(uint8_t *)buffer maxLength:(NSUInteger)len {
-    NSInteger bytesRead = [self.currentStream read:buffer maxLength:len];
-    const NSInteger readErrorFlag = -1;
-    
-    if (bytesRead != readErrorFlag) {
-        while (!self.hasBytesAvailable && self.fileIndex < (NSInteger)self.attachments.count) {
-            [self.currentStream close];
-            if (self.currentStream == self.headerStream) {
-                self.currentStream = [NSInputStream inputStreamWithURL:[self.attachments[self.fileIndex] url]];
-            } else if (self.currentStream != self.boundaryStream) {
-                self.currentStream = self.boundaryStream;
-            } else {
-                ++self.fileIndex;
-                if (self.fileIndex >= (NSInteger)self.attachments.count) {
-                    break;
-                }
-                
-                NSMutableData *contentData = [NSMutableData new];
-                JiveAttachment *file = self.attachments[(NSUInteger)self.fileIndex];
-                
-                [contentData appendData:[[NSString stringWithFormat:JiveUploadMIMEStreamElements.fileDispositionFormat,
-                                          file.name, [file.url lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
-                [contentData appendData:[[NSString stringWithFormat:JiveUploadMIMEStreamElements.contentTypeFormat,
-                                          [[file.url pathExtension] mimeTypeFromExtension]] dataUsingEncoding:NSUTF8StringEncoding]];
-                self.headerStream = [[NSInputStream alloc] initWithData:contentData];
-                self.currentStream = self.headerStream;
-            }
-            
-            [self.currentStream open];
-            
-            NSInteger moreBytesRead = [self.currentStream read:&buffer[bytesRead]
-                                                     maxLength:len - (NSUInteger)bytesRead];
-            
-            if (moreBytesRead == readErrorFlag) {
-                bytesRead = moreBytesRead;
-                break;
-            }
-            
-            bytesRead += moreBytesRead;
-        }
-    }
-    
-    return bytesRead;
+    return [self.currentStream read:buffer maxLength:len];
+}
+
+- (BOOL)getBuffer:(uint8_t **)buffer length:(NSUInteger *)len {
+    return [self.currentStream getBuffer:buffer length:len];
 }
 
 - (NSStreamStatus)streamStatus {
@@ -125,32 +114,45 @@ struct JiveUploadMIMEStreamElements const JiveUploadMIMEStreamElements = {
     return self.currentStream.streamError;
 }
 
-//NSString *boundary = @"0xJiveBoundary";
-//NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-//NSMutableData *body = [NSMutableData data];
-//NSData *boundaryData = [[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-//NSData *contentData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
-//                                                      options:0
-//                                                        error:nil];
-//NSString * const typeFormat = @"Content-Type: %@\r\n\r\n";
-//
-//[request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-//
-//[body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-//[body appendData:[@"Content-Disposition: form-data; name=\"content\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-//[body appendData:[[NSString stringWithFormat:typeFormat, @"application/json; charset=UTF-8"] dataUsingEncoding:NSUTF8StringEncoding]];
-//[body appendData:contentData];
-//for (JiveAttachment *attachment in attachmentURLs) {
-//    NSString *formDataString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",
-//                                attachment.name, [attachment.url lastPathComponent]];
-//    NSString *fileTypeDataString = [NSString stringWithFormat:typeFormat, [[attachment.url pathExtension] mimeTypeFromExtension]];
-//    
-//    [body appendData:boundaryData];
-//    [body appendData:[formDataString dataUsingEncoding:NSUTF8StringEncoding]];
-//    [body appendData:[fileTypeDataString dataUsingEncoding:NSUTF8StringEncoding]];
-//    [body appendData:[NSData dataWithContentsOfURL:attachment.url]];
-//}
-//
-//[body appendData:boundaryData];
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+    switch (eventCode) {
+        case NSStreamEventOpenCompleted:
+            if (self.reading) {
+                return;
+            }
+            
+            self.reading = YES;
+            break;
+            
+        case NSStreamEventEndEncountered:
+            if (self.currentStream == self.headerStream) {
+                self.currentStream = [NSInputStream inputStreamWithURL:[self.attachments[self.fileIndex] url]];
+            } else if (self.currentStream != self.boundaryStream) {
+                self.boundaryStream = nil; // Remove previous boundary stream as it is in an invalid state.
+                self.currentStream = self.boundaryStream;
+                ++self.fileIndex;
+            } else if (self.fileIndex < (NSInteger)self.attachments.count) {
+                NSMutableData *contentData = [NSMutableData new];
+                JiveAttachment *file = self.attachments[(NSUInteger)self.fileIndex];
+                
+                [contentData appendData:[[NSString stringWithFormat:JiveUploadMIMEStreamElements.fileDispositionFormat,
+                                          file.name, [file.url lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
+                [contentData appendData:[[NSString stringWithFormat:JiveUploadMIMEStreamElements.contentTypeFormat,
+                                          [[file.url pathExtension] mimeTypeFromExtension]] dataUsingEncoding:NSUTF8StringEncoding]];
+                self.headerStream = [[NSInputStream alloc] initWithData:contentData];
+                self.currentStream = self.headerStream;
+            } else {
+                self.reading = NO;
+                break;
+            }
+            
+            return;
+            
+        default:
+            break;
+    }
+    
+    [self.delegate stream:self handleEvent:eventCode];
+}
 
 @end

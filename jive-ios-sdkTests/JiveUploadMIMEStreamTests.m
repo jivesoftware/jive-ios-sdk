@@ -10,132 +10,173 @@
 #import "JiveAttachment.h"
 #import "NSString+Jive.h"
 
-@interface JiveUploadMIMEStreamTests ()
+@interface UploadStreamDelegate : NSObject <NSStreamDelegate>
+
+@property (strong, nonatomic) NSMutableData *readData;
+@property (nonatomic) uint8_t *buffer;
+@property (nonatomic) NSUInteger bufferSize;
+@property (nonatomic) BOOL waiting;
+
+-(void)runLoopUntilInputFinished;
 
 @end
 
-const int bufferSize = 256;
+@interface JiveUploadMIMEStreamTests ()
+
+@property (strong, nonatomic) UploadStreamDelegate *uploadDelegate;
+
+@end
+
+const int shortBufferSize = 256;
 const int longBufferSize = 1024;
+
+@implementation UploadStreamDelegate
+
+- (void)setBufferSize:(NSUInteger)bufferSize {
+    _bufferSize = bufferSize;
+    if (self.buffer) {
+        free(self.buffer);
+        self.buffer = nil;
+    }
+    
+    if (bufferSize > 0) {
+        self.buffer = malloc(bufferSize);
+    }
+}
+
+- (void)runLoopUntilInputFinished {
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:60];
+    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+    self.waiting = YES;
+    while (self.waiting) {
+        [currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:date];
+    }
+}
+
+- (void)stream:(NSInputStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+    switch (eventCode) {
+        case NSStreamEventHasBytesAvailable: {
+            NSUInteger bytesRead = (NSUInteger)[aStream read:self.buffer maxLength:self.bufferSize];
+            
+            if (bytesRead == (NSUInteger)(-1)) {
+                self.waiting = NO;
+            } else if (self.readData) {
+                [self.readData appendBytes:self.buffer length:bytesRead];
+            } else {
+                self.readData = [NSMutableData dataWithBytes:self.buffer length:bytesRead];
+            }
+            break;
+        }
+            
+        case NSStreamEventErrorOccurred:
+        case NSStreamEventEndEncountered:
+            self.waiting = NO;
+            break;
+            
+        default:
+            break;
+    }
+}
+
+@end
 
 @implementation JiveUploadMIMEStreamTests
 
 - (void)setUp {
     self.stream = [JiveUploadMIMEStream new];
+    [self.stream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:NSRunLoopCommonModes];
+    self.uploadDelegate = [UploadStreamDelegate new];
+    self.stream.delegate = self.uploadDelegate;
 }
 
 - (void)tearDown {
     [self.stream close];
+    [self.stream removeFromRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:NSRunLoopCommonModes];
     self.stream = nil;
+    self.uploadDelegate = nil;
 }
 
 - (void)testSimpleUse {
+    self.uploadDelegate.bufferSize = shortBufferSize;
+    
     NSString *dummyJSON = @"Invalid JSON data";
-    NSString *testResult = [NSString stringWithFormat:@"--0xJiveBoundary\r\n"
-                            @"Content-Disposition: form-data; name=\"content\"\r\n"
-                            @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
-                            @"%@\r\n--0xJiveBoundary\r\n", dummyJSON];
+    NSData *testResult = [[NSString stringWithFormat:@"--0xJiveBoundary\r\n"
+                           @"Content-Disposition: form-data; name=\"content\"\r\n"
+                           @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
+                           @"%@\r\n--0xJiveBoundary\r\n", dummyJSON] dataUsingEncoding:NSUTF8StringEncoding];
     
     STAssertFalse(self.stream.hasBytesAvailable, @"An empty stream should not have bytes available");
     
     self.stream.JSONBody = [dummyJSON dataUsingEncoding:NSUTF8StringEncoding];
     [self.stream open];
     STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
+    STAssertNil(self.stream.streamError, @"Opening the stream should not report an error");
+    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Wrong status after opening the stream");
     
-    uint8_t buffer[bufferSize] = { 0 };
-    NSUInteger readBytes = (NSUInteger)[self.stream read:buffer maxLength:bufferSize];
-    
-    STAssertEquals(readBytes, testResult.length, @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes],
-                       @"The buffer was not filled correctly");
-    }
-    
+    [self.uploadDelegate runLoopUntilInputFinished];
+    STAssertEquals(self.uploadDelegate.readData.length, testResult.length, @"The wrong number of bytes were read");
+    STAssertEqualObjects(self.uploadDelegate.readData, testResult, @"The wrong data was returned");
     STAssertFalse(self.stream.hasBytesAvailable, @"Once read, a stream should not have bytes available");
 }
 
 - (void)testSimpleUseWithLongData {
+    self.uploadDelegate.bufferSize = shortBufferSize;
+    
     NSString *dummyJSON = @"This is a really long invalid JSON data block, part 1."
     @"This is a really long invalid JSON data block, part 2."
     @"This is a really long invalid JSON data block, part 3."
     @"This is a really long invalid JSON data block, part 4."
     @"This is a really long invalid JSON data block, part 5."
     @"This is a really long invalid JSON data block, part 6.";
-    NSString *testResult = [NSString stringWithFormat:@"--0xJiveBoundary\r\n"
-                            @"Content-Disposition: form-data; name=\"content\"\r\n"
-                            @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
-                            @"%@\r\n--0xJiveBoundary\r\n", dummyJSON];
+    NSData *testResult = [[NSString stringWithFormat:@"--0xJiveBoundary\r\n"
+                           @"Content-Disposition: form-data; name=\"content\"\r\n"
+                           @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
+                           @"%@\r\n--0xJiveBoundary\r\n", dummyJSON] dataUsingEncoding:NSUTF8StringEncoding];
     
     STAssertFalse(self.stream.hasBytesAvailable, @"An empty stream should not have bytes available");
     
     self.stream.JSONBody = [dummyJSON dataUsingEncoding:NSUTF8StringEncoding];
     [self.stream open];
     STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
+    STAssertNil(self.stream.streamError, @"Opening the stream should not report an error");
+    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Wrong status after opening the stream");
     
-    uint8_t buffer[bufferSize] = { 0 };
-    NSUInteger readBytes = (NSUInteger)[self.stream read:buffer maxLength:bufferSize];
-    
-    STAssertEquals(readBytes, (NSUInteger)bufferSize, @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes],
-                       @"The buffer was not filled correctly");
-    }
-    
-    STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
-    
-    readBytes = (NSUInteger)[self.stream read:buffer maxLength:bufferSize];
-    STAssertTrue(readBytes > 0, @"There should have been some bytes read");
-    STAssertEquals(readBytes, (NSUInteger)(testResult.length - bufferSize), @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes + bufferSize],
-                       @"The buffer was not filled correctly");
-    }
-    
+    [self.uploadDelegate runLoopUntilInputFinished];
+    STAssertEquals(self.uploadDelegate.readData.length, testResult.length, @"The wrong number of bytes were read");
+    STAssertEqualObjects(self.uploadDelegate.readData, testResult, @"The wrong data was returned");
     STAssertFalse(self.stream.hasBytesAvailable, @"Once read, a stream should not have bytes available");
 }
 
 - (void)testSimpleUseWithPreBoundaryLengthEqualToBufferSize {
+    self.uploadDelegate.bufferSize = shortBufferSize;
+    
     NSString *dummyJSON = @"This is a really long invalid JSON data block, part 1."
     @"This is a really long invalid JSON data block, part 2."
     @"This is a really long invalid JSO";
-    NSString *testResult = [NSString stringWithFormat:@"--0xJiveBoundary\r\n"
-                            @"Content-Disposition: form-data; name=\"content\"\r\n"
-                            @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
-                            @"%@\r\n--0xJiveBoundary\r\n", dummyJSON];
+    NSData *testResult = [[NSString stringWithFormat:@"--0xJiveBoundary\r\n"
+                           @"Content-Disposition: form-data; name=\"content\"\r\n"
+                           @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
+                           @"%@\r\n--0xJiveBoundary\r\n", dummyJSON] dataUsingEncoding:NSUTF8StringEncoding];
     
     STAssertFalse(self.stream.hasBytesAvailable, @"An empty stream should not have bytes available");
     
     self.stream.JSONBody = [dummyJSON dataUsingEncoding:NSUTF8StringEncoding];
     [self.stream open];
     STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
+    STAssertNil(self.stream.streamError, @"Opening the stream should not report an error");
+    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Wrong status after opening the stream");
     
-    uint8_t buffer[bufferSize] = { 0 };
-    NSUInteger readBytes = (NSUInteger)[self.stream read:buffer maxLength:bufferSize];
-    
-    STAssertEquals(readBytes, (NSUInteger)bufferSize, @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes],
-                       @"The buffer was not filled correctly");
-    }
-    
-    STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
-    
-    readBytes = (NSUInteger)[self.stream read:buffer maxLength:bufferSize];
-    STAssertTrue(readBytes > 0, @"There should have been some bytes read");
-    STAssertEquals(readBytes, (NSUInteger)(testResult.length - bufferSize), @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes + bufferSize],
-                       @"The buffer was not filled correctly");
-    }
-    
+    [self.uploadDelegate runLoopUntilInputFinished];
+    STAssertEquals(self.uploadDelegate.readData.length, testResult.length, @"The wrong number of bytes were read");
+    STAssertEqualObjects(self.uploadDelegate.readData, testResult, @"The wrong data was returned");
     STAssertFalse(self.stream.hasBytesAvailable, @"Once read, a stream should not have bytes available");
 }
 
 - (void)testShortFile {
+    self.uploadDelegate.bufferSize = longBufferSize;
+    
     NSString *dummyJSON = @"Invalid JSON data";
     JiveAttachment *firstFile = [JiveAttachment new];
     NSString *fileName = @"filterable_fields";
@@ -144,19 +185,19 @@ const int longBufferSize = 1024;
                                                                              ofType:extension];
     
     firstFile.name = contentPath.lastPathComponent;
-    firstFile.url = [NSURL URLWithString:contentPath];
+    firstFile.url = [NSURL fileURLWithPath:contentPath];
     
     NSString *fileContents = [NSString stringWithContentsOfURL:firstFile.url
                                                       encoding:NSUTF8StringEncoding
                                                          error:nil];
-    NSString *testResult = [NSString stringWithFormat:@"--0xJiveBoundary\r\n"
-                            @"Content-Disposition: form-data; name=\"content\"\r\n"
-                            @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
-                            @"%@\r\n--0xJiveBoundary\r\n"
-                            @"Content-Disposition: form-data; name=\"%@.%@\"; filename=\"%@.%@\"\r\n"
-                            @"Content-Type: application/json\r\n\r\n"
-                            @"%@\r\n--0xJiveBoundary\r\n",
-                            dummyJSON, fileName, extension, fileName, extension, fileContents];
+    NSData *testResult = [[NSString stringWithFormat:@"--0xJiveBoundary\r\n"
+                           @"Content-Disposition: form-data; name=\"content\"\r\n"
+                           @"Content-Type: application/json; charset=UTF-8\r\n\r\n"
+                           @"%@\r\n--0xJiveBoundary\r\n"
+                           @"Content-Disposition: form-data; name=\"%@.%@\"; filename=\"%@.%@\"\r\n"
+                           @"Content-Type: application/json\r\n\r\n"
+                           @"%@\r\n--0xJiveBoundary\r\n",
+                           dummyJSON, fileName, extension, fileName, extension, fileContents] dataUsingEncoding:NSUTF8StringEncoding];
     
     [firstFile setValue:[NSNumber numberWithUnsignedInteger:fileContents.length] forKey:@"size"];
     STAssertFalse(self.stream.hasBytesAvailable, @"An empty stream should not have bytes available");
@@ -167,21 +208,18 @@ const int longBufferSize = 1024;
 
     [self.stream open];
     STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
+    STAssertNil(self.stream.streamError, @"Opening the stream should not report an error");
+    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Wrong status after opening the stream");
     
-    uint8_t buffer[longBufferSize] = { 0 };
-    NSUInteger readBytes = (NSUInteger)[self.stream read:buffer maxLength:longBufferSize];
-    
-    STAssertEquals(readBytes, testResult.length, @"The wrong number of bytes were read");
-    while (readBytes-- > 0) {
-        STAssertEquals(buffer[readBytes],
-                       (uint8_t)[testResult characterAtIndex:readBytes],
-                       @"The buffer was not filled correctly");
-    }
-    
+    [self.uploadDelegate runLoopUntilInputFinished];
+    STAssertEquals(self.uploadDelegate.readData.length, testResult.length, @"The wrong number of bytes were read");
+    STAssertEqualObjects(self.uploadDelegate.readData, testResult, @"The wrong data was returned");
     STAssertFalse(self.stream.hasBytesAvailable, @"Once read, a stream should not have bytes available");
 }
 
 - (void)testFileError {
+    self.uploadDelegate.bufferSize = longBufferSize;
+    
     NSString *dummyJSON = @"Invalid JSON data";
     JiveAttachment *firstFile = [JiveAttachment new];
     NSString *fileName = @"filterable_fields";
@@ -214,10 +252,10 @@ const int longBufferSize = 1024;
     
     [self.stream open];
     STAssertTrue(self.stream.hasBytesAvailable, @"A stream with JSON data should have bytes available");
-    STAssertNil(self.stream.streamError, @"Opening the stream should not cause the error");
-    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Opening the stream should not report an error");
+    STAssertNil(self.stream.streamError, @"Opening the stream should not report an error");
+    STAssertEquals(self.stream.streamStatus, NSStreamStatusOpen, @"Wrong status after opening the stream");
     
-    readBytes = (NSUInteger)[self.stream read:buffer maxLength:longBufferSize];
+    [self.uploadDelegate runLoopUntilInputFinished];
     STAssertEquals(readBytes, errorFlag, @"An error was not returned");
     STAssertEqualObjects(self.stream.streamError, erroredInputStream.streamError, @"The wrong error was produced");
     STAssertEquals(self.stream.streamStatus, NSStreamStatusError, @"The error should be available");

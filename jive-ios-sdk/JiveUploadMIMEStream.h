@@ -10,6 +10,7 @@
 
 @interface JiveUploadMIMEStream : NSInputStream
 
+@property (weak, nonatomic) id<NSStreamDelegate> delegate;
 @property (copy, nonatomic) NSData *JSONBody; // The JSON portion of the MIME stream
 @property (copy, nonatomic) NSArray *attachments; // The JiveAttachments to be uploaded
 
