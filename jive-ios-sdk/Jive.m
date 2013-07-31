@@ -30,7 +30,6 @@
 #import "NSString+Jive.h"
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
-#import "JiveUploadMIMEStream.h"
 
 @interface JiveInvite (internal)
 
@@ -1241,29 +1240,42 @@
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
-    NSMutableURLRequest *request = [self requestWithOptions:options andTemplate:@"api/core/v3/contents", nil];
-    JiveUploadMIMEStream *mimeStream = [JiveUploadMIMEStream new];
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",
-                             JiveUploadMIMEStreamElements.boundary];
-    NSTimeInterval uploadLength = 500000; // Start with a 500 KB buffer
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSDictionary *parameters = [NSDictionary jive_dictionaryWithHttpArgumentsString:[options toQueryString]];
+    NSMutableURLRequest *request = [HTTPClient multipartFormRequestWithMethod:@"POST"
+                                                                         path:@"api/core/v3/contents"
+                                                                   parameters:parameters
+                                                    constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
+        NSData *contentJSONData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
+                                                                  options:0
+                                                                    error:nil];
+        [formData appendPartWithFileData:contentJSONData
+                                    name:@"content"
+                                fileName:@"content.json"
+                                mimeType:@"application/json"];
+        for (JiveAttachment *attachment in attachmentURLs) {
+            [formData appendPartWithFileURL:attachment.url
+                                       name:attachment.name
+                                      error:NULL];
+        }
+    })];
+    [self maybeApplyCredentialsToMutableURLRequest:request
+                                            forURL:[request URL]];
     
-    for (JiveAttachment *attachment in attachmentURLs) {
-        uploadLength += attachment.size.doubleValue;
+    NSInteger uploadLength = [[request valueForHTTPHeaderField:@"Content-Length"] integerValue];
+    
+    int const halfMegaByte = 500000;
+    int const thirtySeconds = 30;
+    if (uploadLength > halfMegaByte) {
+        [request setTimeoutInterval:uploadLength * thirtySeconds / halfMegaByte]; // 1 minute per MB assuming a slow connection
     }
     
-    mimeStream.JSONBody = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
-                                                          options:0
-                                                            error:nil];
-    mimeStream.attachments = attachmentURLs;
+    JiveRetryingJAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                                        request:request
+                                                                     onComplete:complete
+                                                                        onError:error];
     
-    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBodyStream:mimeStream];
-    [request setTimeoutInterval:uploadLength * 60 / 1000000]; // 1 minute per MB assuming a slow connection
-    return [self entityOperationForClass:[JiveContent class]
-                                 request:request
-                              onComplete:complete
-                                 onError:error];
+    return operation;
 }
 
 - (void) createContent:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
@@ -2096,7 +2108,7 @@
     }
 }
 
-- (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
+- (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
     if (request) {
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
@@ -2119,7 +2131,7 @@
     }
 }
 
-- (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
+- (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
     return [self operationWithRequest:request
                                onJSON:(^(id JSON) {
         if (completeBlock) {
@@ -2183,11 +2195,11 @@
     return operation;
 }
 
-- (JAPIRequestOperation<JiveRetryingOperation> *)entityOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(id))completeBlock onError:(JiveErrorBlock)errorBlock {
-    JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
-                                                                             onComplete:completeBlock
-                                                                                onError:errorBlock
-                                                                        responseHandler:(^id(id JSON) {
+- (JiveRetryingJAPIRequestOperation *)entityOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(id))completeBlock onError:(JiveErrorBlock)errorBlock {
+    JiveRetryingJAPIRequestOperation *operation = [self operationWithRequest:request
+                                                                  onComplete:completeBlock
+                                                                     onError:errorBlock
+                                                             responseHandler:(^id(id JSON) {
         return [clazz instanceFromJSON:JSON withJive:self];
     })];
     return operation;

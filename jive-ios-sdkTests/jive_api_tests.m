@@ -6300,11 +6300,13 @@
                                                                                                    ofType:@"json"]];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=id" isEqualToString:[value absoluteString]];
+        // the form parameters are attached in the multipart form body
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents" isEqualToString:[value absoluteString]];
         return same;
     }]];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=id" isEqualToString:[value absoluteString]];
+        // the form parameters are attached in the multipart form body
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
@@ -6329,7 +6331,8 @@
                                                                  }];
         
         STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
-        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"multipart/form-data; boundary=0xJiveBoundary", @"Wrong content type");
+        NSString *contentType = [operation.request valueForHTTPHeaderField:@"Content-Type"];
+        STAssertTrue([contentType hasPrefix:@"multipart/form-data; boundary="], @"Wrong content type, don't care about the value of the boundary");
         [operation start];
     }];
 }
@@ -6340,11 +6343,13 @@
     [options addField:@"id"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=name,id" isEqualToString:[value absoluteString]];
+        // the form parameters are attached in the multipart form body
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents" isEqualToString:[value absoluteString]];
         return same;
     }]];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents?fields=name,id" isEqualToString:[value absoluteString]];
+        // the form parameters are attached in the multipart form body
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/contents" isEqualToString:[value absoluteString]];
         return same;
     }]];
     
