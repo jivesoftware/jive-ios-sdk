@@ -23,7 +23,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -48,6 +48,18 @@
     [dictionary setValue:resolved forKey:@"resolved"];
     if (answer) {
         [dictionary setValue:[answer absoluteString] forKey:@"answer"];
+    }
+    
+    if(parentReplyCount) {
+        [dictionary setValue:parentReplyCount forKey:@"parentReplyCount"];
+    }
+    
+    if(parentLikeCount) {
+        [dictionary setValue:parentLikeCount forKey:@"parentLikeCount"];
+    }
+    
+    if(replyCount) {
+        [dictionary setValue:replyCount forKey:@"replyCount"];
     }
     
     return dictionary;
