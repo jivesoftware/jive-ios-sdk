@@ -22,4 +22,6 @@
 
 @interface JiveRetryingJAPIRequestOperation : JAPIRequestOperation<JiveRetryingOperation>
 
+@property (nonatomic, strong) id streamHelper;
+
 @end
