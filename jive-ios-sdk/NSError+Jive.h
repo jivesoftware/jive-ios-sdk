@@ -47,5 +47,6 @@ extern NSString * const JiveErrorKeyJivePlatformVersion;
 + (instancetype) jive_errorWithMultipleErrors:(NSArray *)errors;
 + (instancetype) jive_errorWithUnsupportedActivityObjectObjectType:(NSString *)unsupportedActivityObjectObjectType;
 + (instancetype) jive_errorWithUnsupportedJivePlatformVersion:(JivePlatformVersion *)jivePlatformVersion;
++ (instancetype) jive_errorWithInvalidJSON:(id)JSON;
 
 @end

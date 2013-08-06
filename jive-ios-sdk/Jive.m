@@ -2136,7 +2136,15 @@
                                onJSON:(^(id JSON) {
         if (completeBlock) {
             id entity = handler(JSON);
-            completeBlock(entity);
+            if (entity) {
+                if (entity == [NSNull null]) {
+                    completeBlock(nil);
+                } else {
+                    completeBlock(entity);
+                }
+            } else {
+                errorBlock([NSError jive_errorWithInvalidJSON:JSON]);
+            }
         }
     })
                               onError:errorBlock];
@@ -2211,7 +2219,7 @@
                                                                              onComplete:nilObjectComplete
                                                                                 onError:error
                                                                         responseHandler:(^id(id JSON) {
-        return nil;
+        return [NSNull null];
     })];
     return operation;
 }

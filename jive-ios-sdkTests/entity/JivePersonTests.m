@@ -34,6 +34,7 @@
 #import "JiveMobileAnalyticsHeader.h"
 #import "MockJiveURLProtocol.h"
 #import "JiveObject_internal.h"
+#import "NSError+Jive.h"
 
 @interface JivePersonTests (){
     id mockJiveURLResponseDelegate;
@@ -771,9 +772,8 @@
                                  STFail(@"The person object should not be updated with a task response");
                                  finishedBlock();
                              } onError:^(NSError *error) {
-                                 STAssertEqualObjects(error.localizedDescription,
-                                                      @"The operation couldn’t be completed. (An unknown server error occured error 500.)",
-                                                      @"Wrong error description");
+                                 STAssertEqualObjects([error domain], JiveErrorDomain, nil);
+                                 STAssertEquals([error code], JiveErrorCodeInvalidJSON, nil);
                                  finishedBlock();
                              }];
     }];
@@ -1695,9 +1695,8 @@
                          STFail(@"The task object should not be updated with a person response");
                          finishedBlock();
                      } onError:^(NSError *error) {
-                         STAssertEqualObjects(error.localizedDescription,
-                                              @"The operation couldn’t be completed. (An unknown server error occured error 500.)",
-                                              @"Wrong error description");
+                         STAssertEqualObjects([error domain], JiveErrorDomain, nil);
+                         STAssertEquals([error code], JiveErrorCodeInvalidJSON, nil);
                          finishedBlock();
                      }];
     }];

@@ -108,6 +108,11 @@ NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersio
                                   })];
 }
 
++ (instancetype) jive_errorWithInvalidJSON:(id)JSON {
+    return [self jive_errorWithUnderlyingError:nil
+                                          JSON:JSON];
+}
+
 - (NSArray *)jive_multipleErrors {
     NSArray *multipleErrors = [self userInfo][JiveErrorKeyMultipleErrors];
     return multipleErrors;

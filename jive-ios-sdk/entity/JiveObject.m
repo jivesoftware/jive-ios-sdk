@@ -43,8 +43,6 @@
         id inst = [[self entityClass:obj] instanceFromJSON:obj withJive:jive];
         if(inst) {
             [instances addObject:inst];
-            //        } else {
-            //            return nil;
         }
     }
     return [NSArray arrayWithArray:instances];
@@ -56,8 +54,6 @@
         id inst = [[self entityClass:obj] instanceFromJSON:obj];
         if(inst) {
             [instances addObject:inst];
-//        } else {
-//            return nil;
         }
     }
     return [NSArray arrayWithArray:instances];

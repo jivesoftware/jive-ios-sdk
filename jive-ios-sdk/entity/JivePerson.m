@@ -583,14 +583,12 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
-                                       if (![target.type isEqualToString:JSON[JiveTypedObjectAttributes.type]]) {
-                                           @throw [NSException exceptionWithName:@"Wrong class"
-                                                                          reason:@"The server returned a response with the wrong type"
-                                                                        userInfo:nil];
+                                       if ([target.type isEqualToString:JSON[JiveTypedObjectAttributes.type]]) {
+                                           [target deserialize:JSON];
+                                           return target;
+                                       } else {
+                                           return nil;
                                        }
-                                       
-                                       [target deserialize:JSON];
-                                       return target;
                                    }];
 }
 
@@ -652,7 +650,7 @@ NSString * const JivePersonType = @"person";
                                         onComplete:nilObjectComplete
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
-                                       return nil;
+                                       return [NSNull null];
                                    }];
 }
 
