@@ -61,6 +61,10 @@
     //verify the number returned rows between API and SDK
     STAssertEquals([returnedSDKPersons count], [returnedAPIPersons count], @"The number returned rows of SDK and API are not matched.  SDK = %i and API = %i", [returnedSDKPersons count], [returnedAPIPersons count]);
     
+    if([returnedSDKPersons count] == 0 && [returnedAPIPersons count] == 0) {
+        return;
+    }
+    
     //verify the 1st of returned row from API and SDK;
     JivePerson *personSDK = returnedSDKPersons[0];
     id personAPI = [returnedAPIPersons objectAtIndex:0];
