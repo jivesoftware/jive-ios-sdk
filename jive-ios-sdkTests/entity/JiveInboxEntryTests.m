@@ -151,7 +151,7 @@
     NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
     
     STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([jiveJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([jiveJSON count], (NSUInteger)3, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([jiveJSON objectForKey:@"state"], jive.state, @"Wrong value");
     
     NSDictionary *openSocialJSON = [JSON objectForKey:@"openSocial"];
@@ -254,7 +254,7 @@
     NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
     
     STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
-    STAssertEquals([jiveJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([jiveJSON count], (NSUInteger)3, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([jiveJSON objectForKey:@"state"], jive.state, @"Wrong value");
     
     NSDictionary *openSocialJSON = [JSON objectForKey:@"openSocial"];

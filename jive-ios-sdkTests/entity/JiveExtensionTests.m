@@ -29,7 +29,7 @@
     NSDictionary *JSON = [activity toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     parent.jiveId = @"3456";
     activity.collection = @"text";
@@ -43,7 +43,7 @@
     JSON = [activity toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"collection"], activity.collection, @"Wrong collection.");
     STAssertEqualObjects([JSON objectForKey:@"display"], activity.display, @"Wrong display.");
     STAssertEqualObjects([JSON objectForKey:@"state"], activity.state, @"Wrong state.");
@@ -64,7 +64,7 @@
     NSDictionary *JSON = [activity toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
     
     parent.jiveId = @"9874";
     activity.collection = @"html";
@@ -78,7 +78,7 @@
     JSON = [activity toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"collection"], activity.collection, @"Wrong collection.");
     STAssertEqualObjects([JSON objectForKey:@"display"], activity.display, @"Wrong display.");
     STAssertEqualObjects([JSON objectForKey:@"state"], activity.state, @"Wrong state.");

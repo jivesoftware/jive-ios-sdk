@@ -83,4 +83,13 @@
 //! The reply count of the item
 @property (nonatomic) NSNumber *replyCount;
 
+//! The like count of the item
+@property (nonatomic) NSNumber *likeCount;
+
+//! Flag indicating that this user has liked the content
+@property (nonatomic) BOOL liked;
+
+//! Flag indicating that this user has liked the parent/root content
+@property (nonatomic) BOOL parentLiked;
+
 @end
