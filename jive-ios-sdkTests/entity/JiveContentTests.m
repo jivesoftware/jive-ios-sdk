@@ -122,7 +122,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.content.type, @"Wrong type");
-
+    
     author.location = @"location";
     contentBody.type = @"content";
     [parentContent setValue:@"content" forKey:@"name"];
@@ -189,6 +189,26 @@
     STAssertEqualObjects([(NSDictionary *)parentPlaceJSON objectForKey:@"name"], parentPlace.name, @"Wrong value");
 }
 
+- (void)testToJSON_nilSubject {
+    self.content.subject = nil;
+    
+    id JSON = [self.content toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.content.type, @"Wrong type");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"subject"], nil);
+}
+
+- (void)testToJSON_emptySubject {
+    self.content.subject = @"";
+    
+    id JSON = [self.content toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertNil([(NSDictionary *)JSON objectForKey:@"subject"], nil);
+}
+
 - (void)testToJSON_alternate {
     JivePerson *author = [[JivePerson alloc] init];
     JiveContentBody *contentBody = [[JiveContentBody alloc] init];
@@ -200,7 +220,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.content.type, @"Wrong type");
-
+    
     author.location = @"Tower";
     contentBody.type = @"hair";
     [parentContent setValue:@"swimming" forKey:@"name"];
