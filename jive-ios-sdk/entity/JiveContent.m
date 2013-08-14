@@ -57,24 +57,24 @@ struct JiveContentResourceTags const JiveContentResourceTags = {
 };
 
 struct JiveContentAttributes const JiveContentAttributes = {
-        .author = @"author",
-        .content = @"content",
-        .followerCount = @"followerCount",
-        .highlightBody = @"highlightBody",
-        .highlightSubject = @"highlightSubject",
-        .highlightTags = @"highlightTags",
-        .likeCount = @"likeCount",
-        .parent = @"parent",
-        .parentContent = @"parentContent",
-        .parentPlace = @"parentPlace",
-        .published = @"published",
-        .replyCount = @"replyCount",
-        .status = @"status",
-        .subject = @"subject",
-        .updated = @"updated",
-        .viewCount = @"viewCount",
-        .question = @"question",
-        .resolved = @"resolved"
+    .author = @"author",
+    .content = @"content",
+    .followerCount = @"followerCount",
+    .highlightBody = @"highlightBody",
+    .highlightSubject = @"highlightSubject",
+    .highlightTags = @"highlightTags",
+    .likeCount = @"likeCount",
+    .parent = @"parent",
+    .parentContent = @"parentContent",
+    .parentPlace = @"parentPlace",
+    .published = @"published",
+    .replyCount = @"replyCount",
+    .status = @"status",
+    .subject = @"subject",
+    .updated = @"updated",
+    .viewCount = @"viewCount",
+    .question = @"question",
+    .resolved = @"resolved"
 };
 
 @implementation JiveContent
@@ -114,7 +114,6 @@ static NSMutableDictionary *contentClasses;
     [dictionary setValue:parent forKey:@"parent"];
     [dictionary setValue:replyCount forKey:@"replyCount"];
     [dictionary setValue:status forKey:@"status"];
-    [dictionary setValue:subject forKey:@"subject"];
     [dictionary setValue:self.type forKey:@"type"];
     [dictionary setValue:viewCount forKey:@"viewCount"];
     
@@ -132,6 +131,10 @@ static NSMutableDictionary *contentClasses;
     
     if (published)
         [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+    
+    // TABDEV-1613: Don't include the subject if it is empty, if there is no subject, it must be excluded.
+    if ([subject length])
+        [dictionary setValue:subject forKey:@"subject"];
     
     if (updated)
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
