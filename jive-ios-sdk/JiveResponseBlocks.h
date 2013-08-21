@@ -20,6 +20,7 @@
 #ifndef jive_ios_sdk_JiveResponseBlocks_h
 #define jive_ios_sdk_JiveResponseBlocks_h
 
+@class JiveObject;
 @class JivePersonJive;
 @class JiveName;
 @class AFJSONRequestOperation;

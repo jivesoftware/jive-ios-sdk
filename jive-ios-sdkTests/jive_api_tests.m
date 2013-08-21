@@ -30,6 +30,7 @@
 
 #import "OCMockObject+MockJiveURLResponseDelegate.h"
 #import "NSError+Jive.h"
+#import "JiveMetadata_internal.h"
 
 @implementation jive_api_tests
 
@@ -6574,6 +6575,17 @@
         }];
         [operation start];
     }];
+}
+
+- (void)testInstanceMetadata {
+    Jive *instance = [[Jive alloc] init];
+    JiveMetadata *initialMetadata = instance.instanceMetadata;
+    
+    STAssertNotNil(initialMetadata, @"The metadata object should be created");
+    
+    STAssertEquals(instance.instanceMetadata, initialMetadata, @"Second call should return the same object.");
+    
+    STAssertEquals(initialMetadata.instance, instance, @"The metadata object should have a reference to the Jive object that created it.");
 }
 
 @end

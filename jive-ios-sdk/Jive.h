@@ -87,6 +87,7 @@
 #import "JiveMobileAnalyticsHeader.h"
 #import "AFJSONRequestOperation.h"
 #import "AFImageRequestOperation.h"
+#import "JiveMetadata.h"
 
 #import "JiveResponseBlocks.h"
 
@@ -315,6 +316,8 @@
 - (AFJSONRequestOperation<JiveRetryingOperation> *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Environment
+
+@property(nonatomic, readonly) JiveMetadata *instanceMetadata;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getFilterableFields()
 - (void) filterableFields:(void(^)(NSArray *))complete onError:(JiveErrorBlock)error;

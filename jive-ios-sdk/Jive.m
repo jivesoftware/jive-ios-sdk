@@ -30,6 +30,7 @@
 #import "NSString+Jive.h"
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
+#import "JiveMetadata_internal.h"
 
 @interface JiveInvite (internal)
 
@@ -51,6 +52,7 @@
 }
 
 @property(nonatomic, strong) NSURL* jiveInstance;
+@property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
 
 @end
 
@@ -119,6 +121,14 @@
 
 - (NSURL*) jiveInstanceURL {
     return _jiveInstance;
+}
+
+- (JiveMetadata *)instanceMetadata {
+    if (!_instanceMetadata) {
+        _instanceMetadata = [[JiveMetadata alloc] initWithInstance:self];
+    }
+    
+    return _instanceMetadata;
 }
 
 #pragma mark - helper methods
