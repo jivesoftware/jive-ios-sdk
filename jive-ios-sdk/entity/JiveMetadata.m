@@ -42,7 +42,9 @@
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock {
     return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
-        completeBlock(NO);
+        NSString *videoURL = [objects objectForKey:JiveVideoType];
+        
+        completeBlock(videoURL.length > 0);
     } onError:errorBlock];
 }
 
