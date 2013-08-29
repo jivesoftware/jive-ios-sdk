@@ -654,6 +654,10 @@
 //! https://developers.jivesoftware.com/api/v3/rest/ObjectMetadataService.html#getObjectTypes(UriInfo)
 - (void) objectsOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error;
 
+#pragma mark - Notifications
+- (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock;
+//- (AFJSONRequestOperation<JiveRetryingOperation> *) unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
+
 @end
 
 //! \class JiveAuthorizationDelegate

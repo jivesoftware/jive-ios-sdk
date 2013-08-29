@@ -133,6 +133,21 @@
 
 #pragma mark - helper methods
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"api/core/mobile/v1/pushNotification/objects/info/%@", deviceToken, nil];
+    
+    return [self operationWithRequest:request onComplete:completeBlock onError:errorBlock responseHandler:^NSArray *(id JSON) {
+        return JSON;
+    }];
+    //
+    //    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
+    //                                                                                    onComplete:completeBlock
+    //                                                                                       onError:errorBlock];
+    
+    return operation;
+}
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",
