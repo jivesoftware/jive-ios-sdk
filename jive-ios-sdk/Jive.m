@@ -145,7 +145,7 @@
     //                                                                                    onComplete:completeBlock
     //                                                                                       onError:errorBlock];
     
-    return operation;
+    //return operation;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
