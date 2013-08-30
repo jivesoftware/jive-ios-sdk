@@ -74,12 +74,14 @@ struct JiveContentAttributes const JiveContentAttributes = {
     .updated = @"updated",
     .viewCount = @"viewCount",
     .question = @"question",
-    .resolved = @"resolved"
+    .resolved = @"resolved",
+    .root = @"root",
+    .note = @"note"
 };
 
 @implementation JiveContent
 
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount;
+@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount, root, note;
 
 static NSMutableDictionary *contentClasses;
 
@@ -138,6 +140,14 @@ static NSMutableDictionary *contentClasses;
     
     if (updated)
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+    
+    if(root) {
+        [dictionary setValue:root forKey:JiveContentAttributes.root];
+    }
+    
+    if([note length]) {
+        [dictionary setValue:note forKey:JiveContentAttributes.note];
+    }
     
     return dictionary;
 }

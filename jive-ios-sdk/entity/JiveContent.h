@@ -41,6 +41,8 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *viewCount;
     __unsafe_unretained NSString *question;
     __unsafe_unretained NSString *resolved;
+    __unsafe_unretained NSString *root;
+    __unsafe_unretained NSString *note;
 } const JiveContentAttributes;
 
 //! \class JiveContent
@@ -101,6 +103,12 @@ extern struct JiveContentAttributes {
 
 //! Number of times this content object has been viewed.
 @property(nonatomic, readonly) NSNumber *viewCount;
+
+//! The action item note specified when content is shared
+@property(nonatomic, readonly, copy) NSString* note;
+
+//! The URI for the actual content being shared
+@property(nonatomic, readonly) NSURL *root;
 
 - (NSURL *)childOutcomeTypesRef;
 - (NSURL *)extPropsRef;
