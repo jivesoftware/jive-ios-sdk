@@ -1040,6 +1040,7 @@
 		B8B38B5F16AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+JiveISO8601DateFormatter.m"; sourceTree = "<group>"; };
 		B8B7F7A6177C7A1A00351383 /* JiveKVOTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveKVOTracker.h; sourceTree = "<group>"; };
 		B8B7F7A7177C7A1A00351383 /* JiveKVOTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveKVOTracker.m; sourceTree = "<group>"; };
+		B8D1A3A417D659F800C469EB /* update-JiveiOSSDKVersion.bash */ = {isa = PBXFileReference; lastKnownFileType = text; path = "update-JiveiOSSDKVersion.bash"; sourceTree = "<group>"; };
 		B8D243351774F28A00BE8A6D /* JiveRetryingURLConnectionOperation+JiveProtected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JiveRetryingURLConnectionOperation+JiveProtected.h"; sourceTree = "<group>"; };
 		B8D2433A17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveRetryingInnerHTTPRequestOperation.h; sourceTree = "<group>"; };
 		B8D2433B17755A6500BE8A6D /* JiveRetryingInnerHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveRetryingInnerHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -1585,6 +1586,7 @@
 			children = (
 				2192BC001614F33300082926 /* jive-ios-sdk-Prefix.pch */,
 				0FF31062179702FE0052C2B9 /* JiveiOSSDKVersion.h */,
+				B8D1A3A417D659F800C469EB /* update-JiveiOSSDKVersion.bash */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2187,7 +2189,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "build=`git describe`\n\nif [[ \"${build}\" == \"\" ]]; then\necho \"No build number from git\"\nexit 2\nfi\n\necho \"@\\\"${build}\\\"\" > jive-ios-sdk/JiveiOSSDKVersion.h\n";
+			shellScript = "\"$PROJECT_DIR\"/jive-ios-sdk/update-JiveiOSSDKVersion.bash";
 		};
 		2186061C164C3B24004AF2E2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
