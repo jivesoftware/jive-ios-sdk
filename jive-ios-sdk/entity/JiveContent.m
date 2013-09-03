@@ -141,9 +141,7 @@ static NSMutableDictionary *contentClasses;
     if (updated)
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
-    if(root) {
-        [dictionary setValue:root forKey:JiveContentAttributes.root];
-    }
+    [dictionary setValue:root forKey:JiveContentAttributes.root];
     
     if([note length]) {
         [dictionary setValue:note forKey:JiveContentAttributes.note];
