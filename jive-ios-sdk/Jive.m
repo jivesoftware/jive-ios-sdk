@@ -136,7 +136,6 @@
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/mobile/v1/pushNotification/info?deviceToken=%@", deviceToken, nil];
-    NSLog(@"urlString: %@", request.URL);
     return [self operationWithRequest:request onComplete:completeBlock onError:errorBlock responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
