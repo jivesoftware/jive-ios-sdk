@@ -133,7 +133,7 @@
 
 #pragma mark - helper methods
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/mobile/v1/pushNotification/info?deviceToken=%@", deviceToken, nil];
     return [self operationWithRequest:request onComplete:completeBlock onError:errorBlock responseHandler:^NSArray *(id JSON) {
@@ -141,7 +141,7 @@
     }];
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=3&activated=true", deviceToken];
@@ -152,7 +152,7 @@
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/mobile/v1/pushNotification/unregister", nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@", deviceToken];
