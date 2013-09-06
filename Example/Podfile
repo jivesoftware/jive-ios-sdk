@@ -1,2 +1,2 @@
-pod 'jive-ios-sdk', :git => 'git@git.jiveland.com:jive-ios-sdk.git', :branch => 'cocoapods-spike'
+pod 'jive-ios-sdk', :git => 'git@git.jiveland.com:jive-ios-sdk.git', :branch => 'TABDEV-1184'
 pod 'AFNetworking', '~> 1.2.1'

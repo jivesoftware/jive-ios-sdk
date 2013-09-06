@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "jive-ios-sdk"
-    s.version       = "0.5.1"
+    s.version       = "0.5.2"
     s.license       = { :type => "Apache License, Version 2.0", :file => "README.md" }
     s.summary       = "iOS SDK for the Jive REST API."
     s.homepage      = "https://github.com/jivesoftware/jive-ios-sdk"
@@ -23,15 +23,8 @@ Pod::Spec.new do |s|
         na.requires_arc = false
     end
     
-    # put the current git tag into JiveiOSSDKVersion.h
+    # call update-JiveiOSSDKVersion.bash with the pod's version number
     s.prepare_command = <<-CMD
-    build=`git describe`
-    
-    if [[ "${build}" == "" ]]; then
-        echo "No build number from git"
-        exit 2
-        fi
-        
-        echo "@\\"${build}\\"" > jive-ios-sdk/JiveiOSSDKVersion.h
+        ./jive-ios-sdk/update-JiveiOSSDKVersion.bash #{s.version}
     CMD
 end
