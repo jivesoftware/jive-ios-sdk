@@ -88,7 +88,7 @@
 #import "AFJSONRequestOperation.h"
 #import "AFImageRequestOperation.h"
 #import "JiveMetadata.h"
-
+#import "JiveNSDictionary+URLArguments.h"
 #import "JiveResponseBlocks.h"
 
 @protocol JiveAuthorizationDelegate;

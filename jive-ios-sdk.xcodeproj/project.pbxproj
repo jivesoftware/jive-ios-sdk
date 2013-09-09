@@ -299,8 +299,8 @@
 		B865521D179884B300AAF1AD /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC891614FF8200082926 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B865521E179884B300AAF1AD /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC8B1614FF8200082926 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B865521F179884B300AAF1AD /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2192BC8D1614FF8200082926 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B8655220179884B300AAF1AD /* JiveNSString+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5416AA10A300066EEF /* JiveNSString+URLArguments.h */; settings = {ATTRIBUTES = (); }; };
-		B8655221179884B300AAF1AD /* JiveNSDictionary+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */; settings = {ATTRIBUTES = (); }; };
+		B8655220179884B300AAF1AD /* JiveNSString+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B5416AA10A300066EEF /* JiveNSString+URLArguments.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8655221179884B300AAF1AD /* JiveNSDictionary+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B38B4E16AA100300066EEF /* JiveNSDictionary+URLArguments.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8655222179884B300AAF1AD /* JiveObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = B8811CEC16DF0CD40099E39E /* JiveObjcRuntime.h */; settings = {ATTRIBUTES = (); }; };
 		B8655223179884B300AAF1AD /* NSData+JiveBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 21AD9758161BB4B2009A977D /* NSData+JiveBase64.h */; settings = {ATTRIBUTES = (); }; };
 		B8655224179884B300AAF1AD /* JiveActionLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 217FE0E716385C2900182AB5 /* JiveActionLink.h */; settings = {ATTRIBUTES = (Public, ); }; };

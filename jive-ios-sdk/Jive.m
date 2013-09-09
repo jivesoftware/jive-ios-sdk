@@ -23,7 +23,6 @@
 #import "NSError+Jive.h"
 #import "JiveTargetList_internal.h"
 #import "JiveAssociationTargetList_internal.h"
-#import "JiveNSDictionary+URLArguments.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "NSData+JiveBase64.h"
 #import "JiveTypedObject_internal.h"
