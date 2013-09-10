@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "jive-ios-sdk"
-    s.version       = "0.5.3"
+    s.version       = "0.5.4"
     s.license       = { :type => "Apache License, Version 2.0", :file => "README.md" }
     s.summary       = "iOS SDK for the Jive REST API."
     s.homepage      = "https://github.com/jivesoftware/jive-ios-sdk"
@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
     s.platform      = :ios
     s.ios.deployment_target = "6.0"
     s.header_dir    = "Jive"
-    s.public_header_files = "jive-ios-sdk/**/*.{h}"
-    s.private_header_files = "jive-ios-sdk/JiveKVOAdapter.h","jive-ios-sdk/NSDateFormatter+JiveISO8601DateFormatter.h","jive-ios-sdk/JiveRetryingURLConnectionOperation.h","jive-ios-sdk/JiveRetryingInner*.h","jive-ios-sdk/JiveNSDictionary+URLArguments.h","jive-ios-sdk/JiveNSString+URLArguments.h","jive-ios-sdk/entity/JiveTargetList_internal.h","jive-ios-sdk/entity/JiveTypedObject_internal.h","jive-ios-sdk/JAPIRequestOperation.h","jive-ios-sdk/JiveRetrying*HTTPRequestOperation.h","jive-ios-sdk/JiveRetrying*APIRequestOperation.h","jive-ios-sdk/JiveRetryingURLConnectionOperation*.h"
+    s.public_header_files = "jive-ios-sdk/**/*.{h},lib/google-toolbox-for-mac/Foundation/*.{h}"
+    s.private_header_files = "jive-ios-sdk/JiveKVOAdapter.h","jive-ios-sdk/NSDateFormatter+JiveISO8601DateFormatter.h","jive-ios-sdk/JiveRetryingURLConnectionOperation.h","jive-ios-sdk/JiveRetryingInner*.h","jive-ios-sdk/entity/JiveTargetList_internal.h","jive-ios-sdk/entity/JiveTypedObject_internal.h","jive-ios-sdk/JAPIRequestOperation.h","jive-ios-sdk/JiveRetrying*HTTPRequestOperation.h","jive-ios-sdk/JiveRetrying*APIRequestOperation.h","jive-ios-sdk/JiveRetryingURLConnectionOperation*.h"
     s.prefix_header_file = "jive-ios-sdk/jive-ios-sdk-Prefix.pch"
     s.dependency    "AFNetworking", "1.2.1"
     
