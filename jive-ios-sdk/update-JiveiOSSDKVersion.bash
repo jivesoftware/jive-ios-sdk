@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-if [ -d "$PROJECT_DIR"/.git ]; then
+if [ $# -eq 1 ]; then
+    build="$1"
+elif [ -d "$PROJECT_DIR"/.git ]; then
     build=`git describe`
 else
     build="SOURCE"
