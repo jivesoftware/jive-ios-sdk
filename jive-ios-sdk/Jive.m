@@ -33,13 +33,13 @@
 #import "JiveMetadata_internal.h"
 
 typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
-    JVPushRegistrationFeatureFlagPush = 1,
-    JVPushRegistrationFeatureFlagAnnouncement = 2,
-    JVPushRegistrationFeatureFlagLatestAcclaim = 4,
-    JVPushRegistrationFeatureFlagVideo = 8,
-    JVPushRegistrationFeatureFlagIdea = 10,
-    JVPushRegistrationFeatureFlagPoll = 20,
-    JVPushRegistrationFeatureFlagTask = 40,
+    JVPushRegistrationFeatureFlagPush = 0x01,
+    JVPushRegistrationFeatureFlagAnnouncement = 0x02,
+    JVPushRegistrationFeatureFlagLatestAcclaim = 0x04,
+    JVPushRegistrationFeatureFlagVideo = 0x08,
+    JVPushRegistrationFeatureFlagIdea = 0x010,
+    JVPushRegistrationFeatureFlagPoll = 0x020,
+    JVPushRegistrationFeatureFlagTask = 0x040,
 };
 
 int const JivePushDeviceType = 3;
