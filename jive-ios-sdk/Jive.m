@@ -31,6 +31,18 @@
 #import "JiveRetryingImageRequestOperation.h"
 #import "JiveMetadata_internal.h"
 
+typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
+    JVPushRegistrationFeatureFlagPush = 0x01,
+    JVPushRegistrationFeatureFlagAnnouncement = 0x02,
+    JVPushRegistrationFeatureFlagLatestAcclaim = 0x04,
+    JVPushRegistrationFeatureFlagVideo = 0x08,
+    JVPushRegistrationFeatureFlagIdea = 0x010,
+    JVPushRegistrationFeatureFlagPoll = 0x020,
+    JVPushRegistrationFeatureFlagTask = 0x040,
+};
+
+int const JivePushDeviceType = 3;
+
 @interface JiveInvite (internal)
 
 + (NSString *) jsonForState:(enum JiveInviteState)state;
@@ -143,7 +155,7 @@
 - (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
-    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=3&activated=true", deviceToken];
+    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:@"POST"];
