@@ -92,4 +92,7 @@
 //! Flag indicating that this user has liked the parent/root content
 @property (nonatomic) BOOL parentLiked;
 
+//! The number of images in a status update.
+@property (nonatomic, readonly) NSNumber *imagesCount;
+
 @end
