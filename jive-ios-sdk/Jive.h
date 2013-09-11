@@ -91,6 +91,8 @@
 
 #import "JiveResponseBlocks.h"
 
+extern int const JivePushDeviceType;
+
 @protocol JiveAuthorizationDelegate;
 @protocol JiveOperationRetrier;
 @protocol JiveRetryingOperation;

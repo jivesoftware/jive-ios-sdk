@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
     JVPushRegistrationFeatureFlagTask = 40,
 };
 
+int const JivePushDeviceType = 3;
 
 @interface JiveInvite (internal)
 
@@ -155,7 +156,7 @@ typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
 - (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
-    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=3&activated=true&featureFlags=%i", deviceToken, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
+    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:@"POST"];
