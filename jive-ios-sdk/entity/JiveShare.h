@@ -20,6 +20,8 @@
 #import "JiveDirectMessage.h"
 #import "JivePlace.h"
 
+extern NSString * const JiveShareType;
+
 extern struct JiveShareAttributes {
     __unsafe_unretained NSString *sharedContent;
     __unsafe_unretained NSString *sharedPlace;

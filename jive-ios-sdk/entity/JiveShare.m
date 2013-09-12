@@ -29,7 +29,7 @@ struct JiveShareAttributes const JiveShareAttributes = {
 
 @synthesize sharedContent, sharedPlace;
 
-static NSString * const JiveShareType = @"share";
+NSString * const JiveShareType = @"share";
 
 + (void)load {
     if (self == [JiveShare class])
