@@ -58,10 +58,10 @@ int const JivePushDeviceType = 3;
 @interface Jive() {
     
 @private
-    __weak id<JiveAuthorizationDelegate> _delegate;
     __strong NSURL* _jiveInstance;
 }
 
+@property(atomic, weak) id<JiveAuthorizationDelegate> delegate;
 @property(nonatomic, strong) NSURL* jiveInstance;
 @property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
 
@@ -124,7 +124,7 @@ int const JivePushDeviceType = 3;
     self = [super init];
     if(self) {
         _jiveInstance = jiveInstanceURL;
-        _delegate = delegate;
+        self.delegate = delegate;
     }
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     return self;
@@ -2149,12 +2149,13 @@ int const JivePushDeviceType = 3;
 
 - (void) maybeApplyCredentialsToMutableURLRequest:(NSMutableURLRequest *)mutableURLRequest
                                            forURL:(NSURL *)URL {
-    if(_delegate && [_delegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
-        id<JiveCredentials> credentials = [_delegate credentialsForJiveInstance:URL];
+    __typeof__(self.delegate) __strong strongDelegate = self.delegate;
+    if(strongDelegate && [strongDelegate respondsToSelector:@selector(credentialsForJiveInstance:)]) {
+        id<JiveCredentials> credentials = [strongDelegate credentialsForJiveInstance:URL];
         [credentials applyToRequest:mutableURLRequest];
     }
-    if(_delegate && [_delegate respondsToSelector:@selector(mobileAnalyticsHeaderForJiveInstance:)]) {
-        JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [_delegate mobileAnalyticsHeaderForJiveInstance:URL];
+    if(strongDelegate && [strongDelegate respondsToSelector:@selector(mobileAnalyticsHeaderForJiveInstance:)]) {
+        JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [strongDelegate mobileAnalyticsHeaderForJiveInstance:URL];
         [mobileAnalyticsHeader applyToRequest:mutableURLRequest];
     }
 }
@@ -2279,7 +2280,7 @@ int const JivePushDeviceType = 3;
     __typeof__(self) __weak weakSelf = self;
     [retryingURLConnectionOperation setAuthenticationAgainstProtectionSpaceBlock:^BOOL(NSURLConnection *connection, NSURLProtectionSpace *protectionSpace) {
         __typeof__(weakSelf) __strong strongWeakSelf = weakSelf;
-        __typeof__(strongWeakSelf->_delegate) __strong strongDelegate = strongWeakSelf->_delegate;
+        __typeof__(strongWeakSelf.delegate) __strong strongDelegate = strongWeakSelf.delegate;
         if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
             strongWeakSelf.verboseAuthenticationLoggerBlock(@"canAuthenticateAgainstProtectionSpace",
                                                             strongWeakSelf,
@@ -2299,7 +2300,7 @@ int const JivePushDeviceType = 3;
                 return YES;
             } else {
                 if (strongWeakSelf.warnAuthenticationLoggerBlock) {
-                    strongWeakSelf.warnAuthenticationLoggerBlock(@"eceived non-serverTrust authenticationMethod. returning NO",
+                    strongWeakSelf.warnAuthenticationLoggerBlock(@"Received non-serverTrust authenticationMethod. returning NO",
                                                                  strongWeakSelf,
                                                                  strongDelegate,
                                                                  nil,
@@ -2321,7 +2322,7 @@ int const JivePushDeviceType = 3;
     }];
     [retryingURLConnectionOperation setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
         __typeof__(weakSelf) __strong strongWeakSelf = weakSelf;
-        __typeof__(strongWeakSelf->_delegate) __strong strongDelegate = strongWeakSelf->_delegate;
+        __typeof__(strongWeakSelf.delegate) __strong strongDelegate = strongWeakSelf.delegate;
         if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
             strongWeakSelf.verboseAuthenticationLoggerBlock(@"Received AuthenticationChallenge.",
                                                             strongWeakSelf,
