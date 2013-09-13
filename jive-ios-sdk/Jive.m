@@ -2276,22 +2276,78 @@ int const JivePushDeviceType = 3;
 }
 
 - (void)setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:(AFURLConnectionOperation<JiveRetryingOperation> *)retryingURLConnectionOperation {
+    __typeof__(self) __weak weakSelf = self;
     [retryingURLConnectionOperation setAuthenticationAgainstProtectionSpaceBlock:^BOOL(NSURLConnection *connection, NSURLProtectionSpace *protectionSpace) {
-        if ([_delegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
+        __typeof__(weakSelf) __strong strongWeakSelf = weakSelf;
+        __typeof__(strongWeakSelf->_delegate) __strong strongDelegate = strongWeakSelf->_delegate;
+        if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
+            strongWeakSelf.verboseAuthenticationLoggerBlock(@"canAuthenticateAgainstProtectionSpace",
+                                                            strongWeakSelf,
+                                                            strongDelegate,
+                                                            nil,
+                                                            protectionSpace);
+        }
+        if ([strongDelegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
             if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+                if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
+                    strongWeakSelf.verboseAuthenticationLoggerBlock(@"received serverTrust protectionSpace. returning YES",
+                                                                    strongWeakSelf,
+                                                                    strongDelegate,
+                                                                    nil,
+                                                                    protectionSpace);
+                }
                 return YES;
             } else {
+                if (strongWeakSelf.warnAuthenticationLoggerBlock) {
+                    strongWeakSelf.warnAuthenticationLoggerBlock(@"eceived non-serverTrust authenticationMethod. returning NO",
+                                                                 strongWeakSelf,
+                                                                 strongDelegate,
+                                                                 nil,
+                                                                 protectionSpace);
+                }
                 return NO;
             }
         } else {
+            if (strongWeakSelf.warnAuthenticationLoggerBlock) {
+                strongWeakSelf.warnAuthenticationLoggerBlock([NSString stringWithFormat:@"Delegate doesn't respond to %@, returning NO",
+                                                              NSStringFromSelector(@selector(receivedServerTrustAuthenticationChallenge:))],
+                                                             strongWeakSelf,
+                                                             strongDelegate,
+                                                             nil,
+                                                             protectionSpace);
+            }
             return NO;
         }
     }];
     [retryingURLConnectionOperation setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
-        __typeof__(_delegate) strongDelegate = _delegate;
+        __typeof__(weakSelf) __strong strongWeakSelf = weakSelf;
+        __typeof__(strongWeakSelf->_delegate) __strong strongDelegate = strongWeakSelf->_delegate;
+        if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
+            strongWeakSelf.verboseAuthenticationLoggerBlock(@"Received AuthenticationChallenge.",
+                                                            strongWeakSelf,
+                                                            strongDelegate,
+                                                            challenge,
+                                                            nil);
+        }
+        
         if ([strongDelegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
+            if (strongWeakSelf.verboseAuthenticationLoggerBlock) {
+                strongWeakSelf.verboseAuthenticationLoggerBlock(@"Sending AuthenticationChallenge. to delegate",
+                                                                strongWeakSelf,
+                                                                strongDelegate,
+                                                                challenge,
+                                                                nil);
+            }
             [strongDelegate receivedServerTrustAuthenticationChallenge:challenge];
         } else {
+            if (strongWeakSelf.warnAuthenticationLoggerBlock) {
+                strongWeakSelf.warnAuthenticationLoggerBlock([NSString stringWithFormat:@"Delegate doesn't respond to %@, continuing without credential",
+                                                              NSStringFromSelector(@selector(receivedServerTrustAuthenticationChallenge:))],
+                                                             strongWeakSelf,
+                                                             strongDelegate,
+                                                             challenge,
+                                                             nil);
+            }
             [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
         }
     }];
