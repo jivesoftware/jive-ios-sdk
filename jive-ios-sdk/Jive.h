@@ -638,6 +638,8 @@ typedef void (^JiveAuthenticationLoggerBlock)(NSString *message, Jive *jive, id<
 //! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
 - (AFHTTPRequestOperation<JiveRetryingOperation> *) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
 
+- (AFImageRequestOperation<JiveRetryingOperation> *)imageRequestOperationWithMutableURLRequest:(NSMutableURLRequest *)imageMutableURLRequest onComplete:(void (^)(UIImage *))complete onError:(JiveErrorBlock)errorBlock;
+
 #pragma mark - Outcomes
 //! No official documnetation yet.
 - (AFJSONRequestOperation<JiveRetryingOperation> *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
