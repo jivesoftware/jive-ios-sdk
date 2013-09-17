@@ -31,12 +31,13 @@ struct JiveVideoAttributes const JiveVideoAttributes = {
     .playerBaseURL = @"playerBaseURL",
     .width = @"width",
     .height = @"height",
+    .videoSource = @"videoSource"
 };
 
 @implementation JiveVideo
 
 @synthesize tags, visibleToExternalContributors, externalID, playerBaseURL, width, height, authtoken;
-@synthesize categories, users, visibility;
+@synthesize categories, users, visibility, videoSource;
 
 NSString * const JiveVideoType = @"video";
 
@@ -59,6 +60,8 @@ NSString * const JiveVideoType = @"video";
     [dictionary setValue:width forKey:JiveVideoAttributes.width];
     [dictionary setValue:height forKey:JiveVideoAttributes.height];
     [dictionary setValue:[playerBaseURL absoluteString] forKey:JiveVideoAttributes.playerBaseURL];
+    [dictionary setValue:videoSource forKey:JiveVideoAttributes.videoSource];
+    
     if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
         [dictionary setValue:users forKey:JiveVideoAttributes.users];
     else
