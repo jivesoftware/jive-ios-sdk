@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveDmType;
+
 extern struct JiveDirectMessageAttributes {
     __unsafe_unretained NSString *participants;
     __unsafe_unretained NSString *tags;

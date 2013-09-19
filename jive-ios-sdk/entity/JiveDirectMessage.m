@@ -30,7 +30,7 @@ struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 
 @synthesize participants, tags, visibleToExternalContributors;
 
-static NSString * const JiveDmType = @"dm";
+NSString * const JiveDmType = @"dm";
 
 + (void)load {
     if (self == [JiveDirectMessage class])
