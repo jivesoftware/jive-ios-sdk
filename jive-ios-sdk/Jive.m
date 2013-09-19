@@ -1305,9 +1305,20 @@ int const JivePushDeviceType = 3;
                                 fileName:@"content.json"
                                 mimeType:@"application/json"];
         for (JiveAttachment *attachment in attachmentURLs) {
-            [formData appendPartWithFileURL:attachment.url
+            NSURL *fileURL = attachment.url;
+            NSString *fileName = [fileURL lastPathComponent];
+            NSString *UTI = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)[fileURL pathExtension], NULL);
+            NSString *contentType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)UTI, kUTTagClassMIMEType);
+            
+            if ([[contentType substringFromIndex:contentType.length - 4] isEqualToString:@"json"]) {
+                contentType = @"application/octet-stream";
+            }
+            
+            [formData appendPartWithFileURL:fileURL
                                        name:attachment.name
-                                      error:NULL];
+                                   fileName:fileName
+                                   mimeType:contentType
+                                      error:nil];
         }
     })];
     [self maybeApplyCredentialsToMutableURLRequest:request
