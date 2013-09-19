@@ -1901,3 +1901,4 @@ GENERATE_LEGEND        = YES
 # the various graphs.
 
 DOT_CLEANUP            = YES
+PROJECT_NUMBER = v0.5.6
