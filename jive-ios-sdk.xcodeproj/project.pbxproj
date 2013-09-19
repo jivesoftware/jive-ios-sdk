@@ -218,7 +218,7 @@
 		2192BC121614F33300082926 /* libJive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2192BBF91614F33300082926 /* libJive.a */; };
 		2192BC181614F33300082926 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2192BC161614F33300082926 /* InfoPlist.strings */; };
 		2192BC1B1614F33300082926 /* jive_ios_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC1A1614F33300082926 /* jive_ios_sdkTests.m */; };
-		2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7D1614FF8200082926 /* AFHTTPClient.m */; };
+		2192BC8F1614FF8200082926 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7D1614FF8200082926 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-Wno-sign-conversion"; }; };
 		2192BC901614FF8200082926 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC7F1614FF8200082926 /* AFHTTPRequestOperation.m */; };
 		2192BC911614FF8200082926 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC811614FF8200082926 /* AFImageRequestOperation.m */; };
 		2192BC921614FF8200082926 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC831614FF8200082926 /* AFJSONRequestOperation.m */; };
