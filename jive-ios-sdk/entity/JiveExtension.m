@@ -23,7 +23,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor;
 @synthesize imagesCount;
 
 - (NSDictionary *)toJSONDictionary {
@@ -69,6 +69,9 @@
     
     [dictionary setValue:[NSNumber numberWithBool:liked] forKey:@"liked"];
     [dictionary setValue:[NSNumber numberWithBool:parentLiked] forKey:@"parentLiked"];
+    
+    if (parentActor)
+        [dictionary setValue:[parentActor toJSONDictionary] forKey:@"parentActor"];
     
     return dictionary;
 }
