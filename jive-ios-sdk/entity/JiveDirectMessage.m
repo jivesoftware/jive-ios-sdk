@@ -30,15 +30,15 @@ struct JiveDirectMessageAttributes const JiveDirectMessageAttributes = {
 
 @synthesize participants, tags, visibleToExternalContributors;
 
-NSString * const JiveDmType = @"dm";
+NSString * const JiveDirectMessageType = @"dm";
 
 + (void)load {
     if (self == [JiveDirectMessage class])
-        [super registerClass:self forType:JiveDmType];
+        [super registerClass:self forType:JiveDirectMessageType];
 }
 
 - (NSString *)type {
-    return JiveDmType;
+    return JiveDirectMessageType;
 }
 
 - (Class) arrayMappingFor:(NSString*) propertyName {
