@@ -19,6 +19,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
+#import "JivePerson.h"
 
 @class JiveActivityObject;
 
@@ -94,5 +95,8 @@
 
 //! The number of images in a status update.
 @property (nonatomic, readonly) NSNumber *imagesCount;
+
+//! Author of the parent item.
+@property(nonatomic, readonly, strong) JivePerson *parentActor;
 
 @end
