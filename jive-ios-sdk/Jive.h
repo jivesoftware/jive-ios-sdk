@@ -90,6 +90,7 @@
 #import "JiveMetadata.h"
 #import "JiveNSDictionary+URLArguments.h"
 #import "JiveResponseBlocks.h"
+#import "JiveExternalURLEntity.h"
 
 extern int const JivePushDeviceType;
 
