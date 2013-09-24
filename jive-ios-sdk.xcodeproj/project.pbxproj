@@ -266,7 +266,7 @@
 		783E15551655595B0094B6A7 /* JiveBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 783E15541655595B0094B6A7 /* JiveBlog.m */; };
 		783E15581655596A0094B6A7 /* JiveGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 783E15571655596A0094B6A7 /* JiveGroup.m */; };
 		783E155E165559850094B6A7 /* JiveSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 783E155D165559850094B6A7 /* JiveSpace.m */; };
-		8908A057178DD4A2008252FC /* JiveExternalURLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 8908A055178DD4A2008252FC /* JiveExternalURLEntity.h */; };
+		8908A057178DD4A2008252FC /* JiveExternalURLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 8908A055178DD4A2008252FC /* JiveExternalURLEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8908A058178DD4A2008252FC /* JiveExternalURLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8908A056178DD4A2008252FC /* JiveExternalURLEntity.m */; };
 		893CE2CB1700DBF5002AA837 /* JiveIdea.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2C91700DBF5002AA837 /* JiveIdea.m */; };
 		893CE2D01700DF3C002AA837 /* JiveIdeaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2CF1700DF3C002AA837 /* JiveIdeaTests.m */; };
@@ -1953,6 +1953,7 @@
 				B8655220179884B300AAF1AD /* JiveNSString+URLArguments.h in Headers */,
 				B8655221179884B300AAF1AD /* JiveNSDictionary+URLArguments.h in Headers */,
 				B8655222179884B300AAF1AD /* JiveObjcRuntime.h in Headers */,
+				8908A057178DD4A2008252FC /* JiveExternalURLEntity.h in Headers */,
 				B8655223179884B300AAF1AD /* NSData+JiveBase64.h in Headers */,
 				B865525E179884B300AAF1AD /* JiveTargetList_internal.h in Headers */,
 				B8655260179884B300AAF1AD /* JiveTypedObject_internal.h in Headers */,
@@ -1967,7 +1968,6 @@
 				B8655277179884B300AAF1AD /* NSDateFormatter+JiveISO8601DateFormatter.h in Headers */,
 				B865527A179884B300AAF1AD /* JiveKVOAdapter.h in Headers */,
 				0F9FB14217BD7D9F00076FB9 /* JiveMetadata.h in Headers */,
-				8908A057178DD4A2008252FC /* JiveExternalURLEntity.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
