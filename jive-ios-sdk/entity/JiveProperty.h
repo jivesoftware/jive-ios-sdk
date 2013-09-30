@@ -41,7 +41,16 @@
 //! The data type for the value of this property.
 @property (nonatomic, strong, readonly) NSString *type;
 
-//! The value of this property.
-@property (nonatomic, strong, readonly) NSString *value;
+//! The raw value of this property.
+@property (nonatomic, strong, readonly) id value;
+
+//! The value of a boolean property.
+- (BOOL)valueAsBOOL;
+
+//! The value of a string property.
+- (NSString *)valueAsString;
+
+//! The value of a numeric property.
+- (NSNumber *)valueAsNumber;
 
 @end

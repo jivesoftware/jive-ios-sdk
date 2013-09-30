@@ -19,6 +19,19 @@
 
 #import "JiveProperty.h"
 
+struct JivePropertyTypes {
+    __unsafe_unretained NSString *boolean;
+    __unsafe_unretained NSString *string;
+    __unsafe_unretained NSString *number;
+};
+
+struct JivePropertyTypes const JivePropertyTypes = {
+    .boolean = @"boolean",
+    .string = @"string",
+    .number = @"number",
+};
+
+
 @implementation JiveProperty
 
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;
@@ -37,6 +50,43 @@
     [dictionary setValue:value forKey:@"value"];
     
     return dictionary;
+}
+
+- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)newValue {
+    if ([self.type isEqualToString:JivePropertyTypes.boolean]) {
+        [self setValue:(NSNumber *)newValue forKey:property];
+    } else if ([self.type isEqualToString:JivePropertyTypes.string]) {
+        [self setValue:(NSString *)newValue forKey:property];
+    } else if ([self.type isEqualToString:JivePropertyTypes.number]) {
+        [self setValue:(NSNumber *)newValue forKey:property];
+    } else {
+        NSAssert(false, @"Unknown type (%@) for property (%@)", self.type, property);
+    }
+}
+
+- (BOOL)valueAsBOOL {
+    if (![self.type isEqualToString:JivePropertyTypes.boolean]) {
+        NSAssert(false, @"Asking for the wrong property type");
+        return NO;
+    }
+    
+    return [(NSNumber *)self.value boolValue];
+}
+
+- (NSString *)valueAsString {
+    if (![self.type isEqualToString:JivePropertyTypes.string]) {
+        return nil;
+    }
+    
+    return (NSString *)self.value;
+}
+
+- (NSNumber *)valueAsNumber {
+    if (![self.type isEqualToString:JivePropertyTypes.number]) {
+        return nil;
+    }
+    
+    return (NSNumber *)self.value;
 }
 
 @end
