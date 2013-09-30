@@ -92,4 +92,49 @@
     STAssertEqualObjects([JSON objectForKey:JivePropertyAttributes.value], value, @"value wrong in JSON");
 }
 
+- (void)testValueAsBool {
+    [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+    [property setValue:@0 forKey:JivePropertyAttributes.value];
+    STAssertFalse(property.valueAsBOOL, @"Value not reported as NO");
+
+    [property setValue:@1 forKey:JivePropertyAttributes.value];
+    STAssertTrue(property.valueAsBOOL, @"Value not reported as YES");
+
+    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
+    STAssertFalse(property.valueAsBOOL, @"Value not reported as NO");
+}
+
+- (void)testValueAsString {
+    NSString *firstTestValue = @"first";
+    NSString *secondTestValue = @"second";
+    
+    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [property setValue:firstTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(property.valueAsString, firstTestValue, @"Wrong string returned");
+    
+    [property setValue:secondTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(property.valueAsString, secondTestValue, @"Wrong string returned");
+    
+    [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+    [property setValue:@0 forKey:JivePropertyAttributes.value];
+    STAssertNil(property.valueAsString, @"A string was returned.");
+}
+
+- (void)testValueAsNumber {
+    NSNumber *firstTestValue = @4;
+    NSNumber *secondTestValue = @123456.789;
+    
+    [property setValue:JivePropertyTypes.number forKey:JivePropertyAttributes.type];
+    [property setValue:firstTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(property.valueAsNumber, firstTestValue, @"Wrong number returned");
+    
+    [property setValue:secondTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(property.valueAsNumber, secondTestValue, @"Wrong number returned");
+    
+    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
+    STAssertFalse(property.valueAsNumber, @"A number was returned.");
+}
+
 @end
