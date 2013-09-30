@@ -22,9 +22,17 @@
 
 @implementation JivePropertyTests
 
+@synthesize property;
+
+- (void)setUp {
+    self.property = [JiveProperty new];
+}
+
+- (void)tearDown {
+    self.property = nil;
+}
+
 - (void)testToJSON {
-    JiveProperty *property = [[JiveProperty alloc] init];
-    
     NSString *availability = @"availability1";
     NSString *defaultValue = @"defaultValue1";
     NSString *description = @"description1";
@@ -55,8 +63,6 @@
 }
 
 - (void)testToJSON_alternate {
-    JiveProperty *property = [[JiveProperty alloc] init];
-    
     NSString *availability = @"availability2";
     NSString *defaultValue = @"defaultValue2";
     NSString *description = @"description2";
