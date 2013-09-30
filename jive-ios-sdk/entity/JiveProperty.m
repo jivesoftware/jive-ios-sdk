@@ -25,6 +25,16 @@ struct JivePropertyTypes const JivePropertyTypes = {
     .number = @"number",
 };
 
+struct JivePropertyAttributes const JivePropertyAttributes = {
+    .availability = @"availability",
+    .defaultValue = @"defaultValue",
+    .jiveDescription = @"jiveDescription",
+    .name = @"name",
+    .since = @"since",
+    .type = @"type",
+    .value = @"value",
+};
+
 @implementation JiveProperty
 
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;
@@ -34,13 +44,13 @@ struct JivePropertyTypes const JivePropertyTypes = {
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:availability forKey:@"availability"];
-    [dictionary setValue:defaultValue forKey:@"defaultValue"];
-    [dictionary setValue:jiveDescription forKey:@"description"];
-    [dictionary setValue:name forKey:@"name"];
-    [dictionary setValue:since forKey:@"since"];
-    [dictionary setValue:type forKey:@"type"];
-    [dictionary setValue:value forKey:@"value"];
+    [dictionary setValue:availability forKey:JivePropertyAttributes.availability];
+    [dictionary setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
+    [dictionary setValue:jiveDescription forKey:JivePropertyAttributes.jiveDescription];
+    [dictionary setValue:name forKey:JivePropertyAttributes.name];
+    [dictionary setValue:since forKey:JivePropertyAttributes.since];
+    [dictionary setValue:type forKey:JivePropertyAttributes.type];
+    [dictionary setValue:value forKey:JivePropertyAttributes.value];
     
     return dictionary;
 }
