@@ -19,18 +19,11 @@
 
 #import "JiveProperty.h"
 
-struct JivePropertyTypes {
-    __unsafe_unretained NSString *boolean;
-    __unsafe_unretained NSString *string;
-    __unsafe_unretained NSString *number;
-};
-
 struct JivePropertyTypes const JivePropertyTypes = {
     .boolean = @"boolean",
     .string = @"string",
     .number = @"number",
 };
-
 
 @implementation JiveProperty
 

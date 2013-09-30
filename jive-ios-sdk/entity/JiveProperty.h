@@ -19,6 +19,14 @@
 
 #import "JiveObject.h"
 
+struct JivePropertyTypes {
+    __unsafe_unretained NSString *boolean;
+    __unsafe_unretained NSString *string;
+    __unsafe_unretained NSString *number;
+};
+
+extern struct JivePropertyTypes const JivePropertyTypes;
+
 //! \class JiveProperty
 //! https://developers.jivesoftware.com/api/v3/rest/PropertyEntity.html
 @interface JiveProperty : JiveObject
