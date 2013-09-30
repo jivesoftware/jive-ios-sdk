@@ -57,10 +57,14 @@
                                                                         onError:(JiveErrorBlock)errorBlock {
     return [self.instance propertyWithNameOperation:@"feature.rtc.enabled"
                                          onComplete:^(JiveProperty *rtcEnabledProperty) {
-                                             completeBlock([rtcEnabledProperty.value isEqualToString:@"true"]);
+                                             completeBlock(rtcEnabledProperty.valueAsBOOL);
                                          }
                                             onError:^(NSError *error) {
-                                                if ([error.userInfo[JiveErrorKeyJSON][@"status"] isEqualToString:@"404"]) {
+                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
+                                                
+                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
+                                                     isEqualToString:@" 404"]) {
+                                                    
                                                     completeBlock(NO);
                                                 } else {
                                                     errorBlock(error);
