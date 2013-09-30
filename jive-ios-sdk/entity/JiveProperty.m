@@ -69,7 +69,6 @@ struct JivePropertyAttributes const JivePropertyAttributes = {
 
 - (BOOL)valueAsBOOL {
     if (![self.type isEqualToString:JivePropertyTypes.boolean]) {
-        NSAssert(false, @"Asking for the wrong property type");
         return NO;
     }
     
