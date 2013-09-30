@@ -63,7 +63,8 @@
                                                 NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
                                                 
                                                 if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
-                                                     isEqualToString:@" 404"]) {
+                                                     isEqualToString:@" 404"] ||
+                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
                                                     
                                                     completeBlock(NO);
                                                 } else {
