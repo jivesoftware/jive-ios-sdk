@@ -134,7 +134,7 @@
     
     [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
     [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
-    STAssertFalse(property.valueAsNumber, @"A number was returned.");
+    STAssertNil(property.valueAsNumber, @"A number was returned.");
 }
 
 @end
