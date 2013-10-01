@@ -19,6 +19,22 @@
 
 #import "JiveProperty.h"
 
+struct JivePropertyTypes const JivePropertyTypes = {
+    .boolean = @"boolean",
+    .string = @"string",
+    .number = @"number",
+};
+
+struct JivePropertyAttributes const JivePropertyAttributes = {
+    .availability = @"availability",
+    .defaultValue = @"defaultValue",
+    .jiveDescription = @"jiveDescription",
+    .name = @"name",
+    .since = @"since",
+    .type = @"type",
+    .value = @"value",
+};
+
 @implementation JiveProperty
 
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;
@@ -28,15 +44,51 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:availability forKey:@"availability"];
-    [dictionary setValue:defaultValue forKey:@"defaultValue"];
-    [dictionary setValue:jiveDescription forKey:@"description"];
-    [dictionary setValue:name forKey:@"name"];
-    [dictionary setValue:since forKey:@"since"];
-    [dictionary setValue:type forKey:@"type"];
-    [dictionary setValue:value forKey:@"value"];
+    [dictionary setValue:availability forKey:JivePropertyAttributes.availability];
+    [dictionary setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
+    [dictionary setValue:jiveDescription forKey:JivePropertyAttributes.jiveDescription];
+    [dictionary setValue:name forKey:JivePropertyAttributes.name];
+    [dictionary setValue:since forKey:JivePropertyAttributes.since];
+    [dictionary setValue:type forKey:JivePropertyAttributes.type];
+    [dictionary setValue:value forKey:JivePropertyAttributes.value];
     
     return dictionary;
+}
+
+- (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)newValue {
+    if ([self.type isEqualToString:JivePropertyTypes.boolean]) {
+        [self setValue:(NSNumber *)newValue forKey:property];
+    } else if ([self.type isEqualToString:JivePropertyTypes.string]) {
+        [self setValue:(NSString *)newValue forKey:property];
+    } else if ([self.type isEqualToString:JivePropertyTypes.number]) {
+        [self setValue:(NSNumber *)newValue forKey:property];
+    } else {
+        NSAssert(false, @"Unknown type (%@) for property (%@)", self.type, property);
+    }
+}
+
+- (BOOL)valueAsBOOL {
+    if (![self.type isEqualToString:JivePropertyTypes.boolean]) {
+        return NO;
+    }
+    
+    return [(NSNumber *)self.value boolValue];
+}
+
+- (NSString *)valueAsString {
+    if (![self.type isEqualToString:JivePropertyTypes.string]) {
+        return nil;
+    }
+    
+    return (NSString *)self.value;
+}
+
+- (NSNumber *)valueAsNumber {
+    if (![self.type isEqualToString:JivePropertyTypes.number]) {
+        return nil;
+    }
+    
+    return (NSNumber *)self.value;
 }
 
 @end

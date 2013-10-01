@@ -19,6 +19,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+@class JiveProperty;
+
 @interface JivePropertyTests : SenTestCase
+
+@property (nonatomic, strong) JiveProperty *property;
 
 @end

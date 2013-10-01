@@ -19,6 +19,22 @@
 
 #import "JiveObject.h"
 
+extern struct JivePropertyTypes {
+    __unsafe_unretained NSString *boolean;
+    __unsafe_unretained NSString *string;
+    __unsafe_unretained NSString *number;
+} const JivePropertyTypes;
+
+extern struct JivePropertyAttributes {
+    __unsafe_unretained NSString *availability;
+    __unsafe_unretained NSString *defaultValue;
+    __unsafe_unretained NSString *jiveDescription;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *since;
+    __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *value;
+} const JivePropertyAttributes;
+
 //! \class JiveProperty
 //! https://developers.jivesoftware.com/api/v3/rest/PropertyEntity.html
 @interface JiveProperty : JiveObject
@@ -41,7 +57,16 @@
 //! The data type for the value of this property.
 @property (nonatomic, strong, readonly) NSString *type;
 
-//! The value of this property.
-@property (nonatomic, strong, readonly) NSString *value;
+//! The raw value of this property.
+@property (nonatomic, strong, readonly) id value;
+
+//! The value of a boolean property.
+- (BOOL)valueAsBOOL;
+
+//! The value of a string property.
+- (NSString *)valueAsString;
+
+//! The value of a numeric property.
+- (NSNumber *)valueAsNumber;
 
 @end

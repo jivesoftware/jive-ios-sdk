@@ -19,6 +19,7 @@
 
 #import "JiveMetadata_internal.h"
 #import "Jive.h"
+#import "NSError+Jive.h"
 
 @interface JiveMetadata ()
 
@@ -50,6 +51,31 @@
 
 - (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     [[self hasVideoOperation:completeBlock onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:@"feature.rtc.enabled"
+                                         onComplete:^(JiveProperty *rtcEnabledProperty) {
+                                             completeBlock(rtcEnabledProperty.valueAsBOOL);
+                                         }
+                                            onError:^(NSError *error) {
+                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
+                                                
+                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
+                                                     isEqualToString:@" 404"] ||
+                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
+                                                    
+                                                    completeBlock(NO);
+                                                } else {
+                                                    errorBlock(error);
+                                                }
+                                            }];
+}
+
+- (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self realTimeChatEnabledOperation:completeBlock onError:errorBlock] start];
 }
 
 @end
