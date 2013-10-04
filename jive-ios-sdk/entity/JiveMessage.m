@@ -74,9 +74,22 @@ NSString * const JiveMessageType = @"message";
     
     [dictionary setValue:answer forKey:JiveMessageAttributes.answer];
     [dictionary setValue:helpful forKey:JiveMessageAttributes.helpful];
+    [self addArrayElements:attachments toJSONDictionary:dictionary forTag:JiveMessageAttributes.attachments];
+    
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = [super persistentJSON];
+    
     [dictionary setValue:visibleToExternalContributors forKey:JiveMessageAttributes.visibleToExternalContributors];
     [dictionary setValue:discussion forKey:JiveMessageAttributes.discussion];
-    [self addArrayElements:attachments toJSONDictionary:dictionary forTag:JiveMessageAttributes.attachments];
+    [self addArrayElements:attachments
+    toPersistentDictionary:dictionary
+                    forTag:JiveMessageAttributes.attachments];
+    [self addArrayElements:outcomeTypes
+    toPersistentDictionary:dictionary
+                    forTag:JiveMessageAttributes.outcomeTypes];
     if (outcomeTypeNames)
         [dictionary setValue:outcomeTypeNames forKey:JiveMessageAttributes.outcomeTypeNames];
     if (tags)

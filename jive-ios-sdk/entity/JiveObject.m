@@ -264,4 +264,18 @@
     return [self toJSONDictionary];
 }
 
+- (void)addArrayElements:(NSArray *)array
+  toPersistentDictionary:(NSMutableDictionary *)dictionary
+                  forTag:(NSString *)tag {
+    
+    if (array.count > 0) {
+        NSMutableArray *JSONArray = [NSMutableArray arrayWithCapacity:array.count];
+        
+        for (JiveObject *object in array)
+            [JSONArray addObject:object.persistentJSON];
+        
+        [dictionary setValue:[NSArray arrayWithArray:JSONArray] forKey:tag];
+    }
+}
+
 @end

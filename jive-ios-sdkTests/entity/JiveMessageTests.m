@@ -19,6 +19,7 @@
 
 #import "JiveMessageTests.h"
 #import "JiveAttachment.h"
+#import "JiveOutcomeType.h"
 
 @implementation JiveMessageTests
 
@@ -44,6 +45,7 @@
 
 - (void)testMessageToJSON {
     JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.message toJSONDictionary];
     NSString *outcomeTypeName = @"helpful";
@@ -53,16 +55,91 @@
     STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], @"message", @"Wrong type");
     
     attachment.contentType = @"person";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
+    self.message.attachments = @[attachment];
+    self.message.helpful = @YES;
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
+    [self.message setValue:@"/person/5432" forKey:JiveMessageAttributes.discussion];
+    [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
+    
+    JSON = [self.message toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type, @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.helpful], self.message.helpful,
+                         @"Wrong helpful flag");
+    
+    NSArray *attachmentsJSON = [JSON objectForKey:JiveMessageAttributes.attachments];
+    NSDictionary *itemJSON = [attachmentsJSON objectAtIndex:0];
+    
+    STAssertTrue([[attachmentsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([attachmentsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([itemJSON objectForKey:@"contentType"],
+                         attachment.contentType,
+                         @"Wrong value");
+}
+
+- (void)testMessageToJSON_alternate {
+    JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
+    NSString *tag = @"concise";
+    NSString *outcomeTypeName = @"testType";
+    
+    attachment.contentType = @"place";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
+    self.message.attachments = @[attachment];
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
+    [self.message setValue:@"/place/123456" forKey:JiveMessageAttributes.discussion];
+    self.message.answer = @YES;
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
+    
+    NSDictionary *JSON = [self.message toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type,
+                         @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.answer], self.message.answer,
+                         @"Wrong answer");
+    
+    NSArray *attachmentsJSON = [JSON objectForKey:JiveMessageAttributes.attachments];
+    NSDictionary *itemJSON = [attachmentsJSON objectAtIndex:0];
+    
+    STAssertTrue([[attachmentsJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([attachmentsJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([itemJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([itemJSON objectForKey:@"contentType"], attachment.contentType, @"Wrong value");
+}
+
+- (void)testMessagePersistentJSON {
+    JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
+    NSString *tag = @"wordy";
+    NSDictionary *JSON = [self.message persistentJSON];
+    NSString *outcomeTypeName = @"helpful";
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], @"message", @"Wrong type");
+    
+    attachment.contentType = @"person";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
     self.message.attachments = @[attachment];
     [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/person/5432" forKey:JiveMessageAttributes.discussion];
     [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
     [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
     
-    JSON = [self.message toJSONDictionary];
+    JSON = [self.message persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.discussion],
                          self.message.discussion, @"Wrong discussion");
@@ -91,24 +168,35 @@
     STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"outcomeTypeNames not converted");
     STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)1, @"outcomeTypeNames dictionary had the wrong number of entries");
     STAssertEqualObjects([outcomeTypeNamesJSON objectAtIndex:0], outcomeTypeName, @"outcomeTypeNames value");
+    
+    NSArray *outcomeTypesJSON = [JSON objectForKey:JiveMessageAttributes.outcomeTypes];
+    NSDictionary *outcomeTypeJSON = outcomeTypesJSON[0];
+    
+    STAssertTrue([[outcomeTypesJSON class] isSubclassOfClass:[NSArray class]], @"outcomeTypes not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"outcomeTypes dictionary had the wrong number of entries");
+    STAssertEqualObjects([outcomeTypeJSON objectForKey:JiveOutcomeTypeAttributes.name],
+                         outcomeTypeName, @"outcomeTypeJSON name value");
 }
 
-- (void)testMessageToJSON_alternate {
+- (void)testMessagePersistentJSON_alternate {
     JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
     NSString *tag = @"concise";
     NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
     self.message.attachments = @[attachment];
     [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/place/123456" forKey:JiveMessageAttributes.discussion];
     self.message.answer = @YES;
     [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
     
-    NSDictionary *JSON = [self.message toJSONDictionary];
+    NSDictionary *JSON = [self.message persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type,
                          @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.discussion],
@@ -135,6 +223,14 @@
     STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"outcomeTypeNames not converted");
     STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)1, @"outcomeTypeNames dictionary had the wrong number of entries");
     STAssertEqualObjects([outcomeTypeNamesJSON objectAtIndex:0], outcomeTypeName, @"Wrong outcomeTypeNames");
+    
+    NSArray *outcomeTypesJSON = [JSON objectForKey:JiveMessageAttributes.outcomeTypes];
+    NSDictionary *outcomeTypeJSON = outcomeTypesJSON[0];
+    
+    STAssertTrue([[outcomeTypesJSON class] isSubclassOfClass:[NSArray class]], @"outcomeTypes not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"outcomeTypes dictionary had the wrong number of entries");
+    STAssertEqualObjects([outcomeTypeJSON objectForKey:JiveOutcomeTypeAttributes.name],
+                         outcomeTypeName, @"outcomeTypeJSON name value");
 }
 
 - (void)testMessageToJSON_helpful {
@@ -158,16 +254,13 @@
     NSDictionary *JSON = [self.message toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type,
                          @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.answer], self.message.answer,
                          @"Wrong answer");
     STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.helpful], self.message.helpful,
                          @"Wrong helpful");
-    STAssertEqualObjects([JSON objectForKey:JiveMessageAttributes.visibleToExternalContributors],
-                         self.message.visibleToExternalContributors,
-                         @"Wrong visibleToExternalContributors");
 }
 
 - (void)testToJSON_attachments {
@@ -215,22 +308,72 @@
     STAssertEqualObjects([object2 objectForKey:@"contentType"], attachment2.contentType, @"Wrong value 2");
 }
 
+- (void)testToJSON_outcomeTypes {
+    JiveOutcomeType *outcomeType1 = [JiveOutcomeType new];
+    JiveOutcomeType *outcomeType2 = [JiveOutcomeType new];
+    
+    [outcomeType1 setValue:@"message" forKey:JiveOutcomeTypeAttributes.name];
+    [outcomeType2 setValue:@"question" forKey:JiveOutcomeTypeAttributes.name];
+    [self.message setValue:@[outcomeType1] forKey:JiveMessageAttributes.outcomeTypes];
+    
+    NSDictionary *JSON = [self.message persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type, @"Wrong type");
+    
+    NSArray *outcomeTypeJSON = [JSON objectForKey:JiveMessageAttributes.outcomeTypes];
+    id object1 = [outcomeTypeJSON objectAtIndex:0];
+    
+    STAssertTrue([[outcomeTypeJSON class] isSubclassOfClass:[NSArray class]], @"attachments array not converted");
+    STAssertEquals([outcomeTypeJSON count], (NSUInteger)1, @"Wrong number of elements in the address array");
+    STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"attachment object not converted");
+    STAssertEqualObjects([object1 objectForKey:JiveOutcomeTypeAttributes.name], outcomeType1.name,
+                         @"Wrong value");
+    
+    [self.message setValue:[self.message.outcomeTypes arrayByAddingObject:outcomeType2]
+                    forKey:JiveMessageAttributes.outcomeTypes];
+    
+    JSON = [self.message persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.message.type,
+                         @"Wrong type");
+    
+    outcomeTypeJSON = [JSON objectForKey:JiveMessageAttributes.outcomeTypes];
+    object1 = [outcomeTypeJSON objectAtIndex:0];
+    
+    id object2 = [outcomeTypeJSON objectAtIndex:1];
+    
+    STAssertTrue([[outcomeTypeJSON class] isSubclassOfClass:[NSArray class]], @"attachments array not converted");
+    STAssertEquals([outcomeTypeJSON count], (NSUInteger)2, @"Wrong number of elements in the address array");
+    STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"attachment 1 object not converted");
+    STAssertEqualObjects([object1 objectForKey:JiveOutcomeTypeAttributes.name], outcomeType1.name,
+                         @"Wrong value 1");
+    STAssertTrue([[object2 class] isSubclassOfClass:[NSDictionary class]], @"attachment 2 object not converted");
+    STAssertEqualObjects([object2 objectForKey:JiveOutcomeTypeAttributes.name], outcomeType2.name,
+                         @"Wrong value 2");
+}
+
 - (void)testMessageParsing {
     JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
     NSString *tag = @"wordy";
     NSString *outcomeTypeName = @"helpful";
     
     attachment.contentType = @"person";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
     self.message.attachments = @[attachment];
     [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/person/5432" forKey:JiveMessageAttributes.discussion];
     self.message.answer = @YES;
     self.message.helpful = @YES;
     [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
-    [self.message setValue:@[outcomeTypeName]
-                    forKey:JiveMessageAttributes.outcomeTypeNames];
-    
-    id JSON = [self.message toJSONDictionary];
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
+   
+    id JSON = [self.message persistentJSON];
     JiveMessage *newContent = [JiveMessage instanceFromJSON:JSON];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.message class]], @"Wrong item class");
@@ -247,21 +390,27 @@
     STAssertEqualObjects(newContent.answer, self.message.answer, @"Wrong answer");
     STAssertEqualObjects(newContent.helpful, self.message.helpful, @"Wrong helpful");
     STAssertEqualObjects(newContent.visibleToExternalContributors, self.message.visibleToExternalContributors, @"Wrong visibleToExternalContributors");
+    STAssertEquals([newContent.outcomeTypes count], (NSUInteger)1,
+                   @"outcomeTypes dictionary had the wrong number of entries");
+    STAssertEqualObjects(((JiveOutcomeType *)[newContent.outcomeTypes objectAtIndex:0]).name,
+                         outcomeTypeName, @"Wrong outcomeType");
 }
 
 - (void)testMessageParsingAlternate {
     JiveAttachment *attachment = [JiveAttachment new];
+    JiveOutcomeType *outcomeType = [JiveOutcomeType new];
     NSString *tag = @"concise";
     NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
+    [outcomeType setValue:outcomeTypeName forKey:JiveOutcomeTypeAttributes.name];
     self.message.attachments = @[attachment];
     [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/place/123456" forKey:JiveMessageAttributes.discussion];
-    [self.message setValue:@[outcomeTypeName]
-                    forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
     
-    id JSON = [self.message toJSONDictionary];
+    id JSON = [self.message persistentJSON];
     JiveMessage *newContent = [JiveMessage instanceFromJSON:JSON];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.message class]], @"Wrong item class");
@@ -275,6 +424,10 @@
     STAssertEqualObjects([(JiveAttachment *)[newContent.attachments objectAtIndex:0] contentType],
                          attachment.contentType,
                          @"Wrong attachment object");
+    STAssertEquals([newContent.outcomeTypes count], (NSUInteger)1,
+                   @"outcomeTypes dictionary had the wrong number of entries");
+    STAssertEqualObjects(((JiveOutcomeType *)[newContent.outcomeTypes objectAtIndex:0]).name,
+                         outcomeTypeName, @"Wrong outcomeType");
 }
 
 @end
