@@ -51,7 +51,7 @@ extern NSString * const JiveMessageType;
 @property(nonatomic, strong) NSNumber *helpful;
 
 //! List of structured outcome type names that have been assigned to this content object. For top level content objects like Discussion, File, and Document, outcomes assigned to child comments and messages will also be included. NSString[]
-@property(nonatomic, readonly, strong) NSArray *outcomeTypeNames;
+@property(nonatomic, strong) NSArray *outcomeTypeNames;
 
 //! A list of valid outcome types that can be set on this piece of content. JiveOutcomeType[]
 @property(nonatomic, readonly, strong) NSArray *outcomeTypes;

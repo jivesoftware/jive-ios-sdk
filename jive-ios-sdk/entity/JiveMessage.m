@@ -75,6 +75,9 @@ NSString * const JiveMessageType = @"message";
     [dictionary setValue:answer forKey:JiveMessageAttributes.answer];
     [dictionary setValue:helpful forKey:JiveMessageAttributes.helpful];
     [self addArrayElements:attachments toJSONDictionary:dictionary forTag:JiveMessageAttributes.attachments];
+    if (outcomeTypeNames) {
+        [dictionary setValue:outcomeTypeNames forKey:JiveMessageAttributes.outcomeTypeNames];
+    }
     
     return dictionary;
 }
@@ -90,10 +93,9 @@ NSString * const JiveMessageType = @"message";
     [self addArrayElements:outcomeTypes
     toPersistentDictionary:dictionary
                     forTag:JiveMessageAttributes.outcomeTypes];
-    if (outcomeTypeNames)
-        [dictionary setValue:outcomeTypeNames forKey:JiveMessageAttributes.outcomeTypeNames];
-    if (tags)
+    if (tags) {
         [dictionary setValue:tags forKey:JiveMessageAttributes.tags];
+    }
     
     return dictionary;
 }
