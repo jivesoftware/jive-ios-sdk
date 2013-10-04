@@ -23,7 +23,7 @@
 @implementation JiveMessageTests
 
 - (void)setUp {
-    self.typedObject = [[JiveMessage alloc] init];
+    self.typedObject = [JiveMessage new];
 }
 
 - (JiveMessage *)message {
@@ -43,7 +43,7 @@
 }
 
 - (void)testMessageToJSON {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
+    JiveAttachment *attachment = [JiveAttachment new];
     NSString *tag = @"wordy";
     NSDictionary *JSON = [self.message toJSONDictionary];
     NSString *outcomeTypeName = @"helpful";
@@ -53,13 +53,11 @@
     STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], @"message", @"Wrong type");
     
     attachment.contentType = @"person";
-    self.message.attachments = [NSArray arrayWithObject:attachment];
-    [self.message setValue:[NSArray arrayWithObject:tag] forKey:JiveMessageAttributes.tags];
+    self.message.attachments = @[attachment];
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/person/5432" forKey:JiveMessageAttributes.discussion];
-    [self.message setValue:[NSNumber numberWithBool:YES]
-                    forKey:JiveMessageAttributes.visibleToExternalContributors];
-    [self.message setValue:[NSArray arrayWithObject:outcomeTypeName]
-                    forKey:JiveMessageAttributes.outcomeTypeNames];
+    [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
     
     JSON = [self.message toJSONDictionary];
     
@@ -96,17 +94,16 @@
 }
 
 - (void)testMessageToJSON_alternate {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
+    JiveAttachment *attachment = [JiveAttachment new];
     NSString *tag = @"concise";
     NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
-    self.message.attachments = [NSArray arrayWithObject:attachment];
-    [self.message setValue:[NSArray arrayWithObject:tag] forKey:JiveMessageAttributes.tags];
+    self.message.attachments = @[attachment];
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/place/123456" forKey:JiveMessageAttributes.discussion];
-    self.message.answer = [NSNumber numberWithBool:YES];
-    [self.message setValue:[NSArray arrayWithObject:outcomeTypeName]
-                    forKey:JiveMessageAttributes.outcomeTypeNames];
+    self.message.answer = @YES;
+    [self.message setValue:@[outcomeTypeName] forKey:JiveMessageAttributes.outcomeTypeNames];
     
     NSDictionary *JSON = [self.message toJSONDictionary];
     
@@ -141,7 +138,7 @@
 }
 
 - (void)testMessageToJSON_helpful {
-    self.message.helpful = [NSNumber numberWithBool:YES];
+    self.message.helpful = @YES;
     
     NSDictionary *JSON = [self.message toJSONDictionary];
     
@@ -154,9 +151,9 @@
 }
 
 - (void)testMessageToJSON_boolProperties {
-    self.message.answer = [NSNumber numberWithBool:YES];
-    self.message.helpful = [NSNumber numberWithBool:YES];
-    [self.message setValue:[NSNumber numberWithBool:YES] forKey:JiveMessageAttributes.visibleToExternalContributors];
+    self.message.answer = @YES;
+    self.message.helpful = @YES;
+    [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
     
     NSDictionary *JSON = [self.message toJSONDictionary];
     
@@ -174,12 +171,12 @@
 }
 
 - (void)testToJSON_attachments {
-    JiveAttachment *attachment1 = [[JiveAttachment alloc] init];
-    JiveAttachment *attachment2 = [[JiveAttachment alloc] init];
+    JiveAttachment *attachment1 = [JiveAttachment new];
+    JiveAttachment *attachment2 = [JiveAttachment new];
     
     attachment1.contentType = @"message";
     attachment2.contentType = @"question";
-    [self.message setValue:[NSArray arrayWithObject:attachment1] forKey:JiveMessageAttributes.attachments];
+    [self.message setValue:@[attachment1] forKey:JiveMessageAttributes.attachments];
     
     NSDictionary *JSON = [self.message toJSONDictionary];
     
@@ -219,19 +216,18 @@
 }
 
 - (void)testMessageParsing {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
+    JiveAttachment *attachment = [JiveAttachment new];
     NSString *tag = @"wordy";
     NSString *outcomeTypeName = @"helpful";
     
     attachment.contentType = @"person";
-    self.message.attachments = [NSArray arrayWithObject:attachment];
-    [self.message setValue:[NSArray arrayWithObject:tag] forKey:JiveMessageAttributes.tags];
+    self.message.attachments = @[attachment];
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/person/5432" forKey:JiveMessageAttributes.discussion];
-    self.message.answer = [NSNumber numberWithBool:YES];
-    self.message.helpful = [NSNumber numberWithBool:YES];
-    [self.message setValue:[NSNumber numberWithBool:YES]
-                    forKey:JiveMessageAttributes.visibleToExternalContributors];
-    [self.message setValue:[NSArray arrayWithObject:outcomeTypeName]
+    self.message.answer = @YES;
+    self.message.helpful = @YES;
+    [self.message setValue:@YES forKey:JiveMessageAttributes.visibleToExternalContributors];
+    [self.message setValue:@[outcomeTypeName]
                     forKey:JiveMessageAttributes.outcomeTypeNames];
     
     id JSON = [self.message toJSONDictionary];
@@ -254,15 +250,15 @@
 }
 
 - (void)testMessageParsingAlternate {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
+    JiveAttachment *attachment = [JiveAttachment new];
     NSString *tag = @"concise";
     NSString *outcomeTypeName = @"testType";
     
     attachment.contentType = @"place";
-    self.message.attachments = [NSArray arrayWithObject:attachment];
-    [self.message setValue:[NSArray arrayWithObject:tag] forKey:JiveMessageAttributes.tags];
+    self.message.attachments = @[attachment];
+    [self.message setValue:@[tag] forKey:JiveMessageAttributes.tags];
     [self.message setValue:@"/place/123456" forKey:JiveMessageAttributes.discussion];
-    [self.message setValue:[NSArray arrayWithObject:outcomeTypeName]
+    [self.message setValue:@[outcomeTypeName]
                     forKey:JiveMessageAttributes.outcomeTypeNames];
     
     id JSON = [self.message toJSONDictionary];
