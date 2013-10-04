@@ -63,5 +63,8 @@ extern NSString * const JiveMessageType;
 @property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 
+- (NSURL *)correctAnswerRef;
+- (BOOL)canMarkAsCorrectAnswer;
+- (BOOL)canClearMarkAsCorrectAnswer;
 
 @end

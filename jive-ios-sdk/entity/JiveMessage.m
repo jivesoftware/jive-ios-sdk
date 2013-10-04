@@ -22,6 +22,13 @@
 #import "JiveTypedObject_internal.h"
 #import "JiveOutcomeType.h"
 
+struct JiveMessageResourceTags {
+    __unsafe_unretained NSString *correctAnswer;
+} const JiveMessageResourceTags;
+
+struct JiveMessageResourceTags const JiveMessageResourceTags = {
+    .correctAnswer = @"correctAnswer",
+};
 
 struct JiveMessageAttributes const JiveMessageAttributes = {
     .answer = @"answer",
@@ -76,6 +83,18 @@ NSString * const JiveMessageType = @"message";
         [dictionary setValue:tags forKey:JiveMessageAttributes.tags];
     
     return dictionary;
+}
+
+- (NSURL *)correctAnswerRef {
+    return [self resourceForTag:JiveMessageResourceTags.correctAnswer].ref;
+}
+
+- (BOOL)canMarkAsCorrectAnswer {
+    return [self resourceHasPutForTag:JiveMessageResourceTags.correctAnswer];
+}
+
+- (BOOL)canClearMarkAsCorrectAnswer {
+    return [self resourceHasDeleteForTag:JiveMessageResourceTags.correctAnswer];
 }
 
 @end
