@@ -89,10 +89,10 @@ extern struct JiveContentAttributes {
 @property(nonatomic, readonly) NSNumber *replyCount;
 
 //! Published status of this content object.
-// * incomplete - Content object is in draft mode
-// * pending_approval - Content object is waiting for approval
-// * rejected - Content object has been rejected for publication by an approver
-// * published - Content object has been published
+//! * incomplete - Content object is in draft mode
+//! * pending_approval - Content object is waiting for approval
+//! * rejected - Content object has been rejected for publication by an approver
+//! * published - Content object has been published
 @property(nonatomic, readonly, copy) NSString* status;
 
 //! Subject of this content object.
