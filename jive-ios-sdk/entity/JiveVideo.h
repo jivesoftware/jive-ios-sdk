@@ -30,6 +30,7 @@ extern struct JiveVideoAttributes {
     __unsafe_unretained NSString *width;
     __unsafe_unretained NSString *height;
     __unsafe_unretained NSString *authtoken;
+    __unsafe_unretained NSString *videoSource;
 } const JiveVideoAttributes;
 
 
@@ -72,5 +73,8 @@ extern NSString * const JiveVideoType;
 
 //! Video provider's authentication token, required for playing video
 @property(nonatomic, strong, readonly) NSString* authtoken;
+
+//! HTML source for an external link to video (e.g. YouTube, Vimeo)
+@property(nonatomic, strong, readonly) NSString* videoSource;
 
 @end
