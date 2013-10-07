@@ -48,7 +48,7 @@ NSString * const JiveDiscussionType = @"discussion";
 }
 
 - (BOOL)canAddComments {
-    return YES;
+    return [self canAddMessage];
 }
 
 - (NSDictionary *)toJSONDictionary {
