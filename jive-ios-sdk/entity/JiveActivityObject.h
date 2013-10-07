@@ -65,4 +65,10 @@
 //! URI of the correct answer (if any), if this object is a discussion marked as a question.
 @property (nonatomic) NSURL *answer;
 
+//! Flag indicating that this content can be replied to
+@property (nonatomic) BOOL canReply;
+
+//! Flag indicating that this content can be commented on
+@property (nonatomic) BOOL canComment;
+
 @end

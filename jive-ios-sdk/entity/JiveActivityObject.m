@@ -23,7 +23,7 @@
 
 @implementation JiveActivityObject
 
-@synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url, question, resolved, answer;
+@synthesize author, content, displayName, jiveId, image, objectType, published, summary, updated, url, question, resolved, answer, canReply, canComment;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
