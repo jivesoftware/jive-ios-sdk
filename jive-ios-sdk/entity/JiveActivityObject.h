@@ -66,9 +66,9 @@
 @property (nonatomic) NSURL *answer;
 
 //! Flag indicating that this content can be replied to
-@property (nonatomic) BOOL canReply;
+@property (nonatomic, readonly) NSNumber *canReply;
 
 //! Flag indicating that this content can be commented on
-@property (nonatomic) BOOL canComment;
+@property (nonatomic, readonly) NSNumber *canComment;
 
 @end
