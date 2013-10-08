@@ -23,7 +23,7 @@
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor, canReply, canComment;
 @synthesize imagesCount;
 
 - (NSDictionary *)toJSONDictionary {

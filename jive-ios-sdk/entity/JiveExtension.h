@@ -99,4 +99,10 @@
 //! Author of the parent item.
 @property(nonatomic, readonly, strong) JivePerson *parentActor;
 
+//! Flag indicating that this content can be replied to
+@property(nonatomic, readonly) NSNumber *canReply;
+
+//! Flag indicating that this content can be commented on
+@property(nonatomic, readonly) NSNumber *canComment;
+
 @end
