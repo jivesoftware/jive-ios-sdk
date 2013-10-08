@@ -26,12 +26,16 @@ NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType = 2;
 NSInteger const JiveErrorCodeNilUnderlyingError = 3;
 NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion = 4;
 NSInteger const JiveErrorCodeInvalidJSON = 5;
+NSInteger const JiveErrorCodeUnauthorizedActivityObjectType = 6;
 
 NSString * const JiveErrorKeyMultipleErrors = @"JiveMultipleErrors";
 NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType = @"JiveUnsupportedActivityObjectObjectType";
 NSString * const JiveErrorKeyJSON = @"JiveErrorJSON";
 NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
 NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersion";
+NSString * const JiveErrorKeyUnauthorizedActivityObjectType = @"JiveErrorKeyUnauthorizedActivityObjectType";
+
+NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer = @"unauthorized.user.mark.correctAnswer";
 
 @implementation NSError (Jive)
 
@@ -106,6 +110,14 @@ NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersio
                         userInfo:(@{
                                   JiveErrorKeyJivePlatformVersion : jivePlatformVersion,
                                   })];
+}
+
++ (instancetype) jive_errorWithUnauthorizedActivityObjectType:(NSString *)unauthorizedActivityObjectType {
+    return [self errorWithDomain:JiveErrorDomain
+                            code:JiveErrorCodeUnauthorizedActivityObjectType
+                        userInfo:(@{
+                                    JiveErrorKeyUnauthorizedActivityObjectType : unauthorizedActivityObjectType,
+                                    })];
 }
 
 + (instancetype) jive_errorWithInvalidJSON:(id)JSON {

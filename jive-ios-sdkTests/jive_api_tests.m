@@ -6588,4 +6588,143 @@
     STAssertEquals(initialMetadata.instance, instance, @"The metadata object should have a reference to the Jive object that created it.");
 }
 
+- (void) testToggleCorrectAnswerOperation_markCorrect {
+    NSString *expectedURL = @"https://brewspace.jiveland.com/api/core/v3/messages/602237/correctAnswer";
+    JiveHTTPBasicAuthCredentials *authCredentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                                  password:@"foo"];
+    JiveMessage *source = [self entityForClass:[JiveMessage class] fromJSONNamed:@"make_correct_answer_message"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    STAssertTrue(source.canMarkAsCorrectAnswer, @"PRECONDITION: Wrong make correct answer status");
+    STAssertFalse(source.canClearMarkAsCorrectAnswer, @"PRECONDITION: Wrong clear correct answer status");
+    [self createJiveAPIObjectWithResponse:@"clear_correct_answer_message" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive toggleCorrectAnswerOperation:source onComplete:^ {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertNil(operation.request.HTTPBody, @"No http body needed");
+        [operation start];
+    }];
+}
+
+- (void) testToggleCorrectAnswerOperation_removeCorrect {
+    NSString *expectedURL = @"https://brewspace.jiveland.com/api/core/v3/messages/604058/correctAnswer";
+    JiveHTTPBasicAuthCredentials *authCredentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                                  password:@"foo"];
+    JiveMessage *source = [self entityForClass:[JiveMessage class] fromJSONNamed:@"clear_correct_answer_message"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    STAssertFalse(source.canMarkAsCorrectAnswer, @"PRECONDITION: Wrong make correct answer status");
+    STAssertTrue(source.canClearMarkAsCorrectAnswer, @"PRECONDITION: Wrong clear correct answer status");
+    [self createJiveAPIObjectWithResponse:@"make_correct_answer_message" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive toggleCorrectAnswerOperation:source onComplete:^ {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertNil(operation.request.HTTPBody, @"No http body needed");
+        [operation start];
+    }];
+}
+
+- (void) testToggleCorrectAnswerOperation_unauthorized {
+    NSString *expectedURL = @"https://brewspace.jiveland.com/api/core/v3/messages/602237/correctAnswer";
+    JiveHTTPBasicAuthCredentials *authCredentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                                  password:@"foo"];
+    JiveMessage *source = [self entityForClass:[JiveMessage class] fromJSONNamed:@"message"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    STAssertFalse(source.canMarkAsCorrectAnswer, @"PRECONDITION: Wrong make correct answer status");
+    STAssertFalse(source.canClearMarkAsCorrectAnswer, @"PRECONDITION: Wrong clear correct answer status");
+    [self createJiveAPIObjectWithResponse:@"clear_correct_answer_message" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive toggleCorrectAnswerOperation:source onComplete:^ {
+            STFail(@"An unauthorized user should not be able to change the correct answer status.");
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STAssertEqualObjects(error.domain, JiveErrorDomain, @"Wrong error domain");
+            STAssertEquals(error.code, JiveErrorCodeUnauthorizedActivityObjectType, @"Wrong error code");
+            STAssertEqualObjects(error.userInfo[JiveErrorKeyUnauthorizedActivityObjectType],
+                                 JiveErrorMessageUnauthorizedUserMarkCorrectAnswer,
+                                 @"Wrong error message");
+            finishedBlock();
+        }];
+        
+        STAssertNil(operation, @"An unauthorized user should not result in a valid operation");
+    }];
+}
+
+- (void) testToggleCorrectAnswer {
+    NSString *expectedURL = @"https://brewspace.jiveland.com/api/core/v3/messages/604058/correctAnswer";
+    JiveHTTPBasicAuthCredentials *authCredentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                                  password:@"foo"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:authCredentials] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"make_correct_answer_message" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveMessage *source = [self entityForClass:[JiveMessage class] fromJSONNamed:@"clear_correct_answer_message"];
+        [jive toggleCorrectAnswer:source onComplete:^ {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
 @end

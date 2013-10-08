@@ -1,0 +1,190 @@
+{
+  "id" : "602237",
+  "resources" : {
+    "outcomeTypes" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/outcomeTypes"
+    },
+    "outcomes" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/outcomes"
+    },
+    "extprops" : {
+      "allowed" : [ "GET", "DELETE" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/extprops"
+    },
+    "correctAnswer" : {
+      "allowed" : [ "PUT" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/correctAnswer"
+    },
+    "likes" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/likes"
+    },
+    "self" : {
+      "allowed" : [ "GET", "DELETE" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/message/602237#602237"
+    },
+    "attachments" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/attachments/messages/602237"
+    },
+    "messages" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://hopback.eng.jiveland.com/api/core/v3/messages/602237/messages"
+    }
+  },
+  "followerCount" : 0,
+  "likeCount" : 0,
+  "published" : "2013-01-16T03:30:46.185+0000",
+  "tags" : [ ],
+  "updated" : "2013-01-16T03:30:46.185+0000",
+  "iconCss" : "jive-icon-discussion-question",
+  "author" : {
+    "id" : "5327",
+    "resources" : {
+      "trendingPlaces" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@trendingPlaces"
+      },
+      "trendingContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@trendingContent"
+      },
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@manager"
+      },
+      "recognition" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@recognition"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/places/365922"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@following"
+      },
+      "social" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/@social"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/people/heath.borders"
+      },
+      "followingIn" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/people/5327/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://hopback.eng.jiveland.com/api/core/v3/members/people/5327"
+      }
+    },
+    "displayName" : "Heath Borders",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "heath.borders@jivesoftware.com"
+    } ],
+    "jive" : {
+      "level" : {
+        "description" : "Level 2",
+        "imageURI" : "https://s3.amazonaws.com/bunchball_images/af993d10de1a434db4f6a10664e8f3f5/2png1401cf4744d.png",
+        "name" : "Level 2",
+        "points" : 796
+      },
+      "username" : "heath.borders"
+    },
+    "name" : {
+      "familyName" : "Borders",
+      "formatted" : "Heath Borders",
+      "givenName" : "Heath"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "<body><!-- [DocumentBodyStart:38db7a87-5b8c-453b-a7ef-163a94880675] --><div class=\"jive-rendered-content\"><p>The only advantage I can see with Apple's documentation is that you can embed it within Xcode. Xcode's documentation viewer isn't very usable, so I don't think that's a huge advantage. I haven't done any serious documentation development with any of these tools, but if you say doxygen is the best, then let's use it.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></div><!-- [DocumentBodyEnd:38db7a87-5b8c-453b-a7ef-163a94880675] --></body>",
+    "editable" : false,
+    "type" : "text/html"
+  },
+  "parent" : "https://hopback.eng.jiveland.com/api/core/v3/contents/384968",
+  "replyCount" : 0,
+  "status" : "published",
+  "subject" : "Re: What should the iOS SDK framework documentation look like?",
+  "viewCount" : 0,
+  "visibleToExternalContributors" : false,
+  "answer" : false,
+  "attachments" : [ ],
+  "discussion" : "https://hopback.eng.jiveland.com/api/core/v3/contents/384968",
+  "outcomeTypeNames" : [ "helpful" ],
+  "outcomeCounts" : {
+    "helpful" : 1
+  },
+  "outcomeTypes" : [ {
+    "id" : "3",
+    "name" : "pending",
+    "urlAllowed" : false,
+    "shareable" : true,
+    "noteRequired" : true,
+    "generalNote" : false,
+    "confirmExclusion" : false,
+    "confirmUnmark" : false
+  }, {
+    "id" : "6",
+    "name" : "success",
+    "communityAudience" : "true",
+    "urlAllowed" : false,
+    "shareable" : false,
+    "noteRequired" : true,
+    "generalNote" : true,
+    "confirmExclusion" : false,
+    "confirmUnmark" : false
+  }, {
+    "id" : "1",
+    "name" : "decision",
+    "urlAllowed" : false,
+    "shareable" : false,
+    "noteRequired" : true,
+    "generalNote" : true,
+    "confirmExclusion" : false,
+    "confirmUnmark" : false
+  } ],
+  "type" : "message"
+}
