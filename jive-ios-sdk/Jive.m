@@ -1405,6 +1405,31 @@ int const JivePushDeviceType = 3;
                                  onError:errorBlock];
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)toggleCorrectAnswerOperation:(JiveMessage *)message
+                                                                     onComplete:(JiveCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self requestWithOptions:nil
+                                                andTemplate:[message.correctAnswerRef path], nil];
+    
+    if (message.canMarkAsCorrectAnswer) {
+        [request setHTTPMethod:@"PUT"];
+    } else if (message.canClearMarkAsCorrectAnswer) {
+        [request setHTTPMethod:@"DELETE"];
+    } else {
+        errorBlock([NSError jive_errorWithUnauthorizedActivityObjectType:JiveErrorMessageUnauthorizedUserMarkCorrectAnswer]);
+        return nil;
+    }
+    
+    return [self emptyOperationWithRequest:request
+                                onComplete:completeBlock
+                                   onError:errorBlock];
+}
+
+- (void)toggleCorrectAnswer:(JiveMessage *)message
+                 onComplete:(JiveCompletedBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
+    [[self toggleCorrectAnswerOperation:message onComplete:completeBlock onError:errorBlock] start];
+}
 
 #pragma mark - Places
 

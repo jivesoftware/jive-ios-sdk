@@ -30,6 +30,9 @@
 - (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON;
 
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
+- (void)addArrayElements:(NSArray *)array
+  toPersistentDictionary:(NSMutableDictionary *)dictionary
+                  forTag:(NSString *)tag;
 
 - (BOOL) deserialize:(id) JSON;
 

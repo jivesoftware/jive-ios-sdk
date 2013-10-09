@@ -19,6 +19,19 @@
 
 #import "JiveContent.h"
 
+extern struct JiveMessageAttributes {
+    __unsafe_unretained NSString *answer;
+    __unsafe_unretained NSString *attachments;
+    __unsafe_unretained NSString *discussion;
+    __unsafe_unretained NSString *fromQuest;
+    __unsafe_unretained NSString *helpful;
+    __unsafe_unretained NSString *iconCss;
+    __unsafe_unretained NSString *outcomeTypeNames;
+    __unsafe_unretained NSString *outcomeTypes;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JiveMessageAttributes;
+
 extern NSString * const JiveMessageType;
 
 //! \class JiveMessage
@@ -28,7 +41,7 @@ extern NSString * const JiveMessageType;
 //! Flag indicating that this message contains the correct answer to the question posed in this discussion.
 @property(nonatomic, strong) NSNumber *answer;
 
-//! List of attachments to this message (if any).
+//! List of attachments to this message (if any). JiveAttachment[]
 @property(nonatomic, strong) NSArray* attachments;
 
 //! URI of the discussion that this message belongs to.
@@ -37,14 +50,21 @@ extern NSString * const JiveMessageType;
 //! Flag indicating that this message contains a helpful answer to the question posed in this discussion.
 @property(nonatomic, strong) NSNumber *helpful;
 
-//! Tags associated with this object.
+//! List of structured outcome type names that have been assigned to this content object. For top level content objects like Discussion, File, and Document, outcomes assigned to child comments and messages will also be included. NSString[]
+@property(nonatomic, strong) NSArray *outcomeTypeNames;
+
+//! A list of valid outcome types that can be set on this piece of content. JiveOutcomeType[]
+@property(nonatomic, readonly, strong) NSArray *outcomeTypes;
+
+//! Tags associated with this object. NSString[]
 @property(nonatomic, readonly, strong) NSArray* tags;
 
 //! Flag indicating that this content object is potentially visible to external contributors.
 @property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
-//! Outcome Types associated with this object
-@property(nonatomic, strong) NSArray *outcomeTypeNames;
 
+- (NSURL *)correctAnswerRef;
+- (BOOL)canMarkAsCorrectAnswer;
+- (BOOL)canClearMarkAsCorrectAnswer;
 
 @end
