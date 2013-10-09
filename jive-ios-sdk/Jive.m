@@ -2213,22 +2213,24 @@ int const JivePushDeviceType = 3;
 }
 
 - (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onComplete:(void(^)(id))completeBlock onError:(JiveErrorBlock)errorBlock responseHandler:(id(^)(id JSON)) handler {
+    __typeof__(completeBlock) heapCompleteBlock = [completeBlock copy];
+    __typeof__(errorBlock) heapErrorBlock = [errorBlock copy];
     return [self operationWithRequest:request
                                onJSON:(^(id JSON) {
-        if (completeBlock) {
+        if (heapCompleteBlock) {
             id entity = handler(JSON);
             if (entity) {
                 if (entity == [NSNull null]) {
-                    completeBlock(nil);
+                    heapCompleteBlock(nil);
                 } else {
-                    completeBlock(entity);
+                    heapCompleteBlock(entity);
                 }
             } else {
-                errorBlock([NSError jive_errorWithInvalidJSON:JSON]);
+                heapErrorBlock([NSError jive_errorWithInvalidJSON:JSON]);
             }
         }
     })
-                              onError:errorBlock];
+                              onError:heapErrorBlock];
 }
 
 - (JAPIRequestOperation<JiveRetryingOperation> *)dateLimitedListOperationForClass:(Class)clazz
@@ -2290,9 +2292,11 @@ int const JivePushDeviceType = 3;
     void (^nilObjectComplete)(id);
     if (complete) {
         void (^heapComplete)(void) = [complete copy];
-        nilObjectComplete = ^(id nilObject) {
+        // iOS7: this crashes in weird ways if we don't copy the block we assign to nilObjectComplete here.
+        // it is supposed to be safe to pass a block down into another block, but maybe not.
+        nilObjectComplete = [^(id nilObject) {
             heapComplete();
-        };
+        } copy];
     } else {
         nilObjectComplete = NULL;
     }
