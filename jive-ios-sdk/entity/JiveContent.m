@@ -76,7 +76,9 @@ struct JiveContentAttributes const JiveContentAttributes = {
     .question = @"question",
     .resolved = @"resolved",
     .root = @"root",
-    .note = @"note"
+    .note = @"note",
+    .jive = @"jive",
+    .visibleToExternalContributors = @"visibleToExternalContributors"
 };
 
 @implementation JiveContent
