@@ -43,6 +43,8 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *resolved;
     __unsafe_unretained NSString *root;
     __unsafe_unretained NSString *note;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *visibleToExternalContributors;
 } const JiveContentAttributes;
 
 //! \class JiveContent
