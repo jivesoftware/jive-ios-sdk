@@ -19,6 +19,8 @@
 
 #import "JiveInboxOptions.h"
 
+NSString * const JiveAcclaimInboxType = @"acclaim";
+
 @implementation JiveInboxOptions
 
 - (NSString *)createOrAppend:(NSString *)nextFilter toFilter:(NSString *)filter {

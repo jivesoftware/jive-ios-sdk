@@ -19,6 +19,9 @@
 
 #import "JiveDateLimitedRequestOptions.h"
 
+//! Inbox content type for including acclaim when filtering on content type.
+extern NSString * const JiveAcclaimInboxType;
+
 //! \class JiveInboxOptions
 //! https://developers.jivesoftware.com/api/v3/rest/InboxService.html#getActivity(String,%20String,%20int,%20List<String>,%20String)
 @interface JiveInboxOptions : JiveDateLimitedRequestOptions
