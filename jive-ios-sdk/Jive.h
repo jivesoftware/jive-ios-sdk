@@ -101,6 +101,7 @@ extern int const JivePushDeviceType;
 @class Jive;
 
 typedef void (^JiveAuthenticationLoggerBlock)(NSString *message, Jive *jive, id<JiveAuthorizationDelegate> delegate, NSURLAuthenticationChallenge *authenticationChallenge, NSURLProtectionSpace *protectionSpace);
+typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRequest *URLRequest);
 
 //! \class Jive
 @interface Jive : NSObject
@@ -111,6 +112,7 @@ typedef void (^JiveAuthenticationLoggerBlock)(NSString *message, Jive *jive, id<
 @property (atomic, copy) JiveAuthenticationLoggerBlock infoAuthenticationLoggerBlock;
 @property (atomic, copy) JiveAuthenticationLoggerBlock warnAuthenticationLoggerBlock;
 @property (atomic, copy) JiveAuthenticationLoggerBlock errorAuthenticationLoggerBlock;
+@property (atomic, copy) JiveBadRequestLoggerBlock badRequestLoggerBlock;
 
 //! The init method to used when creating a Jive instance for a specific URL and credentials.
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate;

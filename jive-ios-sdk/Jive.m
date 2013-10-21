@@ -588,6 +588,7 @@ int const JivePushDeviceType = 3;
         [markRequest setHTTPMethod:HTTPMethod];
         [self maybeApplyCredentialsToMutableURLRequest:markRequest
                                                 forURL:updateURL];
+        [self maybeLogMaybeBadRequest:markRequest];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:markRequest
                                                                                                                 success:(^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             markOperationCompleteBlock(request, nil);
@@ -2216,6 +2217,7 @@ int const JivePushDeviceType = 3;
 
 - (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
     if (request) {
+        [self maybeLogMaybeBadRequest:request];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             if (JSONBlock) {
@@ -2264,6 +2266,7 @@ int const JivePushDeviceType = 3;
                                                                           onError:(JiveErrorBlock)errorBlock {
     
     if (request) {
+        [self maybeLogMaybeBadRequest:request];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             id entity = [clazz instancesFromJSONList:JSON[@"list"]];
@@ -2412,6 +2415,15 @@ int const JivePushDeviceType = 3;
         }
     }];
     retryingURLConnectionOperation.retrier = self.defaultOperationRetrier;
+}
+
+- (void)maybeLogMaybeBadRequest:(NSURLRequest *)maybeBadRequest {
+    if (![maybeBadRequest URL]) {
+        if (self.badRequestLoggerBlock) {
+            // we dont just want to return nil here because it's too drastic of a change for clients.
+            self.badRequestLoggerBlock(@"nil URL", self, maybeBadRequest);
+        }
+    }
 }
 
 @end
