@@ -1,2 +1,2 @@
-pod 'jive-ios-sdk', :git => 'git@git.jiveland.com:jive-ios-sdk.git', :branch => 'develop'
+pod 'jive-ios-sdk', :git => 'https://github.com/jivesoftware/jive-ios-sdk.git', :branch => 'develop'
 pod 'AFNetworking', '~> 1.2.1'

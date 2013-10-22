@@ -1,0 +1,22 @@
+PODS:
+  - AFNetworking (1.2.1)
+  - jive-ios-sdk (0.5.5):
+    - AFNetworking (= 1.2.1)
+    - jive-ios-sdk/no-arc
+  - jive-ios-sdk/no-arc (0.5.5):
+    - AFNetworking (= 1.2.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 1.2.1)
+  - jive-ios-sdk (from `https://github.com/jivesoftware/jive-ios-sdk.git`, branch `develop`)
+
+EXTERNAL SOURCES:
+  jive-ios-sdk:
+    :branch: develop
+    :git: https://github.com/jivesoftware/jive-ios-sdk.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 23dcfb7652908334c9a4de0c9ebc331563667a8c
+  jive-ios-sdk: 700f967b6d25ad7915cfbd7b1071d873561f5cf6
+
+COCOAPODS: 0.25.0
