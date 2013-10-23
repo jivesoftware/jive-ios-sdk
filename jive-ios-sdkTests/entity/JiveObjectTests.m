@@ -18,7 +18,62 @@
 //
 
 #import "JiveObjectTests.h"
+#import "JiveObject_internal.h"
+
+@interface TestJiveObject : JiveObject
+
+@property (nonatomic, strong) NSString *testProperty;
+
+@end
+
+@implementation TestJiveObject
+
+@synthesize testProperty;
+
+- (NSDictionary *)toJSONDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    dictionary[@"testProperty"] = self.testProperty;
+    
+    return dictionary;
+}
+
+@end
 
 @implementation JiveObjectTests
+
+- (void)testDeserialize_emptyJSON {
+    JiveObject *target = [TestJiveObject new];
+    NSDictionary *JSON = @{};
+    
+    STAssertFalse([target deserialize:JSON], @"Reported valid JSON with empty JSON");
+    STAssertFalse(target.extraFieldsDetected, @"Reported extra fields with empty JSON");
+    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
+}
+
+- (void)testDeserialize_invalidJSON {
+    JiveObject *target = [TestJiveObject new];
+    NSDictionary *JSON = @{@"dummy key":@"bad value"};
+    
+    STAssertFalse([target deserialize:JSON], @"Reported valid JSON with wrong JSON");
+    STAssertTrue(target.extraFieldsDetected, @"No extra fields reported with wrong JSON");
+    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
+}
+
+- (void)testDeserialize_validJSON {
+    JiveObject *target = [TestJiveObject new];
+    NSString *testValue = @"test value";
+    NSString *propertyID = @"testProperty";
+    NSDictionary *JSON = @{propertyID:testValue};
+    NSDate *testDate = [NSDate new];
+    
+    STAssertTrue([target deserialize:JSON], @"Reported invalid JSON with valid JSON");
+    STAssertFalse(target.extraFieldsDetected, @"Extra fields reported with valid JSON");
+    STAssertNotNil(target.refreshDate, @"A refresh date is reqired with valid JSON");
+    STAssertEqualsWithAccuracy([testDate timeIntervalSinceDate:target.refreshDate],
+                               (NSTimeInterval)0,
+                               (NSTimeInterval)0.1,
+                               @"An invalid refresh date was specified");
+}
 
 @end

@@ -24,6 +24,11 @@
 #import <objc/runtime.h>
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JiveObjectAttributes const JiveObjectAttributes = {
+	.extraFieldsDetected = @"extraFieldsDetected",
+	.refreshDate = @"refreshDate",
+};
+
 @implementation JiveObject
 
 // Do not synthesize extraFieldsDetected so it will not be auto populated.
@@ -107,6 +112,10 @@
     for(NSString* key in JSON) {
         if ([self deserializeKey:key fromJSON:JSON])
             validResponse = YES;
+    }
+    
+    if (validResponse) {
+        [self setValue:[NSDate new] forKey:JiveObjectAttributes.refreshDate];
     }
     
     return validResponse;

@@ -21,6 +21,11 @@
 
 @class Jive;
 
+extern struct JiveObjectAttributes {
+    __unsafe_unretained NSString *extraFieldsDetected;
+    __unsafe_unretained NSString *refreshDate;
+} const JiveObjectAttributes;
+
 //! \class JiveObject
 @interface JiveObject : NSObject
 
@@ -29,7 +34,11 @@
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON;
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive;
 
+//! Debug property used to indicate that a JSON server response contained more data than was expected.
 @property (readonly) BOOL extraFieldsDetected;
+
+//! The date when the object was last parsed from a JSON response.
+@property (readonly) NSDate *refreshDate;
 
 - (NSDictionary *)toJSONDictionary;
 - (id)persistentJSON;
