@@ -115,7 +115,7 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
     }
     
     if (validResponse) {
-        [self setValue:[NSDate new] forKey:JiveObjectAttributes.refreshDate];
+        [self setValue:[NSDate date] forKey:JiveObjectAttributes.refreshDate];
     }
     
     return validResponse;
