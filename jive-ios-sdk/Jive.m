@@ -884,6 +884,25 @@ int const JivePushDeviceType = 3;
     [[self personOperation:person follow:target onComplete:complete onError:error] start];
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *) personOperation:(JivePerson *)person unFollow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [[person.followingRef path] stringByAppendingPathComponent:target.jiveId];
+    NSMutableURLRequest *request = [self requestWithOptions:nil andTemplate:path, nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyOperationWithRequest:request onComplete:complete onError:^(NSError *error) {
+        if ([error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@409]) { // 409 is conflict error returned when you try to delete a following relationship that doesn't exist.  We may have this situation
+            complete();                                                          // with legacy data when following was done before this fix -TABDEV-2545
+        } else {
+            errorBlock(error);
+        }
+    }];
+}
+
+- (void) person:(JivePerson *)person unFollow:(JivePerson *)target onComplete:(void (^)(void))complete onError:(JiveErrorBlock)errorBlock {
+    [[self personOperation:person unFollow:target onComplete:complete onError:errorBlock] start];
+}
+
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:options
