@@ -27,6 +27,7 @@
 #import "AFJSONRequestOperation.h"
 #import "Jive_internal.h"
 #import "JAPIRequestOperation.h"
+#import "NSError+Jive.h"
 
 struct JivePersonAttributes const JivePersonAttributes = {
 	.addresses = @"addresses",
@@ -272,6 +273,14 @@ NSString * const JivePersonType = @"person";
                    onError:errorBlock] start];
 }
 
+- (void) unFollow:(JivePerson *)target
+     onComplete:(JiveCompletedBlock)completeBlock
+        onError:(JiveErrorBlock)errorBlock {
+    [[self unFollowOperation:target
+                onComplete:completeBlock
+                   onError:errorBlock] start];
+}
+
 - (void) activitiesWithOptions:(JiveDateLimitedRequestOptions *)options
                     onComplete:(JiveArrayCompleteBlock)completeBlock
                        onError:(JiveErrorBlock)errorBlock {
@@ -440,6 +449,22 @@ NSString * const JivePersonType = @"person";
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) unFollowOperation:(JivePerson *)target
+                                                         onComplete:(JiveCompletedBlock)completeBlock
+                                                            onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
+    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil andTemplate:path, nil];
+    
+    [request setHTTPMethod:@"DELETE"];
+    return [self emptyResponseOperationWithRequest:request onComplete:completeBlock onError:^(NSError *error) {
+        if ([error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@409]) { // 409 is conflict error returned when you try to delete a following relationship that doesn't exist.  We may have this situation
+            completeBlock();                                                          // with legacy data when following was done before this fix -TABDEV-2545
+        } else {
+            errorBlock(error);
+        }
+    }];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options

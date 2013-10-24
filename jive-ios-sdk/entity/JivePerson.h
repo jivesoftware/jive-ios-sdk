@@ -169,6 +169,12 @@ extern struct JivePersonAttributes {
 - (void) follow:(JivePerson *)target
      onComplete:(JiveCompletedBlock)completeBlock
         onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deleteFollowing(String,%20String)
+- (void) unFollow:(JivePerson *)target
+     onComplete:(JiveCompletedBlock)completeBlock
+        onError:(JiveErrorBlock)error;
+
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#setFollowingIn(String,%20String,%20String)
 - (void) updateFollowingIn:(NSArray *)followingInStreams //! JiveStream[]
                withOptions:(JiveReturnFieldsRequestOptions *)options
@@ -249,6 +255,11 @@ extern struct JivePersonAttributes {
                                                                   withOptions:(JiveReturnFieldsRequestOptions *)options
                                                                    onComplete:(JiveArrayCompleteBlock)completeBlock //! JiveStream[]
                                                                       onError:(JiveErrorBlock)error;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#deleteFollowing(String,%20String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) unFollowOperation:(JivePerson *)target
+                                                           onComplete:(JiveCompletedBlock)completeBlock
+                                                              onError:(JiveErrorBlock)errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#createTask(String,%20String,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createTaskOperation:(JiveTask *)task
