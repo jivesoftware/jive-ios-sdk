@@ -51,6 +51,7 @@ NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer = @"unauthori
         code = underlyingError.code;
         userInfo[NSUnderlyingErrorKey] = underlyingError;
         userInfo[NSLocalizedDescriptionKey] = [underlyingError localizedDescription];
+        userInfo[JiveErrorKeyHTTPStatusCode] = @([[[underlyingError userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
     } else if (JSON) {
         code = JiveErrorCodeInvalidJSON;
     } else {
