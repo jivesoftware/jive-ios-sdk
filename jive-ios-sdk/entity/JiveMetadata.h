@@ -37,4 +37,9 @@ typedef void (^JiveBOOLFlagCompletedBlock)(BOOL flagValue);
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock;
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                  onError:(JiveErrorBlock)errorBlock;
+- (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+              onError:(JiveErrorBlock)errorBlock;
+
 @end

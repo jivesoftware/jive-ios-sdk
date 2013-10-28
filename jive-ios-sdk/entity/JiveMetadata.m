@@ -40,6 +40,8 @@
     return self;
 }
 
+#pragma mark - Video
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock {
     return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
@@ -52,6 +54,8 @@
 - (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     [[self hasVideoOperation:completeBlock onError:errorBlock] start];
 }
+
+#pragma mark - Real time chat
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
@@ -76,6 +80,33 @@
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
                     onError:(JiveErrorBlock)errorBlock {
     [[self realTimeChatEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Images
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                  onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:@"feature.images.enabled"
+                                         onComplete:^(JiveProperty *imagesEnabledProperty) {
+                                             completeBlock(imagesEnabledProperty.valueAsBOOL);
+                                         }
+                                            onError:^(NSError *error) {
+                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
+                                                
+                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
+                                                     isEqualToString:@" 404"] ||
+                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
+                                                    
+                                                    completeBlock(NO);
+                                                } else {
+                                                    errorBlock(error);
+                                                }
+                                            }];
+}
+
+- (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+              onError:(JiveErrorBlock)errorBlock {
+    [[self imagesEnabledOperation:completeBlock onError:errorBlock] start];
 }
 
 @end
