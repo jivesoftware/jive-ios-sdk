@@ -19,6 +19,8 @@
 
 #import "JiveContent.h"
 
+extern NSString * const JiveCommentType;
+
 //! \class JiveComment
 //! https://developers.jivesoftware.com/api/v3/rest/CommentEntity.html
 @interface JiveComment : JiveContent
