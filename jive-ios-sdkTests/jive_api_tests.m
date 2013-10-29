@@ -2915,7 +2915,7 @@
                                                       STFail([error localizedDescription]);
                                                       finishedBlock();
                                                   }];
-        
+        STAssertNotNil(operation, @"Operation should not be nil.");
         [operation start];
     }];
 }
@@ -2950,7 +2950,7 @@
                                                       STFail([error localizedDescription]);
                                                       finishedBlock();
                                                   }];
-        
+        STAssertNotNil(operation, @"Operation should not be nil.");
         [operation start];
     }];
 }
