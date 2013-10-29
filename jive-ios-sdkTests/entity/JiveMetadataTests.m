@@ -1054,7 +1054,7 @@
 
 #pragma mark - Place Status Updates enabled tests
 
-- (void)testPlaceUpdatesEnabled_noUpdates {
+- (void)testPlaceStatusUpdatesEnabled_noUpdates {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block void (^internalCallback)(JiveProperty *);
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1093,7 +1093,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testPlaceUpdatesEnabled_withUpdates {
+- (void)testPlaceStatusUpdatesEnabled_withUpdates {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block void (^internalCallback)(JiveProperty *);
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1132,7 +1132,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testPlaceUpdatesEnabled_invalidMetadataFlag {
+- (void)testPlaceStatusUpdatesEnabled_invalidMetadataFlag {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1172,7 +1172,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testPlaceUpdatesEnabled_invalidMetadataError {
+- (void)testPlaceStatusUpdatesEnabled_invalidMetadataError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1211,7 +1211,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testPlaceUpdatesEnabled_otherJSONError {
+- (void)testPlaceStatusUpdatesEnabled_otherJSONError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1251,7 +1251,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testPlaceUpdatesEnabled_otherError {
+- (void)testPlaceStatusUpdatesEnabled_otherError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1292,7 +1292,7 @@
 
 #pragma mark - Repost Status Updates enabled tests
 
-- (void)testRepostUpdatesEnabled_noUpdates {
+- (void)testRepostStatusUpdatesEnabled_noUpdates {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block void (^internalCallback)(JiveProperty *);
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1331,7 +1331,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testRepostUpdatesEnabled_withUpdates {
+- (void)testRepostStatusUpdatesEnabled_withUpdates {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block void (^internalCallback)(JiveProperty *);
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1370,7 +1370,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testRepostUpdatesEnabled_invalidMetadataFlag {
+- (void)testRepostStatusUpdatesEnabled_invalidMetadataFlag {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1410,7 +1410,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testRepostUpdatesEnabled_invalidMetadataError {
+- (void)testRepostStatusUpdatesEnabled_invalidMetadataError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1449,7 +1449,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testRepostUpdatesEnabled_otherJSONError {
+- (void)testRepostStatusUpdatesEnabled_otherJSONError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
@@ -1489,7 +1489,7 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-- (void)testRepostUpdatesEnabled_otherError {
+- (void)testRepostStatusUpdatesEnabled_otherError {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     __block JiveErrorBlock internalErrorBlock;
     OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
