@@ -2851,6 +2851,40 @@
     }];
 }
 
+- (void)testGetPlaceByURLWithFilter {
+    JivePlacesRequestOptions *options = [[JivePlacesRequestOptions alloc] init];
+    [options addEntityType:@"37" descriptor:@"2345"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"places" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [jive placeFromURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)"]
+               withOptions:options
+                onComplete:^(JivePlace *place) {
+                    // Called 3rd
+                    STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
+                    
+                    // Check that delegates where actually called
+                    [mockAuthDelegate verify];
+                    [mockJiveURLResponseDelegate verify];
+                    finishedBlock();
+                } onError:^(NSError *error) {
+                    STFail([error localizedDescription]);
+                    finishedBlock();
+                }];
+    }];
+}
+
 - (void) testGetPlaceByURLOperation {
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
@@ -2881,7 +2915,42 @@
                                                       STFail([error localizedDescription]);
                                                       finishedBlock();
                                                   }];
-        
+        STAssertNotNil(operation, @"Operation should not be nil.");
+        [operation start];
+    }];
+}
+
+- (void)testGetPlaceByURLOperationWithFilter {
+    JivePlacesRequestOptions *options = [[JivePlacesRequestOptions alloc] init];
+    [options addEntityType:@"37" descriptor:@"2345"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)" isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"places" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation *operation = [jive placeOperationWithURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/places?filter=entityDescriptor(37,2345)"]
+                                                 withOptions:options
+                                                  onComplete:^(JivePlace *place) {
+                                                      // Called 3rd
+                                                      STAssertTrue([[place class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
+                                                      
+                                                      // Check that delegates where actually called
+                                                      [mockAuthDelegate verify];
+                                                      [mockJiveURLResponseDelegate verify];
+                                                      finishedBlock();
+                                                  } onError:^(NSError *error) {
+                                                      STFail([error localizedDescription]);
+                                                      finishedBlock();
+                                                  }];
+        STAssertNotNil(operation, @"Operation should not be nil.");
         [operation start];
     }];
 }
