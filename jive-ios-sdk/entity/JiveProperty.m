@@ -18,6 +18,7 @@
 //
 
 #import "JiveProperty.h"
+#import "JiveObject_internal.h"
 
 struct JivePropertyTypes const JivePropertyTypes = {
     .boolean = @"boolean",
@@ -40,6 +41,17 @@ struct JivePropertyAttributes const JivePropertyAttributes = {
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;
 
 #pragma mark - JiveObject
+
+- (BOOL) deserialize:(id) JSON {
+    if (![JSON objectForKey:JivePropertyAttributes.type]) {
+        return false;
+    }
+    
+    // Make sure the type is deserialized first.
+    [self deserializeKey:JivePropertyAttributes.type fromJSON:JSON];
+    
+    return [super deserialize:JSON];
+}
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
