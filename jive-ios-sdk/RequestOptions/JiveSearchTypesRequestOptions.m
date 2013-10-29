@@ -39,9 +39,9 @@
         return query;
     
     if (!query)
-        return @"collapse";
+        return @"collapse=true";
     
-    return [query stringByAppendingString:@"&collapse"];
+    return [query stringByAppendingString:@"&collapse=true"];
 }
 
 - (void)addType:(NSString *)type {
