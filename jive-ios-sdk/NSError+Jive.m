@@ -141,8 +141,8 @@ NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer = @"unauthori
     return JSON;
 }
 
-- (NSString *)jive_HTTPStatusCode {
-    NSString *status = [self userInfo][JiveErrorKeyHTTPStatusCode];
+- (NSNumber *)jive_HTTPStatusCode {
+    NSNumber *status = [self userInfo][JiveErrorKeyHTTPStatusCode];
     return status;
 }
 
