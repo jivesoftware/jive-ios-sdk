@@ -23,6 +23,7 @@
 @protocol JiveRetryingOperation;
 
 typedef void (^JiveBOOLFlagCompletedBlock)(BOOL flagValue);
+typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 
 @interface JiveMetadata : NSObject
 
@@ -61,5 +62,10 @@ typedef void (^JiveBOOLFlagCompletedBlock)(BOOL flagValue);
                                                                                onError:(JiveErrorBlock)errorBlock;
 - (void)repostStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
                            onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock;
+- (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock
+                          onError:(JiveErrorBlock)errorBlock;
 
 @end

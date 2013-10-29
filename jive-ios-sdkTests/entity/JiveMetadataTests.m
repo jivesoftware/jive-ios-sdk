@@ -1528,4 +1528,165 @@
     STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
+#pragma mark - Status Update max character tests
+
+- (void)testStatusUpdateMaxCharacters {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+    __block void (^internalCallback)(JiveProperty *);
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    NSNumber *testMaxCharacters = @200;
+    JiveErrorBlock errorBlock = ^(NSError *error) {
+        STFail(@"There should be no errors");
+    };
+    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+    
+    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
+    [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        return obj != nil;
+    }]
+                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalCallback = [obj copy];
+        return obj != nil;
+    }]
+                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return obj != nil;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
+        STAssertEqualObjects(maxCharacters, testMaxCharacters, @"Reported the wrong number of characters");
+    } onError:errorBlock];
+    
+    STAssertNotNil(internalCallback, @"A callback should have been set.");
+    if (internalCallback) {
+        internalCallback((JiveProperty *)mockProperty);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
+- (void)testStatusUpdateMaxCharacters_alternateCount {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+    __block void (^internalCallback)(JiveProperty *);
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    NSNumber *testMaxCharacters = @10000;
+    JiveErrorBlock errorBlock = ^(NSError *error) {
+        STFail(@"There should be no errors");
+    };
+    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+    
+    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
+    [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        return obj != nil;
+    }]
+                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalCallback = [obj copy];
+        return obj != nil;
+    }]
+                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return obj != nil;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
+        STAssertEqualObjects(maxCharacters, testMaxCharacters, @"Reported the wrong number of characters");
+    } onError:errorBlock];
+    
+    STAssertNotNil(internalCallback, @"A callback should have been set.");
+    if (internalCallback) {
+        internalCallback((JiveProperty *)mockProperty);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
+- (void)testStatusUpdateMaxCharacters_otherJSONError {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+    __block JiveErrorBlock internalErrorBlock;
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
+                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
+                                                                              @"status":@403,
+                                                                              @"code":@"Not a 404"}}];
+    JiveErrorBlock errorBlock = ^(NSError *error) {
+        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
+    };
+    
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        return obj != nil;
+    }]
+                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return obj != nil;
+    }]
+                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalErrorBlock = [obj copy];
+        return obj != nil;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
+        STFail(@"An error should have been reported");
+    } onError:errorBlock];
+    
+    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+    if (internalErrorBlock) {
+        internalErrorBlock(otherError);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
+- (void)testStatusUpdateMaxCharacters_otherError {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+    __block JiveErrorBlock internalErrorBlock;
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
+                                                                                     code:400
+                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
+    JiveErrorBlock errorBlock = ^(NSError *error) {
+        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
+    };
+    
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        return obj != nil;
+    }]
+                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return obj != nil;
+    }]
+                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalErrorBlock = [obj copy];
+        return obj != nil;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
+        STFail(@"An error should have been reported");
+    } onError:errorBlock];
+    
+    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+    if (internalErrorBlock) {
+        internalErrorBlock(otherError);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
 @end

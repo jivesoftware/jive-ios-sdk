@@ -156,4 +156,19 @@
     [[self repostStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Status Update Max Characters
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                               onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:@"feature.status_update.characters"
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsNumber);
+                                         }
+                                            onError:errorBlock];
+}
+
+- (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self statusUpdateMaxCharactersOperation:completeBlock onError:errorBlock] start];
+}
+
 @end
