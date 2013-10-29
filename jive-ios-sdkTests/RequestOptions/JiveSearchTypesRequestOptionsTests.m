@@ -26,7 +26,7 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"collapse", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"collapse=true", asString, @"Wrong string contents");
 }
 
 - (void)testCollapseWithOtherFields {
@@ -36,11 +36,11 @@
     
     NSString *asString = [self.options toQueryString];
     
-    STAssertEqualObjects(@"fields=name&collapse", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&collapse=true", asString, @"Wrong string contents");
     
     [self.typesOptions addSearchTerm:@"mention"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&collapse", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&collapse=true", asString, @"Wrong string contents");
 }
 
 - (void)testTypes {
@@ -75,7 +75,7 @@
     
     self.typesOptions.collapse = YES;
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&collapse", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"fields=name&filter=search(mention)&filter=type(dm)&collapse=true", asString, @"Wrong string contents");
 }
 
 @end
