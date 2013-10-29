@@ -1500,12 +1500,20 @@ int const JivePushDeviceType = 3;
 }
 
 - (void)placeFromURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *place))completeBlock onError:(JiveErrorBlock)errorBlock {
-    AFJSONRequestOperation *operation = nil;
+    AFJSONRequestOperation *operation = [self placeOperationWithURL:placeURL withOptions:options onComplete:completeBlock onError:errorBlock];
+    [operation start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)placeOperationWithURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *person))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = nil;
     if(placeURL.query == nil || [placeURL.query rangeOfString:@"filter="].location == NSNotFound) {
-        operation = [self placeOperationWithURL:placeURL
-                                    withOptions:options
-                                     onComplete:completeBlock
-                                        onError:errorBlock];
+        NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[placeURL absoluteString], nil];
+        
+        operation = [self entityOperationForClass:[JivePlace class]
+                                          request:mutableURLRequest
+                                       onComplete:completeBlock
+                                          onError:errorBlock];
     } else {
         NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:placeURL];
         [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
@@ -1518,17 +1526,6 @@ int const JivePushDeviceType = 3;
             completeBlock(place);
         } onError:errorBlock];
     }
-    
-    [operation start];
-}
-
-- (AFJSONRequestOperation<JiveRetryingOperation> *)placeOperationWithURL:(NSURL *)placeURL withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *person))completeBlock onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *mutableURLRequest = [self requestWithOptions:options andTemplate:[placeURL absoluteString], nil];
-    
-    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self entityOperationForClass:[JivePlace class]
-                                                                                     request:mutableURLRequest
-                                                                                  onComplete:completeBlock
-                                                                                     onError:errorBlock];
     
     return operation;
 }
