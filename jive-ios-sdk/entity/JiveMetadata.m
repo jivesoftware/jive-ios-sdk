@@ -40,9 +40,9 @@
     return self;
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)propertyOperation:(NSString *)propertySpecifier
-                                                          onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                             onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)boolPropertyOperation:(NSString *)propertySpecifier
+                                                              onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock {
     return [self.instance propertyWithNameOperation:propertySpecifier
                                          onComplete:^(JiveProperty *property) {
                                              completeBlock(property.valueAsBOOL);
@@ -80,9 +80,9 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"feature.rtc.enabled"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+    return [self boolPropertyOperation:@"feature.rtc.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
@@ -94,9 +94,9 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                   onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"feature.images.enabled"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+    return [self boolPropertyOperation:@"feature.images.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
@@ -107,10 +107,10 @@
 #pragma mark - Status Updates
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                                        onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"jive.coreapi.enable.statusupdates"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+                                                                         onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"jive.coreapi.enable.statusupdates"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)statusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -120,10 +120,10 @@
 #pragma mark - Personal Status Updates
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)personalStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                                        onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"feature.status_update.enabled"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+                                                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)personalStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -133,10 +133,10 @@
 #pragma mark - Place Status Updates
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)placeStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                                        onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"feature.status_update_place.enabled"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+                                                                              onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update_place.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)placeStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -146,10 +146,10 @@
 #pragma mark - Repost Status Updates
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)repostStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                                        onError:(JiveErrorBlock)errorBlock {
-    return [self propertyOperation:@"feature.status_update_repost.enabled"
-                        onComplete:completeBlock
-                           onError:errorBlock];
+                                                                               onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update_repost.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
 }
 
 - (void)repostStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -159,7 +159,7 @@
 #pragma mark - Status Update Max Characters
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
-                                                                               onError:(JiveErrorBlock)errorBlock {
+                                                                              onError:(JiveErrorBlock)errorBlock {
     return [self.instance propertyWithNameOperation:@"feature.status_update.characters"
                                          onComplete:^(JiveProperty *property) {
                                              completeBlock(property.valueAsNumber);
