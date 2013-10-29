@@ -36,7 +36,7 @@
     STAssertEqualObjects(jiveError.domain, JiveErrorDomain, @"Not Jive Error Domain");
     STAssertEquals(jiveError.code, nativeError.code, @"Native error code not duplicated");
     STAssertNil(jiveError.localizedRecoverySuggestion, @"Missing message found");
-    STAssertNil(jiveError.jive_HTTPStatusCode, @"Missing status found");
+    STAssertEqualObjects(jiveError.jive_HTTPStatusCode, @0, @"Wrong status code reported");
 }
 
 - (void)testBasicJSONError {
