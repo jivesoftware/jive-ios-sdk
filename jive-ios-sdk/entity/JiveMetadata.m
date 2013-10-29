@@ -40,6 +40,27 @@
     return self;
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)propertyOperation:(NSString *)propertySpecifier
+                                                          onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                             onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:propertySpecifier
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsBOOL);
+                                         }
+                                            onError:^(NSError *error) {
+                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
+                                                
+                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
+                                                     isEqualToString:@" 404"] ||
+                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
+                                                    
+                                                    completeBlock(NO);
+                                                } else {
+                                                    errorBlock(error);
+                                                }
+                                            }];
+}
+
 #pragma mark - Video
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
@@ -59,22 +80,9 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    return [self.instance propertyWithNameOperation:@"feature.rtc.enabled"
-                                         onComplete:^(JiveProperty *rtcEnabledProperty) {
-                                             completeBlock(rtcEnabledProperty.valueAsBOOL);
-                                         }
-                                            onError:^(NSError *error) {
-                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
-                                                
-                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
-                                                     isEqualToString:@" 404"] ||
-                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
-                                                    
-                                                    completeBlock(NO);
-                                                } else {
-                                                    errorBlock(error);
-                                                }
-                                            }];
+    return [self propertyOperation:@"feature.rtc.enabled"
+                        onComplete:completeBlock
+                           onError:errorBlock];
 }
 
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
@@ -86,27 +94,66 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                   onError:(JiveErrorBlock)errorBlock {
-    return [self.instance propertyWithNameOperation:@"feature.images.enabled"
-                                         onComplete:^(JiveProperty *imagesEnabledProperty) {
-                                             completeBlock(imagesEnabledProperty.valueAsBOOL);
-                                         }
-                                            onError:^(NSError *error) {
-                                                NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
-                                                
-                                                if ([[localizedDescription substringFromIndex:localizedDescription.length - 4]
-                                                     isEqualToString:@" 404"] ||
-                                                    [error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@404]) {
-                                                    
-                                                    completeBlock(NO);
-                                                } else {
-                                                    errorBlock(error);
-                                                }
-                                            }];
+    return [self propertyOperation:@"feature.images.enabled"
+                        onComplete:completeBlock
+                           onError:errorBlock];
 }
 
 - (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
               onError:(JiveErrorBlock)errorBlock {
     [[self imagesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self propertyOperation:@"jive.coreapi.enable.statusupdates"
+                        onComplete:completeBlock
+                           onError:errorBlock];
+}
+
+- (void)statusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self statusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Personal Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)personalStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self propertyOperation:@"feature.status_update.enabled"
+                        onComplete:completeBlock
+                           onError:errorBlock];
+}
+
+- (void)personalStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self personalStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Place Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)placeStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self propertyOperation:@"feature.status_update_place.enabled"
+                        onComplete:completeBlock
+                           onError:errorBlock];
+}
+
+- (void)placeStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self placeStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Repost Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)repostStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self propertyOperation:@"feature.status_update_repost.enabled"
+                        onComplete:completeBlock
+                           onError:errorBlock];
+}
+
+- (void)repostStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self repostStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
 }
 
 @end
