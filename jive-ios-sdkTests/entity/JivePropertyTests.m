@@ -19,6 +19,7 @@
 
 #import "JivePropertyTests.h"
 #import "JiveProperty.h"
+#import "JiveObject_internal.h"
 
 @implementation JivePropertyTests
 
@@ -135,6 +136,31 @@
     [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
     [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
     STAssertNil(property.valueAsNumber, @"A number was returned.");
+}
+
+- (id) JSONFromTestFile:(NSString*) filename {
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:[filename stringByDeletingPathExtension] ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+    NSError* error;
+    id json  = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    STAssertNil(error, @"Unable to deserialize JSON text data from file '%@'.json", filename);
+    return json;
+}
+
+- (void)testValueAsNumber_realData {
+    id numericPropertyJSON = [self JSONFromTestFile:@"feature.status_update.characters.json"];
+    
+    [property deserialize:numericPropertyJSON];
+    STAssertEqualObjects(property.type, JivePropertyTypes.number, @"Wrong property type");
+    STAssertEqualObjects(property.valueAsNumber, numericPropertyJSON[JivePropertyAttributes.value],
+                         @"Wrong value");
+    STAssertEqualObjects(property.name, numericPropertyJSON[JivePropertyAttributes.name],
+                         @"Wrong name");
+    STAssertEqualObjects(property.jiveDescription, numericPropertyJSON[@"description"],
+                         @"Wrong description");
+    STAssertNil(property.availability, @"There should be no availability");
+    STAssertNil(property.defaultValue, @"There should be no default value");
+    STAssertNil(property.since, @"There should be no since");
 }
 
 - (void)testDeserialize_validJSON {

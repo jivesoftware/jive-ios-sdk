@@ -23,7 +23,7 @@
 struct JivePropertyTypes const JivePropertyTypes = {
     .boolean = @"boolean",
     .string = @"string",
-    .number = @"number",
+    .number = @"integer",
 };
 
 struct JivePropertyAttributes const JivePropertyAttributes = {
