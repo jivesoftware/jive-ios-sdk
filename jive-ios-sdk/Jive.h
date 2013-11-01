@@ -643,11 +643,19 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (void)imagesFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *images))completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
 - (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (void)uploadJPEGImage:(UIImage *)image onComplete:(void (^)(JiveImage *))complete onError:(JiveErrorBlock) errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (void)uploadPNGImage:(UIImage *)image onComplete:(void (^)(JiveImage *))complete onError:(JiveErrorBlock) errorBlock;
 
 //! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#getContentImages(String,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *)imagesOperationFromURL:(NSURL *)imagesURL onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
-- (AFHTTPRequestOperation<JiveRetryingOperation> *) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadJPEGImageOperation:(UIImage *)image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/ImageService.html#uploadImage(MultipartBody)
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadPNGImageOperation:(UIImage *)image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock;
 
 - (AFImageRequestOperation<JiveRetryingOperation> *)imageRequestOperationWithMutableURLRequest:(NSMutableURLRequest *)imageMutableURLRequest onComplete:(void (^)(UIImage *))complete onError:(JiveErrorBlock)errorBlock;
 
