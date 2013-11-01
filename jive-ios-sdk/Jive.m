@@ -1990,9 +1990,32 @@ int const JivePushDeviceType = 3;
     [[self imagesOperationFromURL:imagesURL onComplete:completeBlock onError:errorBlock] start];
 }
 
-- (AFHTTPRequestOperation<JiveRetryingOperation> *) uploadImageOperation:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
-    
-    NSMutableURLRequest* request = [self requestWithImageAsPNGBody:image options:nil andTemplate:@"api/core/v3/images", nil];
+- (AFHTTPRequestOperation<JiveRetryingOperation> *) uploadImageOperation:(UIImage *) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+    return [self uploadJPEGImageOperation:image onComplete:complete onError:errorBlock];
+}
+
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadJPEGImageOperation:(UIImage *)image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+    NSString *mimeType = @"image/jpeg";
+    NSString *fileName = @"image.jpeg";
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
+    return [self uploadImageDataOperation:imageData mimeType:mimeType fileName:fileName onComplete:complete onError:errorBlock];
+}
+
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadPNGImageOperation:(UIImage *)image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+    NSString *mimeType = @"image/png";
+    NSString *fileName = @"image.png";
+    NSData *imageData = UIImagePNGRepresentation(image);
+    return [self uploadImageDataOperation:imageData mimeType:mimeType fileName:fileName onComplete:complete onError:errorBlock];
+}
+
+- (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadImageDataOperation:(NSData *)imageData mimeType:(NSString *)mimeType fileName:(NSString *)fileName onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSMutableURLRequest *request = [HTTPClient multipartFormRequestWithMethod:@"POST"
+                                                                         path:@"api/core/v3/images"
+                                                                   parameters:nil
+                                                    constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:mimeType];
+    })];
     
     if (request) {
         [self maybeApplyCredentialsToMutableURLRequest:request
@@ -2038,6 +2061,14 @@ int const JivePushDeviceType = 3;
 
 - (void) uploadImage:(UIImage*) image onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     [[self uploadImageOperation:image onComplete:complete onError:errorBlock] start];
+}
+
+- (void)uploadJPEGImage:(UIImage *)image onComplete:(void (^)(JiveImage *))complete onError:(JiveErrorBlock) errorBlock {
+    [[self uploadJPEGImageOperation:image onComplete:complete onError:errorBlock] start];
+}
+
+- (void)uploadPNGImage:(UIImage *)image onComplete:(void (^)(JiveImage *))complete onError:(JiveErrorBlock) errorBlock {
+    [[self uploadPNGImageOperation:image onComplete:complete onError:errorBlock] start];
 }
 
 #pragma mark - Outcomes
@@ -2182,39 +2213,6 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
-    return request;
-}
-
-// This is a stop-gap until AFNetworking's multi-part support is fixed.
-- (NSMutableURLRequest *) requestWithImageAsPNGBody:(UIImage*) image options:(NSObject<JiveRequestOptions>*)options andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
-    
-    va_list args;
-    va_start(args, template);
-    NSMutableURLRequest *request = [self requestWithOptions:options template:template andArguments:args];
-    va_end(args);
-    
-    [request setHTTPMethod:@"POST"];
-    
-    NSString *boundary = @"0xJiveBoundary";
-    
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    NSMutableData *body = [NSMutableData data];
-    
-    NSData *imageData = UIImagePNGRepresentation(image);
-    if (imageData) {
-        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"image.png\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Type: image/png\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:imageData];
-        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    
-    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [request setHTTPBody:body];
-    
     return request;
 }
 
