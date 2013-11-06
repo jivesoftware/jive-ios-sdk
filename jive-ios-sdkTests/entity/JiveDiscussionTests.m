@@ -22,7 +22,7 @@
 @implementation JiveDiscussionTests
 
 - (void)setUp {
-    self.typedObject = [[JiveDiscussion alloc] init];
+    self.object = [[JiveDiscussion alloc] init];
 }
 
 - (JiveDiscussion *)discussion {

@@ -50,7 +50,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[DummyContent alloc] init];
+    self.object = [[DummyContent alloc] init];
 }
 
 - (void)testEntityClass {

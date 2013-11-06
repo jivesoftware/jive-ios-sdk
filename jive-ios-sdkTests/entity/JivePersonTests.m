@@ -168,7 +168,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[JivePerson alloc] init];
+    self.object = [[JivePerson alloc] init];
     [NSURLProtocol registerClass:[MockJiveURLProtocol class]];
 }
 

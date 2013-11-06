@@ -46,7 +46,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[DummyPlace alloc] init];
+    self.object = [[DummyPlace alloc] init];
 }
 
 - (void)testHandlePrimitivePropertyFromJSON {

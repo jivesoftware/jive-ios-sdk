@@ -28,7 +28,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[JiveInvite alloc] init];
+    self.object = [[JiveInvite alloc] init];
 }
 
 - (void)testContentParsing {

@@ -33,13 +33,17 @@ static NSString *testType = @"test";
 static NSString *alternateType = @"alternate";
 
 - (void)setUp {
-    self.typedObject = [[JiveTypedObject alloc] init];
+    self.object = [[JiveTypedObject alloc] init];
 }
 
 - (void)tearDown {
-    self.typedObject = nil;
+    [super tearDown];
     [JiveTypedObject registerClass:nil forType:testType];
     [JiveTypedObject registerClass:nil forType:alternateType];
+}
+
+- (JiveTypedObject *)typedObject {
+    return (JiveTypedObject *)self.object;
 }
 
 - (void)testEntityClass {

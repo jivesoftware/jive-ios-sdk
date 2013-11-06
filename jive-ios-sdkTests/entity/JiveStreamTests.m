@@ -27,7 +27,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[JiveStream alloc] init];
+    self.object = [[JiveStream alloc] init];
 }
 
 - (void)testToJSON {

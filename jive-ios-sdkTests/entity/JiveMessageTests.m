@@ -24,7 +24,7 @@
 @implementation JiveMessageTests
 
 - (void)setUp {
-    self.typedObject = [JiveMessage new];
+    self.object = [JiveMessage new];
 }
 
 - (JiveMessage *)message {

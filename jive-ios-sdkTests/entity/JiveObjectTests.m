@@ -18,11 +18,14 @@
 //
 
 #import "JiveObjectTests.h"
-#import "JiveObject_internal.h"
 
 @interface TestJiveObject : JiveObject
 
 @property (nonatomic, strong) NSString *testProperty;
+
+@end
+
+@interface TestJiveObjectTests : JiveObjectTests
 
 @end
 
@@ -42,35 +45,48 @@
 
 @implementation JiveObjectTests
 
+- (void)setUp {
+    self.object = [JiveObject new];
+}
+
+- (void)tearDown {
+    self.object = nil;
+}
+
 - (void)testDeserialize_emptyJSON {
-    JiveObject *target = [TestJiveObject new];
     NSDictionary *JSON = @{};
     
-    STAssertFalse([target deserialize:JSON], @"Reported valid deserialize with empty JSON");
-    STAssertFalse(target.extraFieldsDetected, @"Reported extra fields with empty JSON");
-    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
+    STAssertFalse([self.object deserialize:JSON], @"Reported valid deserialize with empty JSON");
+    STAssertFalse(self.object.extraFieldsDetected, @"Reported extra fields with empty JSON");
+    STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
 }
 
 - (void)testDeserialize_invalidJSON {
-    JiveObject *target = [TestJiveObject new];
     NSDictionary *JSON = @{@"dummy key":@"bad value"};
     
-    STAssertFalse([target deserialize:JSON], @"Reported valid deserialize with wrong JSON");
-    STAssertTrue(target.extraFieldsDetected, @"No extra fields reported with wrong JSON");
-    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
+    STAssertFalse([self.object deserialize:JSON], @"Reported valid deserialize with wrong JSON");
+    STAssertTrue(self.object.extraFieldsDetected, @"No extra fields reported with wrong JSON");
+    STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
+}
+
+@end
+
+@implementation TestJiveObjectTests
+
+- (void)setUp {
+    self.object = [TestJiveObject new];
 }
 
 - (void)testDeserialize_validJSON {
-    JiveObject *target = [TestJiveObject new];
     NSString *testValue = @"test value";
     NSString *propertyID = @"testProperty";
     NSDictionary *JSON = @{propertyID:testValue};
     NSDate *testDate = [NSDate date];
     
-    STAssertTrue([target deserialize:JSON], @"Reported invalid deserialize with valid JSON");
-    STAssertFalse(target.extraFieldsDetected, @"Extra fields reported with valid JSON");
-    STAssertNotNil(target.refreshDate, @"A refresh date is reqired with valid JSON");
-    STAssertEqualsWithAccuracy([testDate timeIntervalSinceDate:target.refreshDate],
+    STAssertTrue([self.object deserialize:JSON], @"Reported invalid deserialize with valid JSON");
+    STAssertFalse(self.object.extraFieldsDetected, @"Extra fields reported with valid JSON");
+    STAssertNotNil(self.object.refreshDate, @"A refresh date is reqired with valid JSON");
+    STAssertEqualsWithAccuracy([testDate timeIntervalSinceDate:self.object.refreshDate],
                                (NSTimeInterval)0,
                                (NSTimeInterval)0.1,
                                @"An invalid refresh date was specified");

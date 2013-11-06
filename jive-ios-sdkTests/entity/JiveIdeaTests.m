@@ -22,7 +22,7 @@
 @implementation JiveIdeaTests
 
 - (void)setUp {
-    self.typedObject = [[JiveIdea alloc] init];
+    self.object = [[JiveIdea alloc] init];
 }
 
 - (JiveIdea *)idea {

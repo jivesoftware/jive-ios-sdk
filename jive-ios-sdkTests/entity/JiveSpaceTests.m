@@ -22,7 +22,7 @@
 @implementation JiveSpaceTests
 
 - (void)setUp {
-    self.typedObject = [[JiveSpace alloc] init];
+    self.object = [[JiveSpace alloc] init];
 }
 
 - (JiveSpace *)space {

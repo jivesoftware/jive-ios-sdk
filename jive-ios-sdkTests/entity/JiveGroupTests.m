@@ -23,7 +23,7 @@
 @implementation JiveGroupTests
 
 - (void)setUp {
-    self.typedObject = [[JiveGroup alloc] init];
+    self.object = [[JiveGroup alloc] init];
 }
 
 - (JiveGroup *)group {

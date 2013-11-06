@@ -22,7 +22,7 @@
 @implementation JiveUpdateTests
 
 - (void)setUp {
-    self.typedObject = [[JiveUpdate alloc] init];
+    self.object = [[JiveUpdate alloc] init];
 }
 
 - (JiveUpdate *)update {

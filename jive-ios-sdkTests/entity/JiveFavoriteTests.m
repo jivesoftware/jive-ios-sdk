@@ -22,7 +22,7 @@
 @implementation JiveFavoriteTests
 
 - (void)setUp {
-    self.typedObject = [[JiveFavorite alloc] init];
+    self.object = [[JiveFavorite alloc] init];
 }
 
 - (JiveFavorite *)favorite {

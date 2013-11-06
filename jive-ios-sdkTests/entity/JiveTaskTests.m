@@ -22,7 +22,7 @@
 @implementation JiveTaskTests
 
 - (void)setUp {
-    self.typedObject = [[JiveTask alloc] init];
+    self.object = [[JiveTask alloc] init];
 }
 
 - (JiveTask *)task {

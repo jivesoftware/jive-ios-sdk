@@ -22,6 +22,6 @@
 
 @interface JiveCategoryTests : JiveTypedObjectTests
 
-@property (nonatomic, strong) JiveCategory *category;
+@property (nonatomic, readonly) JiveCategory *category;
 
 @end

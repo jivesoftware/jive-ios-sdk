@@ -27,7 +27,7 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[JiveMember alloc] init];
+    self.object = [[JiveMember alloc] init];
 }
 
 - (void)testToJSON {
