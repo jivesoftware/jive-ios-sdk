@@ -2140,6 +2140,22 @@ int const JivePushDeviceType = 3;
     [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"api/core/v3/metadata/properties/public", nil];
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self bareListOperationForClass:[JiveProperty class]
+                                                                                     request:request
+                                                                                  onComplete:complete
+                                                                                     onError:error];
+    
+    return operation;
+}
+
+- (void) publicPropertiesListWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self publicPropertiesListOperationWithOnComplete:complete onError:error] start];
+}
+
+
 #pragma mark - Objects
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
@@ -2316,6 +2332,16 @@ int const JivePushDeviceType = 3;
                                                                                 onError:errorBlock
                                                                         responseHandler:(^id(id JSON) {
         return [clazz instancesFromJSONList:[JSON objectForKey:@"list"] withJive:self];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation<JiveRetryingOperation> *)bareListOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
+                                                                             onComplete:completeBlock
+                                                                                onError:errorBlock
+                                                                        responseHandler:(^id(id JSON) {
+        return [clazz instancesFromJSONList:JSON withJive:self];
     })];
     return operation;
 }
