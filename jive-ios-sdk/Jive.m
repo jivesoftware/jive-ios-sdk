@@ -2140,6 +2140,29 @@ int const JivePushDeviceType = 3;
     [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
 }
 
+# pragma mark - Public Properties (no authentication required)
+
+- (void) publicPropertyWithName:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    [[self publicPropertyWithNameOperation:propertyName onComplete:complete onError:error] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    
+    void (^processPropsBlock)(NSArray* properties) = ^(NSArray* properties) {
+        NSArray* relevantProps = [properties filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", propertyName]];
+        
+        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %i", propertyName, [relevantProps count]);
+        
+        if ([relevantProps count] == 1) {
+            complete([relevantProps objectAtIndex:0]);
+        } else {
+            complete(nil);
+        }
+    };
+    
+    return [self publicPropertiesListOperationWithOnComplete:processPropsBlock onError:error];
+}
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/v3/metadata/properties/public", nil];
