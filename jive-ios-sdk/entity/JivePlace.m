@@ -106,21 +106,28 @@ struct JivePlaceContentTypeValues const JivePlaceContentTypeValues = {
 @synthesize highlightTags, jiveId, likeCount, name, parent, parentContent, parentPlace, published;
 @synthesize status, updated, viewCount, visibleToExternalContributors;
 
+static NSMutableDictionary *typedClasses;
+
++ (void)registerClass:(Class)clazz forType:(NSString *)type {
+    [super registerClass:clazz forType:type];
+    if (!typedClasses)
+        typedClasses = [NSMutableDictionary dictionary];
+    
+    [typedClasses setValue:clazz forKey:type];
+}
+
+- (NSString *)type {
+    return nil;
+}
+
 + (Class) entityClass:(NSDictionary*) obj {
-    
-    static NSDictionary *classDictionary = nil;
-    
-    if (!classDictionary)
-        classDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[JiveBlog class], @"blog",
-                           [JiveGroup class], @"group",
-                           [JiveProject class], @"project",
-                           [JiveSpace class], @"space",
-                           nil];
-    
+    Class foundClass = [self class];
     NSString* type = [obj objectForKey:@"type"];
-    Class targetClass = [classDictionary objectForKey:type];
     
-    return targetClass ? targetClass : [self class];
+    if (type)
+        foundClass = [typedClasses objectsForKeys:@[type] notFoundMarker:foundClass][0];
+    
+    return foundClass;
 }
 
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value {

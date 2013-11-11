@@ -105,7 +105,7 @@
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
     
     id JSON = [self.share toJSONDictionary];
-    JiveShare *newContent = [JiveShare instanceFromJSON:JSON];
+    JiveShare *newContent = [JiveShare objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
@@ -125,7 +125,7 @@
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
     
     id JSON = [self.share toJSONDictionary];
-    JiveShare *newContent = [JiveShare instanceFromJSON:JSON];
+    JiveShare *newContent = [JiveShare objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");

@@ -17,8 +17,8 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveObjectTests.h"
 
-@interface JiveResourceEntryTests : SenTestCase
+@interface JiveResourceEntryTests : JiveObjectTests
 
 @end

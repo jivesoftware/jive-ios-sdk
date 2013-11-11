@@ -326,7 +326,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
+    JiveContent *newContent = [JiveContent objectFromJSON:JSON withInstance:self.instance];
     
     STAssertNotNil(newContent, @"Content object not created");
     STAssertTrue([[newContent class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -390,7 +390,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveContent *newContent = [JiveContent instanceFromJSON:JSON];
+    JiveContent *newContent = [JiveContent objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
     STAssertEqualObjects(newContent.jiveId, self.content.jiveId, @"Wrong id");

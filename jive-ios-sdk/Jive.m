@@ -77,7 +77,8 @@ int const JivePushDeviceType = 3;
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
     JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
-        JivePlatformVersion *platformVersion = [JivePlatformVersion instanceFromJSON:JSON];
+        JivePlatformVersion *platformVersion = [JivePlatformVersion objectFromJSON:JSON
+                                                                        withInstance:self];
         if (platformVersion) {
             BOOL foundValidCoreVersion = NO;
             for (JiveCoreVersion *coreURI in platformVersion.coreURI) {
@@ -1007,7 +1008,7 @@ int const JivePushDeviceType = 3;
                                                 andTemplate:@"api/core/v3/people/@resources", nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveResource instancesFromJSONList:JSON];
+        return [JiveResource objectsFromJSONList:JSON withInstance:self];
     }];
 }
 
@@ -2026,7 +2027,7 @@ int const JivePushDeviceType = 3;
         
         [uploadImageOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
-            JiveImage *jiveImage = [[JiveImage class] instanceFromJSON:json];
+            JiveImage *jiveImage = [[JiveImage class] objectFromJSON:json];
             complete(jiveImage);
         })
                                                     failure:(^(AFHTTPRequestOperation *operation, NSError *err) {
@@ -2283,7 +2284,7 @@ int const JivePushDeviceType = 3;
         [self maybeLogMaybeBadRequest:request];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
-            id entity = [clazz instancesFromJSONList:JSON[@"list"]];
+            id entity = [clazz objectsFromJSONList:JSON[@"list"]];
             
             NSDictionary *links = JSON[@"links"];
             NSURL *nextURL = [NSURL URLWithString:links[@"next"]];
@@ -2315,7 +2316,7 @@ int const JivePushDeviceType = 3;
                                                                              onComplete:completeBlock
                                                                                 onError:errorBlock
                                                                         responseHandler:(^id(id JSON) {
-        return [clazz instancesFromJSONList:[JSON objectForKey:@"list"] withJive:self];
+        return [clazz objectsFromJSONList:[JSON objectForKey:@"list"] withInstance:self];
     })];
     return operation;
 }
@@ -2325,7 +2326,7 @@ int const JivePushDeviceType = 3;
                                                                   onComplete:completeBlock
                                                                      onError:errorBlock
                                                              responseHandler:(^id(id JSON) {
-        return [clazz instanceFromJSON:JSON withJive:self];
+        return [clazz objectFromJSON:JSON withInstance:self];
     })];
     return operation;
 }

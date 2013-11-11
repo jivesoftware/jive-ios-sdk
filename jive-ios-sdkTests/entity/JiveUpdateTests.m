@@ -22,6 +22,7 @@
 @implementation JiveUpdateTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveUpdate alloc] init];
 }
 
@@ -104,7 +105,7 @@
     self.update.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.update toJSONDictionary];
-    JiveUpdate *newContent = [JiveUpdate instanceFromJSON:JSON];
+    JiveUpdate *newContent = [JiveUpdate objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.update class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.update.type, @"Wrong type");
@@ -123,7 +124,7 @@
     [self.update setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.update toJSONDictionary];
-    JiveUpdate *newContent = [JiveUpdate instanceFromJSON:JSON];
+    JiveUpdate *newContent = [JiveUpdate objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.update class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.update.type, @"Wrong type");

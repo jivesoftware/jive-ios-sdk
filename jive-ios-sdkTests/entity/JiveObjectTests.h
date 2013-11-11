@@ -19,9 +19,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "JiveObject_internal.h"
+#import "Jive.h"
 
-@interface JiveObjectTests : SenTestCase
+@interface JiveObjectTests : SenTestCase <JiveAuthorizationDelegate>
 
+@property (nonatomic, strong) Jive *instance;
 @property (nonatomic, strong) JiveObject *object;
 
 @end

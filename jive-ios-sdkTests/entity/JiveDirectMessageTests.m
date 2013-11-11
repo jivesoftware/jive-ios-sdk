@@ -22,6 +22,7 @@
 @implementation JiveDirectMessageTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveDirectMessage alloc] init];
 }
 
@@ -117,7 +118,7 @@
     [self.dm setValue:[NSNumber numberWithBool:YES] forKey:JiveDirectMessageAttributes.visibleToExternalContributors];
     
     id JSON = [self.dm toJSONDictionary];
-    JiveDirectMessage *newContent = [JiveDirectMessage instanceFromJSON:JSON];
+    JiveDirectMessage *newContent = [JiveDirectMessage objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.dm class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.dm.type, @"Wrong type");
@@ -142,7 +143,7 @@
     [self.dm setValue:[NSArray arrayWithObject:tag] forKey:JiveDirectMessageAttributes.tags];
     
     id JSON = [self.dm toJSONDictionary];
-    JiveDirectMessage *newContent = [JiveDirectMessage instanceFromJSON:JSON];
+    JiveDirectMessage *newContent = [JiveDirectMessage objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.dm class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.dm.type, @"Wrong type");

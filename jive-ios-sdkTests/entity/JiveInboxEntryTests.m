@@ -26,13 +26,12 @@
 @implementation JiveInboxEntryTests
 
 - (void)setUp {
-    
-    self.inboxEntry = [[JiveInboxEntry alloc] init];
+    [super setUp];
+    self.object = [JiveInboxEntry new];
 }
 
-- (void)tearDown {
-    
-    self.inboxEntry = nil;
+- (JiveInboxEntry *)inboxEntry {
+    return (JiveInboxEntry *)self.object;
 }
 
 - (void)testDescription {
@@ -303,7 +302,7 @@
     [baseEntry setValue:openSocial forKey:@"openSocial"];
     
     id JSON = [baseEntry toJSONDictionary];
-    JiveInboxEntry *entry = [JiveInboxEntry instanceFromJSON:JSON];
+    JiveInboxEntry *entry = [JiveInboxEntry objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([entry class], [baseEntry class], @"Wrong item class");
     STAssertEqualObjects(entry.jiveId, baseEntry.jiveId, @"Wrong id");
@@ -360,7 +359,7 @@
     [baseEntry setValue:openSocial forKey:@"openSocial"];
     
     id JSON = [baseEntry toJSONDictionary];
-    JiveInboxEntry *entry = [JiveInboxEntry instanceFromJSON:JSON];
+    JiveInboxEntry *entry = [JiveInboxEntry objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([entry class], [baseEntry class], @"Wrong item class");
     STAssertEqualObjects(entry.jiveId, baseEntry.jiveId, @"Wrong id");

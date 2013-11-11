@@ -27,6 +27,7 @@
 }
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveStream alloc] init];
 }
 
@@ -105,7 +106,7 @@
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"updated"];
     [JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveStream *newStream = [JiveStream instanceFromJSON:JSON];
+    JiveStream *newStream = [JiveStream objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newStream class] isSubclassOfClass:[self.stream class]], @"Wrong item class");
     STAssertEqualObjects(newStream.jiveId, self.stream.jiveId, @"Wrong id");
@@ -148,7 +149,7 @@
     [JSON setValue:@"1970-01-01T00:00:00.000+0000" forKey:@"updated"];
     [JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveStream *newStream = [JiveStream instanceFromJSON:JSON];
+    JiveStream *newStream = [JiveStream objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newStream class] isSubclassOfClass:[self.stream class]], @"Wrong item class");
     STAssertEqualObjects(newStream.jiveId, self.stream.jiveId, @"Wrong id");

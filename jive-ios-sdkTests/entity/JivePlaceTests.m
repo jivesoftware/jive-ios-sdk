@@ -46,6 +46,7 @@
 }
 
 - (void)setUp {
+    [super setUp];
     self.object = [[DummyPlace alloc] init];
 }
 
@@ -298,7 +299,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JivePlace *newPlace = [JivePlace instanceFromJSON:JSON];
+    JivePlace *newPlace = [JivePlace objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.displayName, self.place.displayName, @"Wrong display name");
@@ -359,7 +360,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JivePlace *newPlace = [JivePlace instanceFromJSON:JSON];
+    JivePlace *newPlace = [JivePlace objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[JivePlace class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.displayName, self.place.displayName, @"Wrong display name");

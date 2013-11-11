@@ -22,6 +22,7 @@
 @implementation JiveTaskTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveTask alloc] init];
 }
 
@@ -122,7 +123,7 @@
     self.task.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.task toJSONDictionary];
-    JiveTask *newContent = [JiveTask instanceFromJSON:JSON];
+    JiveTask *newContent = [JiveTask objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.task class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.task.type, @"Wrong type");
@@ -147,7 +148,7 @@
     self.task.completed = [NSNumber numberWithBool:YES];
     
     id JSON = [self.task toJSONDictionary];
-    JiveTask *newContent = [JiveTask instanceFromJSON:JSON];
+    JiveTask *newContent = [JiveTask objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.task class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.task.type, @"Wrong type");

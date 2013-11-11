@@ -22,92 +22,95 @@
 
 @implementation JiveSummaryTests
 
+- (void)setUp {
+    [super setUp];
+    self.object = [JiveSummary new];
+}
+
+- (JiveSummary *)summary {
+    return (JiveSummary *)self.object;
+}
+
 - (void)testToJSON {
-    JiveSummary *summary = [[JiveSummary alloc] init];
-    id JSON = [summary toJSONDictionary];
+    id JSON = [self.summary toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    [summary setValue:@"testName" forKey:@"name"];
-    [summary setValue:@"1234" forKey:@"jiveId"];
-    [summary setValue:@"place" forKey:@"type"];
-    [summary setValue:@"https://dummy.com/item.html" forKey:@"html"];
-    [summary setValue:@"https://dummy.com/item.json" forKey:@"uri"];
+    [self.summary setValue:@"testName" forKey:@"name"];
+    [self.summary setValue:@"1234" forKey:@"jiveId"];
+    [self.summary setValue:@"place" forKey:@"type"];
+    [self.summary setValue:@"https://dummy.com/item.html" forKey:@"html"];
+    [self.summary setValue:@"https://dummy.com/item.json" forKey:@"uri"];
     
-    JSON = [summary toJSONDictionary];
+    JSON = [self.summary toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"name"], summary.name, @"Wrong name.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], summary.jiveId, @"Wrong id.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], summary.type, @"Wrong type");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"html"], summary.html, @"Wrong html");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"uri"], summary.uri, @"Wrong uri");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"name"], self.summary.name, @"Wrong name.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], self.summary.jiveId, @"Wrong id.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.summary.type, @"Wrong type");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"html"], self.summary.html, @"Wrong html");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"uri"], self.summary.uri, @"Wrong uri");
 }
 
 - (void)testToJSON_alternate {
-    JiveSummary *summary = [[JiveSummary alloc] init];
-    id JSON = [summary toJSONDictionary];
+    id JSON = [self.summary toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    [summary setValue:@"Alternate" forKey:@"name"];
-    [summary setValue:@"8743" forKey:@"jiveId"];
-    [summary setValue:@"blog" forKey:@"type"];
-    [summary setValue:@"https://dummy.com/blog.html" forKey:@"html"];
-    [summary setValue:@"https://dummy.com/blog.json" forKey:@"uri"];
+    [self.summary setValue:@"Alternate" forKey:@"name"];
+    [self.summary setValue:@"8743" forKey:@"jiveId"];
+    [self.summary setValue:@"blog" forKey:@"type"];
+    [self.summary setValue:@"https://dummy.com/blog.html" forKey:@"html"];
+    [self.summary setValue:@"https://dummy.com/blog.json" forKey:@"uri"];
     
-    JSON = [summary toJSONDictionary];
+    JSON = [self.summary toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"name"], summary.name, @"Wrong name.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], summary.jiveId, @"Wrong id.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], summary.type, @"Wrong type");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"html"], summary.html, @"Wrong html");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"uri"], summary.uri, @"Wrong uri");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"name"], self.summary.name, @"Wrong name.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], self.summary.jiveId, @"Wrong id.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.summary.type, @"Wrong type");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"html"], self.summary.html, @"Wrong html");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"uri"], self.summary.uri, @"Wrong uri");
 }
 
 - (void)testPlaceParsing {
-    JiveSummary *baseSummary = [[JiveSummary alloc] init];
+    [self.summary setValue:@"testName" forKey:@"name"];
+    [self.summary setValue:@"1234" forKey:@"jiveId"];
+    [self.summary setValue:@"place" forKey:@"type"];
+    [self.summary setValue:@"https://dummy.com/item.html" forKey:@"html"];
+    [self.summary setValue:@"https://dummy.com/item.json" forKey:@"uri"];
     
-    [baseSummary setValue:@"testName" forKey:@"name"];
-    [baseSummary setValue:@"1234" forKey:@"jiveId"];
-    [baseSummary setValue:@"place" forKey:@"type"];
-    [baseSummary setValue:@"https://dummy.com/item.html" forKey:@"html"];
-    [baseSummary setValue:@"https://dummy.com/item.json" forKey:@"uri"];
+    id JSON = [self.summary toJSONDictionary];
+    JiveSummary *newSummary = [JiveSummary objectFromJSON:JSON withInstance:self.instance];
     
-    id JSON = [baseSummary toJSONDictionary];
-    JiveSummary *summary = [JiveSummary instanceFromJSON:JSON];
-    
-    STAssertEquals([summary class], [baseSummary class], @"Wrong item class");
-    STAssertEqualObjects(summary.jiveId, baseSummary.jiveId, @"Wrong id");
-    STAssertEqualObjects(summary.name, baseSummary.name, @"Wrong name");
-    STAssertEqualObjects(summary.type, baseSummary.type, @"Wrong type");
-    STAssertEqualObjects(summary.html, baseSummary.html, @"Wrong html");
-    STAssertEqualObjects(summary.uri, baseSummary.uri, @"Wrong uri");
+    STAssertEquals([newSummary class], [self.summary class], @"Wrong item class");
+    STAssertEqualObjects(newSummary.jiveId, self.summary.jiveId, @"Wrong id");
+    STAssertEqualObjects(newSummary.name, self.summary.name, @"Wrong name");
+    STAssertEqualObjects(newSummary.type, self.summary.type, @"Wrong type");
+    STAssertEqualObjects(newSummary.html, self.summary.html, @"Wrong html");
+    STAssertEqualObjects(newSummary.uri, self.summary.uri, @"Wrong uri");
 }
 
 - (void)testPlaceParsingAlternate {
-    JiveSummary *baseSummary = [[JiveSummary alloc] init];
+    [self.summary setValue:@"Alternate" forKey:@"name"];
+    [self.summary setValue:@"8743" forKey:@"jiveId"];
+    [self.summary setValue:@"blog" forKey:@"type"];
+    [self.summary setValue:@"https://dummy.com/blog.html" forKey:@"html"];
+    [self.summary setValue:@"https://dummy.com/blog.json" forKey:@"uri"];
     
-    [baseSummary setValue:@"Alternate" forKey:@"name"];
-    [baseSummary setValue:@"8743" forKey:@"jiveId"];
-    [baseSummary setValue:@"blog" forKey:@"type"];
-    [baseSummary setValue:@"https://dummy.com/blog.html" forKey:@"html"];
-    [baseSummary setValue:@"https://dummy.com/blog.json" forKey:@"uri"];
+    id JSON = [self.summary toJSONDictionary];
+    JiveSummary *newSummary = [JiveSummary objectFromJSON:JSON withInstance:self.instance];
     
-    id JSON = [baseSummary toJSONDictionary];
-    JiveSummary *summary = [JiveSummary instanceFromJSON:JSON];
-    
-    STAssertEquals([summary class], [baseSummary class], @"Wrong item class");
-    STAssertEqualObjects(summary.jiveId, baseSummary.jiveId, @"Wrong id");
-    STAssertEqualObjects(summary.name, baseSummary.name, @"Wrong name");
-    STAssertEqualObjects(summary.type, baseSummary.type, @"Wrong type");
-    STAssertEqualObjects(summary.html, baseSummary.html, @"Wrong html");
-    STAssertEqualObjects(summary.uri, baseSummary.uri, @"Wrong uri");
+    STAssertEquals([newSummary class], [self.summary class], @"Wrong item class");
+    STAssertEqualObjects(newSummary.jiveId, self.summary.jiveId, @"Wrong id");
+    STAssertEqualObjects(newSummary.name, self.summary.name, @"Wrong name");
+    STAssertEqualObjects(newSummary.type, self.summary.type, @"Wrong type");
+    STAssertEqualObjects(newSummary.html, self.summary.html, @"Wrong html");
+    STAssertEqualObjects(newSummary.uri, self.summary.uri, @"Wrong uri");
 }
 
 @end

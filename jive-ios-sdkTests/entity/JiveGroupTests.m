@@ -23,6 +23,7 @@
 @implementation JiveGroupTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveGroup alloc] init];
 }
 
@@ -119,7 +120,7 @@
     [self.group setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.group toJSONDictionary];
-    JiveGroup *newPlace = [JiveGroup instanceFromJSON:JSON];
+    JiveGroup *newPlace = [JiveGroup objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[self.group class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.type, self.group.type, @"Wrong type");
@@ -141,7 +142,7 @@
     [self.group setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.group toJSONDictionary];
-    JiveGroup *newPlace = [JiveGroup instanceFromJSON:JSON];
+    JiveGroup *newPlace = [JiveGroup objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[self.group class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.type, self.group.type, @"Wrong type");

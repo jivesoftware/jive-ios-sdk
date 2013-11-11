@@ -23,7 +23,9 @@
 
 @synthesize context, gadget, preferredExperience, previewImage, url;
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)jiveInstance {
     return JSON;
 }
 

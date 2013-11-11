@@ -42,15 +42,15 @@ struct JivePropertyAttributes const JivePropertyAttributes = {
 
 #pragma mark - JiveObject
 
-- (BOOL) deserialize:(id) JSON {
+- (BOOL) deserialize:(id)JSON fromInstance:(Jive *)instance {
     if (![JSON objectForKey:JivePropertyAttributes.type]) {
         return false;
     }
     
     // Make sure the type is deserialized first.
-    [self deserializeKey:JivePropertyAttributes.type fromJSON:JSON];
+    [self deserializeKey:JivePropertyAttributes.type fromJSON:JSON fromInstance:instance];
     
-    return [super deserialize:JSON];
+    return [super deserialize:JSON fromInstance:instance];
 }
 
 - (NSDictionary *)toJSONDictionary {

@@ -23,14 +23,13 @@
 
 @implementation JivePropertyTests
 
-@synthesize property;
-
 - (void)setUp {
-    self.property = [JiveProperty new];
+    [super setUp];
+    self.object = [JiveProperty new];
 }
 
-- (void)tearDown {
-    self.property = nil;
+- (JiveProperty *)property {
+    return (JiveProperty *)self.object;
 }
 
 - (void)testToJSON {
@@ -42,15 +41,15 @@
     NSString *type = @"string";
     NSString *value = @"value1";
     
-    [property setValue:availability forKey:JivePropertyAttributes.availability];
-    [property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
-    [property setValue:description forKey:JivePropertyAttributes.jiveDescription];
-    [property setValue:name forKey:JivePropertyAttributes.name];
-    [property setValue:since forKey:JivePropertyAttributes.since];
-    [property setValue:type forKey:JivePropertyAttributes.type];
-    [property setValue:value forKey:JivePropertyAttributes.value];
+    [self.property setValue:availability forKey:JivePropertyAttributes.availability];
+    [self.property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
+    [self.property setValue:description forKey:JivePropertyAttributes.jiveDescription];
+    [self.property setValue:name forKey:JivePropertyAttributes.name];
+    [self.property setValue:since forKey:JivePropertyAttributes.since];
+    [self.property setValue:type forKey:JivePropertyAttributes.type];
+    [self.property setValue:value forKey:JivePropertyAttributes.value];
     
-    NSDictionary *JSON = [property toJSONDictionary];
+    NSDictionary *JSON = [self.property toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
@@ -72,15 +71,15 @@
     NSString *type = @"bool";
     NSNumber *value = [NSNumber numberWithBool:YES];
     
-    [property setValue:availability forKey:JivePropertyAttributes.availability];
-    [property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
-    [property setValue:description forKey:JivePropertyAttributes.jiveDescription];
-    [property setValue:name forKey:JivePropertyAttributes.name];
-    [property setValue:since forKey:JivePropertyAttributes.since];
-    [property setValue:type forKey:JivePropertyAttributes.type];
-    [property setValue:value forKey:JivePropertyAttributes.value];
+    [self.property setValue:availability forKey:JivePropertyAttributes.availability];
+    [self.property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
+    [self.property setValue:description forKey:JivePropertyAttributes.jiveDescription];
+    [self.property setValue:name forKey:JivePropertyAttributes.name];
+    [self.property setValue:since forKey:JivePropertyAttributes.since];
+    [self.property setValue:type forKey:JivePropertyAttributes.type];
+    [self.property setValue:value forKey:JivePropertyAttributes.value];
     
-    NSDictionary *JSON = [property toJSONDictionary];
+    NSDictionary *JSON = [self.property toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)7, @"Initial dictionary had the wrong number of entries");
@@ -94,48 +93,48 @@
 }
 
 - (void)testValueAsBool {
-    [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
-    [property setValue:@0 forKey:JivePropertyAttributes.value];
-    STAssertFalse(property.valueAsBOOL, @"Value not reported as NO");
+    [self.property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+    [self.property setValue:@0 forKey:JivePropertyAttributes.value];
+    STAssertFalse(self.property.valueAsBOOL, @"Value not reported as NO");
 
-    [property setValue:@1 forKey:JivePropertyAttributes.value];
-    STAssertTrue(property.valueAsBOOL, @"Value not reported as YES");
+    [self.property setValue:@1 forKey:JivePropertyAttributes.value];
+    STAssertTrue(self.property.valueAsBOOL, @"Value not reported as YES");
 
-    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
-    [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
-    STAssertFalse(property.valueAsBOOL, @"Value not reported as NO");
+    [self.property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [self.property setValue:@"dummy" forKey:JivePropertyAttributes.value];
+    STAssertFalse(self.property.valueAsBOOL, @"Value not reported as NO");
 }
 
 - (void)testValueAsString {
     NSString *firstTestValue = @"first";
     NSString *secondTestValue = @"second";
     
-    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
-    [property setValue:firstTestValue forKey:JivePropertyAttributes.value];
-    STAssertEqualObjects(property.valueAsString, firstTestValue, @"Wrong string returned");
+    [self.property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [self.property setValue:firstTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(self.property.valueAsString, firstTestValue, @"Wrong string returned");
     
-    [property setValue:secondTestValue forKey:JivePropertyAttributes.value];
-    STAssertEqualObjects(property.valueAsString, secondTestValue, @"Wrong string returned");
+    [self.property setValue:secondTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(self.property.valueAsString, secondTestValue, @"Wrong string returned");
     
-    [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
-    [property setValue:@0 forKey:JivePropertyAttributes.value];
-    STAssertNil(property.valueAsString, @"A string was returned.");
+    [self.property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+    [self.property setValue:@0 forKey:JivePropertyAttributes.value];
+    STAssertNil(self.property.valueAsString, @"A string was returned.");
 }
 
 - (void)testValueAsNumber {
     NSNumber *firstTestValue = @4;
     NSNumber *secondTestValue = @123456.789;
     
-    [property setValue:JivePropertyTypes.number forKey:JivePropertyAttributes.type];
-    [property setValue:firstTestValue forKey:JivePropertyAttributes.value];
-    STAssertEqualObjects(property.valueAsNumber, firstTestValue, @"Wrong number returned");
+    [self.property setValue:JivePropertyTypes.number forKey:JivePropertyAttributes.type];
+    [self.property setValue:firstTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(self.property.valueAsNumber, firstTestValue, @"Wrong number returned");
     
-    [property setValue:secondTestValue forKey:JivePropertyAttributes.value];
-    STAssertEqualObjects(property.valueAsNumber, secondTestValue, @"Wrong number returned");
+    [self.property setValue:secondTestValue forKey:JivePropertyAttributes.value];
+    STAssertEqualObjects(self.property.valueAsNumber, secondTestValue, @"Wrong number returned");
     
-    [property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
-    [property setValue:@"dummy" forKey:JivePropertyAttributes.value];
-    STAssertNil(property.valueAsNumber, @"A number was returned.");
+    [self.property setValue:JivePropertyTypes.string forKey:JivePropertyAttributes.type];
+    [self.property setValue:@"dummy" forKey:JivePropertyAttributes.value];
+    STAssertNil(self.property.valueAsNumber, @"A number was returned.");
 }
 
 - (id) JSONFromTestFile:(NSString*) filename {
@@ -150,17 +149,33 @@
 - (void)testValueAsNumber_realData {
     id numericPropertyJSON = [self JSONFromTestFile:@"feature.status_update.characters.json"];
     
-    [property deserialize:numericPropertyJSON];
-    STAssertEqualObjects(property.type, JivePropertyTypes.number, @"Wrong property type");
-    STAssertEqualObjects(property.valueAsNumber, numericPropertyJSON[JivePropertyAttributes.value],
+    [self.property deserialize:numericPropertyJSON fromInstance:self.instance];
+    STAssertEqualObjects(self.property.type, JivePropertyTypes.number, @"Wrong property type");
+    STAssertEqualObjects(self.property.valueAsNumber, numericPropertyJSON[JivePropertyAttributes.value],
                          @"Wrong value");
-    STAssertEqualObjects(property.name, numericPropertyJSON[JivePropertyAttributes.name],
+    STAssertEqualObjects(self.property.name, numericPropertyJSON[JivePropertyAttributes.name],
                          @"Wrong name");
-    STAssertEqualObjects(property.jiveDescription, numericPropertyJSON[@"description"],
+    STAssertEqualObjects(self.property.jiveDescription, numericPropertyJSON[@"description"],
                          @"Wrong description");
-    STAssertNil(property.availability, @"There should be no availability");
-    STAssertNil(property.defaultValue, @"There should be no default value");
-    STAssertNil(property.since, @"There should be no since");
+    STAssertNil(self.property.availability, @"There should be no availability");
+    STAssertNil(self.property.defaultValue, @"There should be no default value");
+    STAssertNil(self.property.since, @"There should be no since");
+}
+
+- (void)testDeserialize_invalidJSON {
+    NSString *type = @"string";
+    NSDictionary *JSON = @{@"dummy key":@"bad value", @"type":type};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with wrong JSON including type field");
+    STAssertTrue(self.object.extraFieldsDetected, @"No extra fields reported with wrong JSON");
+    STAssertEqualObjects(self.property.type, type, @"Wrong type");
+    STAssertNil(self.property.value, @"There should be no value");
+    STAssertNil(self.property.name, @"There should be no name");
+    STAssertNil(self.property.jiveDescription, @"There should be no description");
+    STAssertNil(self.property.availability, @"There should be no availability");
+    STAssertNil(self.property.defaultValue, @"There should be no default value");
+    STAssertNil(self.property.since, @"There should be no since");
 }
 
 - (void)testDeserialize_validJSON {
@@ -172,16 +187,16 @@
     NSString *type = @"string";
     NSString *value = @"value1";
     
-    [property setValue:availability forKey:JivePropertyAttributes.availability];
-    [property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
-    [property setValue:description forKey:JivePropertyAttributes.jiveDescription];
-    [property setValue:name forKey:JivePropertyAttributes.name];
-    [property setValue:since forKey:JivePropertyAttributes.since];
-    [property setValue:type forKey:JivePropertyAttributes.type];
-    [property setValue:value forKey:JivePropertyAttributes.value];
+    [self.property setValue:availability forKey:JivePropertyAttributes.availability];
+    [self.property setValue:defaultValue forKey:JivePropertyAttributes.defaultValue];
+    [self.property setValue:description forKey:JivePropertyAttributes.jiveDescription];
+    [self.property setValue:name forKey:JivePropertyAttributes.name];
+    [self.property setValue:since forKey:JivePropertyAttributes.since];
+    [self.property setValue:type forKey:JivePropertyAttributes.type];
+    [self.property setValue:value forKey:JivePropertyAttributes.value];
     
-    NSDictionary *JSON = [property toJSONDictionary];
-    JiveProperty *newProperty = [JiveProperty instanceFromJSON:JSON];
+    NSDictionary *JSON = [self.property toJSONDictionary];
+    JiveProperty *newProperty = [JiveProperty objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEqualObjects(newProperty.availability, availability, @"Wrong availability");
     STAssertEqualObjects(newProperty.defaultValue, defaultValue, @"Wrong defaultValue");
@@ -197,7 +212,7 @@
     NSString *value = @"value1";
     NSDictionary *JSON = @{JivePropertyAttributes.type: type,
                            JivePropertyAttributes.value: value};
-    JiveProperty *newProperty = [JiveProperty instanceFromJSON:JSON];
+    JiveProperty *newProperty = [JiveProperty objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEqualObjects(newProperty.type, type, @"Wrong type");
     STAssertEqualObjects(newProperty.value, value, @"Wrong value");
@@ -208,7 +223,7 @@
     NSString *value = @"value1";
     NSDictionary *JSON = @{JivePropertyAttributes.value: value,
                            JivePropertyAttributes.type: type};
-    JiveProperty *newProperty = [JiveProperty instanceFromJSON:JSON];
+    JiveProperty *newProperty = [JiveProperty objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEqualObjects(newProperty.type, type, @"Wrong type");
     STAssertEqualObjects(newProperty.value, value, @"Wrong value");
@@ -219,7 +234,7 @@
     NSString *value = @"value1";
     NSDictionary *JSON = @{JivePropertyAttributes.value: value,
                            JivePropertyAttributes.name: name};
-    JiveProperty *newProperty = [JiveProperty instanceFromJSON:JSON];
+    JiveProperty *newProperty = [JiveProperty objectFromJSON:JSON withInstance:self.instance];
     
     STAssertNil(newProperty, @"Property created without a valid type");
 }

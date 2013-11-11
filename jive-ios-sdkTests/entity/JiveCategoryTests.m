@@ -24,6 +24,7 @@
 @implementation JiveCategoryTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveCategory alloc] init];
 }
 
@@ -126,7 +127,7 @@
     [JSON setValue:@"type" forKey:@"type"];
     [JSON setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
-    self.object = [JiveCategory instanceFromJSON:JSON];
+    self.object = [JiveCategory objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([self.category class], [JiveCategory class], @"Wrong item class");
     STAssertEqualObjects(self.category.jiveDescription, description, @"Wrong description");
@@ -173,7 +174,7 @@
     [JSON setValue:@"type" forKey:@"type"];
     [JSON setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
     
-    self.object = [JiveCategory instanceFromJSON:JSON];
+    self.object = [JiveCategory objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([self.category class], [JiveCategory class], @"Wrong item class");
     STAssertEqualObjects(self.category.jiveDescription, description, @"Wrong description");

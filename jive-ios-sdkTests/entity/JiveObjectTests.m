@@ -18,6 +18,7 @@
 //
 
 #import "JiveObjectTests.h"
+#import "Jive_internal.h"
 
 @interface TestJiveObject : JiveObject
 
@@ -46,17 +47,27 @@
 @implementation JiveObjectTests
 
 - (void)setUp {
+    self.instance = [Jive new];
     self.object = [JiveObject new];
 }
 
 - (void)tearDown {
     self.object = nil;
+    self.instance = nil;
+}
+
+- (id<JiveCredentials>)credentialsForJiveInstance:(NSURL *)url {
+    return nil;
+}
+
+- (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url {
+    return nil;
 }
 
 - (void)testDeserialize_emptyJSON {
     NSDictionary *JSON = @{};
     
-    STAssertFalse([self.object deserialize:JSON], @"Reported valid deserialize with empty JSON");
+    STAssertFalse([self.object deserialize:JSON fromInstance:self.instance], @"Reported valid deserialize with empty JSON");
     STAssertFalse(self.object.extraFieldsDetected, @"Reported extra fields with empty JSON");
     STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
 }
@@ -64,7 +75,7 @@
 - (void)testDeserialize_invalidJSON {
     NSDictionary *JSON = @{@"dummy key":@"bad value"};
     
-    STAssertFalse([self.object deserialize:JSON], @"Reported valid deserialize with wrong JSON");
+    STAssertFalse([self.object deserialize:JSON fromInstance:self.instance], @"Reported valid deserialize with wrong JSON");
     STAssertTrue(self.object.extraFieldsDetected, @"No extra fields reported with wrong JSON");
     STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
 }
@@ -83,7 +94,7 @@
     NSDictionary *JSON = @{propertyID:testValue};
     NSDate *testDate = [NSDate date];
     
-    STAssertTrue([self.object deserialize:JSON], @"Reported invalid deserialize with valid JSON");
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance], @"Reported invalid deserialize with valid JSON");
     STAssertFalse(self.object.extraFieldsDetected, @"Extra fields reported with valid JSON");
     STAssertNotNil(self.object.refreshDate, @"A refresh date is reqired with valid JSON");
     STAssertEqualsWithAccuracy([testDate timeIntervalSinceDate:self.object.refreshDate],

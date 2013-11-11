@@ -33,6 +33,7 @@ static NSString *testType = @"test";
 static NSString *alternateType = @"alternate";
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveTypedObject alloc] init];
 }
 
@@ -47,45 +48,51 @@ static NSString *alternateType = @"alternate";
 }
 
 - (void)testEntityClass {
-    NSString *key = @"type";
-    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:testType forKey:key];
-    SEL selector = @selector(entityClass:);
+    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:testType
+                                                                            forKey:JiveTypedObjectAttributes.type];
+    Class testClass = [self.typedObject class];
     
-    STAssertEqualObjects([JiveTypedObject performSelector:selector withObject:typeSpecifier],
-                         [JiveTypedObject class], @"Out of bounds");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], testClass, @"Out of bounds");
     
-    [typeSpecifier setValue:@"Not random" forKey:key];
-    STAssertEqualObjects([JiveTypedObject performSelector:selector withObject:typeSpecifier],
-                         [JiveTypedObject class], @"Different out of bounds");
+    [typeSpecifier setValue:@"Not random" forKey:JiveTypedObjectAttributes.type];
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], testClass,
+                         @"Different out of bounds");
 }
 
 - (void)testRegisterClassForType {
-    NSString *key = @"type";
-    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:testType forKey:key];
-    SEL selector = @selector(entityClass:);
+    NSDictionary *typeSpecifier = @{JiveTypedObjectAttributes.type:testType};
+    Class testClass = [self.typedObject class];
+    Class alternateClass = [DummyTypedObject class];
     
-    STAssertEqualObjects([JiveTypedObject performSelector:selector withObject:typeSpecifier],
-                         [JiveTypedObject class], @"Out of bounds");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier],
+                         testClass, @"Out of bounds");
     
-    STAssertNoThrow([JiveTypedObject registerClass:[DummyTypedObject class] forType:testType], @"registerClass:forType: should not thow");
-    STAssertEqualObjects([JiveTypedObject performSelector:selector withObject:typeSpecifier],
-                         [DummyTypedObject class], @"Type not registered");
+    STAssertNoThrow([testClass registerClass:alternateClass forType:testType],
+                    @"registerClass:forType: should not thow");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], alternateClass,
+                         @"Type not registered");
     
-    STAssertNoThrow([JiveTypedObject registerClass:nil forType:testType], @"Clearing the type should not throw");
-    STAssertEqualObjects([JiveTypedObject performSelector:selector withObject:typeSpecifier],
-                         [JiveTypedObject class], @"Type not cleared");
+    STAssertNoThrow([testClass registerClass:nil forType:testType],
+                    @"Clearing the type should not throw");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier],
+                         testClass, @"Type not cleared");
 }
 
 - (void)testRegisterClassForTypeAlternate {
-    NSMutableDictionary *typeSpecifier = [NSMutableDictionary dictionaryWithObject:alternateType forKey:@"type"];
+    NSDictionary *typeSpecifier = @{JiveTypedObjectAttributes.type:alternateType};
+    Class testClass = [self.typedObject class];
+    Class alternateClass = [DummyTypedObject class];
     
-    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [JiveTypedObject class], @"Out of bounds");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], testClass, @"Out of bounds");
     
-    STAssertNoThrow([JiveTypedObject registerClass:[DummyTypedObject class] forType:alternateType], @"registerClass:forType: should not thow");
-    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [DummyTypedObject class], @"Type not registered");
+    STAssertNoThrow([testClass registerClass:alternateClass forType:alternateType],
+                    @"registerClass:forType: should not thow");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], alternateClass,
+                         @"Type not registered");
     
-    STAssertNoThrow([JiveTypedObject registerClass:nil forType:alternateType], @"Clearing the type should not throw");
-    STAssertEqualObjects([JiveTypedObject entityClass:typeSpecifier], [JiveTypedObject class], @"Type not cleared");
+    STAssertNoThrow([testClass registerClass:nil forType:alternateType],
+                    @"Clearing the type should not throw");
+    STAssertEqualObjects([testClass entityClass:typeSpecifier], testClass, @"Type not cleared");
 }
 
 @end

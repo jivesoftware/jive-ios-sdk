@@ -23,6 +23,7 @@
 @implementation JiveFileTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveFile alloc] init];
 }
 
@@ -260,7 +261,7 @@
     self.file.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.file toJSONDictionary];
-    JiveFile *newContent = [JiveFile instanceFromJSON:JSON];
+    JiveFile *newContent = [JiveFile objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.file class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.file.type, @"Wrong type");
@@ -306,7 +307,7 @@
     self.file.visibility = @"people";
     
     id JSON = [self.file toJSONDictionary];
-    JiveFile *newContent = [JiveFile instanceFromJSON:JSON];
+    JiveFile *newContent = [JiveFile objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.file class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.file.type, @"Wrong type");

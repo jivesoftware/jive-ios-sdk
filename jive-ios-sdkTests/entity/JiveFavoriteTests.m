@@ -22,6 +22,7 @@
 @implementation JiveFavoriteTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveFavorite alloc] init];
 }
 
@@ -92,7 +93,7 @@
     self.favorite.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.favorite toJSONDictionary];
-    JiveFavorite *newContent = [JiveFavorite instanceFromJSON:JSON];
+    JiveFavorite *newContent = [JiveFavorite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.favorite class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.favorite.type, @"Wrong type");
@@ -109,7 +110,7 @@
     self.favorite.private = [NSNumber numberWithBool:YES];
     
     id JSON = [self.favorite toJSONDictionary];
-    JiveFavorite *newContent = [JiveFavorite instanceFromJSON:JSON];
+    JiveFavorite *newContent = [JiveFavorite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.favorite class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.favorite.type, @"Wrong type");

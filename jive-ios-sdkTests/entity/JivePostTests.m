@@ -23,6 +23,7 @@
 @implementation JivePostTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JivePost alloc] init];
 }
 
@@ -189,7 +190,7 @@
     self.post.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.post toJSONDictionary];
-    JivePost *newContent = [JivePost instanceFromJSON:JSON];
+    JivePost *newContent = [JivePost objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.post class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.post.type, @"Wrong type");
@@ -224,7 +225,7 @@
     self.post.restrictComments = [NSNumber numberWithBool:YES];
     
     id JSON = [self.post toJSONDictionary];
-    JivePost *newContent = [JivePost instanceFromJSON:JSON];
+    JivePost *newContent = [JivePost objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.post class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.post.type, @"Wrong type");

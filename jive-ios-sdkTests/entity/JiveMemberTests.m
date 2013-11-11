@@ -27,6 +27,7 @@
 }
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveMember alloc] init];
 }
 
@@ -131,7 +132,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveMember *newMember = [JiveMember instanceFromJSON:JSON];
+    JiveMember *newMember = [JiveMember objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newMember class] isSubclassOfClass:[self.member class]], @"Wrong item class");
     STAssertEqualObjects(newMember.jiveId, self.member.jiveId, @"Wrong id");
@@ -169,7 +170,7 @@
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveMember *newMember = [JiveMember instanceFromJSON:JSON];
+    JiveMember *newMember = [JiveMember objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newMember class] isSubclassOfClass:[self.member class]], @"Wrong item class");
     STAssertEqualObjects(newMember.jiveId, self.member.jiveId, @"Wrong id");
