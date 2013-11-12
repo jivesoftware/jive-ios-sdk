@@ -461,6 +461,7 @@
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
+		DE2C392818319BEE00486A2D /* public_property.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2C392718319BEE00486A2D /* public_property.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1077,6 +1078,7 @@
 		B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+JiveAuthorizationDelegate.m"; sourceTree = "<group>"; };
 		B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveHTTPBasicAuthCredentials.h; sourceTree = "<group>"; };
 		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
+		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1810,6 +1812,7 @@
 				0F9CD1BA16D6F21100B512C2 /* stream_associations_alt.json */,
 				0FBC7E221716218C00A597E2 /* version_alternate.json */,
 				0FBC7E2917171D7800A597E2 /* version_no_v3.json */,
+				DE2C392718319BEE00486A2D /* public_property.json */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -2169,6 +2172,7 @@
 				0F9EBA99169F8A3C00E9F09D /* messages.json in Resources */,
 				0F9EBA9B169F8A4600E9F09D /* message_alternate.json in Resources */,
 				0F9EBA9D169F8FE900E9F09D /* content_messages.json in Resources */,
+				DE2C392818319BEE00486A2D /* public_property.json in Resources */,
 				0F9EBAA616A0B9ED00E9F09D /* invites.json in Resources */,
 				0FB0B2E21821B3DD00179147 /* feature.status_update.characters.json in Resources */,
 				0F9EBAA816A0C0DD00E9F09D /* invite.json in Resources */,
