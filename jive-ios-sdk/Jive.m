@@ -2027,7 +2027,7 @@ int const JivePushDeviceType = 3;
         
         [uploadImageOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
-            JiveImage *jiveImage = [[JiveImage class] objectFromJSON:json];
+            JiveImage *jiveImage = [[JiveImage class] objectFromJSON:json withInstance:self];
             complete(jiveImage);
         })
                                                     failure:(^(AFHTTPRequestOperation *operation, NSError *err) {
@@ -2284,7 +2284,7 @@ int const JivePushDeviceType = 3;
         [self maybeLogMaybeBadRequest:request];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
-            id entity = [clazz objectsFromJSONList:JSON[@"list"]];
+            id entity = [clazz objectsFromJSONList:JSON[@"list"] withInstance:self];
             
             NSDictionary *links = JSON[@"links"];
             NSURL *nextURL = [NSURL URLWithString:links[@"next"]];

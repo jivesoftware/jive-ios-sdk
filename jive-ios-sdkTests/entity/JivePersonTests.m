@@ -1541,7 +1541,7 @@
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:rawJson
                                                          options:0
                                                            error:NULL];
-    id entity = [entityClass objectFromJSON:JSON];
+    id entity = [entityClass objectFromJSON:JSON withInstance:self.instance];
     return entity;
 }
 
