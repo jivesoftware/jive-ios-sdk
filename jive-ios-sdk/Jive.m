@@ -17,7 +17,7 @@
 //    limitations under the License.
 //
 
-#import "Jive.h"
+#import "Jive_internal.h"
 #import "JiveRetryingJAPIRequestOperation.h"
 #import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
