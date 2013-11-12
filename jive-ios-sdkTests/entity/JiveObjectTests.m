@@ -23,16 +23,19 @@
 @interface TestJiveObject : JiveObject
 
 @property (nonatomic, strong) NSString *testProperty;
+@property (nonatomic, strong) NSURL *testURL;
 
 @end
 
 @interface TestJiveObjectTests : JiveObjectTests
 
+@property (nonatomic, readonly) TestJiveObject *testObject;
+
 @end
 
 @implementation TestJiveObject
 
-@synthesize testProperty;
+@synthesize testProperty, testURL;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -46,8 +49,17 @@
 
 @implementation JiveObjectTests
 
+- (NSURL *)testURL {
+    if (!_testURL) {
+        _testURL = [NSURL URLWithString:@"http://dummy.com"];
+    }
+    
+    return _testURL;
+}
+
 - (void)setUp {
-    self.instance = [Jive new];
+    self.instance = [[Jive alloc] initWithJiveInstance:self.testURL
+                                 authorizationDelegate:self];
     self.object = [JiveObject new];
 }
 
@@ -85,7 +97,12 @@
 @implementation TestJiveObjectTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [TestJiveObject new];
+}
+
+- (TestJiveObject *)testObject {
+    return (TestJiveObject *)self.object;
 }
 
 - (void)testDeserialize_validJSON {
@@ -101,6 +118,15 @@
                                (NSTimeInterval)0,
                                (NSTimeInterval)0.1,
                                @"An invalid refresh date was specified");
+}
+
+- (void)testURLDeserialization {
+    NSString *propertyID = @"testURL";
+    NSDictionary *JSON = @{propertyID:[self.testURL absoluteString]};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testURL, self.testURL, @"Wrong URL reported");
 }
 
 @end

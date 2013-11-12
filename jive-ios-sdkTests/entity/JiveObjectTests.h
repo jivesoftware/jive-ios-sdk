@@ -23,6 +23,7 @@
 
 @interface JiveObjectTests : SenTestCase <JiveAuthorizationDelegate>
 
+@property (nonatomic, strong) NSURL *testURL; // set this in setUp before calling [super setUp] to change the base url of instance.
 @property (nonatomic, strong) Jive *instance;
 @property (nonatomic, strong) JiveObject *object;
 
