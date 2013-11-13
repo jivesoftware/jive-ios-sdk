@@ -20,6 +20,7 @@
 #define JIVE_JSON_DEBUG 0
 
 #import "JiveObject_internal.h"
+#import "Jive_internal.h"
 
 #import <objc/runtime.h>
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
@@ -163,7 +164,9 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
     }
     
     if(clazz == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[NSURL alloc] initWithString:JSON];
+        return (jiveInstance ?
+                [jiveInstance createURLWithInstanceValidation:JSON] :
+                [NSURL URLWithString:JSON]);
     }
     
     if(clazz == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {

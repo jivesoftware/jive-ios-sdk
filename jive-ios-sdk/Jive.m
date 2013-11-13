@@ -77,11 +77,10 @@ int const JivePushDeviceType = 3;
     NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
     JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
-        JivePlatformVersion *platformVersion = [JivePlatformVersion objectFromJSON:JSON
-                                                                        withInstance:self];
-        if (platformVersion) {
+        self.platformVersion = [JivePlatformVersion objectFromJSON:JSON withInstance:self];
+        if (_platformVersion) {
             BOOL foundValidCoreVersion = NO;
-            for (JiveCoreVersion *coreURI in platformVersion.coreURI) {
+            for (JiveCoreVersion *coreURI in self.platformVersion.coreURI) {
                 if ([coreURI.version isEqualToNumber:@3]) {
                     foundValidCoreVersion = YES;
                     break;
@@ -90,11 +89,11 @@ int const JivePushDeviceType = 3;
             
             if (foundValidCoreVersion) {
                 if (completeBlock) {
-                    completeBlock(platformVersion);
+                    completeBlock(self.platformVersion);
                 }
             } else {
                 if (errorBlock) {
-                    errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:platformVersion]);
+                    errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:self.platformVersion]);
                 }
             }
         } else {
@@ -144,6 +143,28 @@ int const JivePushDeviceType = 3;
 }
 
 #pragma mark - helper methods
+
+- (NSURL *)createURLWithInstanceValidation:(NSString *)urlString {
+    JiveCoreVersion *v3api = nil;
+    
+    for (JiveCoreVersion *apiVersion in self.platformVersion.coreURI) {
+        if ([apiVersion.version isEqualToNumber:@3]) {
+            v3api = apiVersion;
+            break;
+        }
+    }
+    
+    if (v3api) {
+        NSRange apiPathRange = [urlString rangeOfString:v3api.uri];
+        
+        if (apiPathRange.length > 0) {
+            return [NSURL URLWithString:[urlString substringFromIndex:apiPathRange.location]
+                          relativeToURL:self.jiveInstance];
+        }
+    }
+    
+    return [NSURL URLWithString:urlString];
+}
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:nil

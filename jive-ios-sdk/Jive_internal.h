@@ -18,10 +18,15 @@
 //
 
 #import "Jive.h"
+#import "JiveRetryingJAPIRequestOperation.h"
 
 @class JAPIRequestOperation;
 
 @interface Jive ()
+
+@property (nonatomic, strong) JivePlatformVersion *platformVersion;
+
+- (NSURL *)createURLWithInstanceValidation:(NSString *)urlString;
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options
                                  andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;

@@ -57,10 +57,26 @@
     return _testURL;
 }
 
+- (NSString *)apiPath {
+    if (!_apiPath) {
+        _apiPath = @"/api/core/v3";
+    }
+    
+    return _apiPath;
+}
+
 - (void)setUp {
+    JivePlatformVersion *platformVersion = [JivePlatformVersion new];
+    JiveCoreVersion *coreVersion = [JiveCoreVersion new];
+    
     self.instance = [[Jive alloc] initWithJiveInstance:self.testURL
                                  authorizationDelegate:self];
     self.object = [JiveObject new];
+    
+    [coreVersion setValue:self.apiPath forKey:JiveCoreVersionAttributes.uri];
+    [coreVersion setValue:@3 forKey:JiveCoreVersionAttributes.version];
+    [platformVersion setValue:@[coreVersion] forKey:JivePlatformVersionAttributes.coreURI];
+    self.instance.platformVersion = platformVersion;
 }
 
 - (void)tearDown {
@@ -120,13 +136,36 @@
                                @"An invalid refresh date was specified");
 }
 
-- (void)testURLDeserialization {
+- (void)testURLDeserialization_baseURL {
     NSString *propertyID = @"testURL";
     NSDictionary *JSON = @{propertyID:[self.testURL absoluteString]};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
     STAssertEqualObjects(self.testObject.testURL, self.testURL, @"Wrong URL reported");
+}
+
+- (void)testURLDeserialization_contentURL {
+    NSString *propertyID = @"testURL";
+    NSString *contentURLString = [[self.testURL absoluteString] stringByAppendingString:@"/api/core/v3/content/1234"];
+    NSDictionary *JSON = @{propertyID:contentURLString};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects([self.testObject.testURL absoluteString], contentURLString,
+                         @"Wrong URL reported");
+}
+
+- (void)testURLDeserialization_contentURLThroughProxy {
+    NSString *propertyID = @"testURL";
+    NSString *contentPath = @"/api/core/v3/content/1234";
+    NSDictionary *JSON = @{propertyID:[@"https://proxy.com" stringByAppendingString:contentPath]};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects([self.testObject.testURL absoluteString],
+                         [[self.testURL URLByAppendingPathComponent:contentPath] absoluteString],
+                         @"Wrong URL reported");
 }
 
 @end

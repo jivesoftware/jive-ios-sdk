@@ -50,6 +50,7 @@
 }
 
 - (void)setUp {
+    [super setUp];
     self.object = [[DummyContent alloc] init];
 }
 
