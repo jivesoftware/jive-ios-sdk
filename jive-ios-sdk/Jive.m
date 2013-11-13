@@ -2166,10 +2166,15 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self requestWithOptions:nil
                                          andTemplate:@"api/core/v3/metadata/properties/public", nil];
+    
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self bareListOperationForClass:[JiveProperty class]
                                                                                      request:request
                                                                                   onComplete:complete
                                                                                      onError:error];
+
+    // This should be publicly accessible without authentication, if the property is available on the instance.
+    // In the event of an error, this should not attempt an auth & retry, just back off.
+    operation.retrier = nil;
     
     return operation;
 }
