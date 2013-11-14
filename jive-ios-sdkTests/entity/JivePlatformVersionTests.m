@@ -425,8 +425,7 @@
                             @"instanceURL" : instanceURL
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
-                                                          withInstance:self.instance];
+    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
