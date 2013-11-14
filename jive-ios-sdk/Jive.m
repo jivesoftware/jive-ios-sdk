@@ -2162,6 +2162,50 @@ int const JivePushDeviceType = 3;
     [[self propertyWithNameOperation:propertyName onComplete:complete onError:error] start];
 }
 
+# pragma mark - Public Properties (no authentication required)
+
+- (void) publicPropertyWithName:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    [[self publicPropertyWithNameOperation:propertyName onComplete:complete onError:error] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    
+    void (^processPropsBlock)(NSArray* properties) = ^(NSArray* properties) {
+        NSArray* relevantProps = [properties filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", propertyName]];
+        
+        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %i", propertyName, [relevantProps count]);
+        
+        if ([relevantProps count] == 1) {
+            complete([relevantProps objectAtIndex:0]);
+        } else {
+            complete(nil);
+        }
+    };
+    
+    return [self publicPropertiesListOperationWithOnComplete:processPropsBlock onError:error];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSURLRequest *request = [self requestWithOptions:nil
+                                         andTemplate:@"api/core/v3/metadata/properties/public", nil];
+    
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self bareListOperationForClass:[JiveProperty class]
+                                                                                     request:request
+                                                                                  onComplete:complete
+                                                                                     onError:error];
+
+    // This should be publicly accessible without authentication, if the property is available on the instance.
+    // In the event of an error, this should not attempt an auth & retry, just back off.
+    operation.retrier = nil;
+    
+    return operation;
+}
+
+- (void) publicPropertiesListWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    [[self publicPropertiesListOperationWithOnComplete:complete onError:error] start];
+}
+
+
 #pragma mark - Objects
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
@@ -2338,6 +2382,16 @@ int const JivePushDeviceType = 3;
                                                                                 onError:errorBlock
                                                                         responseHandler:(^id(id JSON) {
         return [clazz objectsFromJSONList:[JSON objectForKey:@"list"] withInstance:self];
+    })];
+    return operation;
+}
+
+- (JAPIRequestOperation<JiveRetryingOperation> *)bareListOperationForClass:(Class) clazz request:(NSURLRequest *)request onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
+                                                                             onComplete:completeBlock
+                                                                                onError:errorBlock
+                                                                        responseHandler:(^id(id JSON) {
+        return [clazz instancesFromJSONList:JSON withJive:self];
     })];
     return operation;
 }

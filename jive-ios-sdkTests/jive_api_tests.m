@@ -6512,6 +6512,94 @@
     }];
 }
 
+- (void) testPublicPropertyWithNameOperation {
+    [self createJiveAPIObjectWithResponse:@"public_property"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSOperation* operation = [jive publicPropertyWithNameOperation:@"feature.mobile.nativeapp.allowed" onComplete:^(JiveProperty *property) {
+            // Called 3rd
+            STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
+            
+            STAssertTrue([property valueAsBOOL], @"Public property value not as expected");
+            
+            // Check that delegate was actually called
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        [operation start];
+    }];
+}
+
+- (void) testPublicPropertyWithName {
+    [self createJiveAPIObjectWithResponse:@"public_property"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [jive publicPropertyWithName:@"feature.mobile.nativeapp.allowed" onComplete:^(JiveProperty *property) {
+            // Called 3rd
+            STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
+            
+            STAssertTrue([property valueAsBOOL], @"Public property value not as expected");
+            
+            // Check that delegate was actually called
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testPublicPropertiesList {
+    [self createJiveAPIObjectWithResponse:@"public_property"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [jive publicPropertiesListWithOnComplete:^(NSArray *properties) {
+            
+            STAssertEquals([properties count], 1U, @"Expected one public property");
+            
+            // Called 3rd
+            STAssertEquals([[properties objectAtIndex:0] class], [JiveProperty class], @"Wrong item class");
+            
+            STAssertTrue([[properties objectAtIndex:0] valueAsBOOL], @"Public property value not as expected");
+            
+            // Check that delegate was actually called
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testPublicPropertiesListOperation {
+    [self createJiveAPIObjectWithResponse:@"public_property"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [[jive publicPropertiesListOperationWithOnComplete:^(NSArray *properties) {
+            
+            STAssertEquals([properties count], 1U, @"Expected one public property");
+            
+            // Called 3rd
+            STAssertEquals([[properties objectAtIndex:0] class], [JiveProperty class], @"Wrong item class");
+            
+            STAssertTrue([[properties objectAtIndex:0] valueAsBOOL], @"Public property value not as expected");
+            
+            // Check that delegate was actually called
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }] start];
+    }];
+}
+
+
 - (void) testCreateShareOperation {
     JiveContentBody *source = [JiveContentBody new];
     JiveTargetList *targets = [JiveTargetList new];

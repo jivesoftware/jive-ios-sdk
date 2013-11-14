@@ -1,0 +1,8 @@
+throw 'allowIllegalResourceCall is false.';
+[ {
+ "defaultValue" : "true",
+ "description" : "Flag indicating whether to allow the official mobile native apps",
+ "name" : "feature.mobile.nativeapp.allowed",
+ "type" : "boolean",
+ "value" : true
+ } ]

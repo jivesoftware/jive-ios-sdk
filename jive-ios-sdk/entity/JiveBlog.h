@@ -19,6 +19,8 @@
 
 #import "JivePlace.h"
 
+extern NSString * const JiveBlogType;
+
 //! \class JiveBlog
 //! https://developers.jivesoftware.com/api/v3/rest/BlogEntity.html
 @interface JiveBlog : JivePlace

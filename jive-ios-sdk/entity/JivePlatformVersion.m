@@ -29,7 +29,8 @@ struct JivePlatformVersionAttributes const JivePlatformVersionAttributes = {
 	.releaseID = @"releaseID",
 	.coreURI = @"coreURI",
     .ssoEnabled = @"ssoEnabled",
-    .sdk = @"sdk"
+    .sdk = @"sdk",
+    .instanceURL = @"instanceURL"
 };
 
 static NSString * const JiveVersionKey = @"jiveVersion";
@@ -49,7 +50,7 @@ typedef NS_ENUM(NSInteger, JiveVersionComponents) {
 
 @implementation JivePlatformVersion
 
-@synthesize ssoEnabled;
+@synthesize ssoEnabled, instanceURL;
 
 - (void)parseVersion:(NSString *)versionString {
     NSArray *components = [versionString componentsSeparatedByString:@" "];
