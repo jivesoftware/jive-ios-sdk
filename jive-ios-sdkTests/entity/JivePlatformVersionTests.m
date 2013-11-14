@@ -47,9 +47,11 @@
     NSNumber *build = @0;
     NSString *sdkVersion = [JivePlatformVersion new].sdk;
     NSString *releaseID = @"7c2";
+    NSString *instanceURL = @"https://dummy.com";
     NSDictionary *JSON = @{ @"jiveVersion" : [NSString stringWithFormat:@"%@.%@.%@.%@ %@",
                                               major, minor, maintenance, build, releaseID],
-                            @"jiveCoreVersions" : versionsArray
+                            @"jiveCoreVersions" : versionsArray,
+                            @"instanceURL" : instanceURL
                             };
     
     STAssertNotNil(sdkVersion, @"PRECONDITION: Invalid sdk version");
@@ -64,6 +66,7 @@
     STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
     STAssertNil(version.ssoEnabled, @"Invalid ssoEnabled result");
     STAssertEqualObjects(version.sdk, sdkVersion, @"Invalid sdk version number");
+    STAssertEqualObjects([version.instanceURL absoluteString], instanceURL, @"Invalid instance URL");
     STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
     if (version.coreURI.count == 2) {
         JiveCoreVersion *version2 = version.coreURI[0];
@@ -118,6 +121,7 @@
     STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
     STAssertEqualObjects(version.build, build, @"Wrong build version");
     STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
+    STAssertNil(version.instanceURL, @"There should be no instance URL here");
     STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
     if (version.coreURI.count == 2) {
         JiveCoreVersion *version2 = version.coreURI[0];
@@ -397,6 +401,41 @@
     if (version.ssoEnabled.count > 0) {
         STAssertEquals(version.ssoEnabled[0], ssoTypes[0], @"Wrong sso type");
     }
+}
+
+- (void)testInstanceURL {
+    NSNumber *apiVersion3 = @3;
+    NSNumber *apiVersion3Revision = @3;
+    NSString *coreVersion3URI = @"/api/core/v3";
+    NSDictionary *version3JSON = @{ @"version" : apiVersion3,
+                                    @"revision" : apiVersion3Revision,
+                                    @"uri" : coreVersion3URI,
+                                    @"documentation" : @"https://developers.jivesoftware.com/api/v3/rest"
+                                    };
+    NSArray *versionsArray = @[version3JSON];
+    NSNumber *major = @7;
+    NSNumber *minor = @0;
+    NSNumber *maintenance = @0;
+    NSNumber *build = @0;
+    NSString *releaseID = @"7c2";
+    NSString *instanceURL = @"http://alternate.net";
+    NSDictionary *JSON = @{ @"jiveVersion" : [NSString stringWithFormat:@"%@.%@.%@.%@ %@",
+                                              major, minor, maintenance, build, releaseID],
+                            @"jiveCoreVersions" : versionsArray,
+                            @"instanceURL" : instanceURL
+                            };
+    
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                          withInstance:self.instance];
+    
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
+    STAssertEqualObjects(version.major, major, @"Wrong major version");
+    STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
+    STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
+    STAssertEqualObjects(version.build, build, @"Wrong build version");
+    STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
+    STAssertEqualObjects([version.instanceURL absoluteString], instanceURL, @"Wrong instance URL");
+    STAssertEquals(version.coreURI.count, (NSUInteger)1, @"Wrong number of core URIs");
 }
 
 @end
