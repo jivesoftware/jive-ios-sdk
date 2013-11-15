@@ -22,12 +22,34 @@
 
 @implementation JiveObjectTests
 
-- (NSURL *)testURL {
-    if (!_testURL) {
-        _testURL = [NSURL URLWithString:@"http://dummy.com"];
+@synthesize serverURL = _serverURL, apiPath = _apiPath;
+
+- (void)setServerURL:(NSURL *)testURL {
+    if (!_serverURL || ![_serverURL isEqual:testURL]) {
+        _serverURL = testURL;
+        if (self.instance) {
+            [self.instance.platformVersion setValue:testURL
+                                             forKey:JivePlatformVersionAttributes.instanceURL];
+        }
+    }
+}
+
+- (NSURL *)serverURL {
+    if (!_serverURL) {
+        _serverURL = [NSURL URLWithString:@"http://dummy.com"];
     }
     
-    return _testURL;
+    return _serverURL;
+}
+
+- (void)setApiPath:(NSString *)apiPath {
+    if (!_apiPath || ![_apiPath isEqual:apiPath]) {
+        _apiPath = apiPath;
+        if (self.instance) {
+            [self.instance.platformVersion.coreURI[0] setValue:apiPath
+                                                        forKey:JiveCoreVersionAttributes.uri];
+        }
+    }
 }
 
 - (NSString *)apiPath {
@@ -42,13 +64,14 @@
     JivePlatformVersion *platformVersion = [JivePlatformVersion new];
     JiveCoreVersion *coreVersion = [JiveCoreVersion new];
     
-    self.instance = [[Jive alloc] initWithJiveInstance:self.testURL
+    self.instance = [[Jive alloc] initWithJiveInstance:self.serverURL
                                  authorizationDelegate:self];
     self.object = [JiveObject new];
     
     [coreVersion setValue:self.apiPath forKey:JiveCoreVersionAttributes.uri];
     [coreVersion setValue:@3 forKey:JiveCoreVersionAttributes.version];
     [platformVersion setValue:@[coreVersion] forKey:JivePlatformVersionAttributes.coreURI];
+    [platformVersion setValue:self.serverURL forKey:JivePlatformVersionAttributes.instanceURL];
     self.instance.platformVersion = platformVersion;
 }
 

@@ -64,16 +64,16 @@
 
 - (void)testURLDeserialization_baseURL {
     NSString *propertyID = @"testURL";
-    NSDictionary *JSON = @{propertyID:[self.testURL absoluteString]};
+    NSDictionary *JSON = @{propertyID:[self.serverURL absoluteString]};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
-    STAssertEqualObjects(self.testObject.testURL, self.testURL, @"Wrong URL reported");
+    STAssertEqualObjects(self.testObject.testURL, self.serverURL, @"Wrong URL reported");
 }
 
 - (void)testURLDeserialization_contentURL {
     NSString *propertyID = @"testURL";
-    NSString *contentURLString = [[self.testURL absoluteString] stringByAppendingString:@"/api/core/v3/content/1234"];
+    NSString *contentURLString = [[self.serverURL absoluteString] stringByAppendingString:@"/api/core/v3/content/1234"];
     NSDictionary *JSON = @{propertyID:contentURLString};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
@@ -85,15 +85,27 @@
 - (void)testURLDeserialization_contentURLThroughProxy {
     NSString *propertyID = @"testURL";
     NSString *contentPath = @"/api/core/v3/content/1234";
-    NSDictionary *JSON = @{propertyID:[@"https://proxy.com" stringByAppendingString:contentPath]};
+    NSString *proxyURLString = @"https://proxy.com";
+    NSDictionary *JSON = @{propertyID:[[self.instance.jiveInstanceURL absoluteString] stringByAppendingString:contentPath]};
     
+    self.instance.jiveInstanceURL = [NSURL URLWithString:proxyURLString];
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
     STAssertEqualObjects([self.testObject.testURL absoluteString],
-                         [[self.testURL URLByAppendingPathComponent:contentPath] absoluteString],
+                         [proxyURLString stringByAppendingString:contentPath],
                          @"Wrong URL reported");
 }
 
-//[platformVersion setValue:self.reportedURL forKey:JivePlatformVersionAttributes.instanceURL];
+- (void)testURLDeserialization_alternateInstanceURL {
+    NSString *propertyID = @"testURL";
+    NSString *contentPath = @"/api/core/v3/content/1234";
+    NSString *proxyURLString = [@"https://alternate.net" stringByAppendingString:contentPath];
+    NSDictionary *JSON = @{propertyID:proxyURLString};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects([self.testObject.testURL absoluteString], proxyURLString,
+                         @"Should not change URLs for other instances");
+}
 
 @end

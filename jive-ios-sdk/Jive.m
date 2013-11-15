@@ -55,21 +55,7 @@ int const JivePushDeviceType = 3;
 
 @end
 
-@interface Jive() {
-    
-@private
-    __strong NSURL* _jiveInstance;
-}
-
-@property(atomic, weak) id<JiveAuthorizationDelegate> delegate;
-@property(nonatomic, strong) NSURL* jiveInstance;
-@property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
-
-@end
-
 @implementation Jive
-
-@synthesize jiveInstance = _jiveInstance;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
@@ -88,6 +74,8 @@ int const JivePushDeviceType = 3;
             }
             
             if (foundValidCoreVersion) {
+                self.rewriteInstanceURLs = (self.platformVersion.instanceURL &&
+                                            ![self.jiveInstanceURL isEqual:self.platformVersion.instanceURL]);
                 if (completeBlock) {
                     completeBlock(self.platformVersion);
                 }
@@ -123,15 +111,11 @@ int const JivePushDeviceType = 3;
       authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate {
     self = [super init];
     if(self) {
-        _jiveInstance = jiveInstanceURL;
+        _jiveInstanceURL = jiveInstanceURL;
         self.delegate = delegate;
     }
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     return self;
-}
-
-- (NSURL*) jiveInstanceURL {
-    return _jiveInstance;
 }
 
 - (JiveMetadata *)instanceMetadata {
@@ -142,25 +126,20 @@ int const JivePushDeviceType = 3;
     return _instanceMetadata;
 }
 
+- (void)setJiveInstanceURL:(NSURL *)jiveInstanceURL {
+    if (jiveInstanceURL && ![jiveInstanceURL isEqual:_jiveInstanceURL]) {
+        _jiveInstanceURL = jiveInstanceURL;
+        self.rewriteInstanceURLs = (self.platformVersion.instanceURL &&
+                                    ![jiveInstanceURL isEqual:self.platformVersion.instanceURL]);
+    }
+}
+
 #pragma mark - helper methods
 
 - (NSURL *)createURLWithInstanceValidation:(NSString *)urlString {
-    JiveCoreVersion *v3api = nil;
-    
-    for (JiveCoreVersion *apiVersion in self.platformVersion.coreURI) {
-        if ([apiVersion.version isEqualToNumber:@3]) {
-            v3api = apiVersion;
-            break;
-        }
-    }
-    
-    if (v3api) {
-        NSRange apiPathRange = [urlString rangeOfString:v3api.uri];
-        
-        if (apiPathRange.length > 0) {
-            return [NSURL URLWithString:[urlString substringFromIndex:apiPathRange.location]
-                          relativeToURL:self.jiveInstance];
-        }
+    if (self.rewriteInstanceURLs) {
+        urlString = [urlString stringByReplacingOccurrencesOfString:[self.platformVersion.instanceURL absoluteString]
+                                                         withString:[self.jiveInstanceURL absoluteString]];
     }
     
     return [NSURL URLWithString:urlString];

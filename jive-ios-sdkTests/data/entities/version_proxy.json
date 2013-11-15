@@ -1,6 +1,6 @@
 throw 'allowIllegalResourceCall is false.';
 {
-  "jiveVersion" : "6.0.0.0 7c2",
+  "jiveVersion" : "7.0.0.0",
   "jiveCoreVersions" : [ {
     "version" : 2,
     "revision" : 3,
@@ -12,5 +12,5 @@ throw 'allowIllegalResourceCall is false.';
     "uri" : "/api/core/v3",
     "documentation" : "https://developers.jivesoftware.com/api/v3/rest"
   } ],
-    "instanceURL" : "https://brewspace.jiveland.com"
+    "instanceURL" : "https://proxy.com"
 }
