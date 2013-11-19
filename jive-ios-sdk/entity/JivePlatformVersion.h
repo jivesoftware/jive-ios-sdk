@@ -58,4 +58,18 @@ extern struct JivePlatformVersionAttributes {
 //! Jive iOS SDK version number
 @property (nonatomic, readonly) NSString *sdk;
 
+- (BOOL)supportsDraftPostCreation;
+- (BOOL)supportsDraftPostContentFilter;
+- (BOOL)supportsExplicitSSO;
+- (BOOL)supportsFollowing;
+- (BOOL)supportsStatusUpdateInPlace;
+- (BOOL)supportsBookmarkInboxEntries;
+- (BOOL)supportsCorrectAndHelpfulReplies;
+- (BOOL)supportsStructuredOutcomes;
+- (BOOL)supportsExplicitCorrectAnswerAPI;
+- (BOOL)supportsDiscussionLikesInActivityObjects;
+- (BOOL)supportsInboxTypeFiltering;
+- (BOOL)supportsCommentAndReplyPermissions;
+- (BOOL)supportedIPhoneVersion;
+
 @end
