@@ -17,6 +17,8 @@
 //    limitations under the License.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef jive_ios_sdk_JiveResponseBlocks_h
 #define jive_ios_sdk_JiveResponseBlocks_h
 
