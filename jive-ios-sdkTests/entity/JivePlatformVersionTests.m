@@ -21,6 +21,12 @@
 #import "JivePlatformVersion.h"
 #import "JiveCoreVersion.h"
 
+@interface JivePlatformVersion (TestSupport)
+- (BOOL)supportsFeatureAvailableWithMajorVersion:(NSUInteger)majorVersion
+                                    minorVersion:(NSUInteger)minorVersion
+                              maintenanceVersion:(NSUInteger)maintenanceVersion;
+@end
+
 @implementation JivePlatformVersionTests
 
 - (void)testVersionParsing {
@@ -397,6 +403,38 @@
     if (version.ssoEnabled.count > 0) {
         STAssertEquals(version.ssoEnabled[0], ssoTypes[0], @"Wrong sso type");
     }
+}
+
+- (void)test_supportsFeatureAvailableWithMajorVersion_minorVersion_maintenanceVersion_valid {
+    JivePlatformVersion *version = [JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:5 maintenanceVersion:3];
+    
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:0 minorVersion:0 maintenanceVersion:0], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:0 minorVersion:0 maintenanceVersion:1], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:5 minorVersion:8 maintenanceVersion:8], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:2], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:3], @"Feature should be supported for platform version");
+    
+    version = [JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:0 minorVersion:0 maintenanceVersion:0], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:0 minorVersion:0 maintenanceVersion:1], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:5 minorVersion:8 maintenanceVersion:8], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:2], @"Feature should be supported for platform version");
+    STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:3], @"Feature should be supported for platform version");
+}
+
+#pragma mark - Factory methods
+
++ (JivePlatformVersion *)jivePlatformVersionWithMajorVersion:(NSUInteger)majorVersion minorVersion:(NSUInteger)minorVersion maintenanceVersion:(NSUInteger)maintenanceVersion {
+    JivePlatformVersion *version = [[JivePlatformVersion alloc] init];
+    
+    [version setValue:@(majorVersion) forKey:JivePlatformVersionAttributes.major];
+    [version setValue:@(minorVersion) forKey:JivePlatformVersionAttributes.minor];
+    [version setValue:@(maintenanceVersion) forKey:JivePlatformVersionAttributes.maintenance];
+    
+    return version;
 }
 
 @end
