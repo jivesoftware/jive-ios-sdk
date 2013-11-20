@@ -65,14 +65,6 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
     return semanticVersion;
 }
 
-@interface JivePlatformVersion ()
-
-- (BOOL)supportsFeatureAvailableWithMajorVersion:(NSUInteger)majorVersion
-                                    minorVersion:(NSUInteger)minorVersion
-                              maintenanceVersion:(NSUInteger)maintenanceVersion
-                                      releaseIDs:(NSSet *)releaseIDs;
-@end
-
 @implementation JivePlatformVersion
 
 @synthesize ssoEnabled;
