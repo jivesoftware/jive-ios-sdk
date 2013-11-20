@@ -20,7 +20,6 @@
 #import "JivePlatformVersion.h"
 #import "JiveObject_internal.h"
 #import "JiveCoreVersion.h"
-#import <JiveCommon/NSString+JVCommonAdditions.h>
 
 struct JivePlatformVersionAttributes const JivePlatformVersionAttributes = {
 	.major = @"major",
