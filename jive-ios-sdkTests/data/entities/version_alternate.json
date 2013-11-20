@@ -9,7 +9,7 @@ throw 'allowIllegalResourceCall is false.';
   }, {
     "version" : 3,
     "revision" : 1,
-    "uri" : "/api/core/v3",
+    "uri" : "/core/api/v3",
     "documentation" : "https://developers.jivesoftware.com/api/v3/rest"
   } ],
     "instanceURL" : "https://brewspace.jiveland.com"

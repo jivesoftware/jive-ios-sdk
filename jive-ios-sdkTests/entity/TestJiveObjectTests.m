@@ -84,8 +84,8 @@
 
 - (void)testURLDeserialization_contentURLThroughProxy {
     NSString *propertyID = @"testURL";
-    NSString *contentPath = @"/api/core/v3/content/1234";
-    NSString *proxyURLString = @"https://proxy.com";
+    NSString *contentPath = @"api/core/v3/content/1234";
+    NSString *proxyURLString = @"https://proxy.com/";
     NSDictionary *JSON = @{propertyID:[[self.instance.jiveInstanceURL absoluteString] stringByAppendingString:contentPath]};
     
     self.instance.jiveInstanceURL = [NSURL URLWithString:proxyURLString];
@@ -96,10 +96,10 @@
                          @"Wrong URL reported");
 }
 
-- (void)testURLDeserialization_alternateInstanceURL {
+- (void)testURLDeserialization_nonInstanceURL {
     NSString *propertyID = @"testURL";
-    NSString *contentPath = @"/api/core/v3/content/1234";
-    NSString *proxyURLString = [@"https://alternate.net" stringByAppendingString:contentPath];
+    NSString *contentPath = @"data/content/1234";
+    NSString *proxyURLString = [@"https://alternate.net/" stringByAppendingString:contentPath];
     NSDictionary *JSON = @{propertyID:proxyURLString};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],

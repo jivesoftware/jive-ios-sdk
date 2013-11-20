@@ -36,7 +36,7 @@
 
 - (NSURL *)serverURL {
     if (!_serverURL) {
-        _serverURL = [NSURL URLWithString:@"http://dummy.com"];
+        _serverURL = [NSURL URLWithString:@"http://dummy.com/"];
     }
     
     return _serverURL;
@@ -54,7 +54,7 @@
 
 - (NSString *)apiPath {
     if (!_apiPath) {
-        _apiPath = @"/api/core/v3";
+        _apiPath = @"api/core/v3";
     }
     
     return _apiPath;

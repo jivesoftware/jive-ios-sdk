@@ -89,7 +89,6 @@
     STAssertEqualObjects([configuredJiveInstance absoluteString], originalJiveInstance,
                          @"Configured URL does not match original URL");
     STAssertNil(jive.platformVersion, @"Platform version should not exist");
-    STAssertFalse(jive.rewriteInstanceURLs, @"Wrong initial rewrite instance urls");
 }
 
 - (void) testInbox {
@@ -6296,13 +6295,14 @@
 - (void) testVersionOperationForInstance {
     [self createJiveAPIObjectWithResponse:@"version"];
     
+    STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"PRECONDITION: Wrong base uri");
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
                                                                      onComplete:(^(JivePlatformVersion *version) {
             STAssertEqualObjects(version.major, @7, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertNil(version.instanceURL, @"There should not be a server URL");
-            STAssertFalse(jive.rewriteInstanceURLs, @"Should not rewrite instance URLs with no server URL");
+            STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"The base URI should not have changed");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -6318,13 +6318,14 @@
 - (void) testVersionForInstance {
     [self createJiveAPIObjectWithResponse:@"version_alternate"];
     
+    STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"PRECONDITION: Wrong base uri");
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [jive versionForInstance:testURL
                       onComplete:(^(JivePlatformVersion *version) {
             STAssertEqualObjects(version.major, @6, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertEqualObjects(version.instanceURL, jive.jiveInstanceURL, @"Wrong server URL");
-            STAssertFalse(jive.rewriteInstanceURLs, @"Should not rewrite instance URLs with matching server URL");
+            STAssertEqualObjects(jive.baseURI, @"core/api/v3", @"The base URI was not updated");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -6377,7 +6378,6 @@
             STAssertEqualObjects(version.major, @7, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertEqualObjects(version.instanceURL, serverURL, @"Wrong server URL");
-            STAssertTrue(jive.rewriteInstanceURLs, @"Should rewrite instance URLs with proxy server URL");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -6400,13 +6400,11 @@
     
     jive.jiveInstanceURL = newJiveInstance;
     STAssertNil(jive.platformVersion, @"Platform version should not exist");
-    STAssertFalse(jive.rewriteInstanceURLs, @"Rewrite instance urls should not have changed");
     STAssertEqualObjects(jive.jiveInstanceURL, newJiveInstance, @"instance url not updated");
     
     [jive setValue:platformVersion forKey:@"platformVersion"];
     jive.jiveInstanceURL = originalJiveInstance;
     STAssertEqualObjects(jive.platformVersion, platformVersion, @"Changing the instance url should not have changed the platform version");
-    STAssertTrue(jive.rewriteInstanceURLs, @"It should rewrite instance urls now");
     STAssertEqualObjects(jive.jiveInstanceURL, originalJiveInstance, @"instance url not updated");
 }
 

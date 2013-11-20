@@ -37,7 +37,8 @@
 
 - (void) testJiveInboxEntryDeserialize {
     id json = [self JSONFromTestFile:@"inbox_response"];
-    Jive *instance = [Jive new];
+    Jive *instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                                  authorizationDelegate:nil];
     NSDictionary* inboxEntryData = [[json objectForKey:@"list"] objectAtIndex:0];
     JiveInboxEntry *inboxEntry = [JiveInboxEntry objectFromJSON:inboxEntryData
                                                      withInstance:instance];
@@ -49,7 +50,8 @@
 - (void) testJiveInboxEntryDeserializeList {
     
     id json = [self JSONFromTestFile:@"inbox_response"];
-    Jive *instance = [Jive new];
+    Jive *instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                                  authorizationDelegate:nil];
     id JSONList = [json objectForKey:@"list"];
     JiveInboxEntry *inboxEntry = [JiveInboxEntry objectFromJSON:JSONList withInstance:instance];
     
