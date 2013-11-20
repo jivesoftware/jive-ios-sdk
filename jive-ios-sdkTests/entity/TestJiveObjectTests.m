@@ -9,6 +9,11 @@
 #import "JiveObjectTests.h"
 #import "Jive_internal.h"
 
+struct TestJiveObjectAttributes {
+    __unsafe_unretained NSString *testProperty;
+    __unsafe_unretained NSString *testURL;
+} const TestJiveObjectAttributes;
+
 @interface TestJiveObject : JiveObject
 
 @property (nonatomic, strong) NSString *testProperty;
@@ -21,6 +26,11 @@
 @property (nonatomic, readonly) TestJiveObject *testObject;
 
 @end
+
+struct TestJiveObjectAttributes const TestJiveObjectAttributes = {
+    .testProperty = @"testProperty",
+    .testURL = @"testURL"
+};
 
 @implementation TestJiveObject
 
@@ -49,8 +59,7 @@
 
 - (void)testDeserialize_validJSON {
     NSString *testValue = @"test value";
-    NSString *propertyID = @"testProperty";
-    NSDictionary *JSON = @{propertyID:testValue};
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:testValue};
     NSDate *testDate = [NSDate date];
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance], @"Reported invalid deserialize with valid JSON");
@@ -63,8 +72,7 @@
 }
 
 - (void)testURLDeserialization_baseURL {
-    NSString *propertyID = @"testURL";
-    NSDictionary *JSON = @{propertyID:[self.serverURL absoluteString]};
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:[self.serverURL absoluteString]};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
@@ -72,9 +80,8 @@
 }
 
 - (void)testURLDeserialization_contentURL {
-    NSString *propertyID = @"testURL";
     NSString *contentURLString = [[self.serverURL absoluteString] stringByAppendingString:@"/api/core/v3/content/1234"];
-    NSDictionary *JSON = @{propertyID:contentURLString};
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:contentURLString};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
@@ -83,10 +90,9 @@
 }
 
 - (void)testURLDeserialization_contentURLThroughProxy {
-    NSString *propertyID = @"testURL";
     NSString *contentPath = @"api/core/v3/content/1234";
     NSString *proxyURLString = @"https://proxy.com/";
-    NSDictionary *JSON = @{propertyID:[[self.instance.jiveInstanceURL absoluteString] stringByAppendingString:contentPath]};
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:[[self.instance.jiveInstanceURL absoluteString] stringByAppendingString:contentPath]};
     
     self.instance.jiveInstanceURL = [NSURL URLWithString:proxyURLString];
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
@@ -97,10 +103,9 @@
 }
 
 - (void)testURLDeserialization_nonInstanceURL {
-    NSString *propertyID = @"testURL";
     NSString *contentPath = @"data/content/1234";
     NSString *proxyURLString = [@"https://alternate.net/" stringByAppendingString:contentPath];
-    NSDictionary *JSON = @{propertyID:proxyURLString};
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:proxyURLString};
     
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
