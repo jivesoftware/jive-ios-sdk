@@ -27,7 +27,6 @@
 @property(atomic, weak) id<JiveAuthorizationDelegate> delegate;
 @property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
 @property (nonatomic, strong) JivePlatformVersion *platformVersion;
-@property (nonatomic) BOOL rewriteInstanceURLs;
 @property (nonatomic, strong) NSString *baseURI;
 
 - (NSURL *)createURLWithInstanceValidation:(NSString *)urlString;

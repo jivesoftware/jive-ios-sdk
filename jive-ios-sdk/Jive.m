@@ -75,8 +75,6 @@ int const JivePushDeviceType = 3;
             }
             
             if (foundValidCoreVersion) {
-                self.rewriteInstanceURLs = (self.platformVersion.instanceURL &&
-                                            ![self.jiveInstanceURL isEqual:self.platformVersion.instanceURL]);
                 if (completeBlock) {
                     completeBlock(self.platformVersion);
                 }
@@ -135,20 +133,20 @@ int const JivePushDeviceType = 3;
     return _instanceMetadata;
 }
 
-- (void)setJiveInstanceURL:(NSURL *)jiveInstanceURL {
-    if (jiveInstanceURL && ![jiveInstanceURL isEqual:_jiveInstanceURL]) {
-        _jiveInstanceURL = jiveInstanceURL;
-        self.rewriteInstanceURLs = (self.platformVersion.instanceURL &&
-                                    ![jiveInstanceURL isEqual:self.platformVersion.instanceURL]);
-    }
-}
-
 #pragma mark - helper methods
 
 - (NSURL *)createURLWithInstanceValidation:(NSString *)urlString {
-    if (self.rewriteInstanceURLs) {
-        urlString = [urlString stringByReplacingOccurrencesOfString:[self.platformVersion.instanceURL absoluteString]
-                                                         withString:[self.jiveInstanceURL absoluteString]];
+    NSString *instanceURL = self.jiveInstanceURL.absoluteString;
+    
+    if (![instanceURL isEqual:[urlString substringToIndex:instanceURL.length]]) {
+        NSRange baseURIRange = [urlString rangeOfString:self.baseURI];
+        
+        if (baseURIRange.length > 0) {
+            NSString *badInstanceURL = [urlString substringToIndex:baseURIRange.location];
+            
+            urlString = [urlString stringByReplacingOccurrencesOfString:badInstanceURL
+                                                             withString:instanceURL];
+        }
     }
     
     return [NSURL URLWithString:urlString];
