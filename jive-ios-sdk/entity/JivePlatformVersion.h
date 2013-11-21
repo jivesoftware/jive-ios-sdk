@@ -62,4 +62,18 @@ extern struct JivePlatformVersionAttributes {
 //! The URL known to the server
 @property (nonatomic, readonly) NSURL *instanceURL;
 
+- (BOOL)supportsDraftPostCreation;
+- (BOOL)supportsDraftPostContentFilter;
+- (BOOL)supportsExplicitSSO;
+- (BOOL)supportsFollowing;
+- (BOOL)supportsStatusUpdateInPlace;
+- (BOOL)supportsBookmarkInboxEntries;
+- (BOOL)supportsCorrectAndHelpfulReplies;
+- (BOOL)supportsStructuredOutcomes;
+- (BOOL)supportsExplicitCorrectAnswerAPI;
+- (BOOL)supportsDiscussionLikesInActivityObjects;
+- (BOOL)supportsInboxTypeFiltering;
+- (BOOL)supportsCommentAndReplyPermissions;
+- (BOOL)supportedIPhoneVersion;
+
 @end
