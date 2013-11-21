@@ -119,13 +119,7 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 
 #pragma mark - Version checks
 
-/** Version checks rely on both the semantic version of the platform or the release ID of the platform. For example, cloud platform development for Jive 7 will
- use the semantic version of 7.0.0 during development. However, release IDs will also be assigned to the platform version, e.g. 7c3 for Samurai. For on-prem
- and hosted platforms a simple check on the semantic version will be enough.
- 
- In order to specify feature support, for example, for development in Samurai that will also be ported to 6.0.3, you would need to check for the semantic version
- 6.0.3 and also for the release IDs for Samurai and above.
- */
+/** Version checks rely on the semantic version of the platform. */
 
 - (BOOL)supportsFeatureAvailableWithSemanticVersion:(JVSemanticVersion)version {
     return [self supportsFeatureAvailableWithMajorVersion:version.majorVersion
