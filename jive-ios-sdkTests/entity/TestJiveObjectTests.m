@@ -223,36 +223,97 @@ struct TestJiveObjectAttributes const TestJiveObjectAttributes = {
                          @"Failed to change instance url");
 }
 
-/*
-<body>
-    <!-- [DocumentBodyStart:59543c00-c3d4-4018-abd3-5435631e74fe] -->
-        <div class="jive-rendered-content">
-            <p>Here is some HTML:</p>
-            <p>
-                <span>&lt;body&gt;&lt;a class="jiveTT-hover-user jive-link-profile-small" data-containerId="-1" data-containerType="-1" data-objectId="2024" data-objectType="3" href="</span>
-                    <a class="jive-link-external-small" href="http://dummy.com/person/user1" rel="nofollow">http://dummy.com/person/user1</a>
-                <span>"&gt;Stuff to look at&lt;/a&gt;&lt;/body&gt;</span>
-            </p>
-            <p style="min-height: 8pt; padding: 0px;">&nbsp;</p>
-            <p>
-                <span style="font-size: 10pt; line-height: 1.5em;">Look at that.</span>
-            </p>
-        </div>
-    <!-- [DocumentBodyEnd:59543c00-c3d4-4018-abd3-5435631e74fe] -->
-</body>
-*/
+- (void)testURLStringDeserialization_bodyContentWithSpaceLink {
+    NSString *objectType = @"14";
+    NSString *objectID = @"57";
+    NSString *stringFormat = @"<body><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"%@\" data-objectType=\"%@\" href=\"%@%@%@\">Stuff to look at</a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:[NSString stringWithFormat:stringFormat,
+                                                                  objectID,
+                                                                  objectType,
+                                                                  @"https://proxy.com/",
+                                                                  @"place/",
+                                                                  @"space"]};
+    NSString *expectedValue = [NSString stringWithFormat:stringFormat,
+                               objectID,
+                               objectType,
+                               [self.serverURL absoluteString],
+                               @"api/core/v3/places/",
+                               objectID];
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
 
-/*
-<body>
-    <!-- [DocumentBodyStart:edfafb05-2705-4552-b0be-4244f59ccdf8] -->
-        <div class="jive-rendered-content">
-            <a class="jiveTT-hover-user jive-link-profile-small" data-containerId="-1" data-containerType="-1" data-objectId="2024" data-objectType="3" href="http://ec2-50-16-28-93.compute-1.amazonaws.com/people/user1">user1 test</a>
-            <span>&nbsp;</span>
-            <br class=""/>
-        </div>
-    <!-- [DocumentBodyEnd:edfafb05-2705-4552-b0be-4244f59ccdf8] -->
-</body>
-*/
+- (void)testURLStringDeserialization_bodyContentWithBlogLink {
+    NSString *objectType = @"37";
+    NSString *objectID = @"105";
+    NSString *stringFormat = @"<body><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"%@\" data-objectType=\"%@\" href=\"%@%@%@\">Stuff to look at</a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:[NSString stringWithFormat:stringFormat,
+                                                                  objectID,
+                                                                  objectType,
+                                                                  @"https://proxy.com/",
+                                                                  @"place/",
+                                                                  @"space"]};
+    NSString *expectedValue = [NSString stringWithFormat:stringFormat,
+                               objectID,
+                               objectType,
+                               [self.serverURL absoluteString],
+                               @"api/core/v3/places/",
+                               objectID];
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
+
+- (void)testURLStringDeserialization_bodyContentWithProjectLink {
+    NSString *objectType = @"600";
+    NSString *objectID = @"157";
+    NSString *stringFormat = @"<body><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"%@\" data-objectType=\"%@\" href=\"%@%@%@\">Stuff to look at</a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:[NSString stringWithFormat:stringFormat,
+                                                                  objectID,
+                                                                  objectType,
+                                                                  @"https://proxy.com/",
+                                                                  @"place/",
+                                                                  @"space"]};
+    NSString *expectedValue = [NSString stringWithFormat:stringFormat,
+                               objectID,
+                               objectType,
+                               [self.serverURL absoluteString],
+                               @"api/core/v3/places/",
+                               objectID];
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
+
+- (void)testURLStringDeserialization_bodyContentWithGroupLink {
+    NSString *objectType = @"700";
+    NSString *objectID = @"5";
+    NSString *stringFormat = @"<body><a class=\"jiveTT-hover-user jive-link-profile-small\" data-containerId=\"-1\" data-containerType=\"-1\" data-objectId=\"%@\" data-objectType=\"%@\" href=\"%@%@%@\">Stuff to look at</a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:[NSString stringWithFormat:stringFormat,
+                                                                  objectID,
+                                                                  objectType,
+                                                                  @"https://proxy.com/",
+                                                                  @"place/",
+                                                                  @"space"]};
+    NSString *expectedValue = [NSString stringWithFormat:stringFormat,
+                               objectID,
+                               objectType,
+                               [self.serverURL absoluteString],
+                               @"api/core/v3/places/",
+                               objectID];
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
 
 @end
 /*

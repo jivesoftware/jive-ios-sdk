@@ -161,21 +161,28 @@ int const JivePushDeviceType = 3;
     } else if ([sourceString hasPrefix:@"<body>"]) {
         TFHpple *htmlParser = [TFHpple hppleWithHTMLData:[sourceString dataUsingEncoding:NSUTF8StringEncoding]];
         NSArray *linkArray = [htmlParser searchWithXPathQuery:@"//a"];
+        NSDictionary *typeDictionary = @{@"3":@"people",
+                                         @"14":@"places", @"37":@"places",
+                                         @"600":@"places", @"700":@"places"};
         
         for (TFHppleElement *anchor in linkArray) {
             NSString *objectType = [anchor objectForKey:@"data-objecttype"];
             NSString *objectID = [anchor objectForKey:@"data-objectid"];
             NSString *href = [anchor objectForKey:@"href"];
             
-            if (objectID && [@"3" isEqualToString:objectType]) {
-                NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
-                NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/people/%@",
-                                                       self.baseURI, objectID]
-                                        relativeToURL:self.jiveInstanceURL];
-                NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
+            if (objectID) {
+                NSString *typeSpecifier = typeDictionary[objectType];
                 
-                sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
-                                                                       withString:newHrefString];
+                if (typeSpecifier) {
+                    NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
+                    NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@",
+                                                              self.baseURI, typeSpecifier, objectID]
+                                               relativeToURL:self.jiveInstanceURL];
+                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
+                    
+                    sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
+                                                                           withString:newHrefString];
+                }
             }
         }
     }
