@@ -278,6 +278,7 @@
 		893CE2DC1700F368002AA837 /* JiveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2DA1700F368002AA837 /* JiveEvent.m */; };
 		893CE2E11700F41C002AA837 /* JiveEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893CE2E01700F41C002AA837 /* JiveEventTests.m */; };
 		893E862B1779D8BD006D154C /* objects_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 893E862A1779D8BD006D154C /* objects_response.json */; };
+		897A06AC9D4F477D87F1D478 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D90C0D9A4AA04524ADA49C02 /* libPods.a */; };
 		8999E65416FA9BB00009677A /* JiveVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65216FA9BB00009677A /* JiveVideo.m */; };
 		8999E65C16FAA1140009677A /* JiveVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8999E65B16FAA1140009677A /* JiveVideoTests.m */; };
 		89FBB4FE177B9FBF0039543E /* JiveKVOAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB4FC177B9FBF0039543E /* JiveKVOAdapter.m */; };
@@ -920,6 +921,7 @@
 		21AD976C161CBA90009A977D /* JiveAPITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAPITestCase.m; sourceTree = "<group>"; };
 		21AEB5101639F57A0055D45A /* JiveInboxOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveInboxOptions.h; sourceTree = "<group>"; };
 		21AEB5111639F57B0055D45A /* JiveInboxOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveInboxOptions.m; sourceTree = "<group>"; };
+		535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		780A3D0016406C40000BFDFC /* collegues_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collegues_response.json; sourceTree = "<group>"; };
 		7814D57D16530A7A000D9BE9 /* JiveContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveContent.h; sourceTree = "<group>"; };
 		7814D57E16530A7A000D9BE9 /* JiveContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveContent.m; sourceTree = "<group>"; };
@@ -1082,6 +1084,7 @@
 		B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+JiveAuthorizationDelegate.m"; sourceTree = "<group>"; };
 		B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveHTTPBasicAuthCredentials.h; sourceTree = "<group>"; };
 		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
+		D90C0D9A4AA04524ADA49C02 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1093,6 +1096,7 @@
 				B8D2511016B9735F00412DA5 /* MobileCoreServices.framework in Frameworks */,
 				B8D2510C16B9735800412DA5 /* SystemConfiguration.framework in Frameworks */,
 				2192BBFD1614F33300082926 /* Foundation.framework in Frameworks */,
+				897A06AC9D4F477D87F1D478 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,6 +1532,7 @@
 				2192BC131614F33300082926 /* jive-ios-sdkTests */,
 				2192BC681614FF4E00082926 /* lib */,
 				2192BBFA1614F33300082926 /* Products */,
+				535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1550,6 +1555,7 @@
 				2192BC0B1614F33300082926 /* SenTestingKit.framework */,
 				B8D2510B16B9735800412DA5 /* SystemConfiguration.framework */,
 				B8DC02971666840C00BCC61D /* UIKit.framework */,
+				D90C0D9A4AA04524ADA49C02 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1996,10 +2002,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2192BC1E1614F33300082926 /* Build configuration list for PBXNativeTarget "jive-ios-sdk" */;
 			buildPhases = (
+				DFC2B168829D4B2DA247509B /* Check Pods Manifest.lock */,
 				0F9B866B179729CC005BBFE8 /* ShellScript */,
 				2192BBF51614F33300082926 /* Sources */,
 				2192BBF61614F33300082926 /* Frameworks */,
 				2186061D164C434B004AF2E2 /* ShellScript */,
+				E7B9291388504503952EA656 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2259,6 +2267,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
+			showEnvVarsInLog = 0;
+		};
+		DFC2B168829D4B2DA247509B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E7B9291388504503952EA656 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2656,13 +2694,14 @@
 		};
 		2192BC1F1614F33300082926 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */;
 			buildSettings = {
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/jive_ios_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
 				OTHER_LDFLAGS = (
-					"-ObjC",
+					"$(inherited)",
 					"-all_load",
 				);
 				PRODUCT_NAME = Jive;
@@ -2673,13 +2712,14 @@
 		};
 		2192BC201614F33300082926 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */;
 			buildSettings = {
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/jive_ios_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
 				OTHER_LDFLAGS = (
-					"-ObjC",
+					"$(inherited)",
 					"-all_load",
 				);
 				PRODUCT_NAME = Jive;
@@ -2842,6 +2882,7 @@
 		};
 		B86C382717690D4600DDE7EF /* Develop */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
@@ -2849,7 +2890,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
 				OTHER_LDFLAGS = (
-					"-ObjC",
+					"$(inherited)",
 					"-all_load",
 				);
 				PRODUCT_NAME = Jive;
@@ -2929,6 +2970,7 @@
 		};
 		B896A57116EE75F600611BDE /* Enterprise */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 535F5A02A1C04EF09B2621F8 /* Pods.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
@@ -2936,7 +2978,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
 				OTHER_LDFLAGS = (
-					"-ObjC",
+					"$(inherited)",
 					"-all_load",
 				);
 				PRODUCT_NAME = Jive;

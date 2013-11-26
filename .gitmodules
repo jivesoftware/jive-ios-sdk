@@ -7,3 +7,6 @@
 [submodule "lib/OHHTTPStubs"]
 	path = lib/OHHTTPStubs
 	url = git://github.com/hborders/OHHTTPStubs.git
+[submodule "lib/hpple"]
+	path = lib/hpple
+	url = https://github.com/topfunky/hpple
