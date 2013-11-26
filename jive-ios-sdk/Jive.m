@@ -163,7 +163,9 @@ int const JivePushDeviceType = 3;
         NSArray *linkArray = [htmlParser searchWithXPathQuery:@"//a"];
         NSDictionary *typeDictionary = @{@"3":@"people",
                                          @"14":@"places", @"37":@"places",
-                                         @"600":@"places", @"700":@"places"};
+                                         @"600":@"places", @"700":@"places",
+                                         @"1":@"contents", @"2":@"contents", @"38":@"contents",
+                                         @"102":@"contents", @"1100":@"contents", @"1464927464":@"contents"};
         
         for (TFHppleElement *anchor in linkArray) {
             NSString *objectType = [anchor objectForKey:@"data-objecttype"];
