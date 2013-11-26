@@ -29,6 +29,7 @@
 @property (nonatomic, strong) JivePlatformVersion *platformVersion;
 @property (nonatomic, strong) NSString *baseURI;
 
+- (NSString *)createStringWithInstanceURLValidation:(NSString *)sourceString;
 - (NSURL *)createURLWithInstanceValidation:(NSString *)urlString;
 
 - (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options

@@ -30,6 +30,7 @@
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
 #import "JiveMetadata_internal.h"
+#import <hpple/TFHpple.h>
 
 typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
     JVPushRegistrationFeatureFlagPush = 0x01,
@@ -135,23 +136,55 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - helper methods
 
-- (NSURL *)createURLWithInstanceValidation:(NSString *)urlString {
+- (NSString *)validateURLString:(NSString *)sourceString {
     NSString *instanceURL = self.jiveInstanceURL.absoluteString;
     
-    if (urlString.length < instanceURL.length ||
-        ![instanceURL isEqual:[urlString substringToIndex:instanceURL.length]]) {
+    if ((sourceString).length < instanceURL.length ||
+        ![instanceURL isEqual:[sourceString substringToIndex:instanceURL.length]]) {
         
-        NSRange baseURIRange = [urlString rangeOfString:self.baseURI];
+        NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
         
         if (baseURIRange.length > 0) {
-            NSString *badInstanceURL = [urlString substringToIndex:baseURIRange.location];
+            NSString *badInstanceURL = [sourceString substringToIndex:baseURIRange.location];
             
-            urlString = [urlString stringByReplacingOccurrencesOfString:badInstanceURL
-                                                             withString:instanceURL];
+            sourceString = [sourceString stringByReplacingOccurrencesOfString:badInstanceURL
+                                                                   withString:instanceURL];
         }
     }
     
-    return [NSURL URLWithString:urlString];
+    return sourceString;
+}
+
+- (NSString *)createStringWithInstanceURLValidation:(NSString *)sourceString {
+    if ([sourceString hasPrefix:@"http"]) {
+        sourceString = [self validateURLString:sourceString];
+    } else if ([sourceString hasPrefix:@"<body>"]) {
+        TFHpple *htmlParser = [TFHpple hppleWithHTMLData:[sourceString dataUsingEncoding:NSUTF8StringEncoding]];
+        NSArray *linkArray = [htmlParser searchWithXPathQuery:@"//a"];
+        
+        for (TFHppleElement *anchor in linkArray) {
+            NSString *objectType = [anchor objectForKey:@"data-objecttype"];
+            NSString *objectID = [anchor objectForKey:@"data-objectid"];
+            NSString *href = [anchor objectForKey:@"href"];
+            
+            if (objectID && [@"3" isEqualToString:objectType]) {
+                NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
+                NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/people/%@",
+                                                       self.baseURI, objectID]
+                                        relativeToURL:self.jiveInstanceURL];
+                NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
+                
+                sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
+                                                                       withString:newHrefString];
+            }
+        }
+    }
+    
+    return [NSString stringWithString:sourceString];
+}
+
+- (NSURL *)createURLWithInstanceValidation:(NSString *)urlString {
+    return [NSURL URLWithString:[self validateURLString:urlString]];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {

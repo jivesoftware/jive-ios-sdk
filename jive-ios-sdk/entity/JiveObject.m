@@ -156,7 +156,9 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
     }
     
     if(clazz == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[NSString alloc] initWithString:JSON];
+        return (jiveInstance ?
+                [jiveInstance createStringWithInstanceURLValidation:JSON] :
+                [NSString stringWithString:JSON]);
     }
     
     if(clazz == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
