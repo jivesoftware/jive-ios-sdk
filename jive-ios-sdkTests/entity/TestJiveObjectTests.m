@@ -453,8 +453,87 @@ struct TestJiveObjectAttributes const TestJiveObjectAttributes = {
                          @"Failed to change instance url");
 }
 
+- (void)testURLStringDeserialization_bodyContentWithEmbeddedImage {
+    NSString *imageID = @"4100434";
+    NSString *serverURL = @"https://proxy.com/";
+    NSString *stringFormat = @"<body><a href=\"%@servlet/JiveServlet/showImage/%@/image.jpeg\"><img height=\"156\" src=\"%@servlet/JiveServlet/downloadImage/%@/image.jpeg\" width=\"208\"/></a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:[NSString stringWithFormat:stringFormat,
+                                                                  serverURL,
+                                                                  imageID,
+                                                                  serverURL,
+                                                                  imageID]};
+    NSString *expectedValue = [NSString stringWithFormat:stringFormat,
+                               [self.serverURL absoluteString],
+                               imageID,
+                               [self.serverURL absoluteString],
+                               imageID];
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
+
+- (void)testURLStringDeserialization_bodyContentWithExternalEmbeddedImage {
+    NSString *expectedValue = @"<body><a href=\"http://lorempixel.com/400/200/\"><img alt=\"http://lorempixel.com/400/200/\" class=\"jive-image image-1\" src=\"http://lorempixel.com/400/200/\" style=\"height: auto;\"/></a></body>";
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testProperty:expectedValue};
+    
+    STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
+                 @"Reported invalid deserialize with valid JSON");
+    STAssertEqualObjects(self.testObject.testProperty, expectedValue,
+                         @"Failed to change instance url");
+}
+
 @end
 /*
+<body>
+    <!-- [DocumentBodyStart:c5261edf-d044-4d88-b90c-34d293b65a1b] -->
+        <div class="jive-rendered-content">
+            <p>Here is an external image:</p>
+            <p>
+                <a href="http://lorempixel.com/400/200/">
+                    <img alt="http://lorempixel.com/400/200/" class="jive-image image-1" src="http://lorempixel.com/400/200/" style="height: auto;"/>
+                </a>
+            </p>
+            <p style="min-height: 8pt; padding: 0px;">&nbsp;</p>
+            <p>After the image.</p>
+        </div>
+    <!-- [DocumentBodyEnd:c5261edf-d044-4d88-b90c-34d293b65a1b] -->
+</body>
+
+<body>
+    <!-- [DocumentBodyStart:79d2bf51-d942-4094-94e6-f131efa82e00] -->
+        <div class="jive-rendered-content">
+            <span>Embedded image here:</span>
+            <p class="">
+                <a href="https://hopback.eng.jiveland.com/servlet/JiveServlet/showImage/4100434/image.jpeg">
+                    <img height="156" src="https://hopback.eng.jiveland.com/servlet/JiveServlet/downloadImage/4100434/image.jpeg" width="208"/>
+                </a>
+                <br/>
+            </p>
+            <p class="">
+                <br/>
+            </p>
+            <p class="">After the image.</p>
+        </div>
+    <!-- [DocumentBodyEnd:79d2bf51-d942-4094-94e6-f131efa82e00] -->
+</body>
+
+<body>
+    <!-- [DocumentBodyStart:e5968878-502c-4c1f-9591-1056713d8248] -->
+        <div class="jive-rendered-content">
+            <p>Here is an embedded image created on the web interface:</p>
+            <p>
+                <a href="https://hopback.eng.jiveland.com/servlet/JiveServlet/showImage/102-145156-1-4100509/JIVE_AB37E07A-BED3-4112-9D08-0EFDE5F64D00-390-0000004761572746.jpeg">
+                    <img alt="JIVE_AB37E07A-BED3-4112-9D08-0EFDE5F64D00-390-0000004761572746.jpeg" class="jive-image image-1" height="900" src="https://hopback.eng.jiveland.com/servlet/JiveServlet/downloadImage/102-145156-1-4100509/507-900/JIVE_AB37E07A-BED3-4112-9D08-0EFDE5F64D00-390-0000004761572746.jpeg" style="height: 1101px; width: 620px;" width="507"/>
+                </a>
+            </p>
+            <p style="min-height: 8pt; padding: 0px;">&nbsp;</p>
+            <p>After the image.</p>
+        </div>
+    <!-- [DocumentBodyEnd:e5968878-502c-4c1f-9591-1056713d8248] -->
+</body>
+
         processLinks: function( $root ) {
                 var $links, suffix;
                 $root = $root || $.mobile.activePage;

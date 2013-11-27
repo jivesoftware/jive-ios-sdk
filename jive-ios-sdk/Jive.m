@@ -171,12 +171,12 @@ int const JivePushDeviceType = 3;
             NSString *objectType = [anchor objectForKey:@"data-objecttype"];
             NSString *objectID = [anchor objectForKey:@"data-objectid"];
             NSString *href = [anchor objectForKey:@"href"];
+            NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
             
             if (objectID) {
                 NSString *typeSpecifier = typeDictionary[objectType];
                 
                 if (typeSpecifier) {
-                    NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
                     NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@",
                                                               self.baseURI, typeSpecifier, objectID]
                                                relativeToURL:self.jiveInstanceURL];
@@ -184,6 +184,24 @@ int const JivePushDeviceType = 3;
                     
                     sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
                                                                            withString:newHrefString];
+                }
+            } else {
+                TFHppleElement *imageElement = [anchor firstChildWithTagName:@"img"];
+                NSString *src = [imageElement objectForKey:@"src"];
+                
+                if (src && [src rangeOfString:@"/JiveServlet/"].length > 0) {
+                    NSString *sourceLink = [NSString stringWithFormat:@"src=\"%@\"", src];
+                    NSURL *newHrefURL = [NSURL URLWithString:[[NSURL URLWithString:href] path]
+                                               relativeToURL:self.jiveInstanceURL];
+                    NSURL *newSourceURL = [NSURL URLWithString:[[NSURL URLWithString:src] path]
+                                               relativeToURL:self.jiveInstanceURL];
+                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
+                    NSString *newSourceLink = [NSString stringWithFormat:@"src=\"%@\"", [newSourceURL absoluteString]];
+
+                    sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
+                                                                           withString:newHrefString];
+                    sourceString = [sourceString stringByReplacingOccurrencesOfString:sourceLink
+                                                                           withString:newSourceLink];
                 }
             }
         }
