@@ -68,4 +68,9 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 - (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock
                           onError:(JiveErrorBlock)errorBlock;
 
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                            onError:(JiveErrorBlock)errorBlock;
+- (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+
 @end

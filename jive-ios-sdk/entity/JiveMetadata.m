@@ -171,4 +171,17 @@
     [[self statusUpdateMaxCharactersOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Binary Downloads
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                         onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"jive.coreapi.disable.binarydownloads.mobileonly"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self binaryDownloadsDisabledOperation:completeBlock onError:errorBlock] start];
+}
+
 @end
