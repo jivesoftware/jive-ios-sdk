@@ -166,6 +166,9 @@
 		0FA17D1D16651C540008F833 /* JiveReturnFieldsRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */; };
 		0FA5189A18341C870088060E /* TestJiveObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5189918341C870088060E /* TestJiveObjectTests.m */; };
 		0FA518B318369ED20088060E /* version_proxy.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA518B218369ED20088060E /* version_proxy.json */; };
+		0FAA9F54184D4E950051698C /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA9F27184D4BAB0051698C /* TFHpple.m */; };
+		0FAA9F55184D4E9C0051698C /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA9F29184D4BAB0051698C /* TFHppleElement.m */; };
+		0FAA9F56184D4EA00051698C /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA9F32184D4BAC0051698C /* XPathQuery.m */; };
 		0FAF8B36180367C900D4EA47 /* clear_correct_answer_message.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FAF8B34180367C900D4EA47 /* clear_correct_answer_message.json */; };
 		0FAF8B37180367C900D4EA47 /* make_correct_answer_message.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FAF8B35180367C900D4EA47 /* make_correct_answer_message.json */; };
 		0FB0B2E21821B3DD00179147 /* feature.status_update.characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FB0B2E11821B3DD00179147 /* feature.status_update.characters.json */; };
@@ -788,6 +791,12 @@
 		0FA17D1C16651C540008F833 /* JiveReturnFieldsRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveReturnFieldsRequestOptions.m; sourceTree = "<group>"; };
 		0FA5189918341C870088060E /* TestJiveObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestJiveObjectTests.m; sourceTree = "<group>"; };
 		0FA518B218369ED20088060E /* version_proxy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = version_proxy.json; sourceTree = "<group>"; };
+		0FAA9F26184D4BAB0051698C /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		0FAA9F27184D4BAB0051698C /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		0FAA9F28184D4BAB0051698C /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		0FAA9F29184D4BAB0051698C /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		0FAA9F31184D4BAC0051698C /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		0FAA9F32184D4BAC0051698C /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		0FAF8B34180367C900D4EA47 /* clear_correct_answer_message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clear_correct_answer_message.json; sourceTree = "<group>"; };
 		0FAF8B35180367C900D4EA47 /* make_correct_answer_message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = make_correct_answer_message.json; sourceTree = "<group>"; };
 		0FB0B2E11821B3DD00179147 /* feature.status_update.characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = feature.status_update.characters.json; sourceTree = "<group>"; };
@@ -1259,6 +1268,19 @@
 			path = RequestOptions;
 			sourceTree = "<group>";
 		};
+		0FAA9F10184D4BAB0051698C /* hpple */ = {
+			isa = PBXGroup;
+			children = (
+				0FAA9F26184D4BAB0051698C /* TFHpple.h */,
+				0FAA9F27184D4BAB0051698C /* TFHpple.m */,
+				0FAA9F28184D4BAB0051698C /* TFHppleElement.h */,
+				0FAA9F29184D4BAB0051698C /* TFHppleElement.m */,
+				0FAA9F31184D4BAC0051698C /* XPathQuery.h */,
+				0FAA9F32184D4BAC0051698C /* XPathQuery.m */,
+			);
+			path = hpple;
+			sourceTree = "<group>";
+		};
 		0FCB66671670FC6000617CE4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1638,6 +1660,7 @@
 		2192BC681614FF4E00082926 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				0FAA9F10184D4BAB0051698C /* hpple */,
 				B843FF3517749A3900213861 /* OHHTTPStubs.xcodeproj */,
 				2192BC7B1614FF8200082926 /* AFNetworking */,
 				B8B38B3B16AA0EB200066EEF /* google-toolbox-for-mac */,
@@ -2299,6 +2322,7 @@
 				78185D6F163ED8EB0081DF7A /* JiveLevel.m in Sources */,
 				78185D75163EDEAC0081DF7A /* JiveName.m in Sources */,
 				78185D78163EE5800081DF7A /* JivePhoneNumber.m in Sources */,
+				0FAA9F56184D4EA00051698C /* XPathQuery.m in Sources */,
 				78185D7B163EE65C0081DF7A /* JivePhoto.m in Sources */,
 				21860579164AE045004AF2E2 /* JiveProfileEntry.m in Sources */,
 				7814D58216531790000D9BE9 /* JiveAnnouncement.m in Sources */,
@@ -2369,6 +2393,7 @@
 				B8B38B6116AA13C200066EEF /* NSDateFormatter+JiveISO8601DateFormatter.m in Sources */,
 				0F880F5A16DBDC2400D40702 /* JiveTypedObject.m in Sources */,
 				0F880F6816DC454800D40702 /* JiveAssociationTargetList.m in Sources */,
+				0FAA9F54184D4E950051698C /* TFHpple.m in Sources */,
 				B8811CEF16DF0CD40099E39E /* JiveObjcRuntime.m in Sources */,
 				215040DF16DEA43A00CD0AAE /* JiveImage.m in Sources */,
 				8999E65416FA9BB00009677A /* JiveVideo.m in Sources */,
@@ -2379,6 +2404,7 @@
 				B14BAD6B170F882E00B223D4 /* JiveOutcomeRequestOptions.m in Sources */,
 				0FBC7E191715DA8D00A597E2 /* JivePlatformVersion.m in Sources */,
 				0FBC7E2817171B7600A597E2 /* JiveCoreVersion.m in Sources */,
+				0FAA9F55184D4E9C0051698C /* TFHppleElement.m in Sources */,
 				B1C6D117172B0C3600A1380A /* JiveProperty.m in Sources */,
 				B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */,
 				0F85BEFE172B3B090005E31E /* JiveShare.m in Sources */,
@@ -2608,6 +2634,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PUBLIC_HEADERS_FOLDER_PATH = Jive;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2649,6 +2680,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PUBLIC_HEADERS_FOLDER_PATH = Jive;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2701,7 +2737,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
-				HEADER_SEARCH_PATHS = lib/OCMock/Source;
+				HEADER_SEARCH_PATHS = (
+					lib/OCMock/Source,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "jive-ios-sdkTests/jive-ios-sdkTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2721,7 +2760,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
-				HEADER_SEARCH_PATHS = lib/OCMock/Source;
+				HEADER_SEARCH_PATHS = (
+					lib/OCMock/Source,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "jive-ios-sdkTests/jive-ios-sdkTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2834,6 +2876,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PUBLIC_HEADERS_FOLDER_PATH = Jive;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2871,7 +2918,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
-				HEADER_SEARCH_PATHS = lib/OCMock/Source;
+				HEADER_SEARCH_PATHS = (
+					lib/OCMock/Source,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "jive-ios-sdkTests/jive-ios-sdkTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2921,6 +2971,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PUBLIC_HEADERS_FOLDER_PATH = Jive;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2958,7 +3013,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jive-ios-sdk/jive-ios-sdk-Prefix.pch";
-				HEADER_SEARCH_PATHS = lib/OCMock/Source;
+				HEADER_SEARCH_PATHS = (
+					lib/OCMock/Source,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "jive-ios-sdkTests/jive-ios-sdkTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",

@@ -30,7 +30,7 @@
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
 #import "JiveMetadata_internal.h"
-#import <hpple/TFHpple.h>
+#import "TFHpple.h"
 
 typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
     JVPushRegistrationFeatureFlagPush = 0x01,
