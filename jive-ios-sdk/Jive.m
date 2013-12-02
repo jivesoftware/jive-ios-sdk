@@ -74,7 +74,8 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
-    NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
+    [request setHTTPShouldHandleCookies:NO];
     JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
         JivePlatformVersion *platformVersion = [JivePlatformVersion instanceFromJSON:JSON];
@@ -159,7 +160,7 @@ int const JivePushDeviceType = 3;
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:@"POST"];
-    
+
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
@@ -2164,8 +2165,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    NSURLRequest *request = [self requestWithOptions:nil
-                                         andTemplate:@"api/core/v3/metadata/properties/public", nil];
+    NSURL* requestURL = [NSURL URLWithString:@"api/core/v3/metadata/properties/public"
+                               relativeToURL:self.jiveInstanceURL];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
+    [request setHTTPShouldHandleCookies:NO];
     
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self bareListOperationForClass:[JiveProperty class]
                                                                                      request:request
