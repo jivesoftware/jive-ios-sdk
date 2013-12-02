@@ -126,7 +126,9 @@ int const JivePushDeviceType = 3;
         _jiveInstance = jiveInstanceURL;
         self.delegate = delegate;
     }
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+#endif
     return self;
 }
 

@@ -283,9 +283,11 @@
 /// @name Configuring Backgrounding Task Behavior
 ///----------------------------------------------
 
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 - (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler {
     [self.operation setShouldExecuteAsBackgroundTaskWithExpirationHandler:handler];
 }
+#endif
 
 ///---------------------------------
 /// @name Setting Progress Callbacks
