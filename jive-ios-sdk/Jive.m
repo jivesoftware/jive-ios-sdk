@@ -19,12 +19,10 @@
 
 #import "Jive.h"
 #import "JiveRetryingJAPIRequestOperation.h"
-#import "NSData+JiveBase64.h"
 #import "NSError+Jive.h"
 #import "JiveTargetList_internal.h"
 #import "JiveAssociationTargetList_internal.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
-#import "NSData+JiveBase64.h"
 #import "JiveTypedObject_internal.h"
 #import "NSString+Jive.h"
 #import "JiveRetryingHTTPRequestOperation.h"
@@ -112,12 +110,6 @@ int const JivePushDeviceType = 3;
                             onComplete:completeBlock
                                onError:errorBlock] start];
 }
-
-+ (void)initialize {
-	if([[NSData class] instanceMethodSignatureForSelector:@selector(jive_base64EncodedString:)] == NULL)
-		[NSException raise:NSInternalInconsistencyException format:@"** Expected method not present; the method jive_base64EncodedString: is not implemented by NSData. If you see this exception it is likely that you are using the static library version of Jive and your project is not configured correctly to load categories from static libraries. Did you forget to add the -ObjC and -all_load linker flags?"];
-}
-
 
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL
       authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate {

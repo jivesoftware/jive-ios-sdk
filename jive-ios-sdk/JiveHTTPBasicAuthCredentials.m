@@ -18,7 +18,6 @@
 //
 
 #import "JiveHTTPBasicAuthCredentials.h"
-#import "NSData+JiveBase64.h"
 
 @interface JiveHTTPBasicAuthCredentials()
 
@@ -45,7 +44,7 @@
         NSData* data = [[NSString stringWithFormat:@"%@:%@", username, password]
                         dataUsingEncoding:NSUTF8StringEncoding];
         self.authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",
-                                         [data jive_base64EncodedString:NO]];
+                                         [data base64Encoding]];
     }
     
     return self;
