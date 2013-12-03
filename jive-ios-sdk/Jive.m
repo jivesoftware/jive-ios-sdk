@@ -175,6 +175,90 @@ int const JivePushDeviceType = 3;
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
+static NSString* const JiveOAuthGrantTypeKey = @"grant_type";
+static NSString* const JiveOAuthUserNameKey = @"username";
+static NSString* const JiveOAuthPasswordKey = @"password";
+static NSString* const JiveOAuthClientIDKey = @"client_id";
+static NSString* const JiveOAuthClientSecretKey = @"client_secret";
+static NSString* const JiveOAuthAccessTokenKey = @"access_token";
+static NSString* const JiveOAuthRefreshTokenKey = @"refresh_token";
+static NSString* const JiveOAuthExpiresInKey = @"expires_in";
+
+
+-(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    NSDictionary *postParams = @{JiveOAuthGrantTypeKey: JiveOAuthPasswordKey,
+                                 JiveOAuthUserNameKey: username,
+                                 JiveOAuthPasswordKey: password};
+    
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
+    
+    JiveHTTPBasicAuthCredentials *authSecrets = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:oauthID password:oauthSecret];
+    [authSecrets applyToRequest:request];
+    
+    [request setHTTPShouldHandleCookies:NO];
+    
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            
+                                                                                            JVLoginOAuthCredentials * creds = [[JVLoginOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
+                                                                                                                                                                      refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
+                                                                                                                                                                        expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
+                                                                                            
+                                                                                            completeBlock(creds);
+                                                                                            
+                                                                                        }
+                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            errorBlock(error);
+                                                                                        }];
+    
+    return operation;
+}
+
+-(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthTokenOperationWithOAuthID:oauthID OAuthSecret:oauthSecret username:username password:password onComplete:completeBlock onError:errorBlock] start];
+}
+
+-(AFJSONRequestOperation*)OAuthTokenRefreshOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    NSDictionary *postParams = @{JiveOAuthGrantTypeKey: JiveOAuthRefreshTokenKey,
+                                 JiveOAuthRefreshTokenKey: refreshToken,
+                                 JiveOAuthClientIDKey: oauthID,
+                                 JiveOAuthClientSecretKey: oauthSecret};
+    
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
+    [request setHTTPShouldHandleCookies:NO];
+    
+    JiveHTTPBasicAuthCredentials *authSecrets = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:oauthID password:oauthSecret];
+    [authSecrets applyToRequest:request];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            
+                                                                                            JVLoginOAuthCredentials * creds = [[JVLoginOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
+                                                                                                                                                                      refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
+                                                                                                                                                                        expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
+                                                                                            
+                                                                                            completeBlock(creds);
+                                                                                            
+                                                                                        }
+                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            errorBlock(error);
+                                                                                        }];
+    
+    return operation;
+}
+
+-(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthTokenRefreshOperationWithOAuthID:oauthID OAuthSecret:oauthSecret refreshToken:refreshToken onComplete:completeBlock onError:errorBlock] start];
+}
+
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self requestWithOptions:options
                                          andTemplate:@"api/core/v3/%@",

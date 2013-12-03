@@ -462,6 +462,8 @@
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
 		DE2C392818319BEE00486A2D /* public_property.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2C392718319BEE00486A2D /* public_property.json */; };
+		DEF202CD184E3E5800B54CC2 /* JiveOAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */; };
+		DEF202D1184E415700B54CC2 /* JiveOAuthCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1079,6 +1081,8 @@
 		B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveHTTPBasicAuthCredentials.h; sourceTree = "<group>"; };
 		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
 		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
+		DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOAuthCredentials.h; sourceTree = "<group>"; };
+		DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOAuthCredentials.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1562,6 +1566,8 @@
 				21AD9754161BAB4F009A977D /* JiveCredentials.h */,
 				B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */,
 				B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */,
+				DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */,
+				DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */,
 				B1B5917A17381377009B560E /* JiveMobileAnalyticsHeader.h */,
 				B1B5917B17381377009B560E /* JiveMobileAnalyticsHeader.m */,
 				B8B0DA98177384F50060F62E /* JiveOperationRetrier.h */,
@@ -1902,6 +1908,7 @@
 				B8655250179884B300AAF1AD /* JivePost.h in Headers */,
 				B8655251179884B300AAF1AD /* JiveProfileEntry.h in Headers */,
 				B8655252179884B300AAF1AD /* JiveProject.h in Headers */,
+				DEF202D1184E415700B54CC2 /* JiveOAuthCredentials.h in Headers */,
 				B8655253179884B300AAF1AD /* JiveProperty.h in Headers */,
 				B8655254179884B300AAF1AD /* JiveResource.h in Headers */,
 				B8655255179884B300AAF1AD /* JiveResourceEntry.h in Headers */,
@@ -2300,6 +2307,7 @@
 				7814D59516542131000D9BE9 /* JiveDocument.m in Sources */,
 				7814D598165447B7000D9BE9 /* JiveFile.m in Sources */,
 				7814D59B165448E3000D9BE9 /* JivePoll.m in Sources */,
+				DEF202CD184E3E5800B54CC2 /* JiveOAuthCredentials.m in Sources */,
 				7814D59E16544A42000D9BE9 /* JivePost.m in Sources */,
 				7814D5A116544CD6000D9BE9 /* JiveComment.m in Sources */,
 				7814D5A416544E46000D9BE9 /* JiveDirectMessage.m in Sources */,
