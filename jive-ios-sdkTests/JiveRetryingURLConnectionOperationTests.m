@@ -812,6 +812,9 @@
     }
 }
 
+-(NSOperation<JiveRetryingOperation>*)retriableOperationForFailedOperation:(NSOperation<JiveRetryingOperation>*)failedOperation {
+    return [failedOperation copy];    
+}
 @end
 
 @interface JiveRetryingURLConnectionOperationTestsTestOperation ()

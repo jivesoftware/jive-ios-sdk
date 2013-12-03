@@ -203,7 +203,7 @@ int const JivePushDeviceType = 3;
     
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                        success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
                                                                                             
                                                                                             JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
                                                                                                                                                                       refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
@@ -212,7 +212,7 @@ int const JivePushDeviceType = 3;
                                                                                             completeBlock(creds);
                                                                                             
                                                                                         }
-                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                        failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             errorBlock(error);
                                                                                         }];
     
@@ -239,7 +239,7 @@ int const JivePushDeviceType = 3;
     [authSecrets applyToRequest:request];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                        success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
                                                                                             
                                                                                             JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
                                                                                                                                                                       refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
@@ -248,7 +248,7 @@ int const JivePushDeviceType = 3;
                                                                                             completeBlock(creds);
                                                                                             
                                                                                         }
-                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                        failure:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             errorBlock(error);
                                                                                         }];
     

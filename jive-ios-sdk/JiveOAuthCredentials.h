@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jive Software, Inc. All rights reserved.
 //
 
-#import <Jive/JiveCredentials.h>
+#import "JiveCredentials.h"
 #import <Foundation/Foundation.h>
 
 @interface JiveOAuthCredentials : NSObject<JiveCredentials,NSCoding>
