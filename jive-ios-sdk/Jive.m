@@ -157,7 +157,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self requestWithOptions:nil
                                                 andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
-    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
+    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%ti", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:@"POST"];
@@ -1277,7 +1277,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -1420,7 +1420,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:completeBlock
@@ -1901,7 +1901,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1943,7 +1943,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPMethod:@"PUT"];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveInvite class]
                                  request:request
                               onComplete:complete
@@ -1962,7 +1962,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self listOperationForClass:[JiveInvite class]
                                request:request
                             onComplete:complete
@@ -2153,7 +2153,7 @@ int const JivePushDeviceType = 3;
     void (^processPropsBlock)(NSArray* properties) = ^(NSArray* properties) {
         NSArray* relevantProps = [properties filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", propertyName]];
         
-        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %i", propertyName, [relevantProps count]);
+        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %tu", propertyName, [relevantProps count]);
         
         if ([relevantProps count] == 1) {
             complete([relevantProps objectAtIndex:0]);
@@ -2214,7 +2214,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
 
@@ -2258,7 +2258,7 @@ int const JivePushDeviceType = 3;
     
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
 

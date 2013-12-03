@@ -431,7 +431,7 @@ NSString * const JivePersonType = @"person";
     
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%tu", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPMethod:@"PUT"];
     return [self updateJiveTypedObject:self
                            withRequest:request
@@ -541,7 +541,7 @@ NSString * const JivePersonType = @"person";
     [request setHTTPBody:body];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", request.HTTPBody.length]
+    [request setValue:[NSString stringWithFormat:@"%tu", request.HTTPBody.length]
    forHTTPHeaderField:@"Content-Length"];
     return [self.jiveInstance listOperationForClass:[JiveStream class]
                                             request:request
