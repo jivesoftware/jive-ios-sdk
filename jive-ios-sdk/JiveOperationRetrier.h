@@ -33,6 +33,6 @@ typedef void (^JiveOperationRetrierFailBlock)(NSError *error);
            withRetryBlock:(JiveOperationRetrierRetryBlock)retryBlock
                 failBlock:(JiveOperationRetrierFailBlock)failBlock;
 
--(id<JiveRetryingOperation>)retriableOperationForFailedOperation:(id<JiveRetryingOperation>)failedOperation;
+-(NSOperation<JiveRetryingOperation>*)retriableOperationForFailedOperation:(NSOperation<JiveRetryingOperation>*)failedOperation;
 
 @end
