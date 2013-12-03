@@ -23,7 +23,7 @@
 
 @interface Jive ()
 
-- (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options
+- (NSMutableURLRequest *) credentialedRequestWithOptions:(NSObject<JiveRequestOptions>*)options
                                  andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
 - (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource
                                       options:(NSObject<JiveRequestOptions>*)options

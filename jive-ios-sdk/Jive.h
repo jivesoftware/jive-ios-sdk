@@ -91,6 +91,7 @@
 #import "JiveNSDictionary+URLArguments.h"
 #import "JiveResponseBlocks.h"
 #import "JiveExternalURLEntity.h"
+#import "JiveOAuthCredentials.h"
 
 extern int const JivePushDeviceType;
 
@@ -704,7 +705,19 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! No official documnetation yet.
 - (AFJSONRequestOperation<JiveRetryingOperation> *)unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+
+#pragma mark - OAuth
+//! Returns an operation to retrieve an OAuth credential pair from the Jive host using the Resource Owner Password Credentials grant type.
+-(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! Retrieves an OAuth credential pair from the Jive host using the Resource Owner Password Credentials grant type.
+-(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! Given a refresh token, returns an operation which retrieves a fresh OAuth credential pair.
+-(AFJSONRequestOperation*)OAuthTokenRefreshOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! Given a refresh token, retrieves a fresh OAuth credential pair.
+-(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock;
+
 @end
+
 
 //! \class JiveAuthorizationDelegate
 @protocol JiveAuthorizationDelegate <NSObject>

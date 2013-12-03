@@ -75,5 +75,6 @@ extern struct JivePlatformVersionAttributes {
 - (BOOL)supportsInboxTypeFiltering;
 - (BOOL)supportsCommentAndReplyPermissions;
 - (BOOL)supportedIPhoneVersion;
+- (BOOL)supportsOAuth;
 
 @end

@@ -376,7 +376,7 @@ NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation<JiveRetryingOperation> *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                       andTemplate:[self.selfRef path], nil];
     
     return [self updateJiveTypedObject:self
@@ -388,7 +388,7 @@ NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation<JiveRetryingOperation> *) managerOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                              andTemplate:[self.managerRef path], nil];
     
     return [self.jiveInstance operationWithRequest:request
@@ -404,7 +404,7 @@ NSString * const JivePersonType = @"person";
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteOperationOnComplete:(JiveCompletedBlock)completeBlock
                                                                       onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
                                                              andTemplate:[self.selfRef path], nil];
     
     [request setHTTPMethod:@"DELETE"];
@@ -423,7 +423,7 @@ NSString * const JivePersonType = @"person";
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) updateOperationOnComplete:(JivePersonCompleteBlock)completeBlock
                                                                       onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
                                                              andTemplate:[self.selfRef path], nil];
     NSData *body = [NSJSONSerialization dataWithJSONObject:self.toJSONDictionary
                                                    options:0
@@ -443,7 +443,7 @@ NSString * const JivePersonType = @"person";
                                                          onComplete:(JiveCompletedBlock)completeBlock
                                                             onError:(JiveErrorBlock)errorBlock {
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil andTemplate:path, nil];
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
     [request setHTTPMethod:@"PUT"];
     return [self emptyResponseOperationWithRequest:request
@@ -455,7 +455,7 @@ NSString * const JivePersonType = @"person";
                                                          onComplete:(JiveCompletedBlock)completeBlock
                                                             onError:(JiveErrorBlock)errorBlock {
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:nil andTemplate:path, nil];
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyResponseOperationWithRequest:request onComplete:completeBlock onError:^(NSError *error) {
@@ -470,7 +470,7 @@ NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation<JiveRetryingOperation> *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options
                                                                         onComplete:(JiveArrayCompleteBlock)completeBlock
                                                                            onError:(JiveErrorBlock)errorBlock {
-    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                       andTemplate:[self.activityRef path], nil];
     
     return [self.jiveInstance listOperationForClass:[JiveActivity class]
@@ -534,7 +534,7 @@ NSString * const JivePersonType = @"person";
                                   NSStringFromSelector(@selector(ref)),
                                   NSStringFromSelector(@selector(absoluteString))];
     NSArray *targetURIs = [followingInStreams count] ? [followingInStreams valueForKeyPath:targetURIKeyPath] : [NSArray array];
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                              andTemplate:[self.followingInRef path], nil];
     NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
     
@@ -561,7 +561,7 @@ NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation<JiveRetryingOperation> *) tasksOperationWithOptions:(JiveSortedRequestOptions *)options
                                                                    onComplete:(JiveArrayCompleteBlock)completeBlock
                                                                       onError:(JiveErrorBlock)errorBlock {
-    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                       andTemplate:[self.tasksRef path], nil];
     
     return [self.jiveInstance listOperationForClass:[JiveContent class]
@@ -573,7 +573,7 @@ NSString * const JivePersonType = @"person";
 - (AFJSONRequestOperation<JiveRetryingOperation> *) blogOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                   onComplete:(JiveBlogCompleteBlock)completeBlock
                                                                      onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                              andTemplate:[self.blogRef path], nil];
     
     return [self entityOperationForClass:[JiveBlog class]
@@ -621,7 +621,7 @@ NSString * const JivePersonType = @"person";
                                                             withOptions:(JivePagedRequestOptions *)options
                                                              onComplete:(JiveArrayCompleteBlock)completeBlock
                                                                 onError:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                              andTemplate:[url path], nil];
     
     return [self.jiveInstance operationWithRequest:request
@@ -642,7 +642,7 @@ NSString * const JivePersonType = @"person";
                                                              withOptions:(JiveReturnFieldsRequestOptions *)options
                                                               onComplete:(JiveArrayCompleteBlock)completeBlock
                                                                  onError:(JiveErrorBlock)errorBlock {
-    NSURLRequest *request = [self.jiveInstance requestWithOptions:options
+    NSURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:options
                                                       andTemplate:[url path], nil];
     
     return [self.jiveInstance listOperationForClass:[JiveStream class]
