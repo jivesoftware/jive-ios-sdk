@@ -42,6 +42,17 @@ typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
     JVPushRegistrationFeatureFlagTask = 0x040,
 };
 
+static NSString* const JiveOAuthGrantTypeKey = @"grant_type";
+static NSString* const JiveOAuthUserNameKey = @"username";
+static NSString* const JiveOAuthPasswordKey = @"password";
+static NSString* const JiveOAuthClientIDKey = @"client_id";
+static NSString* const JiveOAuthClientSecretKey = @"client_secret";
+static NSString* const JiveOAuthAccessTokenKey = @"access_token";
+static NSString* const JiveOAuthRefreshTokenKey = @"refresh_token";
+static NSString* const JiveOAuthExpiresInKey = @"expires_in";
+
+
+
 int const JivePushDeviceType = 3;
 
 @interface JiveInvite (internal)
@@ -175,16 +186,6 @@ int const JivePushDeviceType = 3;
     
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
-
-static NSString* const JiveOAuthGrantTypeKey = @"grant_type";
-static NSString* const JiveOAuthUserNameKey = @"username";
-static NSString* const JiveOAuthPasswordKey = @"password";
-static NSString* const JiveOAuthClientIDKey = @"client_id";
-static NSString* const JiveOAuthClientSecretKey = @"client_secret";
-static NSString* const JiveOAuthAccessTokenKey = @"access_token";
-static NSString* const JiveOAuthRefreshTokenKey = @"refresh_token";
-static NSString* const JiveOAuthExpiresInKey = @"expires_in";
-
 
 -(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
