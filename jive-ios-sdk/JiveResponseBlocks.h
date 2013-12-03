@@ -17,10 +17,18 @@
 //    limitations under the License.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 #ifndef jive_ios_sdk_JiveResponseBlocks_h
 #define jive_ios_sdk_JiveResponseBlocks_h
+
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+@class UIImage;
+@compatibility_alias JiveNativeImage UIImage;
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+@class NSImage;
+@compatibility_alias JiveNativeImage NSImage;
+#endif
 
 @class JiveObject;
 @class JivePersonJive;
@@ -41,7 +49,7 @@ typedef void (^JiveArrayCompleteBlock)(NSArray *objects);
 typedef void (^JiveObjectCompleteBlock)(JiveObject *object);
 typedef void (^JivePersonCompleteBlock)(JivePerson *person);
 typedef void (^JiveBlogCompleteBlock)(JiveBlog *blogPlace);
-typedef void (^JiveImageCompleteBlock)(UIImage *avatarImage);
+typedef void (^JiveImageCompleteBlock)(JiveNativeImage *avatarImage);
 typedef void (^JiveTaskCompleteBlock)(JiveTask *task);
 typedef void (^JiveCompletedBlock)(void);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
