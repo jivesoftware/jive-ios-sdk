@@ -18,7 +18,6 @@
 //
 
 #import "JiveMobileAnalyticsHeader.h"
-#import "NSData+JiveBase64.h"
 
 @interface JiveMobileAnalyticsHeader()
 
@@ -62,7 +61,7 @@
         [headerDictionary setValue:appSpecDictionary forKey:@"App-Spec"];
         NSData *data = [NSJSONSerialization dataWithJSONObject:headerDictionary options:0 error:nil];
         
-        self.headerValue = [data jive_base64EncodedString:NO];
+        self.headerValue = [data base64Encoding];
     }
     
     return self;
