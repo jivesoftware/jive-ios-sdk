@@ -30,6 +30,7 @@
 #import "JiveRetryingHTTPRequestOperation.h"
 #import "JiveRetryingImageRequestOperation.h"
 #import "JiveMetadata_internal.h"
+#import "JiveHTTPBasicAuthCredentials.h"
 
 typedef NS_ENUM(NSInteger, JVPushRegistrationFeatureFlag) {
     JVPushRegistrationFeatureFlagPush = 0x01,
@@ -185,7 +186,7 @@ static NSString* const JiveOAuthRefreshTokenKey = @"refresh_token";
 static NSString* const JiveOAuthExpiresInKey = @"expires_in";
 
 
--(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+-(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     NSDictionary *postParams = @{JiveOAuthGrantTypeKey: JiveOAuthPasswordKey,
                                  JiveOAuthUserNameKey: username,
@@ -203,7 +204,7 @@ static NSString* const JiveOAuthExpiresInKey = @"expires_in";
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             
-                                                                                            JVLoginOAuthCredentials * creds = [[JVLoginOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
+                                                                                            JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
                                                                                                                                                                       refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
                                                                                                                                                                         expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
                                                                                             
@@ -217,12 +218,12 @@ static NSString* const JiveOAuthExpiresInKey = @"expires_in";
     return operation;
 }
 
--(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+-(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     [[self OAuthTokenOperationWithOAuthID:oauthID OAuthSecret:oauthSecret username:username password:password onComplete:completeBlock onError:errorBlock] start];
 }
 
--(AFJSONRequestOperation*)OAuthTokenRefreshOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+-(AFJSONRequestOperation*)OAuthTokenRefreshOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     NSDictionary *postParams = @{JiveOAuthGrantTypeKey: JiveOAuthRefreshTokenKey,
                                  JiveOAuthRefreshTokenKey: refreshToken,
@@ -239,7 +240,7 @@ static NSString* const JiveOAuthExpiresInKey = @"expires_in";
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             
-                                                                                            JVLoginOAuthCredentials * creds = [[JVLoginOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
+                                                                                            JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
                                                                                                                                                                       refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
                                                                                                                                                                         expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
                                                                                             
@@ -253,7 +254,7 @@ static NSString* const JiveOAuthExpiresInKey = @"expires_in";
     return operation;
 }
 
--(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JVLoginOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+-(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     [[self OAuthTokenRefreshOperationWithOAuthID:oauthID OAuthSecret:oauthSecret refreshToken:refreshToken onComplete:completeBlock onError:errorBlock] start];
 }

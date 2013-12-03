@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jive Software, Inc. All rights reserved.
 //
 
-#import "JVLoginOAuthCredentials.h"
+#import "JiveOAuthCredentials.h"
 
 static NSString * const JiveOAuthCredentialsAccessTokenKey = @"accessToken";
 static NSString * const JiveOAuthCredentialsRefreshTokenKey = @"refreshToken";
@@ -43,7 +43,7 @@ static NSString * const JiveOAuthCredentialsExpiryDateKey = @"expiryDate";
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
-        _accessToken = [coder decodeObjectForKey:JiveOAuthCredentialsCredentialsAccessTokenKey];
+        _accessToken = [coder decodeObjectForKey:JiveOAuthCredentialsAccessTokenKey];
         _refreshToken = [coder decodeObjectForKey:JiveOAuthCredentialsRefreshTokenKey];
         _expiryDate = [coder decodeObjectForKey:JiveOAuthCredentialsExpiryDateKey];
     }
