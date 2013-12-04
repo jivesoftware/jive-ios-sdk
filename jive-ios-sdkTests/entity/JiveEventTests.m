@@ -23,7 +23,8 @@
 @implementation JiveEventTests
 
 - (void)setUp {
-    self.typedObject = [[JiveEvent alloc] init];
+    [super setUp];
+    self.object = [[JiveEvent alloc] init];
 }
 
 - (JiveEvent *)event {
@@ -61,7 +62,7 @@
     [self.event setValue:@YES forKey:@"visibleToExternalContributors"];
 
     id JSON = [self.event toJSONDictionary];
-    JiveEvent *newContent = [JiveEvent instanceFromJSON:JSON];
+    JiveEvent *newContent = [JiveEvent objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.event class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.event.type, @"Wrong type");

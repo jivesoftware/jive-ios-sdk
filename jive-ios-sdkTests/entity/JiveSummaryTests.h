@@ -17,8 +17,12 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveObjectTests.h"
 
-@interface JiveSummaryTests : SenTestCase
+@class JiveSummary;
+
+@interface JiveSummaryTests : JiveObjectTests
+
+@property (nonatomic, readonly) JiveSummary *summary;
 
 @end

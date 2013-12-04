@@ -29,6 +29,11 @@
 
 @implementation JivePlatformVersionTests
 
+- (void)setUp {
+    [super setUp];
+    self.object = [JivePlatformVersion new];
+}
+
 - (void)testVersionParsing {
     NSNumber *apiVersion2 = @2;
     NSNumber *apiVersion2Revision = @3;
@@ -62,7 +67,8 @@
     
     STAssertNotNil(sdkVersion, @"PRECONDITION: Invalid sdk version");
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -119,7 +125,8 @@
                             @"jiveCoreVersions" : versionsArray
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -174,7 +181,8 @@
                             };
     JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion objectFromJSON:JSON
+                                                       withInstance:self.instance], @"Should not throw");
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -213,7 +221,8 @@
                             };
     JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion objectFromJSON:JSON
+                                                       withInstance:self.instance], @"Should not throw");
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -251,7 +260,8 @@
                             };
     JivePlatformVersion *version;
     
-    STAssertNoThrow(version = [JivePlatformVersion instanceFromJSON:JSON], @"Should not throw");
+    STAssertNoThrow(version = [JivePlatformVersion objectFromJSON:JSON
+                                                       withInstance:self.instance], @"Should not throw");
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -290,7 +300,8 @@
                             @"versions" : versionsArray
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -315,7 +326,8 @@
     NSDictionary *JSON = @{ @"versions" : versionsArray
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -329,7 +341,8 @@
                                           major, minor, maintenance, build, releaseID],
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     STAssertNil(version, @"Invalid JSON parsed");
 }
 
@@ -353,7 +366,8 @@
                             @"jiveCoreVersions" : versionsArray
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -394,7 +408,8 @@
                             @"ssoEnabled" : ssoTypes
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                            withInstance:self.instance];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");
@@ -431,7 +446,8 @@
                             @"instanceURL" : instanceURL
                             };
     
-    JivePlatformVersion *version = [JivePlatformVersion instanceFromJSON:JSON];
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                          withInstance:self.instance];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");

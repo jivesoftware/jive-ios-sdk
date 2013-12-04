@@ -22,7 +22,8 @@
 @implementation JiveVideoTests
 
 - (void)setUp {
-    self.typedObject = [[JiveVideo alloc] init];
+    [super setUp];
+    self.object = [[JiveVideo alloc] init];
 }
 
 - (JiveVideo *)video {
@@ -179,7 +180,7 @@
     [self.video setValue:authToken forKey:JiveVideoAttributes.authtoken];
     
     id JSON = [self.video toJSONDictionary];
-    JiveVideo *newContent = [JiveVideo instanceFromJSON:JSON];
+    JiveVideo *newContent = [JiveVideo objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.video class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.video.type, @"Wrong type");
@@ -222,7 +223,7 @@
     [self.video setValue:authToken forKey:JiveVideoAttributes.authtoken];
     
     id JSON = [self.video toJSONDictionary];
-    JiveVideo *newContent = [JiveVideo instanceFromJSON:JSON];
+    JiveVideo *newContent = [JiveVideo objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.video class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.video.type, @"Wrong type");

@@ -164,11 +164,12 @@
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:rawJson
                                                          options:0
                                                            error:NULL];
-    [target deserialize:JSON];
+    [target deserialize:JSON fromInstance:self.instance];
 }
 
 - (void)setUp {
-    self.typedObject = [[JivePerson alloc] init];
+    [super setUp];
+    self.object = [[JivePerson alloc] init];
     [NSURLProtocol registerClass:[MockJiveURLProtocol class]];
 }
 
@@ -538,7 +539,7 @@
     [JSON setValue:@"http://dummy.com/thumbnail.png" forKey:@"thumbnailUrl"];
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"updated"];
     
-    JivePerson *newPerson = [JivePerson instanceFromJSON:JSON];
+    JivePerson *newPerson = [JivePerson objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([newPerson class], [JivePerson class], @"Wrong item class");
     STAssertEqualObjects(newPerson.displayName, basePerson.displayName, @"Wrong display name");
@@ -642,7 +643,7 @@
     [JSON setValue:@"http://com.dummy/png.thumbnail" forKey:@"thumbnailUrl"];
     [JSON setValue:@"1970-01-01T00:00:00.000+0000" forKey:@"updated"];
     
-    JivePerson *newPerson = [JivePerson instanceFromJSON:JSON];
+    JivePerson *newPerson = [JivePerson objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals([newPerson class], [JivePerson class], @"Wrong item class");
     STAssertEqualObjects(newPerson.displayName, basePerson.displayName, @"Wrong display name");
@@ -1540,7 +1541,7 @@
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:rawJson
                                                          options:0
                                                            error:NULL];
-    id entity = [entityClass instanceFromJSON:JSON];
+    id entity = [entityClass objectFromJSON:JSON withInstance:self.instance];
     return entity;
 }
 

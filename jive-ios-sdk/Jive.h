@@ -107,6 +107,9 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 //! \class Jive
 @interface Jive : NSObject
 
+//! The URL used to init this jive instance.
+@property (nonatomic, strong) NSURL* jiveInstanceURL;
+
 @property (nonatomic, weak) id<JiveOperationRetrier> defaultOperationRetrier;
 
 @property (atomic, copy) JiveAuthenticationLoggerBlock verboseAuthenticationLoggerBlock;
@@ -117,9 +120,6 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 
 //! The init method to used when creating a Jive instance for a specific URL and credentials.
 - (id) initWithJiveInstance:(NSURL *)jiveInstanceURL authorizationDelegate:(id<JiveAuthorizationDelegate>) delegate;
-
-//! The URL used to init this jive instance.
-- (NSURL*) jiveInstanceURL;
 
 #pragma mark - Version
 

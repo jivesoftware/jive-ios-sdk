@@ -22,7 +22,8 @@
 @implementation JiveDiscussionTests
 
 - (void)setUp {
-    self.typedObject = [[JiveDiscussion alloc] init];
+    [super setUp];
+    self.object = [[JiveDiscussion alloc] init];
 }
 
 - (JiveDiscussion *)discussion {
@@ -193,7 +194,7 @@
     self.discussion.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.discussion toJSONDictionary];
-    JiveDiscussion *newContent = [JiveDiscussion instanceFromJSON:JSON];
+    JiveDiscussion *newContent = [JiveDiscussion objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.discussion class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.discussion.type, @"Wrong type");
@@ -226,7 +227,7 @@
     self.discussion.question = [NSNumber numberWithBool:YES];
     
     id JSON = [self.discussion toJSONDictionary];
-    JiveDiscussion *newContent = [JiveDiscussion instanceFromJSON:JSON];
+    JiveDiscussion *newContent = [JiveDiscussion objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.discussion class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.discussion.type, @"Wrong type");
@@ -260,7 +261,7 @@
                @"type" : @"discussion",
                });
     
-    JiveDiscussion *discussion = [JiveDiscussion instanceFromJSON:JSON];
+    JiveDiscussion *discussion = [JiveDiscussion objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEqualObjects([discussion class], [JiveDiscussion class], nil);
     STAssertEqualObjects(discussion.answer, answer, nil);

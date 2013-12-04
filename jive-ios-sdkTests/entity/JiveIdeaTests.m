@@ -22,7 +22,8 @@
 @implementation JiveIdeaTests
 
 - (void)setUp {
-    self.typedObject = [[JiveIdea alloc] init];
+    [super setUp];
+    self.object = [[JiveIdea alloc] init];
 }
 
 - (JiveIdea *)idea {
@@ -91,7 +92,7 @@
     [self.idea setValue:@YES forKey:@"visibleToExternalContributors"];
     
     id JSON = [self.idea toJSONDictionary];
-    JiveIdea *newContent = [JiveIdea instanceFromJSON:JSON];
+    JiveIdea *newContent = [JiveIdea objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.idea class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.idea.type, @"Wrong type");
@@ -106,7 +107,7 @@
     [self.idea setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.idea toJSONDictionary];
-    JiveIdea *newContent = [JiveIdea instanceFromJSON:JSON];
+    JiveIdea *newContent = [JiveIdea objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.idea class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.idea.type, @"Wrong type");

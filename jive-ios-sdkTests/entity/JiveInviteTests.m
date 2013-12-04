@@ -28,7 +28,8 @@
 }
 
 - (void)setUp {
-    self.typedObject = [[JiveInvite alloc] init];
+    [super setUp];
+    self.object = [[JiveInvite alloc] init];
 }
 
 - (void)testContentParsing {
@@ -77,7 +78,7 @@
     [JSON setValue:@"not a real type" forKey:@"type"];
     [JSON setValue:@"1970-01-01T00:16:40.123+0000" forKey:@"updated"];
     
-    JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
+    JiveInvite *newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newInvite class] isSubclassOfClass:[self.invite class]], @"Wrong item class");
     STAssertEqualObjects(newInvite.body, self.invite.body, @"Wrong body");
@@ -143,7 +144,7 @@
     [JSON setValue:@"not a real type" forKey:@"type"];
     [JSON setValue:@"1970-01-01T00:00:00.000+0000" forKey:@"updated"];
     
-    JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
+    JiveInvite *newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newInvite class] isSubclassOfClass:[self.invite class]], @"Wrong item class");
     STAssertEqualObjects(newInvite.body, self.invite.body, @"Wrong body");
@@ -169,16 +170,16 @@
     [JSON setValue:@"1234" forKey:@"id"];
     [JSON setValue:@"deleted" forKey:@"state"];
     
-    JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
+    JiveInvite *newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals(newInvite.state, JiveInviteDeleted, @"Wrong state");
     
     [JSON setValue:@"revoked" forKey:@"state"];
-    newInvite = [JiveInvite instanceFromJSON:JSON];
+    newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     STAssertEquals(newInvite.state, JiveInviteRevoked, @"Wrong state");
     
     [JSON setValue:@"sent" forKey:@"state"];
-    newInvite = [JiveInvite instanceFromJSON:JSON];
+    newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     STAssertEquals(newInvite.state, JiveInviteSent, @"Wrong state");
 }
 
@@ -188,16 +189,16 @@
     [JSON setValue:@"1234" forKey:@"id"];
     [JSON setValue:@"delete" forKey:@"state"];
     
-    JiveInvite *newInvite = [JiveInvite instanceFromJSON:JSON];
+    JiveInvite *newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     
     STAssertEquals(newInvite.state, 0, @"Wrong state");
     
     [JSON setValue:@"revoke" forKey:@"state"];
-    newInvite = [JiveInvite instanceFromJSON:JSON];
+    newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     STAssertEquals(newInvite.state, 0, @"Wrong state");
     
     [JSON setValue:@"sen" forKey:@"state"];
-    newInvite = [JiveInvite instanceFromJSON:JSON];
+    newInvite = [JiveInvite objectFromJSON:JSON withInstance:self.instance];
     STAssertEquals(newInvite.state, 0, @"Wrong state");
 }
 

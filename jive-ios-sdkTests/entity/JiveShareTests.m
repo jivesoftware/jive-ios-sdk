@@ -22,7 +22,7 @@
 @implementation JiveShareTests
 
 - (void)setUp {
-    self.typedObject = [[JiveShare alloc] init];
+    self.object = [[JiveShare alloc] init];
 }
 
 - (JiveShare *)share {
@@ -105,7 +105,7 @@
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
     
     id JSON = [self.share toJSONDictionary];
-    JiveShare *newContent = [JiveShare instanceFromJSON:JSON];
+    JiveShare *newContent = [JiveShare objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
@@ -125,7 +125,7 @@
     [self.share setValue:sharedPlace forKey:JiveShareAttributes.sharedPlace];
     
     id JSON = [self.share toJSONDictionary];
-    JiveShare *newContent = [JiveShare instanceFromJSON:JSON];
+    JiveShare *newContent = [JiveShare objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");

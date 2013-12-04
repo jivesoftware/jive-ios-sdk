@@ -24,7 +24,8 @@
 @implementation JiveMessageTests
 
 - (void)setUp {
-    self.typedObject = [JiveMessage new];
+    [super setUp];
+    self.object = [JiveMessage new];
 }
 
 - (JiveMessage *)message {
@@ -386,7 +387,7 @@
     [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
    
     id JSON = [self.message persistentJSON];
-    JiveMessage *newContent = [JiveMessage instanceFromJSON:JSON];
+    JiveMessage *newContent = [JiveMessage objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.message class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.message.type, @"Wrong type");
@@ -423,7 +424,7 @@
     [self.message setValue:@[outcomeType] forKey:JiveMessageAttributes.outcomeTypes];
     
     id JSON = [self.message persistentJSON];
-    JiveMessage *newContent = [JiveMessage instanceFromJSON:JSON];
+    JiveMessage *newContent = [JiveMessage objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.message class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.message.type, @"Wrong type");

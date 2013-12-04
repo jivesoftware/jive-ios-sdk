@@ -23,7 +23,7 @@
 @implementation JiveBlogTests
 
 - (void)setUp {
-    self.typedObject = [[JiveBlog alloc] init];
+    self.object = [[JiveBlog alloc] init];
 }
 
 - (void)testType {

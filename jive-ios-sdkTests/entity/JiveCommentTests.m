@@ -22,7 +22,7 @@
 @implementation JiveCommentTests
 
 - (void)setUp {
-    self.typedObject = [[JiveComment alloc] init];
+    self.object = [[JiveComment alloc] init];
 }
 
 - (JiveComment *)comment {

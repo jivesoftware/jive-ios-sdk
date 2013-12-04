@@ -18,62 +18,90 @@
 //
 
 #import "JiveObjectTests.h"
-#import "JiveObject_internal.h"
-
-@interface TestJiveObject : JiveObject
-
-@property (nonatomic, strong) NSString *testProperty;
-
-@end
-
-@implementation TestJiveObject
-
-@synthesize testProperty;
-
-- (NSDictionary *)toJSONDictionary {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
-    dictionary[@"testProperty"] = self.testProperty;
-    
-    return dictionary;
-}
-
-@end
+#import "Jive_internal.h"
 
 @implementation JiveObjectTests
 
+@synthesize serverURL = _serverURL, apiPath = _apiPath;
+
+- (void)setServerURL:(NSURL *)testURL {
+    if (!_serverURL || ![_serverURL isEqual:testURL]) {
+        _serverURL = testURL;
+        if (self.instance) {
+            [self.instance.platformVersion setValue:testURL
+                                             forKey:JivePlatformVersionAttributes.instanceURL];
+        }
+    }
+}
+
+- (NSURL *)serverURL {
+    if (!_serverURL) {
+        _serverURL = [NSURL URLWithString:@"http://dummy.com/"];
+    }
+    
+    return _serverURL;
+}
+
+- (void)setApiPath:(NSString *)apiPath {
+    if (!_apiPath || ![_apiPath isEqual:apiPath]) {
+        _apiPath = apiPath;
+        if (self.instance) {
+            [self.instance.platformVersion.coreURI[0] setValue:apiPath
+                                                        forKey:JiveCoreVersionAttributes.uri];
+        }
+    }
+}
+
+- (NSString *)apiPath {
+    if (!_apiPath) {
+        _apiPath = @"api/core/v3";
+    }
+    
+    return _apiPath;
+}
+
+- (void)setUp {
+    JivePlatformVersion *platformVersion = [JivePlatformVersion new];
+    JiveCoreVersion *coreVersion = [JiveCoreVersion new];
+    
+    self.instance = [[Jive alloc] initWithJiveInstance:self.serverURL
+                                 authorizationDelegate:self];
+    self.object = [JiveObject new];
+    
+    [coreVersion setValue:self.apiPath forKey:JiveCoreVersionAttributes.uri];
+    [coreVersion setValue:@3 forKey:JiveCoreVersionAttributes.version];
+    [platformVersion setValue:@[coreVersion] forKey:JivePlatformVersionAttributes.coreURI];
+    [platformVersion setValue:self.serverURL forKey:JivePlatformVersionAttributes.instanceURL];
+    self.instance.platformVersion = platformVersion;
+}
+
+- (void)tearDown {
+    self.object = nil;
+    self.instance = nil;
+}
+
+- (id<JiveCredentials>)credentialsForJiveInstance:(NSURL *)url {
+    return nil;
+}
+
+- (JiveMobileAnalyticsHeader *)mobileAnalyticsHeaderForJiveInstance:(NSURL *)url {
+    return nil;
+}
+
 - (void)testDeserialize_emptyJSON {
-    JiveObject *target = [TestJiveObject new];
     NSDictionary *JSON = @{};
     
-    STAssertFalse([target deserialize:JSON], @"Reported valid deserialize with empty JSON");
-    STAssertFalse(target.extraFieldsDetected, @"Reported extra fields with empty JSON");
-    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
+    STAssertFalse([self.object deserialize:JSON fromInstance:self.instance], @"Reported valid deserialize with empty JSON");
+    STAssertFalse(self.object.extraFieldsDetected, @"Reported extra fields with empty JSON");
+    STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
 }
 
 - (void)testDeserialize_invalidJSON {
-    JiveObject *target = [TestJiveObject new];
     NSDictionary *JSON = @{@"dummy key":@"bad value"};
     
-    STAssertFalse([target deserialize:JSON], @"Reported valid deserialize with wrong JSON");
-    STAssertTrue(target.extraFieldsDetected, @"No extra fields reported with wrong JSON");
-    STAssertNil(target.refreshDate, @"Invalid refresh date entered for empty JSON");
-}
-
-- (void)testDeserialize_validJSON {
-    JiveObject *target = [TestJiveObject new];
-    NSString *testValue = @"test value";
-    NSString *propertyID = @"testProperty";
-    NSDictionary *JSON = @{propertyID:testValue};
-    NSDate *testDate = [NSDate date];
-    
-    STAssertTrue([target deserialize:JSON], @"Reported invalid deserialize with valid JSON");
-    STAssertFalse(target.extraFieldsDetected, @"Extra fields reported with valid JSON");
-    STAssertNotNil(target.refreshDate, @"A refresh date is reqired with valid JSON");
-    STAssertEqualsWithAccuracy([testDate timeIntervalSinceDate:target.refreshDate],
-                               (NSTimeInterval)0,
-                               (NSTimeInterval)0.1,
-                               @"An invalid refresh date was specified");
+    STAssertFalse([self.object deserialize:JSON fromInstance:self.instance], @"Reported valid deserialize with wrong JSON");
+    STAssertTrue(self.object.extraFieldsDetected, @"No extra fields reported with wrong JSON");
+    STAssertNil(self.object.refreshDate, @"Invalid refresh date entered for empty JSON");
 }
 
 @end

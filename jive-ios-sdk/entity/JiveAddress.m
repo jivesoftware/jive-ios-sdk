@@ -23,7 +23,9 @@
 
 @synthesize jive_label, value, type, primary;
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)jiveInstance {
     return JSON;
 }
 

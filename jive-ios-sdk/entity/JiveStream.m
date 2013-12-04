@@ -59,12 +59,15 @@ struct JiveStreamSourceValues const JiveStreamSourceValues = {
     return @"stream";
 }
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)instance {
     if ([@"resources" isEqualToString:property]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
         
         for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
+            JiveResourceEntry *entry = [JiveResourceEntry objectFromJSON:[JSON objectForKey:key]
+                                                              withInstance:instance];
             
             [dictionary setValue:entry forKey:key];
         }

@@ -1,5 +1,5 @@
 //
-//  JiveAttachmentTests.m
+//  Jiveself.attachmentTests.m
 //  jive-ios-sdk
 //
 //  Created by Orson Bushnell on 12/27/12.
@@ -23,58 +23,64 @@
 
 @implementation JiveAttachmentTests
 
+- (void)setUp {
+    [super setUp];
+    self.object = [JiveAttachment new];
+}
+
+- (JiveAttachment *)attachment {
+    return (JiveAttachment *)self.object;
+}
+
 - (void)testToJSON {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
-    NSDictionary *JSON = [attachment toJSONDictionary];
+    NSDictionary *JSON = [self.attachment toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    attachment.contentType = @"parent";
-    attachment.name = @"Subject";
-    attachment.url = [NSURL URLWithString:@"http://dummy.com/item.txt"];
-    attachment.doUpload = [NSNumber numberWithBool:YES];
-    [attachment setValue:@"1234" forKey:@"jiveId"];
-    [attachment setValue:[NSNumber numberWithInt:50] forKey:@"size"];
+    self.attachment.contentType = @"parent";
+    self.attachment.name = @"Subject";
+    self.attachment.url = [NSURL URLWithString:@"http://dummy.com/item.txt"];
+    self.attachment.doUpload = [NSNumber numberWithBool:YES];
+    [self.attachment setValue:@"1234" forKey:@"jiveId"];
+    [self.attachment setValue:[NSNumber numberWithInt:50] forKey:@"size"];
     
-    JSON = [attachment toJSONDictionary];
+    JSON = [self.attachment toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"id"], attachment.jiveId, @"Wrong id");
-    STAssertEqualObjects([JSON objectForKey:@"contentType"], attachment.contentType, @"Wrong contentType");
-    STAssertEqualObjects([JSON objectForKey:@"name"], attachment.name, @"Wrong name");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [attachment.url absoluteString], @"Wrong url");
-    STAssertEqualObjects([JSON objectForKey:@"size"], attachment.size, @"Wrong size");
-    STAssertEqualObjects([JSON objectForKey:@"doUpload"], attachment.doUpload, @"Wrong doUpload");
+    STAssertEqualObjects([JSON objectForKey:@"id"], self.attachment.jiveId, @"Wrong id");
+    STAssertEqualObjects([JSON objectForKey:@"contentType"], self.attachment.contentType, @"Wrong contentType");
+    STAssertEqualObjects([JSON objectForKey:@"name"], self.attachment.name, @"Wrong name");
+    STAssertEqualObjects([JSON objectForKey:@"url"], [self.attachment.url absoluteString], @"Wrong url");
+    STAssertEqualObjects([JSON objectForKey:@"size"], self.attachment.size, @"Wrong size");
+    STAssertEqualObjects([JSON objectForKey:@"doUpload"], self.attachment.doUpload, @"Wrong doUpload");
 }
 
 - (void)testToJSON_alternate {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
-    NSDictionary *JSON = [attachment toJSONDictionary];
+    NSDictionary *JSON = [self.attachment toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    attachment.contentType = @"dummy";
-    attachment.name = @"Required";
-    attachment.url = [NSURL URLWithString:@"http://super.com/item.html"];
-    [attachment setValue:@"5432" forKey:@"jiveId"];
-    [attachment setValue:[NSNumber numberWithInt:500] forKey:@"size"];
+    self.attachment.contentType = @"dummy";
+    self.attachment.name = @"Required";
+    self.attachment.url = [NSURL URLWithString:@"http://super.com/item.html"];
+    [self.attachment setValue:@"5432" forKey:@"jiveId"];
+    [self.attachment setValue:[NSNumber numberWithInt:500] forKey:@"size"];
     
-    JSON = [attachment toJSONDictionary];
+    JSON = [self.attachment toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"id"], attachment.jiveId, @"Wrong id");
-    STAssertEqualObjects([JSON objectForKey:@"contentType"], attachment.contentType, @"Wrong contentType");
-    STAssertEqualObjects([JSON objectForKey:@"name"], attachment.name, @"Wrong name");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [attachment.url absoluteString], @"Wrong url");
-    STAssertEqualObjects([JSON objectForKey:@"size"], attachment.size, @"Wrong size");
+    STAssertEqualObjects([JSON objectForKey:@"id"], self.attachment.jiveId, @"Wrong id");
+    STAssertEqualObjects([JSON objectForKey:@"contentType"], self.attachment.contentType, @"Wrong contentType");
+    STAssertEqualObjects([JSON objectForKey:@"name"], self.attachment.name, @"Wrong name");
+    STAssertEqualObjects([JSON objectForKey:@"url"], [self.attachment.url absoluteString], @"Wrong url");
+    STAssertEqualObjects([JSON objectForKey:@"size"], self.attachment.size, @"Wrong size");
 }
 
 - (void)testContentParsing {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *contentType = @"First";
     JiveResourceEntry *resource = [[JiveResourceEntry alloc] init];
     NSString *resourceKey = @"manager";
@@ -82,33 +88,32 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    attachment.contentType = @"parent";
-    attachment.name = @"Subject";
-    attachment.url = [NSURL URLWithString:@"http://dummy.com/item.txt"];
-    attachment.doUpload = [NSNumber numberWithBool:YES];
-    [attachment setValue:@"1234" forKey:@"jiveId"];
-    [attachment setValue:[NSNumber numberWithInt:50] forKey:@"size"];
-    [attachment setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    self.attachment.contentType = @"parent";
+    self.attachment.name = @"Subject";
+    self.attachment.url = [NSURL URLWithString:@"http://dummy.com/item.txt"];
+    self.attachment.doUpload = [NSNumber numberWithBool:YES];
+    [self.attachment setValue:@"1234" forKey:@"jiveId"];
+    [self.attachment setValue:[NSNumber numberWithInt:50] forKey:@"size"];
+    [self.attachment setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    id JSON = [attachment toJSONDictionary];
+    id JSON = [self.attachment toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveAttachment *newAttachment = [JiveAttachment instanceFromJSON:JSON];
+    JiveAttachment *newAttachment = [JiveAttachment objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertTrue([[newAttachment class] isSubclassOfClass:[attachment class]], @"Wrong item class");
-    STAssertEqualObjects(newAttachment.jiveId, attachment.jiveId, @"Wrong id");
-    STAssertEqualObjects(newAttachment.contentType, attachment.contentType, @"Wrong contentType");
-    STAssertEqualObjects(newAttachment.name, attachment.name, @"Wrong name");
-    STAssertEqualObjects(newAttachment.url, attachment.url, @"Wrong url");
-    STAssertEqualObjects(newAttachment.size, attachment.size, @"Wrong size");
-    STAssertEqualObjects(newAttachment.doUpload, attachment.doUpload, @"Wrong doUpload");
-    STAssertEquals([newAttachment.resources count], [attachment.resources count], @"Wrong number of resource objects");
+    STAssertTrue([[newAttachment class] isSubclassOfClass:[self.attachment class]], @"Wrong item class");
+    STAssertEqualObjects(newAttachment.jiveId, self.attachment.jiveId, @"Wrong id");
+    STAssertEqualObjects(newAttachment.contentType, self.attachment.contentType, @"Wrong contentType");
+    STAssertEqualObjects(newAttachment.name, self.attachment.name, @"Wrong name");
+    STAssertEqualObjects(newAttachment.url, self.attachment.url, @"Wrong url");
+    STAssertEqualObjects(newAttachment.size, self.attachment.size, @"Wrong size");
+    STAssertEqualObjects(newAttachment.doUpload, self.attachment.doUpload, @"Wrong doUpload");
+    STAssertEquals([newAttachment.resources count], [self.attachment.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newAttachment.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 
 - (void)testContentParsingAlternate {
-    JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *contentType = @"Gigantic";
     JiveResourceEntry *resource = [[JiveResourceEntry alloc] init];
     NSString *resourceKey = @"followers";
@@ -116,27 +121,27 @@
     NSDictionary *resourcesJSON = [NSDictionary dictionaryWithObject:resourceJSON forKey:resourceKey];
     
     [resource setValue:[NSURL URLWithString:contentType] forKey:@"ref"];
-    attachment.contentType = @"dummy";
-    attachment.name = @"Required";
-    attachment.url = [NSURL URLWithString:@"http://super.com/item.html"];
-    [attachment setValue:@"5432" forKey:@"jiveId"];
-    [attachment setValue:[NSNumber numberWithInt:500] forKey:@"size"];
-    [attachment setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
+    self.attachment.contentType = @"dummy";
+    self.attachment.name = @"Required";
+    self.attachment.url = [NSURL URLWithString:@"http://super.com/item.html"];
+    [self.attachment setValue:@"5432" forKey:@"jiveId"];
+    [self.attachment setValue:[NSNumber numberWithInt:500] forKey:@"size"];
+    [self.attachment setValue:[NSDictionary dictionaryWithObject:resource forKey:resourceKey] forKey:@"resources"];
     
-    id JSON = [attachment toJSONDictionary];
+    id JSON = [self.attachment toJSONDictionary];
     
     [(NSMutableDictionary *)JSON setValue:resourcesJSON forKey:@"resources"];
     
-    JiveAttachment *newAttachment = [JiveAttachment instanceFromJSON:JSON];
+    JiveAttachment *newAttachment = [JiveAttachment objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertTrue([[newAttachment class] isSubclassOfClass:[attachment class]], @"Wrong item class");
-    STAssertEqualObjects(newAttachment.jiveId, attachment.jiveId, @"Wrong id");
-    STAssertEqualObjects(newAttachment.contentType, attachment.contentType, @"Wrong contentType");
-    STAssertEqualObjects(newAttachment.name, attachment.name, @"Wrong name");
-    STAssertEqualObjects(newAttachment.url, attachment.url, @"Wrong url");
-    STAssertEqualObjects(newAttachment.size, attachment.size, @"Wrong size");
-    STAssertEqualObjects(newAttachment.doUpload, attachment.doUpload, @"Wrong doUpload");
-    STAssertEquals([newAttachment.resources count], [attachment.resources count], @"Wrong number of resource objects");
+    STAssertTrue([[newAttachment class] isSubclassOfClass:[self.attachment class]], @"Wrong item class");
+    STAssertEqualObjects(newAttachment.jiveId, self.attachment.jiveId, @"Wrong id");
+    STAssertEqualObjects(newAttachment.contentType, self.attachment.contentType, @"Wrong contentType");
+    STAssertEqualObjects(newAttachment.name, self.attachment.name, @"Wrong name");
+    STAssertEqualObjects(newAttachment.url, self.attachment.url, @"Wrong url");
+    STAssertEqualObjects(newAttachment.size, self.attachment.size, @"Wrong size");
+    STAssertEqualObjects(newAttachment.doUpload, self.attachment.doUpload, @"Wrong doUpload");
+    STAssertEquals([newAttachment.resources count], [self.attachment.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newAttachment.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
 }
 

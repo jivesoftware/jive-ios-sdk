@@ -21,39 +21,49 @@
 #import "JiveObject.h"
 #import "JiveInboxEntry.h"
 #import "JiveActivityObject.h"
+#import "Jive_internal.h"
 
 @implementation jive_entity_tests
 
 - (id) JSONFromTestFile:(NSString*) filename {
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:[filename stringByDeletingPathExtension] ofType:@"json"];
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:filename ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:path];
     NSError* error;
     id json  = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    
     STAssertNil(error, @"Unable to deserialize JSON text data from file '%@'.json", filename);
     return json;
 }
 
 - (void) testJiveInboxEntryDeserialize {
-    id json = [self JSONFromTestFile:@"inbox_response.json"];
+    id json = [self JSONFromTestFile:@"inbox_response"];
+    Jive *instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                                  authorizationDelegate:nil];
     NSDictionary* inboxEntryData = [[json objectForKey:@"list"] objectAtIndex:0];
-    JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:inboxEntryData];
+    JiveInboxEntry *inboxEntry = [JiveInboxEntry objectFromJSON:inboxEntryData
+                                                     withInstance:instance];
+    
     STAssertNotNil(inboxEntry, @"JiveInboxEntry was nil!");
     STAssertNotNil(inboxEntry.object.jiveId, @"JiveId was nil!");
 }
 
 - (void) testJiveInboxEntryDeserializeList {
     
-    id json = [self JSONFromTestFile:@"inbox_response.json"];
+    id json = [self JSONFromTestFile:@"inbox_response"];
+    Jive *instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://brewspace.jiveland.com"]
+                                  authorizationDelegate:nil];
+    id JSONList = [json objectForKey:@"list"];
+    JiveInboxEntry *inboxEntry = [JiveInboxEntry objectFromJSON:JSONList withInstance:instance];
     
-    NSDictionary *JSONList = [json objectForKey:@"list"];
-    JiveInboxEntry *inboxEntry = [JiveInboxEntry instanceFromJSON:JSONList];
+    STAssertNil(inboxEntry,
+                @"JiveInboxEntry should have failed initialization when passed incorrect JSON.");
     
-    STAssertNil(inboxEntry, @"JiveInboxEntry should have failed initialization when passed incorrect JSON.");
-    
-    NSArray* instances = [JiveInboxEntry instancesFromJSONList:[json objectForKey:@"list"]];
+    NSArray* instances = [JiveInboxEntry objectsFromJSONList:JSONList withInstance:instance];
     
     STAssertNotNil(instances, @"JiveInboxEntry list should not be nil!");
-    STAssertTrue([instances count] == [JSONList count], @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.", [JSONList count], [instances count]);
+    STAssertTrue([instances count] == [JSONList count],
+                 @"Incorrect number of JiveInboxEntry objects found in list. Expected %d, found %d.",
+                 [JSONList count], [instances count]);
 }
 
 @end

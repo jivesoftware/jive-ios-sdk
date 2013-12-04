@@ -23,17 +23,19 @@
 
 + (Class) entityClass:(NSDictionary*) obj;
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON;
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)jiveInstance;
 
 - (void)handlePrimitiveProperty:(NSString *)property fromJSON:(id)value;
 
-- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON;
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON fromInstance:(Jive *)jiveInstance;
 
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag;
 - (void)addArrayElements:(NSArray *)array
   toPersistentDictionary:(NSMutableDictionary *)dictionary
                   forTag:(NSString *)tag;
 
-- (BOOL) deserialize:(id) JSON;
+- (BOOL) deserialize:(id)JSON fromInstance:(Jive *)jiveInstance;
 
 @end

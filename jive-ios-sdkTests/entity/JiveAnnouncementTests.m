@@ -22,7 +22,8 @@
 @implementation JiveAnnouncementTests
 
 - (void)setUp {
-    self.typedObject = [[JiveAnnouncement alloc] init];
+    [super setUp];
+    self.object = [[JiveAnnouncement alloc] init];
 }
 
 - (JiveAnnouncement *)announcement {
@@ -106,7 +107,7 @@
     [self.announcement setValue:@"place" forKey:@"subjectURITargetType"];
     
     id JSON = [self.announcement toJSONDictionary];
-    JiveAnnouncement *newContent = [JiveAnnouncement instanceFromJSON:JSON];
+    JiveAnnouncement *newContent = [JiveAnnouncement objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.announcement class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.announcement.type, @"Wrong type");
@@ -127,7 +128,7 @@
     [self.announcement setValue:@"person" forKey:@"subjectURITargetType"];
     
     id JSON = [self.announcement toJSONDictionary];
-    JiveAnnouncement *newContent = [JiveAnnouncement instanceFromJSON:JSON];
+    JiveAnnouncement *newContent = [JiveAnnouncement objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.announcement class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.announcement.type, @"Wrong type");

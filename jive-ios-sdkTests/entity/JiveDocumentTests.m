@@ -24,7 +24,8 @@
 @implementation JiveDocumentTests
 
 - (void)setUp {
-    self.typedObject = [[JiveDocument alloc] init];
+    [super setUp];
+    self.object = [[JiveDocument alloc] init];
 }
 
 - (JiveDocument *)document {
@@ -409,7 +410,7 @@
     self.document.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.document toJSONDictionary];
-    JiveDocument *newContent = [JiveDocument instanceFromJSON:JSON];
+    JiveDocument *newContent = [JiveDocument objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.document class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.document.type, @"Wrong type");
@@ -476,7 +477,7 @@
     self.document.restrictComments = [NSNumber numberWithBool:YES];
     
     id JSON = [self.document toJSONDictionary];
-    JiveDocument *newContent = [JiveDocument instanceFromJSON:JSON];
+    JiveDocument *newContent = [JiveDocument objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.document class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.document.type, @"Wrong type");

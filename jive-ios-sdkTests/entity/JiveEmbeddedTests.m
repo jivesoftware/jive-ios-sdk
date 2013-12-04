@@ -22,100 +22,105 @@
 
 @implementation JiveEmbeddedTests
 
+- (void)setUp {
+    [super setUp];
+    self.object = [JiveEmbedded new];
+}
+
+- (JiveEmbedded *)embedded {
+    return (JiveEmbedded *)self.object;
+}
+
 - (void)testToJSON {
-    JiveEmbedded *embedded = [[JiveEmbedded alloc] init];
     NSDictionary *context = [NSDictionary dictionaryWithObject:@"context" forKey:@"key"];
     NSDictionary *preferredExperience = [NSDictionary dictionaryWithObject:@"preferredExperience" forKey:@"key"];
-    NSDictionary *JSON = [embedded toJSONDictionary];
+    NSDictionary *JSON = [self.embedded toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    [embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"gadget"];
-    [embedded setValue:@"image data" forKey:@"previewImage"];
-    [embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [embedded setValue:context forKey:@"context"];
-    [embedded setValue:preferredExperience forKey:@"preferredExperience"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"gadget"];
+    [self.embedded setValue:@"image data" forKey:@"previewImage"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
+    [self.embedded setValue:context forKey:@"context"];
+    [self.embedded setValue:preferredExperience forKey:@"preferredExperience"];
     
-    JSON = [embedded toJSONDictionary];
+    JSON = [self.embedded toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"previewImage"], embedded.previewImage, @"Wrong previewImage.");
-    STAssertEqualObjects([JSON objectForKey:@"context"], embedded.context, @"Wrong context.");
-    STAssertEqualObjects([JSON objectForKey:@"preferredExperience"], embedded.preferredExperience, @"Wrong preferredExperience.");
-    STAssertEqualObjects([JSON objectForKey:@"gadget"], [embedded.gadget absoluteString], @"Wrong gadget.");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [embedded.url absoluteString], @"Wrong url.");
+    STAssertEqualObjects([JSON objectForKey:@"previewImage"], self.embedded.previewImage, @"Wrong previewImage.");
+    STAssertEqualObjects([JSON objectForKey:@"context"], self.embedded.context, @"Wrong context.");
+    STAssertEqualObjects([JSON objectForKey:@"preferredExperience"], self.embedded.preferredExperience, @"Wrong preferredExperience.");
+    STAssertEqualObjects([JSON objectForKey:@"gadget"], [self.embedded.gadget absoluteString], @"Wrong gadget.");
+    STAssertEqualObjects([JSON objectForKey:@"url"], [self.embedded.url absoluteString], @"Wrong url.");
 }
 
 - (void)testToJSON_alternate {
-    JiveEmbedded *embedded = [[JiveEmbedded alloc] init];
     NSDictionary *context = [NSDictionary dictionaryWithObject:@"wrong" forKey:@"key"];
     NSDictionary *preferredExperience = [NSDictionary dictionaryWithObject:@"not preferred" forKey:@"key"];
-    NSDictionary *JSON = [embedded toJSONDictionary];
+    NSDictionary *JSON = [self.embedded toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    [embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"gadget"];
-    [embedded setValue:@"http://preview.com/image.png" forKey:@"previewImage"];
-    [embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
-    [embedded setValue:context forKey:@"context"];
-    [embedded setValue:preferredExperience forKey:@"preferredExperience"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"gadget"];
+    [self.embedded setValue:@"http://preview.com/image.png" forKey:@"previewImage"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
+    [self.embedded setValue:context forKey:@"context"];
+    [self.embedded setValue:preferredExperience forKey:@"preferredExperience"];
     
-    JSON = [embedded toJSONDictionary];
+    JSON = [self.embedded toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"previewImage"], embedded.previewImage, @"Wrong previewImage.");
-    STAssertEqualObjects([JSON objectForKey:@"context"], embedded.context, @"Wrong context.");
-    STAssertEqualObjects([JSON objectForKey:@"preferredExperience"], embedded.preferredExperience, @"Wrong preferredExperience.");
-    STAssertEqualObjects([JSON objectForKey:@"gadget"], [embedded.gadget absoluteString], @"Wrong gadget.");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [embedded.url absoluteString], @"Wrong url.");
+    STAssertEqualObjects([JSON objectForKey:@"previewImage"], self.embedded.previewImage, @"Wrong previewImage.");
+    STAssertEqualObjects([JSON objectForKey:@"context"], self.embedded.context, @"Wrong context.");
+    STAssertEqualObjects([JSON objectForKey:@"preferredExperience"], self.embedded.preferredExperience, @"Wrong preferredExperience.");
+    STAssertEqualObjects([JSON objectForKey:@"gadget"], [self.embedded.gadget absoluteString], @"Wrong gadget.");
+    STAssertEqualObjects([JSON objectForKey:@"url"], [self.embedded.url absoluteString], @"Wrong url.");
 }
 
 - (void)testEmbeddedParsing {
-    JiveEmbedded *baseEmbedded = [[JiveEmbedded alloc] init];
     NSDictionary *context = [NSDictionary dictionaryWithObject:@"context" forKey:@"key"];
     NSDictionary *preferredExperience = [NSDictionary dictionaryWithObject:@"preferredExperience" forKey:@"key"];
     
-    [baseEmbedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"gadget"];
-    [baseEmbedded setValue:@"image data" forKey:@"previewImage"];
-    [baseEmbedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [baseEmbedded setValue:context forKey:@"context"];
-    [baseEmbedded setValue:preferredExperience forKey:@"preferredExperience"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"gadget"];
+    [self.embedded setValue:@"image data" forKey:@"previewImage"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
+    [self.embedded setValue:context forKey:@"context"];
+    [self.embedded setValue:preferredExperience forKey:@"preferredExperience"];
     
-    id JSON = [baseEmbedded toJSONDictionary];
-    JiveEmbedded *embedded = [JiveEmbedded instanceFromJSON:JSON];
+    id JSON = [self.embedded toJSONDictionary];
+    JiveEmbedded *newEmbedded = [JiveEmbedded objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertEquals([embedded class], [JiveEmbedded class], @"Wrong item class");
-    STAssertEqualObjects(embedded.gadget, baseEmbedded.gadget, @"Wrong gadget");
-    STAssertEqualObjects(embedded.previewImage, baseEmbedded.previewImage, @"Wrong previewImage");
-    STAssertEqualObjects(embedded.url, baseEmbedded.url, @"Wrong url");
-    STAssertEqualObjects(embedded.context, baseEmbedded.context, @"Wrong context");
-    STAssertEqualObjects(embedded.preferredExperience, baseEmbedded.preferredExperience, @"Wrong preferredExperience");
+    STAssertEquals([newEmbedded class], [JiveEmbedded class], @"Wrong item class");
+    STAssertEqualObjects(newEmbedded.gadget, self.embedded.gadget, @"Wrong gadget");
+    STAssertEqualObjects(newEmbedded.previewImage, self.embedded.previewImage, @"Wrong previewImage");
+    STAssertEqualObjects(newEmbedded.url, self.embedded.url, @"Wrong url");
+    STAssertEqualObjects(newEmbedded.context, self.embedded.context, @"Wrong context");
+    STAssertEqualObjects(newEmbedded.preferredExperience, self.embedded.preferredExperience, @"Wrong preferredExperience");
 }
 
 - (void)testEmbeddedParsingAlternate {
-    JiveEmbedded *baseEmbedded = [[JiveEmbedded alloc] init];
     NSDictionary *context = [NSDictionary dictionaryWithObject:@"wrong" forKey:@"key"];
     NSDictionary *preferredExperience = [NSDictionary dictionaryWithObject:@"not preferred" forKey:@"key"];
     
-    [baseEmbedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"gadget"];
-    [baseEmbedded setValue:@"http://preview.com/image.png" forKey:@"previewImage"];
-    [baseEmbedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
-    [baseEmbedded setValue:context forKey:@"context"];
-    [baseEmbedded setValue:preferredExperience forKey:@"preferredExperience"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"gadget"];
+    [self.embedded setValue:@"http://preview.com/image.png" forKey:@"previewImage"];
+    [self.embedded setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
+    [self.embedded setValue:context forKey:@"context"];
+    [self.embedded setValue:preferredExperience forKey:@"preferredExperience"];
     
-    id JSON = [baseEmbedded toJSONDictionary];
-    JiveEmbedded *embedded = [JiveEmbedded instanceFromJSON:JSON];
+    id JSON = [self.embedded toJSONDictionary];
+    JiveEmbedded *newEmbedded = [JiveEmbedded objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertEquals([embedded class], [JiveEmbedded class], @"Wrong item class");
-    STAssertEqualObjects(embedded.gadget, baseEmbedded.gadget, @"Wrong gadget");
-    STAssertEqualObjects(embedded.previewImage, baseEmbedded.previewImage, @"Wrong previewImage");
-    STAssertEqualObjects(embedded.url, baseEmbedded.url, @"Wrong url");
-    STAssertEqualObjects(embedded.context, baseEmbedded.context, @"Wrong context");
-    STAssertEqualObjects(embedded.preferredExperience, baseEmbedded.preferredExperience, @"Wrong preferredExperience");
+    STAssertEquals([newEmbedded class], [JiveEmbedded class], @"Wrong item class");
+    STAssertEqualObjects(newEmbedded.gadget, self.embedded.gadget, @"Wrong gadget");
+    STAssertEqualObjects(newEmbedded.previewImage, self.embedded.previewImage, @"Wrong previewImage");
+    STAssertEqualObjects(newEmbedded.url, self.embedded.url, @"Wrong url");
+    STAssertEqualObjects(newEmbedded.context, self.embedded.context, @"Wrong context");
+    STAssertEqualObjects(newEmbedded.preferredExperience, self.embedded.preferredExperience, @"Wrong preferredExperience");
 }
 
 @end

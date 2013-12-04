@@ -22,7 +22,8 @@
 @implementation JiveSpaceTests
 
 - (void)setUp {
-    self.typedObject = [[JiveSpace alloc] init];
+    [super setUp];
+    self.object = [[JiveSpace alloc] init];
 }
 
 - (JiveSpace *)space {
@@ -100,7 +101,7 @@
     [self.space setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.space toJSONDictionary];
-    JiveSpace *newPlace = [JiveSpace instanceFromJSON:JSON];
+    JiveSpace *newPlace = [JiveSpace objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[self.space class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.type, self.space.type, @"Wrong type");
@@ -119,7 +120,7 @@
     [self.space setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.space toJSONDictionary];
-    JiveSpace *newPlace = [JiveSpace instanceFromJSON:JSON];
+    JiveSpace *newPlace = [JiveSpace objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newPlace class] isSubclassOfClass:[self.space class]], @"Wrong item class");
     STAssertEqualObjects(newPlace.type, self.space.type, @"Wrong type");

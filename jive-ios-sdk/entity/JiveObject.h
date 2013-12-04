@@ -29,10 +29,12 @@ extern struct JiveObjectAttributes {
 //! \class JiveObject
 @interface JiveObject : NSObject
 
-+ (id) instanceFromJSON:(NSDictionary*) JSON;
-+ (id) instanceFromJSON:(NSDictionary*) JSON withJive:(Jive *)jive;
-+ (NSArray*) instancesFromJSONList:(NSArray*) JSON;
-+ (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive;
++ (id) instanceFromJSON:(NSDictionary*) JSON DEPRECATED_ATTRIBUTE;
++ (id) instanceFromJSON:(NSDictionary*) JSON withJive:(Jive *)jive DEPRECATED_ATTRIBUTE;
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON DEPRECATED_ATTRIBUTE;
++ (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive DEPRECATED_ATTRIBUTE;
++ (id) objectFromJSON:(NSDictionary *)JSON withInstance:(Jive *)instance;
++ (NSArray*) objectsFromJSONList:(NSArray *)JSON withInstance:(Jive *)instance;
 
 //! Debug property used to indicate that a JSON server response contained more data than was expected.
 @property (readonly) BOOL extraFieldsDetected;

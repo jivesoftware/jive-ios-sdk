@@ -89,26 +89,27 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
     }
 }
 
-+ (JivePlatformVersion*) instanceFromJSON:(NSDictionary*) JSON {
-    JivePlatformVersion *instance = [JivePlatformVersion new];
++ (JivePlatformVersion*) objectFromJSON:(NSDictionary*)JSON withInstance:(Jive *)instance {
+    JivePlatformVersion *version = [JivePlatformVersion new];
     NSInteger requiredElementsFound = 0;
     
     for (NSString *key in JSON) {
         if ([JiveVersionKey isEqualToString:key]) {
-            [instance parseVersion:JSON[key]];
+            [version parseVersion:JSON[key]];
             ++requiredElementsFound;
         }
         else if ([JiveCoreVersionsKey isEqualToString:key]) {
-            NSArray *coreURIs = [JiveCoreVersion instancesFromJSONList:JSON[key]];
+            NSArray *coreURIs = [JiveCoreVersion objectsFromJSONList:JSON[key]
+                                                          withInstance:instance];
             
-            [instance setValue:coreURIs forKey:JivePlatformVersionAttributes.coreURI];
+            [version setValue:coreURIs forKey:JivePlatformVersionAttributes.coreURI];
             ++requiredElementsFound;
         }
         else
-            [instance deserializeKey:key fromJSON:JSON];
+            [version deserializeKey:key fromJSON:JSON fromInstance:instance];
     }
     
-    return requiredElementsFound == 2 ? instance : nil;
+    return requiredElementsFound == 2 ? version : nil;
 }
 
 - (NSString *)sdk {

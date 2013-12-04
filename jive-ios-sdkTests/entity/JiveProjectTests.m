@@ -22,7 +22,8 @@
 @implementation JiveProjectTests
 
 - (void)setUp {
-    self.typedObject = [[JiveProject alloc] init];
+    [super setUp];
+    self.object = [[JiveProject alloc] init];
 }
 
 - (JiveProject *)project {
@@ -131,7 +132,7 @@
     [self.project setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.project toJSONDictionary];
-    JiveProject *newProject = [JiveProject instanceFromJSON:JSON];
+    JiveProject *newProject = [JiveProject objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newProject class] isSubclassOfClass:[self.project class]], @"Wrong item class");
     STAssertEqualObjects(newProject.type, self.project.type, @"Wrong type");
@@ -158,7 +159,7 @@
     [self.project setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
     
     id JSON = [self.project toJSONDictionary];
-    JiveProject *newProject = [JiveProject instanceFromJSON:JSON];
+    JiveProject *newProject = [JiveProject objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newProject class] isSubclassOfClass:[self.project class]], @"Wrong item class");
     STAssertEqualObjects(newProject.type, self.project.type, @"Wrong type");

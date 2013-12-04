@@ -31,6 +31,7 @@
 #import "OCMockObject+MockJiveURLResponseDelegate.h"
 #import "NSError+Jive.h"
 #import "JiveMetadata_internal.h"
+#import "Jive_internal.h"
 
 @implementation jive_api_tests
 
@@ -77,15 +78,17 @@
     
     mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
     
-    NSURL* originalJiveInstance = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    NSString* originalJiveInstance = @"https://brewspace.jiveland.com";
     
-    jive = [[Jive alloc] initWithJiveInstance:originalJiveInstance
+    jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:originalJiveInstance]
                         authorizationDelegate:mockAuthDelegate];
     
     NSURL* configuredJiveInstance = [jive jiveInstanceURL];
     
     STAssertNotNil(configuredJiveInstance, @"jiveInstance URL should never be nil");
-    STAssertTrue([[configuredJiveInstance absoluteString] isEqualToString:[originalJiveInstance absoluteString]], @"Configured URL does not match original URL");
+    STAssertEqualObjects([configuredJiveInstance absoluteString], originalJiveInstance,
+                         @"Configured URL does not match original URL");
+    STAssertNil(jive.platformVersion, @"Platform version should not exist");
 }
 
 - (void) testInbox {
@@ -6292,11 +6295,14 @@
 - (void) testVersionOperationForInstance {
     [self createJiveAPIObjectWithResponse:@"version"];
     
+    STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"PRECONDITION: Wrong base uri");
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive versionOperationForInstance:testURL
                                                                      onComplete:(^(JivePlatformVersion *version) {
             STAssertEqualObjects(version.major, @7, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            STAssertNil(version.instanceURL, @"There should not be a server URL");
+            STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"The base URI should not have changed");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -6312,11 +6318,14 @@
 - (void) testVersionForInstance {
     [self createJiveAPIObjectWithResponse:@"version_alternate"];
     
+    STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"PRECONDITION: Wrong base uri");
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [jive versionForInstance:testURL
                       onComplete:(^(JivePlatformVersion *version) {
             STAssertEqualObjects(version.major, @6, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            STAssertEqualObjects(version.instanceURL, jive.jiveInstanceURL, @"Wrong server URL");
+            STAssertEqualObjects(jive.baseURI, @"core/api/v3", @"The base URI was not updated");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -6356,6 +6365,47 @@
         
         [operation start];
     }];
+}
+
+- (void) testVersionForProxiedInstance {
+    [self createJiveAPIObjectWithResponse:@"version_proxy"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [jive versionForInstance:testURL
+                      onComplete:(^(JivePlatformVersion *version) {
+            NSURL *serverURL = [NSURL URLWithString:@"https://proxy.com"];
+            
+            STAssertEqualObjects(version.major, @7, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            STAssertEqualObjects(version.instanceURL, serverURL, @"Wrong server URL");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                         onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
+    }];
+}
+
+- (void) testChangingInstanceURL {
+    NSURL *newJiveInstance = [NSURL URLWithString:@"http://alternate.net"];
+    NSURL* originalJiveInstance = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    JivePlatformVersion *platformVersion = [JivePlatformVersion new];
+
+    mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
+    jive = [[Jive alloc] initWithJiveInstance:originalJiveInstance
+                        authorizationDelegate:mockAuthDelegate];
+    [platformVersion setValue:newJiveInstance forKey:JivePlatformVersionAttributes.instanceURL];
+    
+    jive.jiveInstanceURL = newJiveInstance;
+    STAssertNil(jive.platformVersion, @"Platform version should not exist");
+    STAssertEqualObjects(jive.jiveInstanceURL, newJiveInstance, @"instance url not updated");
+    
+    [jive setValue:platformVersion forKey:@"platformVersion"];
+    jive.jiveInstanceURL = originalJiveInstance;
+    STAssertEqualObjects(jive.platformVersion, platformVersion, @"Changing the instance url should not have changed the platform version");
+    STAssertEqualObjects(jive.jiveInstanceURL, originalJiveInstance, @"instance url not updated");
 }
 
 - (void) testCreateDocumentWithAttachmentsOperation {

@@ -17,8 +17,12 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveObjectTests.h"
 
-@interface JiveAddressTests : SenTestCase
+@class JiveAddress;
+
+@interface JiveAddressTests : JiveObjectTests
+
+@property (nonatomic, readonly) JiveAddress *address;
 
 @end

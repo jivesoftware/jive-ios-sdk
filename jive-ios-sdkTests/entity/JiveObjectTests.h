@@ -18,7 +18,14 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JiveObject_internal.h"
+#import "Jive.h"
 
-@interface JiveObjectTests : SenTestCase
+@interface JiveObjectTests : SenTestCase <JiveAuthorizationDelegate>
+
+@property (nonatomic, strong) NSURL *serverURL; // Used to initialize both the instance url and the platform version url. Once the instance is created changing this will change just the platform version url.
+@property (nonatomic, strong) NSString *apiPath;
+@property (nonatomic, strong) Jive *instance;
+@property (nonatomic, strong) JiveObject *object;
 
 @end

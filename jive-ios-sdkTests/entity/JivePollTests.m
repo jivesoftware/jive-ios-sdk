@@ -22,7 +22,8 @@
 @implementation JivePollTests
 
 - (void)setUp {
-    self.typedObject = [[JivePoll alloc] init];
+    [super setUp];
+    self.object = [[JivePoll alloc] init];
 }
 
 - (JivePoll *)poll {
@@ -155,7 +156,7 @@
     self.poll.visibleToExternalContributors = [NSNumber numberWithBool:YES];
     
     id JSON = [self.poll toJSONDictionary];
-    JivePoll *newContent = [JivePoll instanceFromJSON:JSON];
+    JivePoll *newContent = [JivePoll objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.poll class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.poll.type, @"Wrong type");
@@ -186,7 +187,7 @@
     self.poll.visibility = @"people";
     
     id JSON = [self.poll toJSONDictionary];
-    JivePoll *newContent = [JivePoll instanceFromJSON:JSON];
+    JivePoll *newContent = [JivePoll objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.poll class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.poll.type, @"Wrong type");

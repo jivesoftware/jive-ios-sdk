@@ -19,8 +19,15 @@
 
 #import "JiveResourceEntryTests.h"
 #import "JiveResourceEntry.h"
+#import "Jive_internal.h"
 
 @implementation JiveResourceEntryTests
+
+- (void)setUp {
+    self.instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://dummy.com"]
+                                 authorizationDelegate:self];
+    self.object = [JiveResourceEntry new];
+}
 
 - (void)testInstanceFromJSON {
     NSMutableDictionary *JSON = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -30,7 +37,7 @@
     [JSON setValue:[ref absoluteString] forKey:@"ref"];
     [JSON setValue:allowedJSON forKey:@"allowed"];
     
-    JiveResourceEntry *resource = [JiveResourceEntry instanceFromJSON:JSON];
+    JiveResourceEntry *resource = [JiveResourceEntry objectFromJSON:JSON withInstance:self.instance];
     
     STAssertNotNil(resource, @"Object not created");
     STAssertEqualObjects(resource.ref, ref, @"Wrong ref");

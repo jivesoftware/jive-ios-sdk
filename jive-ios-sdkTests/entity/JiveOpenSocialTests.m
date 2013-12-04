@@ -24,27 +24,35 @@
 
 @implementation JiveOpenSocialTests
 
+- (void)setUp {
+    [super setUp];
+    self.object = [JiveOpenSocial new];
+}
+
+- (JiveOpenSocial *)openSocial {
+    return (JiveOpenSocial *)self.object;
+}
+
 - (void)testToJSON {
-    JiveOpenSocial *openSocial = [[JiveOpenSocial alloc] init];
     JiveEmbedded *embed = [[JiveEmbedded alloc] init];
     JiveActionLink *actionLink = [[JiveActionLink alloc] init];
     NSString *deliverTo = @"/person/1234";
-    NSDictionary *JSON = [openSocial toJSONDictionary];
+    NSDictionary *JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     actionLink.httpVerb = @"GET";
     [embed setValue:[NSURL URLWithString:@"http://embed.com"] forKey:@"url"];
-    [openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
-    [openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
-    [openSocial setValue:embed forKey:@"embed"];
+    [self.openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
+    [self.openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
+    [self.openSocial setValue:embed forKey:@"embed"];
     
-    JSON = [openSocial toJSONDictionary];
+    JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"deliverTo"], openSocial.deliverTo, @"Wrong deliverTo.");
+    STAssertEqualObjects([JSON objectForKey:@"deliverTo"], self.openSocial.deliverTo, @"Wrong deliverTo.");
     
     NSDictionary *embedJSON = [JSON objectForKey:@"embed"];
     
@@ -67,26 +75,25 @@
 }
 
 - (void)testToJSON_alternate {
-    JiveOpenSocial *openSocial = [[JiveOpenSocial alloc] init];
     JiveEmbedded *embed = [[JiveEmbedded alloc] init];
     JiveActionLink *actionLink = [[JiveActionLink alloc] init];
     NSString *deliverTo = @"/person/5432";
-    NSDictionary *JSON = [openSocial toJSONDictionary];
+    NSDictionary *JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     actionLink.httpVerb = @"PUT";
     [embed setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
-    [openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
-    [openSocial setValue:embed forKey:@"embed"];
+    [self.openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
+    [self.openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
+    [self.openSocial setValue:embed forKey:@"embed"];
     
-    JSON = [openSocial toJSONDictionary];
+    JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"deliverTo"], openSocial.deliverTo, @"Wrong deliverTo.");
+    STAssertEqualObjects([JSON objectForKey:@"deliverTo"], self.openSocial.deliverTo, @"Wrong deliverTo.");
     
     NSDictionary *embedJSON = [JSON objectForKey:@"embed"];
     
@@ -109,19 +116,18 @@
 }
 
 - (void)testToJSON_actionLinks {
-    JiveOpenSocial *openSocial = [[JiveOpenSocial alloc] init];
     JiveActionLink *actionLink1 = [[JiveActionLink alloc] init];
     JiveActionLink *actionLink2 = [[JiveActionLink alloc] init];
-    id JSON = [openSocial toJSONDictionary];
+    id JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
     actionLink1.httpVerb = @"GET";
     actionLink2.httpVerb = @"PUT";
-    [openSocial setValue:[NSArray arrayWithObject:actionLink1] forKey:@"actionLinks"];
+    [self.openSocial setValue:[NSArray arrayWithObject:actionLink1] forKey:@"actionLinks"];
     
-    JSON = [openSocial toJSONDictionary];
+    JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
@@ -134,9 +140,9 @@
     STAssertTrue([[object1 class] isSubclassOfClass:[NSDictionary class]], @"actionLink object not converted");
     STAssertEqualObjects([(NSDictionary *)object1 objectForKey:@"httpVerb"], actionLink1.httpVerb, @"Wrong http verb");
     
-    [openSocial setValue:[openSocial.actionLinks arrayByAddingObject:actionLink2] forKey:@"actionLinks"];
+    [self.openSocial setValue:[self.openSocial.actionLinks arrayByAddingObject:actionLink2] forKey:@"actionLinks"];
     
-    JSON = [openSocial toJSONDictionary];
+    JSON = [self.openSocial toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)1, @"Initial dictionary is not empty");
@@ -155,62 +161,60 @@
 }
 
 - (void)testOpenSocialParsing {
-    JiveOpenSocial *baseOpenSocial = [[JiveOpenSocial alloc] init];
     JiveEmbedded *embed = [[JiveEmbedded alloc] init];
     JiveActionLink *actionLink = [[JiveActionLink alloc] init];
     NSString *deliverTo = @"/person/1234";
     
     actionLink.httpVerb = @"GET";
     [embed setValue:[NSURL URLWithString:@"http://embed.com"] forKey:@"url"];
-    [baseOpenSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
-    [baseOpenSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
-    [baseOpenSocial setValue:embed forKey:@"embed"];
+    [self.openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
+    [self.openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
+    [self.openSocial setValue:embed forKey:@"embed"];
     
-    id JSON = [baseOpenSocial toJSONDictionary];
-    JiveOpenSocial *openSocial = [JiveOpenSocial instanceFromJSON:JSON];
+    id JSON = [self.openSocial toJSONDictionary];
+    JiveOpenSocial *newOpenSocial = [JiveOpenSocial objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertEquals([openSocial class], [JiveOpenSocial class], @"Wrong item class");
-    STAssertEqualObjects(openSocial.embed.url, baseOpenSocial.embed.url, @"Wrong embed");
-    STAssertEquals([openSocial.actionLinks count], [baseOpenSocial.actionLinks count], @"Wrong number of actionLink objects");
-    if ([openSocial.actionLinks count] > 0) {
-        id convertedAddress = [openSocial.actionLinks objectAtIndex:0];
+    STAssertEquals([newOpenSocial class], [JiveOpenSocial class], @"Wrong item class");
+    STAssertEqualObjects(newOpenSocial.embed.url, self.openSocial.embed.url, @"Wrong embed");
+    STAssertEquals([newOpenSocial.actionLinks count], [self.openSocial.actionLinks count], @"Wrong number of actionLink objects");
+    if ([newOpenSocial.actionLinks count] > 0) {
+        id convertedAddress = [newOpenSocial.actionLinks objectAtIndex:0];
         STAssertEquals([convertedAddress class], [JiveActionLink class], @"Wrong address object class");
         if ([[convertedAddress class] isSubclassOfClass:[JiveActionLink class]])
             STAssertEqualObjects([(JiveActionLink *)convertedAddress httpVerb], actionLink.httpVerb, @"Wrong actionLink object");
     }
-    STAssertEquals([openSocial.deliverTo count], [baseOpenSocial.deliverTo count], @"Wrong number of deliverTo objects");
-    if ([openSocial.deliverTo count] > 0) {
-        STAssertEqualObjects((NSString *)[openSocial.deliverTo objectAtIndex:0], deliverTo, @"Wrong deliverTo object");
+    STAssertEquals([newOpenSocial.deliverTo count], [self.openSocial.deliverTo count], @"Wrong number of deliverTo objects");
+    if ([newOpenSocial.deliverTo count] > 0) {
+        STAssertEqualObjects((NSString *)[newOpenSocial.deliverTo objectAtIndex:0], deliverTo, @"Wrong deliverTo object");
     }
 }
 
 - (void)testOpenSocialParsingAlternate {
-    JiveOpenSocial *baseOpenSocial = [[JiveOpenSocial alloc] init];
     JiveEmbedded *embed = [[JiveEmbedded alloc] init];
     JiveActionLink *actionLink = [[JiveActionLink alloc] init];
     NSString *deliverTo = @"/person/5432";
     
     actionLink.httpVerb = @"PUT";
     [embed setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [baseOpenSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
-    [baseOpenSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
-    [baseOpenSocial setValue:embed forKey:@"embed"];
+    [self.openSocial setValue:[NSArray arrayWithObject:actionLink] forKey:@"actionLinks"];
+    [self.openSocial setValue:[NSArray arrayWithObject:deliverTo] forKey:@"deliverTo"];
+    [self.openSocial setValue:embed forKey:@"embed"];
     
-    id JSON = [baseOpenSocial toJSONDictionary];
-    JiveOpenSocial *openSocial = [JiveOpenSocial instanceFromJSON:JSON];
+    id JSON = [self.openSocial toJSONDictionary];
+    JiveOpenSocial *newOpenSocial = [JiveOpenSocial objectFromJSON:JSON withInstance:self.instance];
     
-    STAssertEquals([openSocial class], [JiveOpenSocial class], @"Wrong item class");
-    STAssertEqualObjects(openSocial.embed.url, baseOpenSocial.embed.url, @"Wrong embed");
-    STAssertEquals([openSocial.actionLinks count], [baseOpenSocial.actionLinks count], @"Wrong number of actionLink objects");
-    if ([openSocial.actionLinks count] > 0) {
-        id convertedAddress = [openSocial.actionLinks objectAtIndex:0];
+    STAssertEquals([newOpenSocial class], [JiveOpenSocial class], @"Wrong item class");
+    STAssertEqualObjects(newOpenSocial.embed.url, self.openSocial.embed.url, @"Wrong embed");
+    STAssertEquals([newOpenSocial.actionLinks count], [self.openSocial.actionLinks count], @"Wrong number of actionLink objects");
+    if ([newOpenSocial.actionLinks count] > 0) {
+        id convertedAddress = [newOpenSocial.actionLinks objectAtIndex:0];
         STAssertEquals([convertedAddress class], [JiveActionLink class], @"Wrong address object class");
         if ([[convertedAddress class] isSubclassOfClass:[JiveActionLink class]])
             STAssertEqualObjects([(JiveActionLink *)convertedAddress httpVerb], actionLink.httpVerb, @"Wrong actionLink object");
     }
-    STAssertEquals([openSocial.deliverTo count], [baseOpenSocial.deliverTo count], @"Wrong number of deliverTo objects");
-    if ([openSocial.deliverTo count] > 0) {
-        STAssertEqualObjects((NSString *)[openSocial.deliverTo objectAtIndex:0], deliverTo, @"Wrong deliverTo object");
+    STAssertEquals([newOpenSocial.deliverTo count], [self.openSocial.deliverTo count], @"Wrong number of deliverTo objects");
+    if ([newOpenSocial.deliverTo count] > 0) {
+        STAssertEqualObjects((NSString *)[newOpenSocial.deliverTo objectAtIndex:0], deliverTo, @"Wrong deliverTo object");
     }
 }
 

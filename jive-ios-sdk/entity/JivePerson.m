@@ -94,10 +94,10 @@ NSString * const JivePersonType = @"person";
         [super registerClass:self forType:JivePersonType];
 }
 
-+ (id)instanceFromJSON:(NSDictionary *)JSON withJive:(Jive *)jive {
-    JivePerson *newPerson = [JivePerson instanceFromJSON:JSON];
++ (id)objectFromJSON:(NSDictionary *)JSON withInstance:(Jive *)instance {
+    JivePerson *newPerson = [super objectFromJSON:JSON withInstance:instance];
     
-    newPerson.jiveInstance = jive;
+    newPerson.jiveInstance = instance;
     return newPerson;
 }
 
@@ -395,7 +395,8 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
-                                       JivePerson *manager = [JivePerson instanceFromJSON:JSON];
+                                       JivePerson *manager = [JivePerson objectFromJSON:JSON
+                                                                             withInstance:self.jiveInstance];
                                        
                                        manager.jiveInstance = self.jiveInstance;
                                        return manager;
@@ -609,7 +610,7 @@ NSString * const JivePersonType = @"person";
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
                                        if ([target.type isEqualToString:JSON[JiveTypedObjectAttributes.type]]) {
-                                           [target deserialize:JSON];
+                                           [target deserialize:JSON fromInstance:self.jiveInstance];
                                            return target;
                                        } else {
                                            return nil;
@@ -628,13 +629,8 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:(^id(id JSON) {
-        NSArray *people = [JivePerson instancesFromJSONList:[JSON objectForKey:@"list"]];
-        
-        for (JivePerson *person in people) {
-            person.jiveInstance = self.jiveInstance;
-        }
-        
-        return people;
+        return [JivePerson objectsFromJSONList:[JSON objectForKey:@"list"]
+                                    withInstance:self.jiveInstance];
     })];
 }
 
@@ -660,7 +656,8 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
-                                       return [clazz instanceFromJSON:JSON];
+                                       return [clazz objectFromJSON:JSON
+                                                         withInstance:self.jiveInstance];
                                    }];
 }
 

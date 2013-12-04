@@ -17,8 +17,12 @@
 //    limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JiveObjectTests.h"
 
-@interface JiveOpenSocialTests : SenTestCase
+@class JiveOpenSocial;
+
+@interface JiveOpenSocialTests : JiveObjectTests
+
+@property (nonatomic, readonly) JiveOpenSocial *openSocial;
 
 @end
