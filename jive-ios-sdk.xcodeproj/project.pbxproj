@@ -2716,6 +2716,7 @@
 				PRODUCT_NAME = Jive;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				WARNING_CFLAGS = "-Wno-deprecated-implementations";
 			};
 			name = Debug;
 		};
@@ -2733,6 +2734,7 @@
 				PRODUCT_NAME = Jive;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				WARNING_CFLAGS = "-Wno-deprecated-implementations";
 			};
 			name = Release;
 		};
@@ -2914,6 +2916,7 @@
 				PRODUCT_NAME = Jive;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				WARNING_CFLAGS = "-Wno-deprecated-implementations";
 			};
 			name = Develop;
 		};
@@ -3009,6 +3012,7 @@
 				PRODUCT_NAME = Jive;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				WARNING_CFLAGS = "-Wno-deprecated-implementations";
 			};
 			name = Enterprise;
 		};
