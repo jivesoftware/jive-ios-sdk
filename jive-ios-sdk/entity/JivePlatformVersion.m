@@ -69,10 +69,6 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 
 @synthesize ssoEnabled, instanceURL;
 
-- (void)setInstanceURL:(NSURL *)_instanceURL {
-    instanceURL = _instanceURL;
-}
-
 - (void)parseVersion:(NSString *)versionString {
     NSArray *components = [versionString componentsSeparatedByString:@" "];
     
