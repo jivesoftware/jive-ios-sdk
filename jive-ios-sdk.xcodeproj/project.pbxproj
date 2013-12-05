@@ -67,6 +67,7 @@
 		0F187E9416692F36001FCB51 /* JiveTrendingPeopleRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187E8C16692F36001FCB51 /* JiveTrendingPeopleRequestOptionsTests.m */; };
 		0F187EAC16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAA16695F3D001FCB51 /* JiveAuthorCommentRequestOptions.m */; };
 		0F187EAF16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */; };
+		0F444D5D1850FF4A00EB0337 /* unread_inbox_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F444D5C1850FF4A00EB0337 /* unread_inbox_response.json */; };
 		0F5A5DCE17457E82005F3BF7 /* NSString+Jive.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */; };
 		0F5F1A13167F9C7100BA616E /* JiveAddressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A12167F9C7100BA616E /* JiveAddressTests.m */; };
 		0F5F1A16167FB81100BA616E /* JiveNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F1A15167FB81000BA616E /* JiveNameTests.m */; };
@@ -622,6 +623,7 @@
 		0F187EAE16695F52001FCB51 /* JiveAuthorCommentRequestOptionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveAuthorCommentRequestOptionsTests.m; sourceTree = "<group>"; };
 		0F3215C1175FCEE800165166 /* JiveResponseBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiveResponseBlocks.h; sourceTree = "<group>"; };
 		0F3215C5175FE3F000165166 /* Jive_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Jive_internal.h; sourceTree = "<group>"; };
+		0F444D5C1850FF4A00EB0337 /* unread_inbox_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unread_inbox_response.json; sourceTree = "<group>"; };
 		0F5A5DCB17457E82005F3BF7 /* NSString+Jive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Jive.h"; sourceTree = "<group>"; };
 		0F5A5DCC17457E82005F3BF7 /* NSString+Jive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Jive.m"; sourceTree = "<group>"; };
 		0F5F1A11167F9C7100BA616E /* JiveAddressTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveAddressTests.h; sourceTree = "<group>"; };
@@ -1725,6 +1727,7 @@
 				0F9EB9AF16979AF400E9F09D /* followingIn_streams.json */,
 				B8F4EA2B1670EEA500C59711 /* inbox_mark_response.json */,
 				217FE0FB1638798900182AB5 /* inbox_response.json */,
+				0F444D5C1850FF4A00EB0337 /* unread_inbox_response.json */,
 				0F9EBAA716A0C0DA00E9F09D /* invite.json */,
 				0F9EBAA516A0B9EA00E9F09D /* invites.json */,
 				B8B19F0B16949AA0004B3DEC /* member_member.json */,
@@ -2175,6 +2178,7 @@
 				0FCB6664166FDAF200617CE4 /* search_places_response.json in Resources */,
 				0FCB66661670FA4800617CE4 /* search_contents_response.json in Resources */,
 				0F13CE39167137A800525E4E /* people_response.json in Resources */,
+				0F444D5D1850FF4A00EB0337 /* unread_inbox_response.json in Resources */,
 				0F13CE3B1671463C00525E4E /* person_response.json in Resources */,
 				B8F4EA2C1670EEA500C59711 /* inbox_mark_response.json in Resources */,
 				0F13CEBA167292DC00525E4E /* followers_response.json in Resources */,

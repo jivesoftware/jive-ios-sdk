@@ -460,7 +460,10 @@ int const JivePushDeviceType = 3;
     
     return [self dateLimitedListOperationForClass:[JiveActivity class]
                                           request:request
-                                       onComplete:completeBlock
+                                       onComplete:!completeBlock ? nil :
+            ^(NSArray *objects, NSDate *earliestDate, NSDate *latestDate, NSNumber *unreadCount) {
+                completeBlock(objects, earliestDate, latestDate);
+            }
                                           onError:errorBlock];
 }
 
@@ -568,7 +571,10 @@ int const JivePushDeviceType = 3;
                                             forURL:activitiesURL];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self dateLimitedListOperationForClass:[JiveActivity class]
                                                                                               request:mutableURLRequest
-                                                                                           onComplete:completeBlock
+                                                                                           onComplete:!completeBlock ? nil :
+                                                                ^(NSArray *objects, NSDate *earliestDate, NSDate *latestDate, NSNumber *unreadCount) {
+                                                                    completeBlock(objects, earliestDate, latestDate);
+                                                                }
                                                                                               onError:errorBlock];
     return operation;
 }
@@ -698,9 +704,31 @@ int const JivePushDeviceType = 3;
     
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
                                                                                               request:request
+                                                                                           onComplete:!completeBlock ? nil :
+                                                                ^(NSArray *objects, NSDate *earliestDate, NSDate *latestDate, NSNumber *unreadCount) {
+                                                                    completeBlock(objects, earliestDate, latestDate);
+                                                                }
+                                                                                              onError:errorBlock];
+    return operation;
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)inboxWithUnreadCountOperation:(JiveInboxOptions *)options
+                                                                      onComplete:(JiveInboxObjectsCompleteBlock)completeBlock
+                                                                         onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
+                                                            andTemplate:@"%@/inbox", self.baseURI, nil];
+    
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
+                                                                                              request:request
                                                                                            onComplete:completeBlock
                                                                                               onError:errorBlock];
     return operation;
+}
+
+- (void)inboxWithUnreadCount:(JiveInboxOptions *)options
+                  onComplete:(JiveInboxObjectsCompleteBlock)completeBlock
+                     onError:(JiveErrorBlock)errorBlock {
+    [[self inboxWithUnreadCountOperation:options onComplete:completeBlock onError:errorBlock] start];
 }
 
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -2496,24 +2524,27 @@ int const JivePushDeviceType = 3;
 
 - (JAPIRequestOperation<JiveRetryingOperation> *)dateLimitedListOperationForClass:(Class)clazz
                                                                           request:(NSURLRequest *)request
-                                                                       onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock
+                                                                       onComplete:(JiveInboxObjectsCompleteBlock)completeBlock
                                                                           onError:(JiveErrorBlock)errorBlock {
     
     if (request) {
         [self maybeLogMaybeBadRequest:request];
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
-            id entity = [clazz objectsFromJSONList:JSON[@"list"] withInstance:self];
-            
-            NSDictionary *links = JSON[@"links"];
-            NSURL *nextURL = [NSURL URLWithString:links[@"next"]];
-            NSURL *previousURL = [NSURL URLWithString:links[@"previous"]];
-            
-            NSDate *earliestDate = [nextURL jive_dateFromValueOfParameterWithName:@"before"];
-            NSDate *latestDate = [previousURL jive_dateFromValueOfParameterWithName:@"after"];
-            
             if (completeBlock) {
-                completeBlock(entity, earliestDate, latestDate);
+                id entity = [clazz objectsFromJSONList:JSON[@"list"] withInstance:self];
+                
+                // This is nil for non-inbox requests.
+                NSNumber *unreadCount = JSON[@"unread"];
+                
+                NSDictionary *links = JSON[@"links"];
+                NSURL *nextURL = [NSURL URLWithString:links[@"next"]];
+                NSURL *previousURL = [NSURL URLWithString:links[@"previous"]];
+                
+                NSDate *earliestDate = [nextURL jive_dateFromValueOfParameterWithName:@"before"];
+                NSDate *latestDate = [previousURL jive_dateFromValueOfParameterWithName:@"after"];
+                
+                completeBlock(entity, earliestDate, latestDate, unreadCount);
             }
         })
                                                                                                                 failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
