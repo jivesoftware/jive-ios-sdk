@@ -69,6 +69,10 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 
 @synthesize ssoEnabled, instanceURL;
 
+- (void)setInstanceURL:(NSURL *)_instanceURL {
+    instanceURL = _instanceURL;
+}
+
 - (void)parseVersion:(NSString *)versionString {
     NSArray *components = [versionString componentsSeparatedByString:@" "];
     
@@ -106,7 +110,16 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
             ++requiredElementsFound;
         }
         else
-            [version deserializeKey:key fromJSON:JSON fromInstance:instance];
+            if ([key isEqualToString:@"instanceURL"]) {
+                NSString *instanceURL = JSON[key];
+                if (![instanceURL hasSuffix:@"/"]) {
+                    [version deserializeKey:key fromJSON:@{key:[instanceURL stringByAppendingString:@"/"]} fromInstance:instance];
+                } else {
+                    [version deserializeKey:key fromJSON:JSON fromInstance:instance];
+                }
+            } else {
+                [version deserializeKey:key fromJSON:JSON fromInstance:instance];
+            }
     }
     
     return requiredElementsFound == 2 ? version : nil;

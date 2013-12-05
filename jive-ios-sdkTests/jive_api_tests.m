@@ -51,7 +51,7 @@
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate {
     
     // This can be anything. The mock objects will return local data
-    testURL = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
+    testURL = [NSURL URLWithString:@"https://brewspace.jiveland.com/"];
     
     // Reponse file containing data from JIVE My request
     NSString* contentPath = [[NSBundle bundleForClass:[self class]] pathForResource:resourceName ofType:@"json"];
@@ -6373,7 +6373,7 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [jive versionForInstance:testURL
                       onComplete:(^(JivePlatformVersion *version) {
-            NSURL *serverURL = [NSURL URLWithString:@"https://proxy.com"];
+            NSURL *serverURL = [NSURL URLWithString:@"https://proxy.com/"];
             
             STAssertEqualObjects(version.major, @7, @"Wrong version found");
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
