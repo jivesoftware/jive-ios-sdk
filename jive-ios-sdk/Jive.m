@@ -2210,6 +2210,18 @@ int const JivePushDeviceType = 3;
     [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
+- (void) outcome:(JiveOutcome *) outcome rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:outcome.root];
+    [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
+                                            forURL:outcome.root];
+    
+    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
+                                                              request:mutableURLRequest
+                                                           onComplete:completeBlock
+                                                              onError:errorBlock];
+    [operation start];
+}
+
 #pragma mark - Properties
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
