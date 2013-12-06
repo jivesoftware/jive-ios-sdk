@@ -330,6 +330,17 @@ int const JivePushDeviceType = 3;
     [[self OAuthTokenRefreshOperationWithOAuthID:oauthID OAuthSecret:oauthSecret refreshToken:refreshToken onComplete:completeBlock onError:errorBlock] start];
 }
 
+-(AFJSONRequestOperation*)mobileQuestCompletionOperationWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:@"/api/core/mobile/v1/quest/form_login", nil];
+    [request setHTTPMethod:@"POST"];
+    return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
+}
+
+-(void)mobileQuestCompletionWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self mobileQuestCompletionOperationWithOnComplete:completeBlock onError:errorBlock] start];
+}
+
+
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options

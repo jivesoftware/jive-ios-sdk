@@ -719,6 +719,13 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 //! Given a refresh token, retrieves a fresh OAuth credential pair.
 -(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock;
 
+#pragma mark - Jive Tour
+//! Returns an operation that completes the mobile quest on the "Getting Started" tour.
+-(AFJSONRequestOperation*)mobileQuestCompletionOperationWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! Completes the mobile quest on the "Getting Started" tour.
+-(void)mobileQuestCompletionWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock;
+
+
 @end
 
 
