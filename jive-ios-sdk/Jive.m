@@ -149,20 +149,28 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - helper methods
 
-- (NSString *)validateURLString:(NSString *)sourceString {
+- (NSString *)findBadInstanceURL:(NSString *)sourceURL {
     NSString *instanceURL = self.jiveInstanceURL.absoluteString;
     
-    if ((sourceString).length < instanceURL.length ||
-        ![instanceURL isEqual:[sourceString substringToIndex:instanceURL.length]]) {
+    if (sourceURL.length < instanceURL.length ||
+        ![instanceURL isEqual:[sourceURL substringToIndex:instanceURL.length]]) {
         
-        NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
+        NSRange baseURIRange = [sourceURL rangeOfString:self.baseURI];
         
         if (baseURIRange.length > 0) {
-            NSString *badInstanceURL = [sourceString substringToIndex:baseURIRange.location];
-            
-            sourceString = [sourceString stringByReplacingOccurrencesOfString:badInstanceURL
-                                                                   withString:instanceURL];
+            return [sourceURL substringToIndex:baseURIRange.location];
         }
+    }
+    
+    return nil;
+}
+
+- (NSString *)validateURLString:(NSString *)sourceString {
+    NSString *badInstanceURL = [self findBadInstanceURL:sourceString];
+    
+    if (badInstanceURL) {
+        sourceString = [sourceString stringByReplacingOccurrencesOfString:badInstanceURL
+                                                               withString:self.jiveInstanceURL.absoluteString];
     }
     
     return sourceString;
@@ -174,47 +182,40 @@ int const JivePushDeviceType = 3;
     } else if ([sourceString hasPrefix:@"<body>"]) {
         TFHpple *htmlParser = [TFHpple hppleWithHTMLData:[sourceString dataUsingEncoding:NSUTF8StringEncoding]];
         NSArray *linkArray = [htmlParser searchWithXPathQuery:@"//a"];
-        NSDictionary *typeDictionary = @{@"3":@"people",
-                                         @"14":@"places", @"37":@"places",
-                                         @"600":@"places", @"700":@"places",
-                                         @"1":@"contents", @"2":@"contents", @"38":@"contents",
-                                         @"102":@"contents", @"1100":@"contents", @"1464927464":@"contents"};
         
         for (TFHppleElement *anchor in linkArray) {
             NSString *objectType = [anchor objectForKey:@"data-objecttype"];
             NSString *objectID = [anchor objectForKey:@"data-objectid"];
             NSString *href = [anchor objectForKey:@"href"];
             NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
+            NSString *badInstanceURL = [self findBadInstanceURL:href];
             
-            if (objectID) {
-                NSString *typeSpecifier = typeDictionary[objectType];
-                
-                if (typeSpecifier) {
-                    NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@",
-                                                              self.baseURI, typeSpecifier, objectID]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
+            if (badInstanceURL) {
+                if (objectID) {
+                    NSString *newHrefURL = [href stringByReplacingOccurrencesOfString:badInstanceURL
+                                                                           withString:self.jiveInstanceURL.absoluteString];
+                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", newHrefURL];
                     
                     sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
                                                                            withString:newHrefString];
-                }
-            } else {
-                TFHppleElement *imageElement = [anchor firstChildWithTagName:@"img"];
-                NSString *src = [imageElement objectForKey:@"src"];
-                
-                if (src && [src rangeOfString:@"/JiveServlet/"].length > 0) {
-                    NSString *sourceLink = [NSString stringWithFormat:@"src=\"%@\"", src];
-                    NSURL *newHrefURL = [NSURL URLWithString:[[NSURL URLWithString:href] path]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSURL *newSourceURL = [NSURL URLWithString:[[NSURL URLWithString:src] path]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
-                    NSString *newSourceLink = [NSString stringWithFormat:@"src=\"%@\"", [newSourceURL absoluteString]];
-
-                    sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
-                                                                           withString:newHrefString];
-                    sourceString = [sourceString stringByReplacingOccurrencesOfString:sourceLink
-                                                                           withString:newSourceLink];
+                } else {
+                    TFHppleElement *imageElement = [anchor firstChildWithTagName:@"img"];
+                    NSString *src = [imageElement objectForKey:@"src"];
+                    
+                    if (src && [src rangeOfString:@"/JiveServlet/"].length > 0) {
+                        NSString *sourceLink = [NSString stringWithFormat:@"src=\"%@\"", src];
+                        NSString *newHrefURL = [href stringByReplacingOccurrencesOfString:badInstanceURL
+                                                                               withString:self.jiveInstanceURL.absoluteString];
+                        NSString *newSourceURL = [src stringByReplacingOccurrencesOfString:badInstanceURL
+                                                                                withString:self.jiveInstanceURL.absoluteString];
+                        NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", newHrefURL];
+                        NSString *newSourceLink = [NSString stringWithFormat:@"src=\"%@\"", newSourceURL];
+                        
+                        sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
+                                                                               withString:newHrefString];
+                        sourceString = [sourceString stringByReplacingOccurrencesOfString:sourceLink
+                                                                               withString:newSourceLink];
+                    }
                 }
             }
         }
