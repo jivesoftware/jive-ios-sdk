@@ -92,12 +92,18 @@
 }
 
 - (void) testInbox {
-    [self createJiveAPIObjectWithResponse:@"inbox_response"];
+    [self createJiveAPIObjectWithResponse:@"unread_inbox_response"];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
+            NSUInteger expectedCount = 103;
             STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
-            STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
+            STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
+            STAssertEqualObjects(earliestDate.description, @"2013-09-10 15:04:49 +0000", @"Wrong earliest date.");
+            STAssertEqualObjects(latestDate.description, @"2013-11-27 19:18:27 +0000", @"Wrong latest date.");
+            STAssertEqualObjects(unreadCount, @49, @"Wrong number of unread items");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -114,9 +120,17 @@
     [self createJiveAPIObjectWithResponse:@"inbox_response"];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        NSOperation *operation = [jive inboxOperation:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        NSOperation *operation = [jive inboxWithUnreadCountOperation:nil
+                                                          onComplete:^(NSArray *inboxEntries,
+                                                                       NSDate *earliestDate,
+                                                                       NSDate *latestDate,
+                                                                       NSNumber *unreadCount) {
+            NSUInteger expectedCount = 28;
             STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
-            STAssertTrue([inboxEntries count] == 28, @"Incorrect number of inbox entries where returned");
+            STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
+            STAssertEqualObjects(earliestDate.description, @"2012-10-23 03:26:37 +0000", @"Wrong earliest date.");
+            STAssertEqualObjects(latestDate.description, @"2012-10-24 19:06:10 +0000", @"Wrong latest date.");
+            STAssertEqualObjects(unreadCount, @0, @"Wrong number of unread items");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];
@@ -143,7 +157,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
@@ -186,7 +202,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
@@ -229,7 +247,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
@@ -272,7 +292,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
@@ -322,7 +344,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
@@ -370,7 +394,9 @@
     
     __block NSArray *returnedInboxEntries = nil;
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive inbox:nil onComplete:^(NSArray *inboxEntries, NSDate *earliestDate, NSDate *latestDate) {
+        [jive inboxWithUnreadCount:nil
+                        onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
+                                     NSDate *latestDate, NSNumber *unreadCount) {
             returnedInboxEntries = inboxEntries;
             finishedBlock();
         } onError:^(NSError *error) {
