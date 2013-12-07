@@ -92,14 +92,18 @@ struct TestJiveObjectAttributes const TestJiveObjectAttributes = {
 - (void)testURLDeserialization_contentURLThroughProxy {
     NSString *contentPath = @"api/core/v3/content/1234";
     NSString *proxyURLString = @"https://proxy.com/";
-    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:[[self.instance.jiveInstanceURL absoluteString] stringByAppendingString:contentPath]};
+    NSString *badInstanceURL = self.instance.jiveInstanceURL.absoluteString;
+    NSDictionary *JSON = @{TestJiveObjectAttributes.testURL:[badInstanceURL stringByAppendingString:contentPath]};
     
     self.instance.jiveInstanceURL = [NSURL URLWithString:proxyURLString];
+    STAssertNil(self.instance.badInstanceURL, @"PRECONDITION: There should be no badInstanceURL to start");
+    
     STAssertTrue([self.object deserialize:JSON fromInstance:self.instance],
                  @"Reported invalid deserialize with valid JSON");
     STAssertEqualObjects([self.testObject.testURL absoluteString],
                          [proxyURLString stringByAppendingString:contentPath],
                          @"Wrong URL reported");
+    STAssertEqualObjects(self.instance.badInstanceURL, badInstanceURL, @"Bad instance url not saved.");
 }
 
 - (void)testURLDeserialization_nonInstanceURL {
