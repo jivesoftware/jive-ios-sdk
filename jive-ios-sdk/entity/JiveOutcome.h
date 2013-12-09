@@ -17,7 +17,7 @@
 //    limitations under the License.
 //
 
-#import "JiveContent.h"
+#import "JiveTypedObject.h"
 #import "JivePerson.h"
 #import "JiveOutcomeType.h"
 
@@ -33,13 +33,19 @@ extern struct JiveOutcomeAttributes {
 
 //! \class JiveOutcome
 //! https://developers.jivesoftware.com/api/v3/rest/OutcomeEntity.html
-@interface JiveOutcome : JiveContent
+@interface JiveOutcome : JiveTypedObject
 
 //! The creation date of the outcome.
 @property (nonatomic, readonly, strong) NSDate *creationDate;
 
+//! Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
+@property (nonatomic, readonly, strong) NSString *jiveId;
+
 //! Flag indicating whether objects of this type can be associated to (followed in) an activity stream. Present on Jive core object types only.
 @property (nonatomic, strong) JiveOutcomeType *outcomeType;
+
+//! The owner of outcome which is the content object the outcome was made on
+@property (nonatomic, readonly, strong) NSString *parent;
 
 //! The properties of the outcome
 @property (nonatomic, strong) NSArray *properties;

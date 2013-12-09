@@ -2211,9 +2211,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (void) outcome:(JiveOutcome *) outcome rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
-    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:outcome.root];
+    NSURL * parentURL = [NSURL URLWithString:outcome.parent];
+    NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:parentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
-                                            forURL:outcome.root];
+                                            forURL:parentURL];
     
     AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
                                                               request:mutableURLRequest
