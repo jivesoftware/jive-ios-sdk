@@ -152,7 +152,7 @@ int const JivePushDeviceType = 3;
 - (NSString *)validateURLString:(NSString *)sourceString {
     NSString *instanceURL = self.jiveInstanceURL.absoluteString;
     
-    if (![sourceString hasPrefix:instanceURL]) {
+    if (instanceURL && ![sourceString hasPrefix:instanceURL]) {
         if (!self.badInstanceURL) {
             NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
             
