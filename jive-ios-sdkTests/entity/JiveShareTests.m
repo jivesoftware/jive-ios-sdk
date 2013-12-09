@@ -109,7 +109,9 @@
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
-    STAssertEqualObjects(newContent.sharedContent.subject, self.share.sharedContent.subject, @"Wrong shared content");
+    if ([newContent.sharedContent isKindOfClass:[JiveContent class]]) {
+        STAssertEqualObjects(((JiveContent *)newContent.sharedContent).subject, ((JiveContent *)self.share.sharedContent).subject, @"Wrong shared content");
+    }
     STAssertEqualObjects(newContent.sharedPlace.jiveDescription, self.share.sharedPlace.jiveDescription, @"Wrong shared place");
 }
 
@@ -129,7 +131,9 @@
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.share class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.share.type, @"Wrong type");
-    STAssertEqualObjects(newContent.sharedContent.subject, self.share.sharedContent.subject, @"Wrong shared content");
+    if ([newContent.sharedContent isKindOfClass:[JiveContent class]]) {
+        STAssertEqualObjects(((JiveContent *)newContent.sharedContent).subject, ((JiveContent *)self.share.sharedContent).subject, @"Wrong shared content");
+    }
     STAssertEqualObjects(newContent.sharedPlace.jiveDescription, self.share.sharedPlace.jiveDescription, @"Wrong shared place");
 }
 
