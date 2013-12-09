@@ -1202,43 +1202,52 @@ int const JivePushDeviceType = 3;
     [[self contentLikedByOperation:content withOptions:options onComplete:complete onError:error] start];
 }
 
-- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)activityObjectOperation:(JiveActivityObject *)activityObject onComplete:(void(^)(JiveContent *content))complete onError:(JiveErrorBlock)error {
     NSURL *contentURL = [NSURL URLWithString:activityObject.jiveId];
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:contentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:contentURL];
     
-    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
-                                                              request:mutableURLRequest
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
-    [operation start];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:mutableURLRequest
+                              onComplete:complete
+                                 onError:error];
 }
 
-- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+- (void) activityObject:(JiveActivityObject *) activityObject contentWithCompleteBlock:(void(^)(JiveContent *content))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+    [[self activityObjectOperation:activityObject onComplete:completeBlock onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)commentRootContentOperation:(JiveComment *)comment onComplete:(void(^)(JiveContent *rootContent))complete onError:(JiveErrorBlock)error {
     NSURL *rootContentURL = [NSURL URLWithString:comment.rootURI];
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:rootContentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:rootContentURL];
     
-    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
-                                                              request:mutableURLRequest
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
-    [operation start];
+    return [self entityOperationForClass:[JiveContent class]
+                                 request:mutableURLRequest
+                              onComplete:complete
+                                 onError:error];
 }
 
-- (void) message:(JiveMessage *) message discussionWithCompleteBlock:(void(^)(JiveDiscussion *discussion))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+- (void) comment:(JiveComment *) comment rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+    [[self commentRootContentOperation:comment onComplete:completeBlock onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)messageDiscussionOperation:(JiveMessage *)message onComplete:(void(^)(JiveDiscussion *discussion))complete onError:(JiveErrorBlock)error {
     NSURL *discussionURL = [NSURL URLWithString:message.discussion];
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:discussionURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:discussionURL];
     
-    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveDiscussion class]
-                                                              request:mutableURLRequest
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
-    [operation start];
+    return [self entityOperationForClass:[JiveDiscussion class]
+                                 request:mutableURLRequest
+                              onComplete:complete
+                                 onError:error];
+}
+
+- (void) message:(JiveMessage *) message discussionWithCompleteBlock:(void(^)(JiveDiscussion *discussion))completeBlock errorBlock:(void(^)(NSError *error))errorBlock {
+    [[self messageDiscussionOperation:message onComplete:completeBlock onError:errorBlock] start];
 }
 
 - (void) createReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock {
@@ -2210,17 +2219,20 @@ int const JivePushDeviceType = 3;
     [[self createOutcomeOperation:outcome forContent:content onComplete:complete onError:error] start];
 }
 
-- (void) outcome:(JiveOutcome *) outcome rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *) outcomeRootContentOperation:(JiveOutcome *)outcome onComplete:(void (^)(JiveContent *))complete onError:(JiveErrorBlock)error {
     NSURL * parentURL = [NSURL URLWithString:outcome.parent];
     NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest requestWithURL:parentURL];
     [self maybeApplyCredentialsToMutableURLRequest:mutableURLRequest
                                             forURL:parentURL];
     
-    AFJSONRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
-                                                              request:mutableURLRequest
-                                                           onComplete:completeBlock
-                                                              onError:errorBlock];
-    [operation start];
+    return  [self entityOperationForClass:[JiveContent class]
+                                  request:mutableURLRequest
+                               onComplete:complete
+                                  onError:error];
+}
+
+- (void) outcome:(JiveOutcome *) outcome rootContentWithCompleteBlock:(void(^)(JiveContent *rootContent))completeBlock errorBlock:(JiveErrorBlock)errorBlock {
+    [[self outcomeRootContentOperation:outcome onComplete:completeBlock onError:errorBlock] start];
 }
 
 #pragma mark - Properties
