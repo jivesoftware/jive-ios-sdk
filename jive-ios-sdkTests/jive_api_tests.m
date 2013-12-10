@@ -504,37 +504,129 @@
     [mockJiveURLResponseDelegate2 verify];
 }
 
-- (void) testMyOperation {
-    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
-    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
-                                                                                        password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/@me" isEqualToString:[value absoluteString]];
-        return same;
-    }]];
-    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
-                                                                                        password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
-        BOOL same = [@"https://brewspace.jiveland.com/api/core/v3/people/@me" isEqualToString:[value absoluteString]];
-        return same;
-    }]];
+- (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
+                                             JiveErrorBlock errorBlock))createOperation
+              withResponse:(NSString *)response
+                       URL:(NSString *)url
+             expectedClass:(Class)clazz
+                  complete:(JiveArrayCompleteBlock)completeBlock {
     
-    [self createJiveAPIObjectWithResponse:@"my_response" andAuthDelegate:mockAuthDelegate];
-    
+    void (^createMockAuthDelegate)(NSString *expectedURL) = ^(NSString *expectedURL) {
+        mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+        [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+            BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+            return same;
+        }]];
+        [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+            BOOL same = [expectedURL isEqualToString:[value absoluteString]];
+            return same;
+        }]];
+    };
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [jive meOperation:^(JivePerson *person) {
-            // Called 3rd
-            STAssertEquals([person class], [JivePerson class], @"Wrong item class");
-            STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
+        createMockAuthDelegate(url);
+        [self createJiveAPIObjectWithResponse:response andAuthDelegate:mockAuthDelegate];
+        NSOperation* operation = createOperation(^(id object) {
+            completeBlock(object);
             finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 1");
         [operation start];
     }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        createMockAuthDelegate(url);
+        [self createJiveAPIObjectWithResponse:response andAuthDelegate:mockAuthDelegate];
+        jive.badInstanceURL = @"brewspace";
+        NSOperation* operation = createOperation(^(id object) {
+            STAssertNil(jive.badInstanceURL, @"badInstanceURL was not cleared: %@", jive.badInstanceURL);
+            completeBlock(object);
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 2");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSString *proxyInstanceURL = ([testURL.absoluteString hasSuffix:@"/"] ?
+                                      @"http://brewspace.com/" :
+                                      @"http://brewspace.com");
+        NSString *instanceURLString = [url stringByReplacingOccurrencesOfString:testURL.absoluteString
+                                                                     withString:proxyInstanceURL];
+        
+        testURL = [NSURL URLWithString:proxyInstanceURL];
+        createMockAuthDelegate(instanceURLString);
+        [self createJiveAPIObjectWithResponse:response andAuthDelegate:mockAuthDelegate];
+        STAssertNil(jive.badInstanceURL, @"PRECONDITION: badInstanceURL should be nil to start.");
+        NSOperation* operation = createOperation(^(id object) {
+            STAssertNotNil(jive.badInstanceURL, @"badInstanceURL not updated: %@", jive.badInstanceURL);
+            completeBlock(object);
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 3");
+        [operation start];
+    }];
+}
+
+- (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
+                                             JiveErrorBlock errorBlock))createOperation
+              withResponse:(NSString *)response
+                       URL:(NSString *)url
+             expectedClass:(Class)clazz {
+    [self checkObjectOperation:createOperation
+                  withResponse:response
+                           URL:url
+                 expectedClass:clazz
+                      complete:^(id object) {
+                          STAssertEquals([object class], clazz, @"Wrong item class");
+                          
+                          // Check that delegates where actually called
+                          [mockAuthDelegate verify];
+                          [mockJiveURLResponseDelegate verify];
+                      }];
+}
+
+- (void)checkPersonObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
+                                                   JiveErrorBlock errorBlock))createOperation
+                    withResponse:(NSString *)response
+                             URL:(NSString *)url {
+    Class clazz = [JivePerson class];
+    [self checkObjectOperation:createOperation
+                  withResponse:response
+                           URL:url
+                 expectedClass:clazz
+                      complete:^(id object) {
+                          STAssertEquals([object class], clazz, @"Wrong item class");
+                          
+                          JivePerson *person = (JivePerson *)object;
+                          STAssertEqualObjects(person.jiveInstance, jive, @"The person.jiveInstance was not initialized correctly");
+                          
+                          // Check that delegates where actually called
+                          [mockAuthDelegate verify];
+                          [mockJiveURLResponseDelegate verify];
+                      }];
+}
+
+- (void) testMyOperation {
+    [self checkPersonObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [jive meOperation:completionBlock onError:errorBlock];
+    }
+                        withResponse:@"my_response"
+                                 URL:@"https://brewspace.jiveland.com/api/core/v3/people/@me"];
 }
 
 - (void) testMyServiceCall {

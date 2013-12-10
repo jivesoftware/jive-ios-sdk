@@ -77,7 +77,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPShouldHandleCookies:NO];
     JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
-        self.platformVersion = [JivePlatformVersion objectFromJSON:JSON withInstance:self];
+        self.platformVersion = [self parseObjectOfClass:[JivePlatformVersion class] fromJSON:JSON];
         if (_platformVersion) {
             BOOL foundValidCoreVersion = NO;
             for (JiveCoreVersion *coreURI in self.platformVersion.coreURI) {
@@ -148,6 +148,11 @@ int const JivePushDeviceType = 3;
 }
 
 #pragma mark - helper methods
+
+- (id)parseObjectOfClass:(Class)clazz fromJSON:(id)JSON {
+    self.badInstanceURL = nil;
+    return [clazz objectFromJSON:JSON withInstance:self];
+}
 
 - (NSArray *)parseObjectsOfClass:(Class)clazz FromJSONList:(id)JSON {
     self.badInstanceURL = nil;
@@ -2218,7 +2223,7 @@ int const JivePushDeviceType = 3;
         
         [uploadImageOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
-            JiveImage *jiveImage = [[JiveImage class] objectFromJSON:json withInstance:self];
+            JiveImage *jiveImage = [self parseObjectOfClass:[JiveImage class] fromJSON:json];
             complete(jiveImage);
         })
                                                     failure:(^(AFHTTPRequestOperation *operation, NSError *err) {
@@ -2582,7 +2587,7 @@ int const JivePushDeviceType = 3;
                                                                   onComplete:completeBlock
                                                                      onError:errorBlock
                                                              responseHandler:(^id(id JSON) {
-        return [clazz objectFromJSON:JSON withInstance:self];
+        return [self parseObjectOfClass:clazz fromJSON:JSON];
     })];
     return operation;
 }
