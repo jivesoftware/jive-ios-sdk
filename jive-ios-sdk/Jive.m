@@ -149,6 +149,11 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - helper methods
 
+- (NSArray *)parseObjectsOfClass:(Class)clazz FromJSONList:(id)JSON {
+    self.badInstanceURL = nil;
+    return [clazz objectsFromJSONList:JSON withInstance:self];
+}
+
 - (NSString *)validateURLString:(NSString *)sourceString {
     NSString *instanceURL = self.jiveInstanceURL.absoluteString;
     
@@ -1192,7 +1197,7 @@ int const JivePushDeviceType = 3;
                                     self.baseURI, nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveResource objectsFromJSONList:JSON withInstance:self];
+        return [self parseObjectsOfClass:[JiveResource class] FromJSONList:JSON];
     }];
 }
 
@@ -2523,7 +2528,7 @@ int const JivePushDeviceType = 3;
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             if (completeBlock) {
-                id entity = [clazz objectsFromJSONList:JSON[@"list"] withInstance:self];
+                id entity = [self parseObjectsOfClass:clazz FromJSONList:JSON[@"list"]];
                 
                 // This is nil for non-inbox requests.
                 NSNumber *unreadCount = JSON[@"unread"];
@@ -2557,7 +2562,7 @@ int const JivePushDeviceType = 3;
                                                                              onComplete:completeBlock
                                                                                 onError:errorBlock
                                                                         responseHandler:(^id(id JSON) {
-        return [clazz objectsFromJSONList:[JSON objectForKey:@"list"] withInstance:self];
+        return [self parseObjectsOfClass:clazz FromJSONList:JSON[@"list"]];
     })];
     return operation;
 }
