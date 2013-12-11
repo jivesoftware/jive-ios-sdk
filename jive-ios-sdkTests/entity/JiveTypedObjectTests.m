@@ -18,6 +18,7 @@
 //
 
 #import "JiveTypedObjectTests.h"
+#import "Jive_internal.h"
 
 @interface DummyTypedObject : JiveTypedObject
 
@@ -93,6 +94,40 @@ static NSString *alternateType = @"alternate";
     STAssertNoThrow([testClass registerClass:nil forType:alternateType],
                     @"Clearing the type should not throw");
     STAssertEqualObjects([testClass entityClass:typeSpecifier], testClass, @"Type not cleared");
+}
+
+- (void)testSelfReferenceParsedBeforeAnythingElse {
+    JiveResourceEntry *selfResource = [JiveResourceEntry new];
+    JiveResourceEntry *altResource = [JiveResourceEntry new];
+    NSString *expectedURL = @"https://hopback.eng.jiveland.com/";
+    
+    [selfResource setValue:[NSURL URLWithString:[expectedURL stringByAppendingString:@"api/core/v3/person/321"]]
+                    forKey:JiveResourceEntryAttributes.ref];
+    [selfResource setValue:@[@"GET", @"PUT"]
+                    forKey:JiveResourceEntryAttributes.allowed];
+    [altResource setValue:[NSURL URLWithString:@"http://brewspace.com/api/core/v3/person/321"]
+                   forKey:JiveResourceEntryAttributes.ref];
+    [altResource setValue:@[@"GET", @"DELETE"]
+                   forKey:JiveResourceEntryAttributes.allowed];
+    self.instance.badInstanceURL = nil;
+    
+    id selfJSON = selfResource.persistentJSON;
+    id altJSON = altResource.persistentJSON;
+    NSDictionary *firstResourceJSON = @{JiveTypedObjectResourceTags.selfResourceTag:selfJSON,
+                                        @"alt":altJSON};
+    NSDictionary *firstJSON = @{JiveTypedObjectAttributesHidden.resources:firstResourceJSON};
+    
+    [[self.object class] objectFromJSON:firstJSON withInstance:self.instance];
+    STAssertEqualObjects(self.instance.badInstanceURL, expectedURL, @"SelfRef was not parsed first.");
+    
+    self.instance.badInstanceURL = nil;
+    
+    NSDictionary *secondResourceJSON = @{@"alt":altJSON,
+                                         JiveTypedObjectResourceTags.selfResourceTag:selfJSON};
+    NSDictionary *secondJSON = @{JiveTypedObjectAttributesHidden.resources:secondResourceJSON};
+    
+    [[self.object class] objectFromJSON:secondJSON withInstance:self.instance];
+    STAssertEqualObjects(self.instance.badInstanceURL, expectedURL, @"SelfRef was not parsed first.");
 }
 
 @end

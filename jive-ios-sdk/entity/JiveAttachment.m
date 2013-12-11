@@ -20,9 +20,42 @@
 #import "JiveAttachment.h"
 #import "JiveResourceEntry.h"
 
+struct JiveAttachmentResourceTags {
+    __unsafe_unretained NSString *selfResourceTag;
+} const JiveAttachmentResourceTags;
+
+struct JiveAttachmentAttributes const JiveAttachmentAttributes = {
+	.contentType = @"contentType",
+	.doUpload = @"doUpload",
+	.jiveId = @"jiveId",
+	.name = @"name",
+	.resources = @"resources",
+	.size = @"size",
+	.url = @"url",
+};
+
+struct JiveAttachmentResourceTags const JiveAttachmentResourceTags = {
+    .selfResourceTag = @"self"
+};
+
 @implementation JiveAttachment
 
 @synthesize contentType, doUpload, jiveId, name, resources, size, url;
+
++ (id) objectFromJSON:(NSDictionary *)JSON withInstance:(Jive *)instance {
+    id resources = JSON[JiveAttachmentAttributes.resources];
+    
+    if (resources) {
+        id resource = resources[JiveAttachmentResourceTags.selfResourceTag];
+        
+        if (resource) {
+            // Initalize the instance with the correct badInstanctURL if there is one.
+            [JiveResourceEntry objectFromJSON:resource withInstance:instance];
+        }
+    }
+    
+    return [super objectFromJSON:JSON withInstance:instance];
+}
 
 - (NSDictionary *) parseDictionaryForProperty:(NSString*)property
                                      fromJSON:(id)JSON
@@ -47,12 +80,12 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:contentType forKey:@"contentType"];
-    [dictionary setValue:doUpload forKey:@"doUpload"];
+    [dictionary setValue:contentType forKey:JiveAttachmentAttributes.contentType];
+    [dictionary setValue:doUpload forKey:JiveAttachmentAttributes.doUpload];
     [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:name forKey:@"name"];
-    [dictionary setValue:size forKey:@"size"];
-    [dictionary setValue:[url absoluteString] forKey:@"url"];
+    [dictionary setValue:name forKey:JiveAttachmentAttributes.name];
+    [dictionary setValue:size forKey:JiveAttachmentAttributes.size];
+    [dictionary setValue:[url absoluteString] forKey:JiveAttachmentAttributes.url];
     
     return dictionary;
 }

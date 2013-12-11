@@ -1,105 +1,157 @@
 throw 'allowIllegalResourceCall is false.';
 {
-    "unread" : {
-        "communications" : 0
+  "id" : "5316",
+  "resources" : {
+    "trendingPlaces" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@trendingPlaces"
     },
-    "profile" : {
-        "location" : "Portland",
-        "title" : "Sr. Software Engineer",
-        "phone" : "503.548.6008"
+    "trendingContent" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@trendingContent"
     },
-    "name" : "TEST! Rob Derstadt",
+    "reports" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@reports"
+    },
+    "securityGroups" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/securityGroups"
+    },
+    "manager" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@manager"
+    },
+    "recognition" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@recognition"
+    },
+    "self" : {
+      "allowed" : [ "GET", "PUT" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316"
+    },
+    "tasks" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/tasks"
+    },
+    "avatar" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar"
+    },
+    "blog" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/places/365723"
+    },
+    "colleagues" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@colleagues"
+    },
+    "extprops" : {
+      "allowed" : [ "POST", "DELETE", "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/extprops"
+    },
+    "followers" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@followers"
+    },
+    "following" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@following"
+    },
+    "social" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/@social"
+    },
+    "images" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images"
+    },
+    "streams" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/streams"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/people/orson.bushnell"
+    },
+    "followingIn" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/followingIn"
+    },
+    "activity" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/people/5316/activities"
+    },
+    "members" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://brewspace.jiveland.com/api/core/v3/members/people/5316"
+    }
+  },
+  "followerCount" : 76,
+  "published" : "2012-11-12T23:02:04.132+0000",
+  "tags" : [ "ios", "objective-c", "freenas" ],
+  "updated" : "2013-12-10T19:27:47.142+0000",
+  "displayName" : "Orson Bushnell",
+  "emails" : [ {
+    "jive_label" : "Email",
+    "primary" : true,
+    "type" : "work",
+    "value" : "orson.bushnell@jivesoftware.com"
+  } ],
+  "followingCount" : 103,
+  "jive" : {
     "enabled" : true,
+    "external" : false,
+    "federated" : true,
+    "lastProfileUpdate" : "2013-05-23T19:22:06.934+0000",
     "level" : {
-        "name" : "Scandium",
-        "points" : 901,
-        "resources" : {
-            "image" : {
-                "ref" : "https://brewspace.jiveland.com/api/core/v2/images/status/statusicon-73.gif",
-                "allowed" : [ "GET" ]
-            }
-        },
-        "creationTime" : 0,
-        "modificationTime" : 0
+      "description" : "Level 3",
+      "imageURI" : "https://assets.bunchball.net/badges/levels/L3.png",
+      "name" : "Level 3",
+      "points" : 2800
     },
-    "username" : "rob.derstadt",
-    "firstName" : "Rob",
-    "lastName" : "Derstadt",
-    "email" : "rob.derstadt@jivesoftware.com",
+    "locale" : "en_US",
     "externalContributor" : false,
-    "resources" : {
-        "reports" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/reports",
-            "allowed" : [ "GET" ]
-        },
-        "invites" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/invites",
-            "allowed" : [ "GET" ]
-        },
-        "manager" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/manager",
-            "allowed" : [ "GET" ]
-        },
-        "privateDocuments" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/private/documents",
-            "allowed" : [ "GET", "POST" ]
-        },
-        "self" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550",
-            "allowed" : [ "GET" ]
-        },
-        "avatar" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/avatar",
-            "allowed" : [ "GET" ]
-        },
-        "blog" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/blogs/21286",
-            "allowed" : [ "GET" ]
-        },
-        "colleagues" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/colleagues",
-            "allowed" : [ "GET" ]
-        },
-        "privateDiscussions" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/private/discussions",
-            "allowed" : [ "GET", "POST" ]
-        },
-        "followers" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/followers",
-            "allowed" : [ "GET" ]
-        },
-        "images" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/images",
-            "allowed" : [ "GET" ]
-        },
-        "activities" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/activity",
-            "allowed" : [ "GET" ]
-        },
-        "connections" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/connections",
-            "allowed" : [ "GET" ]
-        },
-        "followedActivity" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/followed/activity",
-            "allowed" : [ "GET" ]
-        },
-        "invited" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/invited",
-            "allowed" : [ "GET" ]
-        },
-        "mentions" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/my/mentions",
-            "allowed" : [ "GET" ]
-        },
-        "members" : {
-            "ref" : "https://brewspace.jiveland.com/api/core/v2/users/3550/members",
-            "allowed" : [ "GET" ]
-        }
-    },
-    "id" : 3550,
-    "creationTime" : 1292946610556,
-    "creationDate" : "2010-12-21T15:50:10.556+0000",
-    "modificationDate" : "2012-09-28T19:28:52.774+0000",
-    "modificationTime" : 1348860532774
+    "profile" : [ {
+      "jive_label" : "Title",
+      "value" : "Sr. Software Engineer"
+    }, {
+      "jive_label" : "Department",
+      "value" : "Engineering"
+    }, {
+      "jive_label" : "Hire Date",
+      "value" : "11/19/2012"
+    }, {
+      "jive_label" : "Expertise",
+      "value" : "Objective-C\r\nC++\r\nJavaScript\r\niOS\r\nOS X\r\nFreeNAS"
+    }, {
+      "jive_label" : "Company",
+      "value" : "Jive Software"
+    }, {
+      "jive_label" : "Previous Companies",
+      "value" : "TransWarp Technologies\r\nAmerican Express\r\nQuark\r\n"
+    }, {
+      "jive_label" : "Office",
+      "value" : "Boulder"
+    } ],
+    "sendable" : true,
+    "timeZone" : "America/Denver",
+    "username" : "orson.bushnell",
+    "visible" : true,
+    "termsAndConditionsRequired" : false
+  },
+  "name" : {
+    "familyName" : "Bushnell",
+    "formatted" : "Orson Bushnell",
+    "givenName" : "Orson"
+  },
+  "photos" : [ {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images/1/data"
+  }, {
+    "value" : "https://brewspace.jiveland.com/api/core/v3/people/5316/images/2/data"
+  } ],
+  "status" : "Back from the holiday. Energized to deliver even more Mobile Goodness.",
+  "thumbnailId" : "7353",
+  "thumbnailUrl" : "https://brewspace.jiveland.com/api/core/v3/people/5316/avatar",
+  "type" : "person"
 }

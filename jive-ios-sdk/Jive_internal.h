@@ -28,6 +28,7 @@
 @property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
 @property (nonatomic, strong) JivePlatformVersion *platformVersion;
 @property (nonatomic, strong) NSString *baseURI;
+@property (nonatomic, strong) NSString *badInstanceURL; // Only used while parsing JSON
 
 - (NSString *)createStringWithInstanceURLValidation:(NSString *)sourceString;
 - (NSURL *)createURLWithInstanceValidation:(NSString *)urlString;

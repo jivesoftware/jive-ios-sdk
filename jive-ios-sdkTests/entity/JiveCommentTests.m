@@ -22,6 +22,7 @@
 @implementation JiveCommentTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveComment alloc] init];
 }
 
