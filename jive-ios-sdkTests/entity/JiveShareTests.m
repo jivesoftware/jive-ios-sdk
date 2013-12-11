@@ -22,6 +22,7 @@
 @implementation JiveShareTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveShare alloc] init];
 }
 

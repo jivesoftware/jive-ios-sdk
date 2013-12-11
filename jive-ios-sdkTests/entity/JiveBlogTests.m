@@ -23,6 +23,7 @@
 @implementation JiveBlogTests
 
 - (void)setUp {
+    [super setUp];
     self.object = [[JiveBlog alloc] init];
 }
 
