@@ -68,7 +68,70 @@
     STAssertNotNil(sdkVersion, @"PRECONDITION: Invalid sdk version");
     
     JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
-                                                            withInstance:self.instance];
+                                                          withInstance:self.instance];
+    
+    STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
+    STAssertEqualObjects(version.major, major, @"Wrong major version");
+    STAssertEqualObjects(version.minor, minor, @"Wrong minor version");
+    STAssertEqualObjects(version.maintenance, maintenance, @"Wrong maintenance version");
+    STAssertEqualObjects(version.build, build, @"Wrong build version");
+    STAssertEqualObjects(version.releaseID, releaseID, @"Wrong releaseID version");
+    STAssertNil(version.ssoEnabled, @"Invalid ssoEnabled result");
+    STAssertEqualObjects(version.sdk, sdkVersion, @"Invalid sdk version number");
+    STAssertEqualObjects([version.instanceURL absoluteString], instanceURL, @"Invalid instance URL");
+    STAssertEquals(version.coreURI.count, (NSUInteger)2, @"Wrong number of core URIs");
+    if (version.coreURI.count == 2) {
+        JiveCoreVersion *version2 = version.coreURI[0];
+        
+        STAssertEquals([version2 class], [JiveCoreVersion class], @"Wrong sub-item class");
+        STAssertEqualObjects(version2.version, apiVersion2, @"Wrong version number");
+        STAssertEqualObjects(version2.revision, apiVersion2Revision, @"Wrong revision number");
+        STAssertEqualObjects(version2.uri, coreVersion2URI, @"Wrong uri number");
+        
+        JiveCoreVersion *version3 = version.coreURI[1];
+        
+        STAssertEquals([version3 class], [JiveCoreVersion class], @"Wrong sub-item class");
+        STAssertEqualObjects(version3.version, apiVersion3, @"Wrong version number");
+        STAssertEqualObjects(version3.revision, apiVersion3Revision, @"Wrong revision number");
+        STAssertEqualObjects(version3.uri, coreVersion3URI, @"Wrong uri number");
+    }
+}
+
+- (void)testVersionParsing_preLogin {
+    NSNumber *apiVersion2 = @2;
+    NSNumber *apiVersion2Revision = @3;
+    NSString *coreVersion2URI = @"/api/core/v2";
+    NSDictionary *version2JSON = @{ @"version" : apiVersion2,
+                                    @"revision" : apiVersion2Revision,
+                                    @"uri" : coreVersion2URI,
+                                    @"documentation" : @"https://developers.jivesoftware.com/api/v2/rest"
+                                    };
+    NSNumber *apiVersion3 = @3;
+    NSNumber *apiVersion3Revision = @3;
+    NSString *coreVersion3URI = @"/api/core/v3";
+    NSDictionary *version3JSON = @{ @"version" : apiVersion3,
+                                    @"revision" : apiVersion3Revision,
+                                    @"uri" : coreVersion3URI,
+                                    @"documentation" : @"https://developers.jivesoftware.com/api/v3/rest"
+                                    };
+    NSArray *versionsArray = @[version2JSON, version3JSON];
+    NSNumber *major = @7;
+    NSNumber *minor = @0;
+    NSNumber *maintenance = @0;
+    NSNumber *build = @0;
+    NSString *sdkVersion = [JivePlatformVersion new].sdk;
+    NSString *releaseID = @"7c2";
+    NSString *instanceURL = @"https://dummy.com/";
+    NSDictionary *JSON = @{ @"jiveVersion" : [NSString stringWithFormat:@"%@.%@.%@.%@ %@",
+                                              major, minor, maintenance, build, releaseID],
+                            @"jiveCoreVersions" : versionsArray,
+                            @"instanceURL" : instanceURL
+                            };
+    
+    STAssertNotNil(sdkVersion, @"PRECONDITION: Invalid sdk version");
+    
+    JivePlatformVersion *version = [JivePlatformVersion objectFromJSON:JSON
+                                                          withInstance:[Jive new]];
     
     STAssertEquals([version class], [JivePlatformVersion class], @"Wrong item class");
     STAssertEqualObjects(version.major, major, @"Wrong major version");

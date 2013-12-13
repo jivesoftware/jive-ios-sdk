@@ -77,7 +77,7 @@ int const JivePushDeviceType = 3;
     [request setHTTPShouldHandleCookies:NO];
     JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
-        self.platformVersion = [JivePlatformVersion objectFromJSON:JSON withInstance:self];
+        self.platformVersion = [self parseObjectOfClass:[JivePlatformVersion class] fromJSON:JSON];
         if (_platformVersion) {
             BOOL foundValidCoreVersion = NO;
             for (JiveCoreVersion *coreURI in self.platformVersion.coreURI) {
@@ -149,20 +149,32 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - helper methods
 
+- (id)parseObjectOfClass:(Class)clazz fromJSON:(id)JSON {
+    self.badInstanceURL = nil;
+    return [clazz objectFromJSON:JSON withInstance:self];
+}
+
+- (NSArray *)parseObjectsOfClass:(Class)clazz FromJSONList:(id)JSON {
+    self.badInstanceURL = nil;
+    return [clazz objectsFromJSONList:JSON withInstance:self];
+}
+
 - (NSString *)validateURLString:(NSString *)sourceString {
     NSString *instanceURL = self.jiveInstanceURL.absoluteString;
     
-    if ((sourceString).length < instanceURL.length ||
-        ![instanceURL isEqual:[sourceString substringToIndex:instanceURL.length]]) {
-        
-        NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
-        
-        if (baseURIRange.length > 0) {
-            NSString *badInstanceURL = [sourceString substringToIndex:baseURIRange.location];
+    if (instanceURL && ![sourceString hasPrefix:instanceURL]) {
+        if (!self.badInstanceURL) {
+            NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
             
-            sourceString = [sourceString stringByReplacingOccurrencesOfString:badInstanceURL
-                                                                   withString:instanceURL];
+            if (baseURIRange.location == NSNotFound) {
+                return sourceString;
+            }
+            
+            self.badInstanceURL = [sourceString substringToIndex:baseURIRange.location];
         }
+            
+        sourceString = [sourceString stringByReplacingOccurrencesOfString:self.badInstanceURL
+                                                               withString:instanceURL];
     }
     
     return sourceString;
@@ -171,46 +183,35 @@ int const JivePushDeviceType = 3;
 - (NSString *)createStringWithInstanceURLValidation:(NSString *)sourceString {
     if ([sourceString hasPrefix:@"http"]) {
         sourceString = [self validateURLString:sourceString];
-    } else if ([sourceString hasPrefix:@"<body>"]) {
+    } else if ([sourceString hasPrefix:@"<body>"] && self.badInstanceURL) {
         TFHpple *htmlParser = [TFHpple hppleWithHTMLData:[sourceString dataUsingEncoding:NSUTF8StringEncoding]];
         NSArray *linkArray = [htmlParser searchWithXPathQuery:@"//a"];
-        NSDictionary *typeDictionary = @{@"3":@"people",
-                                         @"14":@"places", @"37":@"places",
-                                         @"600":@"places", @"700":@"places",
-                                         @"1":@"contents", @"2":@"contents", @"38":@"contents",
-                                         @"102":@"contents", @"1100":@"contents", @"1464927464":@"contents"};
         
         for (TFHppleElement *anchor in linkArray) {
-            NSString *objectType = [anchor objectForKey:@"data-objecttype"];
             NSString *objectID = [anchor objectForKey:@"data-objectid"];
             NSString *href = [anchor objectForKey:@"href"];
             NSString *extendedHref = [NSString stringWithFormat:@"href=\"%@\"", href];
             
             if (objectID) {
-                NSString *typeSpecifier = typeDictionary[objectType];
+                NSString *newHrefURL = [href stringByReplacingOccurrencesOfString:self.badInstanceURL
+                                                                       withString:self.jiveInstanceURL.absoluteString];
+                NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", newHrefURL];
                 
-                if (typeSpecifier) {
-                    NSURL *newHrefURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@",
-                                                              self.baseURI, typeSpecifier, objectID]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
-                    
-                    sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
-                                                                           withString:newHrefString];
-                }
+                sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
+                                                                       withString:newHrefString];
             } else {
                 TFHppleElement *imageElement = [anchor firstChildWithTagName:@"img"];
                 NSString *src = [imageElement objectForKey:@"src"];
                 
-                if (src && [src rangeOfString:@"/JiveServlet/"].length > 0) {
+                if (src && [src rangeOfString:@"servlet/JiveServlet/"].length > 0) {
                     NSString *sourceLink = [NSString stringWithFormat:@"src=\"%@\"", src];
-                    NSURL *newHrefURL = [NSURL URLWithString:[[NSURL URLWithString:href] path]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSURL *newSourceURL = [NSURL URLWithString:[[NSURL URLWithString:src] path]
-                                               relativeToURL:self.jiveInstanceURL];
-                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", [newHrefURL absoluteString]];
-                    NSString *newSourceLink = [NSString stringWithFormat:@"src=\"%@\"", [newSourceURL absoluteString]];
-
+                    NSString *newHrefURL = [href stringByReplacingOccurrencesOfString:self.badInstanceURL
+                                                                           withString:self.jiveInstanceURL.absoluteString];
+                    NSString *newSourceURL = [src stringByReplacingOccurrencesOfString:self.badInstanceURL
+                                                                            withString:self.jiveInstanceURL.absoluteString];
+                    NSString *newHrefString = [NSString stringWithFormat:@"href=\"%@\"", newHrefURL];
+                    NSString *newSourceLink = [NSString stringWithFormat:@"src=\"%@\"", newSourceURL];
+                    
                     sourceString = [sourceString stringByReplacingOccurrencesOfString:extendedHref
                                                                            withString:newHrefString];
                     sourceString = [sourceString stringByReplacingOccurrencesOfString:sourceLink
@@ -1212,7 +1213,7 @@ int const JivePushDeviceType = 3;
                                     self.baseURI, nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
-        return [JiveResource objectsFromJSONList:JSON withInstance:self];
+        return [self parseObjectsOfClass:[JiveResource class] FromJSONList:JSON];
     }];
 }
 
@@ -2242,7 +2243,7 @@ int const JivePushDeviceType = 3;
         
         [uploadImageOperation setCompletionBlockWithSuccess:(^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:NULL];
-            JiveImage *jiveImage = [[JiveImage class] objectFromJSON:json withInstance:self];
+            JiveImage *jiveImage = [self parseObjectOfClass:[JiveImage class] fromJSON:json];
             complete(jiveImage);
         })
                                                     failure:(^(AFHTTPRequestOperation *operation, NSError *err) {
@@ -2568,7 +2569,7 @@ int const JivePushDeviceType = 3;
         JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
                                                                                                                 success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
             if (completeBlock) {
-                id entity = [clazz objectsFromJSONList:JSON[@"list"] withInstance:self];
+                id entity = [self parseObjectsOfClass:clazz FromJSONList:JSON[@"list"]];
                 
                 // This is nil for non-inbox requests.
                 NSNumber *unreadCount = JSON[@"unread"];
@@ -2602,7 +2603,7 @@ int const JivePushDeviceType = 3;
                                                                              onComplete:completeBlock
                                                                                 onError:errorBlock
                                                                         responseHandler:(^id(id JSON) {
-        return [clazz objectsFromJSONList:[JSON objectForKey:@"list"] withInstance:self];
+        return [self parseObjectsOfClass:clazz FromJSONList:JSON[@"list"]];
     })];
     return operation;
 }
@@ -2622,7 +2623,7 @@ int const JivePushDeviceType = 3;
                                                                   onComplete:completeBlock
                                                                      onError:errorBlock
                                                              responseHandler:(^id(id JSON) {
-        return [clazz objectFromJSON:JSON withInstance:self];
+        return [self parseObjectOfClass:clazz fromJSON:JSON];
     })];
     return operation;
 }

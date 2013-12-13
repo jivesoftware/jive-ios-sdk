@@ -19,6 +19,16 @@
 
 #import "JiveObject.h"
 
+extern struct JiveAttachmentAttributes {
+    __unsafe_unretained NSString *contentType;
+    __unsafe_unretained NSString *doUpload;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *name;
+    __unsafe_unretained NSString *resources;
+    __unsafe_unretained NSString *size;
+    __unsafe_unretained NSString *url;
+} const JiveAttachmentAttributes;
+
 //! \class JiveAttachment
 //! https://developers.jivesoftware.com/api/v3/rest/AttachmentEntity.html
 @interface JiveAttachment : JiveObject

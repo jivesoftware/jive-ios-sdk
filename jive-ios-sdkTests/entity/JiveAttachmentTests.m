@@ -20,6 +20,7 @@
 #import "JiveAttachmentTests.h"
 #import "JiveAttachment.h"
 #import "JiveResourceEntry.h"
+#import "Jive_internal.h"
 
 @implementation JiveAttachmentTests
 
@@ -143,6 +144,40 @@
     STAssertEqualObjects(newAttachment.doUpload, self.attachment.doUpload, @"Wrong doUpload");
     STAssertEquals([newAttachment.resources count], [self.attachment.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newAttachment.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+}
+
+- (void)testSelfReferenceParsedBeforeAnythingElse {
+    JiveResourceEntry *selfResource = [JiveResourceEntry new];
+    JiveResourceEntry *altResource = [JiveResourceEntry new];
+    NSString *expectedURL = @"https://hopback.eng.jiveland.com/";
+    
+    [selfResource setValue:[NSURL URLWithString:[expectedURL stringByAppendingString:@"api/core/v3/person/321"]]
+                    forKey:JiveResourceEntryAttributes.ref];
+    [selfResource setValue:@[@"GET", @"PUT"]
+                    forKey:JiveResourceEntryAttributes.allowed];
+    [altResource setValue:[NSURL URLWithString:@"http://brewspace.com/api/core/v3/person/321"]
+                   forKey:JiveResourceEntryAttributes.ref];
+    [altResource setValue:@[@"GET", @"DELETE"]
+                   forKey:JiveResourceEntryAttributes.allowed];
+    self.instance.badInstanceURL = nil;
+    
+    id selfJSON = selfResource.persistentJSON;
+    id altJSON = altResource.persistentJSON;
+    NSDictionary *firstResourceJSON = @{@"self":selfJSON,
+                                        @"alt":altJSON};
+    NSDictionary *firstJSON = @{@"resources":firstResourceJSON};
+    
+    [[self.object class] objectFromJSON:firstJSON withInstance:self.instance];
+    STAssertEqualObjects(self.instance.badInstanceURL, expectedURL, @"SelfRef was not parsed first.");
+    
+    self.instance.badInstanceURL = nil;
+    
+    NSDictionary *secondResourceJSON = @{@"alt":altJSON,
+                                         @"self":selfJSON};
+    NSDictionary *secondJSON = @{@"resources":secondResourceJSON};
+    
+    [[self.object class] objectFromJSON:secondJSON withInstance:self.instance];
+    STAssertEqualObjects(self.instance.badInstanceURL, expectedURL, @"SelfRef was not parsed first.");
 }
 
 @end
