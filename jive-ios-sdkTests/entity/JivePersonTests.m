@@ -713,30 +713,23 @@
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     
     [options addField:@"id"];
-    [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
     
-    [self createJiveAPIObjectWithResponse:@"person_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550?fields=id"];
-    
-    STAssertEqualObjects(self.person.jiveId, @"3550", @"PRECONDITION: Wrong jiveId");
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person refreshOperationWithOptions:options
-                                                               onComplete:^(JivePerson *person) {
-                                                                   STAssertEquals(person, self.person, @"Person object not updated");
-                                                                   STAssertEqualObjects(self.person.jiveId, @"5316", @"Wrong jiveId");
-                                                                   
-                                                                   // Check that delegates where actually called
-                                                                   [mockAuthDelegate verify];
-                                                                   [mockJiveURLResponseDelegate verify];
-                                                                   finishedBlock();
-                                                               } onError:^(NSError *error) {
-                                                                   STFail([error localizedDescription]);
-                                                                   finishedBlock();
-                                                               }];
-        
-        STAssertNotNil(operation, @"Missing refresh operation");
-        [operation start];
-    }];
+    [self checkObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person refreshOperationWithOptions:options
+                                             onComplete:^(JivePerson *person) {
+                                                 STAssertEquals(person, self.person, @"Person object not updated");
+                                                 STAssertEqualObjects(self.person.jiveId, @"5316", @"Wrong jiveId");
+                                                 completionBlock(person);
+                                             }
+                                                onError:errorBlock];
+    }
+                  withResponse:@"person_response"
+                         setup:^{
+                             [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
+                             STAssertEqualObjects(self.person.jiveId, @"3550", @"PRECONDITION: Wrong jiveId");
+                         }
+                           URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550?fields=id"
+                 expectedClass:[JivePerson class]];
 }
 
 - (void) testRefreshServiceCall {
@@ -831,35 +824,31 @@
 }
 
 - (void) testUpdatePersonOperation {
-    [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"person_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550"];
-    self.person.location = @"alternate";
-    
-    NSDictionary *JSON = [self.person toJSONDictionary];
-    NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+    [self checkObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        NSDictionary *JSON = [self.person toJSONDictionary];
+        NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
         AFURLConnectionOperation *operation = [self.person updateOperationOnComplete:^(JivePerson *person) {
             STAssertEquals(person, self.person, @"Person object not updated");
             STAssertEqualObjects(self.person.jiveId, @"5316", @"Wrong jiveId");
             STAssertEqualObjects(self.person.location, @"home on the range", @"New object not created");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
+            completionBlock(person);
+        }
+                                                                             onError:errorBlock];
 
         STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
-        [operation start];
-    }];
+        return operation;
+    }
+                  withResponse:@"person_response"
+                         setup:^{
+                             [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
+                             self.person.location = @"alternate";
+                             STAssertEqualObjects(self.person.jiveId, @"3550", @"PRECONDITION: Wrong jiveId");
+                         }
+                           URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550"
+                 expectedClass:[JivePerson class]];
 }
 
 - (void) testUpdatePerson {
@@ -890,27 +879,14 @@
     
     [options addField:@"id"];
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"blog"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/blog?fields=id"];
-
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person blogOperationWithOptions:options
-                                                            onComplete:^(JiveBlog *blog) {
-                                                                STAssertEquals([blog class], [JiveBlog class], @"Wrong item class");
-                                                                
-                                                                // Check that delegates where actually called
-                                                                [mockAuthDelegate verify];
-                                                                [mockJiveURLResponseDelegate verify];
-                                                                finishedBlock();
-                                                            } onError:^(NSError *error) {
-                                                                STFail([error localizedDescription]);
-                                                                finishedBlock();
-                                                            }];
-        
-        STAssertNotNil(operation, @"Missing blog operation");
-        [operation start];
-    }];
+    [self checkObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person blogOperationWithOptions:options
+                                          onComplete:completionBlock
+                                             onError:errorBlock];
+    }
+                  withResponse:@"blog"
+                           URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550/blog?fields=id"
+                 expectedClass:[JiveBlog class]];
 }
 
 - (void) testGetBlog {
@@ -944,30 +920,19 @@
     
     [options addField:@"id"];
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"person_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@manager?fields=id"];
-    
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person managerOperationWithOptions:options
-                                                               onComplete:^(JivePerson *person) {
-                                                                   STAssertEquals([person class], [JivePerson class], @"Wrong item class");
-                                                                   STAssertFalse(person == self.person, @"Failed to create a new JivePerson object");
-                                                                   STAssertFalse(person.jiveId == self.person.jiveId, @"Failed to create the correct JiveObject");
-                                                                   STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
-                                                                   
-                                                                   // Check that delegates where actually called
-                                                                   [mockAuthDelegate verify];
-                                                                   [mockJiveURLResponseDelegate verify];
-                                                                   finishedBlock();
-                                                               } onError:^(NSError *error) {
-                                                                   STFail([error localizedDescription]);
-                                                                   finishedBlock();
-                                                               }];
-        
-        STAssertNotNil(operation, @"Missing manager operation");
-        [operation start];
-    }];
+    [self checkObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person managerOperationWithOptions:options
+                                             onComplete:^(JivePerson *person) {
+                                                 STAssertFalse(person == self.person, @"Failed to create a new JivePerson object");
+                                                 STAssertFalse(person.jiveId == self.person.jiveId, @"Failed to create the correct JiveObject");
+                                                 STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
+                                                 completionBlock(person);
+                                             }
+                                                onError:errorBlock];
+    }
+                  withResponse:@"person_response"
+                           URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@manager?fields=id"
+                 expectedClass:[JivePerson class]];
 }
 
 - (void) testGetManager {
@@ -1002,32 +967,14 @@
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.startIndex = 5;
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"collegues_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues?startIndex=5"];
-    
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person colleguesOperationWithOptions:options
-                                                                 onComplete:^(NSArray *people) {
-                                                                     STAssertEquals([people count], (NSUInteger)9, @"Wrong number of items parsed");
-                                                                     STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
-                                                                     for (JivePerson *person in people) {
-                                                                         STAssertFalse(person.jiveId == self.person.jiveId, @"Duplicate person found: %@", person);
-                                                                         STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
-                                                                     }
-                                                                     
-                                                                     // Check that delegates where actually called
-                                                                     [mockAuthDelegate verify];
-                                                                     [mockJiveURLResponseDelegate verify];
-                                                                     finishedBlock();
-                                                                 } onError:^(NSError *error) {
-                                                                     STFail([error localizedDescription]);
-                                                                     finishedBlock();
-                                                                 }];
-        
-        STAssertNotNil(operation, @"Missing manager operation");
-        [operation start];
-    }];
+    [self checkPersonListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person colleguesOperationWithOptions:options
+                                               onComplete:completionBlock
+                                                  onError:errorBlock];
+    }
+                      withResponse:@"collegues_response"
+                               URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@colleagues?startIndex=5"
+                     expectedCount:9];
 }
 
 - (void) testColleguesServiceCall {
@@ -1062,33 +1009,16 @@
 - (void) testGetReportsOperation {
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.count = 10;
+    self.instanceURL = @"http://gigi-eae03.eng.jiveland.com/";
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"people_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@reports?count=10"];
-
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person reportsOperationWithOptions:options
-                                                               onComplete:^(NSArray *people) {
-                                                                   STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
-                                                                   STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
-                                                                   for (JivePerson *person in people) {
-                                                                       STAssertFalse(person.jiveId == self.person.jiveId, @"Duplicate person found: %@", person);
-                                                                       STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
-                                                                   }
-                                                                   
-                                                                   // Check that delegates where actually called
-                                                                   [mockAuthDelegate verify];
-                                                                   [mockJiveURLResponseDelegate verify];
-                                                                   finishedBlock();
-                                                               } onError:^(NSError *error) {
-                                                                   STFail([error localizedDescription]);
-                                                                   finishedBlock();
-                                                               }];
-        
-        STAssertNotNil(operation, @"Missing manager operation");
-        [operation start];
-    }];
+    [self checkPersonListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person reportsOperationWithOptions:options
+                                             onComplete:completionBlock
+                                                onError:errorBlock];
+    }
+                      withResponse:@"people_response"
+                               URL:@"http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3550/@reports?count=10"
+                     expectedCount:20];
 }
 
 - (void) testGetReports {
@@ -1125,32 +1055,14 @@
     options.startIndex = 10;
     options.count = 10;
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"followers_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@followers?count=10&startIndex=10"];
-    
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person followersOperationWithOptions:options
-                                                                 onComplete:^(NSArray *people) {
-                                                                     STAssertEquals([people count], (NSUInteger)23, @"Wrong number of items parsed");
-                                                                     STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
-                                                                     for (JivePerson *person in people) {
-                                                                         STAssertFalse(person.jiveId == self.person.jiveId, @"Duplicate person found: %@", person);
-                                                                         STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
-                                                                     }
-                                                                     
-                                                                     // Check that delegates where actually called
-                                                                     [mockAuthDelegate verify];
-                                                                     [mockJiveURLResponseDelegate verify];
-                                                                     finishedBlock();
-                                                                 } onError:^(NSError *error) {
-                                                                     STFail([error localizedDescription]);
-                                                                     finishedBlock();
-                                                                 }];
-        
-        STAssertNotNil(operation, @"Missing manager operation");
-        [operation start];
-    }];
+    [self checkPersonListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person followersOperationWithOptions:options
+                                               onComplete:completionBlock
+                                                  onError:errorBlock];
+    }
+                      withResponse:@"followers_response"
+                               URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@followers?count=10&startIndex=10"
+                     expectedCount:23];
 }
 
 - (void) testFollowersServiceCallWithOptions {
@@ -1220,33 +1132,16 @@
 - (void) testGetFollowingOperation {
     JivePagedRequestOptions *options = [[JivePagedRequestOptions alloc] init];
     options.count = 10;
+    self.instanceURL = @"http://gigi-eae03.eng.jiveland.com/";
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"people_response"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/@following?count=10"];
-
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [self.person followingOperationWithOptions:options
-                                                                 onComplete:^(NSArray *people) {
-                                                                     STAssertEquals([people count], (NSUInteger)20, @"Wrong number of items parsed");
-                                                                     STAssertEquals([[people objectAtIndex:0] class], [JivePerson class], @"Wrong item class");
-                                                                     for (JivePerson *person in people) {
-                                                                         STAssertFalse(person.jiveId == self.person.jiveId, @"Duplicate person found: %@", person);
-                                                                         STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
-                                                                     }
-                                                                     
-                                                                     // Check that delegates where actually called
-                                                                     [mockAuthDelegate verify];
-                                                                     [mockJiveURLResponseDelegate verify];
-                                                                     finishedBlock();
-                                                                 } onError:^(NSError *error) {
-                                                                     STFail([error localizedDescription]);
-                                                                     finishedBlock();
-                                                                 }];
-        
-        STAssertNotNil(operation, @"Missing manager operation");
-        [operation start];
-    }];
+    [self checkPersonListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return [self.person followingOperationWithOptions:options
+                                               onComplete:completionBlock
+                                                  onError:errorBlock];
+    }
+                      withResponse:@"people_response"
+                               URL:@"http://gigi-eae03.eng.jiveland.com/api/core/v3/people/3550/@following?count=10"
+                     expectedCount:20];
 }
 
 - (void) testGetFollowing {
@@ -1281,6 +1176,7 @@
 - (void)checkListOperation:(NSOperation *(^)(JiveArrayCompleteBlock completionBlock,
                                              JiveErrorBlock errorBlock))createOperation
               withResponse:(NSString *)response
+                     setup:(void (^)())setupBlock
                        URL:(NSString *)url
              expectedCount:(NSUInteger)expectedCount
              expectedClass:(Class)clazz {
@@ -1298,10 +1194,11 @@
     };
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:url];
+        setupBlock();
         NSOperation* operation = createOperation(^(NSArray *streams) {
-                                                     completeBlock(streams);
-                                                     finishedBlock();
-                                                 },
+            completeBlock(streams);
+            finishedBlock();
+        },
                                                  ^(NSError *error) {
                                                      STFail([error localizedDescription]);
                                                      finishedBlock();
@@ -1310,16 +1207,18 @@
         STAssertNotNil(operation, @"Missing operation object 1");
         [operation start];
     }];
-
+    
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:url];
+        setupBlock();
         self.person.jiveInstance.badInstanceURL = @"brewspace";
         NSOperation* operation = createOperation(^(NSArray *streams) {
-                                                     STAssertNil(self.person.jiveInstance.badInstanceURL,
-                                                                 @"badInstanceURL was not cleared");
-                                                     completeBlock(streams);
-                                                     finishedBlock();
-                                                 },
+            STAssertNil(self.person.jiveInstance.badInstanceURL,
+                        @"badInstanceURL was not cleared: %@",
+                        self.person.jiveInstance.badInstanceURL);
+            completeBlock(streams);
+            finishedBlock();
+        },
                                                  ^(NSError *error) {
                                                      STFail([error localizedDescription]);
                                                      finishedBlock();
@@ -1330,7 +1229,9 @@
     }];
 
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSString *proxyInstanceURL = @"http://brewspace.com";
+        NSString *proxyInstanceURL = ([self.instanceURL hasSuffix:@"/"] ?
+                                      @"http://brewspace.com/" :
+                                      @"http://brewspace.com");
         NSString *testURL = [url stringByReplacingOccurrencesOfString:self.instanceURL
                                                            withString:proxyInstanceURL];
         
@@ -1338,8 +1239,8 @@
         self.person.jiveInstance.jiveInstanceURL = [NSURL URLWithString:proxyInstanceURL];
         
         [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:testURL];
-        STAssertNil(self.person.jiveInstance.badInstanceURL,
-                    @"PRECONDITION: badInstanceURL should be nil to start.");
+        setupBlock();
+        self.person.jiveInstance.badInstanceURL = nil;
         NSOperation* operation = createOperation(^(NSArray *streams) {
             STAssertNotNil(self.person.jiveInstance.badInstanceURL, @"badInstanceURL not updated.");
             completeBlock(streams);
@@ -1353,6 +1254,147 @@
         STAssertNotNil(operation, @"Missing operation object 3");
         [operation start];
     }];
+}
+
+- (void)checkListOperation:(NSOperation *(^)(JiveArrayCompleteBlock completionBlock,
+                                             JiveErrorBlock errorBlock))createOperation
+              withResponse:(NSString *)response
+                       URL:(NSString *)url
+             expectedCount:(NSUInteger)expectedCount
+             expectedClass:(Class)clazz {
+    [self checkListOperation:createOperation
+                withResponse:response
+                       setup:^{ }
+                         URL:url
+               expectedCount:expectedCount
+               expectedClass:clazz];
+}
+
+- (void)checkPersonListOperation:(NSOperation *(^)(JiveArrayCompleteBlock completionBlock,
+                                                   JiveErrorBlock errorBlock))createOperation
+                    withResponse:(NSString *)response
+                           setup:(void (^)())setupBlock
+                             URL:(NSString *)url
+                   expectedCount:(NSUInteger)expectedCount {
+    [self checkListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        return createOperation(^(NSArray *people) {
+            for (JivePerson *person in people) {
+                STAssertFalse(person.jiveId == self.person.jiveId, @"Duplicate person found: %@", person);
+                STAssertEqualObjects(person.jiveInstance, self.person.jiveInstance, @"New person is missing the jiveInstance");
+            }
+            completionBlock(people);
+        }, errorBlock);
+    }
+                withResponse:response
+                       setup:setupBlock
+                         URL:url
+               expectedCount:expectedCount
+               expectedClass:[JivePerson class]];
+}
+
+- (void)checkPersonListOperation:(NSOperation *(^)(JiveArrayCompleteBlock completionBlock,
+                                                   JiveErrorBlock errorBlock))createOperation
+                    withResponse:(NSString *)response
+                             URL:(NSString *)url
+                   expectedCount:(NSUInteger)expectedCount {
+    [self checkPersonListOperation:createOperation
+                      withResponse:response
+                             setup:^{ }
+                               URL:url
+                     expectedCount:expectedCount];
+}
+
+- (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
+                                               JiveErrorBlock errorBlock))createOperation
+                withResponse:(NSString *)response
+                       setup:(void (^)())setupBlock
+                         URL:(NSString *)url
+               expectedClass:(Class)clazz {
+    
+    JiveObjectCompleteBlock completeBlock = ^(id object) {
+        STAssertEquals([object class], clazz, @"Wrong item class");
+        
+        // Check that delegates where actually called
+        [mockAuthDelegate verify];
+        [mockJiveURLResponseDelegate verify];
+    };
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:url];
+        setupBlock();
+        NSOperation* operation = createOperation(^(id object) {
+            completeBlock(object);
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 1");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:url];
+        setupBlock();
+        self.person.jiveInstance.badInstanceURL = @"brewspace";
+        NSOperation* operation = createOperation(^(id object) {
+            STAssertNil(self.person.jiveInstance.badInstanceURL,
+                        @"badInstanceURL was not cleared: %@",
+                        self.person.jiveInstance.badInstanceURL);
+            completeBlock(object);
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 2");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSString *canonicalProxyInstanceURL = @"http://brewspace.com/";
+        NSString *proxyInstanceURL = ([self.instanceURL hasSuffix:@"/"] ?
+                                      canonicalProxyInstanceURL :
+                                      @"http://brewspace.com");
+        NSString *instanceURLString = [url stringByReplacingOccurrencesOfString:self.instance.jiveInstanceURL.absoluteString
+                                                                     withString:proxyInstanceURL];
+        
+        self.instanceURL = canonicalProxyInstanceURL;
+        
+        [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:instanceURLString];
+        setupBlock();
+        self.person.jiveInstance.badInstanceURL = nil;
+        NSOperation* operation = createOperation(^(id object) {
+            STAssertNotNil(self.person.jiveInstance.badInstanceURL,
+                           @"badInstanceURL not updated: %@",
+                           self.person.jiveInstance.badInstanceURL);
+            completeBlock(object);
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STFail([error localizedDescription]);
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing operation object 3");
+        [operation start];
+    }];
+}
+
+- (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
+                                               JiveErrorBlock errorBlock))createOperation
+                withResponse:(NSString *)response
+                         URL:(NSString *)url
+               expectedClass:(Class)clazz {
+    [self checkObjectOperation:createOperation
+                  withResponse:response
+                         setup:^{ }
+                           URL:url
+                 expectedClass:clazz];
 }
 
 - (void) testFollowingInOperation {
@@ -1634,41 +1676,36 @@
 }
 
 - (void) testCreateTaskOperation {
-    JiveTask *testTask = [[JiveTask alloc] init];
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
     [options addField:@"id"];
     [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-    
-    [self createJiveAPIObjectWithResponse:@"task"
-                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/tasks?fields=id"];
-    
-    testTask.subject = @"subject";
-    testTask.dueDate = [NSDate date];
-    STAssertNil(testTask.jiveId, @"PRECONDITION: Task jiveId must be nil");
-    
-    NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
-    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+    [self checkObjectOperation:^NSOperation *(JiveObjectCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
+        JiveTask *testTask = [[JiveTask alloc] init];
+        
+        testTask.subject = @"subject";
+        testTask.dueDate = [NSDate date];
+        STAssertNil(testTask.jiveId, @"PRECONDITION: Task jiveId must be nil");
+        
+        NSData *body = [NSJSONSerialization dataWithJSONObject:[testTask toJSONDictionary] options:0 error:nil];
+        
         AFURLConnectionOperation *operation = [self.person createTaskOperation:testTask
                                                                    withOptions:options
                                                                     onComplete:^(JiveTask *task) {
                                                                         STAssertEquals(task, testTask, @"Task object not updated");
                                                                         STAssertEqualObjects(task.jiveId, @"8991", @"Wrong jiveId");
-                                                                        
-                                                                        // Check that delegates where actually called
-                                                                        [mockAuthDelegate verify];
-                                                                        [mockJiveURLResponseDelegate verify];
-                                                                        finishedBlock();
-                                                                    } onError:^(NSError *error) {
-                                                                        STFail([error localizedDescription]);
-                                                                        finishedBlock();
-                                                                    }];
+                                                                        completionBlock(task);
+                                                                    }
+                                                                       onError:errorBlock];
         
         STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
-        [operation start];
-    }];
+        return operation;
+    }
+                  withResponse:@"task"
+                           URL:@"https://brewspace.jiveland.com/api/core/v3/people/3550/tasks?fields=id"
+                 expectedClass:[JiveTask class]];
 }
 
 - (void) testCreateTask {

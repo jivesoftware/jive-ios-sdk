@@ -395,6 +395,7 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
+                                       self.jiveInstance.badInstanceURL = nil;
                                        JivePerson *manager = [JivePerson objectFromJSON:JSON
                                                                              withInstance:self.jiveInstance];
                                        
@@ -610,6 +611,7 @@ NSString * const JivePersonType = @"person";
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
                                        if ([target.type isEqualToString:JSON[JiveTypedObjectAttributes.type]]) {
+                                           self.jiveInstance.badInstanceURL = nil;
                                            [target deserialize:JSON fromInstance:self.jiveInstance];
                                            return target;
                                        } else {
@@ -629,6 +631,7 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:(^id(id JSON) {
+        self.jiveInstance.badInstanceURL = nil;
         return [JivePerson objectsFromJSONList:[JSON objectForKey:@"list"]
                                     withInstance:self.jiveInstance];
     })];
@@ -656,8 +659,9 @@ NSString * const JivePersonType = @"person";
                                         onComplete:completeBlock
                                            onError:errorBlock
                                    responseHandler:^id(id JSON) {
+                                       self.jiveInstance.badInstanceURL = nil;
                                        return [clazz objectFromJSON:JSON
-                                                         withInstance:self.jiveInstance];
+                                                       withInstance:self.jiveInstance];
                                    }];
 }
 
