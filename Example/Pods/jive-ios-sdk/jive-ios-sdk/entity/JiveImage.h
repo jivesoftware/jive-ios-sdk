@@ -35,4 +35,7 @@
 //! URI that can be used to reference this image within content
 @property(nonatomic, readonly) NSURL* ref;
 
+//! Filename of this image
+@property(nonatomic, readonly, strong) NSString* name;
+
 @end

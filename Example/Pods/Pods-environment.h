@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking 1
 
+// hpple
+#define COCOAPODS_POD_AVAILABLE_hpple
+#define COCOAPODS_VERSION_MAJOR_hpple 0
+#define COCOAPODS_VERSION_MINOR_hpple 2
+#define COCOAPODS_VERSION_PATCH_hpple 0
+
 // jive-ios-sdk
 #define COCOAPODS_POD_AVAILABLE_jive_ios_sdk
 #define COCOAPODS_VERSION_MAJOR_jive_ios_sdk 0

@@ -32,7 +32,7 @@ extern struct JiveShareAttributes {
 @interface JiveShare : JiveDirectMessage
 
 //! The content object that was shared, if any. If a place was shared, this field will not be present.
-@property (nonatomic, readonly) JiveContent *sharedContent;
+@property (nonatomic, readonly) JiveTypedObject *sharedContent;
 
 //! The place containing the content object that was shared, if a content object was shared. If a place was shared, this will be the place.
 @property (nonatomic, readonly) JivePlace *sharedPlace;

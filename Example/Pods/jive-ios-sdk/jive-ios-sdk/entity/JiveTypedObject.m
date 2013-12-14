@@ -21,20 +21,12 @@
 #import "JiveResourceEntry.h"
 #import "JiveObjcRuntime.h"
 
-struct JiveTypedObjectResourceTags {
-    __unsafe_unretained NSString *selfResourceTag;
-};
-
 struct JiveTypedObjectResourceAllowed {
     __unsafe_unretained NSString *get;
     __unsafe_unretained NSString *put;
     __unsafe_unretained NSString *post;
     __unsafe_unretained NSString *delete;
 };
-
-extern struct JiveTypedObjectAttributesHidden {
-    __unsafe_unretained NSString *resources;
-} const JiveTypedObjectAttributesHidden;
 
 struct JiveTypedObjectAttributes const JiveTypedObjectAttributes = {
 	.type = @"type",
@@ -88,19 +80,37 @@ static NSMutableDictionary *typedClasses;
                           notFoundMarker:[self class]] objectAtIndex:0];
 }
 
-- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON {
++ (id) objectFromJSON:(NSDictionary *)JSON withInstance:(Jive *)instance {
+    id resources = JSON[JiveTypedObjectAttributesHidden.resources];
+    
+    if (resources) {
+        id resource = resources[JiveTypedObjectResourceTags.selfResourceTag];
+        
+        if (resource) {
+            // Initalize the instance with the correct badInstanctURL if there is one.
+            [JiveResourceEntry objectFromJSON:resource withInstance:instance];
+        }
+    }
+    
+    return [super objectFromJSON:JSON withInstance:instance];
+}
+
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON fromInstance:(Jive *)jiveInstance {
     if ([JiveTypedObjectAttributes.type isEqualToString:key])
         return NO; // Having a type does not make this a valid JSON response.
     
-    return [super deserializeKey:key fromJSON:JSON];
+    return [super deserializeKey:key fromJSON:JSON fromInstance:jiveInstance];
 }
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)instance {
     if ([JiveTypedObjectAttributesHidden.resources isEqualToString:property]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
         
         for (NSString *key in JSON) {
-            JiveResourceEntry *entry = [JiveResourceEntry instanceFromJSON:[JSON objectForKey:key]];
+            JiveResourceEntry *entry = [JiveResourceEntry objectFromJSON:[JSON objectForKey:key]
+                                                              withInstance:instance];
             
             [dictionary setValue:entry forKey:key];
         }

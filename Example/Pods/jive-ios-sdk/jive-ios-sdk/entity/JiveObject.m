@@ -20,43 +20,50 @@
 #define JIVE_JSON_DEBUG 0
 
 #import "JiveObject_internal.h"
+#import "Jive_internal.h"
 
 #import <objc/runtime.h>
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+
+struct JiveObjectAttributes const JiveObjectAttributes = {
+	.extraFieldsDetected = @"extraFieldsDetected",
+	.refreshDate = @"refreshDate",
+};
 
 @implementation JiveObject
 
 // Do not synthesize extraFieldsDetected so it will not be auto populated.
 
 + (id) instanceFromJSON:(NSDictionary*) JSON {
-    id entity = [[[self entityClass:JSON] alloc] init];
-    return [entity deserialize:JSON] ? entity : nil;
+    return [self objectFromJSON:JSON withInstance:nil];
 }
 
 + (id) instanceFromJSON:(NSDictionary*) JSON withJive:(Jive *)jive {
-    return [self instanceFromJSON:JSON];
+    return [self objectFromJSON:JSON withInstance:jive];
 }
 
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON withJive:(Jive *)jive {
-    NSMutableArray *instances = [[NSMutableArray alloc] init];
-    for(id obj in JSON) {
-        id inst = [[self entityClass:obj] instanceFromJSON:obj withJive:jive];
-        if(inst) {
-            [instances addObject:inst];
-        }
-    }
-    return [NSArray arrayWithArray:instances];
+    return [self objectsFromJSONList:JSON withInstance:jive];
 }
 
 + (NSArray*) instancesFromJSONList:(NSArray*) JSON {
-    NSMutableArray *instances = [[NSMutableArray alloc] init];
-    for(id obj in JSON) {
-        id inst = [[self entityClass:obj] instanceFromJSON:obj];
-        if(inst) {
-            [instances addObject:inst];
+    return [self objectsFromJSONList:JSON withInstance:nil];
+}
+
++ (id) objectFromJSON:(NSDictionary *)JSON withInstance:(Jive *)instance {
+    id entity = [[self entityClass:JSON] new];
+    return [entity deserialize:JSON fromInstance:instance] ? entity : nil;
+}
+
++ (NSArray*) objectsFromJSONList:(NSArray *)JSON withInstance:(Jive *)instance {
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:JSON.count];
+    for(id objectJSON in JSON) {
+        id entity = [[self entityClass:objectJSON] objectFromJSON:objectJSON withInstance:instance];
+        if(entity) {
+            [items addObject:entity];
         }
     }
-    return [NSArray arrayWithArray:instances];
+    return [NSArray arrayWithArray:items];
 }
 
 + (Class) entityClass:(NSDictionary*) obj {
@@ -79,10 +86,13 @@
     
 }
 
-- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON {
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON fromInstance:(Jive *)jiveInstance {
     Class cls = [self lookupPropertyClass:key];
     if(cls) {
-        id property = [self getObjectOfType:cls forProperty:key FromJSON:[JSON objectForKey:key]];
+        id property = [self getObjectOfType:cls
+                                forProperty:key
+                                   fromJSON:[JSON objectForKey:key]
+                               fromInstance:jiveInstance];
         [self setValue:property forKey:key];
         return YES;
     }
@@ -101,12 +111,16 @@
     return NO;
 }
 
-- (BOOL) deserialize:(id) JSON {
+- (BOOL) deserialize:(id)JSON fromInstance:(Jive *)jiveInstance {
     BOOL validResponse = NO;
     
     for(NSString* key in JSON) {
-        if ([self deserializeKey:key fromJSON:JSON])
+        if ([self deserializeKey:key fromJSON:JSON fromInstance:jiveInstance])
             validResponse = YES;
+    }
+    
+    if (validResponse) {
+        [self setValue:[NSDate date] forKey:JiveObjectAttributes.refreshDate];
     }
     
     return validResponse;
@@ -121,7 +135,9 @@
     }
 }
 
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property fromJSON:(id)JSON {
+- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
+                                     fromJSON:(id)JSON
+                                 fromInstance:(Jive *)jiveInstance {
 #if JIVE_JSON_DEBUG
     NSLog(@"Warning: NSDictionary not parsed.");
     NSLog(@"%@", JSON);
@@ -130,14 +146,19 @@
     return nil;
 }
 
-- (id) getObjectOfType:(Class) clazz forProperty:(NSString*) propertyName FromJSON:(id) JSON {
+- (id) getObjectOfType:(Class) clazz
+           forProperty:(NSString*) propertyName
+              fromJSON:(id) JSON
+          fromInstance:(Jive *)jiveInstance {
     
     if(clazz == [NSNumber class] && [JSON isKindOfClass:[NSNumber class]]) {
         return [JSON copy];
     }
     
     if(clazz == [NSString class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[NSString alloc] initWithString:JSON];
+        return (jiveInstance ?
+                [jiveInstance createStringWithInstanceURLValidation:JSON] :
+                [NSString stringWithString:JSON]);
     }
     
     if(clazz == [NSDate class] && [JSON isKindOfClass:[NSString class]]) {
@@ -145,7 +166,9 @@
     }
     
     if(clazz == [NSURL class] && [JSON isKindOfClass:[NSString class]]) {
-        return [[NSURL alloc] initWithString:JSON];
+        return (jiveInstance ?
+                [jiveInstance createURLWithInstanceValidation:JSON] :
+                [NSURL URLWithString:JSON]);
     }
     
     if(clazz == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {
@@ -153,7 +176,7 @@
         // TODO check if this is valid, using subcls to send a static message
         Class subcls = [self arrayMappingFor:propertyName];
         if (subcls) {
-            return [subcls instancesFromJSONList:JSON];
+            return [subcls objectsFromJSONList:JSON withInstance:jiveInstance];
         } else {
 #if JIVE_JSON_DEBUG
             // should be an array of strings if not mapped to an entity
@@ -173,28 +196,36 @@
     } else {
         obj = [clazz new];
     }
-
+    
     if([JSON isKindOfClass:[NSDictionary class]]) {
         
-             if([obj respondsToSelector:@selector(lookupPropertyClass:)]) {
-                
-         for(NSString* key in JSON) {
+        if([obj respondsToSelector:@selector(lookupPropertyClass:)]) {
             
-                Class propertyClass = [obj lookupPropertyClass:key];
+            for(NSString* key in JSON) {
                 
-                // Set property to new instance of cls or a primitive
-                id property = (propertyClass) ? [obj getObjectOfType:propertyClass forProperty:key FromJSON:[JSON objectForKey:key]] :[JSON objectForKey:key];
+                Class propertyClass = [obj lookupPropertyClass:key];
+                id property = [JSON objectForKey:key];
+                
+                if (propertyClass) {
+                    // Set property to new instance of cls
+                    property = [obj getObjectOfType:propertyClass
+                                        forProperty:key
+                                           fromJSON:property
+                                       fromInstance:jiveInstance];
+                }
                 
                 [obj setValue:property forKey:key];
-         }
-             
-             } else if ([clazz isSubclassOfClass:[NSDictionary class]]) {
-                 obj = [self parseDictionaryForProperty:propertyName fromJSON:JSON];
-             } else {
+            }
+            
+        } else if ([clazz isSubclassOfClass:[NSDictionary class]]) {
+            obj = [self parseDictionaryForProperty:propertyName
+                                          fromJSON:JSON
+                                      fromInstance:jiveInstance];
+        } else {
 #if JIVE_JSON_DEBUG
-                 NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", clazz);
+            NSLog(@"Warning: Unable to deserialize types of %@. This is not yet supported.", clazz);
 #endif
-             }
+        }
         
     } else {
 #if JIVE_JSON_DEBUG
@@ -219,7 +250,7 @@
             ivar = class_getInstanceVariable([self class], "jiveDescription");
         }
     }
-
+    
     return [self lookupClassTypeFromIvar:ivar];
 }
 

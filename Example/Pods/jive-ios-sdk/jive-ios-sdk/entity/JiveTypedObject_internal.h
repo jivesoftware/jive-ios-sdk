@@ -21,6 +21,14 @@
 #import "JiveObject_internal.h"
 #import "JiveResourceEntry.h"
 
+extern struct JiveTypedObjectAttributesHidden {
+    __unsafe_unretained NSString *resources;
+} const JiveTypedObjectAttributesHidden;
+
+extern struct JiveTypedObjectResourceTags {
+    __unsafe_unretained NSString *selfResourceTag;
+} const JiveTypedObjectResourceTags;
+
 @interface JiveTypedObject ()
 
 + (void)registerClass:(Class)clazz forType:(NSString *)type;

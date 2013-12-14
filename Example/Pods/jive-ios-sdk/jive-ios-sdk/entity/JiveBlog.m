@@ -22,7 +22,7 @@
 
 @implementation JiveBlog
 
-static NSString * const JiveBlogType = @"blog";
+NSString * const JiveBlogType = @"blog";
 
 + (void)load {
     if (self == [JiveBlog class])

@@ -18,21 +18,31 @@
 //
 
 #import "Jive.h"
+#import "JiveRetryingJAPIRequestOperation.h"
 
 @class JAPIRequestOperation;
 
 @interface Jive ()
 
-- (NSMutableURLRequest *) requestWithOptions:(NSObject<JiveRequestOptions>*)options
-                                 andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
+@property(atomic, weak) id<JiveAuthorizationDelegate> delegate;
+@property(nonatomic, strong, readwrite) JiveMetadata *instanceMetadata;
+@property (nonatomic, strong) JivePlatformVersion *platformVersion;
+@property (nonatomic, strong) NSString *baseURI;
+@property (nonatomic, strong) NSString *badInstanceURL; // Only used while parsing JSON
+
+- (NSString *)createStringWithInstanceURLValidation:(NSString *)sourceString;
+- (NSURL *)createURLWithInstanceValidation:(NSString *)urlString;
+
+- (NSMutableURLRequest *) credentialedRequestWithOptions:(NSObject<JiveRequestOptions>*)options
+                                             andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
 - (NSMutableURLRequest *) requestWithJSONBody:(JiveObject *)bodySource
                                       options:(NSObject<JiveRequestOptions>*)options
                                   andTemplate:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION;
 
-- (JAPIRequestOperation<JiveRetryingOperation> *)operationWithRequest:(NSURLRequest *)request
-                                                           onComplete:(void(^)(id))completeBlock
-                                                              onError:(JiveErrorBlock)errorBlock
-                                                      responseHandler:(id(^)(id JSON)) handler;
+- (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request
+                                                onComplete:(void(^)(id))completeBlock
+                                                   onError:(JiveErrorBlock)errorBlock
+                                           responseHandler:(id(^)(id JSON)) handler;
 - (JAPIRequestOperation<JiveRetryingOperation> *)listOperationForClass:(Class)clazz
                                                                request:(NSURLRequest *)request
                                                             onComplete:(JiveArrayCompleteBlock)completeBlock

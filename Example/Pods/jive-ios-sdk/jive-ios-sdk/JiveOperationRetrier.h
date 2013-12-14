@@ -18,6 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JiveRetryingOperation.h"
 
 typedef void (^JiveOperationRetrierRetryBlock)(void);
 typedef void (^JiveOperationRetrierFailBlock)(NSError *error);
@@ -31,5 +32,7 @@ typedef void (^JiveOperationRetrierFailBlock)(NSError *error);
       thatFailedWithError:(NSError *)originalError
            withRetryBlock:(JiveOperationRetrierRetryBlock)retryBlock
                 failBlock:(JiveOperationRetrierFailBlock)failBlock;
+
+-(NSOperation<JiveRetryingOperation>*)retriableOperationForFailedOperation:(NSOperation<JiveRetryingOperation>*)failedOperation;
 
 @end

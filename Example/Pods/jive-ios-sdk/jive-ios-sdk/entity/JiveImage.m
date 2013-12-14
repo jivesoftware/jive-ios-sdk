@@ -22,7 +22,7 @@
 
 @implementation JiveImage
 
-@synthesize jiveId, size, contentType, ref;
+@synthesize jiveId, size, contentType, ref, name;
 
 static NSString * const JiveImageType = @"image";
 
@@ -42,6 +42,7 @@ static NSString * const JiveImageType = @"image";
     [dictionary setValue:self.contentType forKey:@"contentType"];
     [dictionary setValue:[self.ref absoluteString] forKey:@"ref"];
     [dictionary setValue:self.jiveId forKey:@"id"];
+    [dictionary setValue:self.name forKey:@"name"];
     return dictionary;
 }
 @end
