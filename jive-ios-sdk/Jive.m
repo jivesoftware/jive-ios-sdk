@@ -2423,6 +2423,26 @@ int const JivePushDeviceType = 3;
     [[self publicPropertiesListOperationWithOnComplete:complete onError:error] start];
 }
 
+#pragma mark - Add-On Properties
+- (AFJSONRequestOperation<JiveRetryingOperation>*)testBooleanAddOnPropertyOperationForName:(NSString*)propertyName forAddOnUUID:(NSString*)uuid onComplete:(void (^)(BOOL))complete onError:(JiveErrorBlock)error {
+    
+    NSURLRequest *request = [self credentialedRequestWithOptions:nil
+                                                     andTemplate:@"/api/addons/%@/%@", uuid, propertyName, nil];
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request onJSON:^(id JSON) {
+        NSNumber *statusValue = (NSNumber*)[JSON objectForKey:@"status"];
+        complete([statusValue intValue] == 200);
+    } onError:error];
+    
+    return operation;
+    
+}
+
+- (void)testBooleanAddOnPropertyForName:(NSString*)propertyName forAddOnUUID:(NSString*)uuid onComplete:(void (^)(BOOL))complete onError:(JiveErrorBlock)error {
+    
+    [[self testBooleanAddOnPropertyOperationForName:propertyName forAddOnUUID:uuid onComplete:complete onError:error] start];
+}
+
+
 
 #pragma mark - Objects
 
