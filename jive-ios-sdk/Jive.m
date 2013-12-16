@@ -355,6 +355,21 @@ int const JivePushDeviceType = 3;
     [[self OAuthTokenRefreshOperationWithOAuthID:oauthID OAuthSecret:oauthSecret refreshToken:refreshToken onComplete:completeBlock onError:errorBlock] start];
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)OAuthRevocationOperationWithOAuthCredentials:(JiveOAuthCredentials*)credentials onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"/oauth2/revoke" parameters:nil];
+    [request setHTTPMethod:@"POST"];
+    [credentials applyToRequest:request];
+    return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
+    
+}
+
+-(void)OAuthRevocationWithOAuthCredentials:(JiveOAuthCredentials*)credentials onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthRevocationOperationWithOAuthCredentials:credentials onComplete:completeBlock onError:errorBlock] start];
+}
+
 -(AFJSONRequestOperation*)mobileQuestCompletionOperationWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:@"/api/core/mobile/v1/quest/form_login", nil];
     [request setHTTPMethod:@"POST"];
