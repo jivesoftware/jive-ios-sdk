@@ -45,6 +45,8 @@ extern struct JivePersonAttributes {
     __unsafe_unretained NSString *updated;
 } const JivePersonAttributes;
 
+extern NSString * const JivePersonGuestID;
+
 
 //! \class JivePerson
 //! https://developers.jivesoftware.com/api/v3/rest/PersonEntity.html
@@ -286,6 +288,8 @@ extern struct JivePersonAttributes {
 - (BOOL)canCreateNewStream;
 - (NSURL *)tasksRef;
 - (BOOL)canCreateNewTask;
+
+- (BOOL)isGuest;
 
 @property (strong, nonatomic) Jive *jiveInstance;
 

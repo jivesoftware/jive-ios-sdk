@@ -88,6 +88,7 @@ struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
 NSString * const JivePersonType = @"person";
+NSString * const JivePersonGuestID = @"-1";
 
 + (void)load {
     if (self == [JivePerson class])
@@ -116,6 +117,10 @@ NSString * const JivePersonType = @"person";
                            nil];
     
     return [propertyClasses objectForKey:propertyName];
+}
+
+- (BOOL)isGuest {
+    return self.jiveId && [self.jiveId isEqualToString:JivePersonGuestID];
 }
 
 #pragma mark - JiveObject
