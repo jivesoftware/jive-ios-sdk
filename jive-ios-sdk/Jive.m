@@ -166,7 +166,7 @@ int const JivePushDeviceType = 3;
         if (!self.badInstanceURL) {
             NSRange baseURIRange = [sourceString rangeOfString:self.baseURI];
             
-            if (baseURIRange.length == 0) {
+            if (baseURIRange.location == NSNotFound) {
                 return sourceString;
             }
             
