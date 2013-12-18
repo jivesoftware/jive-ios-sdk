@@ -25,6 +25,7 @@
 		0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E2179854FE005BBFE8 /* JVMasterViewController.m */; };
 		0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */; };
 		0F9B86F017985C1D005BBFE8 /* JVLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */; };
+		0FA7CC6618610077009A26C5 /* JVCommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7CC6518610077009A26C5 /* JVCommunityViewController.m */; };
 		63B68B352457470EB54E3A27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CB551E0A44ABF819401D7 /* libPods.a */; };
 		89C10E3E17CD2AAC00628EC9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C10E3D17CD2AAC00628EC9 /* Security.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,8 @@
 		0F9B86E5179854FE005BBFE8 /* JVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JVDetailViewController.m; sourceTree = "<group>"; };
 		0F9B86EE17985C1D005BBFE8 /* JVLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLoginViewController.h; sourceTree = "<group>"; };
 		0F9B86EF17985C1D005BBFE8 /* JVLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLoginViewController.m; sourceTree = "<group>"; };
+		0FA7CC6418610077009A26C5 /* JVCommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVCommunityViewController.h; sourceTree = "<group>"; };
+		0FA7CC6518610077009A26C5 /* JVCommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVCommunityViewController.m; sourceTree = "<group>"; };
 		89C10E3D17CD2AAC00628EC9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		930CB551E0A44ABF819401D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35EC3520E0B498CBE108E1C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -131,6 +134,8 @@
 				0F9B5B831799A7BC003156D3 /* JVPersonCell.m */,
 				0F9B5B851799B2C1003156D3 /* JVBlogViewController.h */,
 				0F9B5B861799B2C1003156D3 /* JVBlogViewController.m */,
+				0FA7CC6418610077009A26C5 /* JVCommunityViewController.h */,
+				0FA7CC6518610077009A26C5 /* JVCommunityViewController.m */,
 				0F9B86CD179854FE005BBFE8 /* Supporting Files */,
 			);
 			path = Example;
@@ -251,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9B86D3179854FE005BBFE8 /* main.m in Sources */,
+				0FA7CC6618610077009A26C5 /* JVCommunityViewController.m in Sources */,
 				0F9B86D7179854FE005BBFE8 /* JVAppDelegate.m in Sources */,
 				0F9B86E3179854FE005BBFE8 /* JVMasterViewController.m in Sources */,
 				0F9B86E6179854FE005BBFE8 /* JVDetailViewController.m in Sources */,

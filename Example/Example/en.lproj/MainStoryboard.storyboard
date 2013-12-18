@@ -13,12 +13,84 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1dj-f7-faO" kind="relationship" relationship="rootViewController" id="J13-Ad-hLa"/>
+                        <segue destination="T2O-qW-rIB" kind="relationship" relationship="rootViewController" id="g2e-mm-geF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="64"/>
+            <point key="canvasLocation" x="-430" y="64"/>
+        </scene>
+        <!--Community View Controller - Community-->
+        <scene sceneID="44J-1X-Z4W">
+            <objects>
+                <viewController id="T2O-qW-rIB" customClass="JVCommunityViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PeV-iL-kfw"/>
+                        <viewControllerLayoutGuide type="bottom" id="dzJ-rA-MEu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B0P-gq-YYa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your community URL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="235" translatesAutoresizingMaskIntoConstraints="NO" id="aD7-mw-486">
+                                <rect key="frame" x="43" y="67" width="235" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="FAg-fr-lv1"/>
+                                    <constraint firstAttribute="width" constant="235" id="W39-GC-xnN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://community.jivesoftware.com" borderStyle="roundedRect" placeholder="https://community.jivesoftware.com" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-fi-2k0">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="T2O-qW-rIB" id="7Z5-2h-apY"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiC-Oi-vOd">
+                                <rect key="frame" x="-24" y="261" width="361" height="77"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Jfs-R0-jdE">
+                                        <rect key="frame" x="20" y="20" width="321" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Jfs-R0-jdE" secondAttribute="bottom" constant="20" symbolic="YES" id="Hng-nO-JKg"/>
+                                    <constraint firstItem="Jfs-R0-jdE" firstAttribute="leading" secondItem="WiC-Oi-vOd" secondAttribute="leading" constant="20" symbolic="YES" id="JT7-rU-XG3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jfs-R0-jdE" secondAttribute="trailing" constant="20" symbolic="YES" id="UjC-uy-sH2"/>
+                                    <constraint firstItem="Jfs-R0-jdE" firstAttribute="top" secondItem="WiC-Oi-vOd" secondAttribute="top" constant="20" symbolic="YES" id="kZA-cG-AWp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rTF-fi-2k0" firstAttribute="leading" secondItem="B0P-gq-YYa" secondAttribute="leading" constant="20" symbolic="YES" id="03y-yh-BmL"/>
+                            <constraint firstItem="WiC-Oi-vOd" firstAttribute="leading" secondItem="B0P-gq-YYa" secondAttribute="leading" constant="-24" id="0yp-IH-ozA"/>
+                            <constraint firstItem="rTF-fi-2k0" firstAttribute="centerX" secondItem="aD7-mw-486" secondAttribute="centerX" id="Lbh-6G-vvB"/>
+                            <constraint firstItem="dzJ-rA-MEu" firstAttribute="top" secondItem="WiC-Oi-vOd" secondAttribute="bottom" constant="230" id="VTX-jn-meK"/>
+                            <constraint firstItem="aD7-mw-486" firstAttribute="centerX" secondItem="B0P-gq-YYa" secondAttribute="centerX" id="jH4-am-WJk"/>
+                            <constraint firstItem="aD7-mw-486" firstAttribute="top" secondItem="PeV-iL-kfw" secondAttribute="bottom" constant="3" id="qGC-s3-Oax"/>
+                            <constraint firstItem="rTF-fi-2k0" firstAttribute="top" secondItem="aD7-mw-486" secondAttribute="bottom" constant="8" symbolic="YES" id="sUc-MS-5JT"/>
+                            <constraint firstAttribute="trailing" secondItem="WiC-Oi-vOd" secondAttribute="trailing" constant="-17" id="ssp-rD-x59"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Community" id="Qxj-u5-Rga"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Jfs-R0-jdE" id="spR-Lc-36C"/>
+                        <outlet property="communityURL" destination="rTF-fi-2k0" id="5at-e3-RQN"/>
+                        <segue destination="1dj-f7-faO" kind="push" identifier="Community" id="6S7-ra-0gL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zXC-cc-CnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="64"/>
         </scene>
         <!--Login View Controller - Login-->
         <scene sceneID="WE9-mv-SXt">
@@ -29,7 +101,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4zm-rw-oic"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="axB-ve-1Ss">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-MT-DPg" userLabel="Login Credentials">
@@ -75,10 +147,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vj-dG-rr4">
-                                <rect key="frame" x="-20" y="-20" width="361" height="608"/>
+                                <rect key="frame" x="-20" y="214" width="361" height="77"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Fv-Xz-ecg">
-                                        <rect key="frame" x="20" y="20" width="321" height="568"/>
+                                        <rect key="frame" x="20" y="20" width="321" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
@@ -101,9 +173,9 @@
                             <constraint firstItem="0vj-dG-rr4" firstAttribute="centerX" secondItem="GQf-tO-kN3" secondAttribute="centerX" id="f7Z-dc-4sr"/>
                             <constraint firstItem="8cA-MT-DPg" firstAttribute="leading" secondItem="axB-ve-1Ss" secondAttribute="leading" id="mIU-Ni-cRB"/>
                             <constraint firstItem="GQf-tO-kN3" firstAttribute="centerX" secondItem="8cA-MT-DPg" secondAttribute="centerX" id="phi-Bg-wx9"/>
-                            <constraint firstItem="0vj-dG-rr4" firstAttribute="top" secondItem="axB-ve-1Ss" secondAttribute="top" constant="-20" id="zX8-DM-fNl"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Login" id="nMQ-Lr-pTg">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="xyr-u1-ZKF"/>
                     </navigationItem>

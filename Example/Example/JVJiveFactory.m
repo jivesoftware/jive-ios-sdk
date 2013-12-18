@@ -13,32 +13,32 @@
 
 @property (nonatomic) NSString *userName;
 @property (nonatomic) NSString *password;
-@property (nonatomic) Jive *jive;
+@property (nonatomic, strong, readwrite) Jive *jive;
 @property (nonatomic) id<JiveCredentials> credentials;
 @property (nonatomic) JiveMobileAnalyticsHeader *mobileAnalyticsHeader;
 
 @end
 
-static JVJiveFactory *instance;
+static JVJiveFactory *currentInstance;
 
 @implementation JVJiveFactory
 
-+ (void)load {
-    instance = [JVJiveFactory new]; // Create the singleton - not thread safe or anything
++(JVJiveFactory *)instance {
+    return currentInstance;
 }
 
-+ (void)loginWithName:(NSString *)userName
-             password:(NSString *)password
-             complete:(JivePersonCompleteBlock)completeBlock
-                error:(JiveErrorBlock)errorBlock {
-    [instance loginWithName:userName
-                   password:password
-                   complete:completeBlock
-                      error:errorBlock];
++ (void)setInstance:(JVJiveFactory *)instance {
+    currentInstance = instance;
 }
 
-+ (Jive *)jiveInstance {
-    return instance.jive;
+- (id)initWithInstanceURL:(NSURL *)instanceURL {
+    self = [super init];
+    if (self) {
+        self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
+                                 authorizationDelegate:self];
+    }
+    
+    return self;
 }
 
 - (void)handleLoginError:(NSError *)error withErrorBlock:(JiveErrorBlock)errorBlockCopy
@@ -51,21 +51,19 @@ static JVJiveFactory *instance;
     }
 }
 
-- (void)loginWithName:(NSString *)userName
++ (void)loginWithName:(NSString *)userName
              password:(NSString *)password
              complete:(JivePersonCompleteBlock)completeBlock
                 error:(JiveErrorBlock)errorBlock {
     JiveErrorBlock errorBlockCopy = [errorBlock copy];
     
-    self.userName = userName;
-    self.password = password;
-    self.jive = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:@"https://community.jivesoftware.com"]
-                             authorizationDelegate:self];
-    self.credentials = nil;
-    [self.jive me:completeBlock
-          onError:^(NSError *error) {
-              [self handleLoginError:error withErrorBlock:errorBlockCopy];
-          }];
+    currentInstance.userName = userName;
+    currentInstance.password = password;
+    currentInstance.credentials = nil;
+    [currentInstance.jive me:completeBlock
+                     onError:^(NSError *error) {
+                         [currentInstance handleLoginError:error withErrorBlock:errorBlockCopy];
+                     }];
 }
 
 #pragma mark - JiveAuthorizationDelegate methods

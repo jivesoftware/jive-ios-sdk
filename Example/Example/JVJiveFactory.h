@@ -11,10 +11,16 @@
 
 @interface JVJiveFactory : NSObject
 
+@property (nonatomic, readonly) Jive *jiveInstance;
+
+- (id)initWithInstanceURL:(NSURL *)instanceURL;
+
 + (void)loginWithName:(NSString *)userName
              password:(NSString *)password
              complete:(JivePersonCompleteBlock)completeBlock
                 error:(JiveErrorBlock)errorBlock;
-+ (Jive *)jiveInstance;
+
++ (JVJiveFactory *)instance;
++ (void)setInstance:(JVJiveFactory *)instance;
 
 @end

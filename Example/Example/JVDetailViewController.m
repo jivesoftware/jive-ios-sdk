@@ -37,11 +37,12 @@
 }
 
 - (void)setBlog:(JiveBlog *)blog {
-    NSOperation *operation = [[JVJiveFactory jiveInstance] contentsOperationWithURL:blog.contentsRef
-                                                                         onComplete:^(NSArray *contents) {
-                                                                             [self.activityIndicator stopAnimating];
-                                                                             self.tableViewController.contents = contents;
-                                                                         } onError:nil];
+    Jive *jive = [JVJiveFactory instance].jiveInstance;
+    NSOperation *operation = [jive contentsOperationWithURL:blog.contentsRef
+                                                 onComplete:^(NSArray *contents) {
+                                                     [self.activityIndicator stopAnimating];
+                                                     self.tableViewController.contents = contents;
+                                                 } onError:nil];
     
     _blog = blog;
     self.title = blog.name;
