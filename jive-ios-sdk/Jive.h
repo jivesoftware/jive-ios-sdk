@@ -123,9 +123,14 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 
 #pragma mark - Version
 
-//! https://developers.jivesoftware.com/api/v3/rest/#versioning This is the only method pair that doesn't use JiveAuthorizationDelegate
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning
++ (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning
++ (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
+
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning
 - (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
-//! https://developers.jivesoftware.com/api/v3/rest/#versioning This is the only method pair that doesn't use JiveAuthorizationDelegate
+//! https://developers.jivesoftware.com/api/v3/rest/#versioning
 - (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Activities
