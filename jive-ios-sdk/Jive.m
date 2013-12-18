@@ -267,18 +267,45 @@ int const JivePushDeviceType = 3;
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
     NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
     
+    [request setHTTPShouldHandleCookies:NO];
+
+    return [self OAuthTokenRequestOperationWithHTTPRequest:request OAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock];
+}
+
+-(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthTokenOperationWithOAuthID:oauthID OAuthSecret:oauthSecret username:username password:password onComplete:completeBlock onError:errorBlock] start];
+}
+
+-(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    NSMutableURLRequest * request = [self credentialedRequestWithOptions:nil andTemplate:@"oauth2/token", nil];
+    
+    NSString *postParams = @"grant_type=session";
+    [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPMethod:@"POST"];
+
+    return [self OAuthTokenRequestOperationWithHTTPRequest:request OAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock];
+}
+
+
+-(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthTokenOperationWithOAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock] start];
+}
+
+-(AFJSONRequestOperation*)OAuthTokenRequestOperationWithHTTPRequest:(NSMutableURLRequest*)request OAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    // apply the client ID / secret
     JiveHTTPBasicAuthCredentials *authSecrets = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:oauthID password:oauthSecret];
     [authSecrets applyToRequest:request];
-    
-    [request setHTTPShouldHandleCookies:NO];
-    
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
                                                                                             
                                                                                             JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
-                                                                                                                                                                      refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
-                                                                                                                                                                        expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
+                                                                                                                                                                refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
+                                                                                                                                                                  expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
                                                                                             
                                                                                             completeBlock(creds);
                                                                                             
@@ -288,12 +315,10 @@ int const JivePushDeviceType = 3;
                                                                                         }];
     
     return operation;
+
 }
 
--(void)OAuthTokenWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret username:(NSString*)username password:(NSString*)password onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
-    
-    [[self OAuthTokenOperationWithOAuthID:oauthID OAuthSecret:oauthSecret username:username password:password onComplete:completeBlock onError:errorBlock] start];
-}
+
 
 -(AFJSONRequestOperation*)OAuthTokenRefreshOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
@@ -329,6 +354,21 @@ int const JivePushDeviceType = 3;
 -(void)OAuthTokenRefreshWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret refreshToken:(NSString*)refreshToken onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     [[self OAuthTokenRefreshOperationWithOAuthID:oauthID OAuthSecret:oauthSecret refreshToken:refreshToken onComplete:completeBlock onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)OAuthRevocationOperationWithOAuthCredentials:(JiveOAuthCredentials*)credentials onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"/oauth2/revoke" parameters:nil];
+    [request setHTTPMethod:@"POST"];
+    [credentials applyToRequest:request];
+    return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
+    
+}
+
+-(void)OAuthRevocationWithOAuthCredentials:(JiveOAuthCredentials*)credentials onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
+    
+    [[self OAuthRevocationOperationWithOAuthCredentials:credentials onComplete:completeBlock onError:errorBlock] start];
 }
 
 -(AFJSONRequestOperation*)mobileQuestCompletionOperationWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
@@ -2423,6 +2463,26 @@ int const JivePushDeviceType = 3;
 - (void) publicPropertiesListWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     [[self publicPropertiesListOperationWithOnComplete:complete onError:error] start];
 }
+
+#pragma mark - Add-On Properties
+- (AFJSONRequestOperation<JiveRetryingOperation>*)testBooleanAddOnPropertyOperationForName:(NSString*)propertyName forAddOnUUID:(NSString*)uuid onComplete:(void (^)(BOOL))complete onError:(JiveErrorBlock)error {
+    
+    NSURLRequest *request = [self credentialedRequestWithOptions:nil
+                                                     andTemplate:@"/api/addons/%@/%@", uuid, propertyName, nil];
+    AFJSONRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request onJSON:^(id JSON) {
+        NSNumber *statusValue = (NSNumber*)[JSON objectForKey:@"status"];
+        complete([statusValue intValue] == 200);
+    } onError:error];
+    
+    return operation;
+    
+}
+
+- (void)testBooleanAddOnPropertyForName:(NSString*)propertyName forAddOnUUID:(NSString*)uuid onComplete:(void (^)(BOOL))complete onError:(JiveErrorBlock)error {
+    
+    [[self testBooleanAddOnPropertyOperationForName:propertyName forAddOnUUID:uuid onComplete:complete onError:error] start];
+}
+
 
 
 #pragma mark - Objects
