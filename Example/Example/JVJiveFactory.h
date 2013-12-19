@@ -13,7 +13,10 @@
 
 @property (nonatomic, readonly) Jive *jiveInstance;
 
-- (id)initWithInstanceURL:(NSURL *)instanceURL;
+- (id)initWithInstanceURL:(NSURL *)instanceURL
+                 complete:(JivePlatformVersionBlock)completeBlock
+                    error:(JiveErrorBlock)errorBlock;
+
 
 + (void)loginWithName:(NSString *)userName
              password:(NSString *)password

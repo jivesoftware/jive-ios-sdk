@@ -31,14 +31,16 @@ static JVJiveFactory *currentInstance;
     currentInstance = instance;
 }
 
-- (id)initWithInstanceURL:(NSURL *)instanceURL {
+- (id)initWithInstanceURL:(NSURL *)instanceURL
+                 complete:(JivePlatformVersionBlock)completeBlock
+                    error:(JiveErrorBlock)errorBlock {
     self = [super init];
     if (self) {
         self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
                                  authorizationDelegate:self];
         [self.jive versionForInstance:instanceURL
-                           onComplete:nil
-                              onError:nil];
+                           onComplete:completeBlock
+                              onError:errorBlock];
     }
     
     return self;

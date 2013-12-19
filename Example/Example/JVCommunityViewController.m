@@ -12,28 +12,32 @@
 
 @implementation JVCommunityViewController
 
-- (void)advanceToLogin:(NSURL *)instanceURL {
+- (void)advanceToLogin:(JVJiveFactory *)factory {
     [self.activityIndicator stopAnimating];
-    [JVJiveFactory setInstance:[[JVJiveFactory alloc] initWithInstanceURL:instanceURL]];
+    [JVJiveFactory setInstance:factory];
     [self performSegueWithIdentifier:@"Community" sender:self];
 }
 
-- (void)checkForRedirect:(JivePlatformVersion *)version fromURL:(NSURL *)targetURL {
+- (void)checkForRedirect:(JivePlatformVersion *)version
+                 fromURL:(NSURL *)targetURL
+                 factory:(JVJiveFactory *)initialFactory {
     // Not all instances report their url in the version.
     if (!version.instanceURL || [version.instanceURL isEqual:targetURL]) {
-        [self advanceToLogin:targetURL];
+        [self advanceToLogin:initialFactory];
     } else {
         // Attempt to redirect to the server's instance url.
-        [Jive versionForInstance:version.instanceURL
-                      onComplete:^(JivePlatformVersion *redirectVersion) {
-                          // Direct access granted.
-                          self.communityURL.text = redirectVersion.instanceURL.absoluteString;
-                          [self advanceToLogin:redirectVersion.instanceURL];
-                      }
-                         onError:^(NSError *error) {
-                             // The server lied, bad server. Use the original url.
-                             [self advanceToLogin:targetURL];
-                         }];
+        __block JVJiveFactory *factory = nil;
+        
+        factory = [[JVJiveFactory alloc] initWithInstanceURL:version.instanceURL
+                                                    complete:^(JivePlatformVersion *redirectVersion) {
+                                                        // Direct access granted.
+                                                        self.communityURL.text = redirectVersion.instanceURL.absoluteString;
+                                                        [self advanceToLogin:factory];
+                                                    }
+                                                       error:^(NSError *error) {
+                                                           // The server lied, bad server. Use the original url.
+                                                           [self advanceToLogin:initialFactory];
+                                                       }];
     }
 }
 
@@ -66,19 +70,22 @@
     }
     
     NSURL *instanceURL = [NSURL URLWithString:instanceString];
+    __block JVJiveFactory *factory = nil;
     
     [self.activityIndicator startAnimating];
     [self.communityURL resignFirstResponder];
     self.communityURL.enabled = NO;
     // Is it a valid instance?
-    [Jive versionForInstance:instanceURL
-                  onComplete:^(JivePlatformVersion *version) {
-                      [self checkForRedirect:version fromURL:instanceURL];
-                  } onError:^(NSError *error) {
-                      [self.activityIndicator stopAnimating];
-                      self.communityURL.enabled = YES;
-                      [self.communityURL becomeFirstResponder];
-                  }];
+    factory = [[JVJiveFactory alloc] initWithInstanceURL:instanceURL
+                                                complete:^(JivePlatformVersion *version) {
+                                                    [self checkForRedirect:version
+                                                                   fromURL:instanceURL
+                                                                   factory:factory];
+                                                } error:^(NSError *error) {
+                                                    [self.activityIndicator stopAnimating];
+                                                    self.communityURL.enabled = YES;
+                                                    [self.communityURL becomeFirstResponder];
+                                                }];
     
     return NO;
 }
