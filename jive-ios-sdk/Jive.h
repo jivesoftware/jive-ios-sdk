@@ -109,6 +109,7 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 
 //! The URL used to init this jive instance.
 @property (nonatomic, strong) NSURL* jiveInstanceURL;
+@property (nonatomic, readonly) JivePlatformVersion *platformVersion;
 
 @property (nonatomic, weak) id<JiveOperationRetrier> defaultOperationRetrier;
 

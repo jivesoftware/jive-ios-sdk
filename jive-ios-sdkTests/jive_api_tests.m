@@ -5573,6 +5573,7 @@
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertNil(version.instanceURL, @"There should not be a server URL");
             STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"The base URI should not have changed");
+            STAssertEqualObjects(jive.platformVersion, version, @"The Jive object was not updated to include the version");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -5596,6 +5597,7 @@
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertEqualObjects(version.instanceURL, jive.jiveInstanceURL, @"Wrong server URL");
             STAssertEqualObjects(jive.baseURI, @"core/api/v3", @"The base URI was not updated");
+            STAssertEqualObjects(jive.platformVersion, version, @"The Jive object was not updated to include the version");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
