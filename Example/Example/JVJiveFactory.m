@@ -54,9 +54,26 @@ static JVJiveFactory *currentInstance;
     }
 }
 
+- (void)loginWithNewInstanceURL:(NSURL *)instanceURL me:(JivePerson *)me completeBlock:(JivePersonCompleteBlock)completeBlock
+{
+    // Make sure we have the correct me object.
+    Jive *oldJive = self.jive;
+    
+    self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
+                             authorizationDelegate:self];
+    [self.jive me:completeBlock
+          onError:^(NSError *error) {
+              // Fall back to what works.
+              self.jive = oldJive;
+              if (completeBlock) {
+                  completeBlock(me);
+              }
+          }];
+}
+
 - (void)doubleCheckInstanceURLForMe:(JivePerson *)me
                          onComplete:(JivePersonCompleteBlock)completeBlock {
-    [self.jive propertyWithName:@"instance.url"
+    [self.jive propertyWithName:JivePropertyNames.instanceURL
                      onComplete:^(JiveProperty *property) {
                          NSString *instanceString = property.valueAsString;
                          
@@ -74,19 +91,7 @@ static JVJiveFactory *currentInstance;
                                  completeBlock(me);
                              }
                          } else {
-                             // Make sure we have the correct me object.
-                             Jive *oldJive = self.jive;
-                             
-                             self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
-                                                      authorizationDelegate:self];
-                             [self.jive me:completeBlock
-                                   onError:^(NSError *error) {
-                                       // Fall back to what works.
-                                       self.jive = oldJive;
-                                       if (completeBlock) {
-                                           completeBlock(me);
-                                       }
-                                   }];
+                             [self loginWithNewInstanceURL:instanceURL me:me completeBlock:completeBlock];
                          }
                      } onError:^(NSError *error) {
                          // No! We are stuck with what works.
