@@ -49,18 +49,23 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // Assume the default instance.
-    NSString *instance = @"https://community.jivesoftware.com/";
+    NSString *instanceString = @"https://community.jivesoftware.com/";
     
     // Check to see if the user entered a different url.
     if (self.communityURL.text.length > 0) {
-        instance = self.communityURL.text;
-        if (![instance hasPrefix:@"http"]) {
-            instance = [@"http://" stringByAppendingString:instance];
+        instanceString = self.communityURL.text;
+        if (![instanceString hasPrefix:@"http"]) {
+            instanceString = [@"http://" stringByAppendingString:instanceString];
             // But what if it should be https:// ?
+        }
+        
+        // The SDK assumes the URL has a / at the end. So make sure it does.
+        if (![instanceString hasSuffix:@"/"]) {
+            instanceString = [instanceString stringByAppendingString:@"/"];
         }
     }
     
-    NSURL *instanceURL = [NSURL URLWithString:instance];
+    NSURL *instanceURL = [NSURL URLWithString:instanceString];
     
     [self.activityIndicator startAnimating];
     [self.communityURL resignFirstResponder];
