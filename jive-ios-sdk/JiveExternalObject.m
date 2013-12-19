@@ -24,7 +24,7 @@ NSString * const JiveExternalType = @"extStreamActivity";
 
 @implementation JiveExternalObject
 
-@synthesize onBehalfOf, productIcon, productName;
+@synthesize productIcon, productName;
 
 + (void)load {
     if (self == [JiveExternalObject class])
@@ -38,13 +38,14 @@ NSString * const JiveExternalType = @"extStreamActivity";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    if (onBehalfOf)
-        [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:@"onBehalfOf"];
-    
     [dictionary setValue:productIcon forKey:@"productIcon"];
     [dictionary setValue:productName forKey:@"productName"];
 
     return dictionary;
+}
+
+- (NSURL *)customIconRef {
+    return self.productIcon;
 }
 
 @end

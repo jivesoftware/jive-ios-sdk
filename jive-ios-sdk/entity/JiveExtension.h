@@ -75,6 +75,9 @@
 //! URI of the correct answer (if any), if this object is a discussion marked as a question.
 @property (nonatomic) NSURL *answer;
 
+//! If applicable, the location of the product icon for this object
+@property (nonatomic) NSURL *productIcon;
+
 //! The like count of the parent item. You should only see "parentLikeCount" on a message (i.e. reply to a discussion) or a comment (i.e. a comment on some commentable parent object).
 @property (nonatomic) NSNumber *parentLikeCount;
 

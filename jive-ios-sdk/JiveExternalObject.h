@@ -25,9 +25,6 @@ extern NSString * const JiveExternalType;
 //! No online docs yet.
 @interface JiveExternalObject : JiveContent
 
-//! Person (not necessarily w/ Jive account) who authored the content on the external platform
-@property(nonatomic, strong) JivePerson* onBehalfOf;
-
 //! Icon for the external service this comes from
 @property(nonatomic, strong) NSURL* productIcon;
 
