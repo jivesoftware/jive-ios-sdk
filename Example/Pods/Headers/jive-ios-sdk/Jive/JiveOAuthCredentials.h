@@ -1,0 +1,1 @@
+../../../jive-ios-sdk/jive-ios-sdk/JiveOAuthCredentials.h

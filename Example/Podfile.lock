@@ -1,10 +1,13 @@
 PODS:
   - AFNetworking (1.2.1)
+  - hpple (0.2.0)
   - jive-ios-sdk (0.5.5):
     - AFNetworking (= 1.2.1)
+    - hpple (~> 0.2.0)
     - jive-ios-sdk/no-arc
   - jive-ios-sdk/no-arc (0.5.5):
     - AFNetworking (= 1.2.1)
+    - hpple (~> 0.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.2.1)
@@ -17,6 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 23dcfb7652908334c9a4de0c9ebc331563667a8c
-  jive-ios-sdk: 700f967b6d25ad7915cfbd7b1071d873561f5cf6
+  hpple: dde62f905f482bbec50186280d1a1be2c881241b
+  jive-ios-sdk: 13f687ad742b82e94b114e36993992de9d0f1b77
 
 COCOAPODS: 0.25.0

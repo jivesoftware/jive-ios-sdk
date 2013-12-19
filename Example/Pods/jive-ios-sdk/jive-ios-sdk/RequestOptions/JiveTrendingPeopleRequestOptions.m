@@ -26,7 +26,7 @@
     NSMutableArray *filter = [NSMutableArray array];
     
     if (self.url)
-        [filter addObject:[NSString stringWithFormat:@"place(%@)", self.url]];
+        [filter addObject:[NSString stringWithFormat:@"place(%@)", self.url.absoluteString]];
     
     return filter;
 }

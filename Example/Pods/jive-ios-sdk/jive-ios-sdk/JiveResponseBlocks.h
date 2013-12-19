@@ -17,6 +17,8 @@
 //    limitations under the License.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef jive_ios_sdk_JiveResponseBlocks_h
 #define jive_ios_sdk_JiveResponseBlocks_h
 
@@ -43,6 +45,8 @@ typedef void (^JiveImageCompleteBlock)(UIImage *avatarImage);
 typedef void (^JiveTaskCompleteBlock)(JiveTask *task);
 typedef void (^JiveCompletedBlock)(void);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
+typedef void (^JiveInboxObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate,
+                                              NSDate *latestDate, NSNumber *unreadCount);
 
 
 #endif

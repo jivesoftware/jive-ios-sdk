@@ -70,32 +70,28 @@ int const JivePushDeviceType = 3;
 
 @implementation Jive
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
++ (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
     [request setHTTPShouldHandleCookies:NO];
-    JAPIRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
+    JAPIRequestOperation<JiveRetryingOperation> *operation = [Jive operationWithRequest:request
                                                                                  onJSON:(^(id JSON) {
-        self.platformVersion = [self parseObjectOfClass:[JivePlatformVersion class] fromJSON:JSON];
-        if (_platformVersion) {
-            BOOL foundValidCoreVersion = NO;
-            for (JiveCoreVersion *coreURI in self.platformVersion.coreURI) {
+        JivePlatformVersion *platformVersion = [JivePlatformVersion objectFromJSON:JSON
+                                                                      withInstance:nil];
+        
+        if (platformVersion) {
+            for (JiveCoreVersion *coreURI in platformVersion.coreURI) {
                 if ([coreURI.version isEqualToNumber:@3]) {
-                    foundValidCoreVersion = YES;
-                    self.baseURI = [coreURI.uri stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-                    break;
+                    if (completeBlock) {
+                        completeBlock(platformVersion);
+                    }
+                    return;
                 }
             }
             
-            if (foundValidCoreVersion) {
-                if (completeBlock) {
-                    completeBlock(self.platformVersion);
-                }
-            } else {
-                if (errorBlock) {
-                    errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:self.platformVersion]);
-                }
+            if (errorBlock) {
+                errorBlock([NSError jive_errorWithUnsupportedJivePlatformVersion:platformVersion]);
             }
         } else {
             if (errorBlock) {
@@ -108,7 +104,33 @@ int const JivePushDeviceType = 3;
     return operation;
 }
 
-- (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
++ (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[Jive versionOperationForInstance:jiveInstanceURL
+                            onComplete:completeBlock
+                               onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL
+                                                                     onComplete:(void (^)(JivePlatformVersion *version))completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [Jive versionOperationForInstance:jiveInstanceURL
+                                  onComplete:^(JivePlatformVersion *version) {
+                                      for (JiveCoreVersion *coreURI in version.coreURI) {
+                                          if ([coreURI.version isEqualToNumber:@3]) {
+                                              self.baseURI = [coreURI.uri stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+                                              self.platformVersion = version;
+                                              if (completeBlock) {
+                                                  completeBlock(version);
+                                              }
+                                          }
+                                      }
+                                  }
+                                     onError:errorBlock];
+}
+
+- (void) versionForInstance:(NSURL *)jiveInstanceURL
+                 onComplete:(void (^)(JivePlatformVersion *version))completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
     [[self versionOperationForInstance:jiveInstanceURL
                             onComplete:completeBlock
                                onError:errorBlock] start];
@@ -2574,21 +2596,37 @@ int const JivePushDeviceType = 3;
     }
 }
 
++ (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request
+                                                    onJSON:(void(^)(id))JSONBlock
+                                                   onError:(JiveErrorBlock)errorBlock {
+    if (!request) {
+        return nil;
+    }
+    
+    return [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
+                                                                     success:(^(NSURLRequest *operationRequest,
+                                                                                NSHTTPURLResponse *response,
+                                                                                id JSON) {
+        if (JSONBlock) {
+            JSONBlock(JSON);
+        }
+    })
+                                                                     failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response,
+                                                                                NSError *err,
+                                                                                id JSON) {
+        if (errorBlock) {
+            errorBlock([NSError jive_errorWithUnderlyingError:err
+                                                         JSON:JSON]);
+        }
+    })];
+}
+
 - (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
     if (request) {
         [self maybeLogMaybeBadRequest:request];
-        JiveRetryingJAPIRequestOperation *operation = [JiveRetryingJAPIRequestOperation JSONRequestOperationWithRequest:request
-                                                                                                                success:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
-            if (JSONBlock) {
-                JSONBlock(JSON);
-            }
-        })
-                                                                                                                failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
-            if (errorBlock) {
-                errorBlock([NSError jive_errorWithUnderlyingError:err
-                                                             JSON:JSON]);
-            }
-        })];
+        JiveRetryingJAPIRequestOperation *operation = [Jive operationWithRequest:request
+                                                                          onJSON:JSONBlock
+                                                                         onError:errorBlock];
         
         [self setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:operation];
         

@@ -23,6 +23,7 @@
 @protocol JiveRetryingOperation;
 
 typedef void (^JiveBOOLFlagCompletedBlock)(BOOL flagValue);
+typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 
 @interface JiveMetadata : NSObject
 
@@ -36,5 +37,40 @@ typedef void (^JiveBOOLFlagCompletedBlock)(BOOL flagValue);
                     onError:(JiveErrorBlock)errorBlock;
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                  onError:(JiveErrorBlock)errorBlock;
+- (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+              onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                         onError:(JiveErrorBlock)errorBlock;
+- (void)statusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                     onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)personalStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                                 onError:(JiveErrorBlock)errorBlock;
+- (void)personalStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                             onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)placeStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock;
+- (void)placeStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                          onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)repostStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                               onError:(JiveErrorBlock)errorBlock;
+- (void)repostStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                           onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock;
+- (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock
+                          onError:(JiveErrorBlock)errorBlock;
+
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                            onError:(JiveErrorBlock)errorBlock;
+- (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
 @end

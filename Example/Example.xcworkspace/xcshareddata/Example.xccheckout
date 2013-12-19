@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2BCFF685-61CB-4775-85F2-60161D214EE2</string>
+	<string>09410311-B5A8-4DB5-9CD3-A9A199B68A16</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Example</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>51DB5FEB-7E73-4F38-A783-FD0550C166CA</key>
+		<key>D3D223B8-D66F-4432-A000-1DD840AA7DA1</key>
 		<string>ssh://git.jiveland.com/jive-ios-sdk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Example/Example.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>51DB5FEB-7E73-4F38-A783-FD0550C166CA</key>
+		<key>D3D223B8-D66F-4432-A000-1DD840AA7DA1</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>51DB5FEB-7E73-4F38-A783-FD0550C166CA</string>
+	<string>D3D223B8-D66F-4432-A000-1DD840AA7DA1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>51DB5FEB-7E73-4F38-A783-FD0550C166CA</string>
+			<string>D3D223B8-D66F-4432-A000-1DD840AA7DA1</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jive-ios-sdk</string>
 		</dict>

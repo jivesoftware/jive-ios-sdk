@@ -24,7 +24,7 @@
 
 @synthesize rootType, rootURI;
 
-static NSString * const JiveCommentType = @"comment";
+NSString * const JiveCommentType = @"comment";
 
 + (void)load {
     if (self == [JiveComment class])

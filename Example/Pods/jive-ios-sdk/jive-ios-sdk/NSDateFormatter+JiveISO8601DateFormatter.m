@@ -30,6 +30,8 @@ static void * const NSDateFormatterJiveISO8601DateFormatterKey = @"JiveISO8601Da
                                                                      NSDateFormatterJiveISO8601DateFormatterKey);
     if (!ISO8601DateFormatter) {
         ISO8601DateFormatter = [self new];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        [ISO8601DateFormatter setLocale:enUSPOSIXLocale];
         [ISO8601DateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
         [ISO8601DateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         objc_setAssociatedObject(currentThread,

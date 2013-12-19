@@ -5485,6 +5485,83 @@
     }];
 }
 
+- (void)createMockResponse:(NSString *)response {
+    [self createJiveAPIObjectWithResponse:response];
+    jive = nil;
+    mockAuthDelegate = nil;
+}
+
+- (void) testClassVersionOperationForInstance {
+    [self createMockResponse:@"version"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [Jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @7, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            STAssertNil(version.instanceURL, @"There should not be a server URL");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
+        
+        [operation start];
+    }];
+}
+
+- (void) testClassVersionForInstance {
+    [self createMockResponse:@"version_alternate"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [Jive versionForInstance:testURL
+                      onComplete:(^(JivePlatformVersion *version) {
+            STAssertEqualObjects(version.major, @6, @"Wrong version found");
+            STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
+            STAssertEqualObjects(version.instanceURL, testURL, @"Wrong server URL");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                         onError:(^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        })];
+    }];
+}
+
+- (void) testClassVersionOperationForInstanceReturnsErrorIfNoV3API {
+    [self createMockResponse:@"version_no_v3"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [Jive versionOperationForInstance:testURL
+                                                                     onComplete:(^(JivePlatformVersion *version) {
+            BOOL found = NO;
+            for (JiveCoreVersion *coreURI in version.coreURI) {
+                if ([coreURI.version isEqualToNumber:@3]) {
+                    STFail(@"v3 API found");
+                    found = YES;
+                }
+            }
+            if (!found) {
+                STFail(@"Valid response returned without v3 API");
+            }
+            
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })
+                                                                        onError:(^(NSError *error) {
+            STAssertEquals(error.code, JiveErrorCodeUnsupportedJivePlatformVersion, @"Wrong error code reported");
+            STAssertNotNil(error.userInfo[JiveErrorKeyJivePlatformVersion], @"Missing JivePlatformVersion");
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        })];
+        
+        [operation start];
+    }];
+}
+
 - (void) testVersionOperationForInstance {
     [self createJiveAPIObjectWithResponse:@"version"];
     
@@ -5496,6 +5573,7 @@
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertNil(version.instanceURL, @"There should not be a server URL");
             STAssertEqualObjects(jive.baseURI, @"api/core/v3", @"The base URI should not have changed");
+            STAssertEqualObjects(jive.platformVersion, version, @"The Jive object was not updated to include the version");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })
@@ -5519,6 +5597,7 @@
             STAssertEqualObjects(((JiveCoreVersion *)version.coreURI[0]).version, @2, @"Wrong core uri version found");
             STAssertEqualObjects(version.instanceURL, jive.jiveInstanceURL, @"Wrong server URL");
             STAssertEqualObjects(jive.baseURI, @"core/api/v3", @"The base URI was not updated");
+            STAssertEqualObjects(jive.platformVersion, version, @"The Jive object was not updated to include the version");
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
         })

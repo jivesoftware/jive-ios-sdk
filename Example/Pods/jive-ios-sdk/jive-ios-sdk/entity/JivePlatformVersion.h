@@ -28,6 +28,7 @@ extern struct JivePlatformVersionAttributes {
     __unsafe_unretained NSString *coreURI;
     __unsafe_unretained NSString *ssoEnabled;
     __unsafe_unretained NSString *sdk;
+    __unsafe_unretained NSString *instanceURL;
 } const JivePlatformVersionAttributes;
 
 //! \class JivePlatformVersion
@@ -57,5 +58,23 @@ extern struct JivePlatformVersionAttributes {
 
 //! Jive iOS SDK version number
 @property (nonatomic, readonly) NSString *sdk;
+
+//! The URL known to the server
+@property (nonatomic, readonly) NSURL *instanceURL;
+
+- (BOOL)supportsDraftPostCreation;
+- (BOOL)supportsDraftPostContentFilter;
+- (BOOL)supportsExplicitSSO;
+- (BOOL)supportsFollowing;
+- (BOOL)supportsStatusUpdateInPlace;
+- (BOOL)supportsBookmarkInboxEntries;
+- (BOOL)supportsCorrectAndHelpfulReplies;
+- (BOOL)supportsStructuredOutcomes;
+- (BOOL)supportsExplicitCorrectAnswerAPI;
+- (BOOL)supportsDiscussionLikesInActivityObjects;
+- (BOOL)supportsInboxTypeFiltering;
+- (BOOL)supportsCommentAndReplyPermissions;
+- (BOOL)supportedIPhoneVersion;
+- (BOOL)supportsOAuth;
 
 @end

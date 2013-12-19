@@ -40,24 +40,12 @@
     return self;
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                             onError:(JiveErrorBlock)errorBlock {
-    return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
-        NSString *videoURL = [objects objectForKey:JiveVideoType];
-        
-        completeBlock(videoURL.length > 0);
-    } onError:errorBlock];
-}
-
-- (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    [[self hasVideoOperation:completeBlock onError:errorBlock] start];
-}
-
-- (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
-                                                                        onError:(JiveErrorBlock)errorBlock {
-    return [self.instance propertyWithNameOperation:@"feature.rtc.enabled"
-                                         onComplete:^(JiveProperty *rtcEnabledProperty) {
-                                             completeBlock(rtcEnabledProperty.valueAsBOOL);
+- (AFJSONRequestOperation<JiveRetryingOperation> *)boolPropertyOperation:(NSString *)propertySpecifier
+                                                              onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:propertySpecifier
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsBOOL);
                                          }
                                             onError:^(NSError *error) {
                                                 NSString *localizedDescription = error.userInfo[NSLocalizedDescriptionKey];
@@ -73,9 +61,127 @@
                                             }];
 }
 
+#pragma mark - Video
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                             onError:(JiveErrorBlock)errorBlock {
+    return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
+        NSString *videoURL = [objects objectForKey:JiveVideoType];
+        
+        completeBlock(videoURL.length > 0);
+    } onError:errorBlock];
+}
+
+- (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self hasVideoOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Real time chat
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.rtc.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
                     onError:(JiveErrorBlock)errorBlock {
     [[self realTimeChatEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Images
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                  onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.images.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)imagesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+              onError:(JiveErrorBlock)errorBlock {
+    [[self imagesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                         onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"jive.coreapi.enable.statusupdates"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)statusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self statusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Personal Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)personalStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)personalStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self personalStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Place Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)placeStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update_place.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)placeStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self placeStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Repost Status Updates
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)repostStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                               onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"feature.status_update_repost.enabled"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)repostStatusUpdatesEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self repostStatusUpdatesEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Status Update Max Characters
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:@"feature.status_update.characters"
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsNumber);
+                                         }
+                                            onError:errorBlock];
+}
+
+- (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self statusUpdateMaxCharactersOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Binary Downloads
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                         onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:@"jive.coreapi.disable.binarydownloads.mobileonly"
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self binaryDownloadsDisabledOperation:completeBlock onError:errorBlock] start];
 }
 
 @end

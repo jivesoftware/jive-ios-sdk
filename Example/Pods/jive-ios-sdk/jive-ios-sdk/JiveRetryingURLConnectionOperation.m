@@ -20,6 +20,7 @@
 #import "JiveRetryingURLConnectionOperation.h"
 #import "JiveRetryingURLConnectionOperation+JiveProtected.h"
 #import "JiveOperationRetrier.h"
+#import "JiveRetryingOperation.h"
 
 @interface JiveRetryingURLConnectionOperation () {
     BOOL _isExecuting;
@@ -363,7 +364,7 @@
                         __typeof__(strongWeakSelf.retrier) retrier = strongWeakSelf.retrier;
                         if (error && retrier) {
                             AFURLConnectionOperation *failedOperation = strongWeakSelf.operation;
-                            strongWeakSelf.operation = [strongWeakSelf.operation copy];
+                            
                             dispatch_queue_t retryCallbackQueue;
                             if (strongWeakSelf.retryCallbackQueue) {
                                 retryCallbackQueue = strongWeakSelf.retryCallbackQueue;
@@ -376,6 +377,8 @@
                                       retryFailedOperation:failedOperation
                                        thatFailedWithError:error
                                             withRetryBlock:[(^{
+                                    AFURLConnectionOperation* newOperation = (AFURLConnectionOperation*) [strongWeakSelf.retrier retriableOperationForFailedOperation:(id<JiveRetryingOperation>)strongWeakSelf.operation];
+                                    strongWeakSelf.operation = newOperation;
                                     [strongWeakSelf.operation start];
                                 }) copy]
                                                  failBlock:[(^(NSError *retryError) {
