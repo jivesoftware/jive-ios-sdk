@@ -36,6 +36,10 @@ struct JivePropertyAttributes const JivePropertyAttributes = {
     .value = @"value",
 };
 
+struct JivePropertyNames const JivePropertyNames = {
+    .instanceURL = @"instance.url",
+};
+
 @implementation JiveProperty
 
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;
