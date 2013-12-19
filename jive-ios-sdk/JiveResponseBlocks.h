@@ -23,6 +23,7 @@
 #define jive_ios_sdk_JiveResponseBlocks_h
 
 @class JiveObject;
+@class JivePlatformVersion;
 @class JivePersonJive;
 @class JiveName;
 @class AFJSONRequestOperation;
@@ -37,6 +38,7 @@
 @class JiveTask;
 
 typedef void (^JiveErrorBlock)(NSError *error);
+typedef void (^JivePlatformVersionBlock)(JivePlatformVersion *version);
 typedef void (^JiveArrayCompleteBlock)(NSArray *objects);
 typedef void (^JiveObjectCompleteBlock)(JiveObject *object);
 typedef void (^JivePersonCompleteBlock)(JivePerson *person);

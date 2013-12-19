@@ -71,7 +71,7 @@ int const JivePushDeviceType = 3;
 @implementation Jive
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) versionOperationForInstance:(NSURL *)jiveInstanceURL
-                                                                     onComplete:(void (^)(JivePlatformVersion *version))completeBlock
+                                                                     onComplete:(JivePlatformVersionBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
     NSURL* requestURL = [NSURL URLWithString:@"api/version"
                                relativeToURL:jiveInstanceURL];
@@ -110,7 +110,9 @@ int const JivePushDeviceType = 3;
     return operation;
 }
 
-- (void) versionForInstance:(NSURL *)jiveInstanceURL onComplete:(void (^)(JivePlatformVersion *version))completeBlock onError:(JiveErrorBlock)errorBlock {
+- (void) versionForInstance:(NSURL *)jiveInstanceURL
+                 onComplete:(JivePlatformVersionBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock {
     [[self versionOperationForInstance:jiveInstanceURL
                             onComplete:completeBlock
                                onError:errorBlock] start];
