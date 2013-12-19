@@ -54,71 +54,59 @@ static JVJiveFactory *currentInstance;
     }
 }
 
-- (void)setPlatformInstanceURL:(NSURL *)instanceURL
-                         forMe:(JivePerson *)me
-                    onComplete:(JivePersonCompleteBlock)completeBlock {
-    [self.jive.platformVersion setValue:instanceURL
-                                 forKey:JivePlatformVersionAttributes.instanceURL];
-    if (completeBlock) {
-        completeBlock(me);
-    }
-}
-
 - (void)doubleCheckInstanceURLForMe:(JivePerson *)me
                          onComplete:(JivePersonCompleteBlock)completeBlock {
-    [currentInstance.jive propertyWithName:@"instance.url"
-                                onComplete:^(JiveProperty *property) {
-                                    NSString *instanceString = property.valueAsString;
-                                    
-                                    // The SDK assumes the URL has a / at the end. So make sure it does.
-                                    if (![instanceString hasSuffix:@"/"]) {
-                                        instanceString = [instanceString stringByAppendingString:@"/"];
-                                    }
-                                    
-                                    NSURL *instanceURL = [NSURL URLWithString:instanceString];
-                                    
-                                    // Yes! We have a server url.
-                                    if ([instanceString isEqualToString:currentInstance.jive.jiveInstanceURL.absoluteString]) {
-                                        // Everything matches up.
-                                        [self setPlatformInstanceURL:instanceURL
-                                                               forMe:me
-                                                          onComplete:completeBlock];
-                                    } else {
-                                        // Make sure we have the correct me object.
-                                        Jive *oldJive = self.jive;
-                                        
-                                        [self.jive.platformVersion setValue:instanceURL
-                                                                     forKey:JivePlatformVersionAttributes.instanceURL];
-                                        self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
-                                                                 authorizationDelegate:self];
-                                        [self.jive me:completeBlock
-                                              onError:^(NSError *error) {
-                                                  // Fall back to what works.
-                                                  self.jive = oldJive;
-                                                  if (completeBlock) {
-                                                      completeBlock(me);
-                                                  }
-                                              }];
-                                    }
-                                } onError:^(NSError *error) {
-                                    // No! We are stuck with what works.
-                                    [self setPlatformInstanceURL:self.jive.jiveInstanceURL
-                                                           forMe:me
-                                                      onComplete:completeBlock];
-                                }];
+    [self.jive propertyWithName:@"instance.url"
+                     onComplete:^(JiveProperty *property) {
+                         NSString *instanceString = property.valueAsString;
+                         
+                         // The SDK assumes the URL has a / at the end. So make sure it does.
+                         if (![instanceString hasSuffix:@"/"]) {
+                             instanceString = [instanceString stringByAppendingString:@"/"];
+                         }
+                         
+                         NSURL *instanceURL = [NSURL URLWithString:instanceString];
+                         
+                         // Yes! We have a server url.
+                         if ([instanceString isEqualToString:self.jive.jiveInstanceURL.absoluteString]) {
+                             // Everything matches up.
+                             if (completeBlock) {
+                                 completeBlock(me);
+                             }
+                         } else {
+                             // Make sure we have the correct me object.
+                             Jive *oldJive = self.jive;
+                             
+                             self.jive = [[Jive alloc] initWithJiveInstance:instanceURL
+                                                      authorizationDelegate:self];
+                             [self.jive me:completeBlock
+                                   onError:^(NSError *error) {
+                                       // Fall back to what works.
+                                       self.jive = oldJive;
+                                       if (completeBlock) {
+                                           completeBlock(me);
+                                       }
+                                   }];
+                         }
+                     } onError:^(NSError *error) {
+                         // No! We are stuck with what works.
+                         if (completeBlock) {
+                             completeBlock(me);
+                         }
+                     }];
 }
 
-+ (void)loginWithName:(NSString *)userName
+- (void)loginWithName:(NSString *)userName
              password:(NSString *)password
              complete:(JivePersonCompleteBlock)completeBlock
                 error:(JiveErrorBlock)errorBlock {
     JiveErrorBlock errorBlockCopy = [errorBlock copy];
     
-    currentInstance.userName = userName;
-    currentInstance.password = password;
-    currentInstance.credentials = nil;
-    [currentInstance.jive me:^(JivePerson *me) {
-        JivePlatformVersion *platformVersion = currentInstance.jive.platformVersion;
+    self.userName = userName;
+    self.password = password;
+    self.credentials = nil;
+    [self.jive me:^(JivePerson *me) {
+        JivePlatformVersion *platformVersion = self.jive.platformVersion;
         
         // url check.
         if (platformVersion.instanceURL) {
@@ -128,12 +116,19 @@ static JVJiveFactory *currentInstance;
             }
         } else {
             // NO!!! We have to make sure we have the right URL.
-            [currentInstance doubleCheckInstanceURLForMe:me onComplete:completeBlock];
+            [self doubleCheckInstanceURLForMe:me onComplete:completeBlock];
         }
     }
-                     onError:^(NSError *error) {
-                         [currentInstance handleLoginError:error withErrorBlock:errorBlockCopy];
-                     }];
+          onError:^(NSError *error) {
+              [self handleLoginError:error withErrorBlock:errorBlockCopy];
+          }];
+}
+
++ (void)loginWithName:(NSString *)userName
+             password:(NSString *)password
+             complete:(JivePersonCompleteBlock)completeBlock
+                error:(JiveErrorBlock)errorBlock {
+    [currentInstance loginWithName:userName password:password complete:completeBlock error:errorBlock];
 }
 
 #pragma mark - JiveAuthorizationDelegate methods
