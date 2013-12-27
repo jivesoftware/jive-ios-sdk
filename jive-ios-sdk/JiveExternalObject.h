@@ -18,6 +18,7 @@
 //
 
 #import "JiveContent.h"
+#import "JiveActivityObject.h"
 
 extern NSString * const JiveExternalType;
 
@@ -25,10 +26,13 @@ extern NSString * const JiveExternalType;
 //! No online docs yet.
 @interface JiveExternalObject : JiveContent
 
+//! Contains some information about the originating object
+@property(nonatomic, readonly, strong) JiveActivityObject* object;
+
 //! Icon for the external service this comes from
-@property(nonatomic, strong) NSURL* productIcon;
+@property(nonatomic, readonly, strong) NSURL* productIcon;
 
 //! Name of the external service, e.g. "Twitter" or "Chatter"
-@property(nonatomic, strong) NSString* productName;
+@property(nonatomic, readonly, strong) NSString* productName;
 
 @end
