@@ -51,7 +51,7 @@
 
 - (void)testJiveTermsAndConditionsParsing {
     [self.termsAndConditions setValue:@YES forKey:JiveTermsAndConditionsAttributes.acceptanceRequired];
-    [self.termsAndConditions setValue:@"html goes here" forKey:JiveTermsAndConditionsAttributes.text];
+    [self.termsAndConditions setValue:@"html goes here, really" forKey:JiveTermsAndConditionsAttributes.text];
     
     NSDictionary *JSON = [self.termsAndConditions persistentJSON];
     JiveTermsAndConditions *newTsAndCs = [JiveTermsAndConditions objectFromJSON:JSON
@@ -65,7 +65,7 @@
 
 - (void)testJiveTermsAndConditionsParsingAlternate {
     [self.termsAndConditions setValue:@NO forKey:JiveTermsAndConditionsAttributes.acceptanceRequired];
-    [self.termsAndConditions setValue:[NSURL URLWithString:@"http://dummy.com"]
+    [self.termsAndConditions setValue:[NSURL URLWithString:@"http://situation.com"]
                                forKey:JiveTermsAndConditionsAttributes.url];
     
     NSDictionary *JSON = [self.termsAndConditions persistentJSON];
