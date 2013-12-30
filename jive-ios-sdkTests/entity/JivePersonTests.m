@@ -1765,9 +1765,94 @@
     }];
 }
 
+- (void) testGetTermsAndConditionsOperation {
+    [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
+    [self createJiveAPIObjectWithResponse:@"T_C_response"
+                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/termsAndConditions"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [self.person termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
+            STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertNotNil(operation, @"Missing operation");
+        [operation start];
+    }];
+}
+
+- (void) testGetTermsAndConditions {
+    [self loadPerson:self.person fromJSONNamed:@"person_response"];
+    [self createJiveAPIObjectWithResponse:@"T_C_response"
+                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/termsAndConditions"];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [self.person termsAndConditions:^(JiveTermsAndConditions *termsAndConditions) {
+            STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testAcceptTermsAndConditionsOperation {
+    [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
+    
+    [self createJiveAPIObjectWithResponse:@"T_C_response"
+                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/acceptTermsAndConditions"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [self.person acceptTermsAndConditionsOperation:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertEqualObjects(@"POST", operation.request.HTTPMethod, @"Wrong http method used");
+        [operation start];
+    }];
+}
+
+- (void) testAcceptTermsAndConditions {
+    [self loadPerson:self.person fromJSONNamed:@"person_response"];
+    
+    [self createJiveAPIObjectWithResponse:@"alt_person_response"
+                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/acceptTermsAndConditions"];
+    
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [self.person acceptTermsAndConditions:^() {
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
 //- (void) testAvatarOperation {
 //    [self loadPerson:self.person fromJSONNamed:@"alt_person_response"];
-//    
+//
 //    [self createJiveAPIObjectWithImageResponse:@"person_avatar"
 //                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/3550/avatar"];
 //    

@@ -189,6 +189,13 @@ extern NSString * const JivePersonGuestID;
          onComplete:(JiveTaskCompleteBlock)completeBlock
             onError:(JiveErrorBlock)errorBlock;
 
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTermsAndConditions(String)
+- (void) termsAndConditions:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#acceptTermsAndConditions(String)
+- (void) acceptTermsAndConditions:(JiveCompletedBlock)completeBlock
+                          onError:(JiveErrorBlock)errorBlock;
+
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
@@ -268,6 +275,13 @@ extern NSString * const JivePersonGuestID;
                                                             withOptions:(JiveReturnFieldsRequestOptions *)options
                                                              onComplete:(JiveTaskCompleteBlock)completeBlock
                                                                 onError:(JiveErrorBlock)errorBlock;
+
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTermsAndConditions(String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#acceptTermsAndConditions(String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock;
 
 - (NSURL *)avatarRef;
 - (NSURL *)activityRef;

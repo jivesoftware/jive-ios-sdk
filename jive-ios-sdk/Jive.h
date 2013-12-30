@@ -92,6 +92,7 @@
 #import "JiveResponseBlocks.h"
 #import "JiveExternalURLEntity.h"
 #import "JiveOAuthCredentials.h"
+#import "JiveTermsAndConditions.h"
 
 extern int const JivePushDeviceType;
 

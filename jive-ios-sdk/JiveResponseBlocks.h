@@ -36,6 +36,7 @@
 @class JiveDateLimitedRequestOptions;
 @class JiveSortedRequestOptions;
 @class JiveTask;
+@class JiveTermsAndConditions;
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JivePlatformVersionBlock)(JivePlatformVersion *version);
@@ -49,6 +50,7 @@ typedef void (^JiveCompletedBlock)(void);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
 typedef void (^JiveInboxObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate,
                                               NSDate *latestDate, NSNumber *unreadCount);
+typedef void (^JiveTermsAndConditionsCompleteBlock)(JiveTermsAndConditions *termsAndConditions);
 
 
 #endif

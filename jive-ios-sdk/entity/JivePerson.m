@@ -378,6 +378,15 @@ NSString * const JivePersonGuestID = @"-1";
                        onError:errorBlock] start];
 }
 
+- (void) termsAndConditions:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error {
+    [[self termsAndConditionsOperation:completeBlock onError:error] start];
+}
+
+- (void) acceptTermsAndConditions:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)error {
+    [[self acceptTermsAndConditionsOperation:completeBlock onError:error] start];
+}
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
@@ -602,6 +611,30 @@ NSString * const JivePersonGuestID = @"-1";
                            withRequest:request
                             onComplete:completeBlock
                                onError:errorBlock];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"termsAndConditions"];
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
+                                                                         andTemplate:path, nil];
+    
+    return [self entityOperationForClass:[JiveTermsAndConditions class]
+                                 request:request
+                              onComplete:completeBlock
+                                 onError:errorBlock];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"acceptTermsAndConditions"];
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
+                                                                         andTemplate:path, nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self emptyResponseOperationWithRequest:request
+                                        onComplete:completeBlock
+                                           onError:errorBlock];
 }
 
 #pragma mark - helper methods
