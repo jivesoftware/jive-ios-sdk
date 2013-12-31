@@ -1,0 +1,5 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "acceptanceRequired" : true,
+  "url" : "http://dummy.com/termsandconditions"
+}

@@ -94,6 +94,50 @@
     self.person.jiveInstance = self.instance;
 }
 
+- (void)createJiveAPIObjectWithErrorCode:(NSInteger)errorCode
+                 andAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
+    assert(mockAuthURLCheck);
+    BOOL (^URLCheckBlock)(id value) = ^(id value){
+        BOOL same = [mockAuthURLCheck isEqualToString:[value absoluteString]];
+        return same;
+    };
+    JiveHTTPBasicAuthCredentials *credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                              password:@"foo"];
+    JiveMobileAnalyticsHeader *analytics = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"app id"
+                                                                                 appVersion:@"1.1"
+                                                                             connectionType:@"local"
+                                                                             devicePlatform:@"iPad"
+                                                                              deviceVersion:@"2.2"];
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:credentials] credentialsForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    [[[mockAuthDelegate expect] andReturn:analytics] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    
+    // This can be anything. The mock objects will return local data
+    NSURL* url = [NSURL URLWithString:self.instanceURL];
+    
+    mockJiveURLResponseDelegate = [OCMockObject mockForProtocol:@protocol(MockJiveURLResponseDelegate)];
+    
+    // No error
+    [[[mockJiveURLResponseDelegate stub] andReturn:nil] errorForRequest];
+    
+    // Mock Response
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:url
+                                                              statusCode:errorCode
+                                                             HTTPVersion:@"1.0"
+                                                            headerFields:@{@"Content-Type":@"application/json"}];
+    
+    [[[mockJiveURLResponseDelegate expect] andReturn:response] responseForRequest];
+    [[[mockJiveURLResponseDelegate expect] andReturn:nil] responseBodyForRequest];
+    
+    // Set the response mock delegate for this request
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    
+    // Create the Jive API object, using mock auth delegate
+    self.instance = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    self.person.jiveInstance = self.instance;
+}
+
 - (void)createJiveAPIObjectWithResponse:(NSString *)resourceName
                 andAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
     assert(mockAuthURLCheck);
@@ -1773,6 +1817,61 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [self.person termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
             STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            STAssertTrue(termsAndConditions.acceptanceRequired, @"Acceptance should be required");
+            STAssertNotNil(termsAndConditions.text, @"Missing text");
+            STAssertNil(termsAndConditions.url, @"Unexpected URL");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertNotNil(operation, @"Missing operation");
+        [operation start];
+    }];
+}
+
+- (void) testGetTermsAndConditionsOperation_withURL {
+    [self loadPerson:self.person fromJSONNamed:@"person_response"];
+    [self createJiveAPIObjectWithResponse:@"T_C_response_w_URL"
+                  andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/termsAndConditions"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [self.person termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
+            STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            STAssertTrue(termsAndConditions.acceptanceRequired, @"Acceptance should be required");
+            STAssertNil(termsAndConditions.text, @"Unexpected text");
+            STAssertNotNil(termsAndConditions.url, @"Missing URL");
+            
+            // Check that delegates where actually called
+            [mockAuthDelegate verify];
+            [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+        
+        STAssertNotNil(operation, @"Missing operation");
+        [operation start];
+    }];
+}
+
+- (void) testGetTermsAndConditionsOperation_alreadyAccepted {
+    [self loadPerson:self.person fromJSONNamed:@"person_response"];
+    [self createJiveAPIObjectWithErrorCode:204
+                   andAuthDelegateURLCheck:@"https://brewspace.jiveland.com/api/core/v3/people/5316/termsAndConditions"];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [self.person termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
+            STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            STAssertFalse(termsAndConditions.acceptanceRequired, @"Acceptance is not required");
+            STAssertNil(termsAndConditions.text, @"Unexpected text");
+            STAssertNil(termsAndConditions.url, @"Unexpected URL");
             
             // Check that delegates where actually called
             [mockAuthDelegate verify];

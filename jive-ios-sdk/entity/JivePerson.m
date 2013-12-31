@@ -622,7 +622,15 @@ NSString * const JivePersonGuestID = @"-1";
     return [self entityOperationForClass:[JiveTermsAndConditions class]
                                  request:request
                               onComplete:completeBlock
-                                 onError:errorBlock];
+                                 onError:^(NSError *error) {
+                                     if (error.code == 3) {
+                                         if (completeBlock) {
+                                             completeBlock([JiveTermsAndConditions new]);
+                                         }
+                                     } else if (errorBlock) {
+                                         errorBlock(error);
+                                     }
+                                 }];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock
