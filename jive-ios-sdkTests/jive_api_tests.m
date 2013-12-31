@@ -76,6 +76,46 @@
     return [self createJiveAPIObjectWithResponse:resourceName andAuthDelegate:mockAuthDelegate];
 }
 
+- (void)createJiveAPIObjectWithErrorCode:(NSInteger)errorCode
+                 andAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
+    assert(mockAuthURLCheck);
+    BOOL (^URLCheckBlock)(id value) = ^(id value){
+        BOOL same = [mockAuthURLCheck isEqualToString:[value absoluteString]];
+        return same;
+    };
+    JiveHTTPBasicAuthCredentials *credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                              password:@"foo"];
+    JiveMobileAnalyticsHeader *analytics = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"app id"
+                                                                                 appVersion:@"1.1"
+                                                                             connectionType:@"local"
+                                                                             devicePlatform:@"iPad"
+                                                                              deviceVersion:@"2.2"];
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:credentials] credentialsForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    [[[mockAuthDelegate expect] andReturn:analytics] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    
+    mockJiveURLResponseDelegate = [OCMockObject mockForProtocol:@protocol(MockJiveURLResponseDelegate)];
+    
+    // No error
+    [[[mockJiveURLResponseDelegate stub] andReturn:nil] errorForRequest];
+    
+    // Mock Response
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:testURL
+                                                              statusCode:errorCode
+                                                             HTTPVersion:@"1.0"
+                                                            headerFields:@{@"Content-Type":@"application/json"}];
+    
+    [[[mockJiveURLResponseDelegate expect] andReturn:response] responseForRequest];
+    [[[mockJiveURLResponseDelegate expect] andReturn:nil] responseBodyForRequest];
+    
+    // Set the response mock delegate for this request
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    
+    // Create the Jive API object, using mock auth delegate
+    jive = [[Jive alloc] initWithJiveInstance:testURL authorizationDelegate:mockAuthDelegate];
+}
+
 - (void) testJiveInstance {
     
     mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
@@ -522,6 +562,7 @@
             return same;
         }]];
     };
+    
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         createMockAuthDelegate(url);
         [self createJiveAPIObjectWithResponse:response andAuthDelegate:mockAuthDelegate];
@@ -534,7 +575,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 1");
+        STAssertNotNil(operation, @"Missing operation object");
         [operation start];
     }];
     
@@ -552,7 +593,27 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 2");
+        STAssertNotNil(operation, @"Missing clear bad instance check operation object");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSInteger error_code = 404;
+        [self createJiveAPIObjectWithErrorCode:error_code andAuthDelegateURLCheck:url];
+        NSOperation *operation = createOperation(^(id object) {
+            STFail(@"404 errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    error_code,
+                                                                    @"Wrong error reported");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
         [operation start];
     }];
     
@@ -577,7 +638,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 3");
+        STAssertNotNil(operation, @"Missing bad instance check operation object");
         [operation start];
     }];
 }
@@ -690,7 +751,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 1");
+        STAssertNotNil(operation, @"Missing operation object");
         [operation start];
     }];
     
@@ -708,7 +769,27 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 2");
+        STAssertNotNil(operation, @"Missing clear bad instance check operation object");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSInteger error_code = 404;
+        [self createJiveAPIObjectWithErrorCode:error_code andAuthDelegateURLCheck:url];
+        NSOperation *operation = createOperation(^(NSArray *streams) {
+            STFail(@"404 errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    error_code,
+                                                                    @"Wrong error reported");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
         [operation start];
     }];
     
@@ -733,7 +814,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 3");
+        STAssertNotNil(operation, @"Missing bad instance check operation object");
         [operation start];
     }];
 }

@@ -1236,6 +1236,7 @@
         [mockAuthDelegate verify];
         [mockJiveURLResponseDelegate verify];
     };
+    
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         [self createJiveAPIObjectWithResponse:response andAuthDelegateURLCheck:url];
         setupBlock();
@@ -1248,7 +1249,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 1");
+        STAssertNotNil(operation, @"Missing operation object");
         [operation start];
     }];
     
@@ -1268,7 +1269,28 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 2");
+        STAssertNotNil(operation, @"Missing clear bad instance check operation object");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSInteger error_code = 404;
+        [self createJiveAPIObjectWithErrorCode:error_code andAuthDelegateURLCheck:url];
+        setupBlock();
+        NSOperation *operation = createOperation(^(NSArray *streams) {
+            STFail(@"404 errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    error_code,
+                                                                    @"Wrong error reported");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
         [operation start];
     }];
 
@@ -1295,7 +1317,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 3");
+        STAssertNotNil(operation, @"Missing bad instance check operation object");
         [operation start];
     }];
 }
@@ -1375,7 +1397,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 1");
+        STAssertNotNil(operation, @"Missing operation object");
         [operation start];
     }];
     
@@ -1395,7 +1417,28 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 2");
+        STAssertNotNil(operation, @"Missing clear bad instance check operation object");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        NSInteger error_code = 404;
+        [self createJiveAPIObjectWithErrorCode:error_code andAuthDelegateURLCheck:url];
+        setupBlock();
+        NSOperation *operation = createOperation(^(id object) {
+            STFail(@"404 errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    error_code,
+                                                                    @"Wrong error reported");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
         [operation start];
     }];
     
@@ -1424,7 +1467,7 @@
                                                      finishedBlock();
                                                  });
         
-        STAssertNotNil(operation, @"Missing operation object 3");
+        STAssertNotNil(operation, @"Missing bad instance check operation object");
         [operation start];
     }];
 }
