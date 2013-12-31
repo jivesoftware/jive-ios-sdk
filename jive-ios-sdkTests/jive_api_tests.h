@@ -26,8 +26,10 @@
     id mockJiveURLResponseDelegate2;
     id mockAuthDelegate;
     Jive *jive;
-    NSURL *testURL;
 }
+
+// This can be anything. The mock objects will return local data
+@property (nonatomic) NSURL *testURL;
 
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName andAuthDelegate:(id)authDelegate;
 - (Jive *)createJiveAPIObjectWithResponse:(NSString *)resourceName;

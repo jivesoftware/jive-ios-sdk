@@ -2505,6 +2505,42 @@ int const JivePushDeviceType = 3;
     [[self objectsOperationOnComplete:complete onError:error] start];
 }
 
+#pragma mark - Terms and Conditions
+
+- (void) termsAndConditions:(JiveTermsAndConditionsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self termsAndConditionsOperation:completeBlock onError:errorBlock] start];
+}
+
+- (void) acceptTermsAndConditions:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self acceptTermsAndConditionsOperation:completeBlock onError:errorBlock] start];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSURLRequest *request = [self credentialedRequestWithOptions:nil
+                                                     andTemplate:@"%@/people/@me/termsAndConditions", self.baseURI, nil];
+    
+    return [self entityOperationForClass:[JiveTermsAndConditions class]
+                                 request:request
+                              onComplete:completeBlock
+                                 onError:^(NSError *error) {
+                                     if (error.code == 3) {
+                                         if (completeBlock) {
+                                             completeBlock([JiveTermsAndConditions new]);
+                                         }
+                                     } else if (errorBlock) {
+                                         errorBlock(error);
+                                     }
+                                 }];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
+                                                            andTemplate:@"%@/people/@me/acceptTermsAndConditions", self.baseURI, nil];
+    
+    [request setHTTPMethod:@"POST"];
+    return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
+}
+
 #pragma mark - private API
 
 - (NSMutableURLRequest *)followingInRequestWithStreams:(NSArray *)streams options:(NSObject<JiveRequestOptions>*)options template:(NSString*)template, ... NS_REQUIRES_NIL_TERMINATION {
