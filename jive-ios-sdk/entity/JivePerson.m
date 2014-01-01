@@ -615,22 +615,30 @@ NSString * const JivePersonGuestID = @"-1";
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"termsAndConditions"];
-    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
-                                                                         andTemplate:path, nil];
-    
-    return [self entityOperationForClass:[JiveTermsAndConditions class]
-                                 request:request
-                              onComplete:completeBlock
-                                 onError:^(NSError *error) {
-                                     if (error.code == 3) {
-                                         if (completeBlock) {
-                                             completeBlock([JiveTermsAndConditions new]);
+    if (self.jive.termsAndConditionsRequired.boolValue) {
+        NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"termsAndConditions"];
+        NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
+                                                                             andTemplate:path, nil];
+        
+        return [self entityOperationForClass:[JiveTermsAndConditions class]
+                                     request:request
+                                  onComplete:completeBlock
+                                     onError:^(NSError *error) {
+                                         if (error.code == 3) {
+                                             if (completeBlock) {
+                                                 completeBlock([JiveTermsAndConditions new]);
+                                             }
+                                         } else if (errorBlock) {
+                                             errorBlock(error);
                                          }
-                                     } else if (errorBlock) {
-                                         errorBlock(error);
-                                     }
-                                 }];
+                                     }];
+    }
+    
+    if (completeBlock) {
+        completeBlock([JiveTermsAndConditions new]);
+    }
+    
+    return nil;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock

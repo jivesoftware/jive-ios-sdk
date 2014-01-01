@@ -57,6 +57,7 @@
     "external" : false,
     "visible" : true,
     "externalContributor" : false,
+    "termsAndConditionsRequired" : true,
     "federated" : true
   },
   "updated" : "2013-01-03T18:28:20.448+0000",

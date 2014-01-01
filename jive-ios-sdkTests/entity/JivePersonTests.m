@@ -138,6 +138,34 @@
     self.person.jiveInstance = self.instance;
 }
 
+- (void)createJiveAPIObject_ExpectingNoCalls {
+    JiveHTTPBasicAuthCredentials *credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                              password:@"foo"];
+    JiveMobileAnalyticsHeader *analytics = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"app id"
+                                                                                 appVersion:@"1.1"
+                                                                             connectionType:@"local"
+                                                                             devicePlatform:@"iPad"
+                                                                              deviceVersion:@"2.2"];
+    BOOL (^URLCheckBlock)(id value) = ^(id value){
+        return NO;
+    };
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:credentials] credentialsForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    [[[mockAuthDelegate expect] andReturn:analytics] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    
+    mockJiveURLResponseDelegate = [OCMockObject mockForProtocol:@protocol(MockJiveURLResponseDelegate)];
+    
+    // No error
+    [[[mockJiveURLResponseDelegate stub] andReturn:nil] errorForRequest];
+    
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    
+    self.instance = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:self.instanceURL]
+                                 authorizationDelegate:mockAuthDelegate];
+    self.person.jiveInstance = self.instance;
+}
+
 - (void)createJiveAPIObjectWithResponse:(NSString *)resourceName
                 andAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
     assert(mockAuthURLCheck);
@@ -1943,6 +1971,25 @@
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
+            finishedBlock();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishedBlock();
+        }];
+    }];
+}
+
+- (void) testGetTermsAndConditions_doesNotNeedToAccept {
+    [self loadPerson:self.person fromJSONNamed:@"my_response"];
+    [self createJiveAPIObject_ExpectingNoCalls];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        [self.person termsAndConditions:^(JiveTermsAndConditions *termsAndConditions) {
+            STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
+            STAssertFalse(termsAndConditions.acceptanceRequired, @"Acceptance is not required");
+            STAssertNil(termsAndConditions.text, @"Unexpected text");
+            STAssertNil(termsAndConditions.url, @"Unexpected URL");
             finishedBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
