@@ -473,6 +473,8 @@
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
+		CCF22DE61876085800C77397 /* JiveExternalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF22DE51876085800C77397 /* JiveExternalObject.m */; };
+		CCF22DEA187608C100C77397 /* JiveExternalObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCF22DE41876085800C77397 /* JiveExternalObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE2C392818319BEE00486A2D /* public_property.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2C392718319BEE00486A2D /* public_property.json */; };
 		DEF202CD184E3E5800B54CC2 /* JiveOAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */; };
 		DEF202D1184E415700B54CC2 /* JiveOAuthCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1108,6 +1110,8 @@
 		B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+JiveAuthorizationDelegate.m"; sourceTree = "<group>"; };
 		B8F8241217304DE500E11536 /* JiveHTTPBasicAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveHTTPBasicAuthCredentials.h; sourceTree = "<group>"; };
 		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
+		CCF22DE41876085800C77397 /* JiveExternalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveExternalObject.h; sourceTree = "<group>"; };
+		CCF22DE51876085800C77397 /* JiveExternalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveExternalObject.m; sourceTree = "<group>"; };
 		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
 		DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOAuthCredentials.h; sourceTree = "<group>"; };
 		DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOAuthCredentials.m; sourceTree = "<group>"; };
@@ -1425,6 +1429,8 @@
 		217FE0D11638520F00182AB5 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				CCF22DE41876085800C77397 /* JiveExternalObject.h */,
+				CCF22DE51876085800C77397 /* JiveExternalObject.m */,
 				217FE0E716385C2900182AB5 /* JiveActionLink.h */,
 				217FE0E816385C2900182AB5 /* JiveActionLink.m */,
 				0F9EBA8F169E314300E9F09D /* JiveActivity.h */,
@@ -1904,6 +1910,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF22DEA187608C100C77397 /* JiveExternalObject.h in Headers */,
 				B8655216179884B300AAF1AD /* AFHTTPClient.h in Headers */,
 				B8655217179884B300AAF1AD /* AFHTTPRequestOperation.h in Headers */,
 				B8655218179884B300AAF1AD /* AFImageRequestOperation.h in Headers */,
@@ -2413,6 +2420,7 @@
 				B8A6BA701691F63B00996448 /* Jive.m in Sources */,
 				0F9EB8C9169205B500E9F09D /* JiveAnnouncementRequestOptions.m in Sources */,
 				0F9EB90516921BBF00E9F09D /* JiveMember.m in Sources */,
+				CCF22DE61876085800C77397 /* JiveExternalObject.m in Sources */,
 				0F9EB93E16948BAA00E9F09D /* JiveStreamEntry.m in Sources */,
 				0F9EB95916949B4600E9F09D /* JiveStatic.m in Sources */,
 				0F9EB9971694FC4100E9F09D /* JiveCategory.m in Sources */,
