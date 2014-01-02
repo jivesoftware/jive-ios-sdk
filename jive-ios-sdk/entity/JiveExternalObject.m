@@ -45,7 +45,7 @@ NSString * const JiveExternalType = @"extStreamActivity";
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
     
     [dictionary setValue:[object toJSONDictionary] forKey:JiveExternalObjectAttributes.object];
-    [dictionary setValue:productIcon forKey:JiveExternalObjectAttributes.productIcon];
+    [dictionary setValue:[productIcon absoluteString] forKey:JiveExternalObjectAttributes.productIcon];
     [dictionary setValue:productName forKey:JiveExternalObjectAttributes.productName];
 
     return dictionary;
