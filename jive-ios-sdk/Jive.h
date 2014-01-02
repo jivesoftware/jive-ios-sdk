@@ -48,6 +48,7 @@
 #import "JiveFavorite.h"
 #import "JiveTask.h"
 #import "JiveUpdate.h"
+#import "JiveExternalObject.h"
 #import "JivePersonJive.h"
 #import "JiveName.h"
 #import "JiveAddress.h"
