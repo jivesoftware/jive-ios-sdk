@@ -20,6 +20,12 @@
 #import "JiveContent.h"
 #import "JiveActivityObject.h"
 
+extern struct JiveExternalObjectAttributes {
+    __unsafe_unretained NSString *object;
+    __unsafe_unretained NSString *productIcon;
+    __unsafe_unretained NSString *productName;
+} const JiveExternalObjectAttributes;
+
 extern NSString * const JiveExternalType;
 
 //! \class JiveExternalObject

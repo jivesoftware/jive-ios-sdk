@@ -20,6 +20,12 @@
 #import "JiveExternalObject.h"
 #import "JiveTypedObject_internal.h"
 
+struct JiveExternalObjectAttributes const JiveExternalObjectAttributes = {
+	.object = @"object",
+    .productIcon = @"productIcon",
+    .productName = @"productName",
+};
+
 NSString * const JiveExternalType = @"extStreamActivity";
 
 @implementation JiveExternalObject
@@ -38,9 +44,9 @@ NSString * const JiveExternalType = @"extStreamActivity";
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:[object toJSONDictionary] forKey:@"productIcon"];
-    [dictionary setValue:productIcon forKey:@"productIcon"];
-    [dictionary setValue:productName forKey:@"productName"];
+    [dictionary setValue:[object toJSONDictionary] forKey:JiveExternalObjectAttributes.object];
+    [dictionary setValue:productIcon forKey:JiveExternalObjectAttributes.productIcon];
+    [dictionary setValue:productName forKey:JiveExternalObjectAttributes.productName];
 
     return dictionary;
 }
