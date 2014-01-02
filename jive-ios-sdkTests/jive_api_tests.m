@@ -6230,7 +6230,7 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
             STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
-            STAssertTrue(termsAndConditions.acceptanceRequired, @"Acceptance should be required");
+            STAssertTrue(termsAndConditions.acceptanceRequired.boolValue, @"Acceptance should be required");
             STAssertNotNil(termsAndConditions.text, @"Missing text");
             STAssertNil(termsAndConditions.url, @"Unexpected URL");
             
@@ -6255,7 +6255,7 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
             STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
-            STAssertTrue(termsAndConditions.acceptanceRequired, @"Acceptance should be required");
+            STAssertTrue(termsAndConditions.acceptanceRequired.boolValue, @"Acceptance should be required");
             STAssertNil(termsAndConditions.text, @"Unexpected text");
             STAssertNotNil(termsAndConditions.url, @"Missing URL");
             
@@ -6280,7 +6280,7 @@
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive termsAndConditionsOperation:^(JiveTermsAndConditions *termsAndConditions) {
             STAssertEquals([termsAndConditions class], [JiveTermsAndConditions class], @"Wrong item class");
-            STAssertFalse(termsAndConditions.acceptanceRequired, @"Acceptance is not required");
+            STAssertFalse(termsAndConditions.acceptanceRequired.boolValue, @"Acceptance is not required");
             STAssertNil(termsAndConditions.text, @"Unexpected text");
             STAssertNil(termsAndConditions.url, @"Unexpected URL");
             
