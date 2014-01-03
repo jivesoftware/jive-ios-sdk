@@ -138,6 +138,51 @@
     self.person.jiveInstance = self.instance;
 }
 
+- (void)createJiveAPIObjectWithTermsAndConditionsFailureAndAuthDelegateURLCheck:(NSString *)mockAuthURLCheck {
+    assert(mockAuthURLCheck);
+    BOOL (^URLCheckBlock)(id value) = ^(id value){
+        BOOL same = [mockAuthURLCheck isEqualToString:[value absoluteString]];
+        return same;
+    };
+    JiveHTTPBasicAuthCredentials *credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
+                                                                                              password:@"foo"];
+    JiveMobileAnalyticsHeader *analytics = [[JiveMobileAnalyticsHeader alloc] initWithAppID:@"app id"
+                                                                                 appVersion:@"1.1"
+                                                                             connectionType:@"local"
+                                                                             devicePlatform:@"iPad"
+                                                                              deviceVersion:@"2.2"];
+    
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:credentials] credentialsForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    [[[mockAuthDelegate expect] andReturn:analytics] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:URLCheckBlock]];
+    
+    // This can be anything. The mock objects will return local data
+    NSURL* url = [NSURL URLWithString:self.instanceURL];
+    
+    mockJiveURLResponseDelegate = [OCMockObject mockForProtocol:@protocol(MockJiveURLResponseDelegate)];
+    
+    // No error
+    [[[mockJiveURLResponseDelegate stub] andReturn:nil] errorForRequest];
+    
+    // Mock Response
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:url
+                                                              statusCode:500
+                                                             HTTPVersion:@"1.0"
+                                                            headerFields:@{@"Content-Type":@"application/json",
+                                                                           @"X-JIVE-TC":@"/api/core/v3/people/@me/termsAndConditions"}];
+    NSString *responseText = @"<html><head><title>Apache Tomcat - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 451 - Unavailable For Legal Reasons</h1><HR size=\"1\" noshade=\"noshade\"><p><b>type</b> Status report</p><p><b>message</b> <u>Unavailable For Legal Reasons</u></p><p><b>description</b> <u>No description available</u></p><HR size=\"1\" noshade=\"noshade\"><h3>Apache Tomcat</h3></body></html>";
+    NSData *responseBody = [responseText dataUsingEncoding:NSUTF8StringEncoding];
+    [[[mockJiveURLResponseDelegate expect] andReturn:response] responseForRequest];
+    [[[mockJiveURLResponseDelegate expect] andReturn:responseBody] responseBodyForRequest];
+    
+    // Set the response mock delegate for this request
+    [MockJiveURLProtocol setMockJiveURLResponseDelegate:mockJiveURLResponseDelegate];
+    
+    // Create the Jive API object, using mock auth delegate
+    self.instance = [[Jive alloc] initWithJiveInstance:url authorizationDelegate:mockAuthDelegate];
+    self.person.jiveInstance = self.instance;
+}
+
 - (void)createJiveAPIObject_ExpectingNoCalls {
     JiveHTTPBasicAuthCredentials *credentials = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar"
                                                                                               password:@"foo"];
@@ -1321,6 +1366,29 @@
         STAssertNotNil(operation, @"Missing error operation object");
         [operation start];
     }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [self createJiveAPIObjectWithTermsAndConditionsFailureAndAuthDelegateURLCheck:url];
+        setupBlock();
+        NSOperation *operation = createOperation(^(NSArray *streams) {
+            STFail(@"Terms and Conditions errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    0,
+                                                                    @"Wrong error reported");
+                                                     STAssertEqualObjects(error.userInfo[JiveErrorKeyTermsAndConditionsAPI],
+                                                                          @"/api/core/v3/people/@me/termsAndConditions",
+                                                                          @"Wrong terms and conditions api");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
+        [operation start];
+    }];
 
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         NSString *proxyInstanceURL = ([self.instanceURL hasSuffix:@"/"] ?
@@ -1461,6 +1529,29 @@
                                                      STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
                                                                     error_code,
                                                                     @"Wrong error reported");
+                                                     [mockAuthDelegate verify];
+                                                     [mockJiveURLResponseDelegate verify];
+                                                     finishedBlock();
+                                                 });
+        
+        STAssertNotNil(operation, @"Missing error operation object");
+        [operation start];
+    }];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        [self createJiveAPIObjectWithTermsAndConditionsFailureAndAuthDelegateURLCheck:url];
+        setupBlock();
+        NSOperation *operation = createOperation(^(id object) {
+            STFail(@"Terms and Conditions errors should be reported");
+            finishedBlock();
+        },
+                                                 ^(NSError *error) {
+                                                     STAssertEquals([error.userInfo[JiveErrorKeyHTTPStatusCode] integerValue],
+                                                                    0,
+                                                                    @"Wrong error reported");
+                                                     STAssertEqualObjects(error.userInfo[JiveErrorKeyTermsAndConditionsAPI],
+                                                                          @"/api/core/v3/people/@me/termsAndConditions",
+                                                                          @"Wrong terms and conditions api");
                                                      [mockAuthDelegate verify];
                                                      [mockJiveURLResponseDelegate verify];
                                                      finishedBlock();

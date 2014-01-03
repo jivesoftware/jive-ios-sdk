@@ -2612,6 +2612,7 @@ int const JivePushDeviceType = 3;
         JiveMobileAnalyticsHeader *mobileAnalyticsHeader = [strongDelegate mobileAnalyticsHeaderForJiveInstance:URL];
         [mobileAnalyticsHeader applyToRequest:mutableURLRequest];
     }
+    [mutableURLRequest addValue:@"true" forHTTPHeaderField:@"X-JIVE-TC-SUPPORT"];
 }
 
 - (JiveRetryingJAPIRequestOperation *)operationWithRequest:(NSURLRequest *)request onJSON:(void(^)(id))JSONBlock onError:(JiveErrorBlock)errorBlock {
@@ -2625,8 +2626,13 @@ int const JivePushDeviceType = 3;
         })
                                                                                                                 failure:(^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, NSError *err, id JSON) {
             if (errorBlock) {
-                errorBlock([NSError jive_errorWithUnderlyingError:err
-                                                             JSON:JSON]);
+                NSString *termsAndConditionsLink = response.allHeaderFields[@"X-JIVE-TC"];
+                if (termsAndConditionsLink) {
+                    errorBlock([NSError jive_errorRequiresTermsAndConditionsAcceptance:termsAndConditionsLink]);
+                } else {
+                    errorBlock([NSError jive_errorWithUnderlyingError:err
+                                                                 JSON:JSON]);
+                }
             }
         })];
         
