@@ -25,3 +25,4 @@ Make sure to update the submodules after cloning by executing:
 # Pull requests
 
 Before we can evaluate a Pull request we need to make sure all the i's are dotted and the t's are crossed. To that end we have included a CLA that needs to be signed and returned by anyone wishing to add code to the repo: Jive Software CLA.docx.
+Please send the signed copy to jivedev@jivesoftware.com.
