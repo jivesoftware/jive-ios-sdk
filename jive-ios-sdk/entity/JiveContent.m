@@ -59,10 +59,13 @@ struct JiveContentResourceTags const JiveContentResourceTags = {
 struct JiveContentAttributes const JiveContentAttributes = {
     .author = @"author",
     .content = @"content",
+    .contentID = @"contentID",
+    .customIconRef = @"customIconRef",
     .followerCount = @"followerCount",
     .highlightBody = @"highlightBody",
     .highlightSubject = @"highlightSubject",
     .highlightTags = @"highlightTags",
+    .iconCss = @"iconCss",
     .jiveId = @"jiveId",
     .likeCount = @"likeCount",
     .parent = @"parent",
@@ -92,7 +95,9 @@ struct JiveContentAttributesInternal const JiveContentAttributesInternal = {
 
 @implementation JiveContent
 
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount, root, note;
+@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId;
+@synthesize likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject;
+@synthesize updated, viewCount, root, note, contentID, customIconRef, iconCss;
 
 static NSMutableDictionary *contentClasses;
 
@@ -145,6 +150,9 @@ static NSMutableDictionary *contentClasses;
     [dictionary setValue:status forKey:JiveContentAttributes.status];
     [dictionary setValue:self.type forKey:JiveTypedObjectAttributes.type];
     [dictionary setValue:viewCount forKey:JiveContentAttributes.viewCount];
+    [dictionary setValue:contentID forKey:JiveContentAttributes.contentID];
+    [dictionary setValue:customIconRef.absoluteString forKey:JiveContentAttributes.customIconRef];
+    [dictionary setValue:iconCss forKey:JiveContentAttributes.iconCss];
     
     if (author)
         [dictionary setValue:[author toJSONDictionary] forKey:JiveContentAttributes.author];
@@ -161,7 +169,7 @@ static NSMutableDictionary *contentClasses;
     if (updated)
         [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:JiveContentAttributes.updated];
     
-    [dictionary setValue:root forKey:JiveContentAttributes.root];
+    [dictionary setValue:root.absoluteString forKey:JiveContentAttributes.root];
     
     if([note length]) {
         [dictionary setValue:note forKey:JiveContentAttributes.note];
