@@ -29,6 +29,7 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *highlightBody;
     __unsafe_unretained NSString *highlightSubject;
     __unsafe_unretained NSString *highlightTags;
+    __unsafe_unretained NSString *jiveId;
     __unsafe_unretained NSString *likeCount;
     __unsafe_unretained NSString *parent;
     __unsafe_unretained NSString *parentContent;

@@ -277,7 +277,7 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
 }
 
 - (NSDictionary *)toJSONDictionary {
-    return nil;
+    return [NSMutableDictionary dictionary];
 }
 
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag {
