@@ -21,6 +21,21 @@
 
 extern NSString * const JiveDocumentType;
 
+extern struct JiveDocumentAttributes {
+    __unsafe_unretained NSString *approvers;
+    __unsafe_unretained NSString *attachments;
+    __unsafe_unretained NSString *authors;
+    __unsafe_unretained NSString *authorship;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *fromQuest;
+    __unsafe_unretained NSString *restrictComments;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *updater;
+    __unsafe_unretained NSString *users;
+    __unsafe_unretained NSString *visibility;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JiveDocumentAttributes;
+
 //! \class JiveDocument
 //! https://developers.jivesoftware.com/api/v3/rest/DocumentEntity.html
 @interface JiveDocument : JiveContent
@@ -50,13 +65,13 @@ extern NSString * const JiveDocumentType;
 @property(nonatomic, strong) NSNumber *restrictComments;
 
 //! Tags associated with this object. String[]
-@property(nonatomic, readonly, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* tags;
 
 //! The last person that updated this document. If not present, the last person to update this document was the person referenced in the author property.
 @property(nonatomic, readonly, strong) JivePerson* updater;
 
 //! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
-@property(nonatomic, readonly, strong) NSArray* users;
+@property(nonatomic, strong) NSArray* users;
 
 //! The visibility policy for this discussion. Valid values are:
 // * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
@@ -66,6 +81,6 @@ extern NSString * const JiveDocumentType;
 @property(nonatomic, copy) NSString* visibility;
 
 //! Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
+@property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 @end
