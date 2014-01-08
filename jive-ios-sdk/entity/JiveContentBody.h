@@ -19,6 +19,11 @@
 
 #import "JiveObject.h"
 
+extern struct JiveContentBodyAttributes {
+    __unsafe_unretained NSString *text;
+    __unsafe_unretained NSString *type;
+} const JiveContentBodyAttributes;
+
 //! \class JiveContentBody
 //! https://developers.jivesoftware.com/api/v3/rest/ContentBodyEntity.html
 @interface JiveContentBody : JiveObject

@@ -19,6 +19,11 @@
 
 #import "JiveContentBody.h"
 
+struct JiveContentBodyAttributes const JiveContentBodyAttributes = {
+    .text = @"text",
+    .type = @"type"
+};
+
 @implementation JiveContentBody
 
 @synthesize text, type;
@@ -26,8 +31,8 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:text forKey:@"text"];
-    [dictionary setValue:type forKey:@"type"];
+    [dictionary setValue:text forKey:JiveContentBodyAttributes.text];
+    [dictionary setValue:type forKey:JiveContentBodyAttributes.type];
     
     return dictionary;
 }
