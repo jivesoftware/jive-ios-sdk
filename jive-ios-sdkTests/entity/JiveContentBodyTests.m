@@ -22,40 +22,81 @@
 
 @implementation JiveContentBodyTests
 
-- (void)testToJSON {
-    JiveContentBody *body = [[JiveContentBody alloc] init];
-    id JSON = [body toJSONDictionary];
-    
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
-    
-    body.text = @"text";
-    body.type = @"text/text";
-    
-    JSON = [body toJSONDictionary];
-    
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], body.text, @"Wrong text.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], body.type, @"Wrong type.");
+- (void)setUp {
+    [super setUp];
+    self.object = [JiveContentBody new];
 }
 
-- (void)testToJSON_alternate {
-    JiveContentBody *body = [[JiveContentBody alloc] init];
-    id JSON = [body toJSONDictionary];
+- (JiveContentBody *)contentBody {
+    return (JiveContentBody *)self.object;
+}
+
+- (void)testContentBodyToJSON {
+    id JSON = [self.contentBody toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
     
-    body.text = @"html";
-    body.type = @"text/html";
+    self.contentBody.text = @"text";
+    self.contentBody.type = @"text/text";
     
-    JSON = [body toJSONDictionary];
+    JSON = [self.contentBody toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], body.text, @"Wrong text.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], body.type, @"Wrong type.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], self.contentBody.text, @"Wrong text.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.contentBody.type, @"Wrong type.");
+}
+
+- (void)testContentBodyToJSON_alternate {
+    id JSON = [self.contentBody toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    
+    self.contentBody.text = @"html";
+    self.contentBody.type = @"text/html";
+    
+    JSON = [self.contentBody toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], self.contentBody.text, @"Wrong text.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.contentBody.type, @"Wrong type.");
+}
+
+- (void)testContentBodyPersistentJSON {
+    id JSON = [self.contentBody toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    
+    self.contentBody.text = @"text";
+    self.contentBody.type = @"text/text";
+    
+    JSON = [self.contentBody persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], self.contentBody.text, @"Wrong text.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.contentBody.type, @"Wrong type.");
+}
+
+- (void)testContentBodyPersistentJSON_alternate {
+    id JSON = [self.contentBody toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    
+    self.contentBody.text = @"html";
+    self.contentBody.type = @"text/html";
+    
+    JSON = [self.contentBody persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"text"], self.contentBody.text, @"Wrong text.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"type"], self.contentBody.type, @"Wrong type.");
 }
 
 @end
