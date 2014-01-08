@@ -27,6 +27,7 @@ extern struct JiveDocumentAttributes {
     __unsafe_unretained NSString *authors;
     __unsafe_unretained NSString *authorship;
     __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *editingBy;
     __unsafe_unretained NSString *fromQuest;
     __unsafe_unretained NSString *outcomeCounts;
     __unsafe_unretained NSString *outcomeTypeNames;
@@ -60,6 +61,9 @@ extern struct JiveDocumentAttributes {
 
 //! Categories associated with this object. Places define the list of possible categories. String[]
 @property(nonatomic, strong) NSArray* categories;
+
+//! The person currently editing this document, meaning that it's locked. If not present, nobody is editing.
+@property(nonatomic, readonly) JivePerson *editingBy;
 
 //! Flag indicating that this document was created as part of a quest.
 @property(nonatomic, copy) NSString* fromQuest;

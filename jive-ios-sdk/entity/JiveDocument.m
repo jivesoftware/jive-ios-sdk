@@ -29,6 +29,7 @@ struct JiveDocumentAttributes const JiveDocumentAttributes = {
     .authors = @"authors",
     .authorship = @"authorship",
     .categories = @"categories",
+    .editingBy = @"editingBy",
     .fromQuest = @"fromQuest",
     .outcomeCounts = @"outcomeCounts",
     .outcomeTypeNames = @"outcomeTypeNames",
@@ -45,7 +46,7 @@ struct JiveDocumentAttributes const JiveDocumentAttributes = {
 
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
 @synthesize tags, updater, users, visibility, visibleToExternalContributors, outcomeTypes;
-@synthesize outcomeTypeNames, outcomeCounts;
+@synthesize outcomeTypeNames, outcomeCounts, editingBy;
 
 NSString * const JiveDocumentType = @"document";
 
@@ -153,6 +154,10 @@ NSString * const JiveDocumentType = @"document";
         [self addArrayElements:users
         toPersistentDictionary:dictionary
                         forTag:JiveDocumentAttributes.users];
+    }
+    
+    if (editingBy) {
+        [dictionary setValue:editingBy.persistentJSON forKey:JiveDocumentAttributes.editingBy];
     }
     
     return dictionary;
