@@ -22,6 +22,7 @@
 extern struct JiveContentBodyAttributes {
     __unsafe_unretained NSString *text;
     __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *editable;
 } const JiveContentBodyAttributes;
 
 //! \class JiveContentBody
@@ -33,5 +34,8 @@ extern struct JiveContentBodyAttributes {
 
 //! The MIME type of this content object's body (typically text/html).
 @property(nonatomic, copy) NSString* type;
+
+//! Flag indicating if content text is editable.
+@property(nonatomic, readonly) NSNumber *editable;
 
 @end

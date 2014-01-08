@@ -39,6 +39,7 @@
     
     self.contentBody.text = @"text";
     self.contentBody.type = @"text/text";
+    [self.contentBody setValue:@YES forKey:JiveContentBodyAttributes.editable];
     
     JSON = [self.contentBody toJSONDictionary];
     
@@ -73,16 +74,37 @@
     
     self.contentBody.text = @"text";
     self.contentBody.type = @"text/text";
+    [self.contentBody setValue:@YES forKey:JiveContentBodyAttributes.editable];
     
     JSON = [self.contentBody persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.text], self.contentBody.text, @"Wrong text.");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.type], self.contentBody.type, @"Wrong type.");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.editable], self.contentBody.editable, @"Wrong editable");
 }
 
 - (void)testContentBodyPersistentJSON_alternate {
+    NSDictionary *JSON = [self.contentBody toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+    
+    self.contentBody.text = @"html";
+    self.contentBody.type = @"text/html";
+    [self.contentBody setValue:@NO forKey:JiveContentBodyAttributes.editable];
+    
+    JSON = [self.contentBody persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.text], self.contentBody.text, @"Wrong text.");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.type], self.contentBody.type, @"Wrong type.");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.editable], self.contentBody.editable, @"Wrong editable");
+}
+
+- (void)testContentBodyPersistentJSON_noBools {
     NSDictionary *JSON = [self.contentBody toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -97,6 +119,7 @@
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.text], self.contentBody.text, @"Wrong text.");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.type], self.contentBody.type, @"Wrong type.");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.editable], self.contentBody.editable, @"Wrong editable");
 }
 
 @end
