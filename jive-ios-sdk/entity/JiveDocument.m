@@ -20,6 +20,7 @@
 #import "JiveDocument.h"
 #import "JiveAttachment.h"
 #import "JivePerson.h"
+#import "JiveOutcomeType.h"
 #import "JiveTypedObject_internal.h"
 
 struct JiveDocumentAttributes const JiveDocumentAttributes = {
@@ -29,6 +30,9 @@ struct JiveDocumentAttributes const JiveDocumentAttributes = {
     .authorship = @"authorship",
     .categories = @"categories",
     .fromQuest = @"fromQuest",
+    .outcomeCounts = @"outcomeCounts",
+    .outcomeTypeNames = @"outcomeTypeNames",
+    .outcomeTypes = @"outcomeTypes",
     .restrictComments = @"restrictComments",
     .tags = @"tags",
     .updater = @"updater",
@@ -40,7 +44,8 @@ struct JiveDocumentAttributes const JiveDocumentAttributes = {
 @implementation JiveDocument
 
 @synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
-@synthesize tags, updater, users, visibility, visibleToExternalContributors;
+@synthesize tags, updater, users, visibility, visibleToExternalContributors, outcomeTypes;
+@synthesize outcomeTypeNames, outcomeCounts;
 
 NSString * const JiveDocumentType = @"document";
 
@@ -59,12 +64,37 @@ NSString * const JiveDocumentType = @"document";
     }
     
     if ([propertyName isEqualToString:JiveDocumentAttributes.approvers] ||
-        [propertyName isEqualToString:JiveDocumentAttributes.authors] ||
-        [propertyName isEqualToString:JiveDocumentAttributes.users]) {
+        [propertyName isEqualToString:JiveDocumentAttributes.authors]) {
         return [JivePerson class];
     }
     
+    if ([propertyName isEqualToString:JiveDocumentAttributes.outcomeTypes]) {
+        return [JiveOutcomeType class];
+    }
+    
     return nil;
+}
+
+- (id)parseArrayNamed:(NSString *)propertyName fromJSON:(id)JSON jiveInstance:(Jive *)jiveInstance {
+    if (![propertyName isEqualToString:JiveDocumentAttributes.users]) {
+        return [super parseArrayNamed:propertyName fromJSON:JSON jiveInstance:jiveInstance];
+    }
+    
+    if (![[JSON[0] class] isSubclassOfClass:[NSString class]]) {
+        return [JivePerson objectsFromJSONList:JSON withInstance:jiveInstance];
+    }
+    
+    return JSON;
+}
+
+- (NSDictionary *)parseDictionaryForProperty:(NSString *)property
+                                    fromJSON:(id)JSON
+                                fromInstance:(Jive *)jiveInstance {
+    if ([property isEqualToString:JiveDocumentAttributes.outcomeCounts]) {
+        return JSON;
+    }
+    
+    return [super parseDictionaryForProperty:property fromJSON:JSON fromInstance:jiveInstance];
 }
 
 - (NSDictionary *)toJSONDictionary {
@@ -74,6 +104,7 @@ NSString * const JiveDocumentType = @"document";
     [dictionary setValue:fromQuest forKey:JiveDocumentAttributes.fromQuest];
     [dictionary setValue:restrictComments forKey:JiveDocumentAttributes.restrictComments];
     [dictionary setValue:visibility forKey:JiveDocumentAttributes.visibility];
+    [dictionary setValue:outcomeTypeNames forKey:JiveDocumentAttributes.outcomeTypeNames];
     [self addArrayElements:attachments
           toJSONDictionary:dictionary
                     forTag:JiveDocumentAttributes.attachments];
@@ -108,8 +139,12 @@ NSString * const JiveDocumentType = @"document";
     [self addArrayElements:authors
     toPersistentDictionary:dictionary
                     forTag:JiveDocumentAttributes.authors];
+    [self addArrayElements:outcomeTypes
+    toPersistentDictionary:dictionary
+                    forTag:JiveDocumentAttributes.outcomeTypes];
     [dictionary setValue:visibleToExternalContributors
                   forKey:JiveDocumentAttributes.visibleToExternalContributors];
+    [dictionary setValue:outcomeCounts forKey:JiveDocumentAttributes.outcomeCounts];
     if (updater) {
         dictionary[JiveDocumentAttributes.updater] = updater.persistentJSON;
     }

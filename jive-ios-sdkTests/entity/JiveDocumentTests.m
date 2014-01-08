@@ -20,6 +20,7 @@
 #import "JiveDocumentTests.h"
 #import "JivePerson.h"
 #import "JiveAttachment.h"
+#import "JiveOutcomeType.h"
 
 @implementation JiveDocumentTests
 
@@ -49,8 +50,8 @@
     JiveAttachment *attachment = [JiveAttachment new];
     JivePerson *approver = [JivePerson new];
     JivePerson *author = [JivePerson new];
-    JivePerson *editor = [JivePerson new];
     JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"category";
     NSString *tag = @"wordy";
     NSString *personURI = @"/person/1234";
@@ -63,14 +64,17 @@
     attachment.contentType = @"person";
     approver.location = @"Tower";
     author.location = @"location";
-    editor.location = @"dungeon";
     updater.location = @"cloud";
+    [outcome setValue:@"outcome" forKey:JiveOutcomeTypeAttributes.jiveId];
     self.document.approvers = @[approver];
     self.document.attachments = @[attachment];
     self.document.authors = @[author];
     self.document.authorship = @"open";
     self.document.categories = @[category];
     self.document.fromQuest = @"fromQuest";
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId: @1} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId];
     self.document.restrictComments = @YES;
     self.document.tags = @[tag];
     [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
@@ -81,7 +85,7 @@
     JSON = [self.document toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)11, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)12, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.document.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveDocumentAttributes.authorship],
                          self.document.authorship, @"Wrong authorship");
@@ -131,6 +135,12 @@
     STAssertTrue([[categoriesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([categoriesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([categoriesJSON objectAtIndex:0], category, @"Wrong value");
+    
+    NSArray *outcomeTypeNamesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypeNames];
+    
+    STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeTypeNamesJSON[0], outcome.jiveId, @"Wrong value");
 }
 
 - (void)testDocumentToJSON_alternate {
@@ -139,20 +149,26 @@
     JivePerson *author = [[JivePerson alloc] init];
     JivePerson *user = [[JivePerson alloc] init];
     JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"denomination";
     NSString *tag = @"concise";
+    NSString *decision = @"decision";
     
     attachment.contentType = @"place";
     approver.location = @"Restaurant";
     author.location = @"Subway";
     user.location = @"Theater";
     updater.location = @"Taxi";
+    [outcome setValue:@"failed" forKey:JiveOutcomeTypeAttributes.jiveId];
     self.document.approvers = @[approver];
     self.document.attachments = @[attachment];
     self.document.authors = @[author];
     self.document.authorship = @"limited";
     self.document.categories = @[category];
     self.document.fromQuest = @"toAnyone";
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId: @1} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId, decision];
     self.document.tags = @[tag];
     [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
     self.document.users = @[user];
@@ -161,7 +177,7 @@
     NSDictionary *JSON = [self.document toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)10, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)11, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.document.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveDocumentAttributes.authorship],
                          self.document.authorship, @"Wrong authorship");
@@ -215,6 +231,13 @@
     STAssertTrue([[categoriesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([categoriesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([categoriesJSON objectAtIndex:0], category, @"Wrong value");
+    
+    NSArray *outcomeTypeNamesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypeNames];
+    
+    STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeTypeNamesJSON[0], outcome.jiveId, @"Wrong value");
+    STAssertEqualObjects(outcomeTypeNamesJSON[1], decision, @"Wrong value");
 }
 
 - (void)testDocumentPersistentJSON_boolProperties {
@@ -436,11 +459,12 @@
     JiveAttachment *attachment = [JiveAttachment new];
     JivePerson *approver = [JivePerson new];
     JivePerson *author = [JivePerson new];
-    JivePerson *editor = [JivePerson new];
     JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"category";
     NSString *tag = @"wordy";
     NSString *personURI = @"/person/1234";
+    NSNumber *outcomeCount = @1;
     NSDictionary *JSON = [self.document toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -453,16 +477,19 @@
     [approver setValue:approver.location forKey:JivePersonAttributes.displayName];
     author.location = @"location";
     [author setValue:author.location forKey:JivePersonAttributes.displayName];
-    editor.location = @"dungeon";
-    [editor setValue:editor.location forKey:JivePersonAttributes.displayName];
     updater.location = @"cloud";
     [updater setValue:updater.location forKey:JivePersonAttributes.displayName];
+    [outcome setValue:@"outcome" forKey:JiveOutcomeTypeAttributes.jiveId];
+    [outcome setValue:outcome.jiveId forKey:JiveOutcomeTypeAttributes.name];
     self.document.approvers = @[approver];
     self.document.attachments = @[attachment];
     self.document.authors = @[author];
     self.document.authorship = @"open";
     self.document.categories = @[category];
     self.document.fromQuest = @"fromQuest";
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId:outcomeCount} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId];
     self.document.restrictComments = @YES;
     self.document.tags = @[tag];
     [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
@@ -473,7 +500,7 @@
     JSON = [self.document persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)13, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.document.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveDocumentAttributes.authorship],
                          self.document.authorship, @"Wrong authorship");
@@ -544,6 +571,27 @@
     STAssertTrue([[categoriesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([categoriesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([categoriesJSON objectAtIndex:0], category, @"Wrong value");
+    
+    NSArray *outcomeTypeNamesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypeNames];
+    
+    STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeTypeNamesJSON[0], outcome.jiveId, @"Wrong value");
+    
+    NSArray *outcomeTypesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypes];
+    NSDictionary *outcomeJSON = [outcomeTypesJSON objectAtIndex:0];
+    
+    STAssertTrue([[outcomeTypesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([outcomeJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeJSON[@"id"], outcome.jiveId, @"Wrong value");
+    STAssertEqualObjects(outcomeJSON[JiveOutcomeTypeAttributes.name], outcome.name, @"Wrong value");
+    
+    NSDictionary *outcomeCountsJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeCounts];
+    
+    STAssertTrue([[outcomeCountsJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeCountsJSON[outcome.jiveId], outcomeCount, @"Wrong value");
 }
 
 - (void)testDocumentPersistentJSON_alternate {
@@ -552,8 +600,10 @@
     JivePerson *author = [[JivePerson alloc] init];
     JivePerson *user = [[JivePerson alloc] init];
     JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"denomination";
     NSString *tag = @"concise";
+    NSNumber *outcomeCount = @5;
     
     attachment.contentType = @"place";
     [attachment setValue:@938272 forKey:JiveAttachmentAttributes.size];
@@ -565,12 +615,17 @@
     [user setValue:user.location forKey:JivePersonAttributes.displayName];
     updater.location = @"Taxi";
     [updater setValue:updater.location forKey:JivePersonAttributes.displayName];
+    [outcome setValue:@"Hotel" forKey:JiveOutcomeTypeAttributes.jiveId];
+    [outcome setValue:outcome.jiveId forKey:JiveOutcomeTypeAttributes.name];
     self.document.approvers = @[approver];
     self.document.attachments = @[attachment];
     self.document.authors = @[author];
     self.document.authorship = @"limited";
     self.document.categories = @[category];
     self.document.fromQuest = @"toAnyone";
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId:outcomeCount} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId];
     self.document.tags = @[tag];
     [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
     self.document.users = @[user];
@@ -579,7 +634,7 @@
     NSDictionary *JSON = [self.document persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)11, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)14, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.document.type, @"Wrong type");
     STAssertEqualObjects([JSON objectForKey:JiveDocumentAttributes.authorship],
                          self.document.authorship, @"Wrong authorship");
@@ -654,28 +709,58 @@
     STAssertTrue([[categoriesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
     STAssertEquals([categoriesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([categoriesJSON objectAtIndex:0], category, @"Wrong value");
+    
+    NSArray *outcomeTypeNamesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypeNames];
+    
+    STAssertTrue([[outcomeTypeNamesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypeNamesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeTypeNamesJSON[0], outcome.jiveId, @"Wrong value");
+    
+    NSArray *outcomeTypesJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeTypes];
+    NSDictionary *outcomeJSON = [outcomeTypesJSON objectAtIndex:0];
+    
+    STAssertTrue([[outcomeTypesJSON class] isSubclassOfClass:[NSArray class]], @"Jive not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEquals([outcomeJSON count], (NSUInteger)2, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeJSON[@"id"], outcome.jiveId, @"Wrong value");
+    STAssertEqualObjects(outcomeJSON[JiveOutcomeTypeAttributes.name], outcome.name, @"Wrong value");
+    
+    NSDictionary *outcomeCountsJSON = [JSON objectForKey:JiveDocumentAttributes.outcomeCounts];
+    
+    STAssertTrue([[outcomeCountsJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([outcomeTypesJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects(outcomeCountsJSON[outcome.jiveId], outcomeCount, @"Wrong value");
 }
 
 - (void)testDocumentParsing {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     JivePerson *approver = [[JivePerson alloc] init];
     JivePerson *author = [[JivePerson alloc] init];
-    JivePerson *user = [[JivePerson alloc] init];
+    JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"category";
     NSString *tag = @"wordy";
+    NSString *personURI = @"/person/1234";
+    NSNumber *outcomeCount = @1;
     
     attachment.contentType = @"person";
     approver.location = @"Tower";
     author.location = @"location";
-    user.location = @"mountain";
-    self.document.approvers = [NSArray arrayWithObject:approver];
-    self.document.attachments = [NSArray arrayWithObject:attachment];
-    self.document.authors = [NSArray arrayWithObject:author];
+    updater.location = @"cloud";
+    [outcome setValue:@"outcome" forKey:JiveOutcomeTypeAttributes.jiveId];
+    self.document.approvers = @[approver];
+    self.document.attachments = @[attachment];
+    self.document.authors = @[author];
     self.document.authorship = @"open";
-    self.document.categories = [NSArray arrayWithObject:category];
+    self.document.categories = @[category];
     self.document.fromQuest = @"fromQuest";
-    [self.document setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
-    [self.document setValue:[NSArray arrayWithObject:user] forKey:@"users"];
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId: outcomeCount} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId];
+    self.document.restrictComments = @YES;
+    self.document.tags = @[tag];
+    [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
+    self.document.users = @[personURI];
     self.document.visibility = @"hidden";
     [self.document setValue:@YES forKey:JiveDocumentAttributes.visibleToExternalContributors];
     
@@ -684,18 +769,35 @@
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.document class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.document.type, @"Wrong type");
+    STAssertEquals([newContent.approvers count], [self.document.approvers count], @"Wrong number of approver objects");
+    STAssertEquals([newContent.attachments count], [self.document.attachments count], @"Wrong number of attachment objects");
+    STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
     STAssertEqualObjects(newContent.authorship, self.document.authorship, @"Wrong authorship");
+    STAssertEquals([newContent.categories count], [self.document.categories count], @"Wrong number of categories");
+    STAssertEqualObjects(newContent.categories[0], category, @"Wrong category");
     STAssertEqualObjects(newContent.fromQuest, self.document.fromQuest, @"Wrong fromQuest");
+    STAssertEquals(newContent.outcomeCounts.count, self.document.outcomeCounts.count, @"Wrong outcomeCounts count");
+    STAssertEqualObjects(newContent.outcomeCounts[outcome.jiveId], outcomeCount, @"Wrong outcome count");
+    STAssertEquals(newContent.outcomeTypeNames.count, self.document.outcomeTypeNames.count, @"Wrong outcomeTypeNames count");
+    STAssertEqualObjects(newContent.outcomeTypeNames[0], outcome.jiveId, @"Wrong outcome name");
+    STAssertEquals(newContent.outcomeTypes.count, self.document.outcomeTypes.count, @"Wrong outcomeTypes count");
+    STAssertEquals(newContent.tags.count, self.document.tags.count, @"Wrong tags count");
+    STAssertEqualObjects(newContent.tags[0], tag, @"Wrong tag");
+    STAssertEqualObjects(newContent.updater.location, updater.location, @"Wrong updater");
+    STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
+    STAssertEqualObjects(newContent.users[0], personURI, @"Wrong personURI");
     STAssertEqualObjects(newContent.visibility, self.document.visibility, @"Wrong visibility");
     STAssertEqualObjects(newContent.visibleToExternalContributors,
                          self.document.visibleToExternalContributors,
                          @"Wrong visibleToExternalContributors");
 
-    STAssertEquals([newContent.tags count], [self.document.tags count], @"Wrong number of tags");
-    STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEquals([newContent.categories count], [self.document.categories count], @"Wrong number of tags");
-    STAssertEqualObjects([newContent.categories objectAtIndex:0], category, @"Wrong category");
-    STAssertEquals([newContent.attachments count], [self.document.attachments count], @"Wrong number of attachment objects");
+    if ([newContent.approvers count] > 0) {
+        id convertedObject = [newContent.approvers objectAtIndex:0];
+        STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
+        if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
+            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
+    }
+    
     if ([newContent.attachments count] > 0) {
         id convertedObject = [newContent.attachments objectAtIndex:0];
         STAssertEquals([convertedObject class], [JiveAttachment class], @"Wrong attachment object class");
@@ -703,26 +805,19 @@
             STAssertEqualObjects([(JiveAttachment *)convertedObject contentType],
                                  attachment.contentType, @"Wrong attachment object");
     }
-    STAssertEquals([newContent.approvers count], [self.document.approvers count], @"Wrong number of approver objects");
-    if ([newContent.approvers count] > 0) {
-        id convertedObject = [newContent.approvers objectAtIndex:0];
-        STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
-        if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
-    }
-    STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
+    
     if ([newContent.authors count] > 0) {
         id convertedObject = [newContent.authors objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong author object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
             STAssertEqualObjects([(JivePerson *)convertedObject location], author.location, @"Wrong author object");
     }
-    STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
-    if ([newContent.users count] > 0) {
-        id convertedObject = [newContent.users objectAtIndex:0];
-        STAssertEquals([convertedObject class], [JivePerson class], @"Wrong user object class");
-        if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject location], user.location, @"Wrong user object");
+    
+    if ([newContent.outcomeTypes count] > 0) {
+        id convertedObject = newContent.outcomeTypes[0];
+        STAssertEquals([convertedObject class], [JiveOutcomeType class], @"Wrong outcomeType object class");
+        if ([[convertedObject class] isSubclassOfClass:[JiveOutcomeType class]])
+            STAssertEqualObjects([(JiveOutcomeType *)convertedObject jiveId], outcome.jiveId, @"Wrong outcome type");
     }
 }
 
@@ -731,41 +826,65 @@
     JivePerson *approver = [[JivePerson alloc] init];
     JivePerson *author = [[JivePerson alloc] init];
     JivePerson *user = [[JivePerson alloc] init];
+    JivePerson *updater = [JivePerson new];
+    JiveOutcomeType *outcome = [JiveOutcomeType new];
     NSString *category = @"denomination";
     NSString *tag = @"concise";
+    NSNumber *outcomeCount = @5;
     
     attachment.contentType = @"place";
     approver.location = @"Restaurant";
     author.location = @"Subway";
     user.location = @"Theater";
-    self.document.approvers = [NSArray arrayWithObject:approver];
-    self.document.attachments = [NSArray arrayWithObject:attachment];
-    self.document.authors = [NSArray arrayWithObject:author];
+    updater.location = @"Taxi";
+    [outcome setValue:@"failed" forKey:JiveOutcomeTypeAttributes.jiveId];
+    self.document.approvers = @[approver];
+    self.document.attachments = @[attachment];
+    self.document.authors = @[author];
     self.document.authorship = @"limited";
-    self.document.categories = [NSArray arrayWithObject:category];
+    self.document.categories = @[category];
     self.document.fromQuest = @"toAnyone";
-    [self.document setValue:[NSArray arrayWithObject:tag] forKey:@"tags"];
-    [self.document setValue:[NSArray arrayWithObject:user] forKey:@"users"];
+    [self.document setValue:@[outcome] forKey:JiveDocumentAttributes.outcomeTypes];
+    [self.document setValue:@{outcome.jiveId: outcomeCount} forKey:JiveDocumentAttributes.outcomeCounts];
+    self.document.outcomeTypeNames = @[outcome.jiveId];
+    self.document.tags = @[tag];
+    [self.document setValue:updater forKey:JiveDocumentAttributes.updater];
+    self.document.users = @[user];
     self.document.visibility = @"people";
-    self.document.restrictComments = @YES;
     
     id JSON = [self.document persistentJSON];
     JiveDocument *newContent = [JiveDocument objectFromJSON:JSON withInstance:self.instance];
     
     STAssertTrue([[newContent class] isSubclassOfClass:[self.document class]], @"Wrong item class");
     STAssertEqualObjects(newContent.type, self.document.type, @"Wrong type");
+    STAssertEquals([newContent.approvers count], [self.document.approvers count], @"Wrong number of approver objects");
+    STAssertEquals([newContent.attachments count], [self.document.attachments count], @"Wrong number of attachment objects");
+    STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
     STAssertEqualObjects(newContent.authorship, self.document.authorship, @"Wrong authorship");
+    STAssertEquals([newContent.categories count], [self.document.categories count], @"Wrong number of categories");
+    STAssertEqualObjects(newContent.categories[0], category, @"Wrong category");
     STAssertEqualObjects(newContent.fromQuest, self.document.fromQuest, @"Wrong fromQuest");
+    STAssertEquals(newContent.outcomeCounts.count, self.document.outcomeCounts.count, @"Wrong outcomeCounts count");
+    STAssertEqualObjects(newContent.outcomeCounts[outcome.jiveId], outcomeCount, @"Wrong outcome count");
+    STAssertEquals(newContent.outcomeTypeNames.count, self.document.outcomeTypeNames.count, @"Wrong outcomeTypeNames count");
+    STAssertEqualObjects(newContent.outcomeTypeNames[0], outcome.jiveId, @"Wrong outcome name");
+    STAssertEquals(newContent.outcomeTypes.count, self.document.outcomeTypes.count, @"Wrong outcomeTypes count");
+    STAssertEquals(newContent.tags.count, self.document.tags.count, @"Wrong tags count");
+    STAssertEqualObjects(newContent.tags[0], tag, @"Wrong tag");
+    STAssertEqualObjects(newContent.updater.location, updater.location, @"Wrong updater");
+    STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
     STAssertEqualObjects(newContent.visibility, self.document.visibility, @"Wrong visibility");
     STAssertEqualObjects(newContent.visibleToExternalContributors,
                          self.document.visibleToExternalContributors,
                          @"Wrong visibleToExternalContributors");
     
-    STAssertEquals([newContent.tags count], [self.document.tags count], @"Wrong number of tags");
-    STAssertEqualObjects([newContent.tags objectAtIndex:0], tag, @"Wrong tag");
-    STAssertEquals([newContent.categories count], [self.document.categories count], @"Wrong number of tags");
-    STAssertEqualObjects([newContent.categories objectAtIndex:0], category, @"Wrong category");
-    STAssertEquals([newContent.attachments count], [self.document.attachments count], @"Wrong number of attachment objects");
+    if ([newContent.approvers count] > 0) {
+        id convertedObject = [newContent.approvers objectAtIndex:0];
+        STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
+        if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
+            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
+    }
+    
     if ([newContent.attachments count] > 0) {
         id convertedObject = [newContent.attachments objectAtIndex:0];
         STAssertEquals([convertedObject class], [JiveAttachment class], @"Wrong attachment object class");
@@ -773,21 +892,21 @@
             STAssertEqualObjects([(JiveAttachment *)convertedObject contentType],
                                  attachment.contentType, @"Wrong attachment object");
     }
-    STAssertEquals([newContent.approvers count], [self.document.approvers count], @"Wrong number of approver objects");
-    if ([newContent.approvers count] > 0) {
-        id convertedObject = [newContent.approvers objectAtIndex:0];
-        STAssertEquals([convertedObject class], [JivePerson class], @"Wrong approver object class");
-        if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
-            STAssertEqualObjects([(JivePerson *)convertedObject location], approver.location, @"Wrong approver object");
-    }
-    STAssertEquals([newContent.authors count], [self.document.authors count], @"Wrong number of author objects");
+    
     if ([newContent.authors count] > 0) {
         id convertedObject = [newContent.authors objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong author object class");
         if ([[convertedObject class] isSubclassOfClass:[JivePerson class]])
             STAssertEqualObjects([(JivePerson *)convertedObject location], author.location, @"Wrong author object");
     }
-    STAssertEquals([newContent.users count], [self.document.users count], @"Wrong number of user objects");
+    
+    if ([newContent.outcomeTypes count] > 0) {
+        id convertedObject = newContent.outcomeTypes[0];
+        STAssertEquals([convertedObject class], [JiveOutcomeType class], @"Wrong outcomeType object class");
+        if ([[convertedObject class] isSubclassOfClass:[JiveOutcomeType class]])
+            STAssertEqualObjects([(JiveOutcomeType *)convertedObject jiveId], outcome.jiveId, @"Wrong outcome type");
+    }
+    
     if ([newContent.users count] > 0) {
         id convertedObject = [newContent.users objectAtIndex:0];
         STAssertEquals([convertedObject class], [JivePerson class], @"Wrong user object class");

@@ -28,6 +28,9 @@ extern struct JiveDocumentAttributes {
     __unsafe_unretained NSString *authorship;
     __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *fromQuest;
+    __unsafe_unretained NSString *outcomeCounts;
+    __unsafe_unretained NSString *outcomeTypeNames;
+    __unsafe_unretained NSString *outcomeTypes;
     __unsafe_unretained NSString *restrictComments;
     __unsafe_unretained NSString *tags;
     __unsafe_unretained NSString *updater;
@@ -60,6 +63,15 @@ extern struct JiveDocumentAttributes {
 
 //! Flag indicating that this document was created as part of a quest.
 @property(nonatomic, copy) NSString* fromQuest;
+
+//! Map of structured outcome type names that have been assigned to this content object, and a count of how many times they appear. Outcomes assigned to child comments and messages will also be included. Availability: Only available for content object types that support structured outcomes. @{String:Number}
+@property(nonatomic, readonly) NSDictionary *outcomeCounts;
+
+//! List of structured outcome type names that have been assigned to this content object. Outcomes assigned to child comments and messages will also be included. Availability: Only available for content object types that support structured outcomes. String[]
+@property(nonatomic, strong) NSArray *outcomeTypeNames;
+
+//! A list of valid outcome types that can be set on this piece of content. Creation optional. JiveOutcomeType[]
+@property(nonatomic, readonly) NSArray *outcomeTypes;
 
 //! Flag indicating that old comments will be visible but new comments are not allowed. If not restricted then anyone with appropriate permissions can comment on the content.
 @property(nonatomic, strong) NSNumber *restrictComments;
