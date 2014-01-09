@@ -30,6 +30,7 @@
 @class AFImageRequestOperation;
 @class JiveBlog;
 @class JivePerson;
+@class JiveContent;
 @class JiveWelcomeRequestOptions;
 @class JivePagedRequestOptions;
 @class JiveReturnFieldsRequestOptions;
@@ -44,6 +45,7 @@ typedef void (^JiveArrayCompleteBlock)(NSArray *objects);
 typedef void (^JiveObjectCompleteBlock)(JiveObject *object);
 typedef void (^JivePersonCompleteBlock)(JivePerson *person);
 typedef void (^JiveBlogCompleteBlock)(JiveBlog *blogPlace);
+typedef void (^JiveContentCompleteBlock)(JiveContent *content);
 typedef void (^JiveImageCompleteBlock)(UIImage *avatarImage);
 typedef void (^JiveTaskCompleteBlock)(JiveTask *task);
 typedef void (^JiveCompletedBlock)(void);
