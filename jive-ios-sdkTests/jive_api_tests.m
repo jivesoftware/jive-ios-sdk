@@ -6774,4 +6774,104 @@
     }];
 }
 
+- (void) testAutosaveDocumentWithAttachmentsOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
+    JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    JiveAttachment *simpleAttachment = [JiveAttachment new];
+    NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+    
+    options.minor = YES;
+    simpleAttachment.name = @"document.json";
+    simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                   ofType:@"json"]];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive autosaveDocumentWhileEditingOperation:source
+                                                                          withAttachments:attachments
+                                                                                  options:options
+                                                                               onComplete:^(JiveContent *content) {
+                                                                                   // Called 3rd
+                                                                                   STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                                                                   STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                                                                                   STAssertEquals(content, source, @"Content object not updated");
+                                                                                   
+                                                                                   // Check that delegates where actually called
+                                                                                   [mockAuthDelegate verify];
+                                                                                   [mockJiveURLResponseDelegate verify];
+                                                                                   finishedBlock();
+                                                                               }
+                                                                                  onError:^(NSError *error) {
+                                                                                      STFail([error localizedDescription]);
+                                                                                      finishedBlock();
+                                                                                  }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        NSString *contentType = [operation.request valueForHTTPHeaderField:@"Content-Type"];
+        STAssertTrue([contentType hasPrefix:@"multipart/form-data; boundary="], @"Wrong content type, don't care about the value of the boundary");
+        [operation start];
+    }];
+}
+
+- (void) testAutosaveDocumentWithAttachments {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document_alternate"];
+        JiveAttachment *simpleAttachment = [JiveAttachment new];
+        NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+        
+        simpleAttachment.name = @"document.json";
+        simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                       ofType:@"json"]];
+        [jive autosaveDocumentWhileEditing:source
+                           withAttachments:attachments
+                                   options:options
+                                onComplete:^(JiveContent *content) {
+                                    // Called 3rd
+                                    STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                    STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                    STAssertEquals(content, source, @"Content object not updated");
+                                    
+                                    // Check that delegates where actually called
+                                    [mockAuthDelegate verify];
+                                    [mockJiveURLResponseDelegate verify];
+                                    finishedBlock();
+                                } onError:^(NSError *error) {
+                                    STFail([error localizedDescription]);
+                                    finishedBlock();
+                                }];
+    }];
+}
+
 @end

@@ -513,6 +513,8 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (void) lockContentForEditing:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateEditableContent(String,%20String,%20boolean,%20boolean,%20String)
 - (void) autosaveContentWhileEditing:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateEditableContent(String,%20MultipartBody,%20boolean,%20String)
+- (void) autosaveDocumentWhileEditing:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveMinorCommentRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#unlockEditableContent(String)
 - (void) deleteContentLock:(JiveContent *)content onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 
@@ -594,6 +596,8 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (AFJSONRequestOperation<JiveRetryingOperation> *) lockContentForEditingOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateEditableContent(String,%20String,%20boolean,%20boolean,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) autosaveContentWhileEditingOperation:(JiveContent *)content withOptions:(JiveMinorCommentRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
+//! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#updateEditableContent(String,%20MultipartBody,%20boolean,%20String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) autosaveDocumentWhileEditingOperation:(JiveDocument *)document withAttachments:(NSArray *)attachmentURLs options:(JiveMinorCommentRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 //! https://developers.jivesoftware.com/api/v3/rest/ContentService.html#unlockEditableContent(String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteContentLockOperation:(JiveContent *)content onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error;
 
