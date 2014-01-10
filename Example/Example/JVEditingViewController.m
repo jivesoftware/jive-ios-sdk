@@ -22,17 +22,33 @@
         _detailItem = newDetailItem;
         self.title = post.subject;
         self.titleField.text = post.subject;
-        [self.instance getEditableContent:post
-                              withOptions:nil
-                               onComplete:^(JiveContent *content) {
-                                   self.titleField.text = content.subject;
-                                   self.bodyField.text = content.content.text;
-                                   [self.bodyField becomeFirstResponder];
-                               }
-                                  onError:^(NSError *error) {
-                                      [self.activityIndicator stopAnimating];
-                                  }];
-        [self.activityIndicator startAnimating];
+        if (self.instance.platformVersion.supportsContentEditingAPI) {
+            [self.instance getEditableContent:post
+                                  withOptions:nil
+                                   onComplete:^(JiveContent *content) {
+                                       self.titleField.text = content.subject;
+                                       self.bodyField.text = content.content.text;
+                                       [self.bodyField becomeFirstResponder];
+                                   }
+                                      onError:^(NSError *error) {
+                                          [self.activityIndicator stopAnimating];
+                                      }];
+            [self.activityIndicator startAnimating];
+        } else {
+            self.bodyField.text = post.content.text;
+            [self.bodyField becomeFirstResponder];
+        }
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if (self.detailItem) {
+        JivePost *post = self.detailItem;
+        
+        self.title = post.subject;
+        self.titleField.text = post.subject;
+        self.bodyField.text = post.content.text;
     }
 }
 
