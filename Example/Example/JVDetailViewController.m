@@ -10,6 +10,7 @@
 #import "JVBlogViewController.h"
 #import <Jive/Jive.h>
 #import "JVJiveFactory.h"
+#import "JVEditingViewController.h"
 
 @interface JVDetailViewController ()
 
@@ -59,6 +60,16 @@
     self.operationQueue = [NSOperationQueue new];
     self.tableViewController = [JVBlogViewController new];
     self.tableViewController.tableView = self.tableView;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"beginEditing"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        JivePost *object = self.tableViewController.contents[indexPath.row];
+        [[segue destinationViewController] setInstance:[_detailItem jiveInstance]];
+        [[segue destinationViewController] setDetailItem:object];
+    }
 }
 
 @end
