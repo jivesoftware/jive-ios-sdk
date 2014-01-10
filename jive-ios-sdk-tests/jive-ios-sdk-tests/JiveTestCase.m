@@ -99,6 +99,9 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
     jive3 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:server]
                          authorizationDelegate:authorizationDelegate3];
     
+    jive4 = [[Jive alloc] initWithJiveInstance:[NSURL URLWithString:server]
+                         authorizationDelegate:authorizationDelegate1];
+    
 
 }
 
@@ -106,6 +109,7 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
     jive1 = nil;
     jive2 = nil;
     jive3 = nil;
+    jive4 = nil;
     
     [super tearDown];
 }
