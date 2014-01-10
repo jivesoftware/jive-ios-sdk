@@ -1507,9 +1507,8 @@ int const JivePushDeviceType = 3;
                                                                      onComplete:(JiveContentCompleteBlock)complete
                                                                         onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
-    NSMutableURLRequest *request = [self requestWithJSONBody:content
-                                                     options:options
-                                                 andTemplate:path, nil];
+    NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
+                                                            andTemplate:path, nil];
     
     return [self updateJiveTypedObject:content
                            withRequest:request
