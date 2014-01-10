@@ -59,10 +59,14 @@ struct JiveContentResourceTags const JiveContentResourceTags = {
 struct JiveContentAttributes const JiveContentAttributes = {
     .author = @"author",
     .content = @"content",
+    .contentID = @"contentID",
+    .customIconRef = @"customIconRef",
     .followerCount = @"followerCount",
     .highlightBody = @"highlightBody",
     .highlightSubject = @"highlightSubject",
     .highlightTags = @"highlightTags",
+    .iconCss = @"iconCss",
+    .jiveId = @"jiveId",
     .likeCount = @"likeCount",
     .parent = @"parent",
     .parentContent = @"parentContent",
@@ -81,9 +85,19 @@ struct JiveContentAttributes const JiveContentAttributes = {
     .visibleToExternalContributors = @"visibleToExternalContributors"
 };
 
+struct JiveContentAttributesInternal {
+    __unsafe_unretained NSString *jiveID;
+} const JiveContentAttributesInternal;
+
+struct JiveContentAttributesInternal const JiveContentAttributesInternal = {
+    .jiveID = @"id",
+};
+
 @implementation JiveContent
 
-@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId, likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject, updated, viewCount, root, note;
+@synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId;
+@synthesize likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject;
+@synthesize updated, viewCount, root, note, contentID, customIconRef, iconCss;
 
 static NSMutableDictionary *contentClasses;
 
@@ -96,7 +110,7 @@ static NSMutableDictionary *contentClasses;
 }
 
 + (Class) entityClass:(NSDictionary*) obj {
-    NSString* type = [obj objectForKey:@"type"];
+    NSString* type = [obj objectForKey:JiveTypedObjectAttributes.type];
     
     if (!type)
         return [self class];
@@ -107,43 +121,55 @@ static NSMutableDictionary *contentClasses;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
-    [dictionary setValue:followerCount forKey:@"followerCount"];
-    [dictionary setValue:highlightBody forKey:@"highlightBody"];
-    [dictionary setValue:highlightSubject forKey:@"highlightSubject"];
-    [dictionary setValue:highlightTags forKey:@"highlightTags"];
-    [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:likeCount forKey:@"likeCount"];
-    [dictionary setValue:parent forKey:@"parent"];
-    [dictionary setValue:replyCount forKey:@"replyCount"];
-    [dictionary setValue:status forKey:@"status"];
-    [dictionary setValue:self.type forKey:@"type"];
-    [dictionary setValue:viewCount forKey:@"viewCount"];
-    
-    if (author)
-        [dictionary setValue:[author toJSONDictionary] forKey:@"author"];
+    [dictionary setValue:jiveId forKey:JiveContentAttributesInternal.jiveID];
+    [dictionary setValue:parent forKey:JiveContentAttributes.parent];
+    [dictionary setValue:self.type forKey:JiveTypedObjectAttributes.type];
     
     if (content)
-        [dictionary setValue:[content toJSONDictionary] forKey:@"content"];
-    
-    if (parentContent)
-        [dictionary setValue:[parentContent toJSONDictionary] forKey:@"parentContent"];
-    
-    if (parentPlace)
-        [dictionary setValue:[parentPlace toJSONDictionary] forKey:@"parentPlace"];
-    
-    if (published)
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+        [dictionary setValue:[content toJSONDictionary] forKey:JiveContentAttributes.content];
     
     // TABDEV-1613: Don't include the subject if it is empty, if there is no subject, it must be excluded.
     if ([subject length])
-        [dictionary setValue:subject forKey:@"subject"];
+        [dictionary setValue:subject forKey:JiveContentAttributes.subject];
+    
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = [super persistentJSON];
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+    
+    [dictionary setValue:followerCount forKey:JiveContentAttributes.followerCount];
+    [dictionary setValue:highlightBody forKey:JiveContentAttributes.highlightBody];
+    [dictionary setValue:highlightSubject forKey:JiveContentAttributes.highlightSubject];
+    [dictionary setValue:highlightTags forKey:JiveContentAttributes.highlightTags];
+    [dictionary setValue:jiveId forKey:JiveContentAttributesInternal.jiveID];
+    [dictionary setValue:likeCount forKey:JiveContentAttributes.likeCount];
+    [dictionary setValue:replyCount forKey:JiveContentAttributes.replyCount];
+    [dictionary setValue:status forKey:JiveContentAttributes.status];
+    [dictionary setValue:self.type forKey:JiveTypedObjectAttributes.type];
+    [dictionary setValue:viewCount forKey:JiveContentAttributes.viewCount];
+    [dictionary setValue:contentID forKey:JiveContentAttributes.contentID];
+    [dictionary setValue:customIconRef.absoluteString forKey:JiveContentAttributes.customIconRef];
+    [dictionary setValue:iconCss forKey:JiveContentAttributes.iconCss];
+    
+    if (author)
+        [dictionary setValue:[author toJSONDictionary] forKey:JiveContentAttributes.author];
+    
+    if (parentContent)
+        [dictionary setValue:[parentContent toJSONDictionary] forKey:JiveContentAttributes.parentContent];
+    
+    if (parentPlace)
+        [dictionary setValue:[parentPlace toJSONDictionary] forKey:JiveContentAttributes.parentPlace];
+    
+    if (published)
+        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:JiveContentAttributes.published];
     
     if (updated)
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:JiveContentAttributes.updated];
     
-    [dictionary setValue:root forKey:JiveContentAttributes.root];
+    [dictionary setValue:root.absoluteString forKey:JiveContentAttributes.root];
     
     if([note length]) {
         [dictionary setValue:note forKey:JiveContentAttributes.note];

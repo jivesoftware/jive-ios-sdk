@@ -146,6 +146,25 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
     return nil;
 }
 
+- (id)parseArrayNamed:(NSString *)propertyName fromJSON:(id)JSON jiveInstance:(Jive *)jiveInstance
+{
+    // lookup the class this array is populated with, the default is NSString
+    // TODO check if this is valid, using subcls to send a static message
+    Class subcls = [self arrayMappingFor:propertyName];
+    if (subcls) {
+        return [subcls objectsFromJSONList:JSON withInstance:jiveInstance];
+    } else {
+#if JIVE_JSON_DEBUG
+        // should be an array of strings if not mapped to an entity
+        if ([JSON count] > 0 && ![[JSON objectAtIndex:0] isKindOfClass:[NSString class]]) {
+            NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.",
+                  propertyName);
+        }
+#endif
+        return JSON;
+    }
+}
+
 - (id) getObjectOfType:(Class) clazz
            forProperty:(NSString*) propertyName
               fromJSON:(id) JSON
@@ -172,21 +191,7 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
     }
     
     if(clazz == [NSArray class] && [JSON isKindOfClass:[NSArray class]]) {
-        // lookup the class this array is populated with, the default is NSString
-        // TODO check if this is valid, using subcls to send a static message
-        Class subcls = [self arrayMappingFor:propertyName];
-        if (subcls) {
-            return [subcls objectsFromJSONList:JSON withInstance:jiveInstance];
-        } else {
-#if JIVE_JSON_DEBUG
-            // should be an array of strings if not mapped to an entity
-            if ([JSON count] > 0 && ![[JSON objectAtIndex:0] isKindOfClass:[NSString class]]) {
-                NSLog(@"Warning: Encountered an array, '%@', which is not strings and is not mapped to an entity type.",
-                      propertyName);
-            }
-#endif
-            return JSON;
-        }
+        return [self parseArrayNamed:propertyName fromJSON:JSON jiveInstance:jiveInstance];
     }
     
     id obj;
@@ -277,7 +282,7 @@ struct JiveObjectAttributes const JiveObjectAttributes = {
 }
 
 - (NSDictionary *)toJSONDictionary {
-    return nil;
+    return [NSMutableDictionary dictionary];
 }
 
 - (void)addArrayElements:(NSArray *)array toJSONDictionary:(NSMutableDictionary *)dictionary forTag:(NSString *)tag {

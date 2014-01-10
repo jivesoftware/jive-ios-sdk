@@ -21,57 +21,87 @@
 #import "JiveActivityObject.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 
+struct JiveExtensionAttributes const JiveExtensionAttributes = {
+	.collection = @"collection",
+    .collectionUpdated = @"collectionUpdated",
+    .display = @"display",
+    .parent = @"parent",
+    .read = @"read",
+    .state = @"state",
+    .update = @"update",
+    .updateCollection = @"updateCollection",
+    .collectionRead = @"collectionRead",
+    .outcomeTypeName = @"outcomeTypeName",
+    .question = @"question",
+    .resolved = @"resolved",
+    .answer = @"answer",
+    .productIcon = @"productIcon",
+    .parentLikeCount = @"parentLikeCount",
+    .parentReplyCount = @"parentReplyCount",
+    .replyCount = @"replyCount",
+    .likeCount = @"likeCount",
+    .liked = @"liked",
+    .parentLiked = @"parentLiked",
+    .parentActor = @"parentActor",
+    .canReply = @"canReply",
+    .canComment = @"canComment",
+};
+
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor, canReply, canComment;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, productIcon, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor, canReply, canComment;
 @synthesize imagesCount;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
-    [dictionary setValue:collection forKey:@"collection"];
-    [dictionary setValue:display forKey:@"display"];
-    [dictionary setValue:read forKey:@"read"];
-    [dictionary setValue:[update absoluteString] forKey:@"update"];
-    [dictionary setValue:[updateCollection absoluteString] forKey:@"updateCollection"];
-    [dictionary setValue:state forKey:@"state"];
+    [dictionary setValue:collection forKey:JiveExtensionAttributes.collection];
+    [dictionary setValue:display forKey:JiveExtensionAttributes.display];
+    [dictionary setValue:read forKey:JiveExtensionAttributes.read];
+    [dictionary setValue:[update absoluteString] forKey:JiveExtensionAttributes.update];
+    [dictionary setValue:[updateCollection absoluteString] forKey:JiveExtensionAttributes.updateCollection];
+    [dictionary setValue:state forKey:JiveExtensionAttributes.state];
     if (collectionUpdated)
-        [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:@"collectionUpdated"];
+        [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:JiveExtensionAttributes.collectionUpdated];
     
     if (parent)
-        [dictionary setValue:[parent toJSONDictionary] forKey:@"parent"];
+        [dictionary setValue:[parent toJSONDictionary] forKey:JiveExtensionAttributes.parent];
     
     if (outcomeTypeName) {
-        [dictionary setValue:outcomeTypeName forKey:@"outcomeTypeName"];
+        [dictionary setValue:outcomeTypeName forKey:JiveExtensionAttributes.outcomeTypeName];
     }
-    [dictionary setValue:question forKey:@"question"];
-    [dictionary setValue:resolved forKey:@"resolved"];
+    [dictionary setValue:question forKey:JiveExtensionAttributes.question];
+    [dictionary setValue:resolved forKey:JiveExtensionAttributes.resolved];
     if (answer) {
-        [dictionary setValue:[answer absoluteString] forKey:@"answer"];
+        [dictionary setValue:[answer absoluteString] forKey:JiveExtensionAttributes.answer];
+    }
+    
+    if (productIcon) {
+        [dictionary setValue:[productIcon absoluteString] forKey:JiveExtensionAttributes.productIcon];
     }
     
     if(parentReplyCount) {
-        [dictionary setValue:parentReplyCount forKey:@"parentReplyCount"];
+        [dictionary setValue:parentReplyCount forKey:JiveExtensionAttributes.parentReplyCount];
     }
     
     if(parentLikeCount) {
-        [dictionary setValue:parentLikeCount forKey:@"parentLikeCount"];
+        [dictionary setValue:parentLikeCount forKey:JiveExtensionAttributes.parentLikeCount];
     }
     
     if(replyCount) {
-        [dictionary setValue:replyCount forKey:@"replyCount"];
+        [dictionary setValue:replyCount forKey:JiveExtensionAttributes.replyCount];
     }
     
     if(likeCount) {
-        [dictionary setValue:likeCount forKey:@"likeCount"];
+        [dictionary setValue:likeCount forKey:JiveExtensionAttributes.likeCount];
     }
     
-    [dictionary setValue:[NSNumber numberWithBool:liked] forKey:@"liked"];
-    [dictionary setValue:[NSNumber numberWithBool:parentLiked] forKey:@"parentLiked"];
+    [dictionary setValue:[NSNumber numberWithBool:liked] forKey:JiveExtensionAttributes.liked];
+    [dictionary setValue:[NSNumber numberWithBool:parentLiked] forKey:JiveExtensionAttributes.parentLiked];
     
     if (parentActor)
-        [dictionary setValue:[parentActor toJSONDictionary] forKey:@"parentActor"];
+        [dictionary setValue:[parentActor toJSONDictionary] forKey:JiveExtensionAttributes.parentActor];
     
     return dictionary;
 }

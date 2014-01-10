@@ -29,6 +29,7 @@ extern NSInteger const JiveErrorCodeNilUnderlyingError;
 extern NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion;
 extern NSInteger const JiveErrorCodeInvalidJSON;
 extern NSInteger const JiveErrorCodeUnauthorizedActivityObjectType;
+extern NSInteger const JiveErrorCodeRequiresTermsAndConditionsAccpetance;
 
 extern NSString * const JiveErrorKeyMultipleErrors;
 extern NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType;
@@ -36,6 +37,7 @@ extern NSString * const JiveErrorKeyJSON;
 extern NSString * const JiveErrorKeyHTTPStatusCode;
 extern NSString * const JiveErrorKeyJivePlatformVersion;
 extern NSString * const JiveErrorKeyUnauthorizedActivityObjectType;
+extern NSString * const JiveErrorKeyTermsAndConditionsAPI;
 
 extern NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer;
 
@@ -53,5 +55,6 @@ extern NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer;
 + (instancetype) jive_errorWithUnsupportedJivePlatformVersion:(JivePlatformVersion *)jivePlatformVersion;
 + (instancetype) jive_errorWithUnauthorizedActivityObjectType:(NSString *)unauthorizedActivityObjectType;
 + (instancetype) jive_errorWithInvalidJSON:(id)JSON;
++ (instancetype) jive_errorRequiresTermsAndConditionsAcceptance:(NSString *)termsAndConditionsPath;
 
 @end

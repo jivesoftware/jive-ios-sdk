@@ -23,30 +23,36 @@
 #define jive_ios_sdk_JiveResponseBlocks_h
 
 @class JiveObject;
+@class JivePlatformVersion;
 @class JivePersonJive;
 @class JiveName;
 @class AFJSONRequestOperation;
 @class AFImageRequestOperation;
 @class JiveBlog;
 @class JivePerson;
+@class JiveContent;
 @class JiveWelcomeRequestOptions;
 @class JivePagedRequestOptions;
 @class JiveReturnFieldsRequestOptions;
 @class JiveDateLimitedRequestOptions;
 @class JiveSortedRequestOptions;
 @class JiveTask;
+@class JiveTermsAndConditions;
 
 typedef void (^JiveErrorBlock)(NSError *error);
+typedef void (^JivePlatformVersionBlock)(JivePlatformVersion *version);
 typedef void (^JiveArrayCompleteBlock)(NSArray *objects);
 typedef void (^JiveObjectCompleteBlock)(JiveObject *object);
 typedef void (^JivePersonCompleteBlock)(JivePerson *person);
 typedef void (^JiveBlogCompleteBlock)(JiveBlog *blogPlace);
+typedef void (^JiveContentCompleteBlock)(JiveContent *content);
 typedef void (^JiveImageCompleteBlock)(UIImage *avatarImage);
 typedef void (^JiveTaskCompleteBlock)(JiveTask *task);
 typedef void (^JiveCompletedBlock)(void);
 typedef void (^JiveDateLimitedObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate, NSDate *latestDate);
 typedef void (^JiveInboxObjectsCompleteBlock)(NSArray *objects, NSDate *earliestDate,
                                               NSDate *latestDate, NSNumber *unreadCount);
+typedef void (^JiveTermsAndConditionsCompleteBlock)(JiveTermsAndConditions *termsAndConditions);
 
 
 #endif

@@ -20,5 +20,16 @@
 #import "JiveProfileEntry.h"
 
 @implementation JiveProfileEntry
+
 @synthesize jive_label, value;
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    [dictionary setValue:self.jive_label forKey:@"jive_label"];
+    [dictionary setValue:self.value forKey:@"value"];
+    
+    return dictionary;
+}
+
 @end
