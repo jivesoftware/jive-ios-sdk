@@ -35,6 +35,10 @@ extern struct JivePropertyAttributes {
     __unsafe_unretained NSString *value;
 } const JivePropertyAttributes;
 
+extern struct JivePropertyNames {
+    __unsafe_unretained NSString *instanceURL;
+} const JivePropertyNames;
+
 //! \class JiveProperty
 //! https://developers.jivesoftware.com/api/v3/rest/PropertyEntity.html
 @interface JiveProperty : JiveObject
