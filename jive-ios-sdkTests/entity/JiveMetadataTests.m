@@ -115,7 +115,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -154,7 +154,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -194,7 +194,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -233,7 +233,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -273,7 +273,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -312,7 +312,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.rtc.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -353,7 +353,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -392,7 +392,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -432,7 +432,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -471,7 +471,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -511,7 +511,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -550,7 +550,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.images.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -591,7 +591,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -630,7 +630,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -670,7 +670,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -709,7 +709,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -749,7 +749,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -788,7 +788,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.enable.statusupdates", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -829,7 +829,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -868,7 +868,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -908,7 +908,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -947,7 +947,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -987,7 +987,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1026,7 +1026,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1067,7 +1067,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1106,7 +1106,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1146,7 +1146,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1185,7 +1185,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1225,7 +1225,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1264,7 +1264,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_place.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1305,7 +1305,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1344,7 +1344,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1384,7 +1384,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1423,7 +1423,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1463,7 +1463,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1502,7 +1502,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update_repost.enabled", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1544,7 +1544,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1584,7 +1584,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1624,7 +1624,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1663,7 +1663,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"feature.status_update.characters", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1704,7 +1704,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1743,7 +1743,7 @@
     [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1783,7 +1783,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1822,7 +1822,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1862,7 +1862,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -1901,7 +1901,7 @@
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
     [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, @"jive.coreapi.disable.binarydownloads.mobileonly", @"Wrong property requested.");
+        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
         return obj != nil;
     }]
                                                                 onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {

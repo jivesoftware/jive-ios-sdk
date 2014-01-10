@@ -5909,7 +5909,8 @@
     [self createJiveAPIObjectWithResponse:@"property" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [jive propertyWithNameOperation:@"instance.url" onComplete:^(JiveProperty *property) {
+        NSOperation* operation = [jive propertyWithNameOperation:JivePropertyNames.instanceURL
+                                                      onComplete:^(JiveProperty *property) {
             // Called 3rd
             STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
             
@@ -5917,7 +5918,8 @@
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
             finishedBlock();
-        } onError:^(NSError *error) {
+        }
+                                                         onError:^(NSError *error) {
             STFail([error localizedDescription]);
             finishedBlock();
         }];
