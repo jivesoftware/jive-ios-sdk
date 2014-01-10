@@ -37,6 +37,14 @@ extern struct JivePropertyAttributes {
 
 extern struct JivePropertyNames {
     __unsafe_unretained NSString *instanceURL;
+    __unsafe_unretained NSString *statusUpdatesEnabled;
+    __unsafe_unretained NSString *statusUpdateMaxCharacters;
+    __unsafe_unretained NSString *realTimeChatEnabled;
+    __unsafe_unretained NSString *imagesEnabled;
+    __unsafe_unretained NSString *personalStatusUpdatesEnabled;
+    __unsafe_unretained NSString *placeStatusUpdatesEnabled;
+    __unsafe_unretained NSString *repostStatusUpdatesEnabled;
+    __unsafe_unretained NSString *mobileBinaryDownloadsDisabled;
 } const JivePropertyNames;
 
 //! \class JiveProperty
