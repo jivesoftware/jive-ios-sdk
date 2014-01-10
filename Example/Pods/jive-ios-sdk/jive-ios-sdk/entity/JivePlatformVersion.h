@@ -77,6 +77,7 @@ extern struct JivePlatformVersionAttributes {
 - (BOOL)supportedIPhoneVersion;
 - (BOOL)supportsOAuth;
 - (BOOL)supportsOAuthSessionGrant;
+- (BOOL)supportsContentEditingAPI;
 
 
 @end
