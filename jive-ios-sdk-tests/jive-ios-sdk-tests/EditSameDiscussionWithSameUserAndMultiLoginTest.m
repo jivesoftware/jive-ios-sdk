@@ -21,11 +21,12 @@
     //create a doc for editing from userid1
     NSString* contentSubj = [NSString stringWithFormat:@"Test Discussion For testing edit support From SDK- %d", (arc4random() % 1500000)];
     NSLog(@"contentSubj = %@", contentSubj);
+    NSString* bodyText = [NSString stringWithFormat:@"This is a discussion for testing locking support from SDK."];
     
     post.subject = contentSubj;
     post.content = [[JiveContentBody alloc] init];
-    post.content.type = @"text/html";
-    post.content.text = @"<body><p>This is a discussion for testing locking support from SDK.</p></body>";
+    post.content.type = @"text/text";
+    post.content.text = bodyText;
     
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
         [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
@@ -109,6 +110,19 @@
     //set true to the editable property for the newly created doc
     [newlyCreatedContent.content setValue:@"YES" forKey:JiveContentBodyAttributes.editable];
     
+    __block JiveContent* blockContent;
+    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
+        [jive1 lockContentForEditing:newlyCreatedContent withOptions:nil onComplete:^(JiveContent *result) {
+            blockContent = result;
+            finishBlock2();
+        } onError:^(NSError *error) {
+            NSLog(@" Error Found: %@",  [error localizedDescription]);
+            finishBlock2();
+        }];
+    }];
+    
+    
+    
     //jive1 block for editing
     __block JiveContent *modifiedDoc = nil;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
@@ -122,21 +136,22 @@
     }];
     
     
-    newlyCreatedContent.content.text = @"<body><p>'ios-sdk-testuser1' modified the doc content with same user and different login object</p></body>";
-    
+    NSString *modifiedBody = [NSString stringWithFormat:@"%@ %@", bodyText, @"'ios-sdk-testuser1' modified the discussion content with same user and different login object"];
+    newlyCreatedContent.content.text = modifiedBody;
     //jive4 (ios-sdk-testuser1) is trying to update the doc
     
+    __block JiveContent* updateContent;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
         [jive4 updateContent:newlyCreatedContent withOptions:nil onComplete:^(JiveContent *results) {
+            updateContent = results;
             finishBlock2();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
             finishBlock2();
         }];
     }];
-    
-    
-    
+        
+    STAssertTrue([updateContent.content.text rangeOfString:modifiedBody].location != NSNotFound, nil);
     
 }
 

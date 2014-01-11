@@ -96,23 +96,19 @@
         STFail(@"Document was not found in the stream.");
     }
     
-    //get userid1 person info
-    __block JivePerson *personUser1 = nil;
-    [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive1 me:^(JivePerson *person) {
-            personUser1 = person;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
-    }];
-    
     //set true to the editable property for the newly created doc
     [newlyCreatedDoc.content setValue:@"YES" forKey:JiveContentBodyAttributes.editable];
-    //set "EditingBy" to jive1
-    newlyCreatedDoc.editingBy = personUser1;
-    
+   //lock newlyCreatedDoc by jive1
+    __block JiveContent* blockContent;
+    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
+        [jive1 lockContentForEditing:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *result) {
+            blockContent = result;
+            finishBlock2();
+        } onError:^(NSError *error) {
+            NSLog(@" Error Found: %@",  [error localizedDescription]);
+            finishBlock2();
+        }];
+    }];
     
     //jive1 block for editing
     __block JiveContent *modifiedDoc = nil;
