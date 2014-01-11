@@ -11,9 +11,6 @@
 
 @implementation EditSameDocWithTwoUsersTest
 
-
-
-
 - (void) testEditSameDocWithSameUserAndMultiLogin{
     JiveDocument *post = [[JiveDocument alloc] init];
     __block JiveContent *testDoc = nil;
@@ -122,6 +119,20 @@
         }];
     }];
     
+    
+    //check the editable property
+    __block JiveContent *modifiedContent= nil;
+    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
+        [jive1  getEditableContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
+            modifiedContent = results;
+            finishBlock2();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishBlock2();
+        }];
+    }];
+    
+    STAssertTrue([[[newlyCreatedDoc content] editable] intValue] == 1, nil);
     
     newlyCreatedDoc.content.text = @"<body><p>'ios-sdk-testuser1' modified the doc content with same user and different login object</p></body>";
     
