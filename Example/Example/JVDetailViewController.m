@@ -17,6 +17,8 @@
 @property (strong, nonatomic) JVBlogViewController *tableViewController;
 @property (strong, nonatomic) JiveBlog *blog;
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) NSArray *blogPosts;
+@property (strong, nonatomic) NSArray *authoredDocuments;
 
 @end
 
@@ -24,16 +26,20 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(JivePerson *)person
 {
-    if (_detailItem != newDetailItem) {
-        JivePerson *person = newDetailItem;
-        _detailItem = newDetailItem;
+    if (_detailItem != person) {
+        _detailItem = person;
         self.title = person.displayName;
+        [self.activityIndicator startAnimating];
         [person blogWithOptions:nil
                      onComplete:^(JiveBlog *blog) {
                          self.blog = blog;
-                     } onError:nil];
+                     }
+                        onError:^(NSError *error) {
+                            [self.activityIndicator stopAnimating];
+                            NSLog(@"%@", error);
+                        }];
     }
 }
 
@@ -42,7 +48,10 @@
     NSOperation *operation = [jive contentsOperationWithURL:blog.contentsRef
                                                  onComplete:^(NSArray *contents) {
                                                      [self.activityIndicator stopAnimating];
-                                                     self.tableViewController.contents = contents;
+                                                     self.blogPosts = contents;
+                                                     if (self.tabBar.selectedItem.tag == 0) {
+                                                         self.tableViewController.contents = contents;
+                                                     }
                                                  }
                                                     onError:^(NSError *error) {
                                                         [self.activityIndicator stopAnimating];
@@ -51,15 +60,30 @@
     _blog = blog;
     self.title = blog.name;
     [self.operationQueue addOperation:operation];
-    [self.activityIndicator startAnimating];
+    
+    JiveContentRequestOptions *authoredContentOptions = [JiveContentRequestOptions new];
+    
+    [authoredContentOptions addAuthor:self.detailItem.selfRef];
+    [authoredContentOptions addType:JiveDocumentType];
+    operation = [jive contentsOperation:authoredContentOptions
+                             onComplete:^(NSArray *authoredDocuments) {
+                                 self.authoredDocuments = authoredDocuments;
+                                 if (self.tabBar.selectedItem.tag == 1) {
+                                     self.tableViewController.contents = authoredDocuments;
+                                 }
+                             }
+                                onError:nil];
+    [self.operationQueue addOperation:operation];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.operationQueue = [NSOperationQueue new];
+    self.operationQueue.maxConcurrentOperationCount = 1;
     self.tableViewController = [JVBlogViewController new];
     self.tableViewController.tableView = self.tableView;
+    [self.activityIndicator startAnimating];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -68,7 +92,25 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         JivePost *object = self.tableViewController.contents[indexPath.row];
         [[segue destinationViewController] setInstance:[_detailItem jiveInstance]];
-        [[segue destinationViewController] setDetailItem:object];
+        [(JVEditingViewController *)[segue destinationViewController] setDetailItem:object];
+    }
+}
+
+#pragma mark UITabBarDelegate
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    switch (item.tag) {
+        case 0:
+            self.tableViewController.contents = self.blogPosts;
+            break;
+            
+        case 1:
+            self.tableViewController.contents = self.authoredDocuments;
+            break;
+            
+        default:
+            self.tableViewController.contents = nil;
+            break;
     }
 }
 

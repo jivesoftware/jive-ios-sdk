@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dzJ-rA-MEu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="B0P-gq-YYa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your community URL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="235" translatesAutoresizingMaskIntoConstraints="NO" id="aD7-mw-486">
@@ -52,7 +52,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiC-Oi-vOd">
-                                <rect key="frame" x="-24" y="261" width="361" height="77"/>
+                                <rect key="frame" x="-24" y="173" width="361" height="77"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Jfs-R0-jdE">
                                         <rect key="frame" x="20" y="20" width="321" height="37"/>
@@ -101,7 +101,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4zm-rw-oic"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="axB-ve-1Ss">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-MT-DPg" userLabel="Login Credentials">
@@ -147,7 +147,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vj-dG-rr4">
-                                <rect key="frame" x="-20" y="214" width="361" height="77"/>
+                                <rect key="frame" x="-20" y="170" width="361" height="77"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Fv-Xz-ecg">
                                         <rect key="frame" x="20" y="20" width="321" height="37"/>
@@ -195,7 +195,7 @@
             <objects>
                 <tableViewController title="Master" id="12" customClass="JVMasterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -259,11 +259,11 @@
                         <viewControllerLayoutGuide type="bottom" id="6ba-S7-017"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="22">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iit-pR-tY7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iit-pR-tY7">
+                                <rect key="frame" x="0.0" y="65" width="320" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Post" id="92P-in-h1F">
@@ -279,24 +279,41 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zU0-EB-onM">
-                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zU0-EB-onM">
+                                <rect key="frame" x="142" y="222" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <tabBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gr-wl-n48">
+                                <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Lqa-db-ZwC"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="Blog Posts" id="mNk-zY-3Py"/>
+                                    <tabBarItem tag="1" title="Documents" id="Shj-OZ-oOC"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="21" id="dWv-R3-aAX"/>
+                                </connections>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iit-pR-tY7" firstAttribute="leading" secondItem="22" secondAttribute="leading" id="7SC-oU-dbz"/>
                             <constraint firstItem="iit-pR-tY7" firstAttribute="trailing" secondItem="22" secondAttribute="trailing" id="FxW-eF-5Af"/>
+                            <constraint firstItem="0gr-wl-n48" firstAttribute="top" secondItem="iit-pR-tY7" secondAttribute="bottom" id="LND-tc-jdR"/>
                             <constraint firstItem="zU0-EB-onM" firstAttribute="centerX" secondItem="iit-pR-tY7" secondAttribute="centerX" id="Qqj-4y-Qw6"/>
-                            <constraint firstItem="iit-pR-tY7" firstAttribute="bottom" secondItem="22" secondAttribute="bottom" id="RXI-3p-saL"/>
                             <constraint firstItem="iit-pR-tY7" firstAttribute="top" secondItem="22" secondAttribute="top" id="W0l-IG-zyH"/>
+                            <constraint firstItem="6ba-S7-017" firstAttribute="top" secondItem="0gr-wl-n48" secondAttribute="bottom" id="oSN-gb-JaL"/>
                             <constraint firstItem="zU0-EB-onM" firstAttribute="centerY" secondItem="iit-pR-tY7" secondAttribute="centerY" id="x1Z-Lm-TGo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="26"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zU0-EB-onM" id="mi2-5d-Wx2"/>
+                        <outlet property="tabBar" destination="0gr-wl-n48" id="FYg-Vy-Naz"/>
                         <outlet property="tableView" destination="iit-pR-tY7" id="mOY-XI-tic"/>
                     </connections>
                 </viewController>
@@ -313,7 +330,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YJK-gK-eEW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DgM-OY-Roy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Blog post title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSq-L2-FMK">
@@ -330,7 +347,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6vb-El-f2A">
-                                <rect key="frame" x="141" y="266" width="37" height="37"/>
+                                <rect key="frame" x="141" y="222" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
@@ -358,6 +375,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
