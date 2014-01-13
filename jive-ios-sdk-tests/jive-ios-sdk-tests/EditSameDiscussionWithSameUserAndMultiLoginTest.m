@@ -14,24 +14,52 @@
 
 
 - (void) testEditSameDiscussionWithSameUserAndMultiLogin{
-    JiveDiscussion *post = [[JiveDiscussion alloc] init];
     
-    __block JiveContent *testDis = nil;
+    //find the place 'iosopen1-gp'
+    JivePlacesRequestOptions *placesRequestOptions = [JivePlacesRequestOptions new];
+    [placesRequestOptions addSearchTerm:@"iosopen1-gp"];
     
+    __block NSArray *returnedPlaces = nil;
+    [self waitForTimeout:^(JiveTestCaseAsyncFinishBlock finishBlock) {
+        [jive1 places:placesRequestOptions
+           onComplete:^(NSArray *places) {
+               returnedPlaces = places;
+               finishBlock();
+           }
+              onError:^(NSError *error) {
+                  STFail(@"error.  Can't find the place, 'iosopen1-gp', to publish a doc to the place");
+                  [self unexpectedErrorInWaitForTimeOut:error
+                                            finishBlock:finishBlock];
+              }];
+    }];
+    
+    JivePlace* publishedPlace;
+    if ( ([returnedPlaces count] > 0) && ([returnedPlaces[0] isKindOfClass:[JivePlace class]])){
+        publishedPlace = (JivePlace*) [returnedPlaces objectAtIndex:0];
+    }
+    else{
+        STFail(@"The returned class is not 'JivePlace' class");
+    }
+    
+    
+    __block JiveContent *testDoc = nil;
     //create a doc for editing from userid1
-    NSString* contentSubj = [NSString stringWithFormat:@"Test Discussion For testing edit support From SDK- %d", (arc4random() % 1500000)];
-    NSLog(@"contentSubj = %@", contentSubj);
-    NSString* bodyText = [NSString stringWithFormat:@"This is a discussion for testing locking support from SDK."];
+    NSString* docSubj = [NSString stringWithFormat:@"Test discussion For testing edit support From SDK- %d", (arc4random() % 1500000)];
+    NSLog(@"docSubj = %@", docSubj);
     
-    post.subject = contentSubj;
+    JiveDiscussion* post = [[JiveDiscussion alloc] init];
+    post.subject = docSubj;
     post.content = [[JiveContentBody alloc] init];
-    post.content.type = @"text/text";
-    post.content.text = bodyText;
+    post.content.type = @"text/html";
+    post.content.text = @"<body><p>This is a discussion for testing locking support from SDK.</p></body>";
+    post.visibility = @"place";
+    post.parent = publishedPlace.name;
+    post.parent = publishedPlace.selfRef.absoluteString;
     
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
         [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
             STAssertEqualObjects([newPost class], [JiveDiscussion class], @"Wrong content created");
-            testDis = newPost;
+            testDoc = newPost;
             finishBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
@@ -39,13 +67,11 @@
         }];
     }];
     
-    STAssertEqualObjects(testDis.subject, post.subject, @"Unexpected subject: %@", [testDis toJSONDictionary]);
-    
+    STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected subject: %@", [testDoc toJSONDictionary]);
     
     //get the content from 'jive1' author to check if the newly created doc is in the stream
     NSString *myString = @"/api/core/v3/people/username/";
     NSString *apiString = [myString stringByAppendingString:userid1];
-    
     NSLog(@"apiString=%@", apiString);
     
     NSString* apiUrl =[ NSString stringWithFormat:@"%@%@", server, apiString];
@@ -53,7 +79,6 @@
     
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:userid1 pw:pw1 URL:apiUrl];
     NSString* authorStr = [JVUtilities get_Resource_self:jsonResponseFromAPI];
-    
     NSURL* authorURL = [[NSURL alloc] initWithString:authorStr];
     NSLog(@"authorURL=%@", authorURL);
     
@@ -71,48 +96,32 @@
         }];
     }];
     
+    
     BOOL found = FALSE;
-    JiveDiscussion* newlyCreatedContent;
+    JiveDiscussion* newlyCreatedDis;
     
     for (JiveContent* contentObj in contentsResults) {
         if ([contentObj isKindOfClass:[JiveDiscussion class]]){
             JiveDiscussion* p= ((JiveDiscussion*)(contentObj));
-            
 #ifdef SHOW_TEST_LOGS
-            NSLog(@"doc subject=%@", p.subject);
+            NSLog(@"dis subject=%@", p.subject);
 #endif
-            
-            if ([p.subject isEqualToString:contentSubj]){
+            if ([p.subject isEqualToString:docSubj]){
                 found = true;
-                newlyCreatedContent = p;
+                newlyCreatedDis = p;
                 break;
             }
         }
-        
     }
     
     if (!found){
-        STFail(@"Discussion was not found in the stream.");
+        STFail(@"Document was not found in the stream.");
     }
     
-    //get userid1 person info
-    __block JivePerson *personUser1 = nil;
-    [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive1 me:^(JivePerson *person) {
-            personUser1 = person;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
-    }];
-    
-    //set true to the editable property for the newly created doc
-    [newlyCreatedContent.content setValue:@"YES" forKey:JiveContentBodyAttributes.editable];
-    
+    //lock newlyCreatedDis by jive1
     __block JiveContent* blockContent;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive1 lockContentForEditing:newlyCreatedContent withOptions:nil onComplete:^(JiveContent *result) {
+        [jive1 lockContentForEditing:newlyCreatedDis withOptions:nil onComplete:^(JiveContent *result) {
             blockContent = result;
             finishBlock2();
         } onError:^(NSError *error) {
@@ -122,12 +131,11 @@
     }];
     
     
-    
-    //jive1 block for editing
-    __block JiveContent *modifiedDoc = nil;
+    //check the editable property
+    __block JiveContent *modifiedContent= nil;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive1 updateContent:newlyCreatedContent withOptions:nil onComplete:^(JiveContent *results) {
-            modifiedDoc = results;
+        [jive1  getEditableContent:newlyCreatedDis withOptions:nil onComplete:^(JiveContent *results) {
+            modifiedContent = results;
             finishBlock2();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
@@ -135,23 +143,20 @@
         }];
     }];
     
+    STAssertTrue([[[newlyCreatedDis content] editable] intValue] == 1, nil);
     
-    NSString *modifiedBody = [NSString stringWithFormat:@"%@ %@", bodyText, @"'ios-sdk-testuser1' modified the discussion content with same user and different login object"];
-    newlyCreatedContent.content.text = modifiedBody;
-    //jive4 (ios-sdk-testuser1) is trying to update the doc
+    newlyCreatedDis.content.text = @"<body><p>'ios-sdk-testuser2' modified the doc content</p></body>";
     
-    __block JiveContent* updateContent;
+    //userid4 (the userid login as jive1) is updating a discussion
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive4 updateContent:newlyCreatedContent withOptions:nil onComplete:^(JiveContent *results) {
-            updateContent = results;
+        [jive4 updateContent:newlyCreatedDis withOptions:nil onComplete:^(JiveContent *results) {
             finishBlock2();
         } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
+            STFail(@"%@", [error localizedDescription]);
             finishBlock2();
         }];
     }];
-        
-    STAssertTrue([updateContent.content.text rangeOfString:modifiedBody].location != NSNotFound, nil);
+    
     
 }
 

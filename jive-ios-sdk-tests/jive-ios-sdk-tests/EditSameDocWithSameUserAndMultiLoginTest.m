@@ -5,11 +5,11 @@
 #import "JiveTestCase.h"
 #import "JVUtilities.h"
 
-@interface EditSameDocWithTwoUsersTest : JiveTestCase
+@interface EditSameDocWithSameUserAndMultiLoginTest : JiveTestCase
 
 @end
 
-@implementation EditSameDocWithTwoUsersTest
+@implementation EditSameDocWithSameUserAndMultiLoginTest
 
 - (void) testEditSameDocWithSameUserAndMultiLogin{
     JiveDocument *post = [[JiveDocument alloc] init];
@@ -27,9 +27,7 @@
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
         [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
             STAssertEqualObjects([newPost class], [JiveDocument class], @"Wrong content created");
-            
             testDoc = newPost;
-            
             finishBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
@@ -38,7 +36,6 @@
     }];
     
     STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected subject: %@", [testDoc toJSONDictionary]);
-    
     
     //get the content from 'jive1' author to check if the newly created doc is in the stream
     NSString *myString = @"/api/core/v3/people/username/";
@@ -74,27 +71,22 @@
     
     for (JiveContent* contentObj in contentsResults) {
         if ([contentObj isKindOfClass:[JiveDocument class]]){
-            JiveDocument* p= ((JiveDocument*)(contentObj));
-            
+            JiveDocument* p= ((JiveDocument*)(contentObj));            
 #ifdef SHOW_TEST_LOGS
             NSLog(@"doc subject=%@", p.subject);
 #endif
-            
             if ([p.subject isEqualToString:docSubj]){
                 found = true;
                 newlyCreatedDoc = p;
                 break;
             }
         }
-        
     }
     
     if (!found){
         STFail(@"Document was not found in the stream.");
     }
     
-    //set true to the editable property for the newly created doc
-    [newlyCreatedDoc.content setValue:@"YES" forKey:JiveContentBodyAttributes.editable];
    //lock newlyCreatedDoc by jive1
     __block JiveContent* blockContent;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
@@ -105,20 +97,7 @@
             NSLog(@" Error Found: %@",  [error localizedDescription]);
             finishBlock2();
         }];
-    }];
-    
-    //jive1 block for editing
-    __block JiveContent *modifiedDoc = nil;
-    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive1 updateContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
-            modifiedDoc = results;
-            finishBlock2();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishBlock2();
-        }];
-    }];
-    
+    }];    
     
     //check the editable property
     __block JiveContent *modifiedContent= nil;
