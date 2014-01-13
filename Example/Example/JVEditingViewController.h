@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class Jive;
+@class JivePost;
 
 @interface JVEditingViewController : UIViewController
 
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @property (strong, nonatomic) Jive *instance;
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) JivePost *detailItem;
+
+- (IBAction)savePressed:(id)sender;
 
 @end

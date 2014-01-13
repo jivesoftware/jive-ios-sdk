@@ -15,11 +15,10 @@
 
 @implementation JVEditingViewController
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(JivePost *)post
 {
-    if (_detailItem != newDetailItem) {
-        JivePost *post = newDetailItem;
-        _detailItem = newDetailItem;
+    if (_detailItem != post) {
+        _detailItem = post;
         self.title = post.subject;
         self.titleField.text = post.subject;
         if (self.instance.platformVersion.supportsContentEditingAPI) {
@@ -50,6 +49,20 @@
         self.titleField.text = post.subject;
         self.bodyField.text = post.content.text;
     }
+}
+
+- (IBAction)savePressed:(id)sender {
+    self.detailItem.subject = self.titleField.text;
+    self.detailItem.content.text = self.bodyField.text;
+    [self.instance updateContent:self.detailItem
+                     withOptions:nil
+                      onComplete:^(JiveContent *content) {
+                          [self.activityIndicator stopAnimating];
+                      }
+                         onError:^(NSError *error) {
+                             [self.activityIndicator stopAnimating];
+                         }];
+    [self.activityIndicator startAnimating];
 }
 
 @end
