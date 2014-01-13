@@ -90,9 +90,11 @@
 {
     if ([[segue identifier] isEqualToString:@"beginEditing"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        JivePost *object = self.tableViewController.contents[indexPath.row];
-        [[segue destinationViewController] setInstance:[_detailItem jiveInstance]];
-        [(JVEditingViewController *)[segue destinationViewController] setDetailItem:object];
+        JiveContent *object = self.tableViewController.contents[indexPath.row];
+        JVEditingViewController *editingViewController = [segue destinationViewController];
+        
+        editingViewController.instance = self.detailItem.jiveInstance;
+        editingViewController.content = object;
     }
 }
 
