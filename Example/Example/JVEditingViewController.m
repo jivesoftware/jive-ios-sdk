@@ -11,22 +11,35 @@
 
 @interface JVEditingViewController ()
 
-@property (strong, nonatomic) NSTimer *autoSaveTimer;
+@property (strong, nonatomic) NSTimer *refreshLockTimer;
 
 @end
 
 @implementation JVEditingViewController
+
+- (void)showEditableText:(JiveContent *)updatedContent
+{
+    const NSTimeInterval kFiveMinutes = 60; //5 * 60;
+    
+    self.titleField.text = updatedContent.subject;
+    self.bodyField.text = updatedContent.content.text;
+    [self.bodyField becomeFirstResponder];
+    self.refreshLockTimer = [NSTimer scheduledTimerWithTimeInterval:kFiveMinutes
+                                                          target:self
+                                                        selector:@selector(refreshLock)
+                                                        userInfo:nil
+                                                         repeats:YES];
+}
 
 - (void)getEditableVersion
 {
     [self.instance getEditableContent:self.content
                           withOptions:nil
                            onComplete:^(JiveContent *updatedContent) {
-                               self.titleField.text = updatedContent.subject;
-                               self.bodyField.text = updatedContent.content.text;
-                               [self.bodyField becomeFirstResponder];
+                               [self showEditableText:updatedContent];
                            }
                               onError:^(NSError *error) {
+                                  NSLog(@"getEditableContent failed %@", error);
                                   [self.activityIndicator stopAnimating];
                               }];
 }
@@ -42,15 +55,14 @@
                 [self.instance lockContentForEditing:content
                                          withOptions:nil
                                           onComplete:^(JiveContent *lockedContent) {
-                                              const NSTimeInterval kFiveMinutes = 5 * 60;
-                                              [self getEditableVersion];
-                                              self.autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:kFiveMinutes
-                                                                                                    target:self
-                                                                                                  selector:@selector(autosave)
-                                                                                                  userInfo:nil
-                                                                                                   repeats:YES];
+                                              if (lockedContent.content.editable.boolValue) {
+                                                  [self showEditableText:lockedContent];
+                                              } else {
+                                                  [self getEditableVersion];
+                                              }
                                           }
                                              onError:^(NSError *error) {
+                                                 NSLog(@"initial lockContentForEditing failed %@", error);
                                                  [self.activityIndicator stopAnimating];
                                              }];
             } else {
@@ -75,38 +87,45 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.autoSaveTimer) {
-        [self.autoSaveTimer invalidate];
-        self.autoSaveTimer = nil;
-        [self.instance deleteContentLock:self.content
-                              onComplete:nil
-                                 onError:nil];
+    if (self.refreshLockTimer) {
+        [self.refreshLockTimer invalidate];
+        self.refreshLockTimer = nil;
+        if ([self.content.type isEqualToString:JiveDocumentType]) {
+            [self.instance unlockContent:self.content
+                              onComplete:^(JiveContent *content) {
+                                  NSLog(@"unlockContent succeeded? %@", content.content.editable);
+                              }
+                                 onError:^(NSError *error) {
+                                     NSLog(@"unlockContent failed %@", error);
+                                 }];
+        }
     }
 }
 
 - (IBAction)savePressed:(id)sender {
     self.content.subject = self.titleField.text;
     self.content.content.text = self.bodyField.text;
-    [self.instance updateContent:self.content
-                     withOptions:nil
-                      onComplete:^(JiveContent *content) {
-                          [self.activityIndicator stopAnimating];
-                      }
-                         onError:^(NSError *error) {
-                             [self.activityIndicator stopAnimating];
-                         }];
+    [self.instance saveContentWhileEditing:self.content
+                               withOptions:nil
+                                onComplete:^(JiveContent *content) {
+                                    [self.activityIndicator stopAnimating];
+                                }
+                                   onError:^(NSError *error) {
+                                       NSLog(@"saveContentWhileEditing failed %@", error);
+                                       [self.activityIndicator stopAnimating];
+                                   }];
     [self.activityIndicator startAnimating];
-    [self.autoSaveTimer invalidate];
-    self.autoSaveTimer = nil;
 }
 
-- (void)autosave {
-    self.content.subject = self.titleField.text;
-    self.content.content.text = self.bodyField.text;
-    [self.instance autosaveContentWhileEditing:self.content
-                                   withOptions:nil
-                                    onComplete:nil
-                                       onError:nil];
+- (void)refreshLock {
+    [self.instance lockContentForEditing:self.content
+                             withOptions:nil
+                              onComplete:^(JiveContent *content) {
+                                  NSLog(@"lockContentForEditing complete? %@", content.content.editable);
+                              }
+                                 onError:^(NSError *error) {
+                                     NSLog(@"lockContentForEditing error %@", error);
+                                 }];
 }
 
 @end

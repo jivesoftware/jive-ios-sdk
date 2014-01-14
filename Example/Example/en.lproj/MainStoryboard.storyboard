@@ -259,11 +259,11 @@
                         <viewControllerLayoutGuide type="bottom" id="6ba-S7-017"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="22">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iit-pR-tY7">
-                                <rect key="frame" x="0.0" y="65" width="320" height="365"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iit-pR-tY7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Post" id="92P-in-h1F">
@@ -280,11 +280,11 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zU0-EB-onM">
-                                <rect key="frame" x="142" y="222" width="37" height="37"/>
+                                <rect key="frame" x="142" y="190" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                             <tabBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gr-wl-n48">
-                                <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                                <rect key="frame" x="0.0" y="367" width="320" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -310,6 +310,7 @@
                             <constraint firstItem="zU0-EB-onM" firstAttribute="centerY" secondItem="iit-pR-tY7" secondAttribute="centerY" id="x1Z-Lm-TGo"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Detail" id="26"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zU0-EB-onM" id="mi2-5d-Wx2"/>
