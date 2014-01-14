@@ -236,4 +236,9 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
+- (BOOL)supportsFeatureModuleVideoProperty {
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 1);
+    return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
+}
+
 @end
