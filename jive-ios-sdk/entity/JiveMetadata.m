@@ -65,11 +65,15 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock {
-    return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
-        NSString *videoURL = [objects objectForKey:JiveVideoType];
-        
-        completeBlock(videoURL.length > 0);
-    } onError:errorBlock];
+    if ([self.instance.platformVersion supportsFeatureModuleVideoProperty]) {
+        return [self boolPropertyOperation:@"feature.module.video.enabled" onComplete:completeBlock onError:errorBlock];
+    } else {
+        return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
+            NSString *videoURL = [objects objectForKey:JiveVideoType];
+            
+            completeBlock(videoURL.length > 0);
+        } onError:errorBlock];  
+    }
 }
 
 - (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
