@@ -5,14 +5,11 @@
 #import "JiveTestCase.h"
 #import "JVUtilities.h"
 
-@interface EditSameDocWithTwoUsersTest : JiveTestCase
+@interface EditSameDocWithSameUserAndMultiLoginTest : JiveTestCase
 
 @end
 
-@implementation EditSameDocWithTwoUsersTest
-
-
-
+@implementation EditSameDocWithSameUserAndMultiLoginTest
 
 - (void) testEditSameDocWithSameUserAndMultiLogin{
     JiveDocument *post = [[JiveDocument alloc] init];
@@ -30,9 +27,7 @@
     [self waitForTimeout:^(dispatch_block_t finishBlock) {
         [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
             STAssertEqualObjects([newPost class], [JiveDocument class], @"Wrong content created");
-            
             testDoc = newPost;
-            
             finishBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
@@ -41,7 +36,6 @@
     }];
     
     STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected subject: %@", [testDoc toJSONDictionary]);
-    
     
     //get the content from 'jive1' author to check if the newly created doc is in the stream
     NSString *myString = @"/api/core/v3/people/username/";
@@ -77,72 +71,60 @@
     
     for (JiveContent* contentObj in contentsResults) {
         if ([contentObj isKindOfClass:[JiveDocument class]]){
-            JiveDocument* p= ((JiveDocument*)(contentObj));
-            
+            JiveDocument* p= ((JiveDocument*)(contentObj));            
 #ifdef SHOW_TEST_LOGS
             NSLog(@"doc subject=%@", p.subject);
 #endif
-            
             if ([p.subject isEqualToString:docSubj]){
                 found = true;
                 newlyCreatedDoc = p;
                 break;
             }
         }
-        
     }
     
     if (!found){
         STFail(@"Document was not found in the stream.");
     }
     
-    //get userid1 person info
-    __block JivePerson *personUser1 = nil;
-    [self waitForTimeout:^(void (^finishedBlock)(void)) {
-        [jive1 me:^(JivePerson *person) {
-            personUser1 = person;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
-    }];
-    
-    //set true to the editable property for the newly created doc
-    [newlyCreatedDoc.content setValue:@"YES" forKey:JiveContentBodyAttributes.editable];
-    //set "EditingBy" to jive1
-    newlyCreatedDoc.editingBy = personUser1;
-    
-    
-    //jive1 block for editing
-    __block JiveContent *modifiedDoc = nil;
+   //lock newlyCreatedDoc by jive1
+    __block JiveContent* blockContent;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive1 updateContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
-            modifiedDoc = results;
-            finishBlock2();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishBlock2();
-        }];
-    }];
-    
-    
-    newlyCreatedDoc.content.text = @"<body><p>'ios-sdk-testuser1' modified the doc content with same user and different login object</p></body>";
-    
-    //jive4 (ios-sdk-testuser1) is trying to update the doc
-    __block BOOL successBlock= TRUE;
-    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
-        [jive4 updateContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
-            successBlock = FALSE;
+        [jive1 lockContentForEditing:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *result) {
+            blockContent = result;
             finishBlock2();
         } onError:^(NSError *error) {
             NSLog(@" Error Found: %@",  [error localizedDescription]);
             finishBlock2();
         }];
+    }];    
+    
+    //check the editable property
+    __block JiveContent *modifiedContent= nil;
+    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
+        [jive1  getEditableContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
+            modifiedContent = results;
+            finishBlock2();
+        } onError:^(NSError *error) {
+            STFail([error localizedDescription]);
+            finishBlock2();
+        }];
     }];
     
-    //expected: error
-    STAssertTrue(successBlock == TRUE, nil);
+    STAssertTrue([[[newlyCreatedDoc content] editable] intValue] == 1, nil);
+    
+    newlyCreatedDoc.content.text = @"<body><p>'ios-sdk-testuser1' modified the doc content with same user and different login object</p></body>";
+    
+    //jive4 (ios-sdk-testuser1) is trying to update the doc
+    [self waitForTimeout:^(dispatch_block_t finishBlock2) {
+        [jive4 updateContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
+            finishBlock2();
+        } onError:^(NSError *error) {
+            STFail(@"The different instance of 'ios-sdk-testuser1' can't update the same doc succeed:  %@", [error localizedDescription]);
+            finishBlock2();
+        }];
+    }];
+    
     
     
 }
