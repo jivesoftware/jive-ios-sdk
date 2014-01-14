@@ -116,19 +116,15 @@
     newlyCreatedDoc.content.text = @"<body><p>'ios-sdk-testuser1' modified the doc content with same user and different login object</p></body>";
     
     //jive4 (ios-sdk-testuser1) is trying to update the doc
-    __block BOOL successBlock= TRUE;
     [self waitForTimeout:^(dispatch_block_t finishBlock2) {
         [jive4 updateContent:newlyCreatedDoc withOptions:nil onComplete:^(JiveContent *results) {
-            successBlock = FALSE;
             finishBlock2();
         } onError:^(NSError *error) {
-            NSLog(@" Error Found: %@",  [error localizedDescription]);
+            STFail(@"The different instance of 'ios-sdk-testuser1' can't update the same doc succeed:  %@", [error localizedDescription]);
             finishBlock2();
         }];
     }];
     
-    //expected: error
-    STAssertTrue(successBlock == TRUE, nil);
     
     
 }
