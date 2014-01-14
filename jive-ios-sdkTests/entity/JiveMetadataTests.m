@@ -12,6 +12,13 @@
 #import "Jive_internal.h"
 #import "JiveRetryingJAPIRequestOperation.h"
 #import "NSError+Jive.h"
+#import "JivePlatformVersionTests.h"
+
+@interface JiveMetadata (TestSupport)
+- (AFJSONRequestOperation<JiveRetryingOperation> *)boolPropertyOperation:(NSString *)propertySpecifier
+                                                              onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock;
+@end
 
 @interface JiveTestOperation : AFJSONRequestOperation<JiveRetryingOperation>
 
@@ -27,6 +34,84 @@
 
 #pragma mark - Video tests
 
+- (void)testHasVideo_noVideo_withVideoModuleProperty {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+    
+    __block void (^internalCallback)(JiveProperty *);
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return [@"feature.module.video.enabled" isEqual:obj];
+    }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalCallback = [obj copy];
+        return obj != nil;
+    }]
+     onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return YES;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject hasVideo:^(BOOL flagValue) {
+        STAssertFalse(flagValue, @"The flag should be NO");
+    } onError:^(NSError *error) {
+        STFail(@"There should be no errors.");
+    }];
+    
+    STAssertNotNil(internalCallback, @"A callback should have been set.");
+    if (internalCallback) {
+        JiveProperty *property = [[JiveProperty alloc] init];
+        [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+        [property setValue:@NO forKey:JivePropertyAttributes.value];
+
+        internalCallback(property);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
+- (void)testHasVideo_hasVideo_withVideoModuleProperty {
+    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
+
+    __block void (^internalCallback)(JiveProperty *);
+    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    
+    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return [@"feature.module.video.enabled" isEqual:obj];
+    }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+        internalCallback = [obj copy];
+        return obj != nil;
+    }]
+                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return YES;
+    }]];
+    
+    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
+    
+    [testObject hasVideo:^(BOOL flagValue) {
+        STAssertTrue(flagValue, @"The flag should be NO");
+    } onError:^(NSError *error) {
+        STFail(@"There should be no errors.");
+    }];
+    
+    STAssertNotNil(internalCallback, @"A callback should have been set.");
+    if (internalCallback) {
+        JiveProperty *property = [[JiveProperty alloc] init];
+        [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
+        [property setValue:@YES forKey:JivePropertyAttributes.value];
+        
+        internalCallback(property);
+    }
+    
+    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+}
+
 - (void)testHasVideo_noVideo {
     OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     NSDictionary *objects = @{@"carousel" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/carousel",
@@ -39,6 +124,7 @@
     };
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:0 maintenanceVersion:1]] platformVersion];
     [[[mockJive expect] andReturn:mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
@@ -76,6 +162,7 @@
     };
     
     [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
+    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0]] platformVersion];
     [[[mockJive expect] andReturn:mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
