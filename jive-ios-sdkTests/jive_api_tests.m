@@ -6613,7 +6613,7 @@
     }];
 }
 
-- (void) testAutosaveContentWhileEditingOperation {
+- (void) testSaveContentWhileEditingOperation {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable?minor=true";
     JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
     JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
@@ -6633,7 +6633,7 @@
     
     NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [jive autosaveContentWhileEditingOperation:source
+        AFURLConnectionOperation *operation = [jive saveContentWhileEditingOperation:source
                                                                              withOptions:options
                                                                               onComplete:^(JiveContent *content) {
                                                                                   // Called 3rd
@@ -6659,7 +6659,7 @@
     }];
 }
 
-- (void) testAutosaveContentWhileEditing {
+- (void) testSaveContentWhileEditing {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable?fields=name,id";
     JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
     [options addField:@"name"];
@@ -6680,7 +6680,7 @@
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
         source.subject = @"alternate";
-        [jive autosaveContentWhileEditing:source
+        [jive saveContentWhileEditing:source
                               withOptions:options
                                onComplete:^(JiveContent *content) {
                                    // Called 3rd
@@ -6700,7 +6700,7 @@
     }];
 }
 
-- (void) testDeleteContentLockOperation {
+- (void) testUnlockContentOperation {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
     JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -6717,7 +6717,7 @@
     source.subject = @"subject";
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [jive deleteContentLockOperation:source
+        AFURLConnectionOperation *operation = [jive unlockContentOperation:source
                                                                     onComplete:^(JiveContent *content) {
                                                                         // Called 3rd
                                                                         STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -6739,7 +6739,7 @@
     }];
 }
 
-- (void) testDeleteContentLock {
+- (void) testUnlockContent {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
     mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
     [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
@@ -6757,7 +6757,7 @@
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
         JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
         source.subject = @"alternate";
-        [jive deleteContentLock:source
+        [jive unlockContent:source
                      onComplete:^(JiveContent *content) {
                          // Called 3rd
                          STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
@@ -6776,7 +6776,7 @@
     }];
 }
 
-- (void) testAutosaveDocumentWithAttachmentsOperation {
+- (void) testSaveDocumentWithAttachmentsOperation {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
     JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
     JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
@@ -6802,7 +6802,7 @@
     [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        AFURLConnectionOperation *operation = [jive autosaveDocumentWhileEditingOperation:source
+        AFURLConnectionOperation *operation = [jive saveDocumentWhileEditingOperation:source
                                                                           withAttachments:attachments
                                                                                   options:options
                                                                                onComplete:^(JiveContent *content) {
@@ -6828,7 +6828,7 @@
     }];
 }
 
-- (void) testAutosaveDocumentWithAttachments {
+- (void) testSaveDocumentWithAttachments {
     NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
     JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
     [options addField:@"name"];
@@ -6856,7 +6856,7 @@
         simpleAttachment.name = @"document.json";
         simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
                                                                                                        ofType:@"json"]];
-        [jive autosaveDocumentWhileEditing:source
+        [jive saveDocumentWhileEditing:source
                            withAttachments:attachments
                                    options:options
                                 onComplete:^(JiveContent *content) {

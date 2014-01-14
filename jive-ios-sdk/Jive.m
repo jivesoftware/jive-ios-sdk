@@ -1551,7 +1551,7 @@ int const JivePushDeviceType = 3;
                                   onError:error] start];
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *) autosaveContentWhileEditingOperation:(JiveContent *)content
+- (AFJSONRequestOperation<JiveRetryingOperation> *) saveContentWhileEditingOperation:(JiveContent *)content
                                                                              withOptions:(JiveMinorCommentRequestOptions *)options
                                                                               onComplete:(JiveContentCompleteBlock)complete
                                                                                  onError:(JiveErrorBlock)error {
@@ -1567,17 +1567,17 @@ int const JivePushDeviceType = 3;
                                onError:error];
 }
 
-- (void) autosaveContentWhileEditing:(JiveContent *)content
+- (void) saveContentWhileEditing:(JiveContent *)content
                          withOptions:(JiveMinorCommentRequestOptions *)options
                           onComplete:(JiveContentCompleteBlock)complete
                              onError:(JiveErrorBlock)error {
-    [[self autosaveContentWhileEditingOperation:content
+    [[self saveContentWhileEditingOperation:content
                                     withOptions:options
                                      onComplete:complete
                                         onError:error] start];
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *) autosaveDocumentWhileEditingOperation:(JiveDocument *)document
+- (AFJSONRequestOperation<JiveRetryingOperation> *) saveDocumentWhileEditingOperation:(JiveDocument *)document
                                                                           withAttachments:(NSArray *)attachmentURLs
                                                                                   options:(JiveMinorCommentRequestOptions *)options
                                                                                onComplete:(JiveContentCompleteBlock)complete
@@ -1589,19 +1589,19 @@ int const JivePushDeviceType = 3;
                                   onError:error];
 }
 
-- (void) autosaveDocumentWhileEditing:(JiveDocument *)document
+- (void) saveDocumentWhileEditing:(JiveDocument *)document
                       withAttachments:(NSArray *)attachmentURLs
                               options:(JiveMinorCommentRequestOptions *)options
                            onComplete:(JiveContentCompleteBlock)complete
                               onError:(JiveErrorBlock)error {
-    [[self autosaveDocumentWhileEditingOperation:document
+    [[self saveDocumentWhileEditingOperation:document
                                  withAttachments:attachmentURLs
                                          options:options
                                       onComplete:complete
                                          onError:error] start];
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *) deleteContentLockOperation:(JiveContent *)content
+- (AFJSONRequestOperation<JiveRetryingOperation> *) unlockContentOperation:(JiveContent *)content
                                                                     onComplete:(JiveContentCompleteBlock)complete
                                                                        onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
@@ -1615,10 +1615,10 @@ int const JivePushDeviceType = 3;
                                onError:error];
 }
 
-- (void) deleteContentLock:(JiveContent *)content
+- (void) unlockContent:(JiveContent *)content
                 onComplete:(JiveContentCompleteBlock)complete
                    onError:(JiveErrorBlock)error {
-    [[self deleteContentLockOperation:content onComplete:complete onError:error] start];
+    [[self unlockContentOperation:content onComplete:complete onError:error] start];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) messagesOperationForContent:(JiveContent *)content withOptions:(JiveCommentsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
