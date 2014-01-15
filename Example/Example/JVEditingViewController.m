@@ -55,7 +55,7 @@
                 [self.instance lockContentForEditing:content
                                          withOptions:nil
                                           onComplete:^(JiveContent *lockedContent) {
-                                              if (lockedContent.content.editable.boolValue) {
+                                              if (lockedContent.content.editableValue) {
                                                   [self showEditableText:lockedContent];
                                               } else {
                                                   [self getEditableVersion];
