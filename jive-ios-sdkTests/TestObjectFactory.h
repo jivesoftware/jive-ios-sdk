@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class JiveResourceEntry;
+
 @interface TestObjectFactory : NSObject
+
++ (JiveResourceEntry *)createSelfResourceEntryForPerson:(NSString *)personID
+                                               atServer:(NSURL *)serverURL;
 
 @end

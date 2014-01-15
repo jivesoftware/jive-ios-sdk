@@ -7,7 +7,20 @@
 //
 
 #import "TestObjectFactory.h"
+#import "JiveResourceEntry.h"
 
 @implementation TestObjectFactory
+
++ (JiveResourceEntry *)createSelfResourceEntryForPerson:(NSString *)personID
+                                               atServer:(NSURL *)serverURL {
+    JiveResourceEntry *selfResource = [JiveResourceEntry new];
+    
+    [selfResource setValue:[NSURL URLWithString:[@"api/core/v3/person/" stringByAppendingString:personID]
+                                  relativeToURL:serverURL]
+                    forKey:JiveResourceEntryAttributes.ref];
+    [selfResource setValue:@[@"GET"]
+                    forKey:JiveResourceEntryAttributes.allowed];
+    return selfResource;
+}
 
 @end
