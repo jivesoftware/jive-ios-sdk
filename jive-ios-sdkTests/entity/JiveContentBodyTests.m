@@ -122,4 +122,14 @@
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.editable], self.contentBody.editable, @"Wrong editable");
 }
 
+- (void)testEditableValue {
+    STAssertFalse(self.contentBody.editableValue, @"Wrong initial value");
+    
+    [self.contentBody setValue:@YES forKey:JiveContentBodyAttributes.editable];
+    STAssertTrue(self.contentBody.editableValue, @"Failed to change with real value");
+    
+    [self.contentBody setValue:@NO forKey:JiveContentBodyAttributes.editable];
+    STAssertFalse(self.contentBody.editableValue, @"Failed to change with updated value");
+}
+
 @end
