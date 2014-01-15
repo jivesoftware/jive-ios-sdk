@@ -17,8 +17,14 @@
 //    limitations under the License.
 //
 
-#import "JiveContentBodyTests.h"
+#import "JiveObjectTests.h"
 #import "JiveContentBody.h"
+
+@interface JiveContentBodyTests : JiveObjectTests
+
+@property (nonatomic, readonly) JiveContentBody *contentBody;
+
+@end
 
 @implementation JiveContentBodyTests
 
