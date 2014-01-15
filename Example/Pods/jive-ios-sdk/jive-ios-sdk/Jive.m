@@ -176,7 +176,7 @@ int const JivePushDeviceType = 3;
             
             self.badInstanceURL = [sourceString substringToIndex:baseURIRange.location];
         }
-            
+        
         sourceString = [sourceString stringByReplacingOccurrencesOfString:self.badInstanceURL
                                                                withString:instanceURL];
     }
@@ -234,7 +234,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                         andTemplate:@"api/core/mobile/v1/pushNotification/info?deviceToken=%@", deviceToken, nil];
+                                                     andTemplate:@"api/core/mobile/v1/pushNotification/info?deviceToken=%@", deviceToken, nil];
     return [self operationWithRequest:request onComplete:completeBlock onError:errorBlock responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
@@ -242,18 +242,18 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
+                                                            andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:@"POST"];
-
+    
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                andTemplate:@"api/core/mobile/v1/pushNotification/unregister", nil];
+                                                            andTemplate:@"api/core/mobile/v1/pushNotification/unregister", nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@", deviceToken];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
@@ -272,7 +272,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
     
     [request setHTTPShouldHandleCookies:NO];
-
+    
     return [self OAuthTokenRequestOperationWithHTTPRequest:request OAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock];
 }
 
@@ -288,7 +288,7 @@ int const JivePushDeviceType = 3;
     NSString *postParams = @"grant_type=session";
     [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPMethod:@"POST"];
-
+    
     return [self OAuthTokenRequestOperationWithHTTPRequest:request OAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock];
 }
 
@@ -319,7 +319,7 @@ int const JivePushDeviceType = 3;
                                                                                         }];
     
     return operation;
-
+    
 }
 
 
@@ -342,8 +342,8 @@ int const JivePushDeviceType = 3;
                                                                                         success:^(NSURLRequest *operationRequest, NSHTTPURLResponse *response, id JSON) {
                                                                                             
                                                                                             JiveOAuthCredentials * creds = [[JiveOAuthCredentials alloc] initWithAccessToken:[JSON objectForKey:JiveOAuthAccessTokenKey]
-                                                                                                                                                                      refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
-                                                                                                                                                                        expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
+                                                                                                                                                                refreshToken:[JSON objectForKey:JiveOAuthRefreshTokenKey]
+                                                                                                                                                                  expiryDate:[NSDate dateWithTimeIntervalSinceNow:[[JSON objectForKey:JiveOAuthExpiresInKey] doubleValue] ]];
                                                                                             
                                                                                             completeBlock(creds);
                                                                                             
@@ -402,7 +402,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) peopleResourceOperation:(NSURL *)url withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[url path],
+                                                     andTemplate:[url path],
                              nil];
     
     return [self listOperationForClass:[JivePerson class]
@@ -413,7 +413,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)personResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[url path],
+                                                     andTemplate:[url path],
                              nil];
     
     return [self entityOperationForClass:[JivePerson class]
@@ -424,7 +424,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)activitiesResourceOperation:(NSURL *)url withOptions:(JiveDateLimitedRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[url path],
+                                                     andTemplate:[url path],
                              nil];
     
     return [self listOperationForClass:[JiveActivity class]
@@ -435,7 +435,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)streamsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[url path],
+                                                     andTemplate:[url path],
                              nil];
     
     return [self listOperationForClass:[JiveStream class]
@@ -446,7 +446,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)contentsResourceOperation:(NSURL *)url withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[url path],
+                                                     andTemplate:[url path],
                              nil];
     
     return [self listOperationForClass:[JiveContent class]
@@ -1552,9 +1552,9 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) saveContentWhileEditingOperation:(JiveContent *)content
-                                                                             withOptions:(JiveMinorCommentRequestOptions *)options
-                                                                              onComplete:(JiveContentCompleteBlock)complete
-                                                                                 onError:(JiveErrorBlock)error {
+                                                                         withOptions:(JiveMinorCommentRequestOptions *)options
+                                                                          onComplete:(JiveContentCompleteBlock)complete
+                                                                             onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
     NSMutableURLRequest *request = [self requestWithJSONBody:content
                                                      options:options
@@ -1568,20 +1568,20 @@ int const JivePushDeviceType = 3;
 }
 
 - (void) saveContentWhileEditing:(JiveContent *)content
-                         withOptions:(JiveMinorCommentRequestOptions *)options
-                          onComplete:(JiveContentCompleteBlock)complete
-                             onError:(JiveErrorBlock)error {
+                     withOptions:(JiveMinorCommentRequestOptions *)options
+                      onComplete:(JiveContentCompleteBlock)complete
+                         onError:(JiveErrorBlock)error {
     [[self saveContentWhileEditingOperation:content
-                                    withOptions:options
-                                     onComplete:complete
-                                        onError:error] start];
+                                withOptions:options
+                                 onComplete:complete
+                                    onError:error] start];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) saveDocumentWhileEditingOperation:(JiveDocument *)document
-                                                                          withAttachments:(NSArray *)attachmentURLs
-                                                                                  options:(JiveMinorCommentRequestOptions *)options
-                                                                               onComplete:(JiveContentCompleteBlock)complete
-                                                                                  onError:(JiveErrorBlock)error {
+                                                                      withAttachments:(NSArray *)attachmentURLs
+                                                                              options:(JiveMinorCommentRequestOptions *)options
+                                                                           onComplete:(JiveContentCompleteBlock)complete
+                                                                              onError:(JiveErrorBlock)error {
     return [self autosaveContentOperation:document
                           withAttachments:attachmentURLs
                                   options:options
@@ -1590,34 +1590,33 @@ int const JivePushDeviceType = 3;
 }
 
 - (void) saveDocumentWhileEditing:(JiveDocument *)document
-                      withAttachments:(NSArray *)attachmentURLs
-                              options:(JiveMinorCommentRequestOptions *)options
-                           onComplete:(JiveContentCompleteBlock)complete
-                              onError:(JiveErrorBlock)error {
+                  withAttachments:(NSArray *)attachmentURLs
+                          options:(JiveMinorCommentRequestOptions *)options
+                       onComplete:(JiveContentCompleteBlock)complete
+                          onError:(JiveErrorBlock)error {
     [[self saveDocumentWhileEditingOperation:document
-                                 withAttachments:attachmentURLs
-                                         options:options
-                                      onComplete:complete
-                                         onError:error] start];
+                             withAttachments:attachmentURLs
+                                     options:options
+                                  onComplete:complete
+                                     onError:error] start];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) unlockContentOperation:(JiveContent *)content
-                                                                    onComplete:(JiveContentCompleteBlock)complete
-                                                                       onError:(JiveErrorBlock)error {
+                                                                onComplete:(JiveCompletedBlock)complete
+                                                                   onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:path, nil];
     
     [request setHTTPMethod:@"DELETE"];
-    return [self updateJiveTypedObject:content
-                           withRequest:request
-                            onComplete:complete
-                               onError:error];
+    return [self emptyOperationWithRequest:request
+                                onComplete:complete
+                                   onError:error];
 }
 
 - (void) unlockContent:(JiveContent *)content
-                onComplete:(JiveContentCompleteBlock)complete
-                   onError:(JiveErrorBlock)error {
+            onComplete:(JiveCompletedBlock)complete
+               onError:(JiveErrorBlock)error {
     [[self unlockContentOperation:content onComplete:complete onError:error] start];
 }
 
@@ -1839,7 +1838,7 @@ int const JivePushDeviceType = 3;
                                                                      onComplete:(JiveCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                andTemplate:[message.correctAnswerRef path], nil];
+                                                            andTemplate:[message.correctAnswerRef path], nil];
     
     if (message.canMarkAsCorrectAnswer) {
         [request setHTTPMethod:@"PUT"];
@@ -2245,7 +2244,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) streamAssociationsOperation:(JiveStream *)stream withOptions:(JiveAssociationsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:[stream.associationsRef path],
+                                                     andTemplate:[stream.associationsRef path],
                              nil];
     
     return [self listOperationForClass:[JiveTypedObject class]
@@ -2292,7 +2291,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteAssociationOperation:(JiveTypedObject *)association fromStream:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                andTemplate:@"%@/%@/%@", [stream.associationsRef path], association.type, [association.selfRef lastPathComponent], nil];
+                                                            andTemplate:@"%@/%@/%@", [stream.associationsRef path], association.type, [association.selfRef lastPathComponent], nil];
     
     [request setHTTPMethod:@"DELETE"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -2484,7 +2483,7 @@ int const JivePushDeviceType = 3;
 #pragma mark - Outcomes
 - (AFJSONRequestOperation<JiveRetryingOperation> *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                         andTemplate:@"%@/outcomes", content.selfRef.path, nil];
+                                                     andTemplate:@"%@/outcomes", content.selfRef.path, nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self listOperationForClass:[JiveOutcome class]
                                                                                    request:request
                                                                                 onComplete:complete
@@ -2602,10 +2601,10 @@ int const JivePushDeviceType = 3;
     [request setHTTPShouldHandleCookies:NO];
     
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self bareListOperationForClass:[JiveProperty class]
-                                                                                     request:request
-                                                                                  onComplete:complete
-                                                                                     onError:error];
-
+                                                                                       request:request
+                                                                                    onComplete:complete
+                                                                                       onError:error];
+    
     // This should be publicly accessible without authentication, if the property is available on the instance.
     // In the event of an error, this should not attempt an auth & retry, just back off.
     operation.retrier = nil;
@@ -2642,7 +2641,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                         andTemplate:@"%@/metadata/objects/", self.baseURI, nil];
+                                                     andTemplate:@"%@/metadata/objects/", self.baseURI, nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                    onJSON:complete
                                                                                   onError:error];

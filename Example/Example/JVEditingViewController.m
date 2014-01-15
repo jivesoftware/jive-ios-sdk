@@ -92,8 +92,8 @@
         self.refreshLockTimer = nil;
         if ([self.content.type isEqualToString:JiveDocumentType]) {
             [self.instance unlockContent:self.content
-                              onComplete:^(JiveContent *content) {
-                                  NSLog(@"unlockContent succeeded? %@", content.content.editable);
+                              onComplete:^ {
+                                  NSLog(@"unlockContent succeeded.");
                               }
                                  onError:^(NSError *error) {
                                      NSLog(@"unlockContent failed %@", error);
