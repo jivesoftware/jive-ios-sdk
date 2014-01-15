@@ -1582,11 +1582,11 @@ int const JivePushDeviceType = 3;
                                                                               options:(JiveMinorCommentRequestOptions *)options
                                                                            onComplete:(JiveContentCompleteBlock)complete
                                                                               onError:(JiveErrorBlock)error {
-    return [self autosaveContentOperation:document
-                          withAttachments:attachmentURLs
-                                  options:options
-                               onComplete:complete
-                                  onError:error];
+    return [self saveContentWhileEditingOperation:document
+                                  withAttachments:attachmentURLs
+                                          options:options
+                                       onComplete:complete
+                                          onError:error];
 }
 
 - (void) saveDocumentWhileEditing:(JiveDocument *)document
@@ -1606,11 +1606,11 @@ int const JivePushDeviceType = 3;
                                                                           options:(JiveMinorCommentRequestOptions *)options
                                                                        onComplete:(JiveContentCompleteBlock)complete
                                                                           onError:(JiveErrorBlock)error {
-    return [self autosaveContentOperation:post
-                          withAttachments:attachmentURLs
-                                  options:options
-                               onComplete:complete
-                                  onError:error];
+    return [self saveContentWhileEditingOperation:post
+                                  withAttachments:attachmentURLs
+                                          options:options
+                                       onComplete:complete
+                                          onError:error];
 }
 
 - (void) savePostWhileEditing:(JivePost *)post
@@ -1762,11 +1762,11 @@ int const JivePushDeviceType = 3;
     return request;
 }
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *) autosaveContentOperation:(JiveContent *)content
-                                                             withAttachments:(NSArray *)attachmentURLs
-                                                                     options:(JiveReturnFieldsRequestOptions *)options
-                                                                  onComplete:(JiveContentCompleteBlock)complete
-                                                                     onError:(JiveErrorBlock)error {
+- (AFJSONRequestOperation<JiveRetryingOperation> *) saveContentWhileEditingOperation:(JiveContent *)content
+                                                                     withAttachments:(NSArray *)attachmentURLs
+                                                                             options:(JiveReturnFieldsRequestOptions *)options
+                                                                          onComplete:(JiveContentCompleteBlock)complete
+                                                                             onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
     NSMutableURLRequest *request = [self createUploadRequestWithOptions:options
                                                          attachmentURLs:attachmentURLs
