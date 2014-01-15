@@ -52,6 +52,11 @@ static NSString* const JiveOAuthAccessTokenKey = @"access_token";
 static NSString* const JiveOAuthRefreshTokenKey = @"refresh_token";
 static NSString* const JiveOAuthExpiresInKey = @"expires_in";
 
+struct JiveHTTPMethodTypes const JiveHTTPMethodTypes = {
+    .POST = @"POST",
+    .PUT = @"PUT",
+    .DELETE = @"DELETE"
+};
 
 
 int const JivePushDeviceType = 3;
@@ -246,7 +251,7 @@ int const JivePushDeviceType = 3;
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
@@ -257,7 +262,7 @@ int const JivePushDeviceType = 3;
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@", deviceToken];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
@@ -269,7 +274,9 @@ int const JivePushDeviceType = 3;
                                  JiveOAuthPasswordKey: password};
     
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
-    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:JiveHTTPMethodTypes.POST
+                                                            path:@"oauth2/token"
+                                                      parameters:postParams];
     
     [request setHTTPShouldHandleCookies:NO];
     
@@ -287,7 +294,7 @@ int const JivePushDeviceType = 3;
     
     NSString *postParams = @"grant_type=session";
     [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     
     return [self OAuthTokenRequestOperationWithHTTPRequest:request OAuthID:oauthID OAuthSecret:oauthSecret onComplete:completeBlock onError:errorBlock];
 }
@@ -332,7 +339,9 @@ int const JivePushDeviceType = 3;
                                  JiveOAuthClientSecretKey: oauthSecret};
     
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
-    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"oauth2/token" parameters:postParams];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:JiveHTTPMethodTypes.POST
+                                                            path:@"oauth2/token"
+                                                      parameters:postParams];
     [request setHTTPShouldHandleCookies:NO];
     
     JiveHTTPBasicAuthCredentials *authSecrets = [[JiveHTTPBasicAuthCredentials alloc] initWithUsername:oauthID password:oauthSecret];
@@ -363,8 +372,10 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *)OAuthRevocationOperationWithOAuthCredentials:(JiveOAuthCredentials*)credentials onComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
-    NSMutableURLRequest* request = [HTTPClient requestWithMethod:@"POST" path:@"/oauth2/revoke" parameters:nil];
-    [request setHTTPMethod:@"POST"];
+    NSMutableURLRequest* request = [HTTPClient requestWithMethod:JiveHTTPMethodTypes.POST
+                                                            path:@"/oauth2/revoke"
+                                                      parameters:nil];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [credentials applyToRequest:request];
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
     
@@ -377,7 +388,7 @@ int const JivePushDeviceType = 3;
 
 -(AFJSONRequestOperation*)mobileQuestCompletionOperationWithOnComplete:(void(^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:@"/api/core/mobile/v1/quest/form_login", nil];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
@@ -528,7 +539,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:template, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -725,7 +736,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[announcement.selfRef path], nil];
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
                                                                                     onComplete:completeBlock
                                                                                        onError:errorBlock];
@@ -735,9 +746,9 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) markAnnouncementOperationWithAnnouncement:(JiveAnnouncement *)announcement asRead:(BOOL)read onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[announcement.readRef path], nil];
     if (read) {
-        [request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     } else {
-        [request setHTTPMethod:@"DELETE"];
+        [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     }
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
                                                                                     onComplete:completeBlock
@@ -828,7 +839,7 @@ int const JivePushDeviceType = 3;
         }
     } copy];
     
-    NSString *HTTPMethod = read ? @"POST" : @"DELETE";
+    NSString *HTTPMethod = read ? JiveHTTPMethodTypes.POST : JiveHTTPMethodTypes.DELETE;
     NSMutableArray *operations = [NSMutableArray new];
     for (NSURL *updateURL in incompleteOperationUpdateURLs) {
         NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:updateURL];
@@ -966,7 +977,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deletePersonOperation:(JivePerson *)person onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[person.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1108,7 +1119,7 @@ int const JivePushDeviceType = 3;
                                                      options:nil
                                                  andTemplate:[person.selfRef path], nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self entityOperationForClass:[JivePerson class]
                                  request:request
                               onComplete:complete
@@ -1123,7 +1134,7 @@ int const JivePushDeviceType = 3;
     NSString *path = [[person.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1135,7 +1146,7 @@ int const JivePushDeviceType = 3;
     NSString *path = [[person.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:^(NSError *error) {
         if ([error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@409]) { // 409 is conflict error returned when you try to delete a following relationship that doesn't exist.  We may have this situation
             complete();                                                          // with legacy data when following was done before this fix -TABDEV-2545
@@ -1155,7 +1166,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:@"%@/people", self.baseURI, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JivePerson class]
                                  request:request
                               onComplete:complete
@@ -1171,7 +1182,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[person.tasksRef path], nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveTask class]
                                  request:request
                               onComplete:complete
@@ -1456,7 +1467,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) contentOperation:(JiveContent *)content markAsRead:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[content.readRef path], nil];
     
-    [request setHTTPMethod:read ? @"POST" : @"DELETE"];
+    [request setHTTPMethod:read ? JiveHTTPMethodTypes.POST : JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1467,7 +1478,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) contentOperation:(JiveContent *)content likes:(BOOL)read onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[content.likesRef path], nil];
     
-    [request setHTTPMethod:read ? @"POST" : @"DELETE"];
+    [request setHTTPMethod:read ? JiveHTTPMethodTypes.POST : JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1478,7 +1489,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteContentOperation:(JiveContent *)content onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[content.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -1491,7 +1502,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[content.selfRef path], nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -1534,7 +1545,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
                                                             andTemplate:path, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self updateJiveTypedObject:content
                            withRequest:request
                             onComplete:complete
@@ -1560,7 +1571,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:path, nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self updateJiveTypedObject:content
                            withRequest:request
                             onComplete:complete
@@ -1632,7 +1643,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:path, nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request
                                 onComplete:complete
                                    onError:error];
@@ -1675,7 +1686,7 @@ int const JivePushDeviceType = 3;
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
@@ -1772,7 +1783,7 @@ int const JivePushDeviceType = 3;
                                                          attachmentURLs:attachmentURLs
                                                                 content:content
                                                                    path:path
-                                                          requestMethod:@"PUT"];
+                                                          requestMethod:JiveHTTPMethodTypes.PUT];
     
     return [self updateJiveTypedObject:content withRequest:request onComplete:complete onError:error];
 }
@@ -1783,7 +1794,7 @@ int const JivePushDeviceType = 3;
                                                          attachmentURLs:attachmentURLs
                                                                 content:content
                                                                    path:path
-                                                          requestMethod:@"POST"];
+                                                          requestMethod:JiveHTTPMethodTypes.POST];
     JiveRetryingJAPIRequestOperation *operation = [self entityOperationForClass:[JiveContent class]
                                                                         request:request
                                                                      onComplete:complete
@@ -1849,7 +1860,7 @@ int const JivePushDeviceType = 3;
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
@@ -1865,9 +1876,9 @@ int const JivePushDeviceType = 3;
                                                             andTemplate:[message.correctAnswerRef path], nil];
     
     if (message.canMarkAsCorrectAnswer) {
-        [request setHTTPMethod:@"PUT"];
+        [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     } else if (message.canClearMarkAsCorrectAnswer) {
-        [request setHTTPMethod:@"DELETE"];
+        [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     } else {
         errorBlock([NSError jive_errorWithUnauthorizedActivityObjectType:JiveErrorMessageUnauthorizedUserMarkCorrectAnswer]);
         return nil;
@@ -2017,7 +2028,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deletePlaceOperationWithPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[place.selfRef path], nil];
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
                                                                                     onComplete:completeBlock
                                                                                        onError:errorBlock];
@@ -2026,7 +2037,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteAvatarOperationForPlace:(JivePlace *)place onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[place.avatarRef path], nil];
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
                                                                                     onComplete:completeBlock
                                                                                        onError:errorBlock];
@@ -2080,7 +2091,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[place.selfRef path], nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self entityOperationForClass:[JivePlace class]
                                  request:request
                               onComplete:complete
@@ -2109,7 +2120,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[place.tasksRef path], nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveTask class]
                                  request:request
                               onComplete:complete
@@ -2125,7 +2136,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:@"%@/places", self.baseURI, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JivePlace class]
                                  request:request
                               onComplete:complete
@@ -2171,7 +2182,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteMemberOperationWithMember:(JiveMember *)member onComplete:(void (^)(void))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[member.selfRef path], nil];
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self emptyOperationWithRequest:request
                                                                                     onComplete:completeBlock
                                                                                        onError:errorBlock];
@@ -2210,7 +2221,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[member.selfRef path], nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self entityOperationForClass:[JiveMember class]
                                  request:request
                               onComplete:complete
@@ -2258,7 +2269,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteStreamOperation:(JiveStream *)stream onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[stream.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -2286,7 +2297,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[stream.selfRef path], nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self entityOperationForClass:[JiveStream class]
                                  request:request
                               onComplete:complete
@@ -2302,7 +2313,7 @@ int const JivePushDeviceType = 3;
                                                      options:options
                                                  andTemplate:[person.streamsRef path], nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveStream class]
                                  request:request
                               onComplete:complete
@@ -2317,7 +2328,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:@"%@/%@/%@", [stream.associationsRef path], association.type, [association.selfRef lastPathComponent], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -2330,7 +2341,7 @@ int const JivePushDeviceType = 3;
     NSData *body = [NSJSONSerialization dataWithJSONObject:[targets toJSONArray] options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
@@ -2358,7 +2369,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteInviteOperation:(JiveInvite *)invite onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil andTemplate:[invite.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -2371,7 +2382,7 @@ int const JivePushDeviceType = 3;
     NSDictionary *JSON = @{@"id" : invite.jiveId, @"state" : [JiveInvite jsonForState:state]};
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
@@ -2390,7 +2401,7 @@ int const JivePushDeviceType = 3;
     NSDictionary *JSON = @{@"body" : message, @"invitees" : [targets toJSONArray:NO]};
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
@@ -2443,7 +2454,7 @@ int const JivePushDeviceType = 3;
 
 - (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadImageDataOperation:(NSData *)imageData mimeType:(NSString *)mimeType fileName:(NSString *)fileName onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
-    NSMutableURLRequest *request = [HTTPClient multipartFormRequestWithMethod:@"POST"
+    NSMutableURLRequest *request = [HTTPClient multipartFormRequestWithMethod:JiveHTTPMethodTypes.POST
                                                                          path:[self.baseURI stringByAppendingString:@"/images"]
                                                                    parameters:nil
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
@@ -2533,7 +2544,7 @@ int const JivePushDeviceType = 3;
                                     outcome.jiveId,
                                     nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyOperationWithRequest:request
                                 onComplete:complete
                                    onError:error];
@@ -2548,7 +2559,7 @@ int const JivePushDeviceType = 3;
                                                      options:nil
                                                  andTemplate:@"%@%@", content.selfRef.path, @"/outcomes", nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveOutcome class]
                                  request:request
                               onComplete:complete
@@ -2709,7 +2720,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:@"%@/people/@me/acceptTermsAndConditions", self.baseURI, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
 }
 
@@ -2723,7 +2734,7 @@ int const JivePushDeviceType = 3;
     NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
     return request;

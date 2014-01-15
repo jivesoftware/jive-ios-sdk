@@ -53,3 +53,9 @@
                                                                    onError:(JiveErrorBlock)errorBlock;
 
 @end
+
+extern struct JiveHTTPMethodTypes {
+    __unsafe_unretained NSString *POST;
+    __unsafe_unretained NSString *PUT;
+    __unsafe_unretained NSString *DELETE;
+} const JiveHTTPMethodTypes;
