@@ -6718,12 +6718,7 @@
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
         AFURLConnectionOperation *operation = [jive unlockContentOperation:source
-                                                                onComplete:^(JiveContent *content) {
-                                                                    // Called 3rd
-                                                                    STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
-                                                                    STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
-                                                                    STAssertEquals(content, source, @"Content object not updated");
-                                                                    
+                                                                onComplete:^ {
                                                                     // Check that delegates where actually called
                                                                     [mockAuthDelegate verify];
                                                                     [mockJiveURLResponseDelegate verify];
@@ -6758,12 +6753,7 @@
         JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
         source.subject = @"alternate";
         [jive unlockContent:source
-                 onComplete:^(JiveContent *content) {
-                     // Called 3rd
-                     STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
-                     STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
-                     STAssertEquals(content, source, @"Content object not updated");
-                     
+                 onComplete:^ {
                      // Check that delegates where actually called
                      [mockAuthDelegate verify];
                      [mockJiveURLResponseDelegate verify];

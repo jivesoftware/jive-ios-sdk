@@ -1602,22 +1602,21 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) unlockContentOperation:(JiveContent *)content
-                                                                    onComplete:(JiveContentCompleteBlock)complete
-                                                                       onError:(JiveErrorBlock)error {
+                                                                onComplete:(JiveCompletedBlock)complete
+                                                                   onError:(JiveErrorBlock)error {
     NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:path, nil];
     
     [request setHTTPMethod:@"DELETE"];
-    return [self updateJiveTypedObject:content
-                           withRequest:request
-                            onComplete:complete
-                               onError:error];
+    return [self emptyOperationWithRequest:request
+                                onComplete:complete
+                                   onError:error];
 }
 
 - (void) unlockContent:(JiveContent *)content
-                onComplete:(JiveContentCompleteBlock)complete
-                   onError:(JiveErrorBlock)error {
+            onComplete:(JiveCompletedBlock)complete
+               onError:(JiveErrorBlock)error {
     [[self unlockContentOperation:content onComplete:complete onError:error] start];
 }
 
