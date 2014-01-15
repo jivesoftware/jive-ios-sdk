@@ -115,7 +115,7 @@ NSString * const JiveDocumentType = @"document";
     [self addArrayElements:authors
           toJSONDictionary:dictionary
                     forTag:JiveDocumentAttributes.authors];
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
+    if ([[users.lastObject class] isSubclassOfClass:[NSString class]])
         [dictionary setValue:users forKey:JiveDocumentAttributes.users];
     else
         [self addArrayElements:users
