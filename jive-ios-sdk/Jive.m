@@ -1601,6 +1601,30 @@ int const JivePushDeviceType = 3;
                                      onError:error] start];
 }
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *) savePostWhileEditingOperation:(JivePost *)post
+                                                                  withAttachments:(NSArray *)attachmentURLs
+                                                                          options:(JiveMinorCommentRequestOptions *)options
+                                                                       onComplete:(JiveContentCompleteBlock)complete
+                                                                          onError:(JiveErrorBlock)error {
+    return [self autosaveContentOperation:post
+                          withAttachments:attachmentURLs
+                                  options:options
+                               onComplete:complete
+                                  onError:error];
+}
+
+- (void) savePostWhileEditing:(JivePost *)post
+              withAttachments:(NSArray *)attachmentURLs
+                      options:(JiveMinorCommentRequestOptions *)options
+                   onComplete:(JiveContentCompleteBlock)complete
+                      onError:(JiveErrorBlock)error {
+    [[self savePostWhileEditingOperation:post
+                         withAttachments:attachmentURLs
+                                 options:options
+                              onComplete:complete
+                                 onError:error] start];
+}
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) unlockContentOperation:(JiveContent *)content
                                                                 onComplete:(JiveCompletedBlock)complete
                                                                    onError:(JiveErrorBlock)error {
