@@ -58,6 +58,27 @@ struct JiveHTTPMethodTypes const JiveHTTPMethodTypes = {
     .DELETE = @"DELETE"
 };
 
+struct JiveRequestPathComponents const JiveRequestPathComponents = {
+    .pushNotification = @"api/core/mobile/v1/pushNotification",
+    .oauthToken = @"oauth2/token",
+    .inbox = @"inbox",
+    .people = @"people",
+    .places = @"places",
+    .contents = @"contents",
+    .recommended = @"recommended",
+    .trending = @"trending",
+    .activities = @"activities",
+    .frequent = @"frequent",
+    .content = @"content",
+    .recent = @"recent",
+    .outcomes = @"outcomes",
+    .metadata = @"metadata",
+    .metadataProperties = @"metadata/properties",
+    .me = @"@me",
+    .search = @"search",
+    .editable = @"editable"
+};
+
 
 int const JivePushDeviceType = 3;
 
@@ -158,6 +179,10 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - helper methods
 
+- (NSString *)appendPathToBaseURI:(NSString *)path {
+    return [self.baseURI stringByAppendingPathComponent:path];
+}
+
 - (id)parseObjectOfClass:(Class)clazz fromJSON:(id)JSON {
     self.badInstanceURL = nil;
     return [clazz objectFromJSON:JSON withInstance:self];
@@ -239,7 +264,8 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)pushRegistrationInfoForDevice:(NSString *)deviceToken onComplete:(JiveArrayCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                     andTemplate:@"api/core/mobile/v1/pushNotification/info?deviceToken=%@", deviceToken, nil];
+                                                     andTemplate:@"%@/info?deviceToken=%@",
+                             JiveRequestPathComponents.pushNotification, deviceToken, nil];
     return [self operationWithRequest:request onComplete:completeBlock onError:errorBlock responseHandler:^NSArray *(id JSON) {
         return JSON;
     }];
@@ -247,7 +273,8 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)registerDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"api/core/mobile/v1/pushNotification/register", nil];
+                                                            andTemplate:@"%@/register",
+                                    JiveRequestPathComponents.pushNotification, nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
@@ -258,7 +285,8 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)unRegisterDeviceForJivePushNotifications:(NSString *)deviceToken onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"api/core/mobile/v1/pushNotification/unregister", nil];
+                                                            andTemplate:@"%@/unregister",
+                                    JiveRequestPathComponents.pushNotification, nil];
     NSString *postString = [NSString stringWithFormat:@"deviceToken=%@", deviceToken];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
@@ -275,7 +303,7 @@ int const JivePushDeviceType = 3;
     
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
     NSMutableURLRequest* request = [HTTPClient requestWithMethod:JiveHTTPMethodTypes.POST
-                                                            path:@"oauth2/token"
+                                                            path:JiveRequestPathComponents.oauthToken
                                                       parameters:postParams];
     
     [request setHTTPShouldHandleCookies:NO];
@@ -290,7 +318,7 @@ int const JivePushDeviceType = 3;
 
 -(AFJSONRequestOperation*)OAuthTokenOperationWithOAuthID:(NSString*)oauthID OAuthSecret:(NSString*)oauthSecret onComplete:(void(^)(JiveOAuthCredentials*))completeBlock onError:(JiveErrorBlock)errorBlock {
     
-    NSMutableURLRequest * request = [self credentialedRequestWithOptions:nil andTemplate:@"oauth2/token", nil];
+    NSMutableURLRequest * request = [self credentialedRequestWithOptions:nil andTemplate:JiveRequestPathComponents.oauthToken, nil];
     
     NSString *postParams = @"grant_type=session";
     [request setHTTPBody:[postParams dataUsingEncoding:NSUTF8StringEncoding]];
@@ -340,7 +368,7 @@ int const JivePushDeviceType = 3;
     
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
     NSMutableURLRequest* request = [HTTPClient requestWithMethod:JiveHTTPMethodTypes.POST
-                                                            path:@"oauth2/token"
+                                                            path:JiveRequestPathComponents.oauthToken
                                                       parameters:postParams];
     [request setHTTPShouldHandleCookies:NO];
     
@@ -400,9 +428,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) getPeopleArray:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/%@",
-                             self.baseURI,
-                             callName,
+                                                     andTemplate:[self appendPathToBaseURI:callName],
                              nil];
     
     return [self listOperationForClass:[JivePerson class]
@@ -467,10 +493,9 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)personByOperation:(NSString *)personId withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePerson *))completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSString *pathComponents = [JiveRequestPathComponents.people stringByAppendingPathComponent:personId];
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/people/%@",
-                             self.baseURI,
-                             personId,
+                                                     andTemplate:[self appendPathToBaseURI:pathComponents],
                              nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self entityOperationForClass:[JivePerson class]
                                                                                      request:request
@@ -481,9 +506,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) contentsListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/%@",
-                             self.baseURI,
-                             callName,
+                                                     andTemplate:[self appendPathToBaseURI:callName],
                              nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self listOperationForClass:[JiveContent class]
                                                                                    request:request
@@ -494,9 +517,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) placeListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/%@",
-                             self.baseURI,
-                             callName,
+                                                     andTemplate:[self appendPathToBaseURI:callName],
                              nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self listOperationForClass:[JivePlace class]
                                                                                    request:request
@@ -507,9 +528,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) activityListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/%@",
-                             self.baseURI,
-                             callName,
+                                                     andTemplate:[self appendPathToBaseURI:callName],
                              nil];
     
     return [self listOperationForClass:[JiveActivity class]
@@ -520,9 +539,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) activityDateLimitedListOperation:(NSString *)callName withOptions:(NSObject<JiveRequestOptions> *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/%@",
-                             self.baseURI,
-                             callName,
+                                                     andTemplate:[self appendPathToBaseURI:callName],
                              nil];
     
     return [self dateLimitedListOperationForClass:[JiveActivity class]
@@ -626,7 +643,7 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) activitiesOperationWithOptions:(JiveDateLimitedRequestOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self activityDateLimitedListOperation:@"activities"
+    return [self activityDateLimitedListOperation:JiveRequestPathComponents.activities
                                       withOptions:options
                                        onComplete:completeBlock
                                           onError:errorBlock];
@@ -651,36 +668,54 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) frequentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:  (JiveErrorBlock)errorBlock {
-    return [self contentsListOperation:@"activities/frequent/content"
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.frequent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.content];
+    return [self contentsListOperation:path
                            withOptions:options
                             onComplete:completeBlock
                                onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) frequentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *persons))completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self getPeopleArray:@"activities/frequent/people" withOptions:options onComplete:completeBlock onError:errorBlock];
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.frequent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.people];
+    return [self getPeopleArray:path withOptions:options onComplete:completeBlock onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) frequentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *places))completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self placeListOperation:@"activities/frequent/places"
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.frequent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.places];
+    return [self placeListOperation:path
                         withOptions:options
                          onComplete:completeBlock
                             onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) recentContentOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self contentsListOperation:@"activities/recent/content"
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.recent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.content];
+    return [self contentsListOperation:path
                            withOptions:options
                             onComplete:completeBlock
                                onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) recentPeopleOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self getPeopleArray:@"activities/recent/people" withOptions:options onComplete:completeBlock onError:errorBlock];
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.recent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.people];
+    return [self getPeopleArray:path withOptions:options onComplete:completeBlock onError:errorBlock];
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) recentPlacesOperationWithOptions:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *contents))completeBlock onError:(JiveErrorBlock)errorBlock {
-    return [self placeListOperation:@"activities/recent/places"
+    NSString *path = [JiveRequestPathComponents.activities stringByAppendingPathComponent:JiveRequestPathComponents.recent];
+    
+    path = [path stringByAppendingPathComponent:JiveRequestPathComponents.places];
+    return [self placeListOperation:path
                         withOptions:options
                          onComplete:completeBlock
                             onError:errorBlock];
@@ -767,7 +802,8 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)inboxOperation:(JiveInboxOptions *)options onComplete:(JiveDateLimitedObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
-                                                            andTemplate:@"%@/inbox", self.baseURI, nil];
+                                                            andTemplate:@"%@/%@",
+                                    self.baseURI, JiveRequestPathComponents.inbox, nil];
     
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
                                                                                               request:request
@@ -783,7 +819,8 @@ int const JivePushDeviceType = 3;
                                                                       onComplete:(JiveInboxObjectsCompleteBlock)completeBlock
                                                                          onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
-                                                            andTemplate:@"%@/inbox", self.baseURI, nil];
+                                                            andTemplate:@"%@/%@",
+                                    self.baseURI, JiveRequestPathComponents.inbox, nil];
     
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self dateLimitedListOperationForClass:[JiveInboxEntry class]
                                                                                               request:request
@@ -897,7 +934,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)peopleOperation:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self getPeopleArray:@"people" withOptions:options onComplete:complete onError:error];
+    return [self getPeopleArray:JiveRequestPathComponents.people
+                    withOptions:options
+                     onComplete:complete
+                        onError:error];
 }
 
 - (void) people:(JivePeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -905,7 +945,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)recommendedPeopleOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self getPeopleArray:@"people/recommended" withOptions:options onComplete:complete onError:error];
+    return [self getPeopleArray:[JiveRequestPathComponents.people stringByAppendingPathComponent:JiveRequestPathComponents.recommended]
+                    withOptions:options
+                     onComplete:complete
+                        onError:error];
 }
 
 - (void) recommendedPeople:(JiveCountRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(JiveErrorBlock) error {
@@ -913,7 +956,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)trendingOperation:(JiveTrendingPeopleRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self getPeopleArray:@"people/trending" withOptions:options onComplete:complete onError:error];
+    return [self getPeopleArray:[JiveRequestPathComponents.people stringByAppendingPathComponent:JiveRequestPathComponents.trending]
+                    withOptions:options
+                     onComplete:complete
+                        onError:error];
 }
 
 - (void) trending:(JiveTrendingPeopleRequestOptions *)options onComplete:(void(^)(NSArray *)) complete onError:(JiveErrorBlock) error {
@@ -932,7 +978,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)meOperation:(void(^)(JivePerson *))complete onError:(JiveErrorBlock)error {
-    return [self personByOperation:@"@me" withOptions:nil onComplete:complete onError:error];
+    return [self personByOperation:JiveRequestPathComponents.me
+                       withOptions:nil
+                        onComplete:complete
+                           onError:error];
 }
 
 - (void) me:(void(^)(JivePerson *)) complete onError:(JiveErrorBlock) error {
@@ -1164,7 +1213,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createPersonOperation:(JivePerson *)person withOptions:(JiveWelcomeRequestOptions *)options onComplete:(void (^)(JivePerson *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:person
                                                      options:options
-                                                 andTemplate:@"%@/people", self.baseURI, nil];
+                                                 andTemplate:[self appendPathToBaseURI:JiveRequestPathComponents.people], nil];
     
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JivePerson class]
@@ -1196,7 +1245,10 @@ int const JivePushDeviceType = 3;
 #pragma mark - Search
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) searchPeopleRequestOperation:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^) (NSArray *people))complete onError:(JiveErrorBlock)error {
-    return [self getPeopleArray:@"search/people" withOptions:options onComplete:complete onError:error];
+    return [self getPeopleArray:[JiveRequestPathComponents.search stringByAppendingPathComponent:JiveRequestPathComponents.people]
+                    withOptions:options
+                     onComplete:complete
+                        onError:error];
 }
 
 - (void) searchPeople:(JiveSearchPeopleRequestOptions *)options onComplete:(void (^)(NSArray *people))complete onError:(JiveErrorBlock)error {
@@ -1206,7 +1258,7 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) searchPlacesRequestOperation:(JiveSearchPlacesRequestOptions *)options onComplete:(void (^)(NSArray *places))complete onError:(JiveErrorBlock)error {
-    return [self placeListOperation:@"search/places"
+    return [self placeListOperation:[JiveRequestPathComponents.search stringByAppendingPathComponent:JiveRequestPathComponents.places]
                         withOptions:options
                          onComplete:complete
                             onError:error];
@@ -1219,7 +1271,7 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) searchContentsRequestOperation:(JiveSearchContentsRequestOptions *)options onComplete:(void (^)(NSArray *contents))complete onError:(JiveErrorBlock)error {
-    return [self contentsListOperation:@"search/contents"
+    return [self contentsListOperation:[JiveRequestPathComponents.search stringByAppendingPathComponent:JiveRequestPathComponents.contents]
                            withOptions:options
                             onComplete:complete
                                onError:error];
@@ -1235,9 +1287,9 @@ int const JivePushDeviceType = 3;
 #pragma mark - Environment
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)filterableFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.people stringByAppendingPathComponent:@"@filterableFields"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"%@/people/@filterableFields",
-                                    self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:path], nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -1249,9 +1301,9 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)supportedFieldsOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.people stringByAppendingPathComponent:@"@supportedFields"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"%@/people/@supportedFields",
-                                    self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:path], nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return JSON;
@@ -1263,9 +1315,9 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)resourcesOperation:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.people stringByAppendingPathComponent:@"@resources"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"%@/people/@resources",
-                                    self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:path], nil];
     
     return [self operationWithRequest:request onComplete:complete onError:error responseHandler:^NSArray *(id JSON) {
         return [self parseObjectsOfClass:[JiveResource class] FromJSONList:JSON];
@@ -1313,7 +1365,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)contentsOperation:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self contentsListOperation:@"contents" withOptions:options onComplete:complete onError:error];
+    return [self contentsListOperation:JiveRequestPathComponents.contents
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) contents:(JiveContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1321,7 +1376,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)popularContentsOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self contentsListOperation:@"contents/popular" withOptions:options onComplete:complete onError:error];
+    return [self contentsListOperation:[JiveRequestPathComponents.contents stringByAppendingPathComponent:@"popular"]
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) popularContents:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1329,7 +1387,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)recommendedContentsOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self contentsListOperation:@"contents/recommended" withOptions:options onComplete:complete onError:error];
+    return [self contentsListOperation:[JiveRequestPathComponents.contents stringByAppendingPathComponent:JiveRequestPathComponents.recommended]
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) recommendedContents:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1337,7 +1398,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)trendingContentsOperation:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self contentsListOperation:@"contents/trending" withOptions:options onComplete:complete onError:error];
+    return [self contentsListOperation:[JiveRequestPathComponents.contents stringByAppendingPathComponent:JiveRequestPathComponents.trending]
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) trendingContents:(JiveTrendingContentRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1517,7 +1581,7 @@ int const JivePushDeviceType = 3;
                                                                     withOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JiveContentCompleteBlock)complete
                                                                         onError:(JiveErrorBlock)error {
-    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
+    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:JiveRequestPathComponents.editable];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
                                                             andTemplate:path, nil];
     
@@ -1541,7 +1605,7 @@ int const JivePushDeviceType = 3;
                                                                        withOptions:(JiveReturnFieldsRequestOptions *)options
                                                                         onComplete:(JiveContentCompleteBlock)complete
                                                                            onError:(JiveErrorBlock)error {
-    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
+    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:JiveRequestPathComponents.editable];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
                                                             andTemplate:path, nil];
     
@@ -1566,7 +1630,7 @@ int const JivePushDeviceType = 3;
                                                                          withOptions:(JiveMinorCommentRequestOptions *)options
                                                                           onComplete:(JiveContentCompleteBlock)complete
                                                                              onError:(JiveErrorBlock)error {
-    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
+    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:JiveRequestPathComponents.editable];
     NSMutableURLRequest *request = [self requestWithJSONBody:content
                                                      options:options
                                                  andTemplate:path, nil];
@@ -1639,7 +1703,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) unlockContentOperation:(JiveContent *)content
                                                                 onComplete:(JiveCompletedBlock)complete
                                                                    onError:(JiveErrorBlock)error {
-    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
+    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:JiveRequestPathComponents.editable];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:path, nil];
     
@@ -1669,7 +1733,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createContentOperation:(JiveContent *)content withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:content
                             withOptions:options
-                            andTemplate:[self.baseURI stringByAppendingString:@"/contents"]
+                            andTemplate:[self appendPathToBaseURI:JiveRequestPathComponents.contents]
                              onComplete:complete
                                 onError:error];
 }
@@ -1680,7 +1744,7 @@ int const JivePushDeviceType = 3;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createDirectMessageOperation:(JiveContent *)content withTargets:(JiveTargetList *)targets andOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
-                                                            andTemplate:@"%@/dms", self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:@"dms"], nil];
     NSMutableDictionary *JSON = (NSMutableDictionary *)content.toJSONDictionary;
     [JSON setValue:[targets toJSONArray:YES] forKey:@"participants"];
     NSData *body = [NSJSONSerialization dataWithJSONObject:JSON options:0 error:nil];
@@ -1702,7 +1766,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createCommentOperation:(JiveComment *)comment withOptions:(JiveAuthorCommentRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:comment
                             withOptions:options
-                            andTemplate:[self.baseURI stringByAppendingString:@"/comments"]
+                            andTemplate:[self appendPathToBaseURI:@"comments"]
                              onComplete:complete
                                 onError:error];
 }
@@ -1714,7 +1778,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createMessageOperation:(JiveMessage *)message withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error {
     return [self createContentOperation:message
                             withOptions:options
-                            andTemplate:[self.baseURI stringByAppendingString:@"/messages"]
+                            andTemplate:[self appendPathToBaseURI:@"messages"]
                              onComplete:complete
                                 onError:error];
 }
@@ -1778,7 +1842,7 @@ int const JivePushDeviceType = 3;
                                                                              options:(JiveReturnFieldsRequestOptions *)options
                                                                           onComplete:(JiveContentCompleteBlock)complete
                                                                              onError:(JiveErrorBlock)error {
-    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:@"editable"];
+    NSString *path = [[content.selfRef path] stringByAppendingPathComponent:JiveRequestPathComponents.editable];
     NSMutableURLRequest *request = [self createUploadRequestWithOptions:options
                                                          attachmentURLs:attachmentURLs
                                                                 content:content
@@ -1789,7 +1853,7 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createContentOperation:(JiveContent *)content withAttachments:(NSArray *)attachmentURLs options:(JiveReturnFieldsRequestOptions *)options onComplete:(JiveContentCompleteBlock)complete onError:(JiveErrorBlock)error {
-    NSString *path = [self.baseURI stringByAppendingString:@"/contents"];
+    NSString *path = [self appendPathToBaseURI:JiveRequestPathComponents.contents];
     NSMutableURLRequest *request = [self createUploadRequestWithOptions:options
                                                          attachmentURLs:attachmentURLs
                                                                 content:content
@@ -1852,7 +1916,7 @@ int const JivePushDeviceType = 3;
                                                               onComplete:(void (^)(JiveShare *))completeBlock
                                                                  onError:(JiveErrorBlock)errorBlock {
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:options
-                                                            andTemplate:@"%@/shares", self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:@"shares"], nil];
     NSDictionary *JSON = @{JiveDirectMessageAttributes.participants: [targets toJSONArray:YES],
                            JiveContentAttributes.content: [shareMessage toJSONDictionary],
                            @"shared": [content.selfRef absoluteString]
@@ -1898,7 +1962,10 @@ int const JivePushDeviceType = 3;
 #pragma mark - Places
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)placesOperation:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self placeListOperation:@"places" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:JiveRequestPathComponents.places
+                        withOptions:options
+                         onComplete:complete
+                            onError:error];
 }
 
 - (void) places:(JivePlacesRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1906,7 +1973,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)recommendedPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self placeListOperation:@"places/recommended" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:[JiveRequestPathComponents.places stringByAppendingPathComponent:JiveRequestPathComponents.recommended]
+                        withOptions:options
+                         onComplete:complete
+                            onError:error];
 }
 
 - (void) recommendedPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -1914,7 +1984,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)trendingPlacesOperation:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self placeListOperation:@"places/trending" withOptions:options onComplete:complete onError:error];
+    return [self placeListOperation:[JiveRequestPathComponents.places stringByAppendingPathComponent:JiveRequestPathComponents.trending]
+                        withOptions:options
+                         onComplete:complete
+                            onError:error];
 }
 
 - (void) trendingPlaces:(JiveCountRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -2134,7 +2207,7 @@ int const JivePushDeviceType = 3;
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createPlaceOperation:(JivePlace *)place withOptions:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(JivePlace *))complete onError:(JiveErrorBlock)error {
     NSMutableURLRequest *request = [self requestWithJSONBody:place
                                                      options:options
-                                                 andTemplate:@"%@/places", self.baseURI, nil];
+                                                 andTemplate:[self appendPathToBaseURI:JiveRequestPathComponents.places], nil];
     
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JivePlace class]
@@ -2259,7 +2332,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) streamConnectionsActivitiesOperation:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    return [self activityListOperation:@"streams/connections/activities" withOptions:options onComplete:complete onError:error];
+    return [self activityListOperation:[@"streams/connections" stringByAppendingPathComponent:JiveRequestPathComponents.activities]
+                           withOptions:options
+                            onComplete:complete
+                               onError:error];
 }
 
 - (void) streamConnectionsActivities:(JiveReturnFieldsRequestOptions *)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
@@ -2517,8 +2593,8 @@ int const JivePushDeviceType = 3;
 
 #pragma mark - Outcomes
 - (AFJSONRequestOperation<JiveRetryingOperation> *) outcomesListOperation:(JiveContent *)content withOptions:(NSObject<JiveRequestOptions>*)options onComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    NSURLRequest *request = [self credentialedRequestWithOptions:options
-                                                     andTemplate:@"%@/outcomes", content.selfRef.path, nil];
+    NSString *path =[content.selfRef.path stringByAppendingPathComponent:JiveRequestPathComponents.outcomes];
+    NSURLRequest *request = [self credentialedRequestWithOptions:options andTemplate:path, nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self listOperationForClass:[JiveOutcome class]
                                                                                    request:request
                                                                                 onComplete:complete
@@ -2538,10 +2614,9 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) deleteOutcomeOperation:(JiveOutcome *)outcome onComplete:(void (^)(void))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.outcomes stringByAppendingPathComponent:outcome.jiveId];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"%@/outcomes/%@",
-                                    self.baseURI,
-                                    outcome.jiveId,
+                                                            andTemplate:[self appendPathToBaseURI:path],
                                     nil];
     
     [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
@@ -2555,9 +2630,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) createOutcomeOperation:(JiveOutcome *)outcome forContent:(JiveContent *)content onComplete:(void (^)(JiveOutcome *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [content.selfRef.path stringByAppendingPathComponent:JiveRequestPathComponents.outcomes];
     NSMutableURLRequest *request = [self requestWithJSONBody:outcome
                                                      options:nil
-                                                 andTemplate:@"%@%@", content.selfRef.path, @"/outcomes", nil];
+                                                 andTemplate:path, nil];
     
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self entityOperationForClass:[JiveOutcome class]
@@ -2589,10 +2665,9 @@ int const JivePushDeviceType = 3;
 #pragma mark - Properties
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) propertyWithNameOperation:(NSString *)propertyName onComplete:(void (^)(JiveProperty *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.metadataProperties stringByAppendingPathComponent:propertyName];
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                     andTemplate:@"%@/metadata/properties/%@",
-                             self.baseURI,
-                             propertyName,
+                                                     andTemplate:[self appendPathToBaseURI:path],
                              nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self entityOperationForClass:[JiveProperty class]
                                                                                      request:request
@@ -2630,7 +2705,8 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) publicPropertiesListOperationWithOnComplete:(void (^)(NSArray *))complete onError:(JiveErrorBlock)error {
-    NSURL* requestURL = [NSURL URLWithString:[self.baseURI stringByAppendingString:@"/metadata/properties/public"]
+    NSString *path = [JiveRequestPathComponents.metadataProperties stringByAppendingPathComponent:@"public"];
+    NSURL* requestURL = [NSURL URLWithString:[self appendPathToBaseURI:path]
                                relativeToURL:self.jiveInstanceURL];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
     [request setHTTPShouldHandleCookies:NO];
@@ -2675,8 +2751,9 @@ int const JivePushDeviceType = 3;
 #pragma mark - Objects
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) objectsOperationOnComplete:(void (^)(NSDictionary *))complete onError:(JiveErrorBlock)error {
+    NSString *path = [JiveRequestPathComponents.metadata stringByAppendingPathComponent:@"objects"];
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                     andTemplate:@"%@/metadata/objects/", self.baseURI, nil];
+                                                     andTemplate:@"%@/", [self appendPathToBaseURI:path], nil];
     AFJSONRequestOperation<JiveRetryingOperation> *operation = [self operationWithRequest:request
                                                                                    onJSON:complete
                                                                                   onError:error];
@@ -2699,8 +2776,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [[JiveRequestPathComponents.people stringByAppendingPathComponent:JiveRequestPathComponents.me]
+                      stringByAppendingPathComponent:@"termsAndConditions"];
     NSURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                     andTemplate:@"%@/people/@me/termsAndConditions", self.baseURI, nil];
+                                                     andTemplate:[self appendPathToBaseURI:path], nil];
     
     return [self entityOperationForClass:[JiveTermsAndConditions class]
                                  request:request
@@ -2717,8 +2796,10 @@ int const JivePushDeviceType = 3;
 }
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [[JiveRequestPathComponents.people stringByAppendingPathComponent:JiveRequestPathComponents.me]
+                      stringByAppendingPathComponent:@"acceptTermsAndConditions"];
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
-                                                            andTemplate:@"%@/people/@me/acceptTermsAndConditions", self.baseURI, nil];
+                                                            andTemplate:[self appendPathToBaseURI:path], nil];
     
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self emptyOperationWithRequest:request onComplete:completeBlock onError:errorBlock];
