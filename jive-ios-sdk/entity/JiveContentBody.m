@@ -46,4 +46,8 @@ struct JiveContentBodyAttributes const JiveContentBodyAttributes = {
     return dictionary;
 }
 
+- (BOOL)editableValue {
+    return editable.boolValue;
+}
+
 @end

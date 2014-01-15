@@ -37,5 +37,7 @@ extern struct JiveContentBodyAttributes {
 
 //! Flag indicating if content text is editable.
 @property(nonatomic, readonly) NSNumber *editable;
+//! Convenience method to get the value of the editable property.
+@property(nonatomic, readonly) BOOL editableValue;
 
 @end
