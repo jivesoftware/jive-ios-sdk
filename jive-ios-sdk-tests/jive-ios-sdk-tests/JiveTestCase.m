@@ -50,7 +50,7 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 + (void)initialize {
     if (self == [JiveTestCase class]) {
         [NSURLRequest setAllowsAnyHTTPSCertificate:YES
-                                           forHost:@"doritosoftware-ipad-1-essential-plus.jivelandia.com"];
+                                           forHost:@"doritosoftware-ipad8c1-1-essential-plus.jivelandia.com"];
     }
 }
 
