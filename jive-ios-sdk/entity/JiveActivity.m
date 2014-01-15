@@ -33,6 +33,9 @@
     [dictionary setValue:title forKey:@"title"];
     [dictionary setValue:[url absoluteString] forKey:@"url"];
     [dictionary setValue:verb forKey:@"verb"];
+    if (actor)
+        [dictionary setValue:[actor toJSONDictionary] forKey:@"actor"];
+    
     if (icon)
         [dictionary setValue:[icon toJSONDictionary] forKey:@"icon"];
     

@@ -24,13 +24,14 @@ struct JiveExternalObjectAttributes const JiveExternalObjectAttributes = {
 	.object = @"object",
     .productIcon = @"productIcon",
     .productName = @"productName",
+    .onBehalfOf = @"onBehalfOf",
 };
 
 NSString * const JiveExternalType = @"extStreamActivity";
 
 @implementation JiveExternalObject
 
-@synthesize object, productIcon, productName;
+@synthesize object, onBehalfOf, productIcon, productName;
 
 + (void)load {
     if (self == [JiveExternalObject class])
@@ -45,6 +46,7 @@ NSString * const JiveExternalType = @"extStreamActivity";
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
     
     [dictionary setValue:[object toJSONDictionary] forKey:JiveExternalObjectAttributes.object];
+    [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:JiveExternalObjectAttributes.onBehalfOf];
     [dictionary setValue:[productIcon absoluteString] forKey:JiveExternalObjectAttributes.productIcon];
     [dictionary setValue:productName forKey:JiveExternalObjectAttributes.productName];
 

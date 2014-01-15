@@ -19,6 +19,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
+#import "JiveGenericPerson.h"
 
 @class JiveActivityObject;
 @class JiveMediaLink;
@@ -31,6 +32,9 @@
 
 //! The person (or other object) that created this activity.
 @property(nonatomic, readonly, strong) JiveActivityObject* actor;
+
+//! The person (possibly not a Jive user) on whose behalf this entry was created
+@property(nonatomic, readonly, strong) JiveGenericPerson* onBehalfOf;
 
 //! Text (or possibly HTML) content describing this activity.
 @property(nonatomic, copy) NSString* content;

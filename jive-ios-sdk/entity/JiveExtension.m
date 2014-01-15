@@ -43,13 +43,15 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     .liked = @"liked",
     .parentLiked = @"parentLiked",
     .parentActor = @"parentActor",
+    .parentOnBehalfOf = @"parentOnBehalfOf",
+    .onBehalfOf = @"onBehalfOf",
     .canReply = @"canReply",
     .canComment = @"canComment",
 };
 
 @implementation JiveExtension
 
-@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, productIcon, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor, canReply, canComment;
+@synthesize collection, collectionUpdated, display, parent, read, state, update, updateCollection, collectionRead, outcomeTypeName, question, resolved, answer, productIcon, parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked, parentActor, parentOnBehalfOf, onBehalfOf, canReply, canComment;
 @synthesize imagesCount;
 
 - (NSDictionary *)toJSONDictionary {
@@ -102,6 +104,12 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     
     if (parentActor)
         [dictionary setValue:[parentActor toJSONDictionary] forKey:JiveExtensionAttributes.parentActor];
+    
+    if (parentOnBehalfOf)
+        [dictionary setValue:[parentOnBehalfOf toJSONDictionary] forKey:JiveExtensionAttributes.parentOnBehalfOf];
+    
+    if (onBehalfOf)
+        [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:JiveExtensionAttributes.onBehalfOf];
     
     return dictionary;
 }

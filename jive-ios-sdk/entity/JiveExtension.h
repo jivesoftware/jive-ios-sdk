@@ -20,6 +20,7 @@
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
 #import "JivePerson.h"
+#import "JiveGenericPerson.h"
 
 @class JiveActivityObject;
 
@@ -45,6 +46,8 @@ extern struct JiveExtensionAttributes {
     __unsafe_unretained NSString *liked;
     __unsafe_unretained NSString *parentLiked;
     __unsafe_unretained NSString *parentActor;
+    __unsafe_unretained NSString *parentOnBehalfOf;
+    __unsafe_unretained NSString *onBehalfOf;
     __unsafe_unretained NSString *canReply;
     __unsafe_unretained NSString *canComment;
 } const JiveExtensionAttributes;
@@ -127,6 +130,12 @@ extern struct JiveExtensionAttributes {
 
 //! Author of the parent item.
 @property(nonatomic, readonly, strong) JivePerson *parentActor;
+
+//! Person (may not be a Jive user) on whose behalf the parent item was posted
+@property(nonatomic, readonly, strong) JiveGenericPerson *parentOnBehalfOf;
+
+//! Person (may not be a Jive user) on whose behalf the  item was posted
+@property(nonatomic, readonly, strong) JiveGenericPerson *onBehalfOf;
 
 //! Flag indicating that this content can be replied to
 @property(nonatomic, readonly) NSNumber *canReply;

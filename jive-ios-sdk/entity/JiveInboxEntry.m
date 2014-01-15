@@ -26,7 +26,7 @@
 
 @implementation JiveInboxEntry
 
-@synthesize actor, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
+@synthesize actor, onBehalfOf, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ %@ -'%@'", self.object.url, self.verb, self.object.displayName];
@@ -49,6 +49,9 @@
     
     if (actor)
         [dictionary setValue:[actor toJSONDictionary] forKey:@"actor"];
+    
+    if (onBehalfOf)
+        [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:@"onBehalfOf"];
     
     if (generator)
         [dictionary setValue:[generator toJSONDictionary] forKey:@"generator"];

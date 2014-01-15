@@ -19,11 +19,13 @@
 
 #import "JiveContent.h"
 #import "JiveActivityObject.h"
+#import "JiveGenericPerson.h"
 
 extern struct JiveExternalObjectAttributes {
     __unsafe_unretained NSString *object;
     __unsafe_unretained NSString *productIcon;
     __unsafe_unretained NSString *productName;
+    __unsafe_unretained NSString *onBehalfOf;
 } const JiveExternalObjectAttributes;
 
 extern NSString * const JiveExternalType;
@@ -34,6 +36,9 @@ extern NSString * const JiveExternalType;
 
 //! Contains some information about the originating object
 @property(nonatomic, readonly, strong) JiveActivityObject* object;
+
+//! Author of the content, possibly external to Jive
+@property (nonatomic, readonly, strong) JiveGenericPerson* onBehalfOf;
 
 //! Icon for the external service this comes from
 @property(nonatomic, readonly, strong) NSURL* productIcon;
