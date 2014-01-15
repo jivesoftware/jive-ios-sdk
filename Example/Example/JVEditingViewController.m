@@ -19,7 +19,7 @@
 
 - (void)showEditableText:(JiveContent *)updatedContent
 {
-    const NSTimeInterval kFiveMinutes = 60; //5 * 60;
+    const NSTimeInterval kFiveMinutes = 5 * 60;
     
     self.titleField.text = updatedContent.subject;
     self.bodyField.text = updatedContent.content.text;
