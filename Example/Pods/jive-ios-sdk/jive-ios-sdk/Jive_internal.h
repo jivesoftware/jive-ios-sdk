@@ -53,3 +53,30 @@
                                                                    onError:(JiveErrorBlock)errorBlock;
 
 @end
+
+extern struct JiveHTTPMethodTypes {
+    __unsafe_unretained NSString *POST;
+    __unsafe_unretained NSString *PUT;
+    __unsafe_unretained NSString *DELETE;
+} const JiveHTTPMethodTypes;
+
+extern struct JiveRequestPathComponents {
+    __unsafe_unretained NSString *pushNotification;
+    __unsafe_unretained NSString *oauthToken;
+    __unsafe_unretained NSString *inbox;
+    __unsafe_unretained NSString *people;
+    __unsafe_unretained NSString *places;
+    __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *recommended;
+    __unsafe_unretained NSString *trending;
+    __unsafe_unretained NSString *activities;
+    __unsafe_unretained NSString *frequent;
+    __unsafe_unretained NSString *recent;
+    __unsafe_unretained NSString *outcomes;
+    __unsafe_unretained NSString *metadata;
+    __unsafe_unretained NSString *metadataProperties;
+    __unsafe_unretained NSString *me;
+    __unsafe_unretained NSString *search;
+    __unsafe_unretained NSString *editable;
+} const JiveRequestPathComponents;
