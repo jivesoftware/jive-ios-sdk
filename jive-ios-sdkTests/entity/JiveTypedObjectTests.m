@@ -19,6 +19,7 @@
 
 #import "JiveTypedObjectTests.h"
 #import "Jive_internal.h"
+#import "TestObjectFactory.h"
 
 @interface DummyTypedObject : JiveTypedObject
 
@@ -97,18 +98,12 @@ static NSString *alternateType = @"alternate";
 }
 
 - (void)testSelfReferenceParsedBeforeAnythingElse {
-    JiveResourceEntry *selfResource = [JiveResourceEntry new];
-    JiveResourceEntry *altResource = [JiveResourceEntry new];
+    JiveResourceEntry *altResource = [TestObjectFactory createSelfResourceEntryForPerson:@"321"
+                                                                                atServer:[NSURL URLWithString:@"http://brewspace.com"]];
     NSString *expectedURL = @"https://hopback.eng.jiveland.com/";
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"54321"
+                                                                                 atServer:[NSURL URLWithString:expectedURL]];
     
-    [selfResource setValue:[NSURL URLWithString:[expectedURL stringByAppendingString:@"api/core/v3/person/321"]]
-                    forKey:JiveResourceEntryAttributes.ref];
-    [selfResource setValue:@[@"GET", @"PUT"]
-                    forKey:JiveResourceEntryAttributes.allowed];
-    [altResource setValue:[NSURL URLWithString:@"http://brewspace.com/api/core/v3/person/321"]
-                   forKey:JiveResourceEntryAttributes.ref];
-    [altResource setValue:@[@"GET", @"DELETE"]
-                   forKey:JiveResourceEntryAttributes.allowed];
     self.instance.badInstanceURL = nil;
     
     id selfJSON = selfResource.persistentJSON;
@@ -132,16 +127,12 @@ static NSString *alternateType = @"alternate";
 
 - (void)testTypedObjectPersistentJSON {
     NSDictionary *JSON = [self.typedObject toJSONDictionary];
-    JiveResourceEntry *selfResource = [JiveResourceEntry new];
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"321"
+                                                                                 atServer:self.serverURL];
     const NSUInteger initialCount = JSON.count;
     
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertTrue([JSON isKindOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     
-    [selfResource setValue:[NSURL URLWithString:@"api/core/v3/person/321"
-                                  relativeToURL:self.serverURL]
-                    forKey:JiveResourceEntryAttributes.ref];
-    [selfResource setValue:@[@"GET", @"PUT"]
-                    forKey:JiveResourceEntryAttributes.allowed];
     [self.typedObject setValue:@{JiveTypedObjectResourceTags.selfResourceTag:selfResource}
                         forKey:JiveTypedObjectAttributesHidden.resources];
     
@@ -164,13 +155,8 @@ static NSString *alternateType = @"alternate";
 }
 
 - (void)testTypedObjectParsing {
-    JiveResourceEntry *selfResource = [JiveResourceEntry new];
-    
-    [selfResource setValue:[NSURL URLWithString:@"api/core/v3/person/54321"
-                                  relativeToURL:self.serverURL]
-                    forKey:JiveResourceEntryAttributes.ref];
-    [selfResource setValue:@[@"GET"]
-                    forKey:JiveResourceEntryAttributes.allowed];
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"54321"
+                                                                                 atServer:self.serverURL];
     [self.typedObject setValue:@{JiveTypedObjectResourceTags.selfResourceTag:selfResource}
                         forKey:JiveTypedObjectAttributesHidden.resources];
     

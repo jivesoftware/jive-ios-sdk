@@ -17,7 +17,14 @@
 //    limitations under the License.
 //
 
-#import "JiveStreamEntryTests.h"
+#import "JiveContentTests.h"
+#import "JiveStreamEntry.h"
+
+@interface JiveStreamEntryTests : JiveContentTests
+
+@property (nonatomic, readonly) JiveStreamEntry *stream;
+
+@end
 
 @implementation JiveStreamEntryTests
 
