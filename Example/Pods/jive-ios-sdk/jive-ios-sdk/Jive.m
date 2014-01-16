@@ -2531,7 +2531,7 @@ int const JivePushDeviceType = 3;
 - (AFHTTPRequestOperation<JiveRetryingOperation> *)uploadImageDataOperation:(NSData *)imageData mimeType:(NSString *)mimeType fileName:(NSString *)fileName onComplete:(void (^)(JiveImage*))complete onError:(JiveErrorBlock) errorBlock {
     AFHTTPClient *HTTPClient = [[AFHTTPClient alloc] initWithBaseURL:self.jiveInstanceURL];
     NSMutableURLRequest *request = [HTTPClient multipartFormRequestWithMethod:JiveHTTPMethodTypes.POST
-                                                                         path:[self.baseURI stringByAppendingString:@"/images"]
+                                                                         path:[self appendPathToBaseURI:@"images"]
                                                                    parameters:nil
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:mimeType];
