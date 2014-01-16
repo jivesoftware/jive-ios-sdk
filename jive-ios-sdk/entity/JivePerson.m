@@ -423,7 +423,7 @@ NSString * const JivePersonGuestID = @"-1";
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
                                                              andTemplate:[self.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];
@@ -448,7 +448,7 @@ NSString * const JivePersonGuestID = @"-1";
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self updateJiveTypedObject:self
                            withRequest:request
                             onComplete:completeBlock
@@ -461,7 +461,7 @@ NSString * const JivePersonGuestID = @"-1";
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];
@@ -473,7 +473,7 @@ NSString * const JivePersonGuestID = @"-1";
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyResponseOperationWithRequest:request onComplete:completeBlock onError:^(NSError *error) {
         if ([error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@409]) { // 409 is conflict error returned when you try to delete a following relationship that doesn't exist.  We may have this situation
             completeBlock();                                                          // with legacy data when following was done before this fix -TABDEV-2545
@@ -555,7 +555,7 @@ NSString * const JivePersonGuestID = @"-1";
     NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", request.HTTPBody.length]
    forHTTPHeaderField:@"Content-Length"];
@@ -606,7 +606,7 @@ NSString * const JivePersonGuestID = @"-1";
                                                                   options:options
                                                               andTemplate:[self.tasksRef path], nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self updateJiveTypedObject:task
                            withRequest:request
                             onComplete:completeBlock
@@ -647,7 +647,7 @@ NSString * const JivePersonGuestID = @"-1";
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
                                                                          andTemplate:path, nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];

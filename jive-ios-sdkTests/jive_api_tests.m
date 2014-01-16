@@ -200,21 +200,21 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            NSUInteger expectedCount = 103;
-            STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
-            STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
-            STAssertEqualObjects(earliestDate.description, @"2013-09-10 15:04:49 +0000", @"Wrong earliest date.");
-            STAssertEqualObjects(latestDate.description, @"2013-11-27 19:18:27 +0000", @"Wrong latest date.");
-            STAssertEqualObjects(unreadCount, @49, @"Wrong number of unread items");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            
-            finishedBlock();
-        } onError:^(NSError *error) {
-            finishedBlock();
-        }];
+                            NSUInteger expectedCount = 103;
+                            STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
+                            STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
+                            STAssertEqualObjects(earliestDate.description, @"2013-09-10 15:04:49 +0000", @"Wrong earliest date.");
+                            STAssertEqualObjects(latestDate.description, @"2013-11-27 19:18:27 +0000", @"Wrong latest date.");
+                            STAssertEqualObjects(unreadCount, @49, @"Wrong number of unread items");
+                            
+                            // Check that delegates where actually called
+                            [mockAuthDelegate verify];
+                            [mockJiveURLResponseDelegate verify];
+                            
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            finishedBlock();
+                        }];
     }];
 }
 
@@ -290,22 +290,22 @@
                                                                        NSDate *earliestDate,
                                                                        NSDate *latestDate,
                                                                        NSNumber *unreadCount) {
-            NSUInteger expectedCount = 28;
-            STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
-            STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
-            STAssertEqualObjects(earliestDate.description, @"2012-10-23 03:26:37 +0000", @"Wrong earliest date.");
-            STAssertEqualObjects(latestDate.description, @"2012-10-24 19:06:10 +0000", @"Wrong latest date.");
-            STAssertEqualObjects(unreadCount, @0, @"Wrong number of unread items");
-            STAssertEqualObjects(jive.badInstanceURL, reportedInstanceURL, @"badInstanceURL not updated.");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            
-            finishedBlock();
-        } onError:^(NSError *error) {
-            finishedBlock();
-        }];
+                                                              NSUInteger expectedCount = 28;
+                                                              STAssertNotNil(inboxEntries, @"InboxEntries where nil!");
+                                                              STAssertEquals(inboxEntries.count, expectedCount, @"Incorrect number of inbox entries where returned");
+                                                              STAssertEqualObjects(earliestDate.description, @"2012-10-23 03:26:37 +0000", @"Wrong earliest date.");
+                                                              STAssertEqualObjects(latestDate.description, @"2012-10-24 19:06:10 +0000", @"Wrong latest date.");
+                                                              STAssertEqualObjects(unreadCount, @0, @"Wrong number of unread items");
+                                                              STAssertEqualObjects(jive.badInstanceURL, reportedInstanceURL, @"badInstanceURL not updated.");
+                                                              
+                                                              // Check that delegates where actually called
+                                                              [mockAuthDelegate verify];
+                                                              [mockJiveURLResponseDelegate verify];
+                                                              
+                                                              finishedBlock();
+                                                          } onError:^(NSError *error) {
+                                                              finishedBlock();
+                                                          }];
         
         [operation start];
     }];
@@ -326,11 +326,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -339,9 +339,9 @@
                                      [returnedInboxEntries objectAtIndex:11],
                                      ];
     
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.POST
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.POST
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370293/read"]];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -371,11 +371,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -384,9 +384,9 @@
                                      [returnedInboxEntries objectAtIndex:1],
                                      ];
     
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.POST
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.POST
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -416,11 +416,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -429,9 +429,9 @@
                                      [returnedInboxEntries objectAtIndex:1],
                                      ];
     
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
     
     [self waitForTimeout:^(void (^finishedBlock)(void)) {
@@ -461,11 +461,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -474,9 +474,9 @@
                                      [returnedInboxEntries objectAtIndex:8],
                                      ];
     
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
     
     __block BOOL completeBlockCalled = NO;
@@ -513,11 +513,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -526,7 +526,7 @@
                                      [returnedInboxEntries objectAtIndex:2],
                                      ];
     
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"POST"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.POST
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
     
     __block BOOL completeBlockCalled = NO;
@@ -563,11 +563,11 @@
         [jive inboxWithUnreadCount:nil
                         onComplete:^(NSArray *inboxEntries, NSDate *earliestDate,
                                      NSDate *latestDate, NSNumber *unreadCount) {
-            returnedInboxEntries = inboxEntries;
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
-        }];
+                            returnedInboxEntries = inboxEntries;
+                            finishedBlock();
+                        } onError:^(NSError *error) {
+                            STFail(@"Unexpected error: %@ %@", [error localizedDescription], [error userInfo]);
+                        }];
     }];
     
     
@@ -578,9 +578,9 @@
     
     NSError *fakeError = [NSError jive_errorWithMultipleErrors:@[]];
     [mockJiveURLResponseDelegate2 expectError:fakeError
-                     forRequestWithHTTPMethod:@"DELETE"
+                     forRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                        forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/dms/153160/read"]];
-    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:@"DELETE"
+    [mockJiveURLResponseDelegate2 expectNoResponseForRequestWithHTTPMethod:JiveHTTPMethodTypes.DELETE
                                                                     forURL:[NSURL URLWithString:@"https://brewspace.jiveland.com/api/core/v3/contents/370230/read"]];
     
     __block BOOL errorBlockCalled = NO;
@@ -605,11 +605,11 @@
 }
 
 - (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
-                                             JiveErrorBlock errorBlock))createOperation
-              withResponse:(NSString *)response
-                       URL:(NSString *)url
-             expectedClass:(Class)clazz
-                  complete:(JiveArrayCompleteBlock)completeBlock {
+                                               JiveErrorBlock errorBlock))createOperation
+                withResponse:(NSString *)response
+                         URL:(NSString *)url
+               expectedClass:(Class)clazz
+                    complete:(JiveArrayCompleteBlock)completeBlock {
     
     void (^createMockAuthDelegate)(NSString *expectedURL) = ^(NSString *expectedURL) {
         mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
@@ -630,10 +630,10 @@
             completeBlock(object);
             finishedBlock();
         },
-                                                 ^(NSError *error) {
-                                                     STFail([error localizedDescription]);
-                                                     finishedBlock();
-                                                 });
+                                                                                          ^(NSError *error) {
+                                                                                              STFail([error localizedDescription]);
+                                                                                              finishedBlock();
+                                                                                          });
         
         STAssertNotNil(operation, @"Missing operation object");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"X-JIVE-TC-SUPPORT"],
@@ -729,10 +729,10 @@
 }
 
 - (void)checkObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
-                                             JiveErrorBlock errorBlock))createOperation
-              withResponse:(NSString *)response
-                       URL:(NSString *)url
-             expectedClass:(Class)clazz {
+                                               JiveErrorBlock errorBlock))createOperation
+                withResponse:(NSString *)response
+                         URL:(NSString *)url
+               expectedClass:(Class)clazz {
     [self checkObjectOperation:createOperation
                   withResponse:response
                            URL:url
@@ -747,9 +747,9 @@
 }
 
 - (void)checkPersonObjectOperation:(NSOperation *(^)(JiveObjectCompleteBlock completionBlock,
-                                                   JiveErrorBlock errorBlock))createOperation
-                    withResponse:(NSString *)response
-                             URL:(NSString *)url {
+                                                     JiveErrorBlock errorBlock))createOperation
+                      withResponse:(NSString *)response
+                               URL:(NSString *)url {
     Class clazz = [JivePerson class];
     [self checkObjectOperation:createOperation
                   withResponse:response
@@ -831,10 +831,10 @@
             completeBlock(streams);
             finishedBlock();
         },
-                                                 ^(NSError *error) {
-                                                     STFail([error localizedDescription]);
-                                                     finishedBlock();
-                                                 });
+                                                                                          ^(NSError *error) {
+                                                                                              STFail([error localizedDescription]);
+                                                                                              finishedBlock();
+                                                                                          });
         
         STAssertNotNil(operation, @"Missing operation object");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"X-JIVE-TC-SUPPORT"],
@@ -941,16 +941,16 @@
                expectedCount:expectedCount
                expectedClass:clazz
                     complete:^(NSArray *collection) {
-        STAssertEquals([collection count], expectedCount, @"Wrong number of items parsed");
-        for (id collectionObject in collection) {
-            STAssertTrue([collectionObject isKindOfClass:clazz], @"Item %@ is not of class %@",
-                         collectionObject, clazz);
-        }
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-    }];
+                        STAssertEquals([collection count], expectedCount, @"Wrong number of items parsed");
+                        for (id collectionObject in collection) {
+                            STAssertTrue([collectionObject isKindOfClass:clazz], @"Item %@ is not of class %@",
+                                         collectionObject, clazz);
+                        }
+                        
+                        // Check that delegates where actually called
+                        [mockAuthDelegate verify];
+                        [mockJiveURLResponseDelegate verify];
+                    }];
 }
 
 - (void)checkPersonListOperation:(NSOperation *(^)(JiveArrayCompleteBlock completionBlock,
@@ -965,19 +965,19 @@
                expectedCount:expectedCount
                expectedClass:clazz
                     complete:^(NSArray *collection) {
-        STAssertEquals([collection count], expectedCount, @"Wrong number of items parsed");
-        for (JivePerson *person in collection) {
-            STAssertTrue([person isKindOfClass:clazz], @"Item %@ is not of class %@",
-                         person, clazz);
-            STAssertEqualObjects(person.jiveInstance,
-                                 jive,
-                                 @"The person.jiveInstance was not initialized correctly");
-        }
-        
-        // Check that delegates where actually called
-        [mockAuthDelegate verify];
-        [mockJiveURLResponseDelegate verify];
-    }];
+                        STAssertEquals([collection count], expectedCount, @"Wrong number of items parsed");
+                        for (JivePerson *person in collection) {
+                            STAssertTrue([person isKindOfClass:clazz], @"Item %@ is not of class %@",
+                                         person, clazz);
+                            STAssertEqualObjects(person.jiveInstance,
+                                                 jive,
+                                                 @"The person.jiveInstance was not initialized correctly");
+                        }
+                        
+                        // Check that delegates where actually called
+                        [mockAuthDelegate verify];
+                        [mockJiveURLResponseDelegate verify];
+                    }];
 }
 
 - (void) testColleguesOperation {
@@ -1993,8 +1993,8 @@
     [self checkPersonListOperation:^NSOperation *(JiveArrayCompleteBlock completionBlock, JiveErrorBlock errorBlock) {
         return [jive reportsOperation:source
                           withOptions:options
-                            onComplete:completionBlock
-                               onError:errorBlock];
+                           onComplete:completionBlock
+                              onError:errorBlock];
     }
                       withResponse:@"people_response"
                                URL:[instanceString stringByAppendingString:@"/api/core/v3/people/3550/@reports?count=10"]
@@ -2956,7 +2956,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(@"DELETE", operation.request.HTTPMethod, @"Wrong http method used");
+        STAssertEqualObjects(JiveHTTPMethodTypes.DELETE, operation.request.HTTPMethod, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -3291,7 +3291,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(@"DELETE", operation.request.HTTPMethod, @"Wrong http method used");
+        STAssertEqualObjects(JiveHTTPMethodTypes.DELETE, operation.request.HTTPMethod, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -3670,7 +3670,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -3747,7 +3747,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -3816,7 +3816,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -3874,7 +3874,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -3932,7 +3932,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -3990,7 +3990,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -4048,7 +4048,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -4114,7 +4114,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4191,7 +4191,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4244,7 +4244,7 @@
                                                                onComplete:completionBlock
                                                                   onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4313,7 +4313,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -4650,7 +4650,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -4700,7 +4700,7 @@
                                                                }
                                                                   onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4761,7 +4761,7 @@
                                                                 }
                                                                    onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4829,13 +4829,13 @@
         AFURLConnectionOperation *operation = [jive createDirectMessageOperation:source
                                                                      withTargets:targets
                                                                       andOptions:options
-                                                                onComplete:^(JiveContent *content) {
-                                                                    STAssertEqualObjects(content.subject, @"Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....", @"New object not created");
-                                                                    completionBlock(content);
-                                                                }
-                                                                   onError:errorBlock];
+                                                                      onComplete:^(JiveContent *content) {
+                                                                          STAssertEqualObjects(content.subject, @"Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....", @"New object not created");
+                                                                          completionBlock(content);
+                                                                      }
+                                                                         onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -4908,7 +4908,7 @@
                                                                  andOptions:options
                                                                  onComplete:completionBlock
                                                                     onError:errorBlock];
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"],
                              @"application/json; charset=UTF-8",
@@ -4989,7 +4989,7 @@
                                                                }
                                                                   onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5056,7 +5056,7 @@
                                                              }
                                                                 onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5126,7 +5126,7 @@
                                                              }
                                                                 onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5195,7 +5195,7 @@
                                                               }
                                                                  onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5264,7 +5264,7 @@
                                                                 }
                                                                    onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5392,7 +5392,7 @@
                                                                 }
                                                                    onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5461,7 +5461,7 @@
                                                                }
                                                                   onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5535,7 +5535,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -5598,7 +5598,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5637,7 +5637,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -5784,7 +5784,7 @@
     NSURL *newJiveInstance = [NSURL URLWithString:@"http://alternate.net"];
     NSURL* originalJiveInstance = [NSURL URLWithString:@"https://brewspace.jiveland.com"];
     JivePlatformVersion *platformVersion = [JivePlatformVersion new];
-
+    
     mockAuthDelegate = [OCMockObject mockJiveAuthorizationDelegate];
     jive = [[Jive alloc] initWithJiveInstance:originalJiveInstance
                         authorizationDelegate:mockAuthDelegate];
@@ -5842,7 +5842,7 @@
                                                                      finishedBlock();
                                                                  }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         NSString *contentType = [operation.request valueForHTTPHeaderField:@"Content-Type"];
         STAssertTrue([contentType hasPrefix:@"multipart/form-data; boundary="], @"Wrong content type, don't care about the value of the boundary");
         [operation start];
@@ -5909,18 +5909,20 @@
     [self createJiveAPIObjectWithResponse:@"property" andAuthDelegate:mockAuthDelegate];
     
     [self waitForTimeout:^(dispatch_block_t finishedBlock) {
-        NSOperation* operation = [jive propertyWithNameOperation:@"instance.url" onComplete:^(JiveProperty *property) {
-            // Called 3rd
-            STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
-            
-            // Check that delegates where actually called
-            [mockAuthDelegate verify];
-            [mockJiveURLResponseDelegate verify];
-            finishedBlock();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishedBlock();
-        }];
+        NSOperation* operation = [jive propertyWithNameOperation:JivePropertyNames.instanceURL
+                                                      onComplete:^(JiveProperty *property) {
+                                                          // Called 3rd
+                                                          STAssertEquals([property class], [JiveProperty class], @"Wrong item class");
+                                                          
+                                                          // Check that delegates where actually called
+                                                          [mockAuthDelegate verify];
+                                                          [mockJiveURLResponseDelegate verify];
+                                                          finishedBlock();
+                                                      }
+                                                         onError:^(NSError *error) {
+                                                             STFail([error localizedDescription]);
+                                                             finishedBlock();
+                                                         }];
         [operation start];
     }];
 }
@@ -6074,7 +6076,7 @@
                                                               }
                                                                  onError:errorBlock];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"POST", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
         STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
         STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
         STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
@@ -6155,7 +6157,7 @@
             // Check that delegates where actually called
             [mockAuthDelegate verify];
             [mockJiveURLResponseDelegate verify];
-            finishedBlock();            
+            finishedBlock();
         } onError:^(NSError *error) {
             STFail([error localizedDescription]);
             finishedBlock();
@@ -6205,7 +6207,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"PUT", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
         STAssertNil(operation.request.HTTPBody, @"No http body needed");
         [operation start];
     }];
@@ -6241,7 +6243,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(operation.request.HTTPMethod, @"DELETE", @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
         STAssertNil(operation.request.HTTPBody, @"No http body needed");
         [operation start];
     }];
@@ -6424,7 +6426,7 @@
             finishedBlock();
         }];
         
-        STAssertEqualObjects(@"POST", operation.request.HTTPMethod, @"Wrong http method used");
+        STAssertEqualObjects(JiveHTTPMethodTypes.POST, operation.request.HTTPMethod, @"Wrong http method used");
         [operation start];
     }];
 }
@@ -6443,6 +6445,524 @@
             STFail([error localizedDescription]);
             finishedBlock();
         }];
+    }];
+}
+
+- (void) testGetEditableContentOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable?fields=contentBody";
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"contentBody"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    source.subject = @"subject";
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive getEditableContentOperation:source
+                                                                    withOptions:options
+                                                                     onComplete:^(JiveContent *content) {
+                                                                         // Called 3rd
+                                                                         STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                                                                         STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                                                         STAssertEquals(content, source, @"Content object not updated");
+                                                                         
+                                                                         // Check that delegates where actually called
+                                                                         [mockAuthDelegate verify];
+                                                                         [mockJiveURLResponseDelegate verify];
+                                                                         finishedBlock();
+                                                                     }
+                                                                        onError:^(NSError *error) {
+                                                                            STFail([error localizedDescription]);
+                                                                            finishedBlock();
+                                                                        }];
+        
+        [operation start];
+    }];
+}
+
+- (void) testGetEditableContent {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable?fields=name,id";
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
+        source.subject = @"alternate";
+        [jive getEditableContent:source
+                     withOptions:options
+                      onComplete:^(JiveContent *content) {
+                          // Called 3rd
+                          STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                          STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                          STAssertEquals(content, source, @"Content object not updated");
+                          
+                          // Check that delegates where actually called
+                          [mockAuthDelegate verify];
+                          [mockJiveURLResponseDelegate verify];
+                          finishedBlock();
+                      }
+                         onError:^(NSError *error) {
+                             STFail([error localizedDescription]);
+                             finishedBlock();
+                         }];
+    }];
+}
+
+- (void) testLockContentForEditingOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable?fields=contentBody";
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"contentBody"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    source.subject = @"subject";
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive lockContentForEditingOperation:source
+                                                                       withOptions:options
+                                                                        onComplete:^(JiveContent *content) {
+                                                                            // Called 3rd
+                                                                            STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                                                                            STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                                                            STAssertEquals(content, source, @"Content object not updated");
+                                                                            
+                                                                            // Check that delegates where actually called
+                                                                            [mockAuthDelegate verify];
+                                                                            [mockJiveURLResponseDelegate verify];
+                                                                            finishedBlock();
+                                                                        }
+                                                                           onError:^(NSError *error) {
+                                                                               STFail([error localizedDescription]);
+                                                                               finishedBlock();
+                                                                           }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.POST, @"Wrong http method used");
+        [operation start];
+    }];
+}
+
+- (void) testLockContentForEditing {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable?fields=name,id";
+    JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
+        source.subject = @"alternate";
+        [jive lockContentForEditing:source
+                        withOptions:options
+                         onComplete:^(JiveContent *content) {
+                             // Called 3rd
+                             STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                             STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                             STAssertEquals(content, source, @"Content object not updated");
+                             
+                             // Check that delegates where actually called
+                             [mockAuthDelegate verify];
+                             [mockJiveURLResponseDelegate verify];
+                             finishedBlock();
+                         }
+                            onError:^(NSError *error) {
+                                STFail([error localizedDescription]);
+                                finishedBlock();
+                            }];
+    }];
+}
+
+- (void) testSaveContentWhileEditingOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable?minor=true";
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    options.minor = YES;
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    source.subject = @"subject";
+    
+    NSData *body = [NSJSONSerialization dataWithJSONObject:[source toJSONDictionary] options:0 error:nil];
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive saveContentWhileEditingOperation:source
+                                                                         withOptions:options
+                                                                          onComplete:^(JiveContent *content) {
+                                                                              // Called 3rd
+                                                                              STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                                                                              STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                                                              STAssertEquals(content, source, @"Content object not updated");
+                                                                              
+                                                                              // Check that delegates where actually called
+                                                                              [mockAuthDelegate verify];
+                                                                              [mockJiveURLResponseDelegate verify];
+                                                                              finishedBlock();
+                                                                          }
+                                                                             onError:^(NSError *error) {
+                                                                                 STFail([error localizedDescription]);
+                                                                                 finishedBlock();
+                                                                             }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
+        STAssertEqualObjects(operation.request.HTTPBody, body, @"Wrong http body");
+        STAssertEqualObjects([operation.request valueForHTTPHeaderField:@"Content-Type"], @"application/json; charset=UTF-8", @"Wrong content type");
+        STAssertEquals([[operation.request valueForHTTPHeaderField:@"Content-Length"] integerValue], (NSInteger)body.length, @"Wrong content length");
+        [operation start];
+    }];
+}
+
+- (void) testSaveContentWhileEditing {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable?fields=name,id";
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
+        source.subject = @"alternate";
+        [jive saveContentWhileEditing:source
+                          withOptions:options
+                           onComplete:^(JiveContent *content) {
+                               // Called 3rd
+                               STAssertTrue([[content class] isSubclassOfClass:[JiveContent class]], @"Wrong item class");
+                               STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                               STAssertEquals(content, source, @"Content object not updated");
+                               
+                               // Check that delegates where actually called
+                               [mockAuthDelegate verify];
+                               [mockJiveURLResponseDelegate verify];
+                               finishedBlock();
+                           }
+                              onError:^(NSError *error) {
+                                  STFail([error localizedDescription]);
+                                  finishedBlock();
+                              }];
+    }];
+}
+
+- (void) testUnlockContentOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
+    JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document_alternate"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    source.subject = @"subject";
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive unlockContentOperation:source
+                                                                onComplete:^ {
+                                                                    // Check that delegates where actually called
+                                                                    [mockAuthDelegate verify];
+                                                                    [mockJiveURLResponseDelegate verify];
+                                                                    finishedBlock();
+                                                                }
+                                                                   onError:^(NSError *error) {
+                                                                       STFail([error localizedDescription]);
+                                                                       finishedBlock();
+                                                                   }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.DELETE, @"Wrong http method used");
+        [operation start];
+    }];
+}
+
+- (void) testUnlockContent {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveContent *source = [self entityForClass:[JiveContent class] fromJSONNamed:@"document"];
+        source.subject = @"alternate";
+        [jive unlockContent:source
+                 onComplete:^ {
+                     // Check that delegates where actually called
+                     [mockAuthDelegate verify];
+                     [mockJiveURLResponseDelegate verify];
+                     finishedBlock();
+                 }
+                    onError:^(NSError *error) {
+                        STFail([error localizedDescription]);
+                        finishedBlock();
+                    }];
+    }];
+}
+
+- (void) testSaveDocumentWithAttachmentsOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
+    JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    JiveAttachment *simpleAttachment = [JiveAttachment new];
+    NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+    
+    options.minor = YES;
+    simpleAttachment.name = @"document.json";
+    simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                   ofType:@"json"]];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive saveDocumentWhileEditingOperation:source
+                                                                      withAttachments:attachments
+                                                                              options:options
+                                                                           onComplete:^(JiveContent *content) {
+                                                                               // Called 3rd
+                                                                               STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                                                               STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                                                                               STAssertEquals(content, source, @"Content object not updated");
+                                                                               
+                                                                               // Check that delegates where actually called
+                                                                               [mockAuthDelegate verify];
+                                                                               [mockJiveURLResponseDelegate verify];
+                                                                               finishedBlock();
+                                                                           }
+                                                                              onError:^(NSError *error) {
+                                                                                  STFail([error localizedDescription]);
+                                                                                  finishedBlock();
+                                                                              }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
+        NSString *contentType = [operation.request valueForHTTPHeaderField:@"Content-Type"];
+        STAssertTrue([contentType hasPrefix:@"multipart/form-data; boundary="], @"Wrong content type, don't care about the value of the boundary");
+        [operation start];
+    }];
+}
+
+- (void) testSaveDocumentWithAttachments {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JiveDocument *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document_alternate"];
+        JiveAttachment *simpleAttachment = [JiveAttachment new];
+        NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+        
+        simpleAttachment.name = @"document.json";
+        simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                       ofType:@"json"]];
+        [jive saveDocumentWhileEditing:source
+                       withAttachments:attachments
+                               options:options
+                            onComplete:^(JiveContent *content) {
+                                // Called 3rd
+                                STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                STAssertEquals(content, source, @"Content object not updated");
+                                
+                                // Check that delegates where actually called
+                                [mockAuthDelegate verify];
+                                [mockJiveURLResponseDelegate verify];
+                                finishedBlock();
+                            } onError:^(NSError *error) {
+                                STFail([error localizedDescription]);
+                                finishedBlock();
+                            }];
+    }];
+}
+
+- (void) testSavePostWithAttachmentsOperation {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/464776/editable";
+    JivePost *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document"];
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    JiveAttachment *simpleAttachment = [JiveAttachment new];
+    NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+    
+    options.minor = YES;
+    simpleAttachment.name = @"document.json";
+    simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                   ofType:@"json"]];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document_alternate" andAuthDelegate:mockAuthDelegate];
+    
+    [self waitForTimeout:^(dispatch_block_t finishedBlock) {
+        AFURLConnectionOperation *operation = [jive savePostWhileEditingOperation:source
+                                                                      withAttachments:attachments
+                                                                              options:options
+                                                                           onComplete:^(JiveContent *content) {
+                                                                               // Called 3rd
+                                                                               STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                                                               STAssertEqualObjects(content.subject, @"TABDEV-605", @"New object not created");
+                                                                               STAssertEquals(content, source, @"Content object not updated");
+                                                                               
+                                                                               // Check that delegates where actually called
+                                                                               [mockAuthDelegate verify];
+                                                                               [mockJiveURLResponseDelegate verify];
+                                                                               finishedBlock();
+                                                                           }
+                                                                              onError:^(NSError *error) {
+                                                                                  STFail([error localizedDescription]);
+                                                                                  finishedBlock();
+                                                                              }];
+        
+        STAssertEqualObjects(operation.request.HTTPMethod, JiveHTTPMethodTypes.PUT, @"Wrong http method used");
+        NSString *contentType = [operation.request valueForHTTPHeaderField:@"Content-Type"];
+        STAssertTrue([contentType hasPrefix:@"multipart/form-data; boundary="], @"Wrong content type, don't care about the value of the boundary");
+        [operation start];
+    }];
+}
+
+- (void) testSavePostWithAttachments {
+    NSString *expectedURLString = @"https://brewspace.jiveland.com/api/core/v3/contents/466111/editable";
+    JiveMinorCommentRequestOptions *options = [[JiveMinorCommentRequestOptions alloc] init];
+    [options addField:@"name"];
+    [options addField:@"id"];
+    mockAuthDelegate = [OCMockObject mockForProtocol:@protocol(JiveAuthorizationDelegate)];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] credentialsForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    [[[mockAuthDelegate expect] andReturn:[[JiveHTTPBasicAuthCredentials alloc] initWithUsername:@"bar" password:@"foo"]] mobileAnalyticsHeaderForJiveInstance:[OCMArg checkWithBlock:^BOOL(id value) {
+        // the form parameters are attached in the multipart form body
+        BOOL same = [expectedURLString isEqualToString:[value absoluteString]];
+        return same;
+    }]];
+    
+    [self createJiveAPIObjectWithResponse:@"document" andAuthDelegate:mockAuthDelegate];
+    
+    // Make the call
+    [self waitForTimeout:^(void (^finishedBlock)(void)) {
+        JivePost *source = [self entityForClass:[JiveDocument class] fromJSONNamed:@"document_alternate"];
+        JiveAttachment *simpleAttachment = [JiveAttachment new];
+        NSArray *attachments = [NSArray arrayWithObject:simpleAttachment];
+        
+        simpleAttachment.name = @"document.json";
+        simpleAttachment.url = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"document"
+                                                                                                       ofType:@"json"]];
+        [jive savePostWhileEditing:source
+                       withAttachments:attachments
+                               options:options
+                            onComplete:^(JiveContent *content) {
+                                // Called 3rd
+                                STAssertEquals([content class], [JiveDocument class], @"Wrong item class");
+                                STAssertEqualObjects(content.subject, @"Testing document visiblity defaults on iPad", @"New object not created");
+                                STAssertEquals(content, source, @"Content object not updated");
+                                
+                                // Check that delegates where actually called
+                                [mockAuthDelegate verify];
+                                [mockJiveURLResponseDelegate verify];
+                                finishedBlock();
+                            } onError:^(NSError *error) {
+                                STFail([error localizedDescription]);
+                                finishedBlock();
+                            }];
     }];
 }
 

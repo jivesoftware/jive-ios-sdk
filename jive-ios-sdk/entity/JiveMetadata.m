@@ -84,7 +84,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"feature.rtc.enabled"
+    return [self boolPropertyOperation:JivePropertyNames.realTimeChatEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -98,7 +98,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)imagesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                   onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"feature.images.enabled"
+    return [self boolPropertyOperation:JivePropertyNames.imagesEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -112,7 +112,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                          onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"jive.coreapi.enable.statusupdates"
+    return [self boolPropertyOperation:JivePropertyNames.statusUpdatesEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -125,7 +125,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)personalStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                                  onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"feature.status_update.enabled"
+    return [self boolPropertyOperation:JivePropertyNames.personalStatusUpdatesEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -138,7 +138,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)placeStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                               onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"feature.status_update_place.enabled"
+    return [self boolPropertyOperation:JivePropertyNames.placeStatusUpdatesEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -151,7 +151,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)repostStatusUpdatesEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                                onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"feature.status_update_repost.enabled"
+    return [self boolPropertyOperation:JivePropertyNames.repostStatusUpdatesEnabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }
@@ -164,7 +164,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)statusUpdateMaxCharactersOperation:(JiveNumericCompletedBlock)completeBlock
                                                                               onError:(JiveErrorBlock)errorBlock {
-    return [self.instance propertyWithNameOperation:@"feature.status_update.characters"
+    return [self.instance propertyWithNameOperation:JivePropertyNames.statusUpdateMaxCharacters
                                          onComplete:^(JiveProperty *property) {
                                              completeBlock(property.valueAsNumber);
                                          }
@@ -179,7 +179,7 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                          onError:(JiveErrorBlock)errorBlock {
-    return [self boolPropertyOperation:@"jive.coreapi.disable.binarydownloads.mobileonly"
+    return [self boolPropertyOperation:JivePropertyNames.mobileBinaryDownloadsDisabled
                             onComplete:completeBlock
                                onError:errorBlock];
 }

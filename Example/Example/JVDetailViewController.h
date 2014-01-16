@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JVDetailViewController : UIViewController
+@class JivePerson;
 
-@property (strong, nonatomic) id detailItem;
+@interface JVDetailViewController : UIViewController <UITabBarDelegate>
+
+@property (strong, nonatomic) JivePerson *detailItem;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end

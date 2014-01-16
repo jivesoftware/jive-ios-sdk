@@ -45,6 +45,8 @@ extern struct JivePersonAttributes {
     __unsafe_unretained NSString *updated;
 } const JivePersonAttributes;
 
+extern NSString * const JivePersonGuestID;
+
 
 //! \class JivePerson
 //! https://developers.jivesoftware.com/api/v3/rest/PersonEntity.html
@@ -187,6 +189,13 @@ extern struct JivePersonAttributes {
          onComplete:(JiveTaskCompleteBlock)completeBlock
             onError:(JiveErrorBlock)errorBlock;
 
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTermsAndConditions(String)
+- (void) termsAndConditions:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#acceptTermsAndConditions(String)
+- (void) acceptTermsAndConditions:(JiveCompletedBlock)completeBlock
+                          onError:(JiveErrorBlock)errorBlock;
+
 //! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getPerson(String,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
@@ -267,6 +276,13 @@ extern struct JivePersonAttributes {
                                                              onComplete:(JiveTaskCompleteBlock)completeBlock
                                                                 onError:(JiveErrorBlock)errorBlock;
 
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#getTermsAndConditions(String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock;
+//! https://developers.jivesoftware.com/api/v3/rest/PersonService.html#acceptTermsAndConditions(String)
+- (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock;
+
 - (NSURL *)avatarRef;
 - (NSURL *)activityRef;
 - (NSURL *)blogRef;
@@ -286,6 +302,8 @@ extern struct JivePersonAttributes {
 - (BOOL)canCreateNewStream;
 - (NSURL *)tasksRef;
 - (BOOL)canCreateNewTask;
+
+- (BOOL)isGuest;
 
 @property (strong, nonatomic) Jive *jiveInstance;
 

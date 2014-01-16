@@ -19,6 +19,7 @@
 
 #import "JiveTypedObjectTests.h"
 #import "Jive_internal.h"
+#import "TestObjectFactory.h"
 
 @interface DummyTypedObject : JiveTypedObject
 
@@ -97,18 +98,12 @@ static NSString *alternateType = @"alternate";
 }
 
 - (void)testSelfReferenceParsedBeforeAnythingElse {
-    JiveResourceEntry *selfResource = [JiveResourceEntry new];
-    JiveResourceEntry *altResource = [JiveResourceEntry new];
+    JiveResourceEntry *altResource = [TestObjectFactory createSelfResourceEntryForPerson:@"321"
+                                                                                atServer:[NSURL URLWithString:@"http://brewspace.com"]];
     NSString *expectedURL = @"https://hopback.eng.jiveland.com/";
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"54321"
+                                                                                 atServer:[NSURL URLWithString:expectedURL]];
     
-    [selfResource setValue:[NSURL URLWithString:[expectedURL stringByAppendingString:@"api/core/v3/person/321"]]
-                    forKey:JiveResourceEntryAttributes.ref];
-    [selfResource setValue:@[@"GET", @"PUT"]
-                    forKey:JiveResourceEntryAttributes.allowed];
-    [altResource setValue:[NSURL URLWithString:@"http://brewspace.com/api/core/v3/person/321"]
-                   forKey:JiveResourceEntryAttributes.ref];
-    [altResource setValue:@[@"GET", @"DELETE"]
-                   forKey:JiveResourceEntryAttributes.allowed];
     self.instance.badInstanceURL = nil;
     
     id selfJSON = selfResource.persistentJSON;
@@ -128,6 +123,51 @@ static NSString *alternateType = @"alternate";
     
     [[self.object class] objectFromJSON:secondJSON withInstance:self.instance];
     STAssertEqualObjects(self.instance.badInstanceURL, expectedURL, @"SelfRef was not parsed first.");
+}
+
+- (void)testTypedObjectPersistentJSON {
+    NSDictionary *JSON = [self.typedObject toJSONDictionary];
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"321"
+                                                                                 atServer:self.serverURL];
+    const NSUInteger initialCount = JSON.count;
+    
+    STAssertTrue([JSON isKindOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    
+    [self.typedObject setValue:@{JiveTypedObjectResourceTags.selfResourceTag:selfResource}
+                        forKey:JiveTypedObjectAttributesHidden.resources];
+    
+    JSON = [self.typedObject persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], initialCount + 1, @"Initial dictionary had the wrong number of entries");
+    
+    NSDictionary *resourcesJSON = [JSON objectForKey:JiveTypedObjectAttributesHidden.resources];
+    
+    STAssertTrue([[resourcesJSON class] isSubclassOfClass:[NSDictionary class]], @"Resources not converted");
+    STAssertEquals([resourcesJSON count], (NSUInteger)1, @"Resources dictionary had the wrong number of entries");
+    
+    NSDictionary *selfResourceJSON = [resourcesJSON objectForKey:JiveTypedObjectResourceTags.selfResourceTag];
+    
+    STAssertTrue([[selfResourceJSON class] isSubclassOfClass:[NSDictionary class]], @"Resources not converted");
+    STAssertEquals([selfResourceJSON count], (NSUInteger)2, @"Resources dictionary had the wrong number of entries");
+    STAssertEqualObjects(selfResourceJSON[JiveResourceEntryAttributes.ref],
+                         selfResource.ref.absoluteString, @"Wrong resource");
+}
+
+- (void)testTypedObjectParsing {
+    JiveResourceEntry *selfResource = [TestObjectFactory createSelfResourceEntryForPerson:@"54321"
+                                                                                 atServer:self.serverURL];
+    [self.typedObject setValue:@{JiveTypedObjectResourceTags.selfResourceTag:selfResource}
+                        forKey:JiveTypedObjectAttributesHidden.resources];
+    
+    NSDictionary *JSON = [self.typedObject persistentJSON];
+    JiveTypedObject *newContent = [JiveTypedObject objectFromJSON:JSON withInstance:self.instance];
+    
+    STAssertNotNil(newContent, @"Content object not created");
+    STAssertTrue([[newContent class] isSubclassOfClass:[JiveTypedObject class]], @"Wrong item class");
+    STAssertEquals([newContent.resources count], [self.typedObject.resources count], @"Wrong number of resource objects");
+    STAssertEqualObjects([(JiveResourceEntry *)newContent.resources[JiveTypedObjectResourceTags.selfResourceTag] ref].absoluteString,
+                         selfResource.ref.absoluteString, @"Wrong resource object");
 }
 
 @end

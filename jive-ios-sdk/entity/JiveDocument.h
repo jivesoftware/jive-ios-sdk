@@ -21,6 +21,25 @@
 
 extern NSString * const JiveDocumentType;
 
+extern struct JiveDocumentAttributes {
+    __unsafe_unretained NSString *approvers;
+    __unsafe_unretained NSString *attachments;
+    __unsafe_unretained NSString *authors;
+    __unsafe_unretained NSString *authorship;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *editingBy;
+    __unsafe_unretained NSString *fromQuest;
+    __unsafe_unretained NSString *outcomeCounts;
+    __unsafe_unretained NSString *outcomeTypeNames;
+    __unsafe_unretained NSString *outcomeTypes;
+    __unsafe_unretained NSString *restrictComments;
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *updater;
+    __unsafe_unretained NSString *users;
+    __unsafe_unretained NSString *visibility;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JiveDocumentAttributes;
+
 //! \class JiveDocument
 //! https://developers.jivesoftware.com/api/v3/rest/DocumentEntity.html
 @interface JiveDocument : JiveContent
@@ -43,20 +62,32 @@ extern NSString * const JiveDocumentType;
 //! Categories associated with this object. Places define the list of possible categories. String[]
 @property(nonatomic, strong) NSArray* categories;
 
+//! The person currently editing this document, meaning that it's locked. If not present, nobody is editing.
+@property(nonatomic, readonly) JivePerson *editingBy;
+
 //! Flag indicating that this document was created as part of a quest.
 @property(nonatomic, copy) NSString* fromQuest;
+
+//! Map of structured outcome type names that have been assigned to this content object, and a count of how many times they appear. Outcomes assigned to child comments and messages will also be included. Availability: Only available for content object types that support structured outcomes. @{String:Number}
+@property(nonatomic, readonly) NSDictionary *outcomeCounts;
+
+//! List of structured outcome type names that have been assigned to this content object. Outcomes assigned to child comments and messages will also be included. Availability: Only available for content object types that support structured outcomes. String[]
+@property(nonatomic, strong) NSArray *outcomeTypeNames;
+
+//! A list of valid outcome types that can be set on this piece of content. Creation optional. JiveOutcomeType[]
+@property(nonatomic, readonly) NSArray *outcomeTypes;
 
 //! Flag indicating that old comments will be visible but new comments are not allowed. If not restricted then anyone with appropriate permissions can comment on the content.
 @property(nonatomic, strong) NSNumber *restrictComments;
 
 //! Tags associated with this object. String[]
-@property(nonatomic, readonly, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* tags;
 
 //! The last person that updated this document. If not present, the last person to update this document was the person referenced in the author property.
 @property(nonatomic, readonly, strong) JivePerson* updater;
 
 //! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
-@property(nonatomic, readonly, strong) NSArray* users;
+@property(nonatomic, strong) NSArray* users;
 
 //! The visibility policy for this discussion. Valid values are:
 // * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
@@ -66,6 +97,6 @@ extern NSString * const JiveDocumentType;
 @property(nonatomic, copy) NSString* visibility;
 
 //! Flag indicating that this content object is potentially visible to external contributors.
-@property(nonatomic, strong) NSNumber *visibleToExternalContributors;
+@property(nonatomic, readonly) NSNumber *visibleToExternalContributors;
 
 @end

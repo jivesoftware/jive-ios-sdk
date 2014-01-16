@@ -35,6 +35,7 @@ extern NSString * const JiveTestCaseNotAJiveObjectKey;
     Jive *jive1;
     Jive *jive2;
     Jive *jive3;
+    Jive *jive4;
     
     NSString* server;
     NSString* userid1;

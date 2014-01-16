@@ -37,5 +37,6 @@
                   forTag:(NSString *)tag;
 
 - (BOOL) deserialize:(id)JSON fromInstance:(Jive *)jiveInstance;
+- (id)parseArrayNamed:(NSString *)propertyName fromJSON:(id)JSON jiveInstance:(Jive *)jiveInstance;
 
 @end

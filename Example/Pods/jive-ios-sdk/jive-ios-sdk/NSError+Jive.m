@@ -27,6 +27,7 @@ NSInteger const JiveErrorCodeNilUnderlyingError = 3;
 NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion = 4;
 NSInteger const JiveErrorCodeInvalidJSON = 5;
 NSInteger const JiveErrorCodeUnauthorizedActivityObjectType = 6;
+NSInteger const JiveErrorCodeRequiresTermsAndConditionsAccpetance = 7;
 
 NSString * const JiveErrorKeyMultipleErrors = @"JiveMultipleErrors";
 NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType = @"JiveUnsupportedActivityObjectObjectType";
@@ -34,6 +35,7 @@ NSString * const JiveErrorKeyJSON = @"JiveErrorJSON";
 NSString * const JiveErrorKeyHTTPStatusCode = @"JiveErrorHTTPStatusCode";
 NSString * const JiveErrorKeyJivePlatformVersion = @"JiveErrorJivePlatformVersion";
 NSString * const JiveErrorKeyUnauthorizedActivityObjectType = @"JiveErrorKeyUnauthorizedActivityObjectType";
+NSString * const JiveErrorKeyTermsAndConditionsAPI = @"JiveErrorKeyTermsAndConditionsAPI";
 
 NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer = @"unauthorized.user.mark.correctAnswer";
 
@@ -118,6 +120,14 @@ NSString * const JiveErrorMessageUnauthorizedUserMarkCorrectAnswer = @"unauthori
                             code:JiveErrorCodeUnauthorizedActivityObjectType
                         userInfo:(@{
                                     JiveErrorKeyUnauthorizedActivityObjectType : unauthorizedActivityObjectType,
+                                    })];
+}
+
++ (instancetype) jive_errorRequiresTermsAndConditionsAcceptance:(NSString *)termsAndConditionsPath {
+    return [self errorWithDomain:JiveErrorDomain
+                            code:JiveErrorCodeRequiresTermsAndConditionsAccpetance
+                        userInfo:(@{
+                                    JiveErrorKeyTermsAndConditionsAPI : termsAndConditionsPath,
                                     })];
 }
 

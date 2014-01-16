@@ -88,6 +88,7 @@ struct JivePersonResourceAttributes const JivePersonResourceAttributes = {
 @synthesize addresses, displayName, emails, followerCount, followingCount, jiveId, jive, location, name, phoneNumbers, photos, published, status, tags, thumbnailUrl, updated;
 
 NSString * const JivePersonType = @"person";
+NSString * const JivePersonGuestID = @"-1";
 
 + (void)load {
     if (self == [JivePerson class])
@@ -116,6 +117,10 @@ NSString * const JivePersonType = @"person";
                            nil];
     
     return [propertyClasses objectForKey:propertyName];
+}
+
+- (BOOL)isGuest {
+    return self.jiveId && [self.jiveId isEqualToString:JivePersonGuestID];
 }
 
 #pragma mark - JiveObject
@@ -373,6 +378,15 @@ NSString * const JivePersonType = @"person";
                        onError:errorBlock] start];
 }
 
+- (void) termsAndConditions:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                    onError:(JiveErrorBlock)error {
+    [[self termsAndConditionsOperation:completeBlock onError:error] start];
+}
+
+- (void) acceptTermsAndConditions:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)error {
+    [[self acceptTermsAndConditionsOperation:completeBlock onError:error] start];
+}
+
 - (AFJSONRequestOperation<JiveRetryingOperation> *) refreshOperationWithOptions:(JiveReturnFieldsRequestOptions *)options
                                                                      onComplete:(JivePersonCompleteBlock)completeBlock
                                                                         onError:(JiveErrorBlock)errorBlock {
@@ -409,7 +423,7 @@ NSString * const JivePersonType = @"person";
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
                                                              andTemplate:[self.selfRef path], nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];
@@ -434,7 +448,7 @@ NSString * const JivePersonType = @"person";
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self updateJiveTypedObject:self
                            withRequest:request
                             onComplete:completeBlock
@@ -447,7 +461,7 @@ NSString * const JivePersonType = @"person";
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"PUT"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self emptyResponseOperationWithRequest:request
                                         onComplete:completeBlock
                                            onError:errorBlock];
@@ -459,7 +473,7 @@ NSString * const JivePersonType = @"person";
     NSString *path = [[self.followingRef path] stringByAppendingPathComponent:target.jiveId];
     NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil andTemplate:path, nil];
     
-    [request setHTTPMethod:@"DELETE"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.DELETE];
     return [self emptyResponseOperationWithRequest:request onComplete:completeBlock onError:^(NSError *error) {
         if ([error.userInfo[JiveErrorKeyHTTPStatusCode] isEqualToNumber:@409]) { // 409 is conflict error returned when you try to delete a following relationship that doesn't exist.  We may have this situation
             completeBlock();                                                          // with legacy data when following was done before this fix -TABDEV-2545
@@ -541,7 +555,7 @@ NSString * const JivePersonType = @"person";
     NSData *body = [NSJSONSerialization dataWithJSONObject:targetURIs options:0 error:nil];
     
     [request setHTTPBody:body];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%i", request.HTTPBody.length]
    forHTTPHeaderField:@"Content-Length"];
@@ -592,11 +606,51 @@ NSString * const JivePersonType = @"person";
                                                                   options:options
                                                               andTemplate:[self.tasksRef path], nil];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     return [self updateJiveTypedObject:task
                            withRequest:request
                             onComplete:completeBlock
                                onError:errorBlock];
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) termsAndConditionsOperation:(JiveTermsAndConditionsCompleteBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock {
+    if (self.jive.termsAndConditionsRequired.boolValue) {
+        NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"termsAndConditions"];
+        NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
+                                                                             andTemplate:path, nil];
+        
+        return [self entityOperationForClass:[JiveTermsAndConditions class]
+                                     request:request
+                                  onComplete:completeBlock
+                                     onError:^(NSError *error) {
+                                         if (error.code == 3) {
+                                             if (completeBlock) {
+                                                 completeBlock([JiveTermsAndConditions new]);
+                                             }
+                                         } else if (errorBlock) {
+                                             errorBlock(error);
+                                         }
+                                     }];
+    }
+    
+    if (completeBlock) {
+        completeBlock([JiveTermsAndConditions new]);
+    }
+    
+    return nil;
+}
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *) acceptTermsAndConditionsOperation:(JiveCompletedBlock)completeBlock
+                                                                              onError:(JiveErrorBlock)errorBlock {
+    NSString *path = [self.selfRef.path stringByAppendingPathComponent:@"acceptTermsAndConditions"];
+    NSMutableURLRequest *request = [self.jiveInstance credentialedRequestWithOptions:nil
+                                                                         andTemplate:path, nil];
+    
+    [request setHTTPMethod:JiveHTTPMethodTypes.POST];
+    return [self emptyResponseOperationWithRequest:request
+                                        onComplete:completeBlock
+                                           onError:errorBlock];
 }
 
 #pragma mark - helper methods

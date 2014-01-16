@@ -36,6 +36,18 @@ struct JivePropertyAttributes const JivePropertyAttributes = {
     .value = @"value",
 };
 
+struct JivePropertyNames const JivePropertyNames = {
+    .instanceURL = @"instance.url",
+    .statusUpdateMaxCharacters = @"feature.status_update.characters",
+    .statusUpdatesEnabled = @"jive.coreapi.enable.statusupdates",
+    .realTimeChatEnabled = @"feature.rtc.enabled",
+    .imagesEnabled = @"feature.images.enabled",
+    .personalStatusUpdatesEnabled = @"feature.status_update.enabled",
+    .placeStatusUpdatesEnabled = @"feature.status_update_place.enabled",
+    .repostStatusUpdatesEnabled = @"feature.status_update_repost.enabled",
+    .mobileBinaryDownloadsDisabled = @"jive.coreapi.disable.binarydownloads.mobileonly",
+};
+
 @implementation JiveProperty
 
 @synthesize availability, defaultValue, jiveDescription, name, since, type, value;

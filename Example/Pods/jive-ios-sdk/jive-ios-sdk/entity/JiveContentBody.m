@@ -19,17 +19,35 @@
 
 #import "JiveContentBody.h"
 
+struct JiveContentBodyAttributes const JiveContentBodyAttributes = {
+    .editable = @"editable",
+    .text = @"text",
+    .type = @"type"
+};
+
 @implementation JiveContentBody
 
-@synthesize text, type;
+@synthesize text, type, editable;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:text forKey:@"text"];
-    [dictionary setValue:type forKey:@"type"];
+    [dictionary setValue:text forKey:JiveContentBodyAttributes.text];
+    [dictionary setValue:type forKey:JiveContentBodyAttributes.type];
     
     return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = [super persistentJSON];
+    
+    [dictionary setValue:editable forKey:JiveContentBodyAttributes.editable];
+    
+    return dictionary;
+}
+
+- (BOOL)editableValue {
+    return editable.boolValue;
 }
 
 @end

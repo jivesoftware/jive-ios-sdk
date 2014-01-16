@@ -25,10 +25,14 @@
 extern struct JiveContentAttributes {
     __unsafe_unretained NSString *author;
     __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *contentID;
+    __unsafe_unretained NSString *customIconRef;
     __unsafe_unretained NSString *followerCount;
     __unsafe_unretained NSString *highlightBody;
     __unsafe_unretained NSString *highlightSubject;
     __unsafe_unretained NSString *highlightTags;
+    __unsafe_unretained NSString *iconCss;
+    __unsafe_unretained NSString *jiveId;
     __unsafe_unretained NSString *likeCount;
     __unsafe_unretained NSString *parent;
     __unsafe_unretained NSString *parentContent;
@@ -57,6 +61,12 @@ extern struct JiveContentAttributes {
 //! Content of this content object.
 @property(nonatomic, strong) JiveContentBody* content;
 
+//! Internal Jive ID associated with the content.
+@property(nonatomic, readonly) NSString *contentID;
+
+//! Custom icon for this content.
+@property(nonatomic, readonly) NSURL* customIconRef;
+
 //! Number of people following this object.
 @property(nonatomic, readonly) NSNumber *followerCount;
 
@@ -69,6 +79,9 @@ extern struct JiveContentAttributes {
 //! Highlight snippet of a search match in tags.
 @property(nonatomic, readonly, copy) NSString* highlightTags;
 
+//! CSS Style to locate icon within sprite.
+@property(nonatomic, readonly) NSString *iconCss;
+
 //! Identifier (unique within an object type and Jive instance) of this object. This field is internal to Jive and should not be confused with contentID or placeID used in URIs.
 @property(nonatomic, readonly, copy) NSString* jiveId;
 
@@ -78,11 +91,11 @@ extern struct JiveContentAttributes {
 //! URI of the parent place of this content object. When visibility is place then the URI points to a place (and is required on create). Otherwise, this field is not part of the returned JSON (and must not be included on create).
 @property(nonatomic, copy) NSString* parent;
 
-//! Summary information about the content object that is the parent of this object.
+//! Summary information about the content object that is the parent of this object. Availability: Will be present in search results only.
 @property(nonatomic, readonly, strong) JiveSummary* parentContent;
 
-//! Summary information about the place that contains this object.
-@property(nonatomic, strong) JiveSummary* parentPlace;
+//! Summary information about the place that contains this object. Availability: Will be present in search results only.
+@property(nonatomic, readonly) JiveSummary* parentPlace;
 
 //! Date and time when this content object was originally created.
 @property(nonatomic, readonly, strong) NSDate* published;
@@ -103,7 +116,7 @@ extern struct JiveContentAttributes {
 //! Date and time this content object was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;
 
-//! Number of times this content object has been viewed.
+//! Number of times this content object has been viewed. Availability: Will be present only for objects that support view counts
 @property(nonatomic, readonly) NSNumber *viewCount;
 
 //! The action item note specified when content is shared

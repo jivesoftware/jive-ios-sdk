@@ -18,7 +18,6 @@
 //
 
 #import "JiveInvite.h"
-#import "JiveResourceEntry.h"
 
 @interface JiveInvite (internal)
 
@@ -53,21 +52,6 @@
     
     if (index <= JiveInviteSent)
         state = (enum JiveInviteState)index;
-}
-
-- (NSDictionary *) parseDictionaryForProperty:(NSString*)property
-                                     fromJSON:(id)JSON
-                                 fromInstance:(Jive *)instance {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[JSON count]];
-    
-    for (NSString *key in JSON) {
-        JiveResourceEntry *entry = [JiveResourceEntry objectFromJSON:[JSON objectForKey:key]
-                                                          withInstance:instance];
-        
-        [dictionary setValue:entry forKey:key];
-    }
-    
-    return dictionary.count > 0 ? [NSDictionary dictionaryWithDictionary:dictionary] : nil;
 }
 
 @end
