@@ -23,6 +23,7 @@ extern struct JivePropertyTypes {
     __unsafe_unretained NSString *boolean;
     __unsafe_unretained NSString *string;
     __unsafe_unretained NSString *number;
+    __unsafe_unretained NSString *integer;
 } const JivePropertyTypes;
 
 extern struct JivePropertyAttributes {
