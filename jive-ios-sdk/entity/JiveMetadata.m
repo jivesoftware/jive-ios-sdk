@@ -188,4 +188,19 @@
     [[self binaryDownloadsDisabledOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Status Update Max Characters
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                      onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:JivePropertyNames.maxAttachmentSize
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsNumber);
+                                         }
+                                            onError:errorBlock];
+}
+
+- (void)maxAttachmentSize:(JiveNumericCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self maxAttachmentSizeOperation:completeBlock onError:errorBlock] start];
+}
+
 @end

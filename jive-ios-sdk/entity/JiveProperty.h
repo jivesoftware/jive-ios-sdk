@@ -45,6 +45,7 @@ extern struct JivePropertyNames {
     __unsafe_unretained NSString *placeStatusUpdatesEnabled;
     __unsafe_unretained NSString *repostStatusUpdatesEnabled;
     __unsafe_unretained NSString *mobileBinaryDownloadsDisabled;
+    __unsafe_unretained NSString *maxAttachmentSize;
 } const JivePropertyNames;
 
 //! \class JiveProperty

@@ -23,7 +23,7 @@
 struct JivePropertyTypes const JivePropertyTypes = {
     .boolean = @"boolean",
     .string = @"string",
-    .number = @"integer",
+    .number = @"int",
 };
 
 struct JivePropertyAttributes const JivePropertyAttributes = {
@@ -46,6 +46,7 @@ struct JivePropertyNames const JivePropertyNames = {
     .placeStatusUpdatesEnabled = @"feature.status_update_place.enabled",
     .repostStatusUpdatesEnabled = @"feature.status_update_repost.enabled",
     .mobileBinaryDownloadsDisabled = @"jive.coreapi.disable.binarydownloads.mobileonly",
+    .maxAttachmentSize = @"attachments.maxAttachmentSize",
 };
 
 @implementation JiveProperty
