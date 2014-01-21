@@ -48,6 +48,7 @@ NSString * const JiveExternalType = @"extStreamActivity";
     if ([propertyName isEqualToString:JiveExternalObjectAttributes.attachments]) {
         return [JiveAttachment class];
     }
+    return nil;
 }
 
 - (id)persistentJSON {
