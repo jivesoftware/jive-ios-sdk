@@ -19,8 +19,10 @@
 
 #import "JiveExternalObject.h"
 #import "JiveTypedObject_internal.h"
+#import "JiveAttachment.h"
 
 struct JiveExternalObjectAttributes const JiveExternalObjectAttributes = {
+    .attachments = @"attachments",
 	.object = @"object",
     .productIcon = @"productIcon",
     .productName = @"productName",
@@ -31,7 +33,7 @@ NSString * const JiveExternalType = @"extStreamActivity";
 
 @implementation JiveExternalObject
 
-@synthesize object, onBehalfOf, productIcon, productName;
+@synthesize attachments, object, onBehalfOf, productIcon, productName;
 
 + (void)load {
     if (self == [JiveExternalObject class])
@@ -42,9 +44,16 @@ NSString * const JiveExternalType = @"extStreamActivity";
     return JiveExternalType;
 }
 
+- (Class) arrayMappingFor:(NSString*) propertyName {
+    if ([propertyName isEqualToString:JiveExternalObjectAttributes.attachments]) {
+        return [JiveAttachment class];
+    }
+}
+
 - (id)persistentJSON {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
     
+    [self addArrayElements:attachments toJSONDictionary:dictionary forTag:JiveExternalObjectAttributes.attachments];
     [dictionary setValue:[object toJSONDictionary] forKey:JiveExternalObjectAttributes.object];
     [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:JiveExternalObjectAttributes.onBehalfOf];
     [dictionary setValue:[productIcon absoluteString] forKey:JiveExternalObjectAttributes.productIcon];

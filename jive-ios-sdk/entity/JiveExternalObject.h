@@ -22,6 +22,7 @@
 #import "JiveGenericPerson.h"
 
 extern struct JiveExternalObjectAttributes {
+    __unsafe_unretained NSString *attachments;
     __unsafe_unretained NSString *object;
     __unsafe_unretained NSString *productIcon;
     __unsafe_unretained NSString *productName;
@@ -33,6 +34,9 @@ extern NSString * const JiveExternalType;
 //! \class JiveExternalObject
 //! No online docs yet.
 @interface JiveExternalObject : JiveContent
+
+//! List of attachments to this object (if any). Attachment[]
+@property(nonatomic, readonly, strong) NSArray* attachments;
 
 //! Contains some information about the originating object
 @property(nonatomic, readonly, strong) JiveActivityObject* object;
