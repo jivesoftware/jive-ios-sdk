@@ -21,4 +21,6 @@
 
 @interface JivePlatformVersionTests : JiveObjectTests
 
++ (JivePlatformVersion *)jivePlatformVersionWithMajorVersion:(NSUInteger)majorVersion minorVersion:(NSUInteger)minorVersion maintenanceVersion:(NSUInteger)maintenanceVersion;
+
 @end
