@@ -57,6 +57,37 @@
             testContent = aContent;
         }
     }
+    
+    if (testContent == nil){
+        JiveDocument *post = [[JiveDocument alloc] init];
+        __block JiveContent *testDoc = nil;
+        
+        NSString* docSubj = [NSString stringWithFormat:@"iOS-SDK-TestUser1 Document Subject1"];
+        
+        post.subject = docSubj;
+        post.content = [[JiveContentBody alloc] init];
+        post.content.type = @"text/html";
+        post.content.text = @"<body><p>This is a test of the new doc creation from iPad SDK.</p></body>";
+        
+        [self waitForTimeout:^(dispatch_block_t finishBlock) {
+            [jive1 createContent:post withOptions:nil onComplete:^(JiveContent *newPost) {
+                STAssertEqualObjects([newPost class], [JiveDocument class], @"Wrong content created");
+                
+                testDoc = newPost;
+                
+                finishBlock();
+            } onError:^(NSError *error) {
+                STFail([error localizedDescription]);
+                finishBlock();
+            }];
+        }];
+        
+        STAssertEqualObjects(testDoc.subject, post.subject, @"Unexpected person: %@", [testDoc toJSONDictionary]);
+
+        testContent = testDoc;
+        
+    }
+    
         
     NSString* contentURL = [testContent.selfRef absoluteString];
     

@@ -1,9 +1,9 @@
 {
-    "server": "https://doritosoftware-ipad8c1-1-essential-plus.jivelandia.com",
-    "userid1": "iOS-SDK-TestUser1",
+    "server": "http://hwong-doc-conv02.eng.jiveland.com:8080",
+    "userid1": "iosAuto1",
     "pw1": "test123",
-    "userid2": "iOS-SDK-TestUser2",
+    "userid2": "iosAuto2",
     "pw2": "test123",
-    "userid3": "iOS-SDK-TestUser3",
+    "userid3": "ios",
     "pw3": "test123"
 }

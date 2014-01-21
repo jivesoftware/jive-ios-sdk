@@ -15,9 +15,9 @@
 
 - (void) testEditSameDiscussionWithSameUserAndMultiLogin{
     
-    //find the place 'iosopen1-gp'
+    //find the place 'iosAutoGroup1'
     JivePlacesRequestOptions *placesRequestOptions = [JivePlacesRequestOptions new];
-    [placesRequestOptions addSearchTerm:@"iosopen1-gp"];
+    [placesRequestOptions addSearchTerm:@"iosAutoGroup1"];
     
     __block NSArray *returnedPlaces = nil;
     [self waitForTimeout:^(JiveTestCaseAsyncFinishBlock finishBlock) {
@@ -27,7 +27,7 @@
                finishBlock();
            }
               onError:^(NSError *error) {
-                  STFail(@"error.  Can't find the place, 'iosopen1-gp', to publish a doc to the place");
+                  STFail(@"error.  Can't find the place, 'iosAutoGroup1', to publish a doc to the place");
                   [self unexpectedErrorInWaitForTimeOut:error
                                             finishBlock:finishBlock];
               }];

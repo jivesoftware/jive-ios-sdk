@@ -48,10 +48,7 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
 @implementation JiveTestCase
 
 + (void)initialize {
-    if (self == [JiveTestCase class]) {
-        [NSURLRequest setAllowsAnyHTTPSCertificate:YES
-                                           forHost:@"doritosoftware-ipad8c1-1-essential-plus.jivelandia.com"];
-    }
+
 }
 
 #pragma mark - SenTestCase
@@ -84,6 +81,11 @@ static NSTimeInterval JIveTestCaseLoopInterval = .1;
     pw2 = [jsonObjects valueForKey:@"pw2"];
     userid3 = [jsonObjects valueForKey:@"userid1"];
     pw3 = [jsonObjects valueForKey:@"pw3"];
+    
+    if (self == [JiveTestCase class]) {
+        [NSURLRequest setAllowsAnyHTTPSCertificate:YES
+                                           forHost:server];
+    }
     
     
     authorizationDelegate1 = [[JiveTestCaseAuthorizationDelegate alloc] initWithUsername:userid1 password:pw1];
