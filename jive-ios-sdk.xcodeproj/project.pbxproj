@@ -473,6 +473,7 @@
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
+		CC07967B1890217F0065C06F /* JiveGenericPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */; };
 		CCF22DE61876085800C77397 /* JiveExternalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF22DE51876085800C77397 /* JiveExternalObject.m */; };
 		CCF22DEA187608C100C77397 /* JiveExternalObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCF22DE41876085800C77397 /* JiveExternalObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCFEBA2E188ED6000044EC01 /* JiveGenericPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */; };
@@ -2595,6 +2596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC07967B1890217F0065C06F /* JiveGenericPerson.m in Sources */,
 				B86552A11798857000AAF1AD /* jive-ios-sdk-headers.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
