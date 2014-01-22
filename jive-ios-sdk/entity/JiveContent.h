@@ -57,9 +57,6 @@ extern struct JiveContentAttributes {
 //! Content of this content object.
 @property(nonatomic, strong) JiveContentBody* content;
 
-//! Custom icon for this content.
-@property(nonatomic, readonly) NSURL* customIconRef;
-
 //! Number of people following this object.
 @property(nonatomic, readonly) NSNumber *followerCount;
 

@@ -63,8 +63,4 @@ NSString * const JiveExternalType = @"extStreamActivity";
     return dictionary;
 }
 
-- (NSURL *)customIconRef {
-    return self.productIcon;
-}
-
 @end
