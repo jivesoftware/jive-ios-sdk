@@ -23,10 +23,10 @@
 
 @implementation JiveExtensionTests
 
-- (void)testToJSON {
+- (void)testPersistentJSON {
     JiveExtension *activity = [[JiveExtension alloc] init];
     JiveActivityObject *parent = [[JiveActivityObject alloc] init];
-    NSDictionary *JSON = [activity toJSONDictionary];
+    NSDictionary *JSON = [activity persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
@@ -40,7 +40,7 @@
     [activity setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"update"];
     [activity setValue:parent forKey:@"parent"];
     
-    JSON = [activity toJSONDictionary];
+    JSON = [activity persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");
@@ -58,10 +58,10 @@
     STAssertEqualObjects([parentJSON objectForKey:@"id"], parent.jiveId, @"Wrong value");
 }
 
-- (void)testToJSON_alternate {
+- (void)testPersistentJSON_alternate {
     JiveExtension *activity = [[JiveExtension alloc] init];
     JiveActivityObject *parent = [[JiveActivityObject alloc] init];
-    NSDictionary *JSON = [activity toJSONDictionary];
+    NSDictionary *JSON = [activity persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary is not empty");
@@ -75,7 +75,7 @@
     [activity setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"update"];
     [activity setValue:parent forKey:@"parent"];
     
-    JSON = [activity toJSONDictionary];
+    JSON = [activity persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)9, @"Initial dictionary had the wrong number of entries");

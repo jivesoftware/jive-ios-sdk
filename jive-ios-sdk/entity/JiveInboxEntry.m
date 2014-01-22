@@ -34,50 +34,56 @@
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:content forKey:@"content"];
     [dictionary setValue:jiveId forKey:@"id"];
     [dictionary setValue:title forKey:@"title"];
-    [dictionary setValue:[url absoluteString] forKey:@"url"];
     [dictionary setValue:verb forKey:@"verb"];
-    if (published)
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
-    
-    if (updated)
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
-    
-    if (actor)
-        [dictionary setValue:[actor toJSONDictionary] forKey:@"actor"];
-    
-    if (onBehalfOf)
-        [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:@"onBehalfOf"];
-    
-    if (generator)
-        [dictionary setValue:[generator toJSONDictionary] forKey:@"generator"];
-    
-    if (icon)
-        [dictionary setValue:[icon toJSONDictionary] forKey:@"icon"];
-    
-    if (jive)
-        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
-    
-    if (object)
-        [dictionary setValue:[object toJSONDictionary] forKey:@"object"];
-    
-    if (openSocial)
-        [dictionary setValue:[openSocial toJSONDictionary] forKey:@"openSocial"];
-    
-    if (provider)
-        [dictionary setValue:[provider toJSONDictionary] forKey:@"provider"];
-    
-    if (target)
-        [dictionary setValue:[target toJSONDictionary] forKey:@"target"];
     
     return dictionary;
 }
 
-
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+    
+    if (actor)
+        [dictionary setValue:[actor persistentJSON] forKey:@"actor"];
+    
+    if (onBehalfOf)
+        [dictionary setValue:[onBehalfOf persistentJSON] forKey:@"onBehalfOf"];
+    
+    if (generator)
+        [dictionary setValue:[generator persistentJSON] forKey:@"generator"];
+    
+    if (icon)
+        [dictionary setValue:[icon persistentJSON] forKey:@"icon"];
+    
+    if (jive)
+        [dictionary setValue:[jive persistentJSON] forKey:@"jive"];
+    
+    if (object)
+        [dictionary setValue:[object persistentJSON] forKey:@"object"];
+    
+    if (openSocial)
+        [dictionary setValue:[openSocial persistentJSON] forKey:@"openSocial"];
+    
+    if (provider)
+        [dictionary setValue:[provider persistentJSON] forKey:@"provider"];
+    
+    if (published)
+        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+    
+    if (target)
+        [dictionary setValue:[target persistentJSON] forKey:@"target"];
+    
+    if (updated)
+        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+    
+    [dictionary setValue:[url absoluteString] forKey:@"url"];
+    
+    return dictionary;
+}
 
 
 @end

@@ -17,8 +17,12 @@
 //    limitations under the License.
 //
 
-#import "JiveExternalObjectTests.h"
 #import "JiveExternalObject.h"
+#import "JiveContentTests.h"
+
+@interface JiveExternalObjectTests : JiveContentTests
+
+@end
 
 @implementation JiveExternalObjectTests
 

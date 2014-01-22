@@ -1118,9 +1118,7 @@
 		CCF22DE51876085800C77397 /* JiveExternalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveExternalObject.m; sourceTree = "<group>"; };
 		CCFEBA2C188ED6000044EC01 /* JiveGenericPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveGenericPerson.h; sourceTree = "<group>"; };
 		CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveGenericPerson.m; sourceTree = "<group>"; };
-		CCFEBA3B188EECAB0044EC01 /* JiveExternalObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveExternalObjectTests.h; sourceTree = "<group>"; };
 		CCFEBA3C188EECAB0044EC01 /* JiveExternalObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveExternalObjectTests.m; sourceTree = "<group>"; };
-		CCFEBA3E188EECF20044EC01 /* JiveGenericPersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveGenericPersonTests.h; sourceTree = "<group>"; };
 		CCFEBA3F188EECF20044EC01 /* JiveGenericPersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveGenericPersonTests.m; sourceTree = "<group>"; };
 		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
 		DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOAuthCredentials.h; sourceTree = "<group>"; };
@@ -1432,9 +1430,7 @@
 				8999E65B16FAA1140009677A /* JiveVideoTests.m */,
 				0FBC7E1C1715DADA00A597E2 /* JivePlatformVersionTests.h */,
 				0FBC7E1D1715DADA00A597E2 /* JivePlatformVersionTests.m */,
-				CCFEBA3B188EECAB0044EC01 /* JiveExternalObjectTests.h */,
 				CCFEBA3C188EECAB0044EC01 /* JiveExternalObjectTests.m */,
-				CCFEBA3E188EECF20044EC01 /* JiveGenericPersonTests.h */,
 				CCFEBA3F188EECF20044EC01 /* JiveGenericPersonTests.m */,
 			);
 			path = entity;

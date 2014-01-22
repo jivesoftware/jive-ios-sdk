@@ -56,19 +56,11 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     [dictionary setValue:collection forKey:JiveExtensionAttributes.collection];
     [dictionary setValue:display forKey:JiveExtensionAttributes.display];
-    [dictionary setValue:read forKey:JiveExtensionAttributes.read];
-    [dictionary setValue:[update absoluteString] forKey:JiveExtensionAttributes.update];
     [dictionary setValue:[updateCollection absoluteString] forKey:JiveExtensionAttributes.updateCollection];
     [dictionary setValue:state forKey:JiveExtensionAttributes.state];
-    if (collectionUpdated)
-        [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:JiveExtensionAttributes.collectionUpdated];
-    
-    if (parent)
-        [dictionary setValue:[parent toJSONDictionary] forKey:JiveExtensionAttributes.parent];
     
     if (outcomeTypeName) {
         [dictionary setValue:outcomeTypeName forKey:JiveExtensionAttributes.outcomeTypeName];
@@ -102,14 +94,29 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     [dictionary setValue:[NSNumber numberWithBool:liked] forKey:JiveExtensionAttributes.liked];
     [dictionary setValue:[NSNumber numberWithBool:parentLiked] forKey:JiveExtensionAttributes.parentLiked];
     
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
+    
+    if (collectionUpdated)
+        [dictionary setValue:[dateFormatter stringFromDate:collectionUpdated] forKey:JiveExtensionAttributes.collectionUpdated];
+    if (parent)
+        [dictionary setValue:[parent persistentJSON] forKey:JiveExtensionAttributes.parent];
+    [dictionary setValue:read forKey:JiveExtensionAttributes.read];
+    [dictionary setValue:[update absoluteString] forKey:JiveExtensionAttributes.update];
+    
     if (parentActor)
-        [dictionary setValue:[parentActor toJSONDictionary] forKey:JiveExtensionAttributes.parentActor];
+        [dictionary setValue:[parentActor persistentJSON] forKey:JiveExtensionAttributes.parentActor];
     
     if (parentOnBehalfOf)
-        [dictionary setValue:[parentOnBehalfOf toJSONDictionary] forKey:JiveExtensionAttributes.parentOnBehalfOf];
+        [dictionary setValue:[parentOnBehalfOf persistentJSON] forKey:JiveExtensionAttributes.parentOnBehalfOf];
     
     if (onBehalfOf)
-        [dictionary setValue:[onBehalfOf toJSONDictionary] forKey:JiveExtensionAttributes.onBehalfOf];
+        [dictionary setValue:[onBehalfOf persistentJSON] forKey:JiveExtensionAttributes.onBehalfOf];
     
     return dictionary;
 }

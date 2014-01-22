@@ -17,7 +17,11 @@
 //    limitations under the License.
 //
 
-#import "JiveGenericPersonTests.h"
+#import "JiveObjectTests.h"
+
+@interface JiveGenericPersonTests : JiveObjectTests
+
+@end
 
 @implementation JiveGenericPersonTests
 
