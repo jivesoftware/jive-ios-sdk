@@ -50,7 +50,7 @@
     STAssertEqualObjects([JSON objectForKey:@"type"], @"extStreamActivity", @"Wrong type");
     
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
-    [attachment setValue:@"testContentType" forKey:JiveAttachmentAttributes.contentType];
+    [attachment setValue:[NSNumber numberWithInteger:2] forKey:JiveAttachmentAttributes.size];
     JiveActivityObject *object = [[JiveActivityObject alloc] init];
     [object setValue:@"testId" forKey:@"jiveId"];
     NSURL *productIcon = [NSURL URLWithString:@"extObjTestURL"];
@@ -79,7 +79,7 @@
     
     STAssertTrue([[attachmentsJSON class] isSubclassOfClass:[NSArray class]], @"Wrong object type for attachments");
     STAssertEquals([attachmentsJSON count], (NSUInteger)1, @"Attachments dictionary had the wrong number of entries");
-    STAssertEqualObjects([[attachmentsJSON objectAtIndex:0] objectForKey:@"contentType"], attachment.contentType, @"Wrong value");
+    STAssertEqualObjects([[attachmentsJSON objectAtIndex:0] objectForKey:JiveAttachmentAttributes.size], attachment.size, @"Wrong value");
 }
 
 @end
