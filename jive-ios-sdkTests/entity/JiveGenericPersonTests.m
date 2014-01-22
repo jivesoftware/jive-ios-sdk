@@ -30,25 +30,40 @@
     return (JiveGenericPerson *)self.object;
 }
 
-- (void)testToJSON {
+- (void)testGenericPersonPersistentJSON {
     NSDictionary *JSON = [self.genericPerson persistentJSON];
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    
+}
+
+- (void)testGenericPersonPersistentJSON_internal {
     JivePerson *person = [[JivePerson alloc] init];
     [person setValue:@"testDisplayName" forKey:JivePersonAttributes.displayName];
+    
+    [self.genericPerson setValue:nil forKey:JiveGenericPersonAttributes.name];
+    [self.genericPerson setValue:nil forKey:JiveGenericPersonAttributes.email];
+    [self.genericPerson setValue:person forKey:JiveGenericPersonAttributes.person];
+    
+    NSDictionary *JSON = [self.genericPerson persistentJSON];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)1, @"Initial dictionary had the wrong number of entries");
+    
+    STAssertEqualObjects([[JSON objectForKey:JiveGenericPersonAttributes.person] objectForKey:JivePersonAttributes.displayName], self.genericPerson.person.displayName, @"Wrong person");
+}
+
+- (void)testGenericPersonPersistentJSON_external {
     NSString *name = @"genericPerson testName";
     NSString *email = @"genericPersonEmail@email.com";
     
-    [self.genericPerson setValue:person forKey:JiveGenericPersonAttributes.person];
+    [self.genericPerson setValue:nil forKey:JiveGenericPersonAttributes.person];
     [self.genericPerson setValue:name forKey:JiveGenericPersonAttributes.name];
     [self.genericPerson setValue:email forKey:JiveGenericPersonAttributes.email];
     
-    JSON = [self.genericPerson persistentJSON];
+    NSDictionary *JSON = [self.genericPerson persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
     
-    STAssertEqualObjects([[JSON objectForKey:JiveGenericPersonAttributes.person] objectForKey:JivePersonAttributes.displayName], self.genericPerson.person.displayName, @"Wrong person");
     STAssertEqualObjects([JSON objectForKey:JiveGenericPersonAttributes.name], self.genericPerson.name, @"Wrong name");
     STAssertEqualObjects([JSON objectForKey:JiveGenericPersonAttributes.email], self.genericPerson.email, @"Wrong email");
 }

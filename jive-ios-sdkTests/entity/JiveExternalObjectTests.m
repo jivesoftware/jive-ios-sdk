@@ -42,7 +42,7 @@
     STAssertEqualObjects([JiveContent entityClass:typeSpecifier], [self.externalObject class], @"External object class not registered with JiveContent.");
 }
 
-- (void)testExternalToJSON {
+- (void)testExternalPersistentJSON {
     NSDictionary *JSON = [self.externalObject persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -50,6 +50,7 @@
     STAssertEqualObjects([JSON objectForKey:@"type"], @"extStreamActivity", @"Wrong type");
     
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
+    [attachment setValue:@"testContentType" forKey:JiveAttachmentAttributes.contentType];
     JiveActivityObject *object = [[JiveActivityObject alloc] init];
     [object setValue:@"testId" forKey:@"jiveId"];
     NSURL *productIcon = [NSURL URLWithString:@"extObjTestURL"];
