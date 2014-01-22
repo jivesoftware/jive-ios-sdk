@@ -473,7 +473,7 @@
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
-		CC07967B1890217F0065C06F /* JiveGenericPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */; };
+		CC07967F1890240A0065C06F /* JiveGenericPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = CCFEBA2C188ED6000044EC01 /* JiveGenericPerson.h */; };
 		CCF22DE61876085800C77397 /* JiveExternalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF22DE51876085800C77397 /* JiveExternalObject.m */; };
 		CCF22DEA187608C100C77397 /* JiveExternalObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCF22DE41876085800C77397 /* JiveExternalObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCFEBA2E188ED6000044EC01 /* JiveGenericPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */; };
@@ -1962,6 +1962,7 @@
 				B865523A179884B300AAF1AD /* JiveFile.h in Headers */,
 				B865523B179884B300AAF1AD /* JiveGroup.h in Headers */,
 				B865523C179884B300AAF1AD /* JiveIdea.h in Headers */,
+				CC07967F1890240A0065C06F /* JiveGenericPerson.h in Headers */,
 				B865523D179884B300AAF1AD /* JiveInboxEntry.h in Headers */,
 				B865523E179884B300AAF1AD /* JiveInvite.h in Headers */,
 				B865523F179884B300AAF1AD /* JiveLevel.h in Headers */,
@@ -2596,7 +2597,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC07967B1890217F0065C06F /* JiveGenericPerson.m in Sources */,
 				B86552A11798857000AAF1AD /* jive-ios-sdk-headers.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

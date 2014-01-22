@@ -51,8 +51,10 @@
     
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     JiveActivityObject *object = [[JiveActivityObject alloc] init];
+    [object setValue:@"testId" forKey:@"jiveId"];
     NSURL *productIcon = [NSURL URLWithString:@"extObjTestURL"];
     JiveGenericPerson *onBehalfOf = [[JiveGenericPerson alloc] init];
+    [onBehalfOf setValue:@"extObjTestPerson@email.com" forKey:JiveGenericPersonAttributes.email];
     
     [self.externalObject setValue:[NSArray arrayWithObject:attachment] forKey:JiveExternalObjectAttributes.attachments];
     
@@ -67,8 +69,8 @@
     STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"type"], self.externalObject.type, @"Wrong type");
     
-    STAssertEqualObjects([JSON objectForKey:JiveExternalObjectAttributes.object], self.externalObject.object, @"Wrong object");
-    STAssertEqualObjects([JSON objectForKey:JiveExternalObjectAttributes.onBehalfOf], self.externalObject.onBehalfOf, @"Wrong onBehalfOf");
+    STAssertEqualObjects([[JSON objectForKey:JiveExternalObjectAttributes.object] objectForKey:@"id"], self.externalObject.object.jiveId, @"Wrong object");
+    STAssertEqualObjects([[JSON objectForKey:JiveExternalObjectAttributes.onBehalfOf] objectForKey:JiveGenericPersonAttributes.email], self.externalObject.onBehalfOf.email, @"Wrong onBehalfOf");
     STAssertEqualObjects([JSON objectForKey:JiveExternalObjectAttributes.productIcon], [self.externalObject.productIcon absoluteString], @"Wrong productIcon");
     STAssertEqualObjects([JSON objectForKey:JiveExternalObjectAttributes.productName], self.externalObject.productName, @"Wrong productName");
     
