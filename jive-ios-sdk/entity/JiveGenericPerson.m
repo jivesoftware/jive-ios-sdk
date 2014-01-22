@@ -29,11 +29,11 @@ struct JiveGenericPersonAttributes const JiveGenericPersonAttributes = {
 @synthesize email, name, person;
 
 -(id)persistentJSON {
-    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super persistentJSON];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:email forKey:JiveGenericPersonAttributes.email];
     [dictionary setValue:name forKey:JiveGenericPersonAttributes.name];
-    [dictionary setValue:[person toJSONDictionary] forKey:JiveGenericPersonAttributes.person];
+    [dictionary setValue:[person persistentJSON] forKey:JiveGenericPersonAttributes.person];
     
     return dictionary;
 }
