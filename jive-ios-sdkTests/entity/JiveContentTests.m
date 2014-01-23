@@ -251,8 +251,6 @@
     [self.content setValue:author forKey:JiveContentAttributes.author];
     self.content.content = contentBody;
     [self.content setValue:@"internal id" forKey:JiveContentAttributes.contentID];
-    [self.content setValue:[NSURL URLWithString:@"http://custom.icon.ref"]
-                    forKey:JiveContentAttributes.customIconRef];
     [self.content setValue:@4 forKey:JiveContentAttributes.followerCount];
     [self.content setValue:@"body" forKey:JiveContentAttributes.highlightBody];
     [self.content setValue:@"subject" forKey:JiveContentAttributes.highlightSubject];
@@ -278,7 +276,7 @@
     JSON = [self.content persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)23, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)22, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveTypedObjectAttributes.type],
                          self.content.type, @"Wrong type");
     
@@ -297,8 +295,6 @@
                          contentBody.type, @"Wrong value");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.contentID],
                          self.content.contentID, @"Wrong contentID");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.customIconRef],
-                         self.content.customIconRef.absoluteString, @"Wrong customIconRef");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.followerCount],
                          self.content.followerCount, @"Wrong followerCount");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.highlightBody],
@@ -366,8 +362,6 @@
     [self.content setValue:author forKey:JiveContentAttributes.author];
     self.content.content = contentBody;
     [self.content setValue:@"bad juju" forKey:JiveContentAttributes.contentID];
-    [self.content setValue:[NSURL URLWithString:@"http://dummy.com/icon.gif"]
-                    forKey:JiveContentAttributes.customIconRef];
     [self.content setValue:@7 forKey:JiveContentAttributes.followerCount];
     [self.content setValue:@"green" forKey:JiveContentAttributes.highlightBody];
     [self.content setValue:@"white" forKey:JiveContentAttributes.highlightSubject];
@@ -393,7 +387,7 @@
     JSON = [self.content persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)23, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)22, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveTypedObjectAttributes.type],
                          self.content.type, @"Wrong type");
     
@@ -412,8 +406,6 @@
                          contentBody.type, @"Wrong value");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.contentID],
                          self.content.contentID, @"Wrong contentID");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.customIconRef],
-                         self.content.customIconRef.absoluteString, @"Wrong customIconRef");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.followerCount],
                          self.content.followerCount, @"Wrong followerCount");
     STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.highlightBody],
@@ -475,8 +467,6 @@
     [self.content setValue:author forKey:JiveContentAttributes.author];
     self.content.content = contentBody;
     [self.content setValue:@"internal id" forKey:JiveContentAttributes.contentID];
-    [self.content setValue:[NSURL URLWithString:@"http://custom.icon.ref"]
-                    forKey:JiveContentAttributes.customIconRef];
     [self.content setValue:@4 forKey:JiveContentAttributes.followerCount];
     [self.content setValue:@"body" forKey:JiveContentAttributes.highlightBody];
     [self.content setValue:@"subject" forKey:JiveContentAttributes.highlightSubject];
@@ -507,7 +497,6 @@
     STAssertEqualObjects(newContent.author.location, self.content.author.location, @"Wrong author.location");
     STAssertEqualObjects(newContent.content.type, self.content.content.type, @"Wrong content.type");
     STAssertEqualObjects(newContent.contentID, self.content.contentID, @"Wrong contentID");
-    STAssertEqualObjects(newContent.customIconRef, self.content.customIconRef, @"Wrong customIconRef");
     STAssertEqualObjects(newContent.followerCount, self.content.followerCount, @"Wrong followerCount");
     STAssertEqualObjects(newContent.highlightBody, self.content.highlightBody, @"Wrong highlightBody");
     STAssertEqualObjects(newContent.highlightSubject, self.content.highlightSubject, @"Wrong highlightSubject");
@@ -541,8 +530,6 @@
     [self.content setValue:author forKey:JiveContentAttributes.author];
     self.content.content = contentBody;
     [self.content setValue:@"bad juju" forKey:JiveContentAttributes.contentID];
-    [self.content setValue:[NSURL URLWithString:@"http://dummy.com/icon.gif"]
-                    forKey:JiveContentAttributes.customIconRef];
     [self.content setValue:@7 forKey:JiveContentAttributes.followerCount];
     [self.content setValue:@"green" forKey:JiveContentAttributes.highlightBody];
     [self.content setValue:@"white" forKey:JiveContentAttributes.highlightSubject];
@@ -573,7 +560,6 @@
     STAssertEqualObjects(newContent.author.location, self.content.author.location, @"Wrong author.location");
     STAssertEqualObjects(newContent.content.type, self.content.content.type, @"Wrong content.type");
     STAssertEqualObjects(newContent.contentID, self.content.contentID, @"Wrong contentID");
-    STAssertEqualObjects(newContent.customIconRef, self.content.customIconRef, @"Wrong customIconRef");
     STAssertEqualObjects(newContent.followerCount, self.content.followerCount, @"Wrong followerCount");
     STAssertEqualObjects(newContent.highlightBody, self.content.highlightBody, @"Wrong highlightBody");
     STAssertEqualObjects(newContent.highlightSubject, self.content.highlightSubject, @"Wrong highlightSubject");

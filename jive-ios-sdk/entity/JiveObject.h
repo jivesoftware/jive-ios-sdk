@@ -24,6 +24,7 @@
 extern struct JiveObjectAttributes {
     __unsafe_unretained NSString *extraFieldsDetected;
     __unsafe_unretained NSString *refreshDate;
+    __unsafe_unretained NSString *jiveId;
 } const JiveObjectAttributes;
 
 //! \class JiveObject

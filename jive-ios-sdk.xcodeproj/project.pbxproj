@@ -474,8 +474,12 @@
 		B8F4EA2F1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA2E1670F8D900C59711 /* OCMockObject+MockJiveURLResponseDelegate.m */; };
 		B8F4EA321670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4EA311670FA2500C59711 /* OCMockObject+JiveAuthorizationDelegate.m */; };
 		B8F8241517304DE500E11536 /* JiveHTTPBasicAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */; };
+		CC07967F1890240A0065C06F /* JiveGenericPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = CCFEBA2C188ED6000044EC01 /* JiveGenericPerson.h */; };
 		CCF22DE61876085800C77397 /* JiveExternalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF22DE51876085800C77397 /* JiveExternalObject.m */; };
 		CCF22DEA187608C100C77397 /* JiveExternalObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCF22DE41876085800C77397 /* JiveExternalObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCFEBA2E188ED6000044EC01 /* JiveGenericPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */; };
+		CCFEBA3D188EECAB0044EC01 /* JiveExternalObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA3C188EECAB0044EC01 /* JiveExternalObjectTests.m */; };
+		CCFEBA40188EECF20044EC01 /* JiveGenericPersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFEBA3F188EECF20044EC01 /* JiveGenericPersonTests.m */; };
 		DE2C392818319BEE00486A2D /* public_property.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2C392718319BEE00486A2D /* public_property.json */; };
 		DEF202CD184E3E5800B54CC2 /* JiveOAuthCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */; };
 		DEF202D1184E415700B54CC2 /* JiveOAuthCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1113,6 +1117,10 @@
 		B8F8241317304DE500E11536 /* JiveHTTPBasicAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveHTTPBasicAuthCredentials.m; sourceTree = "<group>"; };
 		CCF22DE41876085800C77397 /* JiveExternalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveExternalObject.h; sourceTree = "<group>"; };
 		CCF22DE51876085800C77397 /* JiveExternalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveExternalObject.m; sourceTree = "<group>"; };
+		CCFEBA2C188ED6000044EC01 /* JiveGenericPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveGenericPerson.h; sourceTree = "<group>"; };
+		CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveGenericPerson.m; sourceTree = "<group>"; };
+		CCFEBA3C188EECAB0044EC01 /* JiveExternalObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveExternalObjectTests.m; sourceTree = "<group>"; };
+		CCFEBA3F188EECF20044EC01 /* JiveGenericPersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveGenericPersonTests.m; sourceTree = "<group>"; };
 		DE2C392718319BEE00486A2D /* public_property.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = public_property.json; sourceTree = "<group>"; };
 		DEF202CB184E3E5800B54CC2 /* JiveOAuthCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiveOAuthCredentials.h; sourceTree = "<group>"; };
 		DEF202CC184E3E5800B54CC2 /* JiveOAuthCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveOAuthCredentials.m; sourceTree = "<group>"; };
@@ -1421,6 +1429,8 @@
 				8999E65B16FAA1140009677A /* JiveVideoTests.m */,
 				0FBC7E1C1715DADA00A597E2 /* JivePlatformVersionTests.h */,
 				0FBC7E1D1715DADA00A597E2 /* JivePlatformVersionTests.m */,
+				CCFEBA3C188EECAB0044EC01 /* JiveExternalObjectTests.m */,
+				CCFEBA3F188EECF20044EC01 /* JiveGenericPersonTests.m */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1428,6 +1438,8 @@
 		217FE0D11638520F00182AB5 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				CCFEBA2C188ED6000044EC01 /* JiveGenericPerson.h */,
+				CCFEBA2D188ED6000044EC01 /* JiveGenericPerson.m */,
 				CCF22DE41876085800C77397 /* JiveExternalObject.h */,
 				CCF22DE51876085800C77397 /* JiveExternalObject.m */,
 				217FE0E716385C2900182AB5 /* JiveActionLink.h */,
@@ -1947,6 +1959,7 @@
 				B865523A179884B300AAF1AD /* JiveFile.h in Headers */,
 				B865523B179884B300AAF1AD /* JiveGroup.h in Headers */,
 				B865523C179884B300AAF1AD /* JiveIdea.h in Headers */,
+				CC07967F1890240A0065C06F /* JiveGenericPerson.h in Headers */,
 				B865523D179884B300AAF1AD /* JiveInboxEntry.h in Headers */,
 				B865523E179884B300AAF1AD /* JiveInvite.h in Headers */,
 				B865523F179884B300AAF1AD /* JiveLevel.h in Headers */,
@@ -2349,6 +2362,7 @@
 				217FE0D71638528F00182AB5 /* JiveActivityObject.m in Sources */,
 				217FE0DD1638546900182AB5 /* JiveMediaLink.m in Sources */,
 				217FE0E1163858D500182AB5 /* JiveExtension.m in Sources */,
+				CCFEBA2E188ED6000044EC01 /* JiveGenericPerson.m in Sources */,
 				217FE0E51638592700182AB5 /* JiveOpenSocial.m in Sources */,
 				217FE0E916385C2900182AB5 /* JiveActionLink.m in Sources */,
 				217FE0ED16385D3800182AB5 /* JiveEmbedded.m in Sources */,
@@ -2509,6 +2523,7 @@
 				0FB5C479167B985A00419683 /* JivePersonTests.m in Sources */,
 				0F5F1A13167F9C7100BA616E /* JiveAddressTests.m in Sources */,
 				0F5F1A16167FB81100BA616E /* JiveNameTests.m in Sources */,
+				CCFEBA40188EECF20044EC01 /* JiveGenericPersonTests.m in Sources */,
 				0F5F1A19167FBE1B00BA616E /* JiveEmailTests.m in Sources */,
 				0F5F1A1C167FBF0100BA616E /* JivePhoneNumberTests.m in Sources */,
 				0F5F1A1F167FC50800BA616E /* JivePersonJiveTests.m in Sources */,
@@ -2527,6 +2542,7 @@
 				0F9EB854168D0A3E00E9F09D /* JiveMessageTests.m in Sources */,
 				0F9EB857168D1B5600E9F09D /* JiveAttachmentTests.m in Sources */,
 				0F9EB85A168E0A4E00E9F09D /* JiveDocumentTests.m in Sources */,
+				CCFEBA3D188EECAB0044EC01 /* JiveExternalObjectTests.m in Sources */,
 				0F9EB85D168E3F9400E9F09D /* JiveFileTests.m in Sources */,
 				0F9EB860168E48DA00E9F09D /* JivePollTests.m in Sources */,
 				0F9EB864168E55B400E9F09D /* JivePostTests.m in Sources */,

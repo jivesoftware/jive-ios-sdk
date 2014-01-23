@@ -60,7 +60,6 @@ struct JiveContentAttributes const JiveContentAttributes = {
     .author = @"author",
     .content = @"content",
     .contentID = @"contentID",
-    .customIconRef = @"customIconRef",
     .followerCount = @"followerCount",
     .highlightBody = @"highlightBody",
     .highlightSubject = @"highlightSubject",
@@ -97,7 +96,7 @@ struct JiveContentAttributesInternal const JiveContentAttributesInternal = {
 
 @synthesize author, content, followerCount, highlightBody, highlightSubject, highlightTags, jiveId;
 @synthesize likeCount, parent, parentContent, parentPlace, published, replyCount, status, subject;
-@synthesize updated, viewCount, root, note, contentID, customIconRef, iconCss;
+@synthesize updated, viewCount, root, note, contentID, iconCss;
 
 static NSMutableDictionary *contentClasses;
 
@@ -151,7 +150,6 @@ static NSMutableDictionary *contentClasses;
     [dictionary setValue:self.type forKey:JiveTypedObjectAttributes.type];
     [dictionary setValue:viewCount forKey:JiveContentAttributes.viewCount];
     [dictionary setValue:contentID forKey:JiveContentAttributes.contentID];
-    [dictionary setValue:customIconRef.absoluteString forKey:JiveContentAttributes.customIconRef];
     [dictionary setValue:iconCss forKey:JiveContentAttributes.iconCss];
     
     if (author)
