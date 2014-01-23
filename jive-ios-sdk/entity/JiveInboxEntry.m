@@ -23,6 +23,7 @@
 #import "JiveMediaLink.h"
 #import "JiveExtension.h"
 #import "JiveOpenSocial.h"
+#import "JiveObject_internal.h"
 
 struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     .actor = @"actor",

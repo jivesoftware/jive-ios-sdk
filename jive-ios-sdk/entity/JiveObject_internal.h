@@ -19,6 +19,10 @@
 
 #import "JiveObject.h"
 
+extern struct JiveObjectConstants {
+    __unsafe_unretained NSString *id;
+} const JiveObjectConstants;
+
 @interface JiveObject ()
 
 + (Class) entityClass:(NSDictionary*) obj;

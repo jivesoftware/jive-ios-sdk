@@ -27,10 +27,6 @@ extern struct JiveObjectAttributes {
     __unsafe_unretained NSString *jiveId;
 } const JiveObjectAttributes;
 
-extern struct JiveObjectConstants {
-    __unsafe_unretained NSString *id;
-} const JiveObjectConstants;
-
 //! \class JiveObject
 @interface JiveObject : NSObject
 
