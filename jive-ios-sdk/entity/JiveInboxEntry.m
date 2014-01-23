@@ -30,7 +30,6 @@ struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     .content = @"content",
     .generator = @"generator",
     .icon = @"icon",
-    .jiveId = @"id",
     .jive = @"jive",
     .object = @"object",
     .openSocial = @"openSocial",
@@ -55,7 +54,7 @@ struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:content forKey:JiveInboxEntryAttributes.content];
-    [dictionary setValue:jiveId forKey:JiveInboxEntryAttributes.jiveId];
+    [dictionary setValue:jiveId forKey:JiveObjectConstants.id];
     [dictionary setValue:title forKey:JiveInboxEntryAttributes.title];
     [dictionary setValue:verb forKey:JiveInboxEntryAttributes.verb];
     

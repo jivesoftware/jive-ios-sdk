@@ -107,7 +107,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveObjectConstants.id], entry.jiveId, @"Wrong jive id.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.published], @"1970-01-01T00:00:00.000+0000", @"Wrong published");
@@ -218,7 +218,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveObjectConstants.id], entry.jiveId, @"Wrong jive id.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.published], @"1970-01-01T00:16:40.123+0000", @"Wrong published");
@@ -299,7 +299,7 @@
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveObjectConstants.id], entry.jiveId, @"Wrong jive id.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
     STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
 }
