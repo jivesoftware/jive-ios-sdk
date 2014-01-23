@@ -38,7 +38,7 @@
     
     JiveActivityObject *activity = [[JiveActivityObject alloc] init];
 
-    [self.inboxEntry setValue:activity forKey:@"object"];
+    [self.inboxEntry setValue:activity forKey:JiveInboxEntryAttributes.object];
     STAssertEqualObjects(self.inboxEntry.description, @"(null) (null) -'(null)'", @"Empty description");
     
     activity.displayName = @"object";
@@ -84,79 +84,79 @@
     [icon setValue:[NSURL URLWithString:@"http://dummy.com/icon.png"] forKey:@"url"];
     jive.state = @"Colorado";
     [openSocial setValue:[NSArray arrayWithObject:@"/person/54321"] forKey:@"deliverTo"];
-    [onBehalfOf setValue:@"fancy-email@email.com" forKey:@"email"];
+    [onBehalfOf setValue:@"fancy-email@email.com" forKey:JiveGenericPersonAttributes.email];
     entry.content = @"text";
     entry.jiveId = @"1234";
     entry.title = @"President";
     entry.verb = @"Running";
-    [entry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [entry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
-    [entry setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
-    [entry setValue:actor forKey:@"actor"];
-    [entry setValue:generator forKey:@"generator"];
-    [entry setValue:object forKey:@"object"];
-    [entry setValue:provider forKey:@"provider"];
-    [entry setValue:target forKey:@"target"];
-    [entry setValue:icon forKey:@"icon"];
-    [entry setValue:jive forKey:@"jive"];
-    [entry setValue:openSocial forKey:@"openSocial"];
-    [entry setValue:onBehalfOf forKey:@"onBehalfOf"];
+    [entry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:JiveInboxEntryAttributes.published];
+    [entry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:JiveInboxEntryAttributes.updated];
+    [entry setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:JiveInboxEntryAttributes.url];
+    [entry setValue:actor forKey:JiveInboxEntryAttributes.actor];
+    [entry setValue:generator forKey:JiveInboxEntryAttributes.generator];
+    [entry setValue:object forKey:JiveInboxEntryAttributes.object];
+    [entry setValue:provider forKey:JiveInboxEntryAttributes.provider];
+    [entry setValue:target forKey:JiveInboxEntryAttributes.target];
+    [entry setValue:icon forKey:JiveInboxEntryAttributes.icon];
+    [entry setValue:jive forKey:JiveInboxEntryAttributes.jive];
+    [entry setValue:openSocial forKey:JiveInboxEntryAttributes.openSocial];
+    [entry setValue:onBehalfOf forKey:JiveInboxEntryAttributes.onBehalfOf];
     
     JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
-    STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
-    STAssertEqualObjects([JSON objectForKey:@"verb"], entry.verb, @"Wrong verb.");
-    STAssertEqualObjects([JSON objectForKey:@"published"], @"1970-01-01T00:00:00.000+0000", @"Wrong published");
-    STAssertEqualObjects([JSON objectForKey:@"updated"], @"1970-01-01T00:16:40.123+0000", @"Wrong updated");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [entry.url absoluteString], @"Wrong url.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.published], @"1970-01-01T00:00:00.000+0000", @"Wrong published");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.updated], @"1970-01-01T00:16:40.123+0000", @"Wrong updated");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.url], [entry.url absoluteString], @"Wrong url.");
     
-    NSDictionary *actorJSON = [JSON objectForKey:@"actor"];
+    NSDictionary *actorJSON = [JSON objectForKey:JiveInboxEntryAttributes.actor];
     
     STAssertTrue([[actorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([actorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([actorJSON objectForKey:@"id"], actor.jiveId, @"Wrong value");
     
-    NSDictionary *generatorJSON = [JSON objectForKey:@"generator"];
+    NSDictionary *generatorJSON = [JSON objectForKey:JiveInboxEntryAttributes.generator];
     
     STAssertTrue([[generatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([generatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([generatorJSON objectForKey:@"id"], generator.jiveId, @"Wrong value");
     
-    NSDictionary *objectJSON = [JSON objectForKey:@"object"];
+    NSDictionary *objectJSON = [JSON objectForKey:JiveInboxEntryAttributes.object];
     
     STAssertTrue([[objectJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([objectJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([objectJSON objectForKey:@"id"], object.jiveId, @"Wrong value");
     
-    NSDictionary *providerJSON = [JSON objectForKey:@"provider"];
+    NSDictionary *providerJSON = [JSON objectForKey:JiveInboxEntryAttributes.provider];
     
     STAssertTrue([[providerJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([providerJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([providerJSON objectForKey:@"id"], provider.jiveId, @"Wrong value");
     
-    NSDictionary *targetJSON = [JSON objectForKey:@"target"];
+    NSDictionary *targetJSON = [JSON objectForKey:JiveInboxEntryAttributes.target];
     
     STAssertTrue([[targetJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([targetJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([targetJSON objectForKey:@"id"], target.jiveId, @"Wrong value");
     
-    NSDictionary *iconJSON = [JSON objectForKey:@"icon"];
+    NSDictionary *iconJSON = [JSON objectForKey:JiveInboxEntryAttributes.icon];
     
     STAssertTrue([[iconJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([iconJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([iconJSON objectForKey:@"url"], [icon.url absoluteString], @"Wrong value");
     
-    NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
+    NSDictionary *jiveJSON = [JSON objectForKey:JiveInboxEntryAttributes.jive];
     
     STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([jiveJSON count], (NSUInteger)3, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([jiveJSON objectForKey:@"state"], jive.state, @"Wrong value");
     
-    NSDictionary *openSocialJSON = [JSON objectForKey:@"openSocial"];
+    NSDictionary *openSocialJSON = [JSON objectForKey:JiveInboxEntryAttributes.openSocial];
     NSArray *deliverToArray = [openSocialJSON objectForKey:@"deliverTo"];
     
     STAssertTrue([[openSocialJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
@@ -192,82 +192,82 @@
     object.jiveId = @"7654";
     provider.jiveId = @"6543";
     target.jiveId = @"5432";
-    [icon setValue:[NSURL URLWithString:@"http://super.com/icon.png"] forKey:@"url"];
+    [icon setValue:[NSURL URLWithString:@"http://super.com/icon.png"] forKey:JiveInboxEntryAttributes.url];
     jive.state = @"Washington";
     [openSocial setValue:[NSArray arrayWithObject:@"/place/23456"] forKey:@"deliverTo"];
-    [onBehalfOf setValue:@"eeeeeeeeemail@email.com" forKey:@"email"];
+    [onBehalfOf setValue:@"eeeeeeeeemail@email.com" forKey:JiveGenericPersonAttributes.email];
     entry.content = @"html";
     entry.jiveId = @"4321";
     entry.title = @"Grunt";
     entry.verb = @"Toil";
-    [entry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
-    [entry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
-    [entry setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [entry setValue:actor forKey:@"actor"];
-    [entry setValue:generator forKey:@"generator"];
-    [entry setValue:object forKey:@"object"];
-    [entry setValue:provider forKey:@"provider"];
-    [entry setValue:target forKey:@"target"];
-    [entry setValue:icon forKey:@"icon"];
-    [entry setValue:jive forKey:@"jive"];
-    [entry setValue:openSocial forKey:@"openSocial"];
-    [entry setValue:onBehalfOf forKey:@"onBehalfOf"];
+    [entry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:JiveInboxEntryAttributes.published];
+    [entry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:JiveInboxEntryAttributes.updated];
+    [entry setValue:[NSURL URLWithString:@"http://super.com"] forKey:JiveInboxEntryAttributes.url];
+    [entry setValue:actor forKey:JiveInboxEntryAttributes.actor];
+    [entry setValue:generator forKey:JiveInboxEntryAttributes.generator];
+    [entry setValue:object forKey:JiveInboxEntryAttributes.object];
+    [entry setValue:provider forKey:JiveInboxEntryAttributes.provider];
+    [entry setValue:target forKey:JiveInboxEntryAttributes.target];
+    [entry setValue:icon forKey:JiveInboxEntryAttributes.icon];
+    [entry setValue:jive forKey:JiveInboxEntryAttributes.jive];
+    [entry setValue:openSocial forKey:JiveInboxEntryAttributes.openSocial];
+    [entry setValue:onBehalfOf forKey:JiveInboxEntryAttributes.onBehalfOf];
     
     JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
-    STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
-    STAssertEqualObjects([JSON objectForKey:@"verb"], entry.verb, @"Wrong verb.");
-    STAssertEqualObjects([JSON objectForKey:@"published"], @"1970-01-01T00:16:40.123+0000", @"Wrong published");
-    STAssertEqualObjects([JSON objectForKey:@"updated"], @"1970-01-01T00:00:00.000+0000", @"Wrong updated");
-    STAssertEqualObjects([JSON objectForKey:@"url"], [entry.url absoluteString], @"Wrong url.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.published], @"1970-01-01T00:16:40.123+0000", @"Wrong published");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.updated], @"1970-01-01T00:00:00.000+0000", @"Wrong updated");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.url], [entry.url absoluteString], @"Wrong url.");
     
-    NSDictionary *actorJSON = [JSON objectForKey:@"actor"];
+    NSDictionary *actorJSON = [JSON objectForKey:JiveInboxEntryAttributes.actor];
     
     STAssertTrue([[actorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([actorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([actorJSON objectForKey:@"id"], actor.jiveId, @"Wrong value");
     
-    NSDictionary *generatorJSON = [JSON objectForKey:@"generator"];
+    NSDictionary *generatorJSON = [JSON objectForKey:JiveInboxEntryAttributes.generator];
     
     STAssertTrue([[generatorJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([generatorJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([generatorJSON objectForKey:@"id"], generator.jiveId, @"Wrong value");
     
-    NSDictionary *objectJSON = [JSON objectForKey:@"object"];
+    NSDictionary *objectJSON = [JSON objectForKey:JiveInboxEntryAttributes.object];
     
     STAssertTrue([[objectJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([objectJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([objectJSON objectForKey:@"id"], object.jiveId, @"Wrong value");
     
-    NSDictionary *providerJSON = [JSON objectForKey:@"provider"];
+    NSDictionary *providerJSON = [JSON objectForKey:JiveInboxEntryAttributes.provider];
     
     STAssertTrue([[providerJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([providerJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([providerJSON objectForKey:@"id"], provider.jiveId, @"Wrong value");
     
-    NSDictionary *targetJSON = [JSON objectForKey:@"target"];
+    NSDictionary *targetJSON = [JSON objectForKey:JiveInboxEntryAttributes.target];
     
     STAssertTrue([[targetJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([targetJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([targetJSON objectForKey:@"id"], target.jiveId, @"Wrong value");
     
-    NSDictionary *iconJSON = [JSON objectForKey:@"icon"];
+    NSDictionary *iconJSON = [JSON objectForKey:JiveInboxEntryAttributes.icon];
     
     STAssertTrue([[iconJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([iconJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([iconJSON objectForKey:@"url"], [icon.url absoluteString], @"Wrong value");
     
-    NSDictionary *jiveJSON = [JSON objectForKey:@"jive"];
+    NSDictionary *jiveJSON = [JSON objectForKey:JiveInboxEntryAttributes.jive];
     
     STAssertTrue([[jiveJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([jiveJSON count], (NSUInteger)3, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([jiveJSON objectForKey:@"state"], jive.state, @"Wrong value");
     
-    NSDictionary *openSocialJSON = [JSON objectForKey:@"openSocial"];
+    NSDictionary *openSocialJSON = [JSON objectForKey:JiveInboxEntryAttributes.openSocial];
     NSArray *deliverToArray = [openSocialJSON objectForKey:@"deliverTo"];
     
     STAssertTrue([[openSocialJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
@@ -276,10 +276,10 @@
     STAssertEquals([deliverToArray count], (NSUInteger)1, @"Sub-array had the wrong number of entries");
     STAssertEqualObjects([deliverToArray objectAtIndex:0], [openSocial.deliverTo objectAtIndex:0], @"Wrong value");
     
-    NSDictionary *onBehalfOfJSON = [JSON objectForKey:@"onBehalfOf"];
+    NSDictionary *onBehalfOfJSON = [JSON objectForKey:JiveInboxEntryAttributes.onBehalfOf];
     STAssertTrue([[onBehalfOfJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
     STAssertEquals([onBehalfOfJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
-    STAssertEqualObjects([onBehalfOfJSON objectForKey:@"email"], onBehalfOf.email, @"Wrong value");
+    STAssertEqualObjects([onBehalfOfJSON objectForKey:JiveGenericPersonAttributes.email], onBehalfOf.email, @"Wrong value");
 }
 
 - (void)testToJSON {
@@ -298,10 +298,10 @@
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
     STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
-    STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
-    STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
-    STAssertEqualObjects([JSON objectForKey:@"verb"], entry.verb, @"Wrong verb.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.content], entry.content, @"Wrong content.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.jiveId], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.title], entry.title, @"Wrong title.");
+    STAssertEqualObjects([JSON objectForKey:JiveInboxEntryAttributes.verb], entry.verb, @"Wrong verb.");
 }
 
 - (void)testPlaceParsing {
@@ -320,24 +320,24 @@
     object.jiveId = @"4567";
     provider.jiveId = @"5678";
     target.jiveId = @"6789";
-    [icon setValue:[NSURL URLWithString:@"http://dummy.com/icon.png"] forKey:@"url"];
+    [icon setValue:[NSURL URLWithString:@"http://dummy.com/icon.png"] forKey:JiveInboxEntryAttributes.url];
     jive.state = @"Colorado";
     [openSocial setValue:[NSArray arrayWithObject:@"/person/54321"] forKey:@"deliverTo"];
     baseEntry.content = @"text";
     baseEntry.jiveId = @"1234";
     baseEntry.title = @"President";
     baseEntry.verb = @"Running";
-    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"published"];
-    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"updated"];
-    [baseEntry setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:@"url"];
-    [baseEntry setValue:actor forKey:@"actor"];
-    [baseEntry setValue:generator forKey:@"generator"];
-    [baseEntry setValue:object forKey:@"object"];
-    [baseEntry setValue:provider forKey:@"provider"];
-    [baseEntry setValue:target forKey:@"target"];
-    [baseEntry setValue:icon forKey:@"icon"];
-    [baseEntry setValue:jive forKey:@"jive"];
-    [baseEntry setValue:openSocial forKey:@"openSocial"];
+    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:JiveInboxEntryAttributes.published];
+    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:JiveInboxEntryAttributes.updated];
+    [baseEntry setValue:[NSURL URLWithString:@"http://dummy.com"] forKey:JiveInboxEntryAttributes.url];
+    [baseEntry setValue:actor forKey:JiveInboxEntryAttributes.actor];
+    [baseEntry setValue:generator forKey:JiveInboxEntryAttributes.generator];
+    [baseEntry setValue:object forKey:JiveInboxEntryAttributes.object];
+    [baseEntry setValue:provider forKey:JiveInboxEntryAttributes.provider];
+    [baseEntry setValue:target forKey:JiveInboxEntryAttributes.target];
+    [baseEntry setValue:icon forKey:JiveInboxEntryAttributes.icon];
+    [baseEntry setValue:jive forKey:JiveInboxEntryAttributes.jive];
+    [baseEntry setValue:openSocial forKey:JiveInboxEntryAttributes.openSocial];
     
     id JSON = [baseEntry persistentJSON];
     JiveInboxEntry *entry = [JiveInboxEntry objectFromJSON:JSON withInstance:self.instance];
@@ -377,24 +377,24 @@
     object.jiveId = @"7654";
     provider.jiveId = @"6543";
     target.jiveId = @"5432";
-    [icon setValue:[NSURL URLWithString:@"http://super.com/icon.png"] forKey:@"url"];
+    [icon setValue:[NSURL URLWithString:@"http://super.com/icon.png"] forKey:JiveInboxEntryAttributes.url];
     jive.state = @"Washington";
     [openSocial setValue:[NSArray arrayWithObject:@"/place/23456"] forKey:@"deliverTo"];
     baseEntry.content = @"html";
     baseEntry.jiveId = @"4321";
     baseEntry.title = @"Grunt";
     baseEntry.verb = @"Toil";
-    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:@"published"];
-    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:@"updated"];
-    [baseEntry setValue:[NSURL URLWithString:@"http://super.com"] forKey:@"url"];
-    [baseEntry setValue:actor forKey:@"actor"];
-    [baseEntry setValue:generator forKey:@"generator"];
-    [baseEntry setValue:object forKey:@"object"];
-    [baseEntry setValue:provider forKey:@"provider"];
-    [baseEntry setValue:target forKey:@"target"];
-    [baseEntry setValue:icon forKey:@"icon"];
-    [baseEntry setValue:jive forKey:@"jive"];
-    [baseEntry setValue:openSocial forKey:@"openSocial"];
+    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:1000.123] forKey:JiveInboxEntryAttributes.published];
+    [baseEntry setValue:[NSDate dateWithTimeIntervalSince1970:0] forKey:JiveInboxEntryAttributes.updated];
+    [baseEntry setValue:[NSURL URLWithString:@"http://super.com"] forKey:JiveInboxEntryAttributes.url];
+    [baseEntry setValue:actor forKey:JiveInboxEntryAttributes.actor];
+    [baseEntry setValue:generator forKey:JiveInboxEntryAttributes.generator];
+    [baseEntry setValue:object forKey:JiveInboxEntryAttributes.object];
+    [baseEntry setValue:provider forKey:JiveInboxEntryAttributes.provider];
+    [baseEntry setValue:target forKey:JiveInboxEntryAttributes.target];
+    [baseEntry setValue:icon forKey:JiveInboxEntryAttributes.icon];
+    [baseEntry setValue:jive forKey:JiveInboxEntryAttributes.jive];
+    [baseEntry setValue:openSocial forKey:JiveInboxEntryAttributes.openSocial];
     
     id JSON = [baseEntry persistentJSON];
     JiveInboxEntry *entry = [JiveInboxEntry objectFromJSON:JSON withInstance:self.instance];

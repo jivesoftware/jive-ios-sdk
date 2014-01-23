@@ -24,6 +24,25 @@
 #import "JiveExtension.h"
 #import "JiveOpenSocial.h"
 
+struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
+    .actor = @"actor",
+    .onBehalfOf = @"onBehalfOf",
+    .content = @"content",
+    .generator = @"generator",
+    .icon = @"icon",
+    .jiveId = @"id",
+    .jive = @"jive",
+    .object = @"object",
+    .openSocial = @"openSocial",
+    .provider = @"provider",
+    .published = @"published",
+    .target = @"target",
+    .title = @"title",
+    .url = @"url",
+    .updated = @"updated",
+    .verb = @"verb",
+};
+
 @implementation JiveInboxEntry
 
 @synthesize actor, onBehalfOf, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
@@ -35,10 +54,10 @@
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:content forKey:@"content"];
-    [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:title forKey:@"title"];
-    [dictionary setValue:verb forKey:@"verb"];
+    [dictionary setValue:content forKey:JiveInboxEntryAttributes.content];
+    [dictionary setValue:jiveId forKey:JiveInboxEntryAttributes.jiveId];
+    [dictionary setValue:title forKey:JiveInboxEntryAttributes.title];
+    [dictionary setValue:verb forKey:JiveInboxEntryAttributes.verb];
     
     return dictionary;
 }
@@ -48,39 +67,39 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     if (actor)
-        [dictionary setValue:[actor persistentJSON] forKey:@"actor"];
+        [dictionary setValue:[actor persistentJSON] forKey:JiveInboxEntryAttributes.actor];
     
     if (onBehalfOf)
-        [dictionary setValue:[onBehalfOf persistentJSON] forKey:@"onBehalfOf"];
+        [dictionary setValue:[onBehalfOf persistentJSON] forKey:JiveInboxEntryAttributes.onBehalfOf];
     
     if (generator)
-        [dictionary setValue:[generator persistentJSON] forKey:@"generator"];
+        [dictionary setValue:[generator persistentJSON] forKey:JiveInboxEntryAttributes.generator];
     
     if (icon)
-        [dictionary setValue:[icon persistentJSON] forKey:@"icon"];
+        [dictionary setValue:[icon persistentJSON] forKey:JiveInboxEntryAttributes.icon];
     
     if (jive)
-        [dictionary setValue:[jive persistentJSON] forKey:@"jive"];
+        [dictionary setValue:[jive persistentJSON] forKey:JiveInboxEntryAttributes.jive];
     
     if (object)
-        [dictionary setValue:[object persistentJSON] forKey:@"object"];
+        [dictionary setValue:[object persistentJSON] forKey:JiveInboxEntryAttributes.object];
     
     if (openSocial)
-        [dictionary setValue:[openSocial persistentJSON] forKey:@"openSocial"];
+        [dictionary setValue:[openSocial persistentJSON] forKey:JiveInboxEntryAttributes.openSocial];
     
     if (provider)
-        [dictionary setValue:[provider persistentJSON] forKey:@"provider"];
+        [dictionary setValue:[provider persistentJSON] forKey:JiveInboxEntryAttributes.provider];
     
     if (published)
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:JiveInboxEntryAttributes.published];
     
     if (target)
-        [dictionary setValue:[target persistentJSON] forKey:@"target"];
+        [dictionary setValue:[target persistentJSON] forKey:JiveInboxEntryAttributes.target];
     
     if (updated)
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:JiveInboxEntryAttributes.updated];
     
-    [dictionary setValue:[url absoluteString] forKey:@"url"];
+    [dictionary setValue:[url absoluteString] forKey:JiveInboxEntryAttributes.url];
     
     return dictionary;
 }
