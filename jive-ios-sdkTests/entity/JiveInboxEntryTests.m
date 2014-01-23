@@ -70,6 +70,7 @@
     JiveMediaLink *icon = [[JiveMediaLink alloc] init];
     JiveExtension *jive = [[JiveExtension alloc] init];
     JiveOpenSocial *openSocial = [[JiveOpenSocial alloc] init];
+    JiveGenericPerson *onBehalfOf = [[JiveGenericPerson alloc] init];
     NSDictionary *JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -83,6 +84,7 @@
     [icon setValue:[NSURL URLWithString:@"http://dummy.com/icon.png"] forKey:@"url"];
     jive.state = @"Colorado";
     [openSocial setValue:[NSArray arrayWithObject:@"/person/54321"] forKey:@"deliverTo"];
+    [onBehalfOf setValue:@"fancy-email@email.com" forKey:@"email"];
     entry.content = @"text";
     entry.jiveId = @"1234";
     entry.title = @"President";
@@ -98,11 +100,12 @@
     [entry setValue:icon forKey:@"icon"];
     [entry setValue:jive forKey:@"jive"];
     [entry setValue:openSocial forKey:@"openSocial"];
+    [entry setValue:onBehalfOf forKey:@"onBehalfOf"];
     
     JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)15, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
     STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
     STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
@@ -161,6 +164,11 @@
     STAssertTrue([[deliverToArray class] isSubclassOfClass:[NSArray class]], @"Sub-array not converted");
     STAssertEquals([deliverToArray count], (NSUInteger)1, @"Sub-array had the wrong number of entries");
     STAssertEqualObjects([deliverToArray objectAtIndex:0], [openSocial.deliverTo objectAtIndex:0], @"Wrong value");
+    
+    NSDictionary *onBehalfOfJSON = [JSON objectForKey:@"onBehalfOf"];
+    STAssertTrue([[onBehalfOfJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([onBehalfOfJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([onBehalfOfJSON objectForKey:@"email"], onBehalfOf.email, @"Wrong value");
 }
 
 - (void)testPersistentJSON_alternate {
@@ -173,6 +181,7 @@
     JiveMediaLink *icon = [[JiveMediaLink alloc] init];
     JiveExtension *jive = [[JiveExtension alloc] init];
     JiveOpenSocial *openSocial = [[JiveOpenSocial alloc] init];
+    JiveGenericPerson *onBehalfOf = [[JiveGenericPerson alloc] init];
     NSDictionary *JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
@@ -186,6 +195,7 @@
     [icon setValue:[NSURL URLWithString:@"http://super.com/icon.png"] forKey:@"url"];
     jive.state = @"Washington";
     [openSocial setValue:[NSArray arrayWithObject:@"/place/23456"] forKey:@"deliverTo"];
+    [onBehalfOf setValue:@"eeeeeeeeemail@email.com" forKey:@"email"];
     entry.content = @"html";
     entry.jiveId = @"4321";
     entry.title = @"Grunt";
@@ -201,11 +211,12 @@
     [entry setValue:icon forKey:@"icon"];
     [entry setValue:jive forKey:@"jive"];
     [entry setValue:openSocial forKey:@"openSocial"];
+    [entry setValue:onBehalfOf forKey:@"onBehalfOf"];
     
     JSON = [entry persistentJSON];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)15, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)16, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
     STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
     STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
@@ -264,6 +275,33 @@
     STAssertTrue([[deliverToArray class] isSubclassOfClass:[NSArray class]], @"Sub-array not converted");
     STAssertEquals([deliverToArray count], (NSUInteger)1, @"Sub-array had the wrong number of entries");
     STAssertEqualObjects([deliverToArray objectAtIndex:0], [openSocial.deliverTo objectAtIndex:0], @"Wrong value");
+    
+    NSDictionary *onBehalfOfJSON = [JSON objectForKey:@"onBehalfOf"];
+    STAssertTrue([[onBehalfOfJSON class] isSubclassOfClass:[NSDictionary class]], @"Jive not converted");
+    STAssertEquals([onBehalfOfJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
+    STAssertEqualObjects([onBehalfOfJSON objectForKey:@"email"], onBehalfOf.email, @"Wrong value");
+}
+
+- (void)testToJSON {
+    JiveInboxEntry *entry = [[JiveInboxEntry alloc] init];
+    NSDictionary *JSON = [entry toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)0, @"Initial dictionary is not empty");
+
+    entry.content = @"text";
+    entry.jiveId = @"1234";
+    entry.title = @"President";
+    entry.verb = @"Running";
+    
+    JSON = [entry toJSONDictionary];
+    
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)4, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:@"content"], entry.content, @"Wrong content.");
+    STAssertEqualObjects([JSON objectForKey:@"id"], entry.jiveId, @"Wrong jive id.");
+    STAssertEqualObjects([JSON objectForKey:@"title"], entry.title, @"Wrong title.");
+    STAssertEqualObjects([JSON objectForKey:@"verb"], entry.verb, @"Wrong verb.");
 }
 
 - (void)testPlaceParsing {
