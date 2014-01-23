@@ -31,6 +31,7 @@ struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     .generator = @"generator",
     .icon = @"icon",
     .jive = @"jive",
+    .jiveId = @"jiveId",
     .object = @"object",
     .openSocial = @"openSocial",
     .provider = @"provider",

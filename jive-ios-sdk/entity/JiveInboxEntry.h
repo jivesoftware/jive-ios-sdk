@@ -33,6 +33,7 @@ extern struct JiveInboxEntryAttributes {
     __unsafe_unretained NSString *generator;
     __unsafe_unretained NSString *icon;
     __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *jiveId;
     __unsafe_unretained NSString *object;
     __unsafe_unretained NSString *openSocial;
     __unsafe_unretained NSString *provider;
