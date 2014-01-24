@@ -48,6 +48,7 @@ struct JivePropertyNames const JivePropertyNames = {
     .repostStatusUpdatesEnabled = @"feature.status_update_repost.enabled",
     .mobileBinaryDownloadsDisabled = @"jive.coreapi.disable.binarydownloads.mobileonly",
     .maxAttachmentSize = @"attachments.maxAttachmentSize",
+    .videoModuleEnabled = @"feature.module.video.enabled",
 };
 
 @implementation JiveProperty
