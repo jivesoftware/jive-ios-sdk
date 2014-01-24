@@ -90,6 +90,10 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 
 @end
 
+@interface JiveMetadataMaxAttachementSizeInKBTests : JiveMetadataIntegerPropertyTestCases
+
+@end
+
 
 @interface JiveMetadata (TestSupport)
 - (AFJSONRequestOperation<JiveRetryingOperation> *)boolPropertyOperation:(NSString *)propertySpecifier
@@ -487,6 +491,34 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
                                          STAssertEqualObjects(error, expectedError,
                                                               @"Wrong error passed to the errorBlock");
                                      }];
+}
+
+@end
+
+@implementation JiveMetadataMaxAttachementSizeInKBTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.maxAttachmentSize;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject maxAttachmentSizeInKB:^(NSNumber *maxCharacters) {
+        STFail(@"A value should not be generated");
+    }
+                                   onError:^(NSError *error) {
+                                       STAssertEqualObjects(error, expectedError,
+                                                            @"Wrong error passed to the errorBlock");
+                                   }];
+}
+
+- (void)runTestExpectingValue:(NSNumber *)expectedValue {
+    [self.testObject maxAttachmentSizeInKB:^(NSNumber *value) {
+        STAssertEqualObjects(value, expectedValue, @"Wrong value returned");
+    }
+                                   onError:^(NSError *error) {
+                                       STFail(@"There should be no errors");
+                                   }];
 }
 
 @end

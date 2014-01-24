@@ -192,8 +192,8 @@
 
 #pragma mark - Status Update Max Characters
 
-- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeOperation:(JiveNumericCompletedBlock)completeBlock
-                                                                      onError:(JiveErrorBlock)errorBlock {
+- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                          onError:(JiveErrorBlock)errorBlock {
     return [self.instance propertyWithNameOperation:JivePropertyNames.maxAttachmentSize
                                          onComplete:^(JiveProperty *property) {
                                              completeBlock(property.valueAsNumber);
@@ -201,8 +201,9 @@
                                             onError:errorBlock];
 }
 
-- (void)maxAttachmentSize:(JiveNumericCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
-    [[self maxAttachmentSizeOperation:completeBlock onError:errorBlock] start];
+- (void)maxAttachmentSizeInKB:(JiveNumericCompletedBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock {
+    [[self maxAttachmentSizeInKBOperation:completeBlock onError:errorBlock] start];
 }
 
 @end
