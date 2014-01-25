@@ -23,13 +23,17 @@
 
 extern NSString * const JiveErrorDomain;
 
-extern NSInteger const JiveErrorCodeMultipleErrors;
-extern NSInteger const JiveErrorCodeUnsupportedActivityObjectObjectType;
-extern NSInteger const JiveErrorCodeNilUnderlyingError;
-extern NSInteger const JiveErrorCodeUnsupportedJivePlatformVersion;
-extern NSInteger const JiveErrorCodeInvalidJSON;
-extern NSInteger const JiveErrorCodeUnauthorizedActivityObjectType;
-extern NSInteger const JiveErrorCodeRequiresTermsAndConditionsAccpetance;
+// defining these in the header file instead of extern'ing allows
+// them to be used in switch statements
+typedef NS_ENUM(NSInteger, JiveErrorCode) {
+    JiveErrorCodeMultipleErrors = 1,
+    JiveErrorCodeUnsupportedActivityObjectObjectType = 2,
+    JiveErrorCodeNilUnderlyingError = 3,
+    JiveErrorCodeUnsupportedJivePlatformVersion = 4,
+    JiveErrorCodeInvalidJSON = 5,
+    JiveErrorCodeUnauthorizedActivityObjectType = 6,
+    JiveErrorCodeRequiresTermsAndConditionsAcceptance = 7,
+};
 
 extern NSString * const JiveErrorKeyMultipleErrors;
 extern NSString * const JiveErrorKeyUnsupportedActivityObjectObjectType;
