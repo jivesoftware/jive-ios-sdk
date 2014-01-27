@@ -23,6 +23,7 @@ extern struct JivePropertyTypes {
     __unsafe_unretained NSString *boolean;
     __unsafe_unretained NSString *string;
     __unsafe_unretained NSString *number;
+    __unsafe_unretained NSString *integer;
 } const JivePropertyTypes;
 
 extern struct JivePropertyAttributes {
@@ -45,6 +46,8 @@ extern struct JivePropertyNames {
     __unsafe_unretained NSString *placeStatusUpdatesEnabled;
     __unsafe_unretained NSString *repostStatusUpdatesEnabled;
     __unsafe_unretained NSString *mobileBinaryDownloadsDisabled;
+    __unsafe_unretained NSString *maxAttachmentSize;
+    __unsafe_unretained NSString *videoModuleEnabled;
 } const JivePropertyNames;
 
 //! \class JiveProperty

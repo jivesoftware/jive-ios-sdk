@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Jive Software. All rights reserved.
 //
 
-#import "JiveMetadataTests.h"
 #import "JiveMetadata_internal.h"
 #import <OCMock/OCMock.h>
 #import "Jive_internal.h"
@@ -14,15 +13,102 @@
 #import "NSError+Jive.h"
 #import "JivePlatformVersionTests.h"
 
+
+#import <SenTestingKit/SenTestingKit.h>
+
+
+typedef void(^internalCallbackBlock)(JiveProperty *);
+
+@interface JiveMetadataTests : SenTestCase
+
+@end
+
+@interface JiveMetadataTestCases : SenTestCase
+
+@property(nonatomic) id mockJive;
+@property(nonatomic) id mockOperation;
+@property(nonatomic) JiveMetadata *testObject;
+@property(nonatomic) NSString *metadataPropertyName;
+
+// Call this to setup the mock objects
+- (void)setUpMockObjects;
+
+// Override this method to setup additional mock expect methods.
+- (void)setupExpects;
+
+// Real test classes must override this method.
+- (void)runTestExpectingError:(NSError *)expectedError;
+
+// Real test classes must override this method.
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError;
+
+@end
+
+
+@interface JiveMetadataBoolPropertyTestCases : JiveMetadataTestCases
+
+// Real test classes must override this method.
+- (void)runTestExpectingValue:(BOOL)expectedValue;
+
+@end
+
+@interface JiveMetadataHasVideoPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataRTCEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataImagesEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataStatusUpdatesEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataPersonalStatusUpdatesEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataPlaceStatusUpdatesEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataRepostStatusUpdatesEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+@interface JiveMetadataBinaryDownloadsDisabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
+
+@interface JiveMetadataIntegerPropertyTestCases : JiveMetadataTestCases
+
+@end
+
+@interface JiveMetadataStatusUpdateMaxCharactersTests : JiveMetadataIntegerPropertyTestCases
+
+@end
+
+@interface JiveMetadataMaxAttachementSizeInKBTests : JiveMetadataIntegerPropertyTestCases
+
+@end
+
+
 @interface JiveMetadata (TestSupport)
 - (AFJSONRequestOperation<JiveRetryingOperation> *)boolPropertyOperation:(NSString *)propertySpecifier
                                                               onComplete:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                  onError:(JiveErrorBlock)errorBlock;
 @end
 
+
 @interface JiveTestOperation : AFJSONRequestOperation<JiveRetryingOperation>
 
 @end
+
 
 @implementation JiveMetadataTests
 
@@ -32,29 +118,66 @@
     STAssertNil(badInit, @"Calling new on JiveMetadata should return nil.");
 }
 
-#pragma mark - Video tests
+@end
+
+
+#pragma mark Property test classes
+
+@implementation JiveMetadataHasVideoPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.videoModuleEnabled;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject hasVideo:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
+    }
+                      onError:^(NSError *error) {
+                          STFail(@"There should be no errors");
+                      }];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject hasVideo:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                      onError:^(NSError *error) {
+                          STAssertEqualObjects(error, expectedError,
+                                               @"Wrong error passed to the errorBlock");
+                      }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject hasVideoOperation:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                      onError:^(NSError *error) {
+                                          STAssertEqualObjects(error, expectedError,
+                                                               @"Wrong error passed to the errorBlock");
+                                      }];
+}
+
+- (void)setupExpects {
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+}
 
 - (void)testHasVideo_noVideo_withVideoModuleProperty {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    
     __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
     
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return [@"feature.module.video.enabled" isEqual:obj];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return [JivePropertyNames.videoModuleEnabled isEqual:obj];
     }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
     }]
-     onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+                                                                             onError:[OCMArg checkWithBlock:^BOOL(id obj) {
         return YES;
     }]];
     
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject hasVideo:^(BOOL flagValue) {
+    [self.testObject hasVideo:^(BOOL flagValue) {
         STAssertFalse(flagValue, @"The flag should be NO");
     } onError:^(NSError *error) {
         STFail(@"There should be no errors.");
@@ -65,35 +188,26 @@
         JiveProperty *property = [[JiveProperty alloc] init];
         [property setValue:JivePropertyTypes.boolean forKey:JivePropertyAttributes.type];
         [property setValue:@NO forKey:JivePropertyAttributes.value];
-
+        
         internalCallback(property);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
 - (void)testHasVideo_hasVideo_withVideoModuleProperty {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-
     __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
     
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return [@"feature.module.video.enabled" isEqual:obj];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+        return [JivePropertyNames.videoModuleEnabled isEqual:obj];
     }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
     }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+                                                                             onError:[OCMArg checkWithBlock:^BOOL(id obj) {
         return YES;
     }]];
     
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject hasVideo:^(BOOL flagValue) {
+    [self.testObject hasVideo:^(BOOL flagValue) {
         STAssertTrue(flagValue, @"The flag should be NO");
     } onError:^(NSError *error) {
         STFail(@"There should be no errors.");
@@ -107,36 +221,28 @@
         
         internalCallback(property);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
 - (void)testHasVideo_noVideo {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     NSDictionary *objects = @{@"carousel" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/carousel",
                               @"contentVersion" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/contentVersion"
                               };
     __block void (^internalCallback)(NSDictionary *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
     JiveErrorBlock errorBlock = ^(NSError *error) {
         STAssertTrue(false, @"There should be no errors");
     };
     
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:0 maintenanceVersion:1]] platformVersion];
-    [[[mockJive expect] andReturn:mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:self.mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
     }]
-                                                                    onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+                                                                              onError:[OCMArg checkWithBlock:^BOOL(id obj) {
         STAssertEquals(obj, (id)errorBlock, @"Wrong error block passed");
         return obj != nil;
     }]];
     
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject hasVideo:^(BOOL flagValue) {
+    [self.testObject hasVideo:^(BOOL flagValue) {
         STAssertFalse(flagValue, @"The flag should be NO");
     } onError:errorBlock];
     
@@ -144,37 +250,29 @@
     if (internalCallback) {
         internalCallback(objects);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
 - (void)testHasVideo_hasVideo {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
     NSDictionary *objects = @{@"carousel" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/carousel",
                               @"video" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/video",
                               @"contentVersion" : @"https://brewspace.jiveland.com/api/core/v3/metadata/objects/contentVersion"
                               };
     __block void (^internalCallback)(NSDictionary *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
     JiveErrorBlock errorBlock = ^(NSError *error) {
         STAssertTrue(false, @"There should be no errors");
     };
     
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0]] platformVersion];
-    [[[mockJive expect] andReturn:mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0]] platformVersion];
+    [[[self.mockJive expect] andReturn:self.mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
     }]
-                                                                    onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+                                                                              onError:[OCMArg checkWithBlock:^BOOL(id obj) {
         STAssertEquals(obj, (id)errorBlock, @"Wrong error block passed");
         return obj != nil;
     }]];
     
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject hasVideo:^(BOOL flagValue) {
+    [self.testObject hasVideo:^(BOOL flagValue) {
         STAssertTrue(flagValue, @"The flag should be NO");
     } onError:errorBlock];
     
@@ -182,1836 +280,746 @@
     if (internalCallback) {
         internalCallback(objects);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
 }
 
-#pragma mark - RTC enabled tests
+@end
 
-- (void)testRTCEnabled_noRTC {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+@implementation JiveMetadataRTCEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.realTimeChatEnabled;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject realTimeChatEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                 onError:^(NSError *error) {
+                                     STFail(@"There should be no errors");
+                                 }];
 }
 
-- (void)testRTCEnabled_withRTC {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testRTCEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testRTCEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testRTCEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject realTimeChatEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                 onError:^(NSError *error) {
+                                     STAssertEqualObjects(error, expectedError,
+                                                          @"Wrong error passed to the errorBlock");
+                                 }];
 }
 
-- (void)testRTCEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.realTimeChatEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject realTimeChatEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject realTimeChatEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                                 onError:^(NSError *error) {
+                                                     STAssertEqualObjects(error, expectedError,
+                                                                          @"Wrong error passed to the errorBlock");
+                                                 }];
 }
 
-#pragma mark - Images enabled tests
+@end
 
-- (void)testImagesEnabled_noImages {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataImagesEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.imagesEnabled;
+    [super setUpMockObjects];
 }
 
-- (void)testImagesEnabled_withImages {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject imagesEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                           onError:^(NSError *error) {
+                               STFail(@"There should be no errors");
+                           }];
 }
 
-- (void)testImagesEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testImagesEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testImagesEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject imagesEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                           onError:^(NSError *error) {
+                               STAssertEqualObjects(error, expectedError,
+                                                    @"Wrong error passed to the errorBlock");
+                           }];
 }
 
-- (void)testImagesEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.imagesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject imagesEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject imagesEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                           onError:^(NSError *error) {
+                                               STAssertEqualObjects(error, expectedError,
+                                                                    @"Wrong error passed to the errorBlock");
+                                           }];
 }
 
-#pragma mark - Status Updates enabled tests
+@end
 
-- (void)testStatusUpdatesEnabled_noUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataStatusUpdatesEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.statusUpdatesEnabled;
+    [super setUpMockObjects];
 }
 
-- (void)testStatusUpdatesEnabled_withUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject statusUpdatesEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                  onError:^(NSError *error) {
+                                      STFail(@"There should be no errors");
+                                  }];
 }
 
-- (void)testStatusUpdatesEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testStatusUpdatesEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testStatusUpdatesEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject statusUpdatesEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                  onError:^(NSError *error) {
+                                      STAssertEqualObjects(error, expectedError,
+                                                           @"Wrong error passed to the errorBlock");
+                                  }];
 }
 
-- (void)testStatusUpdatesEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdatesEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject statusUpdatesEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                                  onError:^(NSError *error) {
+                                                      STAssertEqualObjects(error, expectedError,
+                                                                           @"Wrong error passed to the errorBlock");
+                                                  }];
 }
 
-#pragma mark - Personal Status Updates enabled tests
+@end
 
-- (void)testPersonalStatusUpdatesEnabled_noUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataPersonalStatusUpdatesEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.personalStatusUpdatesEnabled;
+    [super setUpMockObjects];
 }
 
-- (void)testPersonalStatusUpdatesEnabled_withUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                          onError:^(NSError *error) {
+                                              STFail(@"There should be no errors");
+                                          }];
 }
 
-- (void)testPersonalStatusUpdatesEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testPersonalStatusUpdatesEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testPersonalStatusUpdatesEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                          onError:^(NSError *error) {
+                                              STAssertEqualObjects(error, expectedError,
+                                                                   @"Wrong error passed to the errorBlock");
+                                          }];
 }
 
-- (void)testPersonalStatusUpdatesEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.personalStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject personalStatusUpdatesEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject personalStatusUpdatesEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                                          onError:^(NSError *error) {
+                                                              STAssertEqualObjects(error, expectedError,
+                                                                                   @"Wrong error passed to the errorBlock");
+                                                          }];
 }
 
-#pragma mark - Place Status Updates enabled tests
+@end
 
-- (void)testPlaceStatusUpdatesEnabled_noUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataPlaceStatusUpdatesEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.placeStatusUpdatesEnabled;
+    [super setUpMockObjects];
 }
 
-- (void)testPlaceStatusUpdatesEnabled_withUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                       onError:^(NSError *error) {
+                                           STFail(@"There should be no errors");
+                                       }];
 }
 
-- (void)testPlaceStatusUpdatesEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testPlaceStatusUpdatesEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testPlaceStatusUpdatesEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                       onError:^(NSError *error) {
+                                           STAssertEqualObjects(error, expectedError,
+                                                                @"Wrong error passed to the errorBlock");
+                                       }];
 }
 
-- (void)testPlaceStatusUpdatesEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.placeStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject placeStatusUpdatesEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject placeStatusUpdatesEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                                       onError:^(NSError *error) {
+                                                           STAssertEqualObjects(error, expectedError,
+                                                                                @"Wrong error passed to the errorBlock");
+                                                       }];
 }
 
-#pragma mark - Repost Status Updates enabled tests
+@end
 
-- (void)testRepostStatusUpdatesEnabled_noUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataRepostStatusUpdatesEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.repostStatusUpdatesEnabled;
+    [super setUpMockObjects];
 }
 
-- (void)testRepostStatusUpdatesEnabled_withUpdates {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                        onError:^(NSError *error) {
+                                            STFail(@"There should be no errors");
+                                        }];
 }
 
-- (void)testRepostStatusUpdatesEnabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testRepostStatusUpdatesEnabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testRepostStatusUpdatesEnabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                        onError:^(NSError *error) {
+                                            STAssertEqualObjects(error, expectedError,
+                                                                 @"Wrong error passed to the errorBlock");
+                                        }];
 }
 
-- (void)testRepostStatusUpdatesEnabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.repostStatusUpdatesEnabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject repostStatusUpdatesEnabled:^(BOOL flagValue) {
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject repostStatusUpdatesEnabledOperation:^(BOOL flagValue) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                                        onError:^(NSError *error) {
+                                                            STAssertEqualObjects(error, expectedError,
+                                                                                 @"Wrong error passed to the errorBlock");
+                                                        }];
 }
 
-#pragma mark - Status Update max character tests
+@end
 
-- (void)testStatusUpdateMaxCharacters {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSNumber *testMaxCharacters = @200;
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
-        STAssertEqualObjects(maxCharacters, testMaxCharacters, @"Reported the wrong number of characters");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+@implementation JiveMetadataStatusUpdateMaxCharactersTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.statusUpdateMaxCharacters;
+    [super setUpMockObjects];
 }
 
-- (void)testStatusUpdateMaxCharacters_alternateCount {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSNumber *testMaxCharacters = @10000;
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:testMaxCharacters] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
-        STAssertEqualObjects(maxCharacters, testMaxCharacters, @"Reported the wrong number of characters");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testStatusUpdateMaxCharacters_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
-        STFail(@"An error should have been reported");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testStatusUpdateMaxCharacters_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.statusUpdateMaxCharacters, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
-        STFail(@"An error should have been reported");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-#pragma mark - Binary downloads disabled tests
-
-- (void)testBinaryDownloadsDisabled_notDisabled {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testBinaryDownloadsDisabled_disabled {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block void (^internalCallback)(JiveProperty *);
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
-    
-    [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
-    [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalCallback = [obj copy];
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
-        STAssertTrue(flagValue, @"The flag should be YES");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalCallback, @"A callback should have been set.");
-    if (internalCallback) {
-        internalCallback((JiveProperty *)mockProperty);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testBinaryDownloadsDisabled_invalidMetadataFlag {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
-                                                                      JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
-                                                                                        @"status":@404,
-                                                                                        @"code":@"objectInvalidPropertyName"}}];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testBinaryDownloadsDisabled_invalidMetadataError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STFail(@"There should be no errors");
-    };
-    NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
-                                                                                               code:404
-                                                                                           userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
-        STAssertFalse(flagValue, @"The flag should be NO");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(invalidPropertyError);
-    }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
-}
-
-- (void)testBinaryDownloadsDisabled_otherJSONError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
-                                                            JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
-                                                                              @"status":@403,
-                                                                              @"code":@"Not a 404"}}];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject statusUpdateMaxCharacters:^(NSNumber *maxCharacters) {
         STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                       onError:^(NSError *error) {
+                                           STAssertEqualObjects(error, expectedError,
+                                                                @"Wrong error passed to the errorBlock");
+                                       }];
 }
 
-- (void)testBinaryDownloadsDisabled_otherError {
-    OCMockObject *mockJive = [OCMockObject mockForClass:[Jive class]];
-    __block JiveErrorBlock internalErrorBlock;
-    OCMockObject *mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
-    NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
-                                                                                     code:400
-                                                                                 userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
-    JiveErrorBlock errorBlock = ^(NSError *error) {
-        STAssertEqualObjects(error, otherError, @"Wrong error passed to the errorBlock");
-    };
-    
-    [(JiveRetryingJAPIRequestOperation *)[mockOperation expect] start];
-    [[[mockJive expect] andReturn:mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
-        STAssertEqualObjects(obj, JivePropertyNames.mobileBinaryDownloadsDisabled, @"Wrong property requested.");
-        return obj != nil;
-    }]
-                                                                onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
-        return obj != nil;
-    }]
-                                                                   onError:[OCMArg checkWithBlock:^BOOL(id obj) {
-        internalErrorBlock = [obj copy];
-        return obj != nil;
-    }]];
-    
-    JiveMetadata *testObject = [[JiveMetadata alloc] initWithInstance:(Jive *)mockJive];
-    
-    [testObject binaryDownloadsDisabled:^(BOOL flagValue) {
-        STFail(@"A value should not be generated");
-    } onError:errorBlock];
-    
-    STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
-    if (internalErrorBlock) {
-        internalErrorBlock(otherError);
+- (void)runTestExpectingValue:(NSNumber *)expectedValue {
+    [self.testObject statusUpdateMaxCharacters:^(NSNumber *value) {
+        STAssertEqualObjects(value, expectedValue, @"Wrong value returned");
     }
-    
-    STAssertNoThrow([mockOperation verify], @"The operation was not started.");
-    STAssertNoThrow([mockJive verify], @"The operation was not created.");
+                                       onError:^(NSError *error) {
+                                           STFail(@"There should be no errors");
+                                       }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject statusUpdateMaxCharactersOperation:^(NSNumber *value) {
+        STFail(@"A value should not be generated");
+    }
+                                              onError:^(NSError *error) {
+                                                  STAssertEqualObjects(error, expectedError,
+                                                                       @"Wrong error passed to the errorBlock");
+                                              }];
+}
+
+@end
+
+@implementation JiveMetadataBinaryDownloadsDisabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.mobileBinaryDownloadsDisabled;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject binaryDownloadsDisabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
+    }
+                                     onError:^(NSError *error) {
+                                         STFail(@"There should be no errors");
+                                     }];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject binaryDownloadsDisabled:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                     onError:^(NSError *error) {
+                                         STAssertEqualObjects(error, expectedError,
+                                                              @"Wrong error passed to the errorBlock");
+                                     }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject binaryDownloadsDisabledOperation:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                                     onError:^(NSError *error) {
+                                                         STAssertEqualObjects(error, expectedError,
+                                                                              @"Wrong error passed to the errorBlock");
+                                                     }];
+}
+
+@end
+
+@implementation JiveMetadataMaxAttachementSizeInKBTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.maxAttachmentSize;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject maxAttachmentSizeInKB:^(NSNumber *maxCharacters) {
+        STFail(@"A value should not be generated");
+    }
+                                   onError:^(NSError *error) {
+                                       STAssertEqualObjects(error, expectedError,
+                                                            @"Wrong error passed to the errorBlock");
+                                   }];
+}
+
+- (void)runTestExpectingValue:(NSNumber *)expectedValue {
+    [self.testObject maxAttachmentSizeInKB:^(NSNumber *value) {
+        STAssertEqualObjects(value, expectedValue, @"Wrong value returned");
+    }
+                                   onError:^(NSError *error) {
+                                       STFail(@"There should be no errors");
+                                   }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject maxAttachmentSizeInKBOperation:^(NSNumber *value) {
+        STFail(@"A value should not be generated");
+    }
+                                                   onError:^(NSError *error) {
+                                                       STAssertEqualObjects(error, expectedError,
+                                                                            @"Wrong error passed to the errorBlock");
+                                                   }];
+}
+
+@end
+
+
+#pragma mark Value type test classes
+
+@implementation JiveMetadataTestCases
+
+- (void)setUpMockObjects {
+    [super setUp];
+    self.mockJive = [OCMockObject mockForClass:[Jive class]];
+    self.mockOperation = [OCMockObject mockForClass:[JiveRetryingJAPIRequestOperation class]];
+    [(JiveRetryingJAPIRequestOperation *)[self.mockOperation expect] start];
+    self.testObject = [[JiveMetadata alloc] initWithInstance:self.mockJive];
+}
+
+- (void)tearDown {
+    STAssertNoThrow([self.mockOperation verify], @"The operation was not started.");
+    STAssertNoThrow([self.mockJive verify], @"The operation was not created.");
+    self.testObject = nil;
+    self.mockOperation = nil;
+    self.mockJive = nil;
+    [super tearDown];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    STFail(@"Error test not run. Please override this method in your test class.");
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    STFail(@"Error test not run. Please override this method in your test class.");
+    return nil;
+}
+
+- (void)setupExpects {
+}
+
+- (void)testForbiddenOperationJSONError {
+    if (self.testObject) {
+        __block JiveErrorBlock internalErrorBlock;
+        NSError *otherError = [NSError jive_errorWithUnderlyingError:nil
+                                                                JSON:@{@"error":@{@"message":@"Test failure that is not a 404",
+                                                                                  @"status":@403,
+                                                                                  @"code":@"Not a 404"}}];
+        
+        [self setupExpects];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalErrorBlock = [obj copy];
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingError:otherError];
+        
+        STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+        if (internalErrorBlock) {
+            internalErrorBlock(otherError);
+        }
+    }
+}
+
+- (void)testBadRequestError {
+    if (self.testObject) {
+        __block JiveErrorBlock internalErrorBlock;
+        NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
+                                                                                         code:400
+                                                                                     userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
+        
+        [self setupExpects];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalErrorBlock = [obj copy];
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingError:otherError];
+        
+        STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+        if (internalErrorBlock) {
+            internalErrorBlock(otherError);
+        }
+    }
+}
+
+- (void)testOperationBadRequestError {
+    if (self.testObject) {
+        __block JiveErrorBlock internalErrorBlock;
+        NSError *otherError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid request"
+                                                                                         code:400
+                                                                                     userInfo:@{NSLocalizedDescriptionKey: @"Invalid request 400"}]];
+        
+        [self setupExpects];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalErrorBlock = [obj copy];
+            return obj != nil;
+        }]];
+        
+        NSOperation *operation = [self runTestOperationExpectingError:otherError];
+        
+        STAssertNotNil(operation, @"Operation method must return an operation.");
+        [operation start];
+        STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+        if (internalErrorBlock) {
+            internalErrorBlock(otherError);
+        }
+    }
+}
+
+@end
+
+@implementation JiveMetadataBoolPropertyTestCases
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    STFail(@"Error test not run. Please override this method in your test class.");
+}
+
+- (void)testPropertyIsNo {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:@NO] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:NO];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testPropertyIsYes {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.boolean] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:@YES] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:YES];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testInvalidMetadataJSONError {
+    if (self.testObject) {
+        __block JiveErrorBlock internalErrorBlock;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:nil
+                                                                          JSON:@{@"error":@{@"message":@"Invalid property name feature.ctr.enabled",
+                                                                                            @"status":@404,
+                                                                                            @"code":@"objectInvalidPropertyName"}}];
+        
+        [self setupExpects];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalErrorBlock = [obj copy];
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:NO];
+        
+        STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+        if (internalErrorBlock) {
+            internalErrorBlock(invalidPropertyError);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testInvalidMetadataError {
+    if (self.testObject) {
+        __block JiveErrorBlock internalErrorBlock;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        NSError *invalidPropertyError = [NSError jive_errorWithUnderlyingError:[NSError errorWithDomain:@"Invalid property name"
+                                                                                                   code:404
+                                                                                               userInfo:@{NSLocalizedDescriptionKey: @"Invalid property name 404"}]];
+        
+        [self setupExpects];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalErrorBlock = [obj copy];
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:NO];
+        
+        STAssertNotNil(internalErrorBlock, @"A callback should have been set.");
+        if (internalErrorBlock) {
+            internalErrorBlock(invalidPropertyError);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+@end
+
+@implementation JiveMetadataIntegerPropertyTestCases
+
+
+- (void)runTestExpectingValue:(NSNumber *)expectedValue {
+    STFail(@"Error test not run. Please override this method in your test class.");
+}
+
+- (void)testPropertySmallNumber {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        NSNumber *expectedValue = @200;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:expectedValue] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:expectedValue];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testPropertyLargeNumber {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        NSNumber *expectedValue = @3000000;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty expect] andReturn:JivePropertyTypes.number] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:expectedValue] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:expectedValue];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testPropertySmallInteger {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        NSNumber *expectedValue = @200;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty stub] andReturn:JivePropertyTypes.integer] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:expectedValue] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:expectedValue];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
+}
+
+- (void)testPropertyLargeInteger {
+    if (self.testObject) {
+        __block internalCallbackBlock internalCallback;
+        NSNumber *expectedValue = @3000000;
+        OCMockObject *mockProperty = [OCMockObject partialMockForObject:[JiveProperty new]];
+        
+        [self setupExpects];
+        [(JiveProperty *)[[mockProperty stub] andReturn:JivePropertyTypes.integer] type];
+        [(JiveProperty *)[[mockProperty expect] andReturn:expectedValue] value];
+        [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
+            STAssertEqualObjects(obj, self.metadataPropertyName, @"Wrong property requested.");
+            return obj != nil;
+        }]
+                                                                              onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
+            internalCallback = [obj copy];
+            return obj != nil;
+        }]
+                                                                                 onError:[OCMArg checkWithBlock:^BOOL(id obj) {
+            return obj != nil;
+        }]];
+        
+        [self runTestExpectingValue:expectedValue];
+        
+        STAssertNotNil(internalCallback, @"A callback should have been set.");
+        if (internalCallback) {
+            internalCallback((JiveProperty *)mockProperty);
+        }
+        
+        STAssertNoThrow([mockProperty verify], @"The property was not processed correctly");
+    }
 }
 
 @end
