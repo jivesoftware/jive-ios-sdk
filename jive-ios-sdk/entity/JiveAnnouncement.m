@@ -26,7 +26,7 @@
 @synthesize endDate, image, publishDate, sortKey, subjectURI, subjectURITargetType;
 @synthesize visibleToExternalContributors;
 
-static NSString * const JiveAnnouncementType = @"announcement";
+NSString * const JiveAnnouncementType = @"announcement";
 
 + (void)load {
     if (self == [JiveAnnouncement class])

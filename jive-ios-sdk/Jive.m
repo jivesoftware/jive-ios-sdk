@@ -275,7 +275,7 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:@"%@/register",
                                     JiveRequestPathComponents.pushNotification, nil];
-    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo];
+    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo | JVPushRegistrationFeatureFlagAnnouncement];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
