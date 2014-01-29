@@ -10,3 +10,6 @@
 [submodule "lib/hpple"]
 	path = lib/hpple
 	url = https://github.com/topfunky/hpple
+[submodule "lib/xctool"]
+	path = lib/xctool
+	url = git://github.com/facebook/xctool.git
