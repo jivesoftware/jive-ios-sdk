@@ -27,7 +27,6 @@
 
 struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     .actor = @"actor",
-    .onBehalfOf = @"onBehalfOf",
     .content = @"content",
     .generator = @"generator",
     .icon = @"icon",
@@ -46,7 +45,7 @@ struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
 
 @implementation JiveInboxEntry
 
-@synthesize actor, onBehalfOf, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
+@synthesize actor, content, generator, icon, jiveId, jive, object, openSocial, provider, published, target, title, updated, url, verb;
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ %@ -'%@'", self.object.url, self.verb, self.object.displayName];
@@ -69,9 +68,6 @@ struct JiveInboxEntryAttributes const JiveInboxEntryAttributes = {
     
     if (actor)
         [dictionary setValue:[actor persistentJSON] forKey:JiveInboxEntryAttributes.actor];
-    
-    if (onBehalfOf)
-        [dictionary setValue:[onBehalfOf persistentJSON] forKey:JiveInboxEntryAttributes.onBehalfOf];
     
     if (generator)
         [dictionary setValue:[generator persistentJSON] forKey:JiveInboxEntryAttributes.generator];
