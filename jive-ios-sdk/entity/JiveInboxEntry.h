@@ -28,7 +28,6 @@
 
 extern struct JiveInboxEntryAttributes {
     __unsafe_unretained NSString *actor;
-    __unsafe_unretained NSString *onBehalfOf;
     __unsafe_unretained NSString *content;
     __unsafe_unretained NSString *generator;
     __unsafe_unretained NSString *icon;
@@ -51,9 +50,6 @@ extern struct JiveInboxEntryAttributes {
 
 //! The person (or other object) that created this activity.
 @property(nonatomic, readonly, strong) JiveActivityObject* actor;
-
-//! The person (possibly not a Jive user) on whose behalf this entry was created
-@property(nonatomic, readonly, strong) JiveGenericPerson* onBehalfOf;
 
 //! Text (or possibly HTML) content describing this activity.
 @property(nonatomic, copy) NSString* content;
