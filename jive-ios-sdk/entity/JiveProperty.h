@@ -40,6 +40,7 @@ extern struct JivePropertyNames {
     __unsafe_unretained NSString *instanceURL;
     __unsafe_unretained NSString *statusUpdatesEnabled;
     __unsafe_unretained NSString *statusUpdateMaxCharacters;
+    __unsafe_unretained NSString *blogsEnabled;
     __unsafe_unretained NSString *realTimeChatEnabled;
     __unsafe_unretained NSString *imagesEnabled;
     __unsafe_unretained NSString *personalStatusUpdatesEnabled;

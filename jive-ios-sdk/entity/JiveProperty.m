@@ -41,6 +41,7 @@ struct JivePropertyNames const JivePropertyNames = {
     .instanceURL = @"instance.url",
     .statusUpdateMaxCharacters = @"feature.status_update.characters",
     .statusUpdatesEnabled = @"jive.coreapi.enable.statusupdates",
+    .blogsEnabled = @"feature.blog.enabled",
     .realTimeChatEnabled = @"feature.rtc.enabled",
     .imagesEnabled = @"feature.images.enabled",
     .personalStatusUpdatesEnabled = @"feature.status_update.enabled",
