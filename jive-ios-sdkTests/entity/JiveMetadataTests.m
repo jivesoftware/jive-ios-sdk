@@ -56,6 +56,10 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 
 @end
 
+@interface JiveMetadataBlogsEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
 @interface JiveMetadataRTCEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
 
 @end
@@ -280,6 +284,44 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
     if (internalCallback) {
         internalCallback(objects);
     }
+}
+
+@end
+
+@implementation JiveMetadataBlogsEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.blogsEnabled;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject blogsEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
+    }
+                                 onError:^(NSError *error) {
+                                     STFail(@"There should be no errors");
+                                 }];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject blogsEnabled:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                 onError:^(NSError *error) {
+                                     STAssertEqualObjects(error, expectedError,
+                                                          @"Wrong error passed to the errorBlock");
+                                 }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject blogsEnabledOperation:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                                 onError:^(NSError *error) {
+                                                     STAssertEqualObjects(error, expectedError,
+                                                                          @"Wrong error passed to the errorBlock");
+                                                 }];
 }
 
 @end
