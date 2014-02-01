@@ -75,6 +75,11 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
                                                                           onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)shareEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock;
+- (void)shareEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+
 - (void)maxAttachmentSizeInKB:(JiveNumericCompletedBlock)completeBlock
                       onError:(JiveErrorBlock)errorBlock;
 

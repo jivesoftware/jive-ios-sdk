@@ -47,6 +47,7 @@ struct JivePropertyNames const JivePropertyNames = {
     .placeStatusUpdatesEnabled = @"feature.status_update_place.enabled",
     .repostStatusUpdatesEnabled = @"feature.status_update_repost.enabled",
     .mobileBinaryDownloadsDisabled = @"jive.coreapi.disable.binarydownloads.mobileonly",
+    .shareEnabled = @"feature.share.enabled",
     .maxAttachmentSize = @"attachments.maxAttachmentSize",
     .videoModuleEnabled = @"feature.module.video.enabled",
 };

@@ -190,6 +190,19 @@
     [[self binaryDownloadsDisabledOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Share
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)shareEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                            onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:JivePropertyNames.shareEnabled
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)shareEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self shareEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
 #pragma mark - Status Update Max Characters
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock

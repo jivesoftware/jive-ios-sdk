@@ -46,6 +46,7 @@ extern struct JivePropertyNames {
     __unsafe_unretained NSString *placeStatusUpdatesEnabled;
     __unsafe_unretained NSString *repostStatusUpdatesEnabled;
     __unsafe_unretained NSString *mobileBinaryDownloadsDisabled;
+    __unsafe_unretained NSString *shareEnabled;
     __unsafe_unretained NSString *maxAttachmentSize;
     __unsafe_unretained NSString *videoModuleEnabled;
 } const JivePropertyNames;
