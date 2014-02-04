@@ -33,6 +33,11 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock;
 
+- (void)blogsEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock;
+- (AFJSONRequestOperation<JiveRetryingOperation> *)blogsEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock;
+
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
                     onError:(JiveErrorBlock)errorBlock;
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock

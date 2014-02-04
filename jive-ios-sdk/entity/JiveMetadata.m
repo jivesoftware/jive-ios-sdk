@@ -82,6 +82,19 @@
     [[self hasVideoOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Blogs
+- (AFJSONRequestOperation<JiveRetryingOperation> *)blogsEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:JivePropertyNames.blogsEnabled
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)blogsEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+             onError:(JiveErrorBlock)errorBlock {
+    [[self blogsEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
 #pragma mark - Real time chat
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
