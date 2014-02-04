@@ -148,12 +148,7 @@
     
     JSON = [self.content toJSONDictionary];
     
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([JSON objectForKey:@"id"], self.content.jiveId, @"Wrong id");
-    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.content.type, @"Wrong type");
-    STAssertEqualObjects([JSON objectForKey:JiveContentAttributes.parent], self.content.parent, @"Wrong parent");
-    STAssertEqualObjects([JSON objectForKey:JiveContentAttributes.subject], self.content.subject, @"Wrong subject");
+    [self assertContentToJSON:JSON];
     
     NSArray *contentJSON = [(NSDictionary *)JSON objectForKey:JiveContentAttributes.content];
     
@@ -218,12 +213,7 @@
     
     JSON = [self.content toJSONDictionary];
     
-    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], self.content.jiveId, @"Wrong id.");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveTypedObjectAttributes.type], self.content.type, @"Wrong type");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.parent], self.content.parent, @"Wrong parent");
-    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.subject], self.content.subject, @"Wrong subject");
+    [self assertContentToJSON:JSON];
     
     NSArray *contentJSON = [(NSDictionary *)JSON objectForKey:JiveContentAttributes.content];
     
@@ -231,6 +221,16 @@
     STAssertEquals([(NSDictionary *)contentJSON count], (NSUInteger)1, @"Jive dictionary had the wrong number of entries");
     STAssertEqualObjects([(NSDictionary *)contentJSON objectForKey:JiveTypedObjectAttributes.type], contentBody.type, @"Wrong value");
 }
+
+- (void)assertContentToJSON:(id)JSON {
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([(NSDictionary *)JSON count], (NSUInteger)5, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:@"id"], self.content.jiveId, @"Wrong id.");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveTypedObjectAttributes.type], self.content.type, @"Wrong type");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.parent], self.content.parent, @"Wrong parent");
+    STAssertEqualObjects([(NSDictionary *)JSON objectForKey:JiveContentAttributes.subject], self.content.subject, @"Wrong subject");
+}
+
 
 - (void)testContentPersistentJSON {
     JivePerson *author = [[JivePerson alloc] init];

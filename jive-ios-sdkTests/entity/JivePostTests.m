@@ -90,6 +90,16 @@
     STAssertEqualObjects([categoriesJSON objectAtIndex:0], category, @"Wrong value");
 }
 
+- (void)assertContentToJSON:(id)JSON {
+    STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
+    STAssertEquals([JSON count], (NSUInteger)6, @"Initial dictionary had the wrong number of entries");
+    STAssertEqualObjects([JSON objectForKey:@"id"], self.content.jiveId, @"Wrong id");
+    STAssertEqualObjects([JSON objectForKey:JiveTypedObjectAttributes.type], self.content.type, @"Wrong type");
+    STAssertEqualObjects([JSON objectForKey:JiveContentAttributes.parent], self.content.parent, @"Wrong parent");
+    STAssertEqualObjects([JSON objectForKey:JiveContentAttributes.subject], self.content.subject, @"Wrong subject");
+    STAssertEqualObjects([JSON objectForKey:JiveContentAttributes.status], self.content.status, @"Wrong status");
+}
+
 - (void)testPostToJSON_alternate {
     JiveAttachment *attachment = [[JiveAttachment alloc] init];
     NSString *category = @"denomination";
