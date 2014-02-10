@@ -3039,55 +3039,12 @@ int const JivePushDeviceType = 3;
 }
 
 - (void)setAuthenticationBlocksAndRetrierForRetryingURLConnectionOperation:(AFURLConnectionOperation<JiveRetryingOperation> *)retryingURLConnectionOperation {
-    [retryingURLConnectionOperation setAuthenticationAgainstProtectionSpaceBlock:^BOOL(NSURLConnection *connection, NSURLProtectionSpace *protectionSpace) {
+    [retryingURLConnectionOperation setWillSendRequestForAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
         // don't need to weakify self here because Jive.m retains no references to the created operations.
         // thus there are no cycles
         __typeof__(self.delegate) __strong strongDelegate = self.delegate;
         if (self.verboseAuthenticationLoggerBlock) {
-            self.verboseAuthenticationLoggerBlock(@"canAuthenticateAgainstProtectionSpace",
-                                                  self,
-                                                  strongDelegate,
-                                                  nil,
-                                                  protectionSpace);
-        }
-        if ([strongDelegate respondsToSelector:@selector(receivedServerTrustAuthenticationChallenge:)]) {
-            if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-                if (self.verboseAuthenticationLoggerBlock) {
-                    self.verboseAuthenticationLoggerBlock(@"received serverTrust protectionSpace. returning YES",
-                                                          self,
-                                                          strongDelegate,
-                                                          nil,
-                                                          protectionSpace);
-                }
-                return YES;
-            } else {
-                if (self.warnAuthenticationLoggerBlock) {
-                    self.warnAuthenticationLoggerBlock(@"Received non-serverTrust authenticationMethod. returning NO",
-                                                       self,
-                                                       strongDelegate,
-                                                       nil,
-                                                       protectionSpace);
-                }
-                return NO;
-            }
-        } else {
-            if (self.warnAuthenticationLoggerBlock) {
-                self.warnAuthenticationLoggerBlock([NSString stringWithFormat:@"Delegate doesn't respond to %@, returning NO",
-                                                    NSStringFromSelector(@selector(receivedServerTrustAuthenticationChallenge:))],
-                                                   self,
-                                                   strongDelegate,
-                                                   nil,
-                                                   protectionSpace);
-            }
-            return NO;
-        }
-    }];
-    [retryingURLConnectionOperation setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
-        // don't need to weakify self here because Jive.m retains no references to the created operations.
-        // thus there are no cycles
-        __typeof__(self.delegate) __strong strongDelegate = self.delegate;
-        if (self.verboseAuthenticationLoggerBlock) {
-            self.verboseAuthenticationLoggerBlock(@"Received AuthenticationChallenge.",
+            self.verboseAuthenticationLoggerBlock(@"Will send request for AuthenticationChallenge.",
                                                   self,
                                                   strongDelegate,
                                                   challenge,

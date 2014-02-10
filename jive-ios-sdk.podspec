@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     s.public_header_files = "jive-ios-sdk/**/*.{h},lib/google-toolbox-for-mac/Foundation/*.{h}"
     s.private_header_files = "jive-ios-sdk/JiveKVOAdapter.h","jive-ios-sdk/NSDateFormatter+JiveISO8601DateFormatter.h","jive-ios-sdk/JiveRetryingURLConnectionOperation.h","jive-ios-sdk/JiveRetryingInner*.h","jive-ios-sdk/entity/JiveTargetList_internal.h","jive-ios-sdk/entity/JiveTypedObject_internal.h","jive-ios-sdk/JAPIRequestOperation.h","jive-ios-sdk/JiveRetrying*HTTPRequestOperation.h","jive-ios-sdk/JiveRetrying*APIRequestOperation.h","jive-ios-sdk/JiveRetryingURLConnectionOperation*.h"
     s.prefix_header_file = "jive-ios-sdk/jive-ios-sdk-Prefix.pch"
-    s.dependency    "AFNetworking", "1.2.1"
+    s.dependency    "AFNetworking", "~> 1.3.0"
     s.dependency    "hpple", "~> 0.2.0"
 
     # Disable arc
