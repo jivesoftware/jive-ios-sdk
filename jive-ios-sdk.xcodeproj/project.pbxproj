@@ -240,7 +240,7 @@
 		2192BC921614FF8200082926 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC831614FF8200082926 /* AFJSONRequestOperation.m */; };
 		2192BC931614FF8200082926 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC851614FF8200082926 /* AFNetworkActivityIndicatorManager.m */; };
 		2192BC941614FF8200082926 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC881614FF8200082926 /* AFPropertyListRequestOperation.m */; };
-		2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */; };
+		2192BC951614FF8200082926 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8A1614FF8200082926 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-Wno-sign-conversion"; }; };
 		2192BC961614FF8200082926 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8C1614FF8200082926 /* AFXMLRequestOperation.m */; };
 		2192BC971614FF8200082926 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BC8E1614FF8200082926 /* UIImageView+AFNetworking.m */; };
 		2192BCFF16161F0700082926 /* JAPIRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2192BCFE16161F0700082926 /* JAPIRequestOperation.m */; };
