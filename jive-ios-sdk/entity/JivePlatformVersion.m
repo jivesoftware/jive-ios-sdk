@@ -246,4 +246,9 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
+- (BOOL)supportsLikeCountInStreams {
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
+}
+
 @end

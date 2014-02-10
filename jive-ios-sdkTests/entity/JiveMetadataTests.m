@@ -88,6 +88,10 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 
 @end
 
+@interface JiveMetadataShareEnabledPropertyTests : JiveMetadataBoolPropertyTestCases
+
+@end
+
 
 @interface JiveMetadataIntegerPropertyTestCases : JiveMetadataTestCases
 
@@ -629,6 +633,45 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 }
 
 @end
+
+@implementation JiveMetadataShareEnabledPropertyTests
+
+- (void)setUp {
+    self.metadataPropertyName = JivePropertyNames.shareEnabled;
+    [super setUpMockObjects];
+}
+
+- (void)runTestExpectingValue:(BOOL)expectedValue {
+    [self.testObject shareEnabled:^(BOOL flagValue) {
+        STAssertEquals(flagValue, expectedValue, @"Wrong value returned");
+    }
+                                     onError:^(NSError *error) {
+                                         STFail(@"There should be no errors");
+                                     }];
+}
+
+- (void)runTestExpectingError:(NSError *)expectedError {
+    [self.testObject shareEnabled:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                     onError:^(NSError *error) {
+                                         STAssertEqualObjects(error, expectedError,
+                                                              @"Wrong error passed to the errorBlock");
+                                     }];
+}
+
+- (NSOperation *)runTestOperationExpectingError:(NSError *)expectedError {
+    return [self.testObject shareEnabledOperation:^(BOOL flagValue) {
+        STFail(@"A value should not be generated");
+    }
+                                                     onError:^(NSError *error) {
+                                                         STAssertEqualObjects(error, expectedError,
+                                                                              @"Wrong error passed to the errorBlock");
+                                                     }];
+}
+
+@end
+
 
 @implementation JiveMetadataMaxAttachementSizeInKBTests
 

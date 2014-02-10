@@ -79,6 +79,6 @@ extern struct JivePlatformVersionAttributes {
 - (BOOL)supportsOAuthSessionGrant;
 - (BOOL)supportsFeatureModuleVideoProperty;
 - (BOOL)supportsContentEditingAPI;
-
+- (BOOL)supportsLikeCountInStreams;
 
 @end
