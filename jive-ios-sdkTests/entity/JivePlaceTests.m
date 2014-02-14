@@ -26,6 +26,26 @@
 #import "JiveResourceEntry.h"
 #import "JiveObject_internal.h"
 #import "JiveTypedObject_internal.h"
+#import <OCMock/OCMock.h>
+
+extern struct JivePlaceResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *checkPoints;
+    __unsafe_unretained NSString *childPlaces;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *featuredContent;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *statics;
+    __unsafe_unretained NSString *tasks;
+} const JivePlaceResourceAttributes;
 
 @interface DummyPlace : JivePlace
 
@@ -384,6 +404,80 @@
     STAssertEqualObjects([newPlace.contentTypes objectAtIndex:0], [self.place.contentTypes objectAtIndex:0], @"Wrong contentType object class");
     STAssertEquals([newPlace.resources count], [self.place.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newPlace.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+}
+
+- (void)test_canCreate {
+    id mockedPlace = [OCMockObject partialMockForObject:self.place];
+    
+    // announcement
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.announcements, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertFalse([mockedPlace canCreateAnnouncement], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.announcements, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertTrue([mockedPlace canCreateAnnouncement], @"user can create this type");
+    [mockedPlace verify];
+    
+    // invite
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.invites, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertFalse([mockedPlace canCreateInvite], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.invites, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertTrue([mockedPlace canCreateInvite], @"user can create this type");
+    [mockedPlace verify];
+    
+    // member
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.members, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertFalse([mockedPlace canCreateMember], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.members, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertTrue([mockedPlace canCreateMember], @"user can create this type");
+    [mockedPlace verify];
+    
+    // task
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.tasks, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertFalse([mockedPlace canCreateTask], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.tasks, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertTrue([mockedPlace canCreateTask], @"user can create this type");
+    [mockedPlace verify];
+    
+    // content
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.contents, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertFalse([mockedPlace canCreateContent], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:[OCMArg checkWithBlock:^BOOL(id obj) {
+        STAssertEqualObjects(obj, JivePlaceResourceAttributes.contents, @"Wrong property requested.");
+        return YES;
+    }]];
+    STAssertTrue([mockedPlace canCreateContent], @"user can create this type");
+    [mockedPlace verify];
 }
 
 @end

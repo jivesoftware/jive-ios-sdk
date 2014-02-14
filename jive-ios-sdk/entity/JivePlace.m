@@ -281,4 +281,8 @@ static NSMutableDictionary *typedClasses;
     return [self resourceHasPostForTag:JivePlaceResourceAttributes.tasks];
 }
 
+- (BOOL)canCreateContent {
+    return [self resourceHasPostForTag:JivePlaceResourceAttributes.contents];
+}
+
 @end
