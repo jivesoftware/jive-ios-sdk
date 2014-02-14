@@ -26,6 +26,26 @@
 #import "JiveResourceEntry.h"
 #import "JiveObject_internal.h"
 #import "JiveTypedObject_internal.h"
+#import <OCMock/OCMock.h>
+
+extern struct JivePlaceResourceAttributes {
+    __unsafe_unretained NSString *activity;
+    __unsafe_unretained NSString *announcements;
+    __unsafe_unretained NSString *avatar;
+    __unsafe_unretained NSString *blog;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *checkPoints;
+    __unsafe_unretained NSString *childPlaces;
+    __unsafe_unretained NSString *contents;
+    __unsafe_unretained NSString *extprops;
+    __unsafe_unretained NSString *featuredContent;
+    __unsafe_unretained NSString *followingIn;
+    __unsafe_unretained NSString *html;
+    __unsafe_unretained NSString *invites;
+    __unsafe_unretained NSString *members;
+    __unsafe_unretained NSString *statics;
+    __unsafe_unretained NSString *tasks;
+} const JivePlaceResourceAttributes;
 
 @interface DummyPlace : JivePlace
 
@@ -384,6 +404,45 @@
     STAssertEqualObjects([newPlace.contentTypes objectAtIndex:0], [self.place.contentTypes objectAtIndex:0], @"Wrong contentType object class");
     STAssertEquals([newPlace.resources count], [self.place.resources count], @"Wrong number of resource objects");
     STAssertEqualObjects([(JiveResourceEntry *)[newPlace.resources objectForKey:resourceKey] ref], resource.ref, @"Wrong resource object");
+}
+
+- (void)test_canCreate {
+    id mockedPlace = [OCMockObject partialMockForObject:self.place];
+    
+    // announcement
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:JivePlaceResourceAttributes.announcements];
+    STAssertFalse([mockedPlace canCreateAnnouncement], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:JivePlaceResourceAttributes.announcements];
+    STAssertTrue([mockedPlace canCreateAnnouncement], @"user can create this type");
+    
+    // invite
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:JivePlaceResourceAttributes.invites];
+    STAssertFalse([mockedPlace canCreateInvite], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:JivePlaceResourceAttributes.invites];
+    STAssertTrue([mockedPlace canCreateInvite], @"user can create this type");
+    
+    // member
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:JivePlaceResourceAttributes.members];
+    STAssertFalse([mockedPlace canCreateMember], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:JivePlaceResourceAttributes.members];
+    STAssertTrue([mockedPlace canCreateMember], @"user can create this type");
+    
+    // task
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:JivePlaceResourceAttributes.tasks];
+    STAssertFalse([mockedPlace canCreateTask], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:JivePlaceResourceAttributes.tasks];
+    STAssertTrue([mockedPlace canCreateTask], @"user can create this type");
+    
+    // content
+    [[[mockedPlace expect] andReturnValue:@NO] resourceHasPostForTag:JivePlaceResourceAttributes.contents];
+    STAssertFalse([mockedPlace canCreateContent], @"user cannot create this type");
+    [mockedPlace verify];
+    [[[mockedPlace expect] andReturnValue:@YES] resourceHasPostForTag:JivePlaceResourceAttributes.contents];
+    STAssertTrue([mockedPlace canCreateContent], @"user can create this type");
 }
 
 @end
