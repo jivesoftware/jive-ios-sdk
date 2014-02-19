@@ -20,6 +20,7 @@
 #import "JivePlatformVersionTests.h"
 #import "JivePlatformVersion.h"
 #import "JiveCoreVersion.h"
+#import <OCMock/OCMock.h>
 
 @interface JivePlatformVersion (TestSupport)
 - (BOOL)supportsFeatureAvailableWithMajorVersion:(NSUInteger)majorVersion
@@ -576,6 +577,222 @@
     STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2], @"Feature should be supported for platform version");
     STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:2], @"Feature should be supported for platform version");
     STAssertTrue([version supportsFeatureAvailableWithMajorVersion:6 minorVersion:5 maintenanceVersion:3], @"Feature should be supported for platform version");
+}
+
+- (void)test_supportsDraftPostCreation {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsDraftPostCreation], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsDraftPostCreation], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsDraftPostContentFilter {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsDraftPostContentFilter], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsDraftPostContentFilter], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsExplicitSSO {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2];
+    STAssertFalse([version supportsExplicitSSO], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2];
+    STAssertTrue([version supportsExplicitSSO], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsFollowing {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:4];
+    STAssertFalse([version supportsFollowing], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:4];
+    STAssertTrue([version supportsFollowing], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsStatusUpdateInPlace {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsStatusUpdateInPlace], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsStatusUpdateInPlace], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsBookmarkInboxEntries {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsBookmarkInboxEntries], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsBookmarkInboxEntries], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsCorrectAndHelpfulReplies {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsCorrectAndHelpfulReplies], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsCorrectAndHelpfulReplies], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsStructuredOutcomes {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsStructuredOutcomes], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsStructuredOutcomes], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsExplicitCorrectAnswerAPI {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsExplicitCorrectAnswerAPI], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsExplicitCorrectAnswerAPI], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsDiscussionLikesInActivityObjects {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsDiscussionLikesInActivityObjects], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsDiscussionLikesInActivityObjects], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsInboxTypeFiltering {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsInboxTypeFiltering], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsInboxTypeFiltering], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsCommentAndReplyPermissions {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsCommentAndReplyPermissions], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsCommentAndReplyPermissions], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportedIPhoneVersion {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportedIPhoneVersion], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportedIPhoneVersion], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsOAuth {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsOAuth], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsOAuth], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsOAuthSessionGrant {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1];
+    STAssertFalse([version supportsOAuthSessionGrant], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1];
+    STAssertTrue([version supportsOAuthSessionGrant], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsFeatureModuleVideoProperty {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1];
+    STAssertFalse([version supportsFeatureModuleVideoProperty], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1];
+    STAssertTrue([version supportsFeatureModuleVideoProperty], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsContentEditingAPI {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertFalse([version supportsContentEditingAPI], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0];
+    STAssertTrue([version supportsContentEditingAPI], @"should support this feature");
+    [version verify];
+}
+
+- (void)test_supportsLikeCountInStreams {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertFalse([version supportsLikeCountInStreams], @"should not support this feature");
+    [version verify];
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3];
+    STAssertTrue([version supportsLikeCountInStreams], @"should support this feature");
+    [version verify];
 }
 
 #pragma mark - Factory methods

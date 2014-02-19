@@ -176,7 +176,7 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 }
 
 - (BOOL)supportsFollowing {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 4);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
