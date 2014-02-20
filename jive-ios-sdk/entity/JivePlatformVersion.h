@@ -80,5 +80,6 @@ extern struct JivePlatformVersionAttributes {
 - (BOOL)supportsFeatureModuleVideoProperty;
 - (BOOL)supportsContentEditingAPI;
 - (BOOL)supportsLikeCountInStreams;
+- (BOOL)supportsNativeAppAllowed;
 
 @end

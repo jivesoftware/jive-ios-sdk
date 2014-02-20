@@ -52,16 +52,19 @@ struct JVSemanticVersion {
     NSUInteger majorVersion;
     NSUInteger minorVersion;
     NSUInteger maintenanceVersion;
+    NSUInteger buildVersion;
 };
 typedef struct JVSemanticVersion JVSemanticVersion;
 
 static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
                                                       NSUInteger minorVersion,
-                                                      NSUInteger maintenanceVersion) {
+                                                      NSUInteger maintenanceVersion,
+                                                      NSUInteger buildVersion) {
     JVSemanticVersion semanticVersion;
     semanticVersion.majorVersion = majorVersion;
     semanticVersion.minorVersion = minorVersion;
     semanticVersion.maintenanceVersion = maintenanceVersion;
+    semanticVersion.buildVersion = buildVersion;
     return semanticVersion;
 }
 
@@ -134,12 +137,14 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 - (BOOL)supportsFeatureAvailableWithSemanticVersion:(JVSemanticVersion)version {
     return [self supportsFeatureAvailableWithMajorVersion:version.majorVersion
                                                 minorVersion:version.minorVersion
-                                          maintenanceVersion:version.maintenanceVersion];
+                                          maintenanceVersion:version.maintenanceVersion
+                                                buildVersion:version.buildVersion];
 }
 
 - (BOOL)supportsFeatureAvailableWithMajorVersion:(NSUInteger)majorVersion
                                        minorVersion:(NSUInteger)minorVersion
-                                 maintenanceVersion:(NSUInteger)maintenanceVersion {
+                                 maintenanceVersion:(NSUInteger)maintenanceVersion
+                                       buildVersion:(NSUInteger)buildVersion {
     BOOL supported = YES;
     
     // confirm the semantic version is supported
@@ -152,6 +157,11 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
             if (maintenanceVersion > [self.maintenance unsignedIntegerValue]) {
                 supported = NO;
             }
+            else if (maintenanceVersion == [self.maintenance unsignedIntegerValue]) {
+                if (buildVersion > [self.build unsignedIntegerValue]) {
+                    supported = NO;
+                }
+            }
         }
     }
     return supported;
@@ -160,95 +170,99 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
 #pragma mark - Public API
 
 - (BOOL)supportsDraftPostCreation {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsDraftPostContentFilter {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsExplicitSSO {
     // https://jira.jivesoftware.com/browse/JIVE-21305
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 2);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 2, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsFollowing {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 4);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 4, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsStatusUpdateInPlace {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsBookmarkInboxEntries {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsCorrectAndHelpfulReplies {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsStructuredOutcomes {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsExplicitCorrectAnswerAPI {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsDiscussionLikesInActivityObjects {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsInboxTypeFiltering {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsCommentAndReplyPermissions {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
     
 }
 
 - (BOOL)supportedIPhoneVersion {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsOAuth {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];    
 }
 
 - (BOOL)supportsOAuthSessionGrant {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 1);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 1, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsFeatureModuleVideoProperty {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 1);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 1, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsContentEditingAPI {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
 - (BOOL)supportsLikeCountInStreams {
-    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3);
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
+- (BOOL)supportsNativeAppAllowed {
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 2);
+    return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
+}
 @end
