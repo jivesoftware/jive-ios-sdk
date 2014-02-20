@@ -168,13 +168,13 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 }
 
 - (void)setupExpects {
-    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0]] platformVersion];
 }
 
 - (void)testHasVideo_noVideo_withVideoModuleProperty {
     __block void (^internalCallback)(JiveProperty *);
     
-    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0]] platformVersion];
     [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
         return [JivePropertyNames.videoModuleEnabled isEqual:obj];
     }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -204,7 +204,7 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
 - (void)testHasVideo_hasVideo_withVideoModuleProperty {
     __block void (^internalCallback)(JiveProperty *);
     
-    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0]] platformVersion];
     [[[self.mockJive expect] andReturn:self.mockOperation] propertyWithNameOperation:[OCMArg checkWithBlock:^BOOL(id obj) {
         return [JivePropertyNames.videoModuleEnabled isEqual:obj];
     }] onComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
@@ -240,7 +240,7 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
         STAssertTrue(false, @"There should be no errors");
     };
     
-    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:0 maintenanceVersion:1]] platformVersion];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:6 minorVersion:0 maintenanceVersion:1 buildVersion:0]] platformVersion];
     [[[self.mockJive expect] andReturn:self.mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
@@ -270,7 +270,7 @@ typedef void(^internalCallbackBlock)(JiveProperty *);
         STAssertTrue(false, @"There should be no errors");
     };
     
-    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0]] platformVersion];
+    [[[self.mockJive expect] andReturn:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0]] platformVersion];
     [[[self.mockJive expect] andReturn:self.mockOperation] objectsOperationOnComplete:[OCMArg checkWithBlock:^BOOL(id obj) {
         internalCallback = [obj copy];
         return obj != nil;
