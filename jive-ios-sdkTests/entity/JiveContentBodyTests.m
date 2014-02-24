@@ -50,9 +50,10 @@
     JSON = [self.contentBody toJSONDictionary];
     
     STAssertTrue([[JSON class] isSubclassOfClass:[NSDictionary class]], @"Generated JSON has the wrong class");
-    STAssertEquals([JSON count], (NSUInteger)2, @"Initial dictionary had the wrong number of entries");
+    STAssertEquals([JSON count], (NSUInteger)3, @"Initial dictionary had the wrong number of entries");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.text], self.contentBody.text, @"Wrong text.");
     STAssertEqualObjects(JSON[JiveContentBodyAttributes.type], self.contentBody.type, @"Wrong type.");
+    STAssertEqualObjects(JSON[JiveContentBodyAttributes.editable], self.contentBody.editable, @"Wrong editable.");
 }
 
 - (void)testContentBodyToJSON_alternate {
