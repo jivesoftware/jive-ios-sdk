@@ -71,6 +71,7 @@ extern struct JivePlatformVersionAttributes {
 - (BOOL)supportsCorrectAndHelpfulReplies;
 - (BOOL)supportsStructuredOutcomes;
 - (BOOL)supportsExplicitCorrectAnswerAPI;
+- (BOOL)supportsUnmarkAsCorrectAnswer;
 - (BOOL)supportsDiscussionLikesInActivityObjects;
 - (BOOL)supportsInboxTypeFiltering;
 - (BOOL)supportsCommentAndReplyPermissions;

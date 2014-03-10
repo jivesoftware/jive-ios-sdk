@@ -585,11 +585,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsDraftPostCreation], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsDraftPostCreation], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsDraftPostContentFilter {
@@ -597,11 +597,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsDraftPostContentFilter], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsDraftPostContentFilter], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsExplicitSSO {
@@ -609,11 +609,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2 buildVersion:0];
     STAssertFalse([version supportsExplicitSSO], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:2 buildVersion:0];
     STAssertTrue([version supportsExplicitSSO], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsFollowing {
@@ -621,11 +621,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:4 buildVersion:0];
     STAssertFalse([version supportsFollowing], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:4 buildVersion:0];
     STAssertTrue([version supportsFollowing], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsStatusUpdateInPlace {
@@ -633,11 +633,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsStatusUpdateInPlace], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsStatusUpdateInPlace], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsBookmarkInboxEntries {
@@ -645,11 +645,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsBookmarkInboxEntries], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsBookmarkInboxEntries], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsCorrectAndHelpfulReplies {
@@ -657,11 +657,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsCorrectAndHelpfulReplies], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsCorrectAndHelpfulReplies], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsStructuredOutcomes {
@@ -669,11 +669,23 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsStructuredOutcomes], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsStructuredOutcomes], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
+}
+
+- (void)test_supportsUnmarkAsCorrectAnswer {
+    id version = [OCMockObject partialMockForObject:[JivePlatformVersionTests jivePlatformVersionWithMajorVersion:0 minorVersion:0 maintenanceVersion:0 buildVersion:0]];
+    
+    [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
+    STAssertFalse([version supportsUnmarkAsCorrectAnswer], @"should not support this feature");
+    STAssertNoThrow([version verify], @"verify failure");
+    
+    [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
+    STAssertTrue([version supportsUnmarkAsCorrectAnswer], @"should support this feature");
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsExplicitCorrectAnswerAPI {
@@ -681,11 +693,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsExplicitCorrectAnswerAPI], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsExplicitCorrectAnswerAPI], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsDiscussionLikesInActivityObjects {
@@ -693,11 +705,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsDiscussionLikesInActivityObjects], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsDiscussionLikesInActivityObjects], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsInboxTypeFiltering {
@@ -705,11 +717,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsInboxTypeFiltering], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsInboxTypeFiltering], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsCommentAndReplyPermissions {
@@ -717,11 +729,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsCommentAndReplyPermissions], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsCommentAndReplyPermissions], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportedIPhoneVersion {
@@ -729,11 +741,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportedIPhoneVersion], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportedIPhoneVersion], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsOAuth {
@@ -741,11 +753,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsOAuth], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsOAuth], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsOAuthSessionGrant {
@@ -753,11 +765,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0];
     STAssertFalse([version supportsOAuthSessionGrant], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0];
     STAssertTrue([version supportsOAuthSessionGrant], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsFeatureModuleVideoProperty {
@@ -765,11 +777,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0];
     STAssertFalse([version supportsFeatureModuleVideoProperty], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:1 buildVersion:0];
     STAssertTrue([version supportsFeatureModuleVideoProperty], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsContentEditingAPI {
@@ -777,11 +789,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertFalse([version supportsContentEditingAPI], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:7 minorVersion:0 maintenanceVersion:0 buildVersion:0];
     STAssertTrue([version supportsContentEditingAPI], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsLikeCountInStreams {
@@ -789,11 +801,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertFalse([version supportsLikeCountInStreams], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:0];
     STAssertTrue([version supportsLikeCountInStreams], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 - (void)test_supportsNativeAppAllowed {
@@ -801,11 +813,11 @@
     
     [[[version expect] andReturnValue:@NO] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:2];
     STAssertFalse([version supportsNativeAppAllowed], @"should not support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
     
     [[[version expect] andReturnValue:@YES] supportsFeatureAvailableWithMajorVersion:6 minorVersion:0 maintenanceVersion:3 buildVersion:2];
     STAssertTrue([version supportsNativeAppAllowed], @"should support this feature");
-    [version verify];
+    STAssertNoThrow([version verify], @"verify failure");
 }
 
 #pragma mark - Factory methods

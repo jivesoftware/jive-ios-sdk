@@ -215,6 +215,11 @@ static inline JVSemanticVersion JVSemanticVersionMake(NSUInteger majorVersion,
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
 }
 
+- (BOOL)supportsUnmarkAsCorrectAnswer {
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(7, 0, 0, 0);
+    return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
+}
+
 - (BOOL)supportsDiscussionLikesInActivityObjects {
     JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(6, 0, 3, 0);
     return [self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion];
