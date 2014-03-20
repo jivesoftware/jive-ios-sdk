@@ -17,12 +17,6 @@ Pod::Spec.new do |s|
     s.prefix_header_file = "jive-ios-sdk/jive-ios-sdk-Prefix.pch"
     s.dependency    "AFNetworking", "1.2.1"
     s.dependency    "hpple", "~> 0.2.0"
-
-    # Disable arc
-    s.subspec "no-arc" do |na|
-        na.source_files = "lib/NSData+JiveBase64.{h,m}"
-        na.requires_arc = false
-    end
     
     # call update-JiveiOSSDKVersion.bash with the pod's version number
     s.prepare_command = <<-CMD
