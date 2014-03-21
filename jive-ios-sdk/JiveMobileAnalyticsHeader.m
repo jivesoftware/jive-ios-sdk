@@ -18,7 +18,6 @@
 //
 
 #import "JiveMobileAnalyticsHeader.h"
-#import "JiveHTTPBasicAuthCredentials.h"
 
 @interface JiveMobileAnalyticsHeader()
 
