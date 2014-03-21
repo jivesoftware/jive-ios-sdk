@@ -31,6 +31,6 @@
 
 @interface NSData (Jive_used_iOS_7_0_declaration)
 
-- (NSString *)base64Encoding NS_DEPRECATED(10_6, 10_9, 4_0, 7_0);
+- (NSString *)base64Encoding;
 
 @end
