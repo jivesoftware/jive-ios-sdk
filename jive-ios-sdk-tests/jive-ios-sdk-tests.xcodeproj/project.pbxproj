@@ -40,6 +40,7 @@
 		2D648B4B16F286C400E97038 /* JVPlacesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B38AAF16A8BC5000066EEF /* JVPlacesTest.m */; };
 		B82D563717500834005EF0DA /* install-jive-truststore.bash in Resources */ = {isa = PBXBuildFile; fileRef = B82D563517500834005EF0DA /* install-jive-truststore.bash */; };
 		B82D563817500834005EF0DA /* jive-TrustStore.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B82D563617500834005EF0DA /* jive-TrustStore.sqlite3 */; };
+		B87710CE1739A081003E7940 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B87710CD1739A081003E7940 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Wno-sign-compare -Wno-conversion -w -Xanalyzer -analyzer-disable-checker"; }; };
 		B8A71F1016A89DFA00A7D2CE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71ED816A89CCE00A7D2CE /* SenTestingKit.framework */; };
 		B8A71F1116A89DFA00A7D2CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */; };
 		B8A71F1216A89DFA00A7D2CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */; };
@@ -115,6 +116,8 @@
 		B81B0C1216A8B38E0013CB48 /* JVPeopleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVPeopleTest.m; sourceTree = "<group>"; };
 		B82D563517500834005EF0DA /* install-jive-truststore.bash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-jive-truststore.bash"; sourceTree = "<group>"; };
 		B82D563617500834005EF0DA /* jive-TrustStore.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "jive-TrustStore.sqlite3"; sourceTree = "<group>"; };
+		B87710CC1739A081003E7940 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		B87710CD1739A081003E7940 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "jive-ios-sdk.xcodeproj"; path = "../../jive-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		B8A71EBA16A89CCE00A7D2CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -240,9 +243,19 @@
 			path = people;
 			sourceTree = "<group>";
 		};
+		B87710CB1739A081003E7940 /* NSData+Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				B87710CC1739A081003E7940 /* NSData+Base64.h */,
+				B87710CD1739A081003E7940 /* NSData+Base64.m */,
+			);
+			path = "NSData+Base64";
+			sourceTree = "<group>";
+		};
 		B87DD39916A8A38D009CACF5 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B87710CB1739A081003E7940 /* NSData+Base64 */,
 				B87DD39D16A8A3E7009CACF5 /* jive-ios-sdk.xcodeproj */,
 			);
 			path = lib;
@@ -505,6 +518,7 @@
 				239F70E3188F379200F0AFE9 /* EditSameDiscussionWithSameUserAndMultiLoginTest.m in Sources */,
 				B8A71F1B16A89DFA00A7D2CE /* JiveTestCase.m in Sources */,
 				23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */,
+				B87710CE1739A081003E7940 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

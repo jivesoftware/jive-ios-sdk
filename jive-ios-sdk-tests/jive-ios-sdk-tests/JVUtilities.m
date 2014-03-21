@@ -18,6 +18,7 @@
 //
 
 #import "JVUtilities.h"
+#import "NSData+Base64.h"
 
 @implementation JVUtilities
 
@@ -764,7 +765,7 @@
     NSData* data = [[NSString stringWithFormat:@"%@:%@", userId, password]
                     dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *authHeader = [NSString stringWithFormat:@"Basic %@", [data base64Encoding]];
+    NSString *authHeader = [NSString stringWithFormat:@"Basic %@", [data base64EncodedString]];
     
     [mutableRequest addValue:authHeader forHTTPHeaderField:@"Authorization"];
     
