@@ -215,12 +215,8 @@
 /// @name Setting NSURLConnection Delegate Callbacks
 ///-------------------------------------------------
 
-- (void)setAuthenticationAgainstProtectionSpaceBlock:(BOOL (^)(NSURLConnection *, NSURLProtectionSpace *))block {
-    [self.innerOperation setAuthenticationAgainstProtectionSpaceBlock:block];
-}
-
-- (void)setAuthenticationChallengeBlock:(void (^)(NSURLConnection *, NSURLAuthenticationChallenge *))block {
-    [self.innerOperation setAuthenticationChallengeBlock:block];
+- (void)setWillSendRequestForAuthenticationChallengeBlock:(void (^)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge))block {
+    [self.innerOperation setWillSendRequestForAuthenticationChallengeBlock:block];
 }
 
 - (void)setRedirectResponseBlock:(NSURLRequest *(^)(NSURLConnection *, NSURLRequest *, NSURLResponse *))block {
