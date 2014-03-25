@@ -107,11 +107,9 @@
 
 - (void)testSortWithField {
     
-    int sortOrder = JiveSortOrderDateCreatedAsc;
     NSString *testField = @"name";
-    
     [self.pageOptions addField:testField];
-    self.sortedOptions.sort = sortOrder;
+    self.sortedOptions.sort = JiveSortOrderDateCreatedAsc;
     
     NSString *asString = [self.options toQueryString];
     
