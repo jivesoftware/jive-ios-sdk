@@ -209,6 +209,8 @@
 		0FCB666A1670FCDB00617CE4 /* JiveInboxEntryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66691670FCDB00617CE4 /* JiveInboxEntryTests.m */; };
 		0FCB66701671061A00617CE4 /* JiveContentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB666F1671061A00617CE4 /* JiveContentTests.m */; };
 		0FCB66731671065D00617CE4 /* JivePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB66721671065C00617CE4 /* JivePlaceTests.m */; };
+		0FD46F5518E2373900D2294E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD46F5318E2372200D2294E /* Security.framework */; };
+		0FD46F5618E2373F00D2294E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD46F5018E236DE00D2294E /* CoreGraphics.framework */; };
 		0FE9820818722C270009BE6A /* T_C_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FE9820718722C270009BE6A /* T_C_response.json */; };
 		0FE9820A187327D50009BE6A /* T_C_response_w_URL.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FE98209187327D50009BE6A /* T_C_response_w_URL.json */; };
 		0FEED6E2184548570052BD95 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEED6E1184548570052BD95 /* libxml2.dylib */; };
@@ -879,6 +881,8 @@
 		0FCB666F1671061A00617CE4 /* JiveContentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiveContentTests.m; sourceTree = "<group>"; };
 		0FCB66711671065C00617CE4 /* JivePlaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivePlaceTests.h; sourceTree = "<group>"; };
 		0FCB66721671065C00617CE4 /* JivePlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivePlaceTests.m; sourceTree = "<group>"; };
+		0FD46F5018E236DE00D2294E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0FD46F5318E2372200D2294E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0FE9820718722C270009BE6A /* T_C_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = T_C_response.json; sourceTree = "<group>"; };
 		0FE98209187327D50009BE6A /* T_C_response_w_URL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = T_C_response_w_URL.json; sourceTree = "<group>"; };
 		0FEED6E1184548570052BD95 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1140,6 +1144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD46F5618E2373F00D2294E /* CoreGraphics.framework in Frameworks */,
+				0FD46F5518E2373900D2294E /* Security.framework in Frameworks */,
 				0FEED6E2184548570052BD95 /* libxml2.dylib in Frameworks */,
 				B843FF4217749A5600213861 /* libOHHTTPStubs.a in Frameworks */,
 				B8D2511216B9744D00412DA5 /* MobileCoreServices.framework in Frameworks */,
@@ -1607,6 +1613,8 @@
 		2192BBFB1614F33300082926 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FD46F5318E2372200D2294E /* Security.framework */,
+				0FD46F5018E236DE00D2294E /* CoreGraphics.framework */,
 				0FEED6E1184548570052BD95 /* libxml2.dylib */,
 				2192BBFC1614F33300082926 /* Foundation.framework */,
 				B8D2510F16B9735F00412DA5 /* MobileCoreServices.framework */,
