@@ -30,10 +30,11 @@
     if (startIndex == 0)
         return queryString;
     
+    NSString *startIndexStringValue = [@(startIndex) stringValue];
     if (queryString)
-        return [NSString stringWithFormat:@"%@&startIndex=%@", queryString, [@(startIndex) stringValue]];
+        return [NSString stringWithFormat:@"%@&startIndex=%@", queryString, startIndexStringValue];
     
-    return [NSString stringWithFormat:@"startIndex=%@", [@(startIndex) stringValue]];
+    return [NSString stringWithFormat:@"startIndex=%@", startIndexStringValue];
 }
 
 @end
