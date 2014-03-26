@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FAA9F6C184D4FEC0051698C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAA9F6B184D4FEC0051698C /* libxml2.dylib */; };
+		0FB6E4A518E390970010FC95 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB6E4A418E390970010FC95 /* Security.framework */; };
+		0FB6E4A918E3909E0010FC95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */; };
 		215040D916DEA27200CD0AAE /* jive-software.png in Resources */ = {isa = PBXBuildFile; fileRef = 215040D816DEA27100CD0AAE /* jive-software.png */; };
 		23680DAE16CAF9DB007EAF2F /* JVUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 23680DAD16CAF9DB007EAF2F /* JVUtilities.m */; };
 		2385546716EFED880045B0ED /* instance_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 2385546616EFED880045B0ED /* instance_info.json */; };
@@ -83,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		0FAA9F6B184D4FEC0051698C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		0FB6E4A418E390970010FC95 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0FC2FEC316AA148B00DDFF68 /* JVContentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVContentTest.m; sourceTree = "<group>"; };
 		21349A7C16DEA07A006A8BFD /* CreateImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateImageTests.m; sourceTree = "<group>"; };
 		215040D816DEA27100CD0AAE /* jive-software.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jive-software.png"; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB6E4A918E3909E0010FC95 /* CoreGraphics.framework in Frameworks */,
+				0FB6E4A518E390970010FC95 /* Security.framework in Frameworks */,
 				0FAA9F6C184D4FEC0051698C /* libxml2.dylib in Frameworks */,
 				B8D2511A16B974A000412DA5 /* SystemConfiguration.framework in Frameworks */,
 				B8D2511616B9749A00412DA5 /* MobileCoreServices.framework in Frameworks */,
@@ -282,6 +287,7 @@
 		B8A71EB916A89CCE00A7D2CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FB6E4A418E390970010FC95 /* Security.framework */,
 				0FAA9F6B184D4FEC0051698C /* libxml2.dylib */,
 				B8A71EBE16A89CCE00A7D2CE /* CoreGraphics.framework */,
 				B8A71EBC16A89CCE00A7D2CE /* Foundation.framework */,
