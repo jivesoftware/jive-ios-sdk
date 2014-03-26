@@ -31,14 +31,9 @@
     self.options = [[JiveCountRequestOptions alloc] init];
 }
 
-//- (void)tearDown {
-//
-//    [super tearDown];
-//}
-
 - (void)testCount {
     
-    int value = 5;
+    NSUInteger value = 5;
     
     self.pageOptions.count = value;
     
@@ -56,7 +51,7 @@
 
 - (void)testCountWithField {
     
-    int value = 5;
+    NSUInteger value = 5;
     NSString *testField = @"name";
     
     [self.pageOptions addField:testField];

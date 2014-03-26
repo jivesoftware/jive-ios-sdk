@@ -275,7 +275,9 @@ int const JivePushDeviceType = 3;
     NSMutableURLRequest *request = [self credentialedRequestWithOptions:nil
                                                             andTemplate:@"%@/register",
                                     JiveRequestPathComponents.pushNotification, nil];
-    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%i", deviceToken, JivePushDeviceType, JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo | JVPushRegistrationFeatureFlagAnnouncement];
+    
+    NSNumber *featureFlags = @(JVPushRegistrationFeatureFlagPush | JVPushRegistrationFeatureFlagVideo | JVPushRegistrationFeatureFlagAnnouncement);
+    NSString *postString = [NSString stringWithFormat:@"deviceToken=%@&deviceType=%i&activated=true&featureFlags=%@", deviceToken, JivePushDeviceType, [featureFlags stringValue]];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
@@ -1752,7 +1754,9 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:complete
@@ -1926,7 +1930,8 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveContent class]
                                  request:request
                               onComplete:completeBlock
@@ -2419,7 +2424,9 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
+
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
@@ -2461,7 +2468,8 @@ int const JivePushDeviceType = 3;
     [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return [self entityOperationForClass:[JiveInvite class]
                                  request:request
                               onComplete:complete
@@ -2480,7 +2488,8 @@ int const JivePushDeviceType = 3;
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return [self listOperationForClass:[JiveInvite class]
                                request:request
                             onComplete:complete
@@ -2692,7 +2701,7 @@ int const JivePushDeviceType = 3;
     void (^processPropsBlock)(NSArray* properties) = ^(NSArray* properties) {
         NSArray* relevantProps = [properties filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", propertyName]];
         
-        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %i", propertyName, [relevantProps count]);
+        NSAssert([relevantProps count] < 2, @"Expected one or zero properties for %@, but we got %@", propertyName, [@([relevantProps count]) stringValue]);
         
         if ([relevantProps count] == 1) {
             complete([relevantProps objectAtIndex:0]);
@@ -2817,7 +2826,8 @@ int const JivePushDeviceType = 3;
     [request setHTTPBody:body];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
 
@@ -2861,7 +2871,8 @@ int const JivePushDeviceType = 3;
     
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return request;
 }
 

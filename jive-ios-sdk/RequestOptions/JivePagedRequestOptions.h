@@ -25,6 +25,6 @@
 @interface JivePagedRequestOptions : JiveCountRequestOptions
 
 //! Zero-relative index of the first instance to be returned
-@property (nonatomic) int startIndex;
+@property (nonatomic) NSUInteger startIndex;
 
 @end

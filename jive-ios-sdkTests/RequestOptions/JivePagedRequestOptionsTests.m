@@ -33,7 +33,7 @@
 
 - (void)testStartIndex {
     
-    int value = 5;
+    NSUInteger value = 5;
     
     self.pagedOptions.startIndex = value;
     
@@ -51,7 +51,7 @@
 
 - (void)testStartIndexWithField {
     
-    int value = 5;
+    NSUInteger value = 5;
     NSString *testField = @"name";
     
     [self.pageOptions addField:testField];

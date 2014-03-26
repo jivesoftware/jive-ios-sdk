@@ -25,6 +25,6 @@
 @interface JiveCountRequestOptions : JiveReturnFieldsRequestOptions
 
 //! Maximum number of results to be returned
-@property (nonatomic) int count;
+@property (nonatomic) NSUInteger count;
 
 @end
