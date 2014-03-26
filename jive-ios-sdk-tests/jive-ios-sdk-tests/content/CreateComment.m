@@ -77,7 +77,7 @@
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser3" pw:@"test123" URL:commentsForContentAPIURL];
     NSArray* returnedCommentsListFromAPI= [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger commentsCountFromAPIBeforeCommenting = [returnedCommentsListFromAPI count];
-    NSLog(@"Before comment=%i", commentsCountFromAPIBeforeCommenting);
+    NSLog(@"Before comment=%@", [@(commentsCountFromAPIBeforeCommenting) stringValue]);
     
     __block JiveContent* commentedContent = nil;
     
@@ -98,7 +98,7 @@
     NSArray*  returnedCommentsListFromAPIAfter= [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger commentsCountFromAPIAfterCommenting = [returnedCommentsListFromAPIAfter count];
     
-    NSLog(@"After comment=%i", commentsCountFromAPIAfterCommenting);
+    NSLog(@"After comment=%@", [@(commentsCountFromAPIAfterCommenting) stringValue]);
     
     
     STAssertEquals(commentsCountFromAPIAfterCommenting, commentsCountFromAPIBeforeCommenting + 1, @"Expecting a successful comment to increase the comment count on this document by one!");
@@ -153,7 +153,7 @@
     id jsonResponseFromAPI = [JVUtilities getAPIJsonResponse:@"ios-sdk-testuser3" pw:@"test123" URL:commentsForContentAPIURL];
     NSArray* returnedCommentsListFromAPI= [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger commentsCountFromAPIBeforeCommenting = [returnedCommentsListFromAPI count];
-    NSLog(@"Before comment=%i", commentsCountFromAPIBeforeCommenting);
+    NSLog(@"Before comment=%@", [@(commentsCountFromAPIBeforeCommenting) stringValue]);
     
     __block JiveContent* commentedContent = nil;
     
@@ -174,7 +174,7 @@
     NSArray*  returnedCommentsListFromAPIAfter= [jsonResponseFromAPI objectForKey:@"list"];
     NSUInteger commentsCountFromAPIAfterCommenting = [returnedCommentsListFromAPIAfter count];
     
-    NSLog(@"After comment=%i", commentsCountFromAPIAfterCommenting);
+    NSLog(@"After comment=%@", [@(commentsCountFromAPIAfterCommenting) stringValue]);
     
     
     STAssertEquals(commentsCountFromAPIAfterCommenting, commentsCountFromAPIBeforeCommenting + 1, @"Expecting a successful comment to increase the comment count on this document by one!");

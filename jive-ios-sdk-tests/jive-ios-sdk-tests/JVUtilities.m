@@ -28,7 +28,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"parent"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"parent"];
+        return [returnedAPIDic objectForKey:@"parent"];
     }
     
     return nil;
@@ -39,7 +39,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"type"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"type"];
+        return [returnedAPIDic objectForKey:@"type"];
     }
     
     return nil;
@@ -50,8 +50,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"childCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt: [[returnedAPIDic objectForKey:@"childCount"] integerValue]];
-        return data;
+        return [returnedAPIDic objectForKey:@"childCount"];
     }
     
     return nil;
@@ -62,7 +61,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"name"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"name"];
+        return [returnedAPIDic objectForKey:@"name"];
     }
     
     return nil;
@@ -74,7 +73,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"displayName"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"displayName"];
+        return [returnedAPIDic objectForKey:@"displayName"];
     }
     
     return nil;
@@ -86,7 +85,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"description"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"description"];
+        return [returnedAPIDic objectForKey:@"description"];
     }
     
     return nil;
@@ -98,7 +97,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"status"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"status"];
+        return [returnedAPIDic objectForKey:@"status"];
     }
     
     return nil;
@@ -111,7 +110,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"contentTypes"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"contentTypes"];
+        return [returnedAPIDic objectForKey:@"contentTypes"];
     }
     
     return nil;
@@ -159,8 +158,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"followerCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt: [[returnedAPIDic objectForKey:@"followerCount"] integerValue]];
-        return data;
+        return [returnedAPIDic objectForKey:@"followerCount"];
     }
     
     return nil;
@@ -172,8 +170,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"viewCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt: [[returnedAPIDic objectForKey:@"viewCount"] integerValue]];
-        return data;
+        return [returnedAPIDic objectForKey:@"viewCount"];
     }
     
     return nil;
@@ -185,7 +182,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"id"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"id"];
+        return [returnedAPIDic objectForKey:@"id"];
     }
     
     return nil;
@@ -270,7 +267,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"displayName"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"displayName"];
+        return [returnedAPIDic objectForKey:@"displayName"];
     }
 
     return nil;
@@ -281,7 +278,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"id"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"id"];
+        return [returnedAPIDic objectForKey:@"id"];
     }
 
     return nil;
@@ -294,7 +291,7 @@
     
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"name"] != nil && [[returnedAPIDic objectForKey:@"name"] valueForKey:@"givenName"] != nil)
     {
-        return   [[returnedAPIDic objectForKey:@"name"] objectForKey:@"givenName"];
+        return [[returnedAPIDic objectForKey:@"name"] objectForKey:@"givenName"];
     }
 
     return nil;
@@ -306,7 +303,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"name"] != nil && [[returnedAPIDic objectForKey:@"name"] valueForKey:@"familyName"] != nil)
     {
-        return   [[returnedAPIDic objectForKey:@"name"] objectForKey:@"familyName"];
+        return [[returnedAPIDic objectForKey:@"name"] objectForKey:@"familyName"];
     }
 
     return nil;
@@ -319,7 +316,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"name"] != nil && [[returnedAPIDic objectForKey:@"name"] valueForKey:@"formatted"] != nil)
     {
-        return   [[returnedAPIDic objectForKey:@"name"] objectForKey:@"formatted"];
+        return [[returnedAPIDic objectForKey:@"name"] objectForKey:@"formatted"];
     }
 
     return nil;
@@ -333,7 +330,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"location"] != nil)
     {
-        return   [returnedAPIDic  objectForKey:@"location"];
+        return [returnedAPIDic  objectForKey:@"location"];
     }
 
     return nil;
@@ -345,7 +342,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"type"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"type"];
+        return [returnedAPIDic objectForKey:@"type"];
     }
 
     return nil;
@@ -374,7 +371,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"tags"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"tags"];
+        return [returnedAPIDic objectForKey:@"tags"];
     }
     return nil;
 
@@ -386,8 +383,7 @@
     
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"followingCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt: [[returnedAPIDic objectForKey:@"followingCount"] integerValue]];
-        return data;
+        return [returnedAPIDic objectForKey:@"followingCount"];
     }
     return nil;
 
@@ -399,7 +395,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"thumbnailUrl"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"thumbnailUrl"];
+        return [returnedAPIDic objectForKey:@"thumbnailUrl"];
     }
     return nil;
     
@@ -427,8 +423,7 @@
 
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"followerCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt:[ [returnedAPIDic objectForKey:@"followerCount"] integerValue]];
-        return   data;
+        return [returnedAPIDic objectForKey:@"followerCount"];
     }
     return nil;
     
@@ -442,7 +437,7 @@
     
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"type"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"type"];
+        return [returnedAPIDic objectForKey:@"type"];
     }
     return nil;
 }
@@ -451,7 +446,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"subject"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"subject"];
+        return [returnedAPIDic objectForKey:@"subject"];
     }
     return nil;
 }
@@ -461,8 +456,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"replyCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt:[ [returnedAPIDic objectForKey:@"replyCount"] integerValue]];
-        return   data;
+        return [returnedAPIDic objectForKey:@"replyCount"];
     }
     return nil;
     
@@ -471,7 +465,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"id"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"id"];
+        return [returnedAPIDic objectForKey:@"id"];
     }
     return nil;
 }
@@ -480,7 +474,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"parent"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"parent"];
+        return [returnedAPIDic objectForKey:@"parent"];
     }
     return nil;
     
@@ -490,8 +484,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"likeCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt:[ [returnedAPIDic objectForKey:@"likeCount"] integerValue]];
-        return   data;
+        return [returnedAPIDic objectForKey:@"likeCount"];
     }
     return nil;
 }
@@ -516,7 +509,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"status"] != nil)
     {
-        return   [returnedAPIDic objectForKey:@"status"];
+        return [returnedAPIDic objectForKey:@"status"];
     }
     return nil;
 }
@@ -541,8 +534,7 @@
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"viewCount"] != nil)
     {
-        NSNumber* data = [NSNumber numberWithInt:[ [returnedAPIDic objectForKey:@"viewCount"] integerValue]];
-        return   data;
+        return [returnedAPIDic objectForKey:@"viewCount"];
     }
     return nil;
     
@@ -905,7 +897,7 @@
 + (NSURL*) get_Inbox_actor_url: (id)returnedAPIDic
 {
     if ([returnedAPIDic isKindOfClass:[NSDictionary class]] && [returnedAPIDic valueForKey:@"actor"] != nil && [[returnedAPIDic objectForKey:@"actor"] valueForKey:@"url"] != nil)    {
-        return   [[NSURL alloc] initWithString:[[returnedAPIDic objectForKey:@"actor"] objectForKey:@"url"]]; 
+        return [[NSURL alloc] initWithString:[[returnedAPIDic objectForKey:@"actor"] objectForKey:@"url"]]; 
     }
     
     return nil;
