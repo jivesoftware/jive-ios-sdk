@@ -31,9 +31,9 @@
         return queryString;
     
     if (queryString)
-        return [NSString stringWithFormat:@"%@&startIndex=%d", queryString, startIndex];
+        return [NSString stringWithFormat:@"%@&startIndex=%@", queryString, [@(startIndex) stringValue]];
     
-    return [NSString stringWithFormat:@"startIndex=%d", startIndex];
+    return [NSString stringWithFormat:@"startIndex=%@", [@(startIndex) stringValue]];
 }
 
 @end

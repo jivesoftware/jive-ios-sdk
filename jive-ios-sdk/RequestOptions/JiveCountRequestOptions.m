@@ -30,10 +30,11 @@
     if (count == 0)
         return queryString;
     
+    NSString *countStringValue = [@(count) stringValue];
     if (queryString)
-        return [NSString stringWithFormat:@"%@&count=%d", queryString, count];
+        return [NSString stringWithFormat:@"%@&count=%@", queryString, countStringValue];
     
-    return [NSString stringWithFormat:@"count=%d", count];
+    return [NSString stringWithFormat:@"count=%@", countStringValue];
 }
 
 @end
