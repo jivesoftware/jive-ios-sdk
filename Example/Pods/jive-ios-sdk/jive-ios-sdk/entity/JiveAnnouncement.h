@@ -19,6 +19,9 @@
 
 #import "JiveContent.h"
 
+//! Inbox content type for including announcements when filtering on content type.
+extern NSString * const JiveAnnouncementType;
+
 //! \class JiveAnnouncement
 //! https://developers.jivesoftware.com/api/v3/rest/AnnouncementEntity.html
 @interface JiveAnnouncement : JiveContent

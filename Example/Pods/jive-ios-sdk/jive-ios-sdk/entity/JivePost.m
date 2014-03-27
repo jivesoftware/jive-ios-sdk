@@ -61,6 +61,7 @@ NSString * const JivePostType = @"post";
     [dictionary setValue:permalink forKey:@"permalink"];
     [dictionary setValue:restrictComments forKey:@"restrictComments"];
     [dictionary setValue:visibleToExternalContributors forKey:@"visibleToExternalContributors"];
+    [dictionary setValue:self.status forKey:JiveContentAttributes.status];
     [self addArrayElements:attachments toJSONDictionary:dictionary forTag:@"attachments"];
     if (tags)
         [dictionary setValue:tags forKey:@"tags"];

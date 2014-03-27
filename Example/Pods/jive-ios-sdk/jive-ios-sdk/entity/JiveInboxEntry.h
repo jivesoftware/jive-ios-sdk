@@ -19,11 +19,30 @@
 
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
+#import "JiveGenericPerson.h"
 
 @class JiveActivityObject;
 @class JiveMediaLink;
 @class JiveExtension;
 @class JiveOpenSocial;
+
+extern struct JiveInboxEntryAttributes {
+    __unsafe_unretained NSString *actor;
+    __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *generator;
+    __unsafe_unretained NSString *icon;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *object;
+    __unsafe_unretained NSString *openSocial;
+    __unsafe_unretained NSString *provider;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *target;
+    __unsafe_unretained NSString *title;
+    __unsafe_unretained NSString *url;
+    __unsafe_unretained NSString *updated;
+    __unsafe_unretained NSString *verb;
+} const JiveInboxEntryAttributes;
 
 //! \class JiveInboxEntry
 //! https://developers.jivesoftware.com/api/v3/rest/InboxEntryEntity.html

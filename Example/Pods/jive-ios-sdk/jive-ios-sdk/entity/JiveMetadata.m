@@ -65,15 +65,34 @@
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock {
-    return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
-        NSString *videoURL = [objects objectForKey:JiveVideoType];
-        
-        completeBlock(videoURL.length > 0);
-    } onError:errorBlock];
+    if ([self.instance.platformVersion supportsFeatureModuleVideoProperty]) {
+        return [self boolPropertyOperation:JivePropertyNames.videoModuleEnabled
+                                onComplete:completeBlock
+                                   onError:errorBlock];
+    } else {
+        return [self.instance objectsOperationOnComplete:^(NSDictionary *objects) {
+            NSString *videoURL = [objects objectForKey:JiveVideoType];
+            
+            completeBlock(videoURL.length > 0);
+        } onError:errorBlock];  
+    }
 }
 
 - (void)hasVideo:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     [[self hasVideoOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Blogs
+- (AFJSONRequestOperation<JiveRetryingOperation> *)blogsEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:JivePropertyNames.blogsEnabled
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)blogsEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+             onError:(JiveErrorBlock)errorBlock {
+    [[self blogsEnabledOperation:completeBlock onError:errorBlock] start];
 }
 
 #pragma mark - Real time chat
@@ -182,6 +201,35 @@
 
 - (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     [[self binaryDownloadsDisabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Share
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)shareEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                            onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:JivePropertyNames.shareEnabled
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)shareEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self shareEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
+#pragma mark - Status Update Max Characters
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                          onError:(JiveErrorBlock)errorBlock {
+    return [self.instance propertyWithNameOperation:JivePropertyNames.maxAttachmentSize
+                                         onComplete:^(JiveProperty *property) {
+                                             completeBlock(property.valueAsNumber);
+                                         }
+                                            onError:errorBlock];
+}
+
+- (void)maxAttachmentSizeInKB:(JiveNumericCompletedBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock {
+    [[self maxAttachmentSizeInKBOperation:completeBlock onError:errorBlock] start];
 }
 
 @end

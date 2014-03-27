@@ -149,5 +149,6 @@ extern struct JivePlaceContentTypeValues {
 - (NSURL *)tasksRef;
 - (BOOL)canCreateTask;
 
+- (BOOL)canCreateContent;
 
 @end

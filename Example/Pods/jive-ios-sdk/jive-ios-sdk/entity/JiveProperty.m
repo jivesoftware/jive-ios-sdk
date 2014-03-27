@@ -24,6 +24,7 @@ struct JivePropertyTypes const JivePropertyTypes = {
     .boolean = @"boolean",
     .string = @"string",
     .number = @"integer",
+    .integer = @"int",
 };
 
 struct JivePropertyAttributes const JivePropertyAttributes = {
@@ -40,12 +41,16 @@ struct JivePropertyNames const JivePropertyNames = {
     .instanceURL = @"instance.url",
     .statusUpdateMaxCharacters = @"feature.status_update.characters",
     .statusUpdatesEnabled = @"jive.coreapi.enable.statusupdates",
+    .blogsEnabled = @"feature.blog.enabled",
     .realTimeChatEnabled = @"feature.rtc.enabled",
     .imagesEnabled = @"feature.images.enabled",
     .personalStatusUpdatesEnabled = @"feature.status_update.enabled",
     .placeStatusUpdatesEnabled = @"feature.status_update_place.enabled",
     .repostStatusUpdatesEnabled = @"feature.status_update_repost.enabled",
     .mobileBinaryDownloadsDisabled = @"jive.coreapi.disable.binarydownloads.mobileonly",
+    .shareEnabled = @"feature.share.enabled",
+    .maxAttachmentSize = @"attachments.maxAttachmentSize",
+    .videoModuleEnabled = @"feature.module.video.enabled",
 };
 
 @implementation JiveProperty
@@ -84,7 +89,8 @@ struct JivePropertyNames const JivePropertyNames = {
         [self setValue:(NSNumber *)newValue forKey:property];
     } else if ([self.type isEqualToString:JivePropertyTypes.string]) {
         [self setValue:(NSString *)newValue forKey:property];
-    } else if ([self.type isEqualToString:JivePropertyTypes.number]) {
+    } else if ([self.type isEqualToString:JivePropertyTypes.number] ||
+               [self.type isEqualToString:JivePropertyTypes.integer]) {
         [self setValue:(NSNumber *)newValue forKey:property];
     } else {
         NSAssert(false, @"Unknown type (%@) for property (%@)", self.type, property);
@@ -108,7 +114,8 @@ struct JivePropertyNames const JivePropertyNames = {
 }
 
 - (NSNumber *)valueAsNumber {
-    if (![self.type isEqualToString:JivePropertyTypes.number]) {
+    if (![self.type isEqualToString:JivePropertyTypes.number] &&
+        ![self.type isEqualToString:JivePropertyTypes.integer]) {
         return nil;
     }
     

@@ -26,7 +26,6 @@ extern struct JiveContentAttributes {
     __unsafe_unretained NSString *author;
     __unsafe_unretained NSString *content;
     __unsafe_unretained NSString *contentID;
-    __unsafe_unretained NSString *customIconRef;
     __unsafe_unretained NSString *followerCount;
     __unsafe_unretained NSString *highlightBody;
     __unsafe_unretained NSString *highlightSubject;
@@ -63,9 +62,6 @@ extern struct JiveContentAttributes {
 
 //! Internal Jive ID associated with the content.
 @property(nonatomic, readonly) NSString *contentID;
-
-//! Custom icon for this content.
-@property(nonatomic, readonly) NSURL* customIconRef;
 
 //! Number of people following this object.
 @property(nonatomic, readonly) NSNumber *followerCount;

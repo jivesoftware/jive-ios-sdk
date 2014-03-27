@@ -28,6 +28,11 @@
 struct JiveObjectAttributes const JiveObjectAttributes = {
 	.extraFieldsDetected = @"extraFieldsDetected",
 	.refreshDate = @"refreshDate",
+    .jiveId = @"jiveId",
+};
+
+struct JiveObjectConstants const JiveObjectConstants = {
+    .id = @"id",
 };
 
 @implementation JiveObject

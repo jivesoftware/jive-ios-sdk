@@ -33,6 +33,11 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 - (AFJSONRequestOperation<JiveRetryingOperation> *)hasVideoOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                              onError:(JiveErrorBlock)errorBlock;
 
+- (void)blogsEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
+                    onError:(JiveErrorBlock)errorBlock;
+- (AFJSONRequestOperation<JiveRetryingOperation> *)blogsEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                        onError:(JiveErrorBlock)errorBlock;
+
 - (void)realTimeChatEnabled:(JiveBOOLFlagCompletedBlock)completeBlock
                     onError:(JiveErrorBlock)errorBlock;
 - (AFJSONRequestOperation<JiveRetryingOperation> *)realTimeChatEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
@@ -72,5 +77,15 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 - (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                             onError:(JiveErrorBlock)errorBlock;
 - (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                          onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)shareEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                 onError:(JiveErrorBlock)errorBlock;
+- (void)shareEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+
+- (void)maxAttachmentSizeInKB:(JiveNumericCompletedBlock)completeBlock
+                      onError:(JiveErrorBlock)errorBlock;
 
 @end

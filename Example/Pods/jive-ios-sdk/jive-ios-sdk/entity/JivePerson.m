@@ -447,7 +447,8 @@ NSString * const JivePersonGuestID = @"-1";
     
     [request setHTTPBody:body];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", [[request HTTPBody] length]] forHTTPHeaderField:@"Content-Length"];
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPMethod:JiveHTTPMethodTypes.PUT];
     return [self updateJiveTypedObject:self
                            withRequest:request
@@ -557,8 +558,9 @@ NSString * const JivePersonGuestID = @"-1";
     [request setHTTPBody:body];
     [request setHTTPMethod:JiveHTTPMethodTypes.POST];
     [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%i", request.HTTPBody.length]
-   forHTTPHeaderField:@"Content-Length"];
+    
+    NSNumber *HTTPBodyLength = @([[request HTTPBody] length]);
+    [request setValue:[HTTPBodyLength stringValue] forHTTPHeaderField:@"Content-Length"];
     return [self.jiveInstance listOperationForClass:[JiveStream class]
                                             request:request
                                          onComplete:completeBlock

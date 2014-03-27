@@ -34,15 +34,13 @@ struct JiveContentBodyAttributes const JiveContentBodyAttributes = {
     
     [dictionary setValue:text forKey:JiveContentBodyAttributes.text];
     [dictionary setValue:type forKey:JiveContentBodyAttributes.type];
+    [dictionary setValue:editable forKey:JiveContentBodyAttributes.editable];
     
     return dictionary;
 }
 
 - (id)persistentJSON {
     NSMutableDictionary *dictionary = [super persistentJSON];
-    
-    [dictionary setValue:editable forKey:JiveContentBodyAttributes.editable];
-    
     return dictionary;
 }
 

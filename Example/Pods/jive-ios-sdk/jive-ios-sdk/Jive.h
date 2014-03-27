@@ -50,6 +50,7 @@
 #import "JiveUpdate.h"
 #import "JiveExternalObject.h"
 #import "JivePersonJive.h"
+#import "JiveGenericPerson.h"
 #import "JiveName.h"
 #import "JiveAddress.h"
 #import "JiveEmail.h"
