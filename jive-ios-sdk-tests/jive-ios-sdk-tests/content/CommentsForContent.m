@@ -32,37 +32,45 @@
 - (void) testCommentsForContent {
     
     JiveSearchContentsRequestOptions *searchOptions = [[JiveSearchContentsRequestOptions alloc] init];
-    
-    
-   
     __block NSArray *returnedContentsList = nil;
-    
-    
     __block NSArray *returnedCommentsListFromSDK = nil;
-    
-    [searchOptions addSearchTerm:@"iOS-SDK-TestUser1 Document Subject1"];
-    [self waitForTimeout:^(dispatch_block_t finishBlock3) {
-        [jive1 searchContents:searchOptions onComplete:^(NSArray *results) {
-            returnedContentsList = results;
-            finishBlock3();
-        } onError:^(NSError *error) {
-            STFail([error localizedDescription]);
-            finishBlock3();
-        }];
-    }];
-    
+    NSString* docSubj = nil;
     JiveContent *testContent = nil;
-    for (JiveContent *aContent in returnedContentsList) {
-        if ([aContent.subject isEqualToString:@"iOS-SDK-TestUser1 Document Subject1"]) {
-            testContent = aContent;
+    int attempt = 0;
+    const int maxAttempts = 5;
+    
+    while ((returnedContentsList == nil || testContent != nil) && attempt++ < maxAttempts) {
+        NSNumber *documentNumber = @(arc4random());
+        
+        docSubj = [NSString stringWithFormat:@"iOS-SDK-TestUser1 Document Subject%@",
+                         [documentNumber stringValue]];
+        [searchOptions addSearchTerm:docSubj];
+        [self waitForTimeout:^(dispatch_block_t finishBlock3) {
+            [jive1 searchContents:searchOptions onComplete:^(NSArray *results) {
+                returnedContentsList = results;
+                finishBlock3();
+            } onError:^(NSError *error) {
+                STFail([error localizedDescription]);
+                finishBlock3();
+            }];
+        }];
+        
+        for (JiveContent *aContent in returnedContentsList) {
+            if ([aContent.subject isEqualToString:docSubj]) {
+                testContent = aContent;
+            }
         }
+    }
+    
+    if (attempt >= maxAttempts) {
+        STFail(@"Unable to find an unused document name in %@ attempts", [@(attempt) stringValue]);
+        return;
     }
     
     if (testContent == nil){
         JiveDocument *post = [[JiveDocument alloc] init];
         __block JiveContent *testDoc = nil;
         
-        NSString* docSubj = [NSString stringWithFormat:@"iOS-SDK-TestUser1 Document Subject1"];
         
         post.subject = docSubj;
         post.content = [[JiveContentBody alloc] init];

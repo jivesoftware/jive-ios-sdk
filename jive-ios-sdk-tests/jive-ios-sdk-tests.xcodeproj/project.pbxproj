@@ -656,6 +656,7 @@
 				GCC_PREFIX_HEADER = "jive-ios-sdk-tests/jive-ios-sdk-tests-Prefix.pch";
 				INFOPLIST_FILE = "jive-ios-sdk-tests/jive-ios-sdk-tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -671,6 +672,7 @@
 				GCC_PREFIX_HEADER = "jive-ios-sdk-tests/jive-ios-sdk-tests-Prefix.pch";
 				INFOPLIST_FILE = "jive-ios-sdk-tests/jive-ios-sdk-tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

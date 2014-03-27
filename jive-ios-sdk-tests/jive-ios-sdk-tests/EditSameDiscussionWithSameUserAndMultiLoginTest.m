@@ -33,15 +33,17 @@
               }];
     }];
     
-    JivePlace* publishedPlace;
-    if ( ([returnedPlaces count] > 0) && ([returnedPlaces[0] isKindOfClass:[JivePlace class]])){
-        publishedPlace = (JivePlace*) [returnedPlaces objectAtIndex:0];
-    }
-    else{
-        STFail(@"The returned class is not 'JivePlace' class");
+    if ([returnedPlaces count] == 0) {
+        STFail(@"No place was found. Server failed.");
+        return;
     }
     
+    if (![returnedPlaces[0] isKindOfClass:[JivePlace class]]) {
+        STFail(@"The returned class '%@' is not 'JivePlace'", [returnedPlaces[0] class]);
+        return;
+    }
     
+    JivePlace *publishedPlace = (JivePlace*) [returnedPlaces objectAtIndex:0];
     __block JiveContent *testDoc = nil;
     //create a doc for editing from userid1
     NSString* docSubj = [NSString stringWithFormat:@"Test discussion For testing edit support From SDK- %d", (arc4random() % 1500000)];
