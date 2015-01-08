@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "jive-ios-sdk"
-    s.version       = "0.6.6"
+    s.version       = "0.6.7"
     s.license       = { :type => "Apache License, Version 2.0", :file => "README.md" }
     s.summary       = "iOS SDK for the Jive REST API."
     s.homepage      = "https://github.com/jivesoftware/jive-ios-sdk"
