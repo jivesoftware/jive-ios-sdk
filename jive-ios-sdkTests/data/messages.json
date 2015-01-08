@@ -1,0 +1,234 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "parent" : "https://testing.jiveland.com/api/core/v3/contents/372088",
+    "type" : "message",
+    "subject" : "Re: Wigwam dates",
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/372088",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:1e47eba0-4637-4440-a7e6-f297b991c758] --><div class=\"jive-rendered-content\"><p>Do you know what's driving 4/15?</p></div><!-- [DocumentBodyEnd:1e47eba0-4637-4440-a7e6-f297b991c758] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Stewart",
+        "familyName" : "Wachs",
+        "formatted" : "Stewart Wachs"
+      },
+      "type" : "person",
+      "displayName" : "Stewart Wachs",
+      "jive" : {
+        "level" : {
+          "name" : "Astatine",
+          "points" : 13781
+        },
+        "username" : "wachs.stewart"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://testing.jiveland.com/people/wachs.stewart",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2196",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "2196"
+    },
+    "published" : "2010-12-10T22:57:25.513+0000",
+    "replyCount" : 1,
+    "updated" : "2010-12-10T22:57:25.513+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582073/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582073",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/message/582073#582073",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/582073",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582073/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "582073"
+  }, {
+    "parent" : "https://testing.jiveland.com/api/core/v3/messages/582073",
+    "type" : "message",
+    "subject" : "Re: Wigwam dates",
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/372088",
+    "answer" : false,
+    "helpful" : false,
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:752ff804-8586-4ec5-8142-d928e17a1ff7] --><div class=\"jive-rendered-content\"><p>I asked their business sponsor and he said there are several large projects going on and they each have assigned dates, so they need to fit in this window for outages, resources, overall coordination. I asked if it could move and was basically given the same answer. Didn't get the sense that it was impossible, but just very difficult and with the pending renewal want to be sure we're all in sync internally. </p></div><!-- [DocumentBodyEnd:752ff804-8586-4ec5-8142-d928e17a1ff7] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Jennifer",
+        "familyName" : "Klafin",
+        "formatted" : "Jennifer Klafin"
+      },
+      "type" : "person",
+      "displayName" : "Jennifer Klafin",
+      "jive" : {
+        "level" : {
+          "name" : "Dysprosium",
+          "points" : 7720
+        },
+        "username" : "klafin.jennifer"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://testing.jiveland.com/people/klafin.jennifer",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4192",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "4192"
+    },
+    "published" : "2010-12-11T00:17:49.007+0000",
+    "replyCount" : 0,
+    "updated" : "2010-12-11T00:17:49.007+0000",
+    "visibleToExternalContributors" : false,
+    "tags" : [ ],
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582181/likes",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582181",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/message/582181#582181",
+        "allowed" : [ "GET" ]
+      },
+      "attachments" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/582181",
+        "allowed" : [ "GET" ]
+      },
+      "messages" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/582181/messages",
+        "allowed" : [ "GET", "POST" ]
+      }
+    },
+    "id" : "582181"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

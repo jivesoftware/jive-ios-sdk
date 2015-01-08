@@ -1,0 +1,139 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "itemsPerPage" : 25,
+    "list" : [ {
+              "id" : "22871",
+              "resources" : {
+              "self" : {
+              "allowed" : [ "GET", "DELETE" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/outcomes/22871"
+              }
+              },
+              "updated" : "2011-04-04T18:35:22.532+0000",
+              "parent" : "https://testing.jiveland.com/api/core/v3/messages/668866",
+              "outcomeType" : {
+              "id" : "4",
+              "name" : "helpful"
+              },
+              "user" : {
+              "id" : "5568",
+              "resources" : {
+              "reports" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/@reports"
+              },
+              "manager" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/@manager"
+              },
+              "self" : {
+              "allowed" : [ "GET", "PUT" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568"
+              },
+              "tasks" : {
+              "allowed" : [ "POST", "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/tasks"
+              },
+              "avatar" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/avatar"
+              },
+              "colleagues" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/@colleagues"
+              },
+              "extprops" : {
+              "allowed" : [ "POST", "GET", "DELETE" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/extprops"
+              },
+              "followers" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/@followers"
+              },
+              "following" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/@following"
+              },
+              "images" : {
+              "allowed" : [ "POST", "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/images"
+              },
+              "html" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/people/case.taylor"
+              },
+              "streams" : {
+              "allowed" : [ "POST", "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/streams"
+              },
+              "followingIn" : {
+              "allowed" : [ "POST", "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/followingIn"
+              },
+              "activity" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/5568/activities"
+              },
+              "members" : {
+              "allowed" : [ "GET" ],
+              "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5568"
+              }
+              },
+              "followerCount" : 18,
+              "published" : "2011-02-26T19:50:58.537+0000",
+              "updated" : "2011-04-04T17:49:25.487+0000",
+              "displayName" : "Taylor Case",
+              "emails" : [ {
+                          "jive_label" : "Email",
+                          "primary" : true,
+                          "type" : "work",
+                          "value" : "case.taylor@not real email.com"
+                          } ],
+              "followingCount" : 30,
+              "jive" : {
+              "enabled" : true,
+              "external" : false,
+              "federated" : true,
+              "level" : {
+              "name" : "Nitrogen",
+              "points" : 121
+              },
+              "locale" : "en_US",
+              "externalContributor" : false,
+              "profile" : [ {
+                           "jive_label" : "Title",
+                           "value" : "Associate Software Engineer - Mobile Team"
+                           }, {
+                           "jive_label" : "Department",
+                           "value" : "Engineering"
+                           }, {
+                           "jive_label" : "Expertise",
+                           "value" : "Software Engineering, Mobile, iOS, Video Games, Skateboarding, Snowboarding"
+                           }, {
+                           "jive_label" : "Company",
+                           "value" : "Jive Software"
+                           } ],
+              "sendable" : true,
+              "timeZone" : "America/Denver",
+              "username" : "case.taylor",
+              "visible" : true
+              },
+              "name" : {
+              "familyName" : "Case",
+              "formatted" : "Taylor Case",
+              "givenName" : "Taylor"
+              },
+              "photos" : [ {
+                          "value" : "https://testing.jiveland.com/api/core/v3/people/5568/images/1/data"
+                          } ],
+              "status" : "Testing the iPad app!",
+              "thumbnailId" : "7694",
+              "thumbnailUrl" : "https://testing.jiveland.com/api/core/v3/people/5568/avatar",
+              "type" : "person"
+              },
+              "creationDate" : "2011-04-04T18:35:22.532+0000",
+              "properties" : { },
+              "type" : "outcome"
+              } ],
+    "startIndex" : 0
+}

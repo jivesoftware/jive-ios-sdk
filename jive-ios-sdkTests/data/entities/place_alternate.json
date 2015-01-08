@@ -1,0 +1,138 @@
+{
+  "type" : "group",
+  "memberCount" : 8,
+  "creator" : {
+    "name" : {
+      "givenName" : "Phil",
+      "familyName" : "Varner",
+      "formatted" : "Phil Varner"
+    },
+    "type" : "person",
+    "displayName" : "Phil Varner",
+    "jive" : {
+      "level" : {
+        "name" : "Dysprosium",
+        "points" : 7601
+      },
+      "username" : "varner.phil"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/varner.phil",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2885/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2885",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2885"
+  },
+  "groupType" : "PRIVATE",
+  "name" : "!'\",.?*@`~-+_=/\\:$&",
+  "displayName" : "1523001374",
+  "status" : "Active",
+  "description" : "",
+  "contentTypes" : [ "blog", "discussions", "updates", "videos" ],
+  "viewCount" : 85,
+  "published" : "2009-01-28T22:03:53.296+0000",
+  "updated" : "2010-03-21T20:32:31.920+0000",
+  "visibleToExternalContributors" : false,
+  "tags" : [ ],
+  "followerCount" : 7,
+  "resources" : {
+    "invites" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/invites/places/95191",
+      "allowed" : [ "GET" ]
+    },
+    "contents" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Ftesting.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F95191)",
+      "allowed" : [ "GET" ]
+    },
+    "announcements" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/announcements",
+      "allowed" : [ "GET" ]
+    },
+    "self" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191",
+      "allowed" : [ "GET" ]
+    },
+    "html" : {
+      "ref" : "https://testing.jiveland.com/groups/1523001374",
+      "allowed" : [ "GET" ]
+    },
+    "categories" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/categories",
+      "allowed" : [ "GET" ]
+    },
+    "places" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/places",
+      "allowed" : [ "GET" ]
+    },
+    "followingIn" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/followingIn",
+      "allowed" : [ "GET" ]
+    },
+    "avatar" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/avatar",
+      "allowed" : [ "GET" ]
+    },
+    "members" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/members/places/95191",
+      "allowed" : [ "GET" ]
+    },
+      "tasks" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/tasks",
+          "allowed" : [ "GET", "POST" ]
+      },
+    "activity" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/95191/activities",
+      "allowed" : [ "GET" ]
+    }
+  },
+  "id" : "2420"
+}

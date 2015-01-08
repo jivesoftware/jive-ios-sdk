@@ -1,0 +1,636 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "Aaron",
+      "familyName" : "Malenfant",
+      "formatted" : "Aaron Malenfant"
+    },
+    "type" : "person",
+    "displayName" : "Aaron Malenfant",
+    "jive" : {
+      "level" : {
+        "name" : "Selenium",
+        "points" : 2115
+      },
+      "username" : "malenfant.aaron"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/malenfant.aaron",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3465",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3465"
+  }, {
+    "name" : {
+      "givenName" : "Aurelien",
+      "familyName" : "Mercier",
+      "formatted" : "Aurelien Mercier"
+    },
+    "type" : "person",
+    "displayName" : "Aurelien Mercier",
+    "jive" : {
+      "level" : {
+        "name" : "Sodium",
+        "points" : 292
+      },
+      "username" : "mercier.aurelien"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/mercier.aurelien",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4377",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4377"
+  }, {
+    "name" : {
+      "givenName" : "Dmitry",
+      "familyName" : "Apresian",
+      "formatted" : "Dmitry Apresian"
+    },
+    "type" : "person",
+    "displayName" : "Dmitry Apresian",
+    "jive" : {
+      "level" : {
+        "name" : "Zinc",
+        "points" : 1599
+      },
+      "username" : "apresian.dmitry"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/apresian.dmitry",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3508",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3508"
+  }, {
+    "name" : {
+      "givenName" : "Edward",
+      "familyName" : "Schaefer",
+      "formatted" : "Edward Schaefer"
+    },
+    "type" : "person",
+    "displayName" : "Edward Schaefer",
+    "jive" : {
+      "level" : {
+        "name" : "Argon",
+        "points" : 692
+      },
+      "username" : "schaefer.edward"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/schaefer.edward",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4712",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4712"
+  }, {
+    "name" : {
+      "givenName" : "Ghislain",
+      "familyName" : "Seguin",
+      "formatted" : "Ghislain Seguin"
+    },
+    "type" : "person",
+    "displayName" : "Ghislain Seguin",
+    "jive" : {
+      "level" : {
+        "name" : "Argon",
+        "points" : 631
+      },
+      "username" : "seguin.ghislain"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/seguin.ghislain",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3945",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3945"
+  }, {
+    "name" : {
+      "givenName" : "Nitzan",
+      "familyName" : "Harel",
+      "formatted" : "Nitzan Harel"
+    },
+    "type" : "person",
+    "displayName" : "Nitzan Harel",
+    "jive" : {
+      "level" : {
+        "name" : "Yttrium",
+        "points" : 2954
+      },
+      "username" : "harel.nitzan"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/harel.nitzan",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4572",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4572"
+  }, {
+    "name" : {
+      "givenName" : "Rob",
+      "familyName" : "Derstadt",
+      "formatted" : "Rob Derstadt"
+    },
+    "type" : "person",
+    "displayName" : "Rob Derstadt",
+    "jive" : {
+      "level" : {
+        "name" : "Titanium",
+        "points" : 969
+      },
+      "username" : "derstadt.rob"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/derstadt.rob",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3550",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3550"
+  }, {
+    "name" : {
+      "givenName" : "Sam",
+      "familyName" : "Meder",
+      "formatted" : "Sam Meder"
+    },
+    "type" : "person",
+    "displayName" : "Sam Meder",
+    "jive" : {
+      "level" : {
+        "name" : "Germanium",
+        "points" : 1779
+      },
+      "username" : "meder.sam"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/meder.sam",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3165",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3165"
+  }, {
+    "name" : {
+      "givenName" : "Volkan",
+      "familyName" : "Ozcelik",
+      "formatted" : "Volkan Ozcelik"
+    },
+    "type" : "person",
+    "displayName" : "Volkan Ozcelik",
+    "jive" : {
+      "level" : {
+        "name" : "Aluminium",
+        "points" : 363
+      },
+      "username" : "ozcelik.volkan"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/ozcelik.volkan",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5189",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5189"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

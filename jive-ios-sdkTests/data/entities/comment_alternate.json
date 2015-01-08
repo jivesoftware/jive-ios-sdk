@@ -1,0 +1,114 @@
+{
+    "type" : "comment",
+    "subject" : "Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....",
+    "rootType" : "dm",
+    "rootURI" : "https://testing.jiveland.com/api/core/v3/dms/150323",
+    "parent" : "https://testing.jiveland.com/api/core/v3/dms/150323",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:7f270921-308d-45cf-a09f-f2c9396b33c7] --><div class=\"jive-rendered-content\"><span>I don't have a Dropbox account.</span></div><!-- [DocumentBodyEnd:7f270921-308d-45cf-a09f-f2c9396b33c7] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Orson",
+        "familyName" : "Bushnell",
+        "formatted" : "Orson Bushnell"
+      },
+      "type" : "person",
+      "displayName" : "Orson Bushnell",
+      "jive" : {
+        "level" : {
+          "name" : "Neon",
+          "points" : 233
+        },
+        "username" : "bushnell.orson"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316",
+          "allowed" : [ "PUT", "GET" ]
+        },
+        "tasks" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/tasks",
+          "allowed" : [ "POST", "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/images",
+          "allowed" : [ "POST", "GET" ]
+        },
+        "streams" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/streams",
+          "allowed" : [ "POST", "GET" ]
+        },
+        "html" : {
+          "ref" : "https://testing.jiveland.com/people/bushnell.orson",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5316",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5316"
+    },
+    "published" : "2010-11-20T18:40:59.117+0000",
+    "replyCount" : 0,
+    "updated" : "2010-11-20T18:40:59.117+0000",
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484710/likes",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484710",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/inbox/dm/150323#comment-484710",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484710/comments",
+        "allowed" : [ "POST", "GET" ]
+      }
+    },
+    "id" : "484710"
+}

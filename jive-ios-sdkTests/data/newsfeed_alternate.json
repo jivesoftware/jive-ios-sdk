@@ -1,0 +1,468 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "newsStreams" : [ {
+    "activities" : [ {
+      "actor" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2015",
+        "displayName" : "Regin A",
+        "image" : {
+          "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2015/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-11-24T19:53:31.653+0000",
+        "updated" : "2014-11-24T19:53:58.018+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/regin.a%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/regin.a%40jivesoftware.com\">Regin A</a> created <a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/regin.a%40jivesoftware.com/status/1000\">Don't worry.</a>",
+      "jive" : {
+        "collection" : "1464927464-1000",
+        "collectionUpdated" : "2014-11-24T19:54:51.901+0000",
+        "followingInStream" : false,
+        "imagesCount" : 0,
+        "likeCount" : 1,
+        "liked" : true,
+        "replyCount" : 0,
+        "objectID" : 1000,
+        "objectType" : 1464927464,
+        "iconCss" : "jive-icon-med jive-icon-status",
+        "canComment" : true,
+        "canLike" : false,
+        "discovery" : [ ]
+      },
+      "object" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/contents/1017",
+        "displayName" : "Don't worry.",
+        "objectType" : "jive:update",
+        "published" : "2014-11-24T19:54:51.739+0000",
+        "summary" : "Don't worry.",
+        "updated" : "2014-11-24T19:54:51.739+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/regin.a%40jivesoftware.com/status/1000"
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com"
+      },
+      "published" : "2014-11-24T19:54:51.901+0000",
+      "title" : "Don't worry.",
+      "updated" : "2014-11-24T19:54:51.901+0000",
+      "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/regin.a%40jivesoftware.com/status/1000",
+      "verb" : "jive:created",
+      "previewImage" : "https://jivesoftware-8c5-mobile.jivelandia.com/images/jive-profile-default-portrait.png",
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2013",
+        "displayName" : "Todd McAwesome",
+        "image" : {
+          "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2013/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-11-20T22:12:54.462+0000",
+        "updated" : "2014-11-20T22:37:10.777+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com\">Todd McAwesome</a> created <a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/docs/DOC-1001\">Stuff with picture</a> in <a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/groups/group-of-ages\">Group of Ages</a>",
+      "jive" : {
+        "collection" : "102-1001",
+        "collectionUpdated" : "2014-11-20T22:33:22.826+0000",
+        "followingInStream" : false,
+        "likeCount" : 0,
+        "liked" : false,
+        "replyCount" : 0,
+        "objectID" : 1001,
+        "objectType" : 102,
+        "iconCss" : "jive-icon-document",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ "matters_most" ]
+      },
+      "object" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/contents/1012",
+        "displayName" : "Stuff with picture",
+        "objectType" : "jive:document",
+        "published" : "2014-11-20T22:33:22.251+0000",
+        "summary" : "Woot! &#160;",
+        "updated" : "2014-11-20T22:36:39.449+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/docs/DOC-1001",
+        "contentImages" : [ {
+          "id" : "1783",
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/images/1783?a=1416522802282",
+          "size" : 982424,
+          "width" : 500,
+          "height" : 333,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com"
+      },
+      "published" : "2014-11-20T22:33:22.826+0000",
+      "target" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/places/1013",
+        "displayName" : "Group of Ages",
+        "image" : {
+          "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/places/1013/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-11-20T22:34:11.937+0000",
+        "summary" : " ",
+        "updated" : "2014-11-20T22:35:22.141+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/groups/group-of-ages"
+      },
+      "title" : "Stuff with picture",
+      "updated" : "2014-11-20T22:33:22.826+0000",
+      "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/docs/DOC-1001",
+      "verb" : "jive:created",
+      "previewImage" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/contents/1012/previewImage?a=1416522999449&t=102",
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2013",
+        "displayName" : "Todd McAwesome",
+        "image" : {
+          "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2013/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-11-20T22:12:54.462+0000",
+        "updated" : "2014-11-20T22:37:10.777+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com\">Todd McAwesome</a> created <a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/11/20/make-it-happen\">Make it happen</a> in <a href=\"https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog\">Todd McAwesome's Blog</a>",
+      "jive" : {
+        "collection" : "38-1001",
+        "collectionUpdated" : "2014-11-20T22:30:26.417+0000",
+        "followingInStream" : false,
+        "replyCount" : 0,
+        "objectID" : 1001,
+        "objectType" : 38,
+        "iconCss" : "jive-icon-blog",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ]
+      },
+      "object" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/contents/1011",
+        "displayName" : "Make it happen",
+        "objectType" : "jive:post",
+        "published" : "2014-11-20T22:30:26.044+0000",
+        "summary" : "Do it! &#160;",
+        "updated" : "2014-11-20T22:30:26.170+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/11/20/make-it-happen",
+        "contentImages" : [ {
+          "id" : "1782",
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/images/1782?a=1416522626214",
+          "size" : 495244,
+          "width" : 359,
+          "height" : 222,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com"
+      },
+      "published" : "2014-11-20T22:30:26.417+0000",
+      "target" : {
+        "id" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/places/1010",
+        "displayName" : "Todd McAwesome's Blog",
+        "objectType" : "jive:blog",
+        "published" : "2014-11-20T22:30:25.950+0000",
+        "updated" : "2014-11-20T22:30:26.400+0000",
+        "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog"
+      },
+      "title" : "Make it happen",
+      "updated" : "2014-11-20T22:30:26.417+0000",
+      "url" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/11/20/make-it-happen",
+      "verb" : "jive:created",
+      "previewImage" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/contents/1011/previewImage?a=1416522626170&t=38",
+      "type" : "activity"
+    } ],
+    "stream" : {
+      "id" : "27",
+      "resources" : {
+        "associations" : {
+          "allowed" : [ "GET", "DELETE", "POST" ],
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/streams/27/associations"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/streams/27/activities"
+        },
+        "self" : {
+          "allowed" : [ "GET", "PUT", "DELETE" ],
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/streams/27"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/activity?streamSource=custom&streamID=27"
+        }
+      },
+      "name" : "Ignore",
+      "person" : {
+        "id" : "2016",
+        "resources" : {
+          "reports" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@reports"
+          },
+          "followingIn" : {
+            "allowed" : [ "GET", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/followingIn"
+          },
+          "images" : {
+            "allowed" : [ "GET", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/images"
+          },
+          "activity" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/activities"
+          },
+          "manager" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@manager"
+          },
+          "social" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@social"
+          },
+          "streams" : {
+            "allowed" : [ "GET", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/streams"
+          },
+          "recognition" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@recognition"
+          },
+          "trendingContent" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@trendingContent"
+          },
+          "trendingPlaces" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@trendingPlaces"
+          },
+          "avatar" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/avatar?a=-1"
+          },
+          "followers" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@followers"
+          },
+          "pages" : {
+            "allowed" : [ "GET", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/pages"
+          },
+          "colleagues" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@colleagues"
+          },
+          "following" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@following"
+          },
+          "members" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/members/people/2016"
+          },
+          "self" : {
+            "allowed" : [ "GET", "PUT" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016"
+          },
+          "html" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/orson.bushnell%40jivesoftware.com"
+          },
+          "securityGroups" : {
+            "allowed" : [ "GET" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/securityGroups"
+          },
+          "extprops" : {
+            "allowed" : [ "GET", "DELETE", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/extprops"
+          },
+          "tasks" : {
+            "allowed" : [ "GET", "POST" ],
+            "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/tasks"
+          }
+        },
+        "displayName" : "Orson Bushnell",
+        "emails" : [ {
+          "jive_label" : "Email",
+          "primary" : true,
+          "type" : "work",
+          "value" : "orson.bushnell@jivesoftware.com",
+          "jive_displayOrder" : 3,
+          "jive_summaryDisplayOrder" : 2,
+          "jive_showSummaryLabel" : true
+        } ],
+        "jive" : {
+          "level" : {
+            "imageURI" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/images/status/statusicon-47.gif",
+            "name" : "Newbie",
+            "points" : 14
+          },
+          "externalContributor" : false,
+          "username" : "orson.bushnell@jivesoftware.com"
+        },
+        "name" : {
+          "familyName" : "Bushnell",
+          "formatted" : "Orson Bushnell",
+          "givenName" : "Orson"
+        },
+        "type" : "person"
+      },
+      "published" : "2014-11-26T17:29:29.298+0000",
+      "receiveEmails" : false,
+      "source" : "custom",
+      "updated" : "2014-11-26T17:29:35.992+0000",
+      "type" : "stream"
+    },
+    "type" : "newsStream"
+  } ],
+  "owner" : {
+    "id" : "2016",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@reports"
+      },
+      "followingIn" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/followingIn"
+      },
+      "images" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/images"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/activities"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@manager"
+      },
+      "social" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@social"
+      },
+      "streams" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/streams"
+      },
+      "recognition" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@recognition"
+      },
+      "trendingContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@trendingContent"
+      },
+      "trendingPlaces" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@trendingPlaces"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/avatar?a=-1"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@followers"
+      },
+      "pages" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/pages"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@colleagues"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/@following"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/members/people/2016"
+      },
+      "self" : {
+        "allowed" : [ "GET", "PUT" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/people/orson.bushnell%40jivesoftware.com"
+      },
+      "securityGroups" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/securityGroups"
+      },
+      "extprops" : {
+        "allowed" : [ "GET", "DELETE", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/extprops"
+      },
+      "tasks" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/tasks"
+      }
+    },
+    "followerCount" : 0,
+    "published" : "2014-11-26T17:25:37.629+0000",
+    "updated" : "2014-11-26T17:30:06.645+0000",
+    "displayName" : "Orson Bushnell",
+    "mentionName" : "Orson Bushnell",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "orson.bushnell@jivesoftware.com",
+      "jive_displayOrder" : 3,
+      "jive_summaryDisplayOrder" : 2,
+      "jive_showSummaryLabel" : true
+    } ],
+    "followingCount" : 4,
+    "jive" : {
+      "enabled" : true,
+      "external" : false,
+      "federated" : false,
+      "lastProfileUpdate" : "2014-11-26T17:26:19.295+0000",
+      "lastAuthenticated" : "2014-11-26T17:26:01.690+0000",
+      "level" : {
+        "imageURI" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/images/status/statusicon-47.gif",
+        "name" : "Newbie",
+        "points" : 14
+      },
+      "locale" : "en_US",
+      "externalContributor" : false,
+      "sendable" : true,
+      "timeZone" : "America/Los_Angeles",
+      "username" : "orson.bushnell@jivesoftware.com",
+      "visible" : true,
+      "termsAndConditionsRequired" : false
+    },
+    "name" : {
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell",
+      "givenName" : "Orson"
+    },
+    "thumbnailId" : "-1",
+    "thumbnailUrl" : "https://jivesoftware-8c5-mobile.jivelandia.com/api/core/v3/people/2016/avatar?a=-1",
+    "type" : "person"
+  },
+  "type" : "news"
+}

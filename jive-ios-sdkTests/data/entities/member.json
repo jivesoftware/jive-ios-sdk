@@ -1,0 +1,228 @@
+{
+    "state" : "member",
+    "type" : "member",
+    "group" : {
+        "type" : "group",
+        "memberCount" : 47,
+        "creator" : {
+            "name" : {
+                "givenName" : "Aaron",
+                "familyName" : "Malenfant",
+                "formatted" : "Aaron Malenfant"
+            },
+            "type" : "person",
+            "displayName" : "Aaron Malenfant",
+            "jive" : {
+                "level" : {
+                    "name" : "Rubidium",
+                    "points" : 2576
+                },
+                "username" : "malenfant.aaron"
+            },
+            "resources" : {
+                "reports" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@reports",
+                    "allowed" : [ "GET" ]
+                },
+                "manager" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@manager",
+                    "allowed" : [ "GET" ]
+                },
+                "self" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465",
+                    "allowed" : [ "GET" ]
+                },
+                "avatar" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/avatar",
+                    "allowed" : [ "GET" ]
+                },
+                "blog" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/blog",
+                    "allowed" : [ "GET" ]
+                },
+                "colleagues" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@colleagues",
+                    "allowed" : [ "GET" ]
+                },
+                "followers" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@followers",
+                    "allowed" : [ "GET" ]
+                },
+                "following" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@following",
+                    "allowed" : [ "GET" ]
+                },
+                "images" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/images",
+                    "allowed" : [ "GET" ]
+                },
+                "html" : {
+                    "ref" : "https://testing.jiveland.com/people/malenfant.aaron",
+                    "allowed" : [ "GET" ]
+                },
+                "followingIn" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/followingIn",
+                    "allowed" : [ "GET" ]
+                },
+                "activity" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/activities",
+                    "allowed" : [ "GET" ]
+                },
+                "members" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3465",
+                    "allowed" : [ "GET" ]
+                }
+            },
+            "id" : "3465"
+        },
+        "groupType" : "OPEN",
+        "name" : "Jive Mobile Beta",
+        "displayName" : "jive-mobile-beta",
+        "status" : "Active",
+        "description" : "Group for people interested in trying the bleeding edge Jive Mobile Native releases for Android and iPhone.",
+        "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+        "viewCount" : 1807,
+        "published" : "2010-06-19T21:27:28.444+0000",
+        "updated" : "2011-01-02T09:01:41.498+0000",
+        "visibleToExternalContributors" : false,
+        "tags" : [ ],
+        "followerCount" : 45,
+        "resources" : {
+            "invites" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/invites/places/305860",
+                "allowed" : [ "POST", "GET" ]
+            },
+            "contents" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Ftesting.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F305860)",
+                "allowed" : [ "GET" ]
+            },
+            "announcements" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/announcements",
+                "allowed" : [ "GET" ]
+            },
+            "self" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860",
+                "allowed" : [ "GET" ]
+            },
+            "html" : {
+                "ref" : "https://testing.jiveland.com/groups/jive-mobile-beta",
+                "allowed" : [ "GET" ]
+            },
+            "categories" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/categories",
+                "allowed" : [ "GET" ]
+            },
+            "places" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/places",
+                "allowed" : [ "GET" ]
+            },
+            "followingIn" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/followingIn",
+                "allowed" : [ "GET" ]
+            },
+            "blog" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305861",
+                "allowed" : [ "GET" ]
+            },
+            "avatar" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/avatar",
+                "allowed" : [ "GET" ]
+            },
+            "members" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/members/places/305860",
+                "allowed" : [ "POST", "GET" ]
+            },
+            "activity" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/305860/activities",
+                "allowed" : [ "GET" ]
+            }
+        },
+        "id" : "4059"
+    },
+    "person" : {
+        "name" : {
+            "givenName" : "Heath",
+            "familyName" : "Borders",
+            "formatted" : "Heath Borders"
+        },
+        "type" : "person",
+        "displayName" : "Heath Borders",
+        "jive" : {
+            "level" : {
+                "name" : "Oxygen",
+                "points" : 141
+            },
+            "username" : "borders.heath"
+        },
+        "resources" : {
+            "reports" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@reports",
+                "allowed" : [ "GET" ]
+            },
+            "manager" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@manager",
+                "allowed" : [ "GET" ]
+            },
+            "self" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327",
+                "allowed" : [ "PUT", "GET" ]
+            },
+            "tasks" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/tasks",
+                "allowed" : [ "POST", "GET" ]
+            },
+            "avatar" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/avatar",
+                "allowed" : [ "GET" ]
+            },
+            "blog" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/blog",
+                "allowed" : [ "GET" ]
+            },
+            "colleagues" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@colleagues",
+                "allowed" : [ "GET" ]
+            },
+            "followers" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@followers",
+                "allowed" : [ "GET" ]
+            },
+            "following" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@following",
+                "allowed" : [ "GET" ]
+            },
+            "images" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/images",
+                "allowed" : [ "POST", "GET" ]
+            },
+            "streams" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/streams",
+                "allowed" : [ "POST", "GET" ]
+            },
+            "html" : {
+                "ref" : "https://testing.jiveland.com/people/borders.heath",
+                "allowed" : [ "GET" ]
+            },
+            "followingIn" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/followingIn",
+                "allowed" : [ "GET" ]
+            },
+            "activity" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/activities",
+                "allowed" : [ "GET" ]
+            },
+            "members" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5327",
+                "allowed" : [ "GET" ]
+            }
+        },
+        "id" : "5327"
+    },
+    "id" : "36391",
+    "resources" : {
+        "self" : {
+            "ref" : "https://testing.jiveland.com/api/core/v3/members/36391",
+            "allowed" : [ "PUT", "GET", "DELETE" ]
+        }
+    }
+}

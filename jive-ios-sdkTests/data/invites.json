@@ -1,0 +1,171 @@
+throw 'allowIllegalResourceCall is false.';
+{
+    "list" : [ {
+              "type" : "invite",
+              "body" : "Re: Wigwam dates",
+              "state" : "sent",
+              "invitee" : {
+                  "name" : {
+                      "givenName" : "Stewart",
+                      "familyName" : "Wachs",
+                      "formatted" : "Stewart Wachs"
+                  },
+                  "type" : "person",
+                  "displayName" : "Stewart Wachs",
+                  "jive" : {
+                      "level" : {
+                          "name" : "Astatine",
+                          "points" : 13781
+                      },
+                      "username" : "wachs.stewart"
+                  },
+                  "resources" : {
+                      "reports" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@reports",
+                          "allowed" : [ "GET" ]
+                      },
+                      "manager" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@manager",
+                          "allowed" : [ "GET" ]
+                      },
+                      "self" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196",
+                          "allowed" : [ "GET" ]
+                      },
+                      "avatar" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/avatar",
+                          "allowed" : [ "GET" ]
+                      },
+                      "blog" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/blog",
+                          "allowed" : [ "GET" ]
+                      },
+                      "colleagues" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@colleagues",
+                          "allowed" : [ "GET" ]
+                      },
+                      "followers" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@followers",
+                          "allowed" : [ "GET" ]
+                      },
+                      "following" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/@following",
+                          "allowed" : [ "GET" ]
+                      },
+                      "images" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/images",
+                          "allowed" : [ "GET" ]
+                      },
+                      "html" : {
+                          "ref" : "https://testing.jiveland.com/people/wachs.stewart",
+                          "allowed" : [ "GET" ]
+                      },
+                      "followingIn" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/followingIn",
+                          "allowed" : [ "GET" ]
+                      },
+                      "activity" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/people/2196/activities",
+                          "allowed" : [ "GET" ]
+                      },
+                      "members" : {
+                          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2196",
+                          "allowed" : [ "GET" ]
+                      }
+                  },
+                  "id" : "2196"
+              },
+              "published" : "2010-12-10T22:57:25.513+0000",
+              "resources" : {
+                  "self" : {
+                      "ref" : "https://testing.jiveland.com/api/core/v3/invites/1234567",
+                      "allowed" : [ "GET" ]
+                  },
+              },
+              "id" : "1234567"
+              }, {
+              "type" : "invite",
+              "body" : "Re: Wigwam dates",
+              "state" : "processing",
+              "invitee" : {
+              "name" : {
+              "givenName" : "Jennifer",
+              "familyName" : "Klafin",
+              "formatted" : "Jennifer Klafin"
+              },
+              "type" : "person",
+              "displayName" : "Jennifer Klafin",
+              "jive" : {
+              "level" : {
+              "name" : "Dysprosium",
+              "points" : 7720
+              },
+              "username" : "klafin.jennifer"
+              },
+              "resources" : {
+              "reports" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@reports",
+              "allowed" : [ "GET" ]
+              },
+              "manager" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@manager",
+              "allowed" : [ "GET" ]
+              },
+              "self" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192",
+              "allowed" : [ "GET" ]
+              },
+              "avatar" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/avatar",
+              "allowed" : [ "GET" ]
+              },
+              "blog" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/blog",
+              "allowed" : [ "GET" ]
+              },
+              "colleagues" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@colleagues",
+              "allowed" : [ "GET" ]
+              },
+              "followers" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@followers",
+              "allowed" : [ "GET" ]
+              },
+              "following" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/@following",
+              "allowed" : [ "GET" ]
+              },
+              "images" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/images",
+              "allowed" : [ "GET" ]
+              },
+              "html" : {
+              "ref" : "https://testing.jiveland.com/people/klafin.jennifer",
+              "allowed" : [ "GET" ]
+              },
+              "followingIn" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/followingIn",
+              "allowed" : [ "GET" ]
+              },
+              "activity" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/people/4192/activities",
+              "allowed" : [ "GET" ]
+              },
+              "members" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4192",
+              "allowed" : [ "GET" ]
+              }
+              },
+              "id" : "4192"
+              },
+              "published" : "2010-12-10T22:57:25.513+0000",
+              "resources" : {
+              "self" : {
+              "ref" : "https://testing.jiveland.com/api/core/v3/invites/654321",
+              "allowed" : [ "GET" ]
+              },
+              },
+              "id" : "654321"
+              }
+    ]
+}

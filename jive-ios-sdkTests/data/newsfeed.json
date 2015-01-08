@@ -1,0 +1,619 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "newsStreams" : [ {
+    "activities" : [ {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003",
+        "displayName" : "dude dude",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003/avatar?a=1013"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:34:44.509+0000",
+        "updated" : "2014-12-19T19:36:51.551+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "william.davison@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com\">dude dude</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1045\">Wild Horses...!</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group\">Anti-social Group</a>",
+      "jive" : {
+        "collection" : "102-1045",
+        "collectionUpdated" : "2014-12-17T17:00:10.972+0000",
+        "followingInStream" : false,
+        "likeCount" : 1,
+        "liked" : false,
+        "replyCount" : 2,
+        "objectID" : 1045,
+        "objectType" : 102,
+        "iconCss" : "jive-icon-document",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1065",
+        "displayName" : "Wild Horses...!",
+        "objectType" : "jive:document",
+        "published" : "2014-12-17T17:00:10.828+0000",
+        "summary" : "",
+        "updated" : "2014-12-17T17:00:10.854+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1045",
+        "contentImages" : [ {
+          "id" : "6181",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/6181?a=1418835610847",
+          "size" : 66469,
+          "width" : 768,
+          "height" : 576,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-17T17:00:10.972+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005",
+        "displayName" : "Anti-social Group",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-12-03T22:48:08.010+0000",
+        "summary" : " ",
+        "updated" : "2014-12-19T10:45:43.733+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group"
+      },
+      "title" : "Wild Horses...!",
+      "updated" : "2014-12-17T17:00:10.972+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1045",
+      "verb" : "jive:created",
+      "previewImage" : {
+        "height" : 576,
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1065/previewImage?a=1418835610854&t=102",
+        "width" : 768
+      },
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003",
+        "displayName" : "dude dude",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003/avatar?a=1013"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:34:44.509+0000",
+        "updated" : "2014-12-19T19:36:51.551+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "william.davison@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com\">dude dude</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1043\">Sea Lions!!!</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group\">Anti-social Group</a>",
+      "jive" : {
+        "collection" : "102-1043",
+        "collectionUpdated" : "2014-12-17T16:58:17.894+0000",
+        "followingInStream" : false,
+        "replyCount" : 0,
+        "objectID" : 1043,
+        "objectType" : 102,
+        "iconCss" : "jive-icon-document",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1063",
+        "displayName" : "Sea Lions!!!",
+        "objectType" : "jive:document",
+        "published" : "2014-12-17T16:58:17.819+0000",
+        "summary" : "",
+        "updated" : "2014-12-17T16:58:17.831+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1043",
+        "contentImages" : [ {
+          "id" : "6178",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/6178?a=1418835497827",
+          "size" : 1815323,
+          "width" : 1650,
+          "height" : 1101,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-17T16:58:17.894+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005",
+        "displayName" : "Anti-social Group",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-12-03T22:48:08.010+0000",
+        "summary" : " ",
+        "updated" : "2014-12-19T10:45:43.733+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group"
+      },
+      "title" : "Sea Lions!!!",
+      "updated" : "2014-12-17T16:58:17.894+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1043",
+      "verb" : "jive:created",
+      "previewImage" : {
+        "height" : 1101,
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1063/previewImage?a=1418835497831&t=102",
+        "width" : 1650
+      },
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003",
+        "displayName" : "dude dude",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2003/avatar?a=1013"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:34:44.509+0000",
+        "updated" : "2014-12-19T19:36:51.551+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "william.davison@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com\">dude dude</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com/status/1024\">Sea Lions!</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group\">Anti-social Group</a>",
+      "jive" : {
+        "collection" : "1464927464-1024",
+        "collectionUpdated" : "2014-12-17T16:57:34.087+0000",
+        "followingInStream" : false,
+        "imagesCount" : 1,
+        "likeCount" : 1,
+        "liked" : false,
+        "replyCount" : 0,
+        "objectID" : 1024,
+        "objectType" : 1464927464,
+        "iconCss" : "jive-icon-med jive-icon-status",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1062",
+        "displayName" : "Sea Lions!",
+        "objectType" : "jive:update",
+        "published" : "2014-12-17T16:57:28.903+0000",
+        "summary" : "Sea Lions!",
+        "updated" : "2014-12-17T16:57:28.903+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com/status/1024",
+        "contentImages" : [ {
+          "id" : "6176",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/6176?a=1418835450942",
+          "size" : 1815323,
+          "width" : 1650,
+          "height" : 1101,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-17T16:57:34.087+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005",
+        "displayName" : "Anti-social Group",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-12-03T22:48:08.010+0000",
+        "summary" : " ",
+        "updated" : "2014-12-19T10:45:43.733+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group"
+      },
+      "title" : "Sea Lions!",
+      "updated" : "2014-12-17T16:57:34.087+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/william.davison%40jivesoftware.com/status/1024",
+      "verb" : "jive:created",
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008",
+        "displayName" : "Todd McAwesome",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008/avatar?a=1010"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:59:01.821+0000",
+        "updated" : "2014-12-19T19:37:56.525+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "todd@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com\">Todd McAwesome</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1032\">Content Yo long long long long long long long long long long long long long long long long long long long long long long long long title</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group\">Anti-social Group</a>",
+      "jive" : {
+        "collection" : "102-1032",
+        "collectionUpdated" : "2014-12-16T22:28:35.851+0000",
+        "followingInStream" : false,
+        "likeCount" : 1,
+        "liked" : false,
+        "replyCount" : 1,
+        "objectID" : 1032,
+        "objectType" : 102,
+        "iconCss" : "jive-icon-document",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1048",
+        "displayName" : "Content Yo long long long long long long long long long long long long long long long long long long long long long long long long title",
+        "objectType" : "jive:document",
+        "published" : "2014-12-15T18:39:51.146+0000",
+        "summary" : "Sup &#160;",
+        "updated" : "2014-12-16T22:28:35.646+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1032",
+        "contentImages" : [ {
+          "id" : "5520",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/5520?a=1418668791152",
+          "size" : 97724,
+          "width" : 333,
+          "height" : 265,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-15T18:39:51.223+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005",
+        "displayName" : "Anti-social Group",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-12-03T22:48:08.010+0000",
+        "summary" : " ",
+        "updated" : "2014-12-19T10:45:43.733+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group"
+      },
+      "title" : "Content Yo long long long long long long long long long long long long long long long long long long long long long long long long title",
+      "updated" : "2014-12-15T18:39:51.223+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1032",
+      "verb" : "jive:created",
+      "previewImage" : {
+        "height" : 265,
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1048/previewImage?a=1418768915646&t=102",
+        "width" : 333
+      },
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008",
+        "displayName" : "Todd McAwesome",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008/avatar?a=1010"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:59:01.821+0000",
+        "updated" : "2014-12-19T19:37:56.525+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "todd@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com\">Todd McAwesome</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1031\">Hair Bands</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group\">Anti-social Group</a>",
+      "jive" : {
+        "collection" : "102-1031",
+        "collectionUpdated" : "2014-12-12T21:50:43.499+0000",
+        "followingInStream" : false,
+        "likeCount" : 1,
+        "liked" : false,
+        "replyCount" : 0,
+        "objectID" : 1031,
+        "objectType" : 102,
+        "iconCss" : "jive-icon-document",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1034",
+        "displayName" : "Hair Bands",
+        "objectType" : "jive:document",
+        "published" : "2014-12-12T21:50:43.015+0000",
+        "summary" : "Are the best. &#160;",
+        "updated" : "2014-12-12T21:50:43.053+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1031",
+        "contentImages" : [ {
+          "id" : "4661",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/4661?a=1418421043035",
+          "size" : 648688,
+          "width" : 650,
+          "height" : 631,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-12T21:50:43.499+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005",
+        "displayName" : "Anti-social Group",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1005/avatar"
+        },
+        "objectType" : "jive:group",
+        "published" : "2014-12-03T22:48:08.010+0000",
+        "summary" : " ",
+        "updated" : "2014-12-19T10:45:43.733+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/groups/anti-social-group"
+      },
+      "title" : "Hair Bands",
+      "updated" : "2014-12-12T21:50:43.499+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/docs/DOC-1031",
+      "verb" : "jive:created",
+      "previewImage" : {
+        "height" : 631,
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1034/previewImage?a=1418421043053&t=102",
+        "width" : 650
+      },
+      "type" : "activity"
+    }, {
+      "actor" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008",
+        "displayName" : "Todd McAwesome",
+        "image" : {
+          "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2008/avatar?a=1010"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-12-03T22:59:01.821+0000",
+        "updated" : "2014-12-19T19:37:56.525+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com",
+        "jive" : {
+          "externalContributor" : false,
+          "username" : "todd@jivesoftware.com"
+        }
+      },
+      "content" : "<a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com\">Todd McAwesome</a> created <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/12/12/gotta-blog-really-gotta-blog\">Gotta blog really gotta blog</a> in <a href=\"https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog\">Todd McAwesome's Blog</a>",
+      "jive" : {
+        "collection" : "38-1007",
+        "collectionUpdated" : "2014-12-12T21:48:22.176+0000",
+        "followingInStream" : false,
+        "replyCount" : 1,
+        "objectID" : 1007,
+        "objectType" : 38,
+        "iconCss" : "jive-icon-blog",
+        "canComment" : true,
+        "canLike" : true,
+        "discovery" : [ ],
+        "objectViewed" : false
+      },
+      "object" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1033",
+        "displayName" : "Gotta blog really gotta blog",
+        "objectType" : "jive:post",
+        "published" : "2014-12-12T21:48:21.526+0000",
+        "summary" : "What happen to .gifs? &#160;",
+        "updated" : "2014-12-12T21:48:21.569+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/12/12/gotta-blog-really-gotta-blog",
+        "contentImages" : [ {
+          "id" : "4660",
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/4660?a=1418420901664",
+          "size" : 32662,
+          "width" : 300,
+          "height" : 232,
+          "type" : "image"
+        } ]
+      },
+      "provider" : {
+        "displayName" : "Jive",
+        "objectType" : "jive:instance",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com"
+      },
+      "published" : "2014-12-12T21:48:22.176+0000",
+      "target" : {
+        "id" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/places/1027",
+        "displayName" : "Todd McAwesome's Blog",
+        "objectType" : "jive:blog",
+        "published" : "2014-12-09T22:18:18.998+0000",
+        "summary" : "",
+        "updated" : "2014-12-12T22:19:55.212+0000",
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog"
+      },
+      "title" : "Gotta blog really gotta blog",
+      "updated" : "2014-12-12T21:48:22.176+0000",
+      "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/todd%40jivesoftware.com/blog/2014/12/12/gotta-blog-really-gotta-blog",
+      "verb" : "jive:created",
+      "previewImage" : {
+        "height" : 232,
+        "url" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/contents/1033/previewImage?a=1418420901569&t=38",
+        "width" : 300
+      },
+      "type" : "activity"
+    } ],
+    "stream" : {
+      "id" : "38",
+      "resources" : {
+        "associations" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/streams/38/associations"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/streams/38/activities"
+        },
+        "self" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/streams/38"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/activity?streamSource=publication&streamID=38"
+        }
+      },
+      "name" : "All you suckas",
+      "published" : "2014-12-12T21:39:44.986+0000",
+      "receiveEmails" : false,
+      "source" : "publication",
+      "updated" : "2014-12-12T21:39:45.172+0000",
+      "type" : "stream"
+    },
+    "type" : "newsStream"
+  } ],
+  "owner" : {
+    "id" : "2026",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@reports"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/followingIn"
+      },
+      "images" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/images"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/activities"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@manager"
+      },
+      "social" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@social"
+      },
+      "streams" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/streams"
+      },
+      "recognition" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@recognition"
+      },
+      "trendingContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@trendingContent"
+      },
+      "trendingPlaces" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@trendingPlaces"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/avatar?a=-1"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@followers"
+      },
+      "pages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/pages"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@colleagues"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/@following"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/members/people/2026"
+      },
+      "self" : {
+        "allowed" : [ "PUT", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/people/orson.bushnell%40jivesoftware.com"
+      },
+      "securityGroups" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/securityGroups"
+      },
+      "extprops" : {
+        "allowed" : [ "DELETE", "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/extprops"
+      },
+      "tasks" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/tasks"
+      }
+    },
+    "followerCount" : 0,
+    "published" : "2014-12-19T18:41:26.213+0000",
+    "updated" : "2014-12-19T20:33:49.872+0000",
+    "displayName" : "Orson Bushnell",
+    "mentionName" : "Orson Bushnell",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "orson.bushnell@jivesoftware.com",
+      "jive_displayOrder" : 3,
+      "jive_summaryDisplayOrder" : 2,
+      "jive_showSummaryLabel" : true
+    } ],
+    "followingCount" : 0,
+    "directReportCount" : 0,
+    "jive" : {
+      "enabled" : true,
+      "external" : false,
+      "federated" : false,
+      "lastProfileUpdate" : "2014-12-19T18:41:26.213+0000",
+      "lastAuthenticated" : "2014-12-19T20:33:49.872+0000",
+      "level" : {
+        "imageURI" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/images/status/statusicon-47.gif",
+        "name" : "Newbie",
+        "points" : 5
+      },
+      "locale" : "en_US",
+      "externalContributor" : false,
+      "sendable" : true,
+      "timeZone" : "America/Los_Angeles",
+      "username" : "orson.bushnell@jivesoftware.com",
+      "visible" : true,
+      "termsAndConditionsRequired" : false
+    },
+    "name" : {
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell",
+      "givenName" : "Orson"
+    },
+    "thumbnailId" : "-1",
+    "thumbnailUrl" : "https://jivesoftware-comeon-mobile.jivelandia.com/api/core/v3/people/2026/avatar?a=-1",
+    "initialLogin" : "2014-12-19T18:41:56.007+0000",
+    "type" : "person"
+  },
+  "type" : "news"
+}

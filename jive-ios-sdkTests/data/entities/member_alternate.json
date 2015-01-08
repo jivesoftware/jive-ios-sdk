@@ -1,0 +1,224 @@
+{
+    "state" : "member",
+    "type" : "member",
+    "group" : {
+        "type" : "group",
+        "memberCount" : 12,
+        "creator" : {
+            "name" : {
+                "givenName" : "Selin",
+                "familyName" : "Korustan",
+                "formatted" : "Selin Korustan"
+            },
+            "type" : "person",
+            "displayName" : "Selin Korustan",
+            "jive" : {
+                "level" : {
+                    "name" : "Sulfur",
+                    "points" : 508
+                },
+                "username" : "korustan.selin"
+            },
+            "resources" : {
+                "reports" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/@reports",
+                    "allowed" : [ "GET" ]
+                },
+                "following" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/@following",
+                    "allowed" : [ "GET" ]
+                },
+                "followers" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/@followers",
+                    "allowed" : [ "GET" ]
+                },
+                "manager" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/@manager",
+                    "allowed" : [ "GET" ]
+                },
+                "images" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/images",
+                    "allowed" : [ "GET" ]
+                },
+                "self" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466",
+                    "allowed" : [ "GET" ]
+                },
+                "html" : {
+                    "ref" : "https://testing.jiveland.com/people/korustan.selin",
+                    "allowed" : [ "GET" ]
+                },
+                "followingIn" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/followingIn",
+                    "allowed" : [ "GET" ]
+                },
+                "colleagues" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/@colleagues",
+                    "allowed" : [ "GET" ]
+                },
+                "avatar" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/avatar",
+                    "allowed" : [ "GET" ]
+                },
+                "members" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4466",
+                    "allowed" : [ "GET" ]
+                },
+                "activity" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4466/activities",
+                    "allowed" : [ "GET" ]
+                }
+            },
+            "id" : "4466"
+        },
+        "groupType" : "PRIVATE",
+        "name" : "NHO 12/13",
+        "displayName" : "nho-1213",
+        "status" : "Active",
+        "description" : "For new hire orientation. A place to play",
+        "contentTypes" : [ "blog", "documents", "files", "discussions", "polls", "projects", "updates", "ideas", "videos" ],
+        "viewCount" : 112,
+        "published" : "2010-12-13T19:52:37.683+0000",
+        "visibleToExternalContributors" : false,
+        "updated" : "2010-12-21T08:10:00.045+0000",
+        "tags" : [ ],
+        "followerCount" : 12,
+        "resources" : {
+            "invites" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/invites/places/373723",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "contents" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Ftesting.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F373723)",
+                "allowed" : [ "GET" ]
+            },
+            "announcements" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/announcements",
+                "allowed" : [ "GET" ]
+            },
+            "self" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723",
+                "allowed" : [ "GET" ]
+            },
+            "html" : {
+                "ref" : "https://testing.jiveland.com/groups/nho-1213",
+                "allowed" : [ "GET" ]
+            },
+            "categories" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/categories",
+                "allowed" : [ "GET" ]
+            },
+            "places" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/places",
+                "allowed" : [ "GET" ]
+            },
+            "followingIn" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/followingIn",
+                "allowed" : [ "GET" ]
+            },
+            "blog" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373724",
+                "allowed" : [ "GET" ]
+            },
+            "avatar" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/avatar",
+                "allowed" : [ "GET" ]
+            },
+            "members" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/members/places/373723",
+                "allowed" : [ "GET" ]
+            },
+            "activity" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/places/373723/activities",
+                "allowed" : [ "GET" ]
+            }
+        },
+        "id" : "4678"
+    },
+    "person" : {
+        "name" : {
+            "givenName" : "Orson",
+            "familyName" : "Bushnell",
+            "formatted" : "Orson Bushnell"
+        },
+        "type" : "person",
+        "displayName" : "Orson Bushnell",
+        "jive" : {
+            "level" : {
+                "name" : "Neon",
+                "points" : 217
+            },
+            "username" : "bushnell.orson"
+        },
+        "resources" : {
+            "reports" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@reports",
+                "allowed" : [ "GET" ]
+            },
+            "manager" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@manager",
+                "allowed" : [ "GET" ]
+            },
+            "self" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316",
+                "allowed" : [ "GET", "PUT" ]
+            },
+            "tasks" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/tasks",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "avatar" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/avatar",
+                "allowed" : [ "GET" ]
+            },
+            "blog" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/blog",
+                "allowed" : [ "GET" ]
+            },
+            "colleagues" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@colleagues",
+                "allowed" : [ "GET" ]
+            },
+            "followers" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@followers",
+                "allowed" : [ "GET" ]
+            },
+            "following" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@following",
+                "allowed" : [ "GET" ]
+            },
+            "images" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/images",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "streams" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/streams",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "html" : {
+                "ref" : "https://testing.jiveland.com/people/bushnell.orson",
+                "allowed" : [ "GET" ]
+            },
+            "followingIn" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/followingIn",
+                "allowed" : [ "GET" ]
+            },
+            "activity" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/activities",
+                "allowed" : [ "GET" ]
+            },
+            "members" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5316",
+                "allowed" : [ "GET" ]
+            }
+        },
+        "id" : "5316"
+    },
+    "id" : "36479",
+    "resources" : {
+        "self" : {
+            "ref" : "https://testing.jiveland.com/api/core/v3/members/36479",
+            "allowed" : [ "GET", "DELETE", "PUT" ]
+        }
+    }
+}

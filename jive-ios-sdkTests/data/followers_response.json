@@ -1,0 +1,1428 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : {
+      "givenName" : "Trevor",
+      "familyName" : "Whitlock",
+      "formatted" : "Trevor Whitlock"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/whitlock.trevor",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5107/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5107",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5107"
+  }, {
+    "name" : {
+      "givenName" : "Tom",
+      "familyName" : "Murray",
+      "formatted" : "Tom Murray"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/murray.tom",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3715/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3715",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3715"
+  }, {
+    "name" : {
+      "givenName" : "Jerome",
+      "familyName" : "Miglino",
+      "formatted" : "Jerome Miglino"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/@following",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/images",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/miglino.jerome",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5336",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5336/activities",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5336"
+  }, {
+    "name" : {
+      "givenName" : "Brent",
+      "familyName" : "Halsey",
+      "formatted" : "Brent Halsey"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/halsey.brent",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3252/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3252",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3252"
+  }, {
+    "name" : {
+      "givenName" : "Melissa",
+      "familyName" : "Barker",
+      "formatted" : "Melissa Barker"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/barker.melissa",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4753/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4753",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4753"
+  }, {
+    "name" : {
+      "givenName" : "Jacob",
+      "familyName" : "Wright",
+      "formatted" : "Jacob Wright"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/wright.jacob",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2918/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2918",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2918"
+  }, {
+    "name" : {
+      "givenName" : "Craig",
+      "familyName" : "McClanahan",
+      "formatted" : "Craig McClanahan"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/mcclanahan.craig",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2890/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2890",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2890"
+  }, {
+    "name" : {
+      "givenName" : "Felix",
+      "familyName" : "Rubio",
+      "formatted" : "Felix Rubio"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/rubio.felix",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4540/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4540",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4540"
+  }, {
+    "name" : {
+      "givenName" : "Aaron",
+      "familyName" : "Malenfant",
+      "formatted" : "Aaron Malenfant"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/malenfant.aaron",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3465/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3465",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3465"
+  }, {
+    "name" : {
+      "givenName" : "Aurelien",
+      "familyName" : "Mercier",
+      "formatted" : "Aurelien Mercier"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/mercier.aurelien",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4377/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4377",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4377"
+  }, {
+    "name" : {
+      "givenName" : "Nitzan",
+      "familyName" : "Harel",
+      "formatted" : "Nitzan Harel"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/harel.nitzan",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4572/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4572",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4572"
+  }, {
+    "name" : {
+      "givenName" : "Rob",
+      "familyName" : "Derstadt",
+      "formatted" : "Rob Derstadt"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/derstadt.rob",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3550/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3550",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3550"
+  }, {
+    "name" : {
+      "givenName" : "Volkan",
+      "familyName" : "Ozcelik",
+      "formatted" : "Volkan Ozcelik"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/ozcelik.volkan",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5189/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5189",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5189"
+  }, {
+    "name" : {
+      "givenName" : "Edward",
+      "familyName" : "Schaefer",
+      "formatted" : "Edward Schaefer"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/schaefer.edward",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/4712/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4712",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "4712"
+  }, {
+    "name" : {
+      "givenName" : "Dmitry",
+      "familyName" : "Apresian",
+      "formatted" : "Dmitry Apresian"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/apresian.dmitry",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3508/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3508",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3508"
+  }, {
+    "name" : {
+      "givenName" : "Heath",
+      "familyName" : "Borders",
+      "formatted" : "Heath Borders"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/borders.heath",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5327",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5327"
+  }, {
+    "name" : {
+      "givenName" : "Ghislain",
+      "familyName" : "Seguin",
+      "formatted" : "Ghislain Seguin"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/seguin.ghislain",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3945/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3945",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3945"
+  }, {
+    "name" : {
+      "givenName" : "Sam",
+      "familyName" : "Meder",
+      "formatted" : "Sam Meder"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/meder.sam",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3165/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3165",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3165"
+  }, {
+    "name" : {
+      "givenName" : "Melanie",
+      "familyName" : "Jennings",
+      "formatted" : "Melanie Jennings"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/Jennings.Melanie",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3577/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3577",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3577"
+  }, {
+    "name" : {
+      "givenName" : "Ryan",
+      "familyName" : "Tyer",
+      "formatted" : "Ryan Tyer"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/tyer.ryan",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2920/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2920",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "2920"
+  }, {
+    "name" : {
+      "givenName" : "Brian",
+      "familyName" : "Gil",
+      "formatted" : "Brian Gil"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/gil.brian",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3219/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3219",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3219"
+  }, {
+    "name" : {
+      "givenName" : "John",
+      "familyName" : "Ellenich",
+      "formatted" : "John Ellenich"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/ellenich.john",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5151",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5151"
+  }, {
+    "name" : {
+      "givenName" : "Philippe",
+      "familyName" : "Van Nuijs",
+      "formatted" : "Philippe Van Nuijs"
+    },
+    "type" : "person",
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/VanNuijs.Philippe",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3554/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3554",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "3554"
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 25
+}

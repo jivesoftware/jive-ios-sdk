@@ -1,0 +1,42 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "parent" : "https://testing.jiveland.com/api/core/v3/people/5316",
+  "type" : "blog",
+  "contentTypes" : [ "post" ],
+  "name" : "Orson Bushnell's Blog",
+  "displayName" : "",
+  "status" : "Active",
+  "description" : "",
+  "viewCount" : 28,
+  "published" : "2010-11-26T14:37:08.749+0000",
+  "updated" : "2010-11-26T14:37:08.749+0000",
+  "visibleToExternalContributors" : false,
+  "followerCount" : 2,
+  "resources" : {
+    "contents" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents?filter=place(https%3A%2F%2Ftesting.jiveland.com%2Fapi%2Fcore%2Fv3%2Fplaces%2F365723)&filter=type(post)",
+      "allowed" : [ "GET" ]
+    },
+    "self" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/365723",
+      "allowed" : [ "GET", "PUT", "DELETE" ]
+    },
+    "html" : {
+      "ref" : "https://testing.jiveland.com/people/bushnell.orson/blog",
+      "allowed" : [ "GET" ]
+    },
+    "followingIn" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/365723/followingIn",
+      "allowed" : [ "GET" ]
+    },
+    "statics" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/365723/statics",
+      "allowed" : [ "GET", "POST" ]
+    },
+    "activity" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/places/365723/activities",
+      "allowed" : [ "GET" ]
+    }
+  },
+  "id" : "25775"
+}

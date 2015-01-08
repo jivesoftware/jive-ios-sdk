@@ -1,0 +1,15 @@
+[submodule "lib/AFNetworking"]
+	path = lib/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "lib/OCMock"]
+	path = lib/OCMock
+	url = git://github.com/erikdoe/ocmock.git
+[submodule "lib/OHHTTPStubs"]
+	path = lib/OHHTTPStubs
+	url = git://github.com/hborders/OHHTTPStubs.git
+[submodule "lib/hpple"]
+	path = lib/hpple
+	url = https://github.com/topfunky/hpple
+[submodule "lib/xctool"]
+	path = lib/xctool
+	url = git://github.com/facebook/xctool.git

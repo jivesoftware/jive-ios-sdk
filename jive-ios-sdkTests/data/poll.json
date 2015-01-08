@@ -1,0 +1,253 @@
+{
+  "id" : "2987",
+  "resources" : {
+    "extprops" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/extprops"
+    },
+    "followers" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/followers"
+    },
+    "likes" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/likes"
+    },
+    "votes" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/votes/551038"
+    },
+    "read" : {
+      "allowed" : [ "DELETE", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/read"
+    },
+    "self" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/polls/2987"
+    },
+    "followingIn" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/followingIn"
+    },
+    "comments" : {
+      "allowed" : [ "POST", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/comments"
+    },
+    "entitlements" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/551038/entitlements"
+    }
+  },
+  "followerCount" : 7,
+  "likeCount" : 0,
+  "published" : "2013-08-06T17:17:49.864+0000",
+  "tags" : [ ],
+  "updated" : "2013-08-06T17:17:49.869+0000",
+  "iconCss" : "jive-icon-poll",
+  "parentPlace" : {
+    "id" : "3991",
+    "html" : "https://testing.jiveland.com/groups/pdx-engineering-book-club",
+    "name" : "PDX Engineering Book Club",
+    "type" : "group",
+    "uri" : "https://testing.jiveland.com/api/core/v3/places/300118"
+  },
+  "contentID" : "551038",
+  "author" : {
+    "id" : "2926",
+    "resources" : {
+      "trendingPlaces" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@trendingPlaces"
+      },
+      "trendingContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@trendingContent"
+      },
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@manager"
+      },
+      "recognition" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@recognition"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/avatar?a=7163"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/places/92936"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@colleagues"
+      },
+      "extprops" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/extprops"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@following"
+      },
+      "social" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/@social"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/people/matthew.finlayson"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/2926/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2926"
+      }
+    },
+    "displayName" : "John Smith",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "john.smith@localhost",
+      "jive_displayOrder" : 3,
+      "jive_summaryDisplayOrder" : 4,
+      "jive_showSummaryLabel" : true
+    } ],
+    "jive" : {
+      "level" : {
+        "description" : "Level 4",
+        "imageURI" : "https://just.a.bunch.com/images/4png1401cf4e22d.png",
+        "name" : "Level 4",
+        "points" : 7280
+      },
+      "username" : "john.smith"
+    },
+    "name" : {
+      "familyName" : "Smith",
+      "formatted" : "John Smith",
+      "givenName" : "John"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "<body><!-- [DocumentBodyStart:c6f5e76f-07c0-4414-9a8e-6b11a86fa6af] --><div class=\"jive-rendered-content\"><p>This time we're not focusing on a technology book but, instead, focusing on thinking about software development and design. I've taken some suggestions and hidden a couple of my own choices in here. Please feel free to vote and I hope you'll consider attending.</p><p style=\"min-height: 8pt; height: 8pt; padding: 0px;\">&nbsp;</p><ul><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/Beautiful-Architecture-Leading-Thinkers-Software/dp/059651798X/ref=pd_sim_b_1\" rel=\"nofollow\">Beautiful Architecture: Leading Thinkers Reveal the Hidden Beauty in Software Design</a></li><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/gp/product/0201362988?ie=UTF8&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0201362988\" rel=\"nofollow\">The Design of Design: Essays from a Computer Scientist</a></li><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/gp/product/0321753887/ref=s9_simh_gw_p14_d4_g14_i2?pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=center-2&amp;pf_rd_r=0QVRP4FMQ66BH7CMFXZV&amp;pf_rd_t=101&amp;pf_rd_p=470938631&amp;pf_rd_i=507846\" rel=\"nofollow\">Scalability Rules: 50 Principles for Scaling Web Sites</a></li><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/gp/product/1590593898?ie=UTF8&amp;tag=httpwwwgoodco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1590593898&amp;SubscriptionId=1MGPYB6YW3HWK55XCGG2\" rel=\"nofollow\">Joel on Software: And on Diverse and Occasionally Related Matters That Will Prove of Interest to Software Developers, Designers, and Managers, and to Those Who, Whether by Good Fortune or Ill Luck, Work with Them in Some Capacity</a></li><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/Antifragile-Things-That-Gain-Disorder/dp/1400067820/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1375746114&amp;sr=1-1&amp;keywords=anti+fragile\" rel=\"nofollow\">Antifragile: Things That Gain from Disorder</a></li><li><a class=\"jive-link-external-small\" href=\"http://www.amazon.com/How-Measure-Anything-Intangibles-Business/dp/0470539399/\" rel=\"nofollow\">How to Measure Anything: Finding the Value of Intangibles in Business</a></li></ul></div><!-- [DocumentBodyEnd:c6f5e76f-07c0-4414-9a8e-6b11a86fa6af] --></body>",
+    "editable" : false,
+    "type" : "text/html"
+  },
+  "parent" : "https://testing.jiveland.com/api/core/v3/places/300118",
+  "replyCount" : 4,
+  "status" : "published",
+  "subject" : "PDX Engineering Book Club; help pick the next book",
+  "viewCount" : 107,
+  "visibleToExternalContributors" : false,
+  "parentVisible" : true,
+  "parentContentVisible" : true,
+  "categories" : [ ],
+  "visibility" : "place",
+  "options" : [ "Beautiful Architecture", "The Design of Design", "Scalability Rules", "Joel on Software", "Antifragile: Things That Gain from Disorder", "How to Measure Anything: Finding the Value of Intangibles in Business" ],
+  "optionsImages" : [ {
+    "image" : {
+      "id" : "3954366",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954366?a=1375809004990",
+      "size" : 21249,
+      "width" : 300,
+      "height" : 300,
+      "type" : "image"
+    },
+    "option" : "Beautiful Architecture"
+  }, {
+    "image" : {
+      "id" : "3954377",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954377?a=1375809034611",
+      "size" : 19234,
+      "width" : 300,
+      "height" : 300,
+      "type" : "image"
+    },
+    "option" : "The Design of Design"
+  }, {
+    "image" : {
+      "id" : "3954379",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954379?a=1375809072289",
+      "size" : 19527,
+      "width" : 300,
+      "height" : 300,
+      "type" : "image"
+    },
+    "option" : "Scalability Rules"
+  }, {
+    "image" : {
+      "id" : "3954384",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954384?a=1375809103454",
+      "size" : 11404,
+      "width" : 300,
+      "height" : 300,
+      "type" : "image"
+    },
+    "option" : "Joel on Software"
+  }, {
+    "image" : {
+      "id" : "3954386",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954386?a=1375809128620",
+      "size" : 15116,
+      "width" : 229,
+      "height" : 346,
+      "type" : "image"
+    },
+    "option" : "Antifragile: Things That Gain from Disorder"
+  }, {
+    "image" : {
+      "id" : "3954388",
+      "contentType" : "image/jpeg",
+      "name" : "uploadedimage.jpg",
+      "ref" : "https://testing.jiveland.com/api/core/v3/images/3954388?a=1375809153115",
+      "size" : 18976,
+      "width" : 229,
+      "height" : 346,
+      "type" : "image"
+    },
+    "option" : "How to Measure Anything: Finding the Value of Intangibles in Business"
+  } ],
+  "voteCount" : 10,
+  "votes" : [ ],
+  "type" : "poll"
+}

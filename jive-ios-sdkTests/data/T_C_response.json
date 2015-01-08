@@ -1,0 +1,5 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "acceptanceRequired" : true,
+  "text" : "<div class=\"jive-rendered-content\"><p>This is placeholder for term &amp; condition</p></div>"
+}

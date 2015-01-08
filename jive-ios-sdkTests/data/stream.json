@@ -1,0 +1,106 @@
+{
+  "name" : "The Team",
+  "id" : "10872",
+  "type" : "stream",
+  "source" : "custom",
+  "published" : "2010-12-14T15:33:22.856+0000",
+  "person" : {
+    "name" : {
+      "givenName" : "Orson",
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell"
+    },
+    "type" : "person",
+    "displayName" : "Orson Bushnell",
+    "jive" : {
+      "level" : {
+        "name" : "Fluorine",
+        "points" : 215
+      },
+      "username" : "bushnell.orson"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316",
+        "allowed" : [ "PUT", "GET" ]
+      },
+      "tasks" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/tasks",
+        "allowed" : [ "POST", "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/images",
+        "allowed" : [ "POST", "GET" ]
+      },
+      "streams" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/streams",
+        "allowed" : [ "POST", "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/bushnell.orson",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5316",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5316"
+  },
+  "receiveEmails" : false,
+  "updated" : "2010-12-14T15:35:12.234+0000",
+  "resources" : {
+    "associations" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872/associations",
+      "allowed" : [ "POST", "GET", "DELETE" ]
+    },
+    "self" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872",
+      "allowed" : [ "PUT", "GET", "DELETE" ]
+    },
+    "html" : {
+      "ref" : "https://testing.jiveland.com/activity?streamSource=custom&streamID=10872",
+      "allowed" : [ "GET" ]
+    },
+    "activity" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872/activities",
+      "allowed" : [ "GET" ]
+    }
+  }
+}

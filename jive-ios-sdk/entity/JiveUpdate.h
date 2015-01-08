@@ -1,0 +1,56 @@
+//
+//  JiveUpdate.h
+//  jive-ios-sdk
+//
+//  Created by Jacob Wright on 11/14/12.
+//
+//    Copyright 2013 Jive Software Inc.
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+//
+
+#import "JiveContent.h"
+
+
+extern NSString * const JiveUpdateType;
+
+
+extern struct JiveUpdateAttributes {
+    __unsafe_unretained NSString *latitude;
+    __unsafe_unretained NSString *longitude;
+    __unsafe_unretained NSString *repost;
+    __unsafe_unretained NSString *visibility;
+    
+    // Deprecated attribute names. Please use the JiveContentAttribute names.
+    __unsafe_unretained NSString *tags;
+    __unsafe_unretained NSString *visibleToExternalContributors;
+} const JiveUpdateAttributes;
+
+
+//! \class JiveUpdate
+//! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/UpdateEntity.html
+@interface JiveUpdate : JiveContent
+
+//! If available, the latitude of the location from which this update was made.
+@property(nonatomic, readonly, strong) NSNumber* latitude;
+
+//! If available, the longitude of the location from which this update was made.
+@property(nonatomic, readonly, strong) NSNumber* longitude;
+
+//! If this update is a repost, the repost field contains the original update. Otherwise, this field will not be present.
+@property(nonatomic, readonly, strong) JiveUpdate *repost;
+
+//! The visibility policy for new Status Updates. Not present for existing Status Updates. Valid values are:
+// * all - anyone with appropriate permissions can see the content. Default when visibility and parent are not specified.
+// * place - place permissions specify which users can see the content. Default when visibility is not specified but parent is specified.
+@property (nonatomic, strong) NSString *visibility;
+
+@end

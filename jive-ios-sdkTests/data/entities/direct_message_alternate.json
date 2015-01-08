@@ -1,0 +1,261 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "type" : "dm",
+  "subject" : "Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share....",
+  "participants" : [ {
+    "name" : {
+      "givenName" : "Orson",
+      "familyName" : "Bushnell",
+      "formatted" : "Orson Bushnell"
+    },
+    "type" : "person",
+    "displayName" : "Orson Bushnell",
+    "jive" : {
+      "level" : {
+        "name" : "Neon",
+        "points" : 229
+      },
+      "username" : "bushnell.orson"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316",
+        "allowed" : [ "GET", "PUT" ]
+      },
+      "tasks" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/tasks",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/images",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "streams" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/streams",
+        "allowed" : [ "GET", "POST" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/bushnell.orson",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5316/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5316",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5316"
+  }, {
+    "name" : {
+      "givenName" : "Heath",
+      "familyName" : "Borders",
+      "formatted" : "Heath Borders"
+    },
+    "type" : "person",
+    "displayName" : "Heath Borders",
+    "jive" : {
+      "level" : {
+        "name" : "Oxygen",
+        "points" : 153
+      },
+      "username" : "borders.heath"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/borders.heath",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5327",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5327"
+  } ],
+  "parent" : "https://testing.jiveland.com/api/core/v3/people/5151",
+  "content" : {
+    "type" : "text/html",
+    "text" : "<body><!-- [DocumentBodyStart:d2dd01c2-5b6a-4f4b-a730-873ed620e0ce] --><div class=\"jive-rendered-content\"><span>Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Jive iPad share.</span><br/><br/><span>Thanks!</span></div><!-- [DocumentBodyEnd:d2dd01c2-5b6a-4f4b-a730-873ed620e0ce] --></body>"
+  },
+  "status" : "published",
+  "viewCount" : 0,
+  "author" : {
+    "name" : {
+      "givenName" : "John",
+      "familyName" : "Ellenich",
+      "formatted" : "John Ellenich"
+    },
+    "type" : "person",
+    "displayName" : "John Ellenich",
+    "jive" : {
+      "level" : {
+        "name" : "Argon",
+        "points" : 673
+      },
+      "username" : "ellenich.john"
+    },
+    "resources" : {
+      "reports" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@reports",
+        "allowed" : [ "GET" ]
+      },
+      "manager" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@manager",
+        "allowed" : [ "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151",
+        "allowed" : [ "GET" ]
+      },
+      "avatar" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/avatar",
+        "allowed" : [ "GET" ]
+      },
+      "blog" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/blog",
+        "allowed" : [ "GET" ]
+      },
+      "colleagues" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@colleagues",
+        "allowed" : [ "GET" ]
+      },
+      "followers" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@followers",
+        "allowed" : [ "GET" ]
+      },
+      "following" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/@following",
+        "allowed" : [ "GET" ]
+      },
+      "images" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/images",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/people/ellenich.john",
+        "allowed" : [ "GET" ]
+      },
+      "followingIn" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/followingIn",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/5151/activities",
+        "allowed" : [ "GET" ]
+      },
+      "members" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5151",
+        "allowed" : [ "GET" ]
+      }
+    },
+    "id" : "5151"
+  },
+  "published" : "2010-11-20T18:32:00.170+0000",
+  "replyCount" : 7,
+  "updated" : "2010-11-20T18:32:00.170+0000",
+  "visibleToExternalContributors" : false,
+  "tags" : [ ],
+  "followerCount" : 0,
+  "resources" : {
+    "read" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/dms/150323/read",
+      "allowed" : [ "POST", "DELETE" ]
+    },
+    "images" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/dms/150323/images",
+      "allowed" : [ "GET" ]
+    },
+    "self" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/dms/150323",
+      "allowed" : [ "GET" ]
+    },
+    "html" : {
+      "ref" : "https://testing.jiveland.com/inbox/dm/150323",
+      "allowed" : [ "GET" ]
+    },
+    "comments" : {
+      "ref" : "https://testing.jiveland.com/api/core/v3/dms/150323/comments",
+      "allowed" : [ "GET", "POST" ]
+    }
+  },
+  "id" : "150323"
+}

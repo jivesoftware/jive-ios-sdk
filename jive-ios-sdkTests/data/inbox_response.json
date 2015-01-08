@@ -1,0 +1,1557 @@
+{
+  "list" : [ {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5280\">Update and Delete Doc Test From SDK- 595540</a>",
+    "jive" : {
+      "collection" : "102-5280",
+      "collectionUpdated" : "2015-01-07T21:38:32.232+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9915/read",
+      "objectID" : 5280,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9915",
+      "displayName" : "Update and Delete Doc Test From SDK- 595540",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:38:32.059+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:38:32.074+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5280"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:38:32.232+0000",
+    "title" : "Update and Delete Doc Test From SDK- 595540",
+    "updated" : "2015-01-07T21:38:32.074+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5280",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5279\">Test Doc For testing edit support From SDK- 936137</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "102-5279",
+      "collectionUpdated" : "2015-01-07T21:38:04.138+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9911/read",
+      "objectID" : 5279,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9911",
+      "displayName" : "Test Doc For testing edit support From SDK- 936137",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:38:03.788+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:38:03.809+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5279"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:38:04.138+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test Doc For testing edit support From SDK- 936137",
+    "updated" : "2015-01-07T21:38:03.809+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5279",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5278\">Test Doc For testing edit support From SDK- 310546</a>",
+    "jive" : {
+      "collection" : "102-5278",
+      "collectionUpdated" : "2015-01-07T21:38:03.513+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9910/read",
+      "objectID" : 5278,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9910",
+      "displayName" : "Test Doc For testing edit support From SDK- 310546",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:38:03.092+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:38:03.122+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5278"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:38:03.513+0000",
+    "title" : "Test Doc For testing edit support From SDK- 310546",
+    "updated" : "2015-01-07T21:38:03.122+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5278",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/thread/1856\">Test discussion For testing edit support From SDK- 1467946</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "2-2113",
+      "collectionUpdated" : "2015-01-07T21:38:01.266+0000",
+      "followingInStream" : true,
+      "question" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "resolved" : "open",
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9909/read",
+      "objectID" : 1856,
+      "objectType" : 1,
+      "iconCss" : "jive-icon-discussion-question",
+      "canReply" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9909",
+      "displayName" : "Test discussion For testing edit support From SDK- 1467946",
+      "objectType" : "jive:discussion",
+      "published" : "2015-01-07T21:38:01.113+0000",
+      "summary" : "'ios-sdk-testuser2' modified the doc content",
+      "updated" : "2015-01-07T21:38:02.885+0000",
+      "url" : "https://testing.jiveland.com/thread/1856",
+      "question" : true,
+      "resolved" : "open"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:38:01.266+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test discussion For testing edit support From SDK- 1467946",
+    "updated" : "2015-01-07T21:38:02.885+0000",
+    "url" : "https://testing.jiveland.com/thread/1856",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5277\">Test Doc From SDK- 646834</a>",
+    "jive" : {
+      "collection" : "102-5277",
+      "collectionUpdated" : "2015-01-07T21:38:00.323+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9908/read",
+      "objectID" : 5277,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9908",
+      "displayName" : "Test Doc From SDK- 646834",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:38:00.107+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:38:00.131+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5277"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:38:00.323+0000",
+    "title" : "Test Doc From SDK- 646834",
+    "updated" : "2015-01-07T21:38:00.131+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5277",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+      "displayName" : "iosAuto2 lastname2",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:56.932+0000",
+      "updated" : "2014-11-20T22:03:20.331+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto2"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto2\">iosAuto2 lastname2</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5276#comment-2913\">Test Document for comments testing, From SDK- 160647</a>",
+    "jive" : {
+      "collection" : "102-5276",
+      "collectionUpdated" : "2015-01-07T21:37:58.568+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9905",
+        "displayName" : "Test Document for comments testing, From SDK- 160647",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:37:57.882+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:37:57.910+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5276",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9905/read",
+      "objectID" : 2913,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : true
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2913",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+        "displayName" : "iosAuto2 lastname2",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:56.932+0000",
+        "updated" : "2014-11-20T22:03:20.331+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto2"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 160647",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:37:58.373+0000",
+      "summary" : "This is a test comment text from the SDK by a non-Author",
+      "updated" : "2015-01-07T21:37:58.373+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5276#comment-2913"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:37:58.568+0000",
+    "title" : "Test Document for comments testing, From SDK- 160647",
+    "updated" : "2015-01-07T21:37:57.910+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5276#comment-2913",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5276\">Test Document for comments testing, From SDK- 160647</a>",
+    "jive" : {
+      "collection" : "102-5276",
+      "collectionUpdated" : "2015-01-07T21:37:58.568+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9905/read",
+      "objectID" : 5276,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9905",
+      "displayName" : "Test Document for comments testing, From SDK- 160647",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:37:57.882+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:37:57.910+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5276"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:37:58.145+0000",
+    "title" : "Test Document for comments testing, From SDK- 160647",
+    "updated" : "2015-01-07T21:37:57.910+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5276",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5275#comment-2912\">Test Document for comments testing, From SDK- 482751</a>",
+    "jive" : {
+      "collection" : "102-5275",
+      "collectionUpdated" : "2015-01-07T21:37:57.132+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9904",
+        "displayName" : "Test Document for comments testing, From SDK- 482751",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:37:56.402+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:37:56.433+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5275",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9904/read",
+      "objectID" : 2912,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2912",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 482751",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:37:56.865+0000",
+      "summary" : "This is a test comment text from the SDK by the Author",
+      "updated" : "2015-01-07T21:37:56.865+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5275#comment-2912"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:37:57.132+0000",
+    "title" : "Test Document for comments testing, From SDK- 482751",
+    "updated" : "2015-01-07T21:37:56.433+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5275#comment-2912",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5275\">Test Document for comments testing, From SDK- 482751</a>",
+    "jive" : {
+      "collection" : "102-5275",
+      "collectionUpdated" : "2015-01-07T21:37:57.132+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9904/read",
+      "objectID" : 5275,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9904",
+      "displayName" : "Test Document for comments testing, From SDK- 482751",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:37:56.402+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:37:56.433+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5275"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:37:56.638+0000",
+    "title" : "Test Document for comments testing, From SDK- 482751",
+    "updated" : "2015-01-07T21:37:56.433+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5275",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5274\">Update and Delete Doc Test From SDK- 996693</a>",
+    "jive" : {
+      "collection" : "102-5274",
+      "collectionUpdated" : "2015-01-07T21:35:32.270+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9903/read",
+      "objectID" : 5274,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9903",
+      "displayName" : "Update and Delete Doc Test From SDK- 996693",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:35:32.112+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:35:32.126+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5274"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:35:32.270+0000",
+    "title" : "Update and Delete Doc Test From SDK- 996693",
+    "updated" : "2015-01-07T21:35:32.126+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5274",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5273\">Test Doc For testing edit support From SDK- 303992</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "102-5273",
+      "collectionUpdated" : "2015-01-07T21:35:01.363+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9899/read",
+      "objectID" : 5273,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9899",
+      "displayName" : "Test Doc For testing edit support From SDK- 303992",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:35:01.247+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:35:01.261+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5273"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:35:01.363+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test Doc For testing edit support From SDK- 303992",
+    "updated" : "2015-01-07T21:35:01.261+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5273",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5272\">Test Doc For testing edit support From SDK- 1429730</a>",
+    "jive" : {
+      "collection" : "102-5272",
+      "collectionUpdated" : "2015-01-07T21:35:01.009+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9898/read",
+      "objectID" : 5272,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9898",
+      "displayName" : "Test Doc For testing edit support From SDK- 1429730",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:35:00.845+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:35:00.858+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5272"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:35:01.009+0000",
+    "title" : "Test Doc For testing edit support From SDK- 1429730",
+    "updated" : "2015-01-07T21:35:00.858+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5272",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/thread/1855\">Test discussion For testing edit support From SDK- 418459</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "2-2112",
+      "collectionUpdated" : "2015-01-07T21:34:59.638+0000",
+      "followingInStream" : true,
+      "question" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "resolved" : "open",
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9897/read",
+      "objectID" : 1855,
+      "objectType" : 1,
+      "iconCss" : "jive-icon-discussion-question",
+      "canReply" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9897",
+      "displayName" : "Test discussion For testing edit support From SDK- 418459",
+      "objectType" : "jive:discussion",
+      "published" : "2015-01-07T21:34:59.337+0000",
+      "summary" : "'ios-sdk-testuser2' modified the doc content",
+      "updated" : "2015-01-07T21:35:00.680+0000",
+      "url" : "https://testing.jiveland.com/thread/1855",
+      "question" : true,
+      "resolved" : "open"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:59.638+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test discussion For testing edit support From SDK- 418459",
+    "updated" : "2015-01-07T21:35:00.680+0000",
+    "url" : "https://testing.jiveland.com/thread/1855",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5271\">Test Doc From SDK- 867379</a>",
+    "jive" : {
+      "collection" : "102-5271",
+      "collectionUpdated" : "2015-01-07T21:34:58.457+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9896/read",
+      "objectID" : 5271,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9896",
+      "displayName" : "Test Doc From SDK- 867379",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:34:58.276+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:34:58.293+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5271"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:58.457+0000",
+    "title" : "Test Doc From SDK- 867379",
+    "updated" : "2015-01-07T21:34:58.293+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5271",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+      "displayName" : "iosAuto2 lastname2",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:56.932+0000",
+      "updated" : "2014-11-20T22:03:20.331+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto2"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto2\">iosAuto2 lastname2</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5270#comment-2911\">Test Document for comments testing, From SDK- 1382183</a>",
+    "jive" : {
+      "collection" : "102-5270",
+      "collectionUpdated" : "2015-01-07T21:34:56.566+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9893",
+        "displayName" : "Test Document for comments testing, From SDK- 1382183",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:34:55.916+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:34:55.934+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5270",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : false,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9893/read",
+      "objectID" : 2911,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : true
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2911",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+        "displayName" : "iosAuto2 lastname2",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:56.932+0000",
+        "updated" : "2014-11-20T22:03:20.331+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto2"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 1382183",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:34:56.386+0000",
+      "summary" : "This is a test comment text from the SDK by a non-Author",
+      "updated" : "2015-01-07T21:34:56.386+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5270#comment-2911"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:56.566+0000",
+    "title" : "Test Document for comments testing, From SDK- 1382183",
+    "updated" : "2015-01-07T21:34:55.934+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5270#comment-2911",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5270\">Test Document for comments testing, From SDK- 1382183</a>",
+    "jive" : {
+      "collection" : "102-5270",
+      "collectionUpdated" : "2015-01-07T21:34:56.566+0000",
+      "followingInStream" : true,
+      "read" : false,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9893/read",
+      "objectID" : 5270,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9893",
+      "displayName" : "Test Document for comments testing, From SDK- 1382183",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:34:55.916+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:34:55.934+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5270"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:56.159+0000",
+    "title" : "Test Document for comments testing, From SDK- 1382183",
+    "updated" : "2015-01-07T21:34:55.934+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5270",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5269#comment-2910\">Test Document for comments testing, From SDK- 730343</a>",
+    "jive" : {
+      "collection" : "102-5269",
+      "collectionUpdated" : "2015-01-07T21:34:55.202+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9892",
+        "displayName" : "Test Document for comments testing, From SDK- 730343",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:34:54.668+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:34:54.696+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5269",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9892/read",
+      "objectID" : 2910,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2910",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 730343",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:34:55.065+0000",
+      "summary" : "This is a test comment text from the SDK by the Author",
+      "updated" : "2015-01-07T21:34:55.065+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5269#comment-2910"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:55.202+0000",
+    "title" : "Test Document for comments testing, From SDK- 730343",
+    "updated" : "2015-01-07T21:34:54.696+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5269#comment-2910",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5269\">Test Document for comments testing, From SDK- 730343</a>",
+    "jive" : {
+      "collection" : "102-5269",
+      "collectionUpdated" : "2015-01-07T21:34:55.202+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9892/read",
+      "objectID" : 5269,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9892",
+      "displayName" : "Test Document for comments testing, From SDK- 730343",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:34:54.668+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:34:54.696+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5269"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:34:54.875+0000",
+    "title" : "Test Document for comments testing, From SDK- 730343",
+    "updated" : "2015-01-07T21:34:54.696+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5269",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5268\">Update and Delete Doc Test From SDK- 1022314</a>",
+    "jive" : {
+      "collection" : "102-5268",
+      "collectionUpdated" : "2015-01-07T21:26:17.304+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9891/read",
+      "objectID" : 5268,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9891",
+      "displayName" : "Update and Delete Doc Test From SDK- 1022314",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:26:17.152+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:26:17.165+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5268"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:26:17.304+0000",
+    "title" : "Update and Delete Doc Test From SDK- 1022314",
+    "updated" : "2015-01-07T21:26:17.165+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5268",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5267\">Test Doc For testing edit support From SDK- 104879</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "102-5267",
+      "collectionUpdated" : "2015-01-07T21:25:47.279+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9887/read",
+      "objectID" : 5267,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9887",
+      "displayName" : "Test Doc For testing edit support From SDK- 104879",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:25:47.105+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:25:47.116+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5267"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:47.279+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test Doc For testing edit support From SDK- 104879",
+    "updated" : "2015-01-07T21:25:47.116+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5267",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5266\">Test Doc For testing edit support From SDK- 491714</a>",
+    "jive" : {
+      "collection" : "102-5266",
+      "collectionUpdated" : "2015-01-07T21:25:46.841+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9886/read",
+      "objectID" : 5266,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9886",
+      "displayName" : "Test Doc For testing edit support From SDK- 491714",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:25:46.679+0000",
+      "summary" : "This is a doc for testing locking support from iPad SDK.",
+      "updated" : "2015-01-07T21:25:46.693+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5266"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:46.841+0000",
+    "title" : "Test Doc For testing edit support From SDK- 491714",
+    "updated" : "2015-01-07T21:25:46.693+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5266",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/thread/1854\">Test discussion For testing edit support From SDK- 256209</a> in <a href=\"https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27\">iosAutoGroup1</a>",
+    "jive" : {
+      "collection" : "2-2111",
+      "collectionUpdated" : "2015-01-07T21:25:45.384+0000",
+      "followingInStream" : true,
+      "question" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "resolved" : "open",
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9885/read",
+      "objectID" : 1854,
+      "objectType" : 1,
+      "iconCss" : "jive-icon-discussion-question",
+      "canReply" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9885",
+      "displayName" : "Test discussion For testing edit support From SDK- 256209",
+      "objectType" : "jive:discussion",
+      "published" : "2015-01-07T21:25:45.105+0000",
+      "summary" : "'ios-sdk-testuser2' modified the doc content",
+      "updated" : "2015-01-07T21:25:46.480+0000",
+      "url" : "https://testing.jiveland.com/thread/1854",
+      "question" : true,
+      "resolved" : "open"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:45.384+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1012",
+      "displayName" : "iosAutoGroup1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1012/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-08-21T17:26:12.167+0000",
+      "summary" : "iosAuto1 Test Social Group1 Description",
+      "updated" : "2015-01-07T21:38:20.549+0000",
+      "url" : "https://testing.jiveland.com/groups/new+display+name+for+place+%27iosAutoGroup1%27"
+    },
+    "title" : "Test discussion For testing edit support From SDK- 256209",
+    "updated" : "2015-01-07T21:25:46.480+0000",
+    "url" : "https://testing.jiveland.com/thread/1854",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5265\">Test Doc From SDK- 1451589</a>",
+    "jive" : {
+      "collection" : "102-5265",
+      "collectionUpdated" : "2015-01-07T21:25:44.470+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9884/read",
+      "objectID" : 5265,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9884",
+      "displayName" : "Test Doc From SDK- 1451589",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:25:44.308+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:25:44.325+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5265"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:44.470+0000",
+    "title" : "Test Doc From SDK- 1451589",
+    "updated" : "2015-01-07T21:25:44.325+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5265",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+      "displayName" : "iosAuto2 lastname2",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:56.932+0000",
+      "updated" : "2014-11-20T22:03:20.331+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto2"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto2\">iosAuto2 lastname2</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5264#comment-2909\">Test Document for comments testing, From SDK- 1391159</a>",
+    "jive" : {
+      "collection" : "102-5264",
+      "collectionUpdated" : "2015-01-07T21:25:42.841+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9881",
+        "displayName" : "Test Document for comments testing, From SDK- 1391159",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:25:42.339+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:25:42.354+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5264",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9881/read",
+      "objectID" : 2909,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : true
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2909",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2008",
+        "displayName" : "iosAuto2 lastname2",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2008/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:56.932+0000",
+        "updated" : "2014-11-20T22:03:20.331+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto2"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 1391159",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:25:42.678+0000",
+      "summary" : "This is a test comment text from the SDK by a non-Author",
+      "updated" : "2015-01-07T21:25:42.678+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5264#comment-2909"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:42.841+0000",
+    "title" : "Test Document for comments testing, From SDK- 1391159",
+    "updated" : "2015-01-07T21:25:42.354+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5264#comment-2909",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5264\">Test Document for comments testing, From SDK- 1391159</a>",
+    "jive" : {
+      "collection" : "102-5264",
+      "collectionUpdated" : "2015-01-07T21:25:42.841+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9881/read",
+      "objectID" : 5264,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9881",
+      "displayName" : "Test Document for comments testing, From SDK- 1391159",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:25:42.339+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:25:42.354+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5264"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:42.501+0000",
+    "title" : "Test Document for comments testing, From SDK- 1391159",
+    "updated" : "2015-01-07T21:25:42.354+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5264",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> commented on <a href=\"https://testing.jiveland.com/docs/DOC-5263#comment-2908\">Test Document for comments testing, From SDK- 1301615</a>",
+    "jive" : {
+      "collection" : "102-5263",
+      "collectionUpdated" : "2015-01-07T21:25:41.665+0000",
+      "followingInStream" : true,
+      "parent" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/contents/9880",
+        "displayName" : "Test Document for comments testing, From SDK- 1301615",
+        "objectType" : "jive:document",
+        "published" : "2015-01-07T21:25:40.951+0000",
+        "summary" : "This is a test doc from iPad SDK.",
+        "updated" : "2015-01-07T21:25:40.975+0000",
+        "url" : "https://testing.jiveland.com/docs/DOC-5263",
+        "canComment" : true,
+        "canLike" : false
+      },
+      "parentActor" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "parentReplyCount" : 1,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9880/read",
+      "objectID" : 2908,
+      "objectType" : 105,
+      "iconCss" : "jive-icon-document-comment",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/comments/2908",
+      "author" : {
+        "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+        "displayName" : "iosAuto1 lastname1",
+        "image" : {
+          "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+        },
+        "objectType" : "jive:person",
+        "published" : "2014-08-21T17:25:57.641+0000",
+        "updated" : "2015-01-07T22:53:43.027+0000",
+        "url" : "https://testing.jiveland.com/people/iosauto1"
+      },
+      "displayName" : "Test Document for comments testing, From SDK- 1301615",
+      "objectType" : "jive:comment",
+      "published" : "2015-01-07T21:25:41.283+0000",
+      "summary" : "This is a test comment text from the SDK by the Author",
+      "updated" : "2015-01-07T21:25:41.283+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5263#comment-2908"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:41.665+0000",
+    "title" : "Test Document for comments testing, From SDK- 1301615",
+    "updated" : "2015-01-07T21:25:40.975+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5263#comment-2908",
+    "verb" : "jive:commented"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5263\">Test Document for comments testing, From SDK- 1301615</a>",
+    "jive" : {
+      "collection" : "102-5263",
+      "collectionUpdated" : "2015-01-07T21:25:41.665+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 1,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9880/read",
+      "objectID" : 5263,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9880",
+      "displayName" : "Test Document for comments testing, From SDK- 1301615",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:25:40.951+0000",
+      "summary" : "This is a test doc from iPad SDK.",
+      "updated" : "2015-01-07T21:25:40.975+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5263"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:25:41.125+0000",
+    "title" : "Test Document for comments testing, From SDK- 1301615",
+    "updated" : "2015-01-07T21:25:40.975+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5263",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2009",
+      "displayName" : "iosAuto1 lastname1",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2009/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-08-21T17:25:57.641+0000",
+      "updated" : "2015-01-07T22:53:43.027+0000",
+      "url" : "https://testing.jiveland.com/people/iosauto1"
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/iosauto1\">iosAuto1 lastname1</a> created <a href=\"https://testing.jiveland.com/docs/DOC-5262\">Update and Delete Doc Test From SDK- 683676</a>",
+    "jive" : {
+      "collection" : "102-5262",
+      "collectionUpdated" : "2015-01-07T21:23:26.491+0000",
+      "followingInStream" : true,
+      "read" : true,
+      "replyCount" : 0,
+      "update" : "https://testing.jiveland.com/api/core/v3/contents/9879/read",
+      "objectID" : 5262,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : false
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/9879",
+      "displayName" : "Update and Delete Doc Test From SDK- 683676",
+      "objectType" : "jive:document",
+      "published" : "2015-01-07T21:23:26.293+0000",
+      "summary" : "This is a test of the new doc creation from iPad SDK.",
+      "updated" : "2015-01-07T21:23:26.305+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-5262"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2015-01-07T21:23:26.491+0000",
+    "title" : "Update and Delete Doc Test From SDK- 683676",
+    "updated" : "2015-01-07T21:23:26.305+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-5262",
+    "verb" : "jive:created"
+  } ],
+  "itemsPerPage" : 25,
+  "links" : {
+    "next" : "https://testing.jiveland.com/api/core/v3/inbox?fields=%40all&count=25&before=2010-10-23T03%3A26%3A37.532%2B0000",
+    "previous" : "https://testing.jiveland.com/api/core/v3/inbox?fields=%40all&count=25&after=2008-10-24T19%3A06%3A10.196%2B0000"
+  },
+  "unread" : 0
+}

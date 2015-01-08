@@ -1,0 +1,204 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "itemsPerPage" : 25,
+  "list" : [ {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2022",
+      "displayName" : "Clarice Starling",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2022/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-10-23T17:14:21.353+0000",
+      "updated" : "2014-11-20T18:55:07.440+0000",
+      "url" : "https://testing.jiveland.com/people/clarice%40jivesoftware.com",
+      "jive" : {
+        "externalContributor" : false
+      }
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/clarice%40jivesoftware.com\">Clarice Starling</a> modified <a href=\"https://testing.jiveland.com/docs/DOC-1013\">docdocdoc</a> in <a href=\"https://testing.jiveland.com/groups/clarice-private\">Clarice Private</a>",
+    "jive" : {
+      "collection" : "102-1013",
+      "collectionUpdated" : "2014-11-07T19:50:41.374+0000",
+      "followingInStream" : false,
+      "replyCount" : 0,
+      "objectID" : 1013,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : true,
+      "discovery" : [ ]
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/1101",
+      "displayName" : "docdocdoc",
+      "objectType" : "jive:document",
+      "published" : "2014-11-07T19:10:50.023+0000",
+      "summary" : "document body is here",
+      "updated" : "2014-11-07T19:50:41.046+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-1013",
+      "contentImages" : [ {
+        "id" : "8553",
+        "contentType" : "image/jpeg",
+        "name" : "hugs.png",
+        "ref" : "https://testing.jiveland.com/api/core/v3/images/8553?a=1415389841018",
+        "size" : 30273,
+        "width" : 500,
+        "height" : 375,
+        "type" : "image"
+      } ]
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2014-11-07T19:50:41.374+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1061",
+      "displayName" : "Clarice Private",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1061/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-10-23T17:22:10.689+0000",
+      "summary" : " ",
+      "updated" : "2014-11-07T19:50:41.030+0000",
+      "url" : "https://testing.jiveland.com/groups/clarice-private"
+    },
+    "title" : "docdocdoc",
+    "updated" : "2014-11-07T19:50:41.046+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-1013",
+    "verb" : "jive:modified"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2022",
+      "displayName" : "Clarice Starling",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2022/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-10-23T17:14:21.353+0000",
+      "updated" : "2014-11-20T18:55:07.440+0000",
+      "url" : "https://testing.jiveland.com/people/clarice%40jivesoftware.com",
+      "jive" : {
+        "externalContributor" : false
+      }
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/clarice%40jivesoftware.com\">Clarice Starling</a> created <a href=\"https://testing.jiveland.com/docs/DOC-1013\">docdocdoc</a> in <a href=\"https://testing.jiveland.com/groups/clarice-private\">Clarice Private</a>",
+    "jive" : {
+      "collection" : "102-1013",
+      "collectionUpdated" : "2014-11-07T19:50:41.374+0000",
+      "followingInStream" : false,
+      "replyCount" : 0,
+      "objectID" : 1013,
+      "objectType" : 102,
+      "iconCss" : "jive-icon-document",
+      "canComment" : true,
+      "canLike" : true,
+      "discovery" : [ ]
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/1101",
+      "displayName" : "docdocdoc",
+      "objectType" : "jive:document",
+      "published" : "2014-11-07T19:10:50.023+0000",
+      "summary" : "document body is here",
+      "updated" : "2014-11-07T19:50:41.046+0000",
+      "url" : "https://testing.jiveland.com/docs/DOC-1013",
+      "contentImages" : [ {
+        "id" : "8553",
+        "ref" : "https://testing.jiveland.com/api/core/v3/images/8553?a=1415389841018",
+        "size" : 30273,
+        "width" : 500,
+        "height" : 375,
+        "type" : "image"
+      } ]
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2014-11-07T19:10:50.117+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1061",
+      "displayName" : "Clarice Private",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1061/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-10-23T17:22:10.689+0000",
+      "summary" : " ",
+      "updated" : "2014-11-07T19:50:41.030+0000",
+      "url" : "https://testing.jiveland.com/groups/clarice-private"
+    },
+    "title" : "docdocdoc",
+    "updated" : "2014-11-07T19:50:41.046+0000",
+    "url" : "https://testing.jiveland.com/docs/DOC-1013",
+    "verb" : "jive:created"
+  }, {
+    "actor" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/people/2022",
+      "displayName" : "Clarice Starling",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/people/2022/avatar"
+      },
+      "objectType" : "jive:person",
+      "published" : "2014-10-23T17:14:21.353+0000",
+      "updated" : "2014-11-20T18:55:07.440+0000",
+      "url" : "https://testing.jiveland.com/people/clarice%40jivesoftware.com",
+      "jive" : {
+        "externalContributor" : false
+      }
+    },
+    "content" : "<a href=\"https://testing.jiveland.com/people/clarice%40jivesoftware.com\">Clarice Starling</a> created <a href=\"https://testing.jiveland.com/thread/1006\">discussion to be shared</a> in <a href=\"https://testing.jiveland.com/groups/clarice-private\">Clarice Private</a>",
+    "jive" : {
+      "collection" : "2-1009",
+      "collectionUpdated" : "2014-10-23T17:41:32.302+0000",
+      "followingInStream" : false,
+      "question" : true,
+      "replyCount" : 0,
+      "resolved" : "open",
+      "objectID" : 1006,
+      "objectType" : 1,
+      "iconCss" : "jive-icon-discussion-question",
+      "canReply" : true,
+      "canLike" : true,
+      "discovery" : [ ]
+    },
+    "object" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/contents/1063",
+      "displayName" : "discussion to be shared",
+      "objectType" : "jive:discussion",
+      "published" : "2014-10-23T17:41:32.181+0000",
+      "summary" : "in private group",
+      "updated" : "2014-10-23T17:41:32.181+0000",
+      "url" : "https://testing.jiveland.com/thread/1006",
+      "question" : true,
+      "resolved" : "open"
+    },
+    "provider" : {
+      "displayName" : "Jive",
+      "objectType" : "jive:instance",
+      "url" : "https://testing.jiveland.com"
+    },
+    "published" : "2014-10-23T17:41:32.302+0000",
+    "target" : {
+      "id" : "https://testing.jiveland.com/api/core/v3/places/1061",
+      "displayName" : "Clarice Private",
+      "image" : {
+        "url" : "https://testing.jiveland.com/api/core/v3/places/1061/avatar"
+      },
+      "objectType" : "jive:group",
+      "published" : "2014-10-23T17:22:10.689+0000",
+      "summary" : " ",
+      "updated" : "2014-11-07T19:50:41.030+0000",
+      "url" : "https://testing.jiveland.com/groups/clarice-private"
+    },
+    "title" : "discussion to be shared",
+    "updated" : "2014-10-23T17:41:32.181+0000",
+    "url" : "https://testing.jiveland.com/thread/1006",
+    "verb" : "jive:created"
+  } ]
+}

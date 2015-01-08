@@ -1,0 +1,902 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "itemsPerPage" : 25,
+  "list" : [ {
+    "id" : "1037",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/outcomeTypes"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/outcomes"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/extprops"
+      },
+      "correctAnswer" : {
+        "allowed" : [ "PUT" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/correctAnswer"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/likes"
+      },
+      "self" : {
+        "allowed" : [ "DELETE", "PUT", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/message/1037#1037"
+      },
+      "attachments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/1037"
+      },
+      "messages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/messages"
+      },
+      "helpful" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1037/helpful"
+      }
+    },
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "published" : "2014-12-08T21:36:22.464+0000",
+    "tags" : [ ],
+    "updated" : "2014-12-08T21:36:22.529+0000",
+    "iconCss" : "jive-icon-discussion-question",
+    "parentPlace" : {
+      "id" : "2013",
+      "html" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com",
+      "name" : "Mike Cumings",
+      "type" : "person",
+      "uri" : "https://testing.jiveland.com/api/core/v3/people/2013"
+    },
+    "author" : {
+      "id" : "2013",
+      "resources" : {
+        "trendingPlaces" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingPlaces"
+        },
+        "trendingContent" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingContent"
+        },
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@reports"
+        },
+        "securityGroups" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/securityGroups"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@manager"
+        },
+        "recognition" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@recognition"
+        },
+        "pages" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/pages"
+        },
+        "self" : {
+          "allowed" : [ "DELETE", "PUT", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/avatar?a=1056"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@colleagues"
+        },
+        "extprops" : {
+          "allowed" : [ "POST", "DELETE", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/extprops"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@following"
+        },
+        "social" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@social"
+        },
+        "images" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/images"
+        },
+        "streams" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/streams"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2013"
+        }
+      },
+      "displayName" : "Mike Cumings",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "mike.cumings@jivesoftware.com",
+        "jive_displayOrder" : 3,
+        "jive_summaryDisplayOrder" : 2,
+        "jive_showSummaryLabel" : true
+      } ],
+      "jive" : {
+        "level" : {
+          "imageURI" : "https://testing.jiveland.com/api/core/v3/images/status/statusicon-49.gif",
+          "name" : "Adventurer",
+          "points" : 283
+        },
+        "externalContributor" : false,
+        "username" : "mike.cumings@jivesoftware.com"
+      },
+      "name" : {
+        "familyName" : "Cumings",
+        "formatted" : "Mike Cumings",
+        "givenName" : "Mike"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:3b15aeb4-06ba-48a2-b67e-1f6e300884e5] --><div class=\"jive-rendered-content\"><p>1</p></div><!-- [DocumentBodyEnd:3b15aeb4-06ba-48a2-b67e-1f6e300884e5] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "parent" : "https://testing.jiveland.com/api/core/v3/contents/1171",
+    "replyCount" : 60,
+    "status" : "published",
+    "subject" : "Re: Content with many replies",
+    "viewCount" : 11,
+    "visibleToExternalContributors" : false,
+    "answer" : false,
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/1171",
+    "helpful" : false,
+    "question" : true,
+    "outcomeTypes" : [ {
+      "id" : "6",
+      "name" : "success",
+      "communityAudience" : "true",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "4",
+      "name" : "helpful",
+      "alternativeGrouping" : "true",
+      "noteRequired" : false,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "1",
+      "name" : "decision",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "3",
+      "name" : "pending",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : true
+    } ],
+    "helpfulCount" : 0,
+    "type" : "message"
+  }, {
+    "id" : "1038",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/outcomeTypes"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/outcomes"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/extprops"
+      },
+      "correctAnswer" : {
+        "allowed" : [ "PUT" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/correctAnswer"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/likes"
+      },
+      "self" : {
+        "allowed" : [ "DELETE", "PUT", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/message/1038#1038"
+      },
+      "attachments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/1038"
+      },
+      "messages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/messages"
+      },
+      "helpful" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1038/helpful"
+      }
+    },
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "published" : "2014-12-08T21:36:29.277+0000",
+    "tags" : [ ],
+    "updated" : "2014-12-08T21:36:29.350+0000",
+    "iconCss" : "jive-icon-discussion-question",
+    "parentPlace" : {
+      "id" : "2013",
+      "html" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com",
+      "name" : "Mike Cumings",
+      "type" : "person",
+      "uri" : "https://testing.jiveland.com/api/core/v3/people/2013"
+    },
+    "author" : {
+      "id" : "2013",
+      "resources" : {
+        "trendingPlaces" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingPlaces"
+        },
+        "trendingContent" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingContent"
+        },
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@reports"
+        },
+        "securityGroups" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/securityGroups"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@manager"
+        },
+        "recognition" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@recognition"
+        },
+        "pages" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/pages"
+        },
+        "self" : {
+          "allowed" : [ "DELETE", "PUT", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/avatar?a=1056"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@colleagues"
+        },
+        "extprops" : {
+          "allowed" : [ "POST", "DELETE", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/extprops"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@following"
+        },
+        "social" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@social"
+        },
+        "images" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/images"
+        },
+        "streams" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/streams"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2013"
+        }
+      },
+      "displayName" : "Mike Cumings",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "mike.cumings@jivesoftware.com",
+        "jive_displayOrder" : 3,
+        "jive_summaryDisplayOrder" : 2,
+        "jive_showSummaryLabel" : true
+      } ],
+      "jive" : {
+        "level" : {
+          "imageURI" : "https://testing.jiveland.com/api/core/v3/images/status/statusicon-49.gif",
+          "name" : "Adventurer",
+          "points" : 283
+        },
+        "externalContributor" : false,
+        "username" : "mike.cumings@jivesoftware.com"
+      },
+      "name" : {
+        "familyName" : "Cumings",
+        "formatted" : "Mike Cumings",
+        "givenName" : "Mike"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:8469bf65-a35f-4635-af15-c7dc96661943] --><div class=\"jive-rendered-content\"><p>1.1</p></div><!-- [DocumentBodyEnd:8469bf65-a35f-4635-af15-c7dc96661943] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "parent" : "https://testing.jiveland.com/api/core/v3/messages/1037",
+    "replyCount" : 5,
+    "status" : "published",
+    "subject" : "Re: Content with many replies",
+    "viewCount" : 11,
+    "visibleToExternalContributors" : false,
+    "answer" : false,
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/1171",
+    "helpful" : false,
+    "question" : true,
+    "outcomeTypes" : [ {
+      "id" : "6",
+      "name" : "success",
+      "communityAudience" : "true",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "4",
+      "name" : "helpful",
+      "alternativeGrouping" : "true",
+      "noteRequired" : false,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "1",
+      "name" : "decision",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "3",
+      "name" : "pending",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : true
+    } ],
+    "helpfulCount" : 0,
+    "type" : "message"
+  }, {
+    "id" : "1048",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/outcomeTypes"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/outcomes"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/extprops"
+      },
+      "correctAnswer" : {
+        "allowed" : [ "PUT" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/correctAnswer"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/likes"
+      },
+      "self" : {
+        "allowed" : [ "DELETE", "PUT", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/message/1048#1048"
+      },
+      "attachments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/1048"
+      },
+      "messages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/messages"
+      },
+      "helpful" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1048/helpful"
+      }
+    },
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "published" : "2014-12-08T21:37:49.336+0000",
+    "tags" : [ ],
+    "updated" : "2014-12-08T21:37:49.394+0000",
+    "iconCss" : "jive-icon-discussion-question",
+    "parentPlace" : {
+      "id" : "2013",
+      "html" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com",
+      "name" : "Mike Cumings",
+      "type" : "person",
+      "uri" : "https://testing.jiveland.com/api/core/v3/people/2013"
+    },
+    "author" : {
+      "id" : "2013",
+      "resources" : {
+        "trendingPlaces" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingPlaces"
+        },
+        "trendingContent" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingContent"
+        },
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@reports"
+        },
+        "securityGroups" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/securityGroups"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@manager"
+        },
+        "recognition" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@recognition"
+        },
+        "pages" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/pages"
+        },
+        "self" : {
+          "allowed" : [ "DELETE", "PUT", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/avatar?a=1056"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@colleagues"
+        },
+        "extprops" : {
+          "allowed" : [ "POST", "DELETE", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/extprops"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@following"
+        },
+        "social" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@social"
+        },
+        "images" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/images"
+        },
+        "streams" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/streams"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2013"
+        }
+      },
+      "displayName" : "Mike Cumings",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "mike.cumings@jivesoftware.com",
+        "jive_displayOrder" : 3,
+        "jive_summaryDisplayOrder" : 2,
+        "jive_showSummaryLabel" : true
+      } ],
+      "jive" : {
+        "level" : {
+          "imageURI" : "https://testing.jiveland.com/api/core/v3/images/status/statusicon-49.gif",
+          "name" : "Adventurer",
+          "points" : 283
+        },
+        "externalContributor" : false,
+        "username" : "mike.cumings@jivesoftware.com"
+      },
+      "name" : {
+        "familyName" : "Cumings",
+        "formatted" : "Mike Cumings",
+        "givenName" : "Mike"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:9241c7c4-ce7a-45cc-b164-f6776c34f542] --><div class=\"jive-rendered-content\"><p>1.1.1</p></div><!-- [DocumentBodyEnd:9241c7c4-ce7a-45cc-b164-f6776c34f542] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "parent" : "https://testing.jiveland.com/api/core/v3/messages/1038",
+    "replyCount" : 0,
+    "status" : "published",
+    "subject" : "Re: Content with many replies",
+    "viewCount" : 11,
+    "visibleToExternalContributors" : false,
+    "answer" : false,
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/1171",
+    "helpful" : false,
+    "question" : true,
+    "outcomeTypes" : [ {
+      "id" : "6",
+      "name" : "success",
+      "communityAudience" : "true",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "4",
+      "name" : "helpful",
+      "alternativeGrouping" : "true",
+      "noteRequired" : false,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "1",
+      "name" : "decision",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "3",
+      "name" : "pending",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : true
+    } ],
+    "helpfulCount" : 0,
+    "type" : "message"
+  }, {
+    "id" : "1049",
+    "resources" : {
+      "outcomeTypes" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/outcomeTypes"
+      },
+      "outcomes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/outcomes"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/extprops"
+      },
+      "correctAnswer" : {
+        "allowed" : [ "PUT" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/correctAnswer"
+      },
+      "likes" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/likes"
+      },
+      "self" : {
+        "allowed" : [ "DELETE", "PUT", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/message/1049#1049"
+      },
+      "attachments" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/attachments/messages/1049"
+      },
+      "messages" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/messages"
+      },
+      "helpful" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/messages/1049/helpful"
+      }
+    },
+    "followerCount" : 0,
+    "likeCount" : 0,
+    "published" : "2014-12-08T21:37:57.267+0000",
+    "tags" : [ ],
+    "updated" : "2014-12-08T21:37:57.332+0000",
+    "iconCss" : "jive-icon-discussion-question",
+    "parentPlace" : {
+      "id" : "2013",
+      "html" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com",
+      "name" : "Mike Cumings",
+      "type" : "person",
+      "uri" : "https://testing.jiveland.com/api/core/v3/people/2013"
+    },
+    "author" : {
+      "id" : "2013",
+      "resources" : {
+        "trendingPlaces" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingPlaces"
+        },
+        "trendingContent" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@trendingContent"
+        },
+        "reports" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@reports"
+        },
+        "securityGroups" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/securityGroups"
+        },
+        "manager" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@manager"
+        },
+        "recognition" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@recognition"
+        },
+        "pages" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/pages"
+        },
+        "self" : {
+          "allowed" : [ "DELETE", "PUT", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013"
+        },
+        "avatar" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/avatar?a=1056"
+        },
+        "colleagues" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@colleagues"
+        },
+        "extprops" : {
+          "allowed" : [ "POST", "DELETE", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/extprops"
+        },
+        "followers" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@followers"
+        },
+        "following" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@following"
+        },
+        "social" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/@social"
+        },
+        "images" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/images"
+        },
+        "streams" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/streams"
+        },
+        "html" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/people/mike.cumings%40jivesoftware.com"
+        },
+        "followingIn" : {
+          "allowed" : [ "POST", "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/followingIn"
+        },
+        "activity" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/2013/activities"
+        },
+        "members" : {
+          "allowed" : [ "GET" ],
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/2013"
+        }
+      },
+      "displayName" : "Mike Cumings",
+      "emails" : [ {
+        "jive_label" : "Email",
+        "primary" : true,
+        "type" : "work",
+        "value" : "mike.cumings@jivesoftware.com",
+        "jive_displayOrder" : 3,
+        "jive_summaryDisplayOrder" : 2,
+        "jive_showSummaryLabel" : true
+      } ],
+      "jive" : {
+        "level" : {
+          "imageURI" : "https://testing.jiveland.com/api/core/v3/images/status/statusicon-49.gif",
+          "name" : "Adventurer",
+          "points" : 283
+        },
+        "externalContributor" : false,
+        "username" : "mike.cumings@jivesoftware.com"
+      },
+      "name" : {
+        "familyName" : "Cumings",
+        "formatted" : "Mike Cumings",
+        "givenName" : "Mike"
+      },
+      "type" : "person"
+    },
+    "content" : {
+      "text" : "<body><!-- [DocumentBodyStart:6a9158d0-d6cd-4228-a0f1-440e98ce81e2] --><div class=\"jive-rendered-content\"><p>1.1.2</p></div><!-- [DocumentBodyEnd:6a9158d0-d6cd-4228-a0f1-440e98ce81e2] --></body>",
+      "editable" : false,
+      "type" : "text/html"
+    },
+    "parent" : "https://testing.jiveland.com/api/core/v3/messages/1038",
+    "replyCount" : 0,
+    "status" : "published",
+    "subject" : "Re: Content with many replies",
+    "viewCount" : 11,
+    "visibleToExternalContributors" : false,
+    "answer" : false,
+    "attachments" : [ ],
+    "discussion" : "https://testing.jiveland.com/api/core/v3/contents/1171",
+    "helpful" : false,
+    "question" : true,
+    "outcomeTypes" : [ {
+      "id" : "6",
+      "name" : "success",
+      "communityAudience" : "true",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "4",
+      "name" : "helpful",
+      "alternativeGrouping" : "true",
+      "noteRequired" : false,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "1",
+      "name" : "decision",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : true,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : false
+    }, {
+      "id" : "3",
+      "name" : "pending",
+      "noteRequired" : true,
+      "urlAllowed" : false,
+      "generalNote" : false,
+      "confirmExclusion" : false,
+      "confirmUnmark" : false,
+      "shareable" : true
+    } ],
+    "helpfulCount" : 0,
+    "type" : "message"
+  } ],
+  "startIndex" : 0
+}

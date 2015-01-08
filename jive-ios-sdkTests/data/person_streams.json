@@ -1,0 +1,136 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "list" : [ {
+    "name" : "",
+    "id" : "10432",
+    "type" : "stream",
+    "source" : "communications",
+    "published" : "2010-11-12T23:02:04.922+0000",
+    "receiveEmails" : false,
+    "updated" : "2011-01-07T23:32:32.936+0000",
+    "resources" : {
+      "associations" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10432/associations",
+        "allowed" : [ "POST", "GET", "DELETE" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10432",
+        "allowed" : [ "PUT", "GET", "DELETE" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/activity?streamSource=communications&streamID=10432",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10432/activities",
+        "allowed" : [ "GET" ]
+      }
+    }
+  }, {
+    "name" : "",
+    "id" : "10433",
+    "type" : "stream",
+    "source" : "connections",
+    "published" : "2010-11-12T23:02:05.169+0000",
+    "receiveEmails" : false,
+    "updated" : "2011-01-07T23:36:35.228+0000",
+    "resources" : {
+      "associations" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10433/associations",
+        "allowed" : [ "POST", "GET", "DELETE" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10433",
+        "allowed" : [ "PUT", "GET", "DELETE" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/activity?streamSource=connections&streamID=10433",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10433/activities",
+        "allowed" : [ "GET" ]
+      }
+    }
+  }, {
+    "name" : "Higher ups",
+    "id" : "10857",
+    "type" : "stream",
+    "source" : "custom",
+    "published" : "2010-12-13T19:31:52.259+0000",
+    "receiveEmails" : false,
+    "updated" : "2010-12-13T19:33:58.169+0000",
+    "resources" : {
+      "associations" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10857/associations",
+        "allowed" : [ "POST", "GET", "DELETE" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10857",
+        "allowed" : [ "PUT", "GET", "DELETE" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/activity?streamSource=custom&streamID=10857",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10857/activities",
+        "allowed" : [ "GET" ]
+      }
+    }
+  }, {
+    "name" : "The Team",
+    "id" : "10872",
+    "type" : "stream",
+    "source" : "custom",
+    "published" : "2010-12-14T15:33:22.856+0000",
+    "receiveEmails" : false,
+    "updated" : "2011-01-07T23:36:36.183+0000",
+    "resources" : {
+      "associations" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872/associations",
+        "allowed" : [ "POST", "GET", "DELETE" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872",
+        "allowed" : [ "PUT", "GET", "DELETE" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/activity?streamSource=custom&streamID=10872",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10872/activities",
+        "allowed" : [ "GET" ]
+      }
+    }
+  }, {
+    "name" : "Co-hired",
+    "id" : "10873",
+    "type" : "stream",
+    "source" : "custom",
+    "published" : "2010-12-14T15:57:46.075+0000",
+    "receiveEmails" : false,
+    "updated" : "2010-12-14T16:02:34.137+0000",
+    "resources" : {
+      "associations" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10873/associations",
+        "allowed" : [ "POST", "GET", "DELETE" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10873",
+        "allowed" : [ "PUT", "GET", "DELETE" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/activity?streamSource=custom&streamID=10873",
+        "allowed" : [ "GET" ]
+      },
+      "activity" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/streams/10873/activities",
+        "allowed" : [ "GET" ]
+      }
+    }
+  } ],
+  "startIndex" : 0,
+  "itemsPerPage" : 10
+}

@@ -1,0 +1,6 @@
+{
+  "value" : 420,
+  "name" : "feature.status_update.characters",
+  "type" : "integer",
+  "description" : "Maximum characters allowed in a status update"
+}

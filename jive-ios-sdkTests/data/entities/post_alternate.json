@@ -1,0 +1,151 @@
+{
+  "id" : "119661",
+  "resources" : {
+    "outcomeTypes" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/outcomeTypes"
+    },
+    "extprops" : {
+      "allowed" : [ "DELETE", "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/extprops"
+    },
+    "outcomes" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/outcomes"
+    },
+    "versions" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/versions/466111"
+    },
+    "likes" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/likes"
+    },
+    "read" : {
+      "allowed" : [ "DELETE", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/read"
+    },
+    "self" : {
+      "allowed" : [ "PUT", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/docs/DOC-119661"
+    },
+    "childOutcomeTypes" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/childOutcomeTypes"
+    },
+    "attachments" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/attachments/contents/466111"
+    },
+    "followingIn" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/followingIn"
+    },
+    "comments" : {
+      "allowed" : [ "GET", "POST" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/466111/comments"
+    }
+  },
+  "followerCount" : 1,
+  "likeCount" : 0,
+  "published" : "2011-04-02T21:41:11.735+0000",
+  "tags" : [ ],
+  "updated" : "2011-04-10T22:14:38.503+0000",
+  "author" : {
+    "id" : "3619",
+    "resources" : {
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/@manager"
+      },
+      "self" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/avatar"
+      },
+      "blog" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/places/96687"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/@colleagues"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/@following"
+      },
+      "images" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/images"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/people/ku.evan"
+      },
+      "followingIn" : {
+        "allowed" : [ "GET", "POST" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/3619/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/3619"
+      }
+    },
+    "displayName" : "Evan Ku",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "ku.evan@not real email.com"
+    } ],
+    "jive" : {
+      "level" : {
+        "name" : "Zinc",
+        "points" : 1605
+      },
+      "username" : "ku.evan"
+    },
+    "name" : {
+      "familyName" : "Ku",
+      "formatted" : "Evan Ku",
+      "givenName" : "Evan"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "<body><!-- [DocumentBodyStart:b8fb22d1-c21e-4461-b458-efb606665d02] --><div class=\"jive-rendered-content\"><h1>Jive iPad Test Cases: Create and View Status Update</h1></div><!-- [DocumentBodyEnd:b8fb22d1-c21e-4461-b458-efb606665d02] --></body>",
+    "type" : "text/html"
+  },
+  "parent" : "https://testing.jiveland.com/api/core/v3/places/340206",
+  "replyCount" : 0,
+  "status" : "published",
+  "subject" : "TABDEV-605",
+  "viewCount" : 24,
+  "visibleToExternalContributors" : false,
+  "authorship" : "open",
+  "categories" : [ ],
+  "visibility" : "place",
+  "attachments" : [ ],
+  "restrictComments" : false,
+  "type" : "post"
+}

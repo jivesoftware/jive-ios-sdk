@@ -1,0 +1,273 @@
+{
+  "id" : "1002",
+  "resources" : {
+    "extprops" : {
+      "allowed" : [ "POST", "DELETE", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/1012/extprops"
+    },
+    "self" : {
+      "allowed" : [ "PUT", "DELETE", "GET" ],
+      "ref" : "https://testing.jiveland.com/api/core/v3/contents/1012"
+    },
+    "html" : {
+      "allowed" : [ "GET" ],
+      "ref" : "https://testing.jiveland.com/bookmarks/1001"
+    }
+  },
+  "followerCount" : 0,
+  "published" : "2012-07-08T19:40:16.074+0000",
+  "tags" : [ ],
+  "updated" : "2012-07-08T19:40:16.106+0000",
+  "iconCss" : "jive-icon-external-site-bookmark",
+  "parentPlace" : {
+    "id" : "1",
+    "html" : "https://testing.jiveland.com/people/admin",
+    "name" : "Administrator",
+    "type" : "person",
+    "uri" : "https://testing.jiveland.com/api/core/v3/people/1"
+  },
+  "contentID" : "1012",
+  "author" : {
+    "id" : "1",
+    "resources" : {
+      "trendingPlaces" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@trendingPlaces"
+      },
+      "trendingContent" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@trendingContent"
+      },
+      "reports" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@reports"
+      },
+      "manager" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@manager"
+      },
+      "securityGroups" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/securityGroups"
+      },
+      "recognition" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@recognition"
+      },
+      "self" : {
+        "allowed" : [ "PUT", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1"
+      },
+      "tasks" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/tasks"
+      },
+      "avatar" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/avatar"
+      },
+      "colleagues" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@colleagues"
+      },
+      "extprops" : {
+        "allowed" : [ "POST", "DELETE", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/extprops"
+      },
+      "followers" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@followers"
+      },
+      "following" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@following"
+      },
+      "social" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/@social"
+      },
+      "images" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/images"
+      },
+      "streams" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/streams"
+      },
+      "html" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/people/admin"
+      },
+      "followingIn" : {
+        "allowed" : [ "POST", "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/followingIn"
+      },
+      "activity" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/people/1/activities"
+      },
+      "members" : {
+        "allowed" : [ "GET" ],
+        "ref" : "https://testing.jiveland.com/api/core/v3/members/people/1"
+      }
+    },
+    "displayName" : "Administrator",
+    "emails" : [ {
+      "jive_label" : "Email",
+      "primary" : true,
+      "type" : "work",
+      "value" : "admin@example.com"
+    } ],
+    "jive" : {
+      "level" : {
+        "imageURI" : "https://testing.jiveland.com/api/core/v3/images/status/statusicon-47.gif",
+        "name" : "Newbie",
+        "points" : 0
+      },
+      "username" : "admin"
+    },
+    "name" : {
+      "formatted" : "Administrator"
+    },
+    "type" : "person"
+  },
+  "content" : {
+    "text" : "",
+    "editable" : false,
+    "type" : "text/html"
+  },
+  "status" : "published",
+  "subject" : "alternate",
+  "viewCount" : 0,
+  "visibleToExternalContributors" : false,
+    "favoriteObject" : {
+        "parent" : "https://testing.jiveland.com/api/core/v3/people/4751",
+        "type" : "update",
+        "subject" : "Battle Week is upon us... LET'S GO ZAGS!!!",
+        "content" : {
+            "type" : "text/html",
+            "text" : "<body><!-- [DocumentBodyStart:9d9860f9-11e9-4885-9811-0d875106df0b] --><div class=\"jive-rendered-content\"><span>Battle Week is upon us... LET'S GO ZAGS!!!</span></div><!-- [DocumentBodyEnd:9d9860f9-11e9-4885-9811-0d875106df0b] --></body>"
+        },
+        "status" : "published",
+        "viewCount" : 0,
+        "author" : {
+            "name" : {
+                "givenName" : "David",
+                "familyName" : "de Recat",
+                "formatted" : "David de Recat"
+            },
+            "type" : "person",
+            "displayName" : "David de Recat",
+            "jive" : {
+                "level" : {
+                    "name" : "Titanium",
+                    "points" : 988
+                },
+                "username" : "derecat.david"
+            },
+            "resources" : {
+                "reports" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/@reports",
+                    "allowed" : [ "GET" ]
+                },
+                "manager" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/@manager",
+                    "allowed" : [ "GET" ]
+                },
+                "self" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751",
+                    "allowed" : [ "GET" ]
+                },
+                "avatar" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/avatar",
+                    "allowed" : [ "GET" ]
+                },
+                "blog" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/blog",
+                    "allowed" : [ "GET" ]
+                },
+                "colleagues" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/@colleagues",
+                    "allowed" : [ "GET" ]
+                },
+                "followers" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/@followers",
+                    "allowed" : [ "GET" ]
+                },
+                "following" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/@following",
+                    "allowed" : [ "GET" ]
+                },
+                "images" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/images",
+                    "allowed" : [ "GET" ]
+                },
+                "html" : {
+                    "ref" : "https://testing.jiveland.com/people/derecat.david",
+                    "allowed" : [ "GET" ]
+                },
+                "followingIn" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/followingIn",
+                    "allowed" : [ "GET" ]
+                },
+                "activity" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/people/4751/activities",
+                    "allowed" : [ "GET" ]
+                },
+                "members" : {
+                    "ref" : "https://testing.jiveland.com/api/core/v3/members/people/4751",
+                    "allowed" : [ "GET" ]
+                }
+            },
+            "id" : "4751"
+        },
+        "published" : "2010-12-10T23:47:48.570+0000",
+        "replyCount" : 0,
+        "updated" : "2010-12-10T23:47:48.570+0000",
+        "visibleToExternalContributors" : false,
+        "tags" : [ ],
+        "followerCount" : 1,
+        "likeCount" : 0,
+        "resources" : {
+            "likes" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents/372124/likes",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "read" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents/372124/read",
+                "allowed" : [ "POST", "DELETE" ]
+            },
+            "images" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/images/contents/372124",
+                "allowed" : [ "GET" ]
+            },
+            "self" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents/372124",
+                "allowed" : [ "GET" ]
+            },
+            "html" : {
+                "ref" : "https://testing.jiveland.com/people/derecat.david/status/154033",
+                "allowed" : [ "GET" ]
+            },
+            "followingIn" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents/372124/followingIn",
+                "allowed" : [ "GET" ]
+            },
+            "comments" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/contents/372124/comments",
+                "allowed" : [ "GET", "POST" ]
+            },
+            "attachments" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/attachments/contents/372124",
+                "allowed" : [ "GET" ]
+            },
+            "messages" : {
+                "ref" : "https://testing.jiveland.com/api/core/v3/messages/contents/372124",
+                "allowed" : [ "GET", "POST" ]
+            }
+        },
+        "id" : "154033"
+    },
+  "private" : false,
+  "type" : "favorite"
+}

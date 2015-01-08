@@ -1,0 +1,106 @@
+{
+    "type" : "comment",
+    "subject" : "Heyo&#8211; can I get the email you prefer to use for Dropbox? I'll invite you to the Wigwam share....",
+    "rootType" : "dm",
+    "rootURI" : "https://testing.jiveland.com/api/core/v3/dms/150323",
+    "parent" : "https://testing.jiveland.com/api/core/v3/dms/150323",
+    "content" : {
+      "type" : "text/html",
+      "text" : "<body><!-- [DocumentBodyStart:ddeb4d22-8d54-4f74-908a-a26732ff43e9] --><div class=\"jive-rendered-content\"><div><p><a class=\"jive-link-email-small\" href=\"mailto:heath.borders@real email.com\">heath.borders@real email.com</a><span> is my personal dropbox account. Is it common for people to use personal accounts? I could create an account with my jive email if that is more common.</span></p></div></div><!-- [DocumentBodyEnd:ddeb4d22-8d54-4f74-908a-a26732ff43e9] --></body>"
+    },
+    "status" : "published",
+    "author" : {
+      "name" : {
+        "givenName" : "Heath",
+        "familyName" : "Borders",
+        "formatted" : "Heath Borders"
+      },
+      "type" : "person",
+      "displayName" : "Heath Borders",
+      "jive" : {
+        "level" : {
+          "name" : "Oxygen",
+          "points" : 159
+        },
+        "username" : "borders.heath"
+      },
+      "resources" : {
+        "reports" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@reports",
+          "allowed" : [ "GET" ]
+        },
+        "manager" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@manager",
+          "allowed" : [ "GET" ]
+        },
+        "self" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327",
+          "allowed" : [ "GET" ]
+        },
+        "avatar" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/avatar",
+          "allowed" : [ "GET" ]
+        },
+        "blog" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/blog",
+          "allowed" : [ "GET" ]
+        },
+        "colleagues" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@colleagues",
+          "allowed" : [ "GET" ]
+        },
+        "followers" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@followers",
+          "allowed" : [ "GET" ]
+        },
+        "following" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/@following",
+          "allowed" : [ "GET" ]
+        },
+        "images" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/images",
+          "allowed" : [ "GET" ]
+        },
+        "html" : {
+          "ref" : "https://testing.jiveland.com/people/borders.heath",
+          "allowed" : [ "GET" ]
+        },
+        "followingIn" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/followingIn",
+          "allowed" : [ "GET" ]
+        },
+        "activity" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/people/5327/activities",
+          "allowed" : [ "GET" ]
+        },
+        "members" : {
+          "ref" : "https://testing.jiveland.com/api/core/v3/members/people/5327",
+          "allowed" : [ "GET" ]
+        }
+      },
+      "id" : "5327"
+    },
+    "published" : "2010-11-20T18:35:55.678+0000",
+    "replyCount" : 0,
+    "updated" : "2010-11-20T18:35:55.678+0000",
+    "likeCount" : 0,
+    "resources" : {
+      "likes" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484708/likes",
+        "allowed" : [ "POST", "GET" ]
+      },
+      "self" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484708",
+        "allowed" : [ "GET" ]
+      },
+      "html" : {
+        "ref" : "https://testing.jiveland.com/inbox/dm/150323#comment-484708",
+        "allowed" : [ "GET" ]
+      },
+      "comments" : {
+        "ref" : "https://testing.jiveland.com/api/core/v3/comments/484708/comments",
+        "allowed" : [ "POST", "GET" ]
+      }
+    },
+    "id" : "484708"
+}

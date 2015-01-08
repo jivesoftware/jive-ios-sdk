@@ -1,0 +1,16 @@
+throw 'allowIllegalResourceCall is false.';
+{
+  "jiveVersion" : "6.0.0.0 7c2",
+  "jiveCoreVersions" : [ {
+    "version" : 2,
+    "revision" : 3,
+    "uri" : "/api/core/v2",
+    "documentation" : "https://developers.jivesoftware.com/api/v2/rest"
+  }, {
+    "version" : 3,
+    "revision" : 1,
+    "uri" : "/core/api/v3",
+    "documentation" : "https://docs.developers.jivesoftware.com/api/v3/cloud/rest"
+  } ],
+    "instanceURL" : "https://testing.jiveland.com"
+}
