@@ -65,8 +65,6 @@ NSString * const JiveMessageType = @"message";
 - (Class) arrayMappingFor:(NSString*) propertyName {
     if ([propertyName isEqualToString:JiveMessageAttributes.attachments]) {
         return [JiveAttachment class];
-    } else if ([propertyName isEqualToString:JiveMessageAttributes.outcomeTypes]) {
-        return [JiveOutcomeType class];
     }
     
     return [super arrayMappingFor:propertyName];

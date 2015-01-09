@@ -49,6 +49,7 @@
 @class JiveImage;
 @class JiveProperty;
 @class JiveOAuthCredentials;
+@class JiveNews;
 
 typedef void (^JiveErrorBlock)(NSError *error);
 typedef void (^JiveBoolCompleteBlock)(BOOL value);
@@ -68,5 +69,8 @@ typedef void (^JiveInboxObjectsCompleteBlock)(NSArray *objects, NSDate *earliest
 typedef void (^JiveTermsAndConditionsCompleteBlock)(JiveTermsAndConditions *termsAndConditions);
 typedef void (^JivePropteryCompleteBlock)(JiveProperty *property);
 typedef void (^JiveOAuthCredentialsCompleteBlock)(JiveOAuthCredentials *credentials);
+typedef void (^JiveNewsCompleteBlock)(JiveNews *news);
+
+typedef void (^JiveSuboperationCompleteBlock)(id object, NSError *error);
 
 #endif

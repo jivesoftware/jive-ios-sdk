@@ -18,6 +18,10 @@
 //
 
 #import "JiveObject.h"
+#import "JiveResponseBlocks.h"
+
+
+@protocol JiveRetryingOperation;
 
 extern struct JiveAttachmentAttributes {
     __unsafe_unretained NSString *contentType;
@@ -28,6 +32,7 @@ extern struct JiveAttachmentAttributes {
     __unsafe_unretained NSString *size;
     __unsafe_unretained NSString *url;
 } const JiveAttachmentAttributes;
+
 
 //! \class JiveAttachment
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/AttachmentEntity.html
@@ -54,5 +59,19 @@ extern struct JiveAttachmentAttributes {
 //! The URL to retrieve the binary content of this attachment.
 @property(nonatomic, copy) NSURL* url;
 
+
+//! Helper method for creating a JiveAttachment to be uploaded as part of creating or updating content.
+//! File URLs are validated before creation, in addition to initializing the content type and size properties.
++ (JiveAttachment *)createAttachmentForURL:(NSURL *)url;
+
+//! Remove the attachment from the content
+- (void)deleteFromInstance:(Jive *)instance
+                onComplete:(JiveCompletedBlock)completedBlock
+                   onError:(JiveErrorBlock)errorBlock;
+
+//! Create an operation to remove the attachment from the content
+- (AFJSONRequestOperation<JiveRetryingOperation> *)deleteFromInstanceOperation:(Jive *)instance
+                                                                    onComplete:(JiveCompletedBlock)completedBlock
+                                                                       onError:(JiveErrorBlock)errorBlock;
 
 @end

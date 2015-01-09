@@ -21,12 +21,15 @@
 #import "JiveResourceEntry.h"
 
 @implementation JiveAssociationTargetList
-
-- (void) addAssociationTarget:(JiveTypedObject *)target {
+- (void)addTargetURI:(NSString *)uri {
     if (!targetURIs)
         targetURIs = [NSMutableArray arrayWithCapacity:1];
     
-    [targetURIs addObject:[target.selfRef absoluteString]];
+    [targetURIs addObject:uri];
+}
+
+- (void)addAssociationTarget:(JiveTypedObject *)target {
+    [self addTargetURI:[target.selfRef absoluteString]];
 }
 
 - (NSArray *) toJSONArray {

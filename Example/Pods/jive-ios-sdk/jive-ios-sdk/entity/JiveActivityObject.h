@@ -19,6 +19,31 @@
 
 #import <Foundation/Foundation.h>
 #import "JiveObject.h"
+#import "JivePersonJive.h"
+
+
+extern struct JiveActivityObjectAttributes {
+    __unsafe_unretained NSString *answer;
+    __unsafe_unretained NSString *author;
+    __unsafe_unretained NSString *canComment;
+    __unsafe_unretained NSString *canReply;
+    __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *contentImages;
+    __unsafe_unretained NSString *contentVideos;
+    __unsafe_unretained NSString *displayName;
+    __unsafe_unretained NSString *helpfulCount;
+    __unsafe_unretained NSString *image;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *objectType;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *question;
+    __unsafe_unretained NSString *resolved;
+    __unsafe_unretained NSString *summary;
+    __unsafe_unretained NSString *updated;
+    __unsafe_unretained NSString *url;
+} const JiveActivityObjectAttributes;
+
 
 @class JiveMediaLink;
 
@@ -46,6 +71,8 @@
 
 //! Description of a resource providing a visual representation of this object, intended for human consumption
 @property(nonatomic, readonly, strong) JiveMediaLink* image;
+
+@property(nonatomic, readonly, strong) JivePersonJive *jive;
 
 //! The type of this object. Standard Jive objects will all have a prefix of jive:.
 @property(nonatomic, copy) NSString* objectType;
@@ -76,5 +103,8 @@
 
 //! Flag indicating that this content can be commented on
 @property (nonatomic, readonly) NSNumber *canComment;
+
+//! Helpful count NSNumber
+@property(nonatomic, readonly, strong) NSNumber *helpfulCount;
 
 @end

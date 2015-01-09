@@ -23,6 +23,28 @@
 #import "JiveOpenSocial.h"
 #import "JiveMediaLink.h"
 
+
+extern struct JiveActivityAttributes {
+    __unsafe_unretained NSString *actor;
+    __unsafe_unretained NSString *content;
+    __unsafe_unretained NSString *generator;
+    __unsafe_unretained NSString *icon;
+    __unsafe_unretained NSString *jiveId;
+    __unsafe_unretained NSString *jive;
+    __unsafe_unretained NSString *object;
+    __unsafe_unretained NSString *openSocial;
+    __unsafe_unretained NSString *previewImage;
+    __unsafe_unretained NSString *provider;
+    __unsafe_unretained NSString *published;
+    __unsafe_unretained NSString *target;
+    __unsafe_unretained NSString *title;
+    __unsafe_unretained NSString *type;
+    __unsafe_unretained NSString *updated;
+    __unsafe_unretained NSString *url;
+    __unsafe_unretained NSString *verb;
+} const JiveActivityAttributes;
+
+
 //! \class JiveActivity
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/ActivityEntity.html
 @interface JiveActivity : JiveObject
@@ -51,6 +73,9 @@
 //! OpenSocial extensions to the standard Activity Streams format.
 @property (nonatomic, strong) JiveOpenSocial *openSocial;
 
+//! A preview image of the activity.
+@property (nonatomic, readonly, strong) JiveMediaLink *previewImage;
+
 //! The service instance at which this activity was generated.
 @property (nonatomic, readonly, strong) JiveActivityObject *provider;
 
@@ -62,6 +87,8 @@
 
 //! The title of this activity. Required for creation.
 @property (nonatomic, copy) NSString *title;
+
+@property (nonatomic, readonly) NSString *type;
 
 //! The date and time at which this activity was most recently updated.
 @property(nonatomic, readonly, strong) NSDate* updated;

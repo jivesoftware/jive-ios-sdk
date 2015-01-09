@@ -26,16 +26,16 @@
 struct JiveDocumentAttributes const JiveDocumentAttributes = {
     .approvers = @"approvers",
     .attachments = @"attachments",
-    .authors = @"authors",
-    .authorship = @"authorship",
-    .categories = @"categories",
     .editingBy = @"editingBy",
     .fromQuest = @"fromQuest",
     .restrictComments = @"restrictComments",
     .updater = @"updater",
+    
+    .authors = @"authors",
+    .authorship = @"authorship",
+    .categories = @"categories",
     .users = @"users",
     .visibility = @"visibility",
-    
     .outcomeCounts = @"outcomeCounts",
     .outcomeTypeNames = @"outcomeTypeNames",
     .outcomeTypes = @"outcomeTypes",
@@ -46,8 +46,8 @@ struct JiveDocumentAttributes const JiveDocumentAttributes = {
 
 @implementation JiveDocument
 
-@synthesize approvers, attachments, authors, authorship, categories, fromQuest, restrictComments;
-@synthesize updater, users, visibility, editingBy;
+@synthesize approvers, attachments, fromQuest, restrictComments;
+@synthesize updater, editingBy;
 
 NSString * const JiveDocumentType = @"document";
 
@@ -65,51 +65,24 @@ NSString * const JiveDocumentType = @"document";
         return [JiveAttachment class];
     }
     
-    if ([propertyName isEqualToString:JiveDocumentAttributes.approvers] ||
-        [propertyName isEqualToString:JiveDocumentAttributes.authors]) {
+    if ([propertyName isEqualToString:JiveDocumentAttributes.approvers]) {
         return [JivePerson class];
     }
     
     return [super arrayMappingFor:propertyName];
 }
 
-- (id)parseArrayNamed:(NSString *)propertyName fromJSON:(id)JSON jiveInstance:(Jive *)jiveInstance {
-    if (![propertyName isEqualToString:JiveDocumentAttributes.users]) {
-        return [super parseArrayNamed:propertyName fromJSON:JSON jiveInstance:jiveInstance];
-    }
-    
-    if ([JSON count] > 0 && ![[JSON[0] class] isSubclassOfClass:[NSString class]]) {
-        return [JivePerson objectsFromJSONList:JSON withInstance:jiveInstance];
-    }
-    
-    return JSON;
-}
-
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:authorship forKey:JiveDocumentAttributes.authorship];
     [dictionary setValue:fromQuest forKey:JiveDocumentAttributes.fromQuest];
     [dictionary setValue:restrictComments forKey:JiveDocumentAttributes.restrictComments];
-    [dictionary setValue:visibility forKey:JiveDocumentAttributes.visibility];
     [self addArrayElements:attachments
           toJSONDictionary:dictionary
                     forTag:JiveDocumentAttributes.attachments];
     [self addArrayElements:approvers
           toJSONDictionary:dictionary
                     forTag:JiveDocumentAttributes.approvers];
-    [self addArrayElements:authors
-          toJSONDictionary:dictionary
-                    forTag:JiveDocumentAttributes.authors];
-    if ([[users.lastObject class] isSubclassOfClass:[NSString class]])
-        [dictionary setValue:users forKey:JiveDocumentAttributes.users];
-    else
-        [self addArrayElements:users
-              toJSONDictionary:dictionary
-                        forTag:JiveDocumentAttributes.users];
-    
-    if (categories)
-        [dictionary setValue:categories forKey:JiveDocumentAttributes.categories];
     
     return dictionary;
 }
@@ -120,17 +93,8 @@ NSString * const JiveDocumentType = @"document";
     [self addArrayElements:approvers
     toPersistentDictionary:dictionary
                     forTag:JiveDocumentAttributes.approvers];
-    [self addArrayElements:authors
-    toPersistentDictionary:dictionary
-                    forTag:JiveDocumentAttributes.authors];
     if (updater) {
         dictionary[JiveDocumentAttributes.updater] = updater.persistentJSON;
-    }
-    
-    if (users.count > 0 && ![[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]]) {
-        [self addArrayElements:users
-        toPersistentDictionary:dictionary
-                        forTag:JiveDocumentAttributes.users];
     }
     
     if (editingBy) {

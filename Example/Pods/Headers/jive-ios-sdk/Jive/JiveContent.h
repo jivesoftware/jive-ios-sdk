@@ -1,1 +1,0 @@
-../../../jive-ios-sdk/jive-ios-sdk/entity/JiveContent.h

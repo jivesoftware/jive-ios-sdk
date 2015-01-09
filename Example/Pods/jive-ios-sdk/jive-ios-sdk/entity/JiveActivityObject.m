@@ -25,22 +25,48 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveOutcomeTypeConstants.h"
 
+
+struct JiveActivityObjectAttributes const JiveActivityObjectAttributes = {
+    .answer = @"answer",
+    .author = @"author",
+    .canComment = @"canComment",
+    .canReply = @"canReply",
+    .content = @"content",
+    .contentImages = @"contentImages",
+    .contentVideos = @"contentVideos",
+    .displayName = @"displayName",
+    .helpfulCount = @"helpfulCount",
+    .image = @"image",
+    .jiveId = @"jiveId",
+    .jive = @"jive",
+    .objectType = @"objectType",
+    .published = @"published",
+    .question = @"question",
+    .resolved = @"resolved",
+    .summary = @"summary",
+    .updated = @"updated",
+    .url = @"url",
+};
+
+
 @implementation JiveActivityObject
 
-@synthesize author, content, contentImages, contentVideos, displayName, jiveId, image, objectType, published, summary, updated, url, question, resolved, answer, canReply, canComment;
+@synthesize author, content, contentImages, contentVideos, displayName, jiveId, image, objectType;
+@synthesize published, summary, updated, url, question, resolved, answer, canReply, canComment;
+@synthesize helpfulCount, jive;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:content forKey:@"content"];
-    [dictionary setValue:displayName forKey:@"displayName"];
-    [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:objectType forKey:@"objectType"];
-    [dictionary setValue:summary forKey:@"summary"];
-    [dictionary setValue:question forKey:@"question"];
+    [dictionary setValue:content forKey:JiveActivityObjectAttributes.content];
+    [dictionary setValue:displayName forKey:JiveActivityObjectAttributes.displayName];
+    [dictionary setValue:jiveId forKey:JiveObjectConstants.id];
+    [dictionary setValue:objectType forKey:JiveActivityObjectAttributes.objectType];
+    [dictionary setValue:summary forKey:JiveActivityObjectAttributes.summary];
+    [dictionary setValue:question forKey:JiveActivityObjectAttributes.question];
     [dictionary setValue:resolved forKey:JiveOutcomeTypeNames.resolved];
     if (answer) {
-        [dictionary setValue:[answer absoluteString] forKey:@"answer"];
+        [dictionary setValue:[answer absoluteString] forKey:JiveActivityObjectAttributes.answer];
     }
     
     return dictionary;
@@ -50,39 +76,46 @@
     NSMutableDictionary *dictionary = [super persistentJSON];
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
-    [dictionary setValue:canComment forKey:@"canComment"];
-    [dictionary setValue:canReply forKey:@"canReply"];
-    [dictionary setValue:[url absoluteString] forKey:@"url"];
+    [dictionary setValue:canComment forKey:JiveActivityObjectAttributes.canComment];
+    [dictionary setValue:canReply forKey:JiveActivityObjectAttributes.canReply];
+    [dictionary setValue:[url absoluteString] forKey:JiveActivityObjectAttributes.url];
+    [dictionary setValue:[jive persistentJSON] forKey:JiveActivityObjectAttributes.jive];
     if (author) {
-        [dictionary setValue:[author persistentJSON] forKey:@"author"];
+        [dictionary setValue:[author persistentJSON] forKey:JiveActivityObjectAttributes.author];
     }
     
     if (image) {
-        [dictionary setValue:[image persistentJSON] forKey:@"image"];
+        [dictionary setValue:[image persistentJSON] forKey:JiveActivityObjectAttributes.image];
     }
     
     if (published) {
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+        [dictionary setValue:[dateFormatter stringFromDate:published]
+                      forKey:JiveActivityObjectAttributes.published];
     }
     
     if (updated) {
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+        [dictionary setValue:[dateFormatter stringFromDate:updated]
+                      forKey:JiveActivityObjectAttributes.updated];
+    }
+    
+    if (helpfulCount) {
+        [dictionary setValue:helpfulCount forKey:JiveActivityObjectAttributes.helpfulCount];
     }
     
     [self addArrayElements:contentImages
     toPersistentDictionary:dictionary
-                    forTag:@"contentImages"];
+                    forTag:JiveActivityObjectAttributes.contentImages];
     [self addArrayElements:contentVideos
     toPersistentDictionary:dictionary
-                    forTag:@"contentVideos"];
+                    forTag:JiveActivityObjectAttributes.contentVideos];
 
     return dictionary;
 }
 
 - (Class)arrayMappingFor:(NSString *)propertyName {
-    if ([@"contentImages" isEqualToString:propertyName]) {
+    if ([JiveActivityObjectAttributes.contentImages isEqualToString:propertyName]) {
         return [JiveImage class];
-    } else if ([@"contentVideos" isEqualToString:propertyName]) {
+    } else if ([JiveActivityObjectAttributes.contentVideos isEqualToString:propertyName]) {
         return [JiveContentVideo class];
     }
     

@@ -51,6 +51,10 @@
                                                                 onComplete:(JiveNativeImageCompleteBlock)completeBlock
                                                                    onError:(JiveErrorBlock)errorBlock;
 
+- (JAPIRequestOperation<JiveRetryingOperation> *)emptyOperationWithRequest:(NSURLRequest*)request
+                                                                onComplete:(JiveCompletedBlock)complete
+                                                                   onError:(JiveErrorBlock)error;
+
 @end
 
 extern struct JiveHTTPHeaderFields {
@@ -84,4 +88,5 @@ extern struct JiveRequestPathComponents {
     __unsafe_unretained NSString *search;
     __unsafe_unretained NSString *editable;
     __unsafe_unretained NSString *acclaim;
+    __unsafe_unretained NSString *news;
 } const JiveRequestPathComponents;

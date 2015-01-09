@@ -232,4 +232,17 @@
     [[self maxAttachmentSizeInKBOperation:completeBlock onError:errorBlock] start];
 }
 
+#pragma mark - Share
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)newsFeedEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                    onError:(JiveErrorBlock)errorBlock {
+    return [self boolPropertyOperation:JivePropertyNames.newsFeedEnabled
+                            onComplete:completeBlock
+                               onError:errorBlock];
+}
+
+- (void)newsFeedEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    [[self newsFeedEnabledOperation:completeBlock onError:errorBlock] start];
+}
+
 @end

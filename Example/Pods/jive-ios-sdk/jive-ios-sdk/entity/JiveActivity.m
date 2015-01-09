@@ -20,35 +20,69 @@
 
 #import "JiveActivity.h"
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
+#import "JiveObject_internal.h"
+
+
+struct JiveActivityAttributes const JiveActivityAttributes = {
+    .actor = @"actor",
+    .content = @"content",
+    .generator = @"generator",
+    .icon = @"icon",
+    .jiveId = @"jiveId",
+    .jive = @"jive",
+    .object = @"object",
+    .openSocial = @"openSocial",
+    .previewImage = @"previewImage",
+    .provider = @"provider",
+    .published = @"published",
+    .target = @"target",
+    .title = @"title",
+    .type = @"type",
+    .updated = @"updated",
+    .url = @"url",
+    .verb = @"verb",
+};
 
 
 @implementation JiveActivity
 
 @synthesize actor, content, generator, icon, jive, jiveId, object, openSocial, provider, published;
-@synthesize target, title, updated, url, verb;
+@synthesize target, title, updated, url, verb, previewImage;
+
+- (NSString *)type {
+    return @"activity";
+}
+
+- (BOOL)deserializeKey:(NSString *)key fromJSON:(id)JSON fromInstance:(Jive *)jiveInstance {
+    if ([JiveTypedObjectAttributes.type isEqualToString:key])
+        return NO; // Having a type does not make this a valid JSON response.
+    
+    return [super deserializeKey:key fromJSON:JSON fromInstance:jiveInstance];
+}
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setValue:content forKey:@"content"];
-    [dictionary setValue:jiveId forKey:@"id"];
-    [dictionary setValue:title forKey:@"title"];
-    [dictionary setValue:[url absoluteString] forKey:@"url"];
-    [dictionary setValue:verb forKey:@"verb"];
+    [dictionary setValue:self.type forKey:JiveActivityAttributes.type];
+    [dictionary setValue:content forKey:JiveActivityAttributes.content];
+    [dictionary setValue:jiveId forKey:JiveObjectConstants.id];
+    [dictionary setValue:title forKey:JiveActivityAttributes.title];
+    [dictionary setValue:[url absoluteString] forKey:JiveActivityAttributes.url];
+    [dictionary setValue:verb forKey:JiveActivityAttributes.verb];
     if (icon)
-        [dictionary setValue:[icon toJSONDictionary] forKey:@"icon"];
+        [dictionary setValue:[icon toJSONDictionary] forKey:JiveActivityAttributes.icon];
     
     if (jive)
-        [dictionary setValue:[jive toJSONDictionary] forKey:@"jive"];
+        [dictionary setValue:[jive toJSONDictionary] forKey:JiveActivityAttributes.jive];
     
     if (object)
-        [dictionary setValue:[object toJSONDictionary] forKey:@"object"];
+        [dictionary setValue:[object toJSONDictionary] forKey:JiveActivityAttributes.object];
     
     if (openSocial)
-        [dictionary setValue:[openSocial toJSONDictionary] forKey:@"openSocial"];
+        [dictionary setValue:[openSocial toJSONDictionary] forKey:JiveActivityAttributes.openSocial];
     
     if (target)
-        [dictionary setValue:[target toJSONDictionary] forKey:@"target"];
+        [dictionary setValue:[target toJSONDictionary] forKey:JiveActivityAttributes.target];
     
     return dictionary;
 }
@@ -58,23 +92,38 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter jive_threadLocalISO8601DateFormatter];
     
     if (actor) {
-        [dictionary setValue:[actor persistentJSON] forKey:@"actor"];
+        [dictionary setValue:[actor persistentJSON] forKey:JiveActivityAttributes.actor];
     }
     
     if (generator) {
-        [dictionary setValue:[generator persistentJSON] forKey:@"generator"];
+        [dictionary setValue:[generator persistentJSON] forKey:JiveActivityAttributes.generator];
+    }
+    
+    if (jive)
+        [dictionary setValue:[jive persistentJSON] forKey:JiveActivityAttributes.jive];
+    
+    if (object)
+        [dictionary setValue:[object persistentJSON] forKey:JiveActivityAttributes.object];
+    
+    if (previewImage) {
+        [dictionary setValue:[previewImage persistentJSON] forKey:JiveActivityAttributes.previewImage];
     }
     
     if (provider) {
-        [dictionary setValue:[provider persistentJSON] forKey:@"provider"];
+        [dictionary setValue:[provider persistentJSON] forKey:JiveActivityAttributes.provider];
     }
     
     if (published) {
-        [dictionary setValue:[dateFormatter stringFromDate:published] forKey:@"published"];
+        [dictionary setValue:[dateFormatter stringFromDate:published]
+                      forKey:JiveActivityAttributes.published];
     }
     
+    if (target)
+        [dictionary setValue:[target persistentJSON] forKey:JiveActivityAttributes.target];
+    
     if (updated) {
-        [dictionary setValue:[dateFormatter stringFromDate:updated] forKey:@"updated"];
+        [dictionary setValue:[dateFormatter stringFromDate:updated]
+                      forKey:JiveActivityAttributes.updated];
     }
     
     return dictionary;

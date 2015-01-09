@@ -35,13 +35,16 @@ extern struct JiveExtensionAttributes {
     __unsafe_unretained NSString *collectionRead;
     __unsafe_unretained NSString *collectionUpdated;
     __unsafe_unretained NSString *display;
+    __unsafe_unretained NSString *discovery;
     __unsafe_unretained NSString *followingInStream;
     __unsafe_unretained NSString *iconCss;
+    __unsafe_unretained NSString *imagesCount;
     __unsafe_unretained NSString *likeCount;
     __unsafe_unretained NSString *liked;
     __unsafe_unretained NSString *mentioned;
     __unsafe_unretained NSString *objectID;
     __unsafe_unretained NSString *objectType;
+    __unsafe_unretained NSString *objectViewed;
     __unsafe_unretained NSString *onBehalfOf;
     __unsafe_unretained NSString *outcomeComment;
     __unsafe_unretained NSString *outcomeTypeName;
@@ -51,6 +54,7 @@ extern struct JiveExtensionAttributes {
     __unsafe_unretained NSString *parentLiked;
     __unsafe_unretained NSString *parentOnBehalfOf;
     __unsafe_unretained NSString *parentReplyCount;
+    __unsafe_unretained NSString *productIcon;
     __unsafe_unretained NSString *question;
     __unsafe_unretained NSString *read;
     __unsafe_unretained NSString *replyCount;
@@ -59,8 +63,6 @@ extern struct JiveExtensionAttributes {
     __unsafe_unretained NSString *update;
     __unsafe_unretained NSString *updateCollection;
     __unsafe_unretained NSString *via;
-    __unsafe_unretained NSString *productIcon;
-    __unsafe_unretained NSString *imagesCount;
 } const JiveExtensionAttributes;
 
 extern struct JiveExtensionDisplay {
@@ -178,7 +180,12 @@ extern struct JiveExtensionStateValues {
 //! If the object field contains a discussion marked as a question, this field will contain the resolution state ("open", "resolved", or "assumed_resolved").
 @property(nonatomic, readonly, strong) NSString *resolved;
 
-//! Flag indicating the current state of an action.
+//! Flag indicating the current state of an action. Valid values are:
+//! awaiting_action
+//! accepted
+//! rejected
+//! ignored
+//! hidden
 //! Only present on activities that correspond to actions, when accessed via GET /actions (REST) or osapi.jive.corev3.actions.get() (JavaScript)
 @property(nonatomic, copy) NSString* state;
 
@@ -196,5 +203,11 @@ extern struct JiveExtensionStateValues {
 
 //! The number of images in a status update.
 @property(nonatomic, readonly, strong) NSNumber *imagesCount;
+
+@property(nonatomic, readonly, strong) NSArray *discovery;
+
+//! The has the content been viewed by this user.
+@property(nonatomic, readonly, strong) NSNumber *objectViewed;
+- (BOOL)hasBeenViewed;
 
 @end

@@ -17,18 +17,20 @@
 //    limitations under the License.
 //
 
-#import "JiveStructuredOutcomeContent.h"
+#import "JiveCategorizedContent.h"
 #import "JiveImage.h"
 
 
 extern struct JivePollAttributes {
-    __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *options;
-    __unsafe_unretained NSString *users;
-    __unsafe_unretained NSString *visibility;
     __unsafe_unretained NSString *voteCount;
     __unsafe_unretained NSString *votes;
     __unsafe_unretained NSString *optionsImages;
+    
+    // Deprecated attribute names. Please use the JiveCategorizedContentAttributes names.
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *users;
+    __unsafe_unretained NSString *visibility;
 } const JivePollAttributes;
 
 
@@ -37,23 +39,10 @@ extern NSString * const JivePollType;
 
 //! \class JivePoll
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/PollEntity.html
-@interface JivePoll : JiveStructuredOutcomeContent
-
-//! Categories associated with this object. Places define the list of possible categories. String[]
-@property(nonatomic, strong) NSArray* categories;
+@interface JivePoll : JiveCategorizedContent
 
 //! The options available to be voted on for this poll. String[]
 @property(nonatomic, strong) NSArray* options;
-
-//! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. NSString[] or JivePerson[]
-@property(nonatomic, strong) NSArray *users;
-
-//! The visibility policy for this discussion. Valid values are:
-// * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
-// * hidden - only the author can see the content.
-// * people - only those users specified by users can see the content. Default when visibility and parent were not specified but users was specified.
-// * place - place permissions specify which users can see the content. Default when visibility was not specified but parent was specified.
-@property(nonatomic, copy) NSString* visibility;
 
 //! The current number of votes on this poll.
 @property(nonatomic, readonly) NSNumber *voteCount;
@@ -69,6 +58,5 @@ extern NSString * const JivePollType;
 
 //! Whether the user making the request has voted on this poll
 -(BOOL)hasVoted;
-
 
 @end

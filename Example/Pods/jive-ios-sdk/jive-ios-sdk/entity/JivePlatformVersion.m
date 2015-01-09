@@ -177,7 +177,8 @@ struct Jive8ReleaseIDs const Jive8ReleaseIDs = {
 
 - (BOOL)verifyReleaseIDs:(NSSet *)releaseIDs {
     // confirm any release ID is supported if available
-    if ([self.releaseID length] > 0 && [releaseIDs count] && ![releaseIDs containsObject:self.releaseID]) {
+    if ([self.releaseID length] >= Jive8ReleaseIDs.cloud1.length && [releaseIDs count]
+        && ![releaseIDs containsObject:[self.releaseID substringToIndex:Jive8ReleaseIDs.cloud1.length]]) {
         return NO;
     }
     return YES;

@@ -29,6 +29,7 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     .display = @"display",
     .parent = @"parent",
     .read = @"read",
+    .followingInStream = @"followingInStream",
     .state = @"state",
     .update = @"update",
     .updateCollection = @"updateCollection",
@@ -50,7 +51,6 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     .canReply = @"canReply",
     .canComment = @"canComment",
     .canLike = @"canLike",
-    .followingInStream = @"followingInStream",
     .iconCss = @"iconCss",
     .mentioned = @"mentioned",
     .objectID = @"objectID",
@@ -58,6 +58,8 @@ struct JiveExtensionAttributes const JiveExtensionAttributes = {
     .outcomeComment = @"outcomeComment",
     .via = @"via",
     .imagesCount = @"imagesCount",
+    .discovery = @"discovery",
+    .objectViewed = @"objectViewed",
 };
 
 struct JiveExtensionDisplay const JiveExtensionDisplay = {
@@ -82,6 +84,7 @@ struct JiveExtensionStateValues const JiveExtensionStateValues = {
 @synthesize parentLikeCount, parentReplyCount, replyCount, likeCount, liked, parentLiked;
 @synthesize parentActor, parentOnBehalfOf, onBehalfOf, canReply, canComment, canLike, iconCss;
 @synthesize imagesCount, followingInStream, mentioned, objectID, objectType, outcomeComment;
+@synthesize objectViewed;
 
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -122,6 +125,7 @@ struct JiveExtensionStateValues const JiveExtensionStateValues = {
     [dictionary setValue:mentioned forKey:JiveExtensionAttributes.mentioned];
     [dictionary setValue:objectID forKey:JiveExtensionAttributes.objectID];
     [dictionary setValue:objectType forKey:JiveExtensionAttributes.objectType];
+    [dictionary setValue:objectViewed forKey:JiveExtensionAttributes.objectViewed];
     [dictionary setValue:outcomeComment forKey:JiveExtensionAttributes.outcomeComment];
     [dictionary setValue:outcomeTypeName forKey:JiveExtensionAttributes.outcomeTypeName];
     [dictionary setValue:parentLikeCount forKey:JiveExtensionAttributes.parentLikeCount];
@@ -202,6 +206,10 @@ struct JiveExtensionStateValues const JiveExtensionStateValues = {
 
 - (BOOL)isRead {
     return [self.read boolValue];
+}
+
+- (BOOL)hasBeenViewed {
+    return [self.objectViewed boolValue];
 }
 
 @end

@@ -29,19 +29,20 @@ struct JivePollResourceTags const JivePollResourceTags = {
 };
 
 struct JivePollAttributes const JivePollAttributes = {
-	.categories = @"categories",
 	.options = @"options",
-	.users = @"users",
-    .visibility = @"visibility",
 	.voteCount = @"voteCount",
 	.votes = @"votes",
     .optionsImages = @"optionsImages",
+    
+	.categories = @"categories",
+	.users = @"users",
+    .visibility = @"visibility",
 };
 
 
 @implementation JivePoll
 
-@synthesize categories, options, visibility, voteCount, votes, optionsImages;
+@synthesize options, voteCount, votes, optionsImages;
 
 NSString * const JivePollType = @"poll";
 NSString * const JivePollOptionsImagesOptionKey = @"option";
@@ -84,9 +85,6 @@ NSString * const JivePollOptionsImagesImageKey = @"image";
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
     [dictionary setValue:voteCount forKey:JivePollAttributes.voteCount];
-    [dictionary setValue:visibility forKey:JivePollAttributes.visibility];
-    if (categories)
-        [dictionary setValue:categories forKey:JivePollAttributes.categories];
     
     if (options)
         [dictionary setValue:options forKey:JivePollAttributes.options];
@@ -121,7 +119,5 @@ NSString * const JivePollOptionsImagesImageKey = @"image";
 -(BOOL)hasVoted {
     return [self.votes count] > 0;
 }
-
-
 
 @end

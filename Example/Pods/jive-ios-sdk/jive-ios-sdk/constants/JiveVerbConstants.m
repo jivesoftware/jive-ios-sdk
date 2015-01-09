@@ -20,4 +20,5 @@ struct JiveVerbs const JiveVerbs = {
     .created = @"jive:created",
     .applied = @"jive:applied",
     .liked = @"jive:liked",
+    .helped = @"jive:helped"
 };

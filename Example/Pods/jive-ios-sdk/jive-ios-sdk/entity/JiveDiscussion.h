@@ -17,7 +17,7 @@
 //    limitations under the License.
 //
 
-#import "JiveStructuredOutcomeContent.h"
+#import "JiveCategorizedContent.h"
 
 @class JiveGenericPerson;
 @class JiveVia;
@@ -26,14 +26,16 @@
 extern struct JiveDiscussionAttributes {
     __unsafe_unretained NSString *answer;
     __unsafe_unretained NSString *attachments;
-    __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *helpful;
     __unsafe_unretained NSString *onBehalfOf;
     __unsafe_unretained NSString *question;
     __unsafe_unretained NSString *resolved;
     __unsafe_unretained NSString *restrictReplies;
-    __unsafe_unretained NSString *users;
     __unsafe_unretained NSString *via;
+    
+    // Deprecated attribute names. Please use the JiveCategorizedContentAttributes names.
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *users;
     __unsafe_unretained NSString *visibility;
     
     // Deprecated attribute names. Please use the JiveContentAttribute names.
@@ -53,16 +55,13 @@ extern NSString * const JiveDiscussionType;
 
 //! \class JiveDiscussion
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/DiscussionEntity.html
-@interface JiveDiscussion : JiveStructuredOutcomeContent
+@interface JiveDiscussion : JiveCategorizedContent
 
 //! URI of the correct answer (if any) to this discussion, if it is a question.
 @property(nonatomic, strong) NSString *answer;
 
 //! List of attachments to this message (if any). JiveAttachment[]
 @property(nonatomic, strong) NSArray* attachments;
-
-//! Categories associated with this object. Places define the list of possible categories. String[]
-@property(nonatomic, strong) NSArray* categories;
 
 //! NSString URIs of messages that have been marked "helpful", if this discussion is a question. String[]
 @property(nonatomic, strong) NSArray *helpful;
@@ -81,16 +80,7 @@ extern NSString * const JiveDiscussionType;
 @property(nonatomic, readonly, strong) NSNumber *restrictReplies;
 - (BOOL)repliesRestricted;
 
-//! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
-@property(nonatomic, strong) NSArray* users;
-
 //! Information that is available when the discussion was posted via an external system.
 @property(nonatomic, strong) JiveVia *via;
-
-//! The visibility policy for this discussion. Valid values are:
-// * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
-// * people - only those users specified by users can see the content. Default when visibility and parent were not specified but users was specified.
-// * place - place permissions specify which users can see the content. Default when visibility was not specified but parent was specified.
-@property(nonatomic, copy) NSString* visibility;
 
 @end

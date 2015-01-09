@@ -73,19 +73,21 @@ typedef void (^JiveNumericCompletedBlock)(NSNumber *numericValue);
 - (void)statusUpdateMaxCharacters:(JiveNumericCompletedBlock)completeBlock
                           onError:(JiveErrorBlock)errorBlock;
 
-
 - (AFJSONRequestOperation<JiveRetryingOperation> *)binaryDownloadsDisabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                             onError:(JiveErrorBlock)errorBlock;
 - (void)binaryDownloadsDisabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
-
-- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
-                                                                          onError:(JiveErrorBlock)errorBlock;
 
 - (AFJSONRequestOperation<JiveRetryingOperation> *)shareEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
                                                                  onError:(JiveErrorBlock)errorBlock;
 - (void)shareEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
+- (AFJSONRequestOperation<JiveRetryingOperation> *)maxAttachmentSizeInKBOperation:(JiveNumericCompletedBlock)completeBlock
+                                                                          onError:(JiveErrorBlock)errorBlock;
 - (void)maxAttachmentSizeInKB:(JiveNumericCompletedBlock)completeBlock
                       onError:(JiveErrorBlock)errorBlock;
+
+- (AFJSONRequestOperation<JiveRetryingOperation> *)newsFeedEnabledOperation:(JiveBOOLFlagCompletedBlock)completeBlock
+                                                                    onError:(JiveErrorBlock)errorBlock;
+- (void)newsFeedEnabled:(JiveBOOLFlagCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
 @end

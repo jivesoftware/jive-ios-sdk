@@ -17,12 +17,12 @@
 //    limitations under the License.
 //
 
-#import "JiveStructuredOutcomeContent.h"
+#import "JiveCategorizedContent.h"
+
 
 extern struct JiveVideoAttributes {
     __unsafe_unretained NSString *authtoken;
     __unsafe_unretained NSString *autoplay;
-    __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *duration;
     __unsafe_unretained NSString *embedded;
     __unsafe_unretained NSString *externalID;
@@ -34,13 +34,16 @@ extern struct JiveVideoAttributes {
     __unsafe_unretained NSString *playerName;
     __unsafe_unretained NSString *seconds;
     __unsafe_unretained NSString *stillImageURL;
-    __unsafe_unretained NSString *users;
     __unsafe_unretained NSString *videoSource;
     __unsafe_unretained NSString *videoThumbnail;
     __unsafe_unretained NSString *videoType;
-    __unsafe_unretained NSString *visibility;
     __unsafe_unretained NSString *watermarkURL;
     __unsafe_unretained NSString *width;
+    
+    // Deprecated attribute names. Please use the JiveCategorizedContentAttributes names.
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *users;
+    __unsafe_unretained NSString *visibility;
     
     // Deprecated attribute names. Please use the JiveContentAttribute names.
     __unsafe_unretained NSString *tags;
@@ -52,20 +55,7 @@ extern NSString * const JiveVideoType;
 
 //! \class JiveVideo
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/VideoEntity.html
-@interface JiveVideo : JiveStructuredOutcomeContent
-
-//! Categories associated with this object. Places define the list of possible categories. String[]
-@property(nonatomic, strong) NSArray* categories;
-
-//! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
-@property(nonatomic, strong) NSArray* users;
-
-//! The visibility policy for this discussion. Valid values are:
-// * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
-// * hidden - only the author can see the content.
-// * people - only those users specified by users can see the content. Default when visibility and parent were not specified but users was specified.
-// * place - place permissions specify which users can see the content. Default when visibility was not specified but parent was specified.
-@property(nonatomic, copy) NSString* visibility;
+@interface JiveVideo : JiveCategorizedContent
 
 //! Video provider's ID
 @property(nonatomic, readonly, strong) NSString* externalID;
@@ -123,4 +113,3 @@ extern NSString * const JiveVideoType;
 @property(nonatomic, readonly, strong) NSString *videoType;
 
 @end
-

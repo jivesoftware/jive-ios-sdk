@@ -17,18 +17,22 @@
 //    limitations under the License.
 //
 
-#import "JiveStructuredOutcomeContent.h"
+#import "JiveAuthorableContent.h"
 
 
 extern struct JiveFileAttributes {
-    __unsafe_unretained NSString *authors;
-    __unsafe_unretained NSString *authorship;
     __unsafe_unretained NSString *binaryURL;
-    __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *contentType;
     __unsafe_unretained NSString *name;
     __unsafe_unretained NSString *restrictComments;
     __unsafe_unretained NSString *size;
+    
+    // Deprecated attribute names. Please use the JiveAuthorableContentAttributes names.
+    __unsafe_unretained NSString *authors;
+    __unsafe_unretained NSString *authorship;
+    
+    // Deprecated attribute names. Please use the JiveCategorizedContentAttributes names.
+    __unsafe_unretained NSString *categories;
     __unsafe_unretained NSString *users;
     __unsafe_unretained NSString *visibility;
     
@@ -43,22 +47,10 @@ extern NSString * const JiveFileType;
 
 //! \class JiveFile
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/FileEntity.html
-@interface JiveFile : JiveStructuredOutcomeContent
-
-//! List of people who are authors on this content. Authors are allowed to edit the content. This value is used only when authorship is limited. Person[]
-@property(nonatomic, strong) NSArray* authors;
-
-//! The authorship policy for this content.
-// * open - anyone with appropriate permissions can edit the content. Default when visibility is place.
-// * author - only the author can edit the content. Default when visibility is hidden or all.
-// * limited - only those users specified by authors can edit the content. If authors was not specified then users will be used instead when visibility is people. Default when visibility is people.
-@property(nonatomic, copy) NSString* authorship;
+@interface JiveFile : JiveAuthorableContent
 
 //! URL to retrieve the binary content of this file.
 @property(nonatomic, readonly, copy) NSURL* binaryURL;
-
-//! Categories associated with this object. Places define the list of possible categories. Strings
-@property(nonatomic, strong) NSArray* categories;
 
 //! The MIME type of this file.
 @property (nonatomic, readonly, copy) NSString *contentType;
@@ -72,15 +64,5 @@ extern NSString * const JiveFileType;
 
 //! The size (in bytes) of this file.
 @property(nonatomic, readonly, strong) NSNumber *size;
-
-//! The list of users that can see the content. On create or update, provide a list of Person URIs or Person entities. On get, returns a list of Person entities. This value is used only when visibility is people. String[] or Person[]
-@property(nonatomic, readonly, strong) NSArray* users;
-
-//! The visibility policy for this discussion. Valid values are:
-// * all - anyone with appropriate permissions can see the content. Default when visibility, parent and users were not specified.
-// * hidden - only the author can see the content.
-// * people - only those users specified by users can see the content. Default when visibility and parent were not specified but users was specified.
-// * place - place permissions specify which users can see the content. Default when visibility was not specified but parent was specified.
-@property(nonatomic, copy) NSString* visibility;
 
 @end

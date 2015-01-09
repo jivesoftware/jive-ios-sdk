@@ -27,16 +27,16 @@
 struct JiveDiscussionAttributes const JiveDiscussionAttributes = {
     .answer = @"answer",
     .attachments = @"attachments",
-    .categories = @"categories",
     .helpful = @"helpful",
     .onBehalfOf = @"onBehalfOf",
     .resolved = @"resolved",
     .restrictReplies = @"restrictReplies",
     .question = @"question",
-    .users = @"users",
     .via = @"via",
-    .visibility = @"visibility",
     
+    .categories = @"categories",
+    .users = @"users",
+    .visibility = @"visibility",
     .tags = @"tags",
     .visibleToExternalContributors = @"visibleToExternalContributors"
 };
@@ -50,7 +50,7 @@ struct JiveDiscussionResolvedState const JiveDiscussionResolvedState = {
 
 @implementation JiveDiscussion
 
-@synthesize answer, attachments, helpful, categories, question, users, visibility, onBehalfOf;
+@synthesize answer, attachments, helpful, question, onBehalfOf;
 @synthesize resolved, restrictReplies, via;
 
 NSString * const JiveDiscussionType = @"discussion";
@@ -67,9 +67,6 @@ NSString * const JiveDiscussionType = @"discussion";
 - (Class) arrayMappingFor:(NSString*) propertyName {
     if ([propertyName isEqualToString:JiveDiscussionAttributes.attachments]) {
         return [JiveAttachment class];
-    }
-    if ([propertyName isEqualToString:JiveDiscussionAttributes.users]) {
-        return [JivePerson class];
     }
     
     return [super arrayMappingFor:propertyName];
@@ -89,19 +86,9 @@ NSString * const JiveDiscussionType = @"discussion";
     if([question boolValue])
         [dictionary setValue:resolved forKey:JiveDiscussionAttributes.resolved];
     
-    [dictionary setValue:visibility forKey:JiveDiscussionAttributes.visibility];
     [self addArrayElements:attachments
           toJSONDictionary:dictionary
                     forTag:JiveDiscussionAttributes.attachments];
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
-        [dictionary setValue:users forKey:JiveDiscussionAttributes.users];
-    else
-        [self addArrayElements:users
-              toJSONDictionary:dictionary
-                        forTag:JiveDiscussionAttributes.users];
-    
-    if (categories)
-        [dictionary setValue:categories forKey:JiveDiscussionAttributes.categories];
     
     if (helpful)
         [dictionary setValue:helpful forKey:JiveDiscussionAttributes.helpful];

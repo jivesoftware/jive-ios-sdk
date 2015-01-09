@@ -24,6 +24,7 @@
     NSMutableArray *targetURIs;
 }
 
-- (void) addAssociationTarget:(JiveTypedObject *)target;
+- (void)addAssociationTarget:(JiveTypedObject *)target;
+- (void)addTargetURI:(NSString *)uri;
 
 @end

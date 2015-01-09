@@ -22,17 +22,18 @@
 
 
 struct JiveIdeaAttributes const JiveIdeaAttributes = {
-    .authors = @"authors",
-    .authorship = @"authorship",
     .authorshipPolicy = @"authorshipPolicy",
-    .categories = @"categories",
     .commentCount = @"commentCount",
     .score = @"score",
     .stage = @"stage",
-    .users = @"users",
-    .visibility = @"visibility",
     .voteCount = @"voteCount",
-    .voted = @"voted"
+    .voted = @"voted",
+    
+    .authors = @"authors",
+    .authorship = @"authorship",
+    .categories = @"categories",
+    .users = @"users",
+    .visibility = @"visibility"
 };
 
 struct JiveIdeaAuthorshipPolicy const JiveIdeaAuthorshipPolicy = {
@@ -44,8 +45,7 @@ struct JiveIdeaAuthorshipPolicy const JiveIdeaAuthorshipPolicy = {
 
 @implementation JiveIdea
 
-@synthesize authors, authorshipPolicy, authorship, categories, commentCount, score, stage, users;
-@synthesize visibility, voted, voteCount;
+@synthesize authorshipPolicy, commentCount, score, stage, voted, voteCount;
 
 NSString * const JiveIdeaType = @"idea";
 
@@ -56,32 +56,6 @@ NSString * const JiveIdeaType = @"idea";
 
 - (NSString *)type {
     return JiveIdeaType;
-}
-
-- (Class) arrayMappingFor:(NSString*) propertyName {
-    if ([propertyName isEqualToString:JiveIdeaAttributes.authors] ||
-        [propertyName isEqualToString:JiveIdeaAttributes.users]) {
-        return [JivePerson class];
-    }
-    
-    return [super arrayMappingFor:propertyName];
-}
-
-- (NSDictionary *)toJSONDictionary {
-    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
-    
-    [dictionary setValue:authorship forKeyPath:JiveIdeaAttributes.authorship];
-    [dictionary setValue:visibility forKeyPath:JiveIdeaAttributes.visibility];
-    [self addArrayElements:authors toJSONDictionary:dictionary forTag:JiveIdeaAttributes.authors];
-    if (categories)
-        [dictionary setValue:categories forKeyPath:JiveIdeaAttributes.categories];
-    
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
-        [dictionary setValue:users forKey:JiveIdeaAttributes.users];
-    else
-        [self addArrayElements:users toJSONDictionary:dictionary forTag:JiveIdeaAttributes.users];
-    
-    return dictionary;
 }
 
 - (id)persistentJSON {

@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, JiveErrorCode) {
     JiveErrorCodeUnauthorizedActivityObjectType = 6,
     JiveErrorCodeRequiresTermsAndConditionsAcceptance = 7,
     JiveErrorCodeInvalidRequestError = 8,
+    JiveErrorCodeCantDeleteAttachment = 9,
 };
 
 extern NSString * const JiveErrorKeyMultipleErrors;

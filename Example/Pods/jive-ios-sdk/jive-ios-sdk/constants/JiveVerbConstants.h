@@ -17,4 +17,5 @@ extern struct JiveVerbs {
     __unsafe_unretained NSString *created;
     __unsafe_unretained NSString *applied;
     __unsafe_unretained NSString *liked;
+    __unsafe_unretained NSString *helped;
 } const JiveVerbs;

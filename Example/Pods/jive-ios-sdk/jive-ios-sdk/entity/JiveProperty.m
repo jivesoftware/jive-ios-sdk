@@ -52,6 +52,7 @@ struct JivePropertyNames const JivePropertyNames = {
     .maxAttachmentSize = @"attachments.maxAttachmentSize",
     .videoModuleEnabled = @"feature.module.video.enabled",
     .privacyPolicyURL = @"privacy.policy.url",
+    .newsFeedEnabled = @"feature.news.enabled",
 };
 
 @implementation JiveProperty

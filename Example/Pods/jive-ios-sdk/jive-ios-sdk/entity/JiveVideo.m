@@ -21,9 +21,6 @@
 #import "JiveTypedObject_internal.h"
 
 struct JiveVideoAttributes const JiveVideoAttributes = {
-    .categories = @"categories",
-    .users = @"users",
-    .visibility = @"visibility",
     .authtoken = @"authtoken",
     .externalID = @"externalID",
     .playerBaseURL = @"playerBaseURL",
@@ -43,6 +40,9 @@ struct JiveVideoAttributes const JiveVideoAttributes = {
     .videoType = @"videoType",
     .playerName = @"playerName",
     
+    .categories = @"categories",
+    .users = @"users",
+    .visibility = @"visibility",
     .tags = @"tags",
     .visibleToExternalContributors = @"visibleToExternalContributors",
 };
@@ -50,7 +50,7 @@ struct JiveVideoAttributes const JiveVideoAttributes = {
 @implementation JiveVideo
 
 @synthesize externalID, playerBaseURL, width, height, authtoken, autoplay, embedded, stillImageURL;
-@synthesize categories, users, visibility, videoSource, duration, hours, minutes, seconds;
+@synthesize videoSource, duration, hours, minutes, seconds;
 @synthesize iframeSource, videoThumbnail, videoType, playerName, watermarkURL;
 
 NSString * const JiveVideoType = @"video";
@@ -62,22 +62,6 @@ NSString * const JiveVideoType = @"video";
 
 - (NSString *)type {
     return JiveVideoType;
-}
-
-- (NSDictionary *)toJSONDictionary {
-    NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
-    
-    [dictionary setValue:visibility forKey:JiveVideoAttributes.visibility];
-    
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
-        [dictionary setValue:users forKey:JiveVideoAttributes.users];
-    else
-        [self addArrayElements:users toJSONDictionary:dictionary forTag:JiveVideoAttributes.users];
-    
-    if (categories)
-        [dictionary setValue:categories forKey:JiveVideoAttributes.categories];
-    
-    return dictionary;
 }
 
 - (id)persistentJSON {
@@ -101,11 +85,6 @@ NSString * const JiveVideoType = @"video";
     [dictionary setValue:iframeSource forKey:JiveVideoAttributes.iframeSource];
     [dictionary setValue:embedded forKey:JiveVideoAttributes.embedded];
     [dictionary setValue:videoType forKey:JiveVideoAttributes.videoType];
-    
-    if (users.count > 0 && ![[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]])
-        [self addArrayElements:users
-        toPersistentDictionary:dictionary
-                        forTag:JiveVideoAttributes.users];
     
     return dictionary;
 }

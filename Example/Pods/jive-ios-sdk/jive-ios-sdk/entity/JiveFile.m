@@ -23,17 +23,17 @@
 
 
 struct JiveFileAttributes const JiveFileAttributes = {
-    .authors = @"authors",
-    .authorship = @"authorship",
     .binaryURL = @"binaryURL",
-    .categories = @"categories",
     .contentType = @"contentType",
     .name = @"name",
     .restrictComments = @"restrictComments",
     .size = @"size",
+    
+    .authors = @"authors",
+    .authorship = @"authorship",
+    .categories = @"categories",
     .users = @"users",
     .visibility = @"visibility",
-    
     .tags = @"tags",
     .visibleToExternalContributors = @"visibleToExternalContributors"
 };
@@ -41,7 +41,7 @@ struct JiveFileAttributes const JiveFileAttributes = {
 
 @implementation JiveFile
 
-@synthesize authors, authorship, binaryURL, categories, size, users, visibility, contentType;
+@synthesize binaryURL, size, contentType, name, restrictComments;
 
 NSString * const JiveFileType = @"file";
 
@@ -54,40 +54,27 @@ NSString * const JiveFileType = @"file";
     return JiveFileType;
 }
 
-- (Class) arrayMappingFor:(NSString*) propertyName {
-    if ([propertyName isEqualToString:JiveFileAttributes.authors] ||
-        [propertyName isEqualToString:JiveFileAttributes.users]) {
-        return [JivePerson class];
-    }
-    
-    return [super arrayMappingFor:propertyName];
-}
-
 - (NSDictionary *)toJSONDictionary {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super toJSONDictionary];
     
-    [dictionary setValue:authorship forKey:JiveFileAttributes.authorship];
+    [dictionary setValue:restrictComments forKey:JiveFileAttributes.restrictComments];
+    
+    return dictionary;
+}
+
+- (id)persistentJSON {
+    NSMutableDictionary *dictionary = [super persistentJSON];
+    
+    [dictionary setValue:name forKey:JiveFileAttributes.name];
     [dictionary setValue:[binaryURL absoluteString] forKey:JiveFileAttributes.binaryURL];
     [dictionary setValue:size forKey:JiveFileAttributes.size];
-    [dictionary setValue:visibility forKey:JiveFileAttributes.visibility];
-    [self addArrayElements:authors toJSONDictionary:dictionary forTag:JiveFileAttributes.authors];
-    if (users.count > 0 && [[[users objectAtIndex:0] class] isSubclassOfClass:[NSString class]]) {
-        [dictionary setValue:users forKey:JiveFileAttributes.users];
-    } else {
-        [self addArrayElements:users toJSONDictionary:dictionary forTag:JiveFileAttributes.users];
-    }
-    
-    if (categories) {
-        [dictionary setValue:categories forKey:JiveFileAttributes.categories];
-    }
-
     [dictionary setValue:contentType forKey:JiveFileAttributes.contentType];
     
     return dictionary;
 }
 
 - (BOOL)commentsNotAllowed {
-    return NO;
+    return [self.restrictComments boolValue];
 }
 
 @end
