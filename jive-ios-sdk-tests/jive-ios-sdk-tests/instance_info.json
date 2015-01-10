@@ -1,9 +1,9 @@
 {
-    "server": "https://doritosoftware-ios8c3-1-essential-plus.jivelandia.com",
-    "userid1": "iosAuto1",
+    "server": "https://doritosoftware-ios8c5.jivelandia.com",
+    "userid1": "iosAuto1@jive.com",
     "pw1": "test123",
-    "userid2": "iosAuto2",
+    "userid2": "iosAuto2@jive.com",
     "pw2": "test123",
-    "userid3": "ios",
+    "userid3": "ios@jive.com",
     "pw3": "test123"
 }
