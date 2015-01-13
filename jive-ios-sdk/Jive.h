@@ -356,7 +356,7 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (void) inboxWithUnreadCount:(JiveInboxOptions*)options onComplete:(JiveInboxObjectsCompleteBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! Mark inbox entries as read/unread
 - (void) markInboxEntries:(NSArray *)inboxEntries asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
-- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
+- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock DEPRECATED_ATTRIBUTE;
 - (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates inInboxStream:(JiveStream *)inboxStream asFollowed:(BOOL)followed onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/AcclaimService.html#getAcclaims(%20int,%20String,%20String)
 - (void)acclaims:(JiveInboxOptions *)options onComplete:(void (^)(NSArray *))completeBlock onError:(JiveErrorBlock)errorBlock;
@@ -626,6 +626,7 @@ typedef void (^JiveBadRequestLoggerBlock)(NSString *message, Jive *jive, NSURLRe
 - (AFJSONRequestOperation<JiveRetryingOperation> *) messageDiscussionOperation:(JiveMessage *)message onComplete:(void(^)(JiveDiscussion *discussion))complete onError:(JiveErrorBlock)error;
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/MessageService.html#createContentMessage(String,%20String,%20String)
 - (AFJSONRequestOperation<JiveRetryingOperation> *) operationToCreateReplyMessage:(JiveMessage *)replyMessage forDiscussion:(JiveDiscussion *)discussion withOptions:(JiveReturnFieldsRequestOptions *)options completeBlock:(void (^)(JiveMessage *message))completeBlock errorBlock:(void (^)(NSError *error))errorBlock;
+- (void) markJiveContentEntries:(NSArray *)jiveContentEntries asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock;
 
 #pragma mark - Members
 

@@ -900,15 +900,22 @@ int const JivePushDeviceType = 3;
         }
     }
     
-    [self markInboxEntryUpdates:[inboxEntryUpdates allObjects]
-                         asRead:read
-                     onComplete:completeBlock
-                        onError:errorBlock];
+    [self markJiveContentEntries:[inboxEntryUpdates allObjects]
+                          asRead:read
+                      onComplete:completeBlock
+                         onError:errorBlock];
 }
 
 - (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
+    return [self markJiveContentEntries:inboxEntryUpdates
+                                 asRead:read
+                             onComplete:completeBlock
+                                onError:errorBlock];
+}
+
+- (void) markJiveContentEntries:(NSArray *)jiveContentEntries asRead:(BOOL)read onComplete:(JiveCompletedBlock)completeBlock onError:(JiveErrorBlock)errorBlock {
     NSString *HTTPMethod = read ? JiveHTTPMethodTypes.POST : JiveHTTPMethodTypes.DELETE;
-    [self markInboxEntryUpdates:inboxEntryUpdates withOperationBlock:^AFURLConnectionOperation<JiveRetryingOperation> *(NSURL *url, JiveSuboperationCompleteBlock operationCompleteBlock) {
+    [self markJiveContentEntries:jiveContentEntries withOperationBlock:^AFURLConnectionOperation<JiveRetryingOperation> *(NSURL *url, JiveSuboperationCompleteBlock operationCompleteBlock) {
         NSMutableURLRequest *markRequest = [NSMutableURLRequest requestWithURL:url];
         [markRequest setHTTPMethod:HTTPMethod];
         [self maybeApplyCredentialsToMutableURLRequest:markRequest
@@ -935,7 +942,7 @@ int const JivePushDeviceType = 3;
         }
         [self createAssociations:targetList forStream:inboxStream onComplete:completeBlock onError:errorBlock];
     } else {
-        [self markInboxEntryUpdates:inboxEntryUpdates withOperationBlock:^AFURLConnectionOperation<JiveRetryingOperation> *(NSURL *url, JiveSuboperationCompleteBlock operationCompleteBlock) {
+        [self markJiveContentEntries:inboxEntryUpdates withOperationBlock:^AFURLConnectionOperation<JiveRetryingOperation> *(NSURL *url, JiveSuboperationCompleteBlock operationCompleteBlock) {
             
             AFURLConnectionOperation<JiveRetryingOperation> *operation = [self deleteAssociationURLOperation:url fromStream:inboxStream onComplete:^{
                 operationCompleteBlock(url, nil);
@@ -3070,11 +3077,11 @@ int const JivePushDeviceType = 3;
     return [self emptyOperationWithRequest:request onComplete:complete onError:error];
 }
 
-- (void) markInboxEntryUpdates:(NSArray *)inboxEntryUpdates
-            withOperationBlock:(AFURLConnectionOperation<JiveRetryingOperation> * (^)(id object, JiveSuboperationCompleteBlock operationCompleteBlock))operationBlock
-                    onComplete:(JiveCompletedBlock)completeBlock
-                       onError:(JiveErrorBlock)errorBlock {
-    NSMutableSet *incompleteOperationUpdates = [NSMutableSet setWithArray:inboxEntryUpdates];
+- (void) markJiveContentEntries:(NSArray *)jiveContentEntries
+             withOperationBlock:(AFURLConnectionOperation<JiveRetryingOperation> * (^)(id object, JiveSuboperationCompleteBlock operationCompleteBlock))operationBlock
+                     onComplete:(JiveCompletedBlock)completeBlock
+                        onError:(JiveErrorBlock)errorBlock {
+    NSMutableSet *incompleteOperationUpdates = [NSMutableSet setWithArray:jiveContentEntries];
     NSMutableArray *errors = [NSMutableArray new];
     
     JiveCompletedBlock heapCompleteBlock = [completeBlock copy];
