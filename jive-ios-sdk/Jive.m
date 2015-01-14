@@ -1874,7 +1874,6 @@ int const JivePushDeviceType = 3;
                                                                    parameters:parameters
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
-        
         NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
 
         if ([content class] == [JiveDocument class]) {
@@ -1893,19 +1892,18 @@ int const JivePushDeviceType = 3;
             }
         }
         
-        if ([content class] == [JiveDocument class] || [content class] == [JivePost class]) {
-            if ([content class] == [JiveDocument class]) {
-                JiveDocument *attachableContent = (JiveDocument *)content;
-                if (webAttachments.count != attachableContent.attachments.count) {
-                    attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
-                }
-            } else {
-                JivePost *attachableContent = (JivePost *)content;
-                if (webAttachments.count != attachableContent.attachments.count) {
-                    attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
-                }
+        if ([content class] == [JiveDocument class]) {
+            JiveDocument *attachableContent = (JiveDocument *)content;
+            if (webAttachments.count != attachableContent.attachments.count) {
+                attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+            }
+        } else if ([content class] == [JivePost class]) {
+            JivePost *attachableContent = (JivePost *)content;
+            if (webAttachments.count != attachableContent.attachments.count) {
+                attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
             }
         }
+    
         
         NSData *contentJSONData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
                                                                   options:0
