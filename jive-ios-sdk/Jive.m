@@ -1874,8 +1874,14 @@ int const JivePushDeviceType = 3;
                                                                    parameters:parameters
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
-        JiveDocument *attachableContent = (JiveDocument *)content;
-        NSMutableArray *webAttachments = [attachableContent.attachments mutableCopy];
+        
+        NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
+        JiveDocument *attachableContent = [[JiveDocument alloc] init];
+        
+        if ([content class] == [JiveDocument class]) {
+            attachableContent = (JiveDocument *)content;
+            webAttachments = [attachableContent.attachments mutableCopy];
+        }
         
         for (JiveAttachment *attachment in jiveAttachments) {
             if ([attachment.url isFileURL]) {
