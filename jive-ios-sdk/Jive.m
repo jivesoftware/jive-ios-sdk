@@ -1876,10 +1876,12 @@ int const JivePushDeviceType = 3;
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
         
         NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
-        JiveDocument *attachableContent = [[JiveDocument alloc] init];
-        
+
         if ([content class] == [JiveDocument class]) {
-            attachableContent = (JiveDocument *)content;
+            JiveDocument *attachableContent = (JiveDocument *)content;
+            webAttachments = [attachableContent.attachments mutableCopy];
+        } else if ([content class] == [JivePost class]) {
+            JivePost *attachableContent = (JivePost *)content;
             webAttachments = [attachableContent.attachments mutableCopy];
         }
         
@@ -1891,8 +1893,18 @@ int const JivePushDeviceType = 3;
             }
         }
         
-        if (webAttachments.count != attachableContent.attachments.count) {
-            attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+        if ([content class] == [JiveDocument class] || [content class] == [JivePost class]) {
+            if ([content class] == [JiveDocument class]) {
+                JiveDocument *attachableContent = (JiveDocument *)content;
+                if (webAttachments.count != attachableContent.attachments.count) {
+                    attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+                }
+            } else {
+                JivePost *attachableContent = (JivePost *)content;
+                if (webAttachments.count != attachableContent.attachments.count) {
+                    attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+                }
+            }
         }
         
         NSData *contentJSONData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
