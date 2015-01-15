@@ -20,6 +20,7 @@
 #import "JiveContent.h"
 #import "JiveActivityObject.h"
 #import "JiveGenericPerson.h"
+#import "JiveSupportsAttachments.h"
 
 extern struct JiveExternalObjectAttributes {
     __unsafe_unretained NSString *attachments;
@@ -33,10 +34,10 @@ extern NSString * const JiveExternalType;
 
 //! \class JiveExternalObject
 //! No online docs yet.
-@interface JiveExternalObject : JiveContent
+@interface JiveExternalObject : JiveContent <JiveSupportsAttachments>
 
 //! List of attachments to this object (if any). Attachment[]
-@property(nonatomic, readonly, strong) NSArray* attachments;
+@property(nonatomic, strong) NSArray* attachments;
 
 //! Contains some information about the originating object
 @property(nonatomic, readonly, strong) JiveActivityObject* object;

@@ -18,6 +18,7 @@
 //
 
 #import "JiveStructuredOutcomeContent.h"
+#import "JiveSupportsAttachments.h"
 
 
 @class JiveVia;
@@ -48,7 +49,7 @@ extern NSString * const JiveMessageType;
 
 //! \class JiveMessage
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/MessageEntity.html
-@interface JiveMessage : JiveStructuredOutcomeContent
+@interface JiveMessage : JiveStructuredOutcomeContent <JiveSupportsAttachments>
 
 //! Flag indicating that this message contains the correct answer to the question posed in this discussion.
 @property(nonatomic, strong) NSNumber *answer;

@@ -1875,13 +1875,11 @@ int const JivePushDeviceType = 3;
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
         NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
-
-        if ([content class] == [JiveDocument class]) {
-            JiveDocument *attachableContent = (JiveDocument *)content;
-            webAttachments = [attachableContent.attachments mutableCopy];
-        } else if ([content class] == [JivePost class]) {
-            JivePost *attachableContent = (JivePost *)content;
-            webAttachments = [attachableContent.attachments mutableCopy];
+        
+        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
+            id <JiveSupportsAttachments> jiveContentWithProtocol;
+            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+            webAttachments = [jiveContentWithProtocol.attachments mutableCopy];
         }
         
         for (JiveAttachment *attachment in jiveAttachments) {
@@ -1892,15 +1890,11 @@ int const JivePushDeviceType = 3;
             }
         }
         
-        if ([content class] == [JiveDocument class]) {
-            JiveDocument *attachableContent = (JiveDocument *)content;
-            if (webAttachments.count != attachableContent.attachments.count) {
-                attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
-            }
-        } else if ([content class] == [JivePost class]) {
-            JivePost *attachableContent = (JivePost *)content;
-            if (webAttachments.count != attachableContent.attachments.count) {
-                attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
+            id <JiveSupportsAttachments> jiveContentWithProtocol;
+            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+            if (webAttachments.count != jiveContentWithProtocol.attachments.count) {
+                jiveContentWithProtocol.attachments = [NSArray arrayWithArray:webAttachments];
             }
         }
     
