@@ -34,10 +34,10 @@ extern NSString * const JiveExternalType;
 
 //! \class JiveExternalObject
 //! No online docs yet.
-@interface JiveExternalObject : JiveContent <JiveSupportsAttachments>
+@interface JiveExternalObject : JiveContent
 
 //! List of attachments to this object (if any). Attachment[]
-@property(nonatomic, strong) NSArray* attachments;
+@property(nonatomic, readonly, strong) NSArray* attachments;
 
 //! Contains some information about the originating object
 @property(nonatomic, readonly, strong) JiveActivityObject* object;

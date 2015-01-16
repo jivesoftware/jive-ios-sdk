@@ -12,7 +12,3 @@
 //! List of attachments to this message (if any). JiveAttachment[]
 @property(nonatomic, strong) NSArray* attachments;
 @end
-
-@interface JiveSupportsAttachments : NSObject
-
-@end

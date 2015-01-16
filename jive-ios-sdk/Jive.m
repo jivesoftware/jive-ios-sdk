@@ -1875,10 +1875,10 @@ int const JivePushDeviceType = 3;
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
         NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
-        
-        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
-            id <JiveSupportsAttachments> jiveContentWithProtocol;
-            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+        id <JiveSupportsAttachments> jiveContentWithProtocol;
+        jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+
+        if (jiveContentWithProtocol) {
             webAttachments = [jiveContentWithProtocol.attachments mutableCopy];
         }
         
@@ -1890,9 +1890,7 @@ int const JivePushDeviceType = 3;
             }
         }
         
-        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
-            id <JiveSupportsAttachments> jiveContentWithProtocol;
-            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+        if (jiveContentWithProtocol) {
             if (webAttachments.count != jiveContentWithProtocol.attachments.count) {
                 jiveContentWithProtocol.attachments = [NSArray arrayWithArray:webAttachments];
             }
