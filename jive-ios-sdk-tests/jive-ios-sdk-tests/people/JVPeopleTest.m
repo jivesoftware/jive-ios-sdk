@@ -37,7 +37,7 @@
     
     [super setUp];
     
-    _testPersonUsername=@"iosauto1";
+    _testPersonUsername=@"iosauto1@jive.com";
     JiveSearchPeopleRequestOptions* searchPeopleoptions = [[JiveSearchPeopleRequestOptions alloc]init];
     [searchPeopleoptions addSearchTerm:_testPersonUsername];
     
@@ -260,7 +260,7 @@
 
 - (void)testMe {
     NSString *meDisplayName = @"iosAuto1 lastname1";
-    NSString *meUsername = @"iosauto1";
+    NSString *meUsername = @"iosauto1@jive.com";
     
     __block JivePerson* me = nil;
     waitForTimeout(^(dispatch_block_t finishMeBlock) {
@@ -280,7 +280,7 @@
 
 
 - (void)testGetPersonByEmail {
-    NSString *email = @"iosAuto2@jivesoftware.com";
+    NSString *email = @"iosAuto2@jive.com";
     NSString *expectedPersonDisplayName = @"iosAuto2 lastname2";
     
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
@@ -301,7 +301,7 @@
 }
 
 - (void)testGetPersonByUsername {
-    NSString *username = @"iosauto2";
+    NSString *username = @"iosauto2@jive.com";
     NSString *expectedPersonDisplayName = @"iosAuto2 lastname2";
     
     JiveReturnFieldsRequestOptions *options = [[JiveReturnFieldsRequestOptions alloc] init];
