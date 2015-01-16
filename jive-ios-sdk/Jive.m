@@ -1876,9 +1876,9 @@ int const JivePushDeviceType = 3;
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
         NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
         id <JiveSupportsAttachments> jiveContentWithProtocol;
-        jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
 
-        if (jiveContentWithProtocol) {
+        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
+            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
             webAttachments = [jiveContentWithProtocol.attachments mutableCopy];
         }
         
