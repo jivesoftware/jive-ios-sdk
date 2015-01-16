@@ -20,7 +20,6 @@
 #import "JiveContent.h"
 #import "JiveActivityObject.h"
 #import "JiveGenericPerson.h"
-#import "JiveSupportsAttachments.h"
 
 extern struct JiveExternalObjectAttributes {
     __unsafe_unretained NSString *attachments;
