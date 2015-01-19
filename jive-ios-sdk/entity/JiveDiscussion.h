@@ -18,6 +18,7 @@
 //
 
 #import "JiveCategorizedContent.h"
+#import "JiveSupportsAttachments.h"
 
 @class JiveGenericPerson;
 @class JiveVia;
@@ -55,7 +56,7 @@ extern NSString * const JiveDiscussionType;
 
 //! \class JiveDiscussion
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/DiscussionEntity.html
-@interface JiveDiscussion : JiveCategorizedContent
+@interface JiveDiscussion : JiveCategorizedContent <JiveSupportsAttachments>
 
 //! URI of the correct answer (if any) to this discussion, if it is a question.
 @property(nonatomic, strong) NSString *answer;

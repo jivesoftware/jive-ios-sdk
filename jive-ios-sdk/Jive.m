@@ -1874,8 +1874,13 @@ int const JivePushDeviceType = 3;
                                                                    parameters:parameters
                                                     constructingBodyWithBlock:(^(id<AFMultipartFormData> formData) {
         NSMutableArray *fileAttachments = [NSMutableArray arrayWithCapacity:jiveAttachments.count];
-        JiveDocument *attachableContent = (JiveDocument *)content;
-        NSMutableArray *webAttachments = [attachableContent.attachments mutableCopy];
+        NSMutableArray *webAttachments = [[NSMutableArray alloc] init];
+        id <JiveSupportsAttachments> jiveContentWithProtocol;
+
+        if ([content conformsToProtocol:@protocol(JiveSupportsAttachments)]) {
+            jiveContentWithProtocol = (id <JiveSupportsAttachments>) content;
+            webAttachments = [jiveContentWithProtocol.attachments mutableCopy];
+        }
         
         for (JiveAttachment *attachment in jiveAttachments) {
             if ([attachment.url isFileURL]) {
@@ -1885,9 +1890,12 @@ int const JivePushDeviceType = 3;
             }
         }
         
-        if (webAttachments.count != attachableContent.attachments.count) {
-            attachableContent.attachments = [NSArray arrayWithArray:webAttachments];
+        if (jiveContentWithProtocol) {
+            if (webAttachments.count != jiveContentWithProtocol.attachments.count) {
+                jiveContentWithProtocol.attachments = [NSArray arrayWithArray:webAttachments];
+            }
         }
+    
         
         NSData *contentJSONData = [NSJSONSerialization dataWithJSONObject:content.toJSONDictionary
                                                                   options:0

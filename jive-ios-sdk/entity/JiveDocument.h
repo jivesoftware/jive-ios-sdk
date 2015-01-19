@@ -18,6 +18,7 @@
 //
 
 #import "JiveAuthorableContent.h"
+#import "JiveSupportsAttachments.h"
 
 
 extern NSString * const JiveDocumentType;
@@ -53,7 +54,7 @@ extern struct JiveDocumentAttributes {
 
 //! \class JiveDocument
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/DocumentEntity.html
-@interface JiveDocument : JiveAuthorableContent
+@interface JiveDocument : JiveAuthorableContent <JiveSupportsAttachments>
 
 //! List of people who are approvers on the content of this document. Person[]
 @property(nonatomic, strong) NSArray* approvers;
