@@ -18,6 +18,7 @@
 //
 
 #import "JiveStructuredOutcomeContent.h"
+#import "JiveSupportsAttachments.h"
 
 
 extern NSString * const JivePostType;
@@ -43,7 +44,7 @@ extern struct JivePostStatusValues {
 
 //! \class JivePost
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/PostEntity.html
-@interface JivePost : JiveStructuredOutcomeContent
+@interface JivePost : JiveStructuredOutcomeContent <JiveSupportsAttachments>
 
 //! List of attachments to this message (if any). JiveAttachment[]
 @property(nonatomic, strong) NSArray* attachments;
