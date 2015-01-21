@@ -47,7 +47,8 @@ struct JiveStreamSourceValues const JiveStreamSourceValues = {
     .context = @"context",
     .profile = @"profile",
     .watches = @"watches",
-    .custom = @"custom"
+    .custom = @"custom",
+    .publication = @"publication"
 };
 
 struct JiveStreamJSONAttributes const JiveStreamJSONAttributes = {

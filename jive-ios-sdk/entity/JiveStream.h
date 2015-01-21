@@ -40,6 +40,7 @@ extern struct JiveStreamSourceValues {
     __unsafe_unretained NSString *profile;
     __unsafe_unretained NSString *watches;
     __unsafe_unretained NSString *custom;
+    __unsafe_unretained NSString *publication;
 } const JiveStreamSourceValues;
 
 //! \class JiveStream
