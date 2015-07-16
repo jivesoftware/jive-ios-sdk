@@ -75,6 +75,11 @@ struct Jive8ReleaseIDs const Jive8ReleaseIDs = {
     .cloud4 = @"8c4",
 };
 
+struct Jive2015ReleaseIDs const Jive2015ReleaseIDs = {
+    .cloud1 = @"9c1.1",
+    .cloud2 = @"9c1.2",
+};
+
 
 @implementation JivePlatformVersion
 
@@ -177,9 +182,16 @@ struct Jive8ReleaseIDs const Jive8ReleaseIDs = {
 
 - (BOOL)verifyReleaseIDs:(NSSet *)releaseIDs {
     // confirm any release ID is supported if available
-    if ([self.releaseID length] >= Jive8ReleaseIDs.cloud1.length && [releaseIDs count]
-        && ![releaseIDs containsObject:[self.releaseID substringToIndex:Jive8ReleaseIDs.cloud1.length]]) {
-        return NO;
+    if (self.major.integerValue < 9) {
+        if ([self.releaseID length] >= Jive8ReleaseIDs.cloud1.length && [releaseIDs count]
+            && ![releaseIDs containsObject:[self.releaseID substringToIndex:Jive8ReleaseIDs.cloud1.length]]) {
+            return NO;
+        }
+    } else {
+        if ([self.releaseID length] >= Jive2015ReleaseIDs.cloud1.length && [releaseIDs count]
+            && ![releaseIDs containsObject:[self.releaseID substringToIndex:Jive2015ReleaseIDs.cloud1.length]]) {
+            return NO;
+        }
     }
     return YES;
 }
@@ -216,6 +228,22 @@ struct Jive8ReleaseIDs const Jive8ReleaseIDs = {
 
 + (NSSet *)cloud4UnsupportedReleaseIDs {
     return [[self cloud3UnsupportedReleaseIDs] setByAddingObject:Jive8ReleaseIDs.cloud4];
+}
+
++ (NSSet *)cloud20151SupportedReleaseIDs {
+    return [[self cloud20152SupportedReleaseIDs] setByAddingObject:Jive2015ReleaseIDs.cloud1];
+}
+
++ (NSSet *)cloud20151UnsupportedReleaseIDs {
+    return [NSSet setWithObject:Jive2015ReleaseIDs.cloud1];
+}
+
++ (NSSet *)cloud20152SupportedReleaseIDs {
+    return [NSSet setWithObject:Jive2015ReleaseIDs.cloud2];
+}
+
++ (NSSet *)cloud20152UnsupportedReleaseIDs {
+    return [[self cloud20151UnsupportedReleaseIDs] setByAddingObject:Jive2015ReleaseIDs.cloud2];
 }
 
 #pragma mark - Public API
@@ -345,6 +373,13 @@ struct Jive8ReleaseIDs const Jive8ReleaseIDs = {
     return ([self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion]
             && (!self.releaseID
                 || ![self verifyReleaseIDs:[JivePlatformVersion cloud3UnsupportedReleaseIDs]]));
+}
+
+- (BOOL)supportsBulkUpload {
+    JVSemanticVersion supportedJiveVersion = JVSemanticVersionMake(9, 0, 0, 0);
+    return ([self supportsFeatureAvailableWithSemanticVersion:supportedJiveVersion]
+            && (!self.releaseID
+                || [self verifyReleaseIDs:[JivePlatformVersion cloud20152SupportedReleaseIDs]]));
 }
 
 @end
