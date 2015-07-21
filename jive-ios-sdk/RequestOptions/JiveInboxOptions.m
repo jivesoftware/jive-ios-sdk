@@ -21,6 +21,7 @@
 
 
 NSString * const JiveAcclaimInboxType = @"acclaim";
+NSString * const JiveBulkUploadInboxType = @"bulkupload";
 
 struct JiveInboxOptionsDirectives const JiveInboxOptionsDirectives = {
     .include_rtc = @"include_rtc"

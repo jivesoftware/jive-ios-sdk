@@ -28,6 +28,9 @@ struct JiveInboxOptionsDirectives {
 //! Inbox content type for including acclaim when filtering on content type.
 extern NSString * const JiveAcclaimInboxType;
 
+//! Inbox content type for including bulk uploads when filtering on content type.
+extern NSString * const JiveBulkUploadInboxType;
+
 //! \class JiveInboxOptions
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/InboxService.html#getActivity(String,%20String,%20int,%20List<String>,%20String,%20List<String>,%20boolean,%20String,%20boolean)
 @interface JiveInboxOptions : JiveDateLimitedRequestOptions

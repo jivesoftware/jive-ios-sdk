@@ -40,6 +40,11 @@ struct Jive8ReleaseIDs {
     __unsafe_unretained NSString *cloud4;
 } const Jive8ReleaseIDs;
 
+struct Jive2015ReleaseIDs {
+    __unsafe_unretained NSString *cloud1;
+    __unsafe_unretained NSString *cloud2;
+} const Jive2015ReleaseIDs;
+
 
 //! \class JivePlatformVersion
 //! Version data for a Jive instance
@@ -103,6 +108,7 @@ struct Jive8ReleaseIDs {
 - (BOOL)supportsCollapsingStreams;
 - (BOOL)supportsOriginParam;
 - (BOOL)removedPushNotificationActivatedFlag;
+- (BOOL)supportsBulkUpload;
 
 - (BOOL)verifyReleaseIDs:(NSSet *)releaseIDs;
 
