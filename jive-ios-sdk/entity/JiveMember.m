@@ -21,6 +21,16 @@
 #import "NSDateFormatter+JiveISO8601DateFormatter.h"
 #import "JiveResourceEntry.h"
 
+
+struct JiveMemberState const JiveMemberState = {
+    .banned = @"banned",
+    .invited = @"invited",
+    .member = @"member",
+    .owner = @"owner",
+    .pending = @"pending"
+};
+
+
 @implementation JiveMember
 
 @synthesize group, jiveId, person, published, state, updated;

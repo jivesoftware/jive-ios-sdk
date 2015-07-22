@@ -21,6 +21,16 @@
 #import "JiveGroup.h"
 #import "JivePerson.h"
 
+
+extern struct JiveMemberState {
+    __unsafe_unretained NSString *banned;
+    __unsafe_unretained NSString *invited;
+    __unsafe_unretained NSString *member;
+    __unsafe_unretained NSString *owner;
+    __unsafe_unretained NSString *pending;
+} const JiveMemberState;
+
+
 //! \class JiveMember
 //! https://docs.developers.jivesoftware.com/api/v3/cloud/rest/MemberEntity.html
 @interface JiveMember : JiveTypedObject

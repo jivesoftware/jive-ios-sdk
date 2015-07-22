@@ -27,7 +27,10 @@
     
     if (self.states)
     {
-        NSString *statesString = [self.states componentsJoinedByString:@","];
+        // The "state" query parameter can only hold a single value. Including multiple states in
+        // a request is accomplished by multiple, single-value state parameters rather than a lone,
+        // multi-value-joined-by-commas state.
+        NSString *statesString = [self.states componentsJoinedByString:@"&state="];
 
         if (query)
             query = [query stringByAppendingFormat:@"&state=%@", statesString];
