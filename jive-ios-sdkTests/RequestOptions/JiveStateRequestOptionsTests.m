@@ -41,7 +41,7 @@
     
     [self.stateOptions addState:@"banned"];
     asString = [self.options toQueryString];
-    STAssertEqualObjects(@"state=owner,banned", asString, @"Wrong string contents");
+    STAssertEqualObjects(@"state=owner&state=banned", asString, @"Wrong string contents");
 }
 
 - (void)testStateWithFields {
