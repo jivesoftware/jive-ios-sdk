@@ -26,10 +26,12 @@
 
 struct JiveMessageResourceTags {
     __unsafe_unretained NSString *correctAnswer;
+    __unsafe_unretained NSString *helpful;
 } const JiveMessageResourceTags;
 
 struct JiveMessageResourceTags const JiveMessageResourceTags = {
     .correctAnswer = @"correctAnswer",
+    .helpful = @"helpful",
 };
 
 struct JiveMessageAttributes const JiveMessageAttributes = {
@@ -113,6 +115,18 @@ NSString * const JiveMessageType = @"message";
 
 - (BOOL)canClearMarkAsCorrectAnswer {
     return [self resourceHasDeleteForTag:JiveMessageResourceTags.correctAnswer];
+}
+
+- (NSURL *)helpfulAnswerRef {
+    return [self resourceForTag:JiveMessageResourceTags.helpful].ref;
+}
+
+- (BOOL)canMarkAsHelpfulAnswer {
+    return [self resourceHasPostForTag:JiveMessageResourceTags.helpful];
+}
+
+- (BOOL)canClearMarkAsHelpfulAnswer {
+    return [self resourceHasDeleteForTag:JiveMessageResourceTags.helpful];
 }
 
 - (BOOL)correctAnswer {

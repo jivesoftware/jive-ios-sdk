@@ -78,5 +78,8 @@ extern NSString * const JiveMessageType;
 - (NSURL *)correctAnswerRef;
 - (BOOL)canMarkAsCorrectAnswer;
 - (BOOL)canClearMarkAsCorrectAnswer;
+- (NSURL *)helpfulAnswerRef;
+- (BOOL)canMarkAsHelpfulAnswer;
+- (BOOL)canClearMarkAsHelpfulAnswer;
 
 @end
